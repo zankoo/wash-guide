@@ -206,7 +206,7 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .vol button[aria-pressed="true"]{background:var(--sheet);color:var(--ink);box-shadow:var(--lift)}
 .vnote{flex-basis:100%;font-size:12.5px;font-weight:400;color:var(--muted);text-align:right}
 .dil{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.dl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;padding:14px 16px 12px;border-top:1px solid var(--line);align-items:start}
+.dl{display:grid;grid-template-columns:minmax(6em,1fr) fit-content(60%);gap:6px 18px;padding:14px 16px 12px;border-top:1px solid var(--line);align-items:start}
 .dl:first-child{border-top:0}
 .dl .sc{font-size:15px;font-weight:500}
 .dl .tl{display:inline-block;margin-top:5px;font-size:12px;color:var(--muted);border:1px solid var(--line-2);border-radius:6px;padding:0 7px}
@@ -214,6 +214,8 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .dl .rv{font:600 26px/1.05 var(--f-display);font-variant-numeric:tabular-nums;white-space:nowrap}
 .dl .rv.long{font-size:17px;line-height:1.25;white-space:normal}
 .dl .rn{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+.dl .cc>span{display:block;white-space:nowrap}
+.dl .cc>span+span::before{content:"～ "}
 .dl .cc{display:block;font-size:13px;font-weight:500;color:var(--rinse);margin-top:4px;font-variant-numeric:tabular-nums}
 .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:20px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .fact{padding:12px 0;min-width:0}

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Saira_Condensed } from 'next/font/google';
 import { GuideProvider } from '@/components/guide-state';
+import { OfflineSupport } from '@/components/offline-support';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children, modal }: LayoutProps<'/'>) {
         <GuideProvider>
           {children}
           {modal}
+          <OfflineSupport />
         </GuideProvider>
       </body>
     </html>

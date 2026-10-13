@@ -76,7 +76,14 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
               <div className="rt">
                 <div className={main.length > 12 ? 'rv long' : 'rv'}>{main}</div>
                 {note && <span className="rn">{note}</span>}
-                {c && <span className="cc">{c}</span>}
+                {c && (
+                  <span className="cc">
+                    {/* 范围比例有两个换算结果，各占一行，不在中间断开 */}
+                    {c.split('　～　').map((part) => (
+                      <span key={part}>{part}</span>
+                    ))}
+                  </span>
+                )}
               </div>
               <Gauge values={gaugeValues([ratio])} labels />
             </div>
