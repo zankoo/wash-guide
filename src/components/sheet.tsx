@@ -6,7 +6,7 @@ import { CloseIcon } from './icons';
 
 /**
  * 产品详情弹出面板（拦截路由 /p/[id] 时使用）：原生 <dialog> 负责焦点约束、背景 inert 和 Esc，
- * 关闭时先播放退出动画再 router.back() 回到列表。
+ * 打开时用 CSS @starting-style 滑入，关闭时先播放退出动画再 router.back() 回到列表。
  */
 export function Sheet({ children }: { children: ReactNode }) {
   const router = useRouter();

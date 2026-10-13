@@ -1,3 +1,4 @@
+import { Suspense, type ReactNode } from 'react';
 import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
@@ -112,4 +113,9 @@ export function DetailSkeleton() {
       </div>
     </div>
   );
+}
+
+/** 详情内容的 Suspense：内容到达前显示同样布局的骨架屏 */
+export function DetailSuspense({ children }: { children: ReactNode }) {
+  return <Suspense fallback={<DetailSkeleton />}>{children}</Suspense>;
 }

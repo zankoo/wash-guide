@@ -1,16 +1,23 @@
 import { ViewTabs } from './view-tabs';
 
-/** 站点顶栏：站名 + 视图切换（手机上视图切换移到底部栏） */
+/** 三段 pH 色条（碱性 / 中性 / 酸性）；首次加载时像液面一样依次升起 */
+export function Logo() {
+  return (
+    <span className="logo" aria-hidden="true">
+      <i />
+      <i />
+      <i />
+    </span>
+  );
+}
+
+/** 窄屏顶栏：站名 + 视图切换（手机上视图切换移到底部栏；桌面由左侧索引栏代替） */
 export function Masthead() {
   return (
     <header className="mast">
       <div className="wrap">
         <div className="mast-id">
-          <span className="logo" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </span>
+          <Logo />
           <div>
             <h1>洗车施工速查</h1>
             <p>Labocosmetica、Maniac Line、Koch-Chemie、CarPro 的官方稀释比例、施工步骤和洗车流程</p>

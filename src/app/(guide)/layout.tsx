@@ -1,5 +1,6 @@
 import { FilterBar, type CountTable } from '@/components/filter-bar';
 import { Footer, Masthead } from '@/components/hero';
+import { Sidebar, type FlowIndexItem } from '@/components/sidebar';
 import { ViewTabs } from '@/components/view-tabs';
 import { BRANDS, FLOWS, PRODUCTS } from '@/data';
 
@@ -20,17 +21,22 @@ function countBy<T extends { b: string }>(items: T[], group: (x: T) => string): 
 
 const productCounts = countBy(PRODUCTS, (p) => p.c);
 const flowCounts = countBy(FLOWS, (f) => f.sc);
+const flowIndex: FlowIndexItem[] = FLOWS.map((f) => ({ id: f.id, b: f.b, sc: f.sc, name: f.name, kind: f.kind }));
 
 export default function GuideLayout({ children }: LayoutProps<'/'>) {
   return (
-    <>
-      <Masthead />
-      <FilterBar productCounts={productCounts} flowCounts={flowCounts} />
-      <div className="wrap">
-        <main>{children}</main>
+    // 桌面 ≥1100px：左侧索引栏 + 右侧内容；更窄时左栏隐藏，用顶栏、分类标签和底部栏
+    <div className="shell">
+      <Sidebar productCounts={productCounts} flowCounts={flowCounts} flows={flowIndex} />
+      <div className="main-col">
+        <Masthead />
+        <FilterBar productCounts={productCounts} flowCounts={flowCounts} />
+        <div className="wrap">
+          <main>{children}</main>
+        </div>
+        <Footer />
       </div>
-      <Footer />
       <ViewTabs className="tabs bottom" />
-    </>
+    </div>
   );
 }

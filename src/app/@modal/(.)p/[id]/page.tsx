@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { DetailSkeleton, ProductDetail } from '@/components/product-detail';
+import { DetailSuspense, ProductDetail } from '@/components/product-detail';
 import { Sheet } from '@/components/sheet';
 import { PRODUCTS, PRODUCT_BY_ID } from '@/data';
 
@@ -20,9 +19,9 @@ async function Detail({ params }: { params: Params }) {
 export default function ProductSheet({ params }: PageProps<'/p/[id]'>) {
   return (
     <Sheet>
-      <Suspense fallback={<DetailSkeleton />}>
+      <DetailSuspense>
         <Detail params={params} />
-      </Suspense>
+      </DetailSuspense>
     </Sheet>
   );
 }

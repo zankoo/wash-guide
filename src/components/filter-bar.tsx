@@ -1,19 +1,18 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { BRAND, BRAND_SHORT, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { BrandId } from '@/data/types';
 import { useFavorites } from '@/lib/favorites';
 import { useGuide } from './guide-state';
 import { CloseIcon, SearchIcon, StarIcon } from './icons';
+import { Indicator } from './indicator';
 
 /** counts[品牌 或 '' 表示全部][分类/场景 或 '' 表示全部] */
 export type CountTable = Record<string, Record<string, number>>;
 
 export function FilterBar({ productCounts, flowCounts }: { productCounts: CountTable; flowCounts: CountTable }) {
-  const isFlows = usePathname() === '/flows';
-  const { brand, setBrand, query, setQuery, category, setCategory, scene, setScene } = useGuide();
+  const { isFlows, brand, setBrand, query, setQuery, category, setCategory, scene, setScene } = useGuide();
   const input = useRef<HTMLInputElement>(null);
   const favorites = useFavorites();
 
@@ -75,10 +74,12 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
           </label>
           <div className="seg" role="group" aria-label="品牌">
             <button type="button" aria-pressed={brand === ''} onClick={() => pickBrand('')}>
+              {brand === '' && <Indicator name="ind-seg" />}
               全部品牌
             </button>
             {BRANDS.map((b) => (
               <button key={b} type="button" aria-pressed={brand === b} onClick={() => pickBrand(b)}>
+                {brand === b && <Indicator name="ind-seg" />}
                 <span className={`dot ${b}`} />
                 {BRAND[b]}
               </button>
@@ -105,6 +106,7 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
               aria-pressed={category === 'fav'}
               onClick={() => setCategory(category === 'fav' ? '' : 'fav')}
             >
+              {category === 'fav' && <Indicator name="ind-chip" />}
               <StarIcon filled />
               常用
               <small>{favorites.length}</small>
@@ -120,6 +122,7 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
                 aria-pressed={selected === k}
                 onClick={() => (isFlows ? setScene(k as typeof scene) : setCategory(k as typeof category))}
               >
+                {selected === k && <Indicator name="ind-chip" />}
                 {n}
                 <small>{count}</small>
               </button>
