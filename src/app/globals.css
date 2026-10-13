@@ -151,15 +151,14 @@ main{padding-block:6px 56px}
 .pill.ghost{font:500 12.5px var(--f-body);color:var(--faint)}
 
 /* 浓度刻度条：对数刻度，左原液右 1:1000；深色段是这款产品用到的浓度范围 */
-.mix{grid-column:1/-1;margin-top:6px}
 /* 配比条：按真实比例分成原液（深）和水（浅）两段；原液太少时保留 3px 让它看得见 */
-.mix-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--water)}
+.mix-bar{grid-column:1/-1;display:flex;height:10px;margin-top:6px;border-radius:5px;overflow:hidden;background:var(--water)}
 .mix-bar b{flex:none}
 .mix-c{min-width:3px;background:var(--rinse)}
 .mix-r{background:repeating-linear-gradient(-45deg,var(--rinse) 0 3px,color-mix(in srgb,var(--rinse) 35%,var(--water)) 3px 6px)}
-.mix-lab{display:flex;justify-content:space-between;gap:12px;margin-top:5px;font-size:12.5px;font-variant-numeric:tabular-nums}
-.mix-lab .c{color:var(--rinse);font-weight:600}
-.mix-lab .w{color:var(--muted)}
+.mix-legend{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--muted)}
+.mix-legend i{width:10px;height:10px;border-radius:3px;background:var(--rinse)}
+.mix-legend i.w{background:var(--water);margin-left:6px}
 
 /* 已加入常用 */
 .fav-mark{position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#d99a0b;box-shadow:0 1px 3px rgba(15,27,34,.18)}

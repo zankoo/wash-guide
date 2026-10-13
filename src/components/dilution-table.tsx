@@ -3,7 +3,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import type { DilutionRow } from '@/data/types';
 import { VOLUMES, convert, formatMl, isVolume, parseWater, type Volume } from '@/lib/dilution';
-import { MixBar, mixValues } from './mix-bar';
+import { MixBar, MixLegend, mixValues } from './mix-bar';
 
 // 换算水量记在 localStorage，所有产品共用（沿用旧版的 key）
 const KEY = 'mafra-water';
@@ -57,6 +57,7 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
     <>
       <div className="dil-h">
         <h3>稀释比例</h3>
+        {rows.some(([, r]) => mixValues([r]).length > 0) && <MixLegend />}
         {canConvert && (
           <>
             <span className="vol" role="group" aria-label="按水量换算">
