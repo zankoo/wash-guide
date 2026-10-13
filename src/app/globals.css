@@ -6,7 +6,7 @@
 :root{
   --paper:#eef1f2; --sheet:#ffffff; --ink:#0f1b22; --muted:#53626b; --faint:#637077;
   --line:#dbe1e4; --line-2:#c3cdd2;
-  --rinse:#0b6e99; --rinse-soft:#e0eef5; --water:#d3e6ef;
+  --rinse:#0b6e99; --rinse-soft:#e0eef5;
   --stage:#f5f7f8;
   --warn:#8a5300; --warn-bg:#fbf3e3;
   --alk:#5b3fd1; --alk-bg:#eeebfc; --neu:#1d8656; --neu-bg:#e2f2e9; --acid:#b0600a; --acid-bg:#fbeedd;
@@ -23,7 +23,7 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#86959c;
   --line:#22313a; --line-2:#33464f;
-  --rinse:#62c3ea; --rinse-soft:#123242; --water:#1c3f4f;
+  --rinse:#62c3ea; --rinse-soft:#123242;
   --stage:#e8edef;
   --warn:#f0b65c; --warn-bg:#2a2113;
   --alk:#ab9dff; --alk-bg:#231f45; --neu:#7cd3a3; --neu-bg:#13302a; --acid:#f1ad5c; --acid-bg:#2f2213;
@@ -32,7 +32,7 @@
 :root[data-theme="dark"]{
   --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#86959c;
   --line:#22313a; --line-2:#33464f;
-  --rinse:#62c3ea; --rinse-soft:#123242; --water:#1c3f4f;
+  --rinse:#62c3ea; --rinse-soft:#123242;
   --stage:#e8edef;
   --warn:#f0b65c; --warn-bg:#2a2113;
   --alk:#ab9dff; --alk-bg:#231f45; --neu:#7cd3a3; --neu-bg:#13302a; --acid:#f1ad5c; --acid-bg:#2f2213;
@@ -151,19 +151,6 @@ main{padding-block:6px 56px}
 .pill.ghost{font:500 12.5px var(--f-body);color:var(--faint)}
 
 /* 浓度刻度条：对数刻度，左原液右 1:1000；深色段是这款产品用到的浓度范围 */
-.gauge{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:start;margin-top:4px}
-.g-end{font-size:12px;font-weight:600;color:var(--muted);line-height:12px}
-.g-body{min-width:0}
-/* 轨道由深到浅：左边原液，越往右兑的水越多 */
-.g-track{position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--rinse) 55%,var(--water)),var(--water) 70%,color-mix(in srgb,var(--water) 40%,var(--sheet)))}
-.g-track i{position:absolute;top:0;bottom:0;width:1px;background:var(--sheet);opacity:.9}
-/* 单个比例：指针；范围比例：两端带竖线的括号 */
-.g-track .pin{position:absolute;top:-4px;bottom:-4px;width:4px;margin-left:-2px;border-radius:2px;background:var(--ink);box-shadow:0 0 0 2px var(--sheet)}
-.g-track .span{position:absolute;top:-4px;bottom:-4px;border:solid var(--ink);border-width:0 3px;border-radius:2px;min-width:8px;transform:translateX(-1.5px);
-  background:linear-gradient(var(--ink),var(--ink)) center/100% 4px no-repeat}
-.g-lab{position:relative;height:16px;margin-top:6px}
-.g-lab span{position:absolute;transform:translateX(-50%);font:500 12px var(--f-display);color:var(--faint);white-space:nowrap}
-.g-lab span:first-child{transform:none}
 
 /* 已加入常用 */
 .fav-mark{position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#d99a0b;box-shadow:0 1px 3px rgba(15,27,34,.18)}

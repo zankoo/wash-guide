@@ -3,7 +3,6 @@
 import { useState, useSyncExternalStore } from 'react';
 import type { DilutionRow } from '@/data/types';
 import { VOLUMES, convert, formatMl, isVolume, parseWater, type Volume } from '@/lib/dilution';
-import { Gauge, gaugeValues } from './gauge';
 
 // 换算水量记在 localStorage，所有产品共用（沿用旧版的 key）
 const KEY = 'mafra-water';
@@ -145,7 +144,6 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
                   </span>
                 )}
               </div>
-              <Gauge values={gaugeValues([ratio])} />
             </div>
           );
         })}
