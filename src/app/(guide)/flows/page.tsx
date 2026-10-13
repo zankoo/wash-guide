@@ -13,6 +13,7 @@ const items: FlowItem[] = FLOWS.map((f) => ({
   b: f.b,
   sc: f.sc,
   kind: f.kind,
+  name: f.name,
   text: flowSearchText(f),
   card: <FlowCard f={f} />,
 }));

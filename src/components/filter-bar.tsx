@@ -54,8 +54,13 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
               enterKeyHint="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              // 手机上按「搜索」收起键盘，露出结果
-              onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.blur()}
+              onKeyDown={(e) => {
+                if (e.key !== 'Enter' || e.nativeEvent.isComposing) return;
+                // 有鼠标的设备：回车直接打开排在第一的产品；手机：收起键盘露出结果
+                const first = document.querySelector<HTMLElement>('.results .card');
+                if (!isFlows && first && matchMedia('(hover: hover)').matches) first.click();
+                else e.currentTarget.blur();
+              }}
               placeholder={isFlows ? '搜流程、场景或产品，如 PPF、镀膜' : '搜产品、用途或材质，如 铁粉、皮革、1:10'}
               aria-label={isFlows ? '搜索流程' : '搜索产品'}
               autoComplete="off"
