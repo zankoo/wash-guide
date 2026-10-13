@@ -6,7 +6,7 @@
 :root{
   --paper:#eef1f2; --sheet:#ffffff; --ink:#0f1b22; --muted:#53626b; --faint:#637077;
   --line:#dbe1e4; --line-2:#c3cdd2;
-  --rinse:#0b6e99; --rinse-soft:#e0eef5; --water:#d3e6ef;
+  --rinse:#0b6e99; --rinse-soft:#e0eef5;
   --stage:#f5f7f8;
   --warn:#8a5300; --warn-bg:#fbf3e3;
   --alk:#5b3fd1; --alk-bg:#eeebfc; --neu:#1d8656; --neu-bg:#e2f2e9; --acid:#b0600a; --acid-bg:#fbeedd;
@@ -23,7 +23,7 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#86959c;
   --line:#22313a; --line-2:#33464f;
-  --rinse:#62c3ea; --rinse-soft:#123242; --water:#1c3f4f;
+  --rinse:#62c3ea; --rinse-soft:#123242;
   --stage:#e8edef;
   --warn:#f0b65c; --warn-bg:#2a2113;
   --alk:#ab9dff; --alk-bg:#231f45; --neu:#7cd3a3; --neu-bg:#13302a; --acid:#f1ad5c; --acid-bg:#2f2213;
@@ -32,7 +32,7 @@
 :root[data-theme="dark"]{
   --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#86959c;
   --line:#22313a; --line-2:#33464f;
-  --rinse:#62c3ea; --rinse-soft:#123242; --water:#1c3f4f;
+  --rinse:#62c3ea; --rinse-soft:#123242;
   --stage:#e8edef;
   --warn:#f0b65c; --warn-bg:#2a2113;
   --alk:#ab9dff; --alk-bg:#231f45; --neu:#7cd3a3; --neu-bg:#13302a; --acid:#f1ad5c; --acid-bg:#2f2213;
@@ -151,14 +151,6 @@ main{padding-block:6px 56px}
 .pill.ghost{font:500 12.5px var(--f-body);color:var(--faint)}
 
 /* 浓度刻度条：对数刻度，左原液右 1:1000；深色段是这款产品用到的浓度范围 */
-/* 配比条：按真实比例分成原液（深）和水（浅）两段；原液太少时保留 3px 让它看得见 */
-.mix-bar{grid-column:1/-1;display:flex;height:10px;margin-top:6px;border-radius:5px;overflow:hidden;background:var(--water)}
-.mix-bar b{flex:none}
-.mix-c{min-width:3px;background:var(--rinse)}
-.mix-r{background:repeating-linear-gradient(-45deg,var(--rinse) 0 3px,color-mix(in srgb,var(--rinse) 35%,var(--water)) 3px 6px)}
-.mix-legend{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--muted)}
-.mix-legend i{width:10px;height:10px;border-radius:3px;background:var(--rinse)}
-.mix-legend i.w{background:var(--water);margin-left:6px}
 
 /* 已加入常用 */
 .fav-mark{position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#d99a0b;box-shadow:0 1px 3px rgba(15,27,34,.18)}
