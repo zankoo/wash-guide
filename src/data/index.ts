@@ -5,6 +5,7 @@ import * as laboManiacFlows from './labo-maniac-flows';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
+import { fold } from '../lib/search';
 
 export * from './subcategories';
 export * from './taxonomy';
@@ -64,11 +65,12 @@ export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
 }
 
 export function productSearchText(p: Product): string {
-  return [p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], SUB_OF.get(p.id)?.n ?? '', BRAND[p.b], ...p.d.flat(), ...p.x].join(' ').toLowerCase();
+  const sub = SUB_OF.get(p.id)?.n ?? '';
+  return fold([p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], sub, BRAND[p.b], ...p.d.flat(), ...p.x].join(' '));
 }
 
 export function flowSearchText(f: FlowEntry): string {
-  return [
+  return fold([
     f.name, f.en ?? '', f.sum, SCENE_NAME[f.sc], ...f.tags, ...f.x,
     f.kind === 'combo' ? f.at : '', f.branch?.n ?? '',
     ...stepsOf(f).flatMap((x) => [
@@ -76,7 +78,7 @@ export function flowSearchText(f: FlowEntry): string {
       ...(x.vars ?? []).flatMap((v) => [v.n, v.r ?? '', v.how ?? '']),
       ...productsOfStep(x).map((id) => `${getProduct(id).n} ${getProduct(id).t}`),
     ]),
-  ].join(' ').toLowerCase();
+  ].join(' '));
 }
 
 export const OFFICIAL_RATIO_ROWS = PRODUCTS.reduce((n, p) => n + p.d.filter((d) => /1:\d|原液/.test(d[1])).length, 0);

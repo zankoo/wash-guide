@@ -4,8 +4,9 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { BRAND, BRAND_SHORT, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { BrandId } from '@/data/types';
+import { useFavorites } from '@/lib/favorites';
 import { useGuide } from './guide-state';
-import { CloseIcon, SearchIcon } from './icons';
+import { CloseIcon, SearchIcon, StarIcon } from './icons';
 
 /** counts[品牌 或 '' 表示全部][分类/场景 或 '' 表示全部] */
 export type CountTable = Record<string, Record<string, number>>;
@@ -14,6 +15,7 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
   const isFlows = usePathname() === '/flows';
   const { brand, setBrand, query, setQuery, category, setCategory, scene, setScene } = useGuide();
   const input = useRef<HTMLInputElement>(null);
+  const favorites = useFavorites();
 
   // 桌面上按 / 直接聚焦搜索框
   useEffect(() => {
@@ -31,7 +33,7 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
   function pickBrand(b: BrandId | '') {
     setBrand(b);
     // 新品牌下没有当前分类 / 场景时回到「全部」
-    if (category && !productCounts[b][category]) setCategory('');
+    if (category && category !== 'fav' && !productCounts[b][category]) setCategory('');
     if (scene && !flowCounts[b][scene]) setScene('');
   }
 
@@ -91,6 +93,18 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
           </label>
         </div>
         <div className="chips" role="group" aria-label={isFlows ? '场景' : '分类'}>
+          {!isFlows && (favorites.length > 0 || category === 'fav') && (
+            <button
+              type="button"
+              className="chip fav-chip"
+              aria-pressed={category === 'fav'}
+              onClick={() => setCategory(category === 'fav' ? '' : 'fav')}
+            >
+              <StarIcon filled />
+              常用
+              <small>{favorites.length}</small>
+            </button>
+          )}
           {chips
             .filter((c) => c.count)
             .map(({ k, n, count }) => (

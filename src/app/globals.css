@@ -102,6 +102,12 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 .chip:hover{color:var(--ink);border-color:var(--line-2)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .chip[aria-pressed="true"] small{color:inherit;opacity:.7}
+.fav-chip{display:inline-flex;align-items:center;gap:5px;color:var(--ink);border-color:var(--line-2)}
+.fav-chip svg{color:#d99a0b}
+.fav{display:inline-flex;align-items:center;gap:7px;margin-top:12px;height:38px;padding:0 14px;border:1px solid var(--line-2);border-radius:10px;background:var(--sheet);font-size:14px;font-weight:600;cursor:pointer}
+.fav:hover{border-color:var(--ink)}
+.fav[aria-pressed="true"]{border-color:#d99a0b;background:color-mix(in srgb,#d99a0b 12%,var(--sheet))}
+.fav svg{color:#d99a0b}
 
 /* ── 分类与子分类 ───────────────────────────── */
 main{padding-block:6px 56px}
@@ -185,6 +191,11 @@ html:has(.sheet[open]){overflow:hidden}
 .sh-tag .br{color:var(--ink);font-weight:600;font-size:13px}
 .sh-name{font:600 clamp(30px,5vw,42px)/1.02 var(--f-display);letter-spacing:.01em;margin:8px 0 6px;text-wrap:balance;overflow-wrap:anywhere}
 .sh-type{margin:0;color:var(--muted);font-size:15px}
+.skel i{display:block;height:14px;border-radius:7px;background:var(--paper);margin:8px 0}
+.skel i.big{height:34px;margin:12px 0}
+.skel i.block{height:220px;border-radius:14px;margin-top:24px}
+@media (prefers-reduced-motion:no-preference){.skel i,.skel .sh-stage{animation:pulse 1.2s ease-in-out infinite alternate}}
+@keyframes pulse{to{opacity:.55}}
 .sh-body{padding:4px clamp(16px,4vw,30px) calc(40px + env(safe-area-inset-bottom,0px))}
 h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;font-size:17px;font-weight:800}
 .vol{margin-left:auto;display:inline-flex;background:var(--paper);border-radius:10px;padding:3px;gap:2px}

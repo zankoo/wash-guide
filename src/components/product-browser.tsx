@@ -1,10 +1,12 @@
 'use client';
 
-import { Fragment, useDeferredValue, useState, type ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
+import { Fragment, useDeferredValue, useEffect, useState, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import { SUBCATS } from '@/data/subcategories';
 import { CATS } from '@/data/taxonomy';
 import type { BrandId, CategoryId } from '@/data/types';
+import { useFavorites } from '@/lib/favorites';
 import { matchesQuery } from '@/lib/search';
 import { useGuide } from './guide-state';
 
@@ -14,7 +16,7 @@ export interface ProductItem {
   c: CategoryId;
   /** 子分类 id */
   sub: string;
-  /** 小写的搜索文本 */
+  /** 归一化后的搜索文本（见 fold） */
   text: string;
   /** 服务端渲染好的卡片 */
   card: ReactNode;
@@ -28,12 +30,34 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
   const { brand, category, query: rawQuery } = useGuide();
   const query = useDeferredValue(rawQuery.trim());
   const [expanded, setExpanded] = useState<ReadonlySet<CategoryId>>(new Set());
+  const favorites = useFavorites();
+  const router = useRouter();
 
+  // 页面空闲时预取一个产品详情：顺带加载详情面板的脚本，第一次点开产品就不用再等它们下载
+  const warmId = items[0]?.id;
+  useEffect(() => {
+    if (!warmId) return;
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1500));
+    const cancel = window.cancelIdleCallback ?? window.clearTimeout;
+    const handle = idle(() => router.prefetch(`/p/${warmId}`));
+    return () => cancel(handle);
+  }, [router, warmId]);
+
+  const inCategory = (p: ProductItem) =>
+    !category || (category === 'fav' ? favorites.includes(p.id) : p.c === category);
   const list = items.filter(
-    (p) => (!brand || p.b === brand) && (!category || p.c === category) && (!query || matchesQuery(p.text, query)),
+    (p) => (!brand || p.b === brand) && inCategory(p) && (!query || matchesQuery(p.text, query)),
   );
 
-  if (!list.length) return <p className="empty">没有匹配的产品，换个关键词试试。</p>;
+  if (!list.length) {
+    return (
+      <p className="empty">
+        {category === 'fav' && !favorites.length
+          ? '还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。'
+          : '没有匹配的产品，换个关键词或品牌试试。'}
+      </p>
+    );
+  }
 
   // 选了分类或在搜索时完整展开
   const browsing = !category && !query;

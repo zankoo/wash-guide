@@ -1,5 +1,6 @@
 import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
+import { FavButton } from './fav-button';
 import { Notes } from './flow-card';
 import { FlowLink } from './flow-link';
 import { ExternalIcon } from './icons';
@@ -32,6 +33,7 @@ export function ProductDetail({ p }: { p: Product }) {
             {p.n}
           </h2>
           <p className="sh-type">{p.t}</p>
+          <FavButton id={p.id} />
         </div>
       </div>
       <div className="sh-body">
@@ -90,5 +92,24 @@ export function ProductDetail({ p }: { p: Product }) {
         </a>
       </div>
     </>
+  );
+}
+
+/** 详情内容到达前的占位：和真实布局同样的位置，避免面板内容跳动 */
+export function DetailSkeleton() {
+  return (
+    <div className="skel" aria-busy="true" aria-label="正在加载产品详情">
+      <div className="sh-head">
+        <div className="sh-stage" />
+        <div className="sh-id">
+          <i style={{ width: '40%' }} />
+          <i className="big" style={{ width: '75%' }} />
+          <i style={{ width: '55%' }} />
+        </div>
+      </div>
+      <div className="sh-body">
+        <i className="block" />
+      </div>
+    </div>
   );
 }

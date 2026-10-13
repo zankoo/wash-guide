@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ProductDetail } from '@/components/product-detail';
+import { Suspense } from 'react';
+import { DetailSkeleton, ProductDetail } from '@/components/product-detail';
 import { BRAND, PRODUCTS, PRODUCT_BY_ID, imageSrc } from '@/data';
 
 export function generateStaticParams() {
@@ -21,18 +22,24 @@ export async function generateMetadata({ params }: PageProps<'/p/[id]'>): Promis
   };
 }
 
-/** 直接打开或刷新 /p/[id] 时的独立产品页 */
-export default async function ProductPage({ params }: PageProps<'/p/[id]'>) {
+async function Detail({ params }: { params: PageProps<'/p/[id]'>['params'] }) {
   const p = PRODUCT_BY_ID.get((await params).id);
   if (!p) notFound();
+  return <ProductDetail p={p} />;
+}
+
+/** 直接打开或刷新 /p/[id] 时的独立产品页 */
+export default function ProductPage({ params }: PageProps<'/p/[id]'>) {
   return (
     <div className="page-detail">
       <nav className="page-nav">
         <Link href="/">← 产品速查</Link>
-        <Link href="/flows">洗车流程与组合 →</Link>
+        <Link href="/flows">洗车流程</Link>
       </nav>
       <article className="page-sheet">
-        <ProductDetail p={p} />
+        <Suspense fallback={<DetailSkeleton />}>
+          <Detail params={params} />
+        </Suspense>
       </article>
     </div>
   );
