@@ -1,6 +1,8 @@
 // CARPRO（以色列）产品与流程数据。来源：carpro.global 官方产品页、官方说明书 PDF（carpro.nyc3.digitaloceanspaces.com）、
 // 官方 2026 产品目录、官方《CQUARTZ 镀膜车维护指南》PDF；部分规格参考英国官方经销商 Slim's Detailing。2026-10 整理翻译。
 // 比例写法沿用官方：1:10 = 1 份原液 + 10 份水
+import type { Combo, Flow, Product } from './types';
+
 const CARPRO = 'https://carpro.global/product/';
 const CP_MAN = 'https://carpro.nyc3.digitaloceanspaces.com/';
 const CP_COAT_RULES = [
@@ -8,7 +10,7 @@ const CP_COAT_RULES = [
   '先在不显眼处测试。4" 麂皮布（suede）和擦除用的毛巾不要重复使用。',
 ];
 
-P.push(
+export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
 {id:'C-lift',b:'C',c:'pre',n:'Lift',t:'高浓缩碱性泡沫预洗（pH 12）',f:'500 ml · 1 L · 4 L',m:'车身外部表面（官方页面未列具体材质）',
  d:[['常规预洗','1:10','PA壶']],
@@ -335,9 +337,9 @@ P.push(
 
 {id:'C-dilute',b:'C',c:'acc',n:'Dilute',t:'多比例稀释喷瓶',f:'500 ml · 1 L',m:'—',d:[],
  s:['先加水到所需比例刻度线（1:1 至 1:30）。','再加 CARPRO 产品到顶部满刻度线。','摇匀。'],x:['易起泡的产品先加水更准确；产品多于水的浓配比，先加产品再轻轻加水。'],u:CARPRO+'dilute/'}
-);
+];
 
-FLOWS.push(
+export const flows: Flow[] = [
 {id:'f-c-cq-maint',b:'C',name:'CQUARTZ 镀膜车维护洗车',en:'CARPRO How-To · CQUARTZ Maintenance',sc:'coated',tags:['日常洗车','轮毂'],
  sum:'CARPRO 官方镀膜车维护指南，分六步：除染、预洗、细节手洗、擦干、封体与上光、配件。按周期执行可保持 CQUARTZ 镀膜的疏水和光泽。',
  steps:[
@@ -418,9 +420,9 @@ FLOWS.push(
  ]},
  x:['Inside 1:5 为官方「轻度清洁 / 内饰塑料」比例。'],
  u:CARPRO+'skincarekit/'}
-);
+];
 
-COMBOS.push(
+export const combos: Combo[] = [
 {id:'c-c-bugout',b:'C',name:'夏季虫尸预处理',sc:'coated',tags:['日常洗车'],base:'f-c-cq-maint',at:'在第 3 步「预洗」之前',
  sum:'虫尸要尽早处理。BugOut 泡沫不飞溅，对镀膜、玻璃和 PPF 安全，处理后接着正常洗车。',
  steps:[
@@ -455,4 +457,4 @@ COMBOS.push(
   {ph:'面层',p:['C-cq-gliss'],r:'原液',how:'底层 CQUARTZ 施工超过 4 小时后（红外灯固化则 45 分钟）施工。每次 50×50 cm，出现白雾立即擦掉；多层间隔 1 小时。保持干燥 1 小时，24 小时内擦掉水分，5–7 天内避免清洁剂。'},
  ],
  x:[],u:CP_MAN+'CARPRO_CQ_Gliss_Manual_68150d4031.pdf'}
-);
+];

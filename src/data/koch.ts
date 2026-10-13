@@ -3,6 +3,7 @@
 //       官方 ExpertBlog（KCx Protection Unit，2026-09），2026-10 整理翻译。
 // 比例写法沿用官方：1:10 = 1 份原液 + 10 份水；官方给 ml/L 时换算为 1:x，括号内保留原文。
 // 仅收录汽车美容（Detailing / Car Care）相关产品；洗车房龙门/隧道系统、货车、工业、地面、卫生、船舶、香精类不收录。
+import type { Combo, Flow, Product } from './types';
 const KOCH = 'https://www.koch-chemie.com/en/products/';
 const KOCH_BLOG_KCX = 'https://www.koch-chemie.com/en/company/expertblog/kcx-protection-unit';
 
@@ -22,7 +23,7 @@ const KOCH_CERAMIC_RULES = [
   '日常避免使用 pH 低于 3 或高于 12 的清洁剂。开封后最多保存 6 个月。',
 ];
 
-P.push(
+export const products: Product[] = [
 // ───────────────────────── Koch-Chemie · 预洗 ─────────────────────────
 {id:'K-gsf',b:'K',c:'pre',n:'Gsf Gentle Snow Foam',t:'中性雪泡预洗 / 手洗香波（樱桃香）',f:'1 L · 5 L',m:'车漆 · 已打蜡 / 封体表面',
  d:[['雪泡预洗（泡沫喷壶）','1:50（20 ml/L）','喷雾壶'],['手洗','1:200（50 ml/10 L）','桶洗'],['活性泡沫（加强版）','预混液中另加 10–30 ml Green Star','喷雾壶']],
@@ -481,9 +482,9 @@ P.push(
 
 {id:'K-pressure-foam-sprayer',b:'K',c:'acc',n:'Pressure Foam Sprayer 2l',t:'2 L 手压泡沫喷壶',f:'2 L',m:'—',d:[],
  s:['使用前阅读操作说明，并按所装产品的施工说明使用。','用后泄压并用温水冲洗。'],x:['可换喷嘴调节泡沫多少；EPDM 密封圈。','只可装中性和碱性产品；带压时避免撞击。'],u:KOCH+'pressure_foam_sprayer_2l'},
-);
+];
 
-FLOWS.push(
+export const flows: Flow[] = [
 {id:'f-k-wash',b:'K',name:'Gsf 雪泡 + 手洗日常洗车',en:'Koch-Chemie Snow Foam & Hand Wash',sc:'daily',tags:['保护 / 镀膜车','虫尸'],
  sum:'官方产品页给出的日常洗车做法：重污局部预处理 → Gsf 中性雪泡（重污加 Green Star 成活性泡沫）→ 两桶手洗 → 擦干收尾。pH 中性，不伤蜡和封体。',
  steps:[
@@ -554,9 +555,9 @@ FLOWS.push(
  ],
  x:['使用喷抽机时，Pol Star 和 Mehrzweckreiniger 都要加 KocEntschäumer 消泡剂。','每一步的衔接（如「之后用 Pol Star 整面清洁」「先用 Pol Star 清洁再封体」）均来自对应产品页，非单独的官方流程页。'],
  u:KOCH+'pol_star'},
-);
+];
 
-COMBOS.push(
+export const combos: Combo[] = [
 {id:'c-k-decon',b:'K',name:'漆面除染加做',sc:'tfr',tags:['铁粉','柏油 / 胶痕'],base:'f-k-wash',at:'手洗冲水后、擦干前',
  sum:'洗车后按污染类型依次除铁粉、去柏油胶痕、过泥，为抛光或镀膜做准备。',
  steps:[
@@ -593,4 +594,4 @@ COMBOS.push(
  ],
  x:['重度脏污不适合免冲洗，请回到常规水洗流程。'],
  u:KOCH+'rapid_rinseless_wash'},
-);
+];

@@ -3,6 +3,8 @@
 // d = 稀释表 [适用场景/材质, 比例, 施工工具]；s = 施工步骤；x = 注意事项/补充
 // 比例写法沿用官方：1:10 = 1 份原液 + 10 份水
 
+import type { Product } from './types';
+
 const LABO = 'https://www.labocosmetica.com/product/';
 const MANIAC = 'https://maniacline.com/shop/';
 
@@ -21,22 +23,7 @@ const COATING_RULES = [
   '如有红外灯：距离 50 cm、60 °C、照射 15–20 分钟以帮助固化。',
 ];
 
-const CATS = [
-  ['pre', '预洗 / TFR'],
-  ['wash', '洗车香波 / 免冲洗'],
-  ['wheel', '轮毂轮胎'],
-  ['deco', '除染 / 去水垢'],
-  ['polish', '研磨抛光 / 施工前处理'],
-  ['coat', '镀膜'],
-  ['seal', '封体 / 快速养护'],
-  ['trim', '塑料 / 轮胎养护'],
-  ['glass', '玻璃'],
-  ['apc', '多功能清洁 APC'],
-  ['int', '内饰'],
-  ['acc', '配件'],
-];
-
-const P = [
+export const products: Product[] = [
 // ───────────────────────── Labocosmetica ─────────────────────────
 {id:'L-initio',b:'L',c:'pre',n:'INITIO',t:'即用型碱性预洗',f:'1000 ml 喷壶',m:'车漆 · 塑料 · 玻璃 · 轮毂 · 密封条',
  d:[['全部外部表面','即用原液','喷雾壶']],

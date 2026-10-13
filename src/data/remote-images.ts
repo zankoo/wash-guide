@@ -1,5 +1,5 @@
 // Koch-Chemie / CarPro 官方产品图地址（直接引用官网图床，加载失败时显示名称卡片）
-const REMOTE={
+export const REMOTE: Record<string, string> = {
 "K-active-foam": "https://media.koch-chemie.com/Mockups/1248x1248/282999_282010__1791604893.png",
 "K-gsf": "https://media.koch-chemie.com/Mockups/1248x1248/383999_383001__1791598316.png",
 "K-green-star": "https://media.koch-chemie.com/Mockups/1248x1248/25999_25011__1791597385.png",
