@@ -49,6 +49,43 @@ function useScrollSpy(selector: string, deps: unknown[]): string {
   return active;
 }
 
+/** 点击目录跳转时「钉住」的目标：平滑滚动途中不跟随滚动监听，避免沿途的分类被依次点亮、展开 */
+interface Pin {
+  cat?: string;
+  sub?: string;
+  flow?: string;
+}
+
+/**
+ * 钉住目标后，等这次滚动停下来（150ms 内没有新的 scroll 事件）再恢复跟随滚动；
+ * 用户中途自己滚动（滚轮、手指、键盘）时立即恢复。
+ */
+function usePin(): [Pin | null, (p: Pin) => void] {
+  const [pin, setPin] = useState<Pin | null>(null);
+  useEffect(() => {
+    if (!pin) return;
+    let timer = 0;
+    const release = () => setPin(null);
+    const onScroll = () => {
+      clearTimeout(timer);
+      timer = window.setTimeout(release, 150);
+    };
+    const opts = { passive: true } as const;
+    addEventListener('scroll', onScroll, opts);
+    addEventListener('wheel', release, opts);
+    addEventListener('touchstart', release, opts);
+    addEventListener('keydown', release);
+    return () => {
+      clearTimeout(timer);
+      removeEventListener('scroll', onScroll);
+      removeEventListener('wheel', release);
+      removeEventListener('touchstart', release);
+      removeEventListener('keydown', release);
+    };
+  }, [pin]);
+  return [pin, setPin];
+}
+
 /** 桌面左侧索引栏：品牌、分类目录（产品页）或场景与流程目录（流程页） */
 export function Sidebar({
   productCounts,
@@ -59,13 +96,19 @@ export function Sidebar({
   flowCounts: CountTable;
   flows: FlowIndexItem[];
 }) {
-  const { isFlows, brand, setBrand, category, setCategory, scene, setScene, query, jumpTo } = useGuide();
+  const { isFlows, brand, setBrand, category, setCategory, scene, setScene, query, jumpTo, expanded } = useGuide();
   const favorites = useFavorites();
   const counts = isFlows ? flowCounts : productCounts;
 
-  const spyCat = useScrollSpy('.sec', [isFlows, brand, category, query]);
-  const spySub = useScrollSpy('.subgrp', [isFlows, brand, category, query]);
+  // 展开分类后会渲染出新的子分类区块，要重新监听
+  const spyCat = useScrollSpy('.sec', [isFlows, brand, category, query, expanded]);
+  const spySub = useScrollSpy('.subgrp', [isFlows, brand, category, query, expanded]);
   const spyFlow = useScrollSpy('.flow', [isFlows, brand, scene, query]);
+  // 点击跳转时以被点的目标为准；用户自己滚动时跟着滚动位置走
+  const [pin, setPin] = usePin();
+  const activeCat = pin ? pin.cat : spyCat;
+  const activeSub = pin ? pin.sub : spySub;
+  const activeFlow = pin ? pin.flow : spyFlow;
 
   function pickBrand(b: BrandId | '') {
     setBrand(b);
@@ -131,9 +174,10 @@ export function Sidebar({
                         <a
                           href={`#${f.id}`}
                           className={f.kind}
-                          aria-current={spyFlow === f.id ? 'location' : undefined}
+                          aria-current={activeFlow === f.id ? 'location' : undefined}
                           onClick={(e) => {
                             e.preventDefault();
+                            setPin({ flow: f.id });
                             highlight(f.id);
                           }}
                         >
@@ -176,7 +220,7 @@ export function Sidebar({
           </ul>
           <ul className="side-index" role="list">
             {CATS.filter(([k]) => productCounts[brand][k]).map(([k, n]) => {
-              const here = spyCat === `cat-${k}`;
+              const here = activeCat === `cat-${k}`;
               const subs = SUBCATS.filter((s) => s.c === k);
               return (
                 <li key={k}>
@@ -187,6 +231,7 @@ export function Sidebar({
                       e.preventDefault();
                       // 选了其他分类或「常用」时先回到全部，目标分类才在列表里
                       if (category && category !== k) setCategory('');
+                      setPin({ cat: `cat-${k}` });
                       jumpTo(`cat-${k}`, k);
                     }}
                   >
@@ -199,9 +244,10 @@ export function Sidebar({
                         <li key={s.id}>
                           <a
                             href={`#sub-${s.id}`}
-                            aria-current={spySub === `sub-${s.id}` ? 'location' : undefined}
+                            aria-current={activeSub === `sub-${s.id}` ? 'location' : undefined}
                             onClick={(e) => {
                               e.preventDefault();
+                              setPin({ cat: `cat-${k}`, sub: `sub-${s.id}` });
                               jumpTo(`sub-${s.id}`, k);
                             }}
                           >

@@ -484,25 +484,8 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 /* 转场期间点击直接落到页面上，不被覆盖层吃掉 */
 ::view-transition{pointer-events:none}
 
-/* 瓶子从卡片飞进详情（以及飞回去）：中途轻微模糊，掩盖缩放时的像素插值 */
-.morph,.morph-rest{position:absolute;inset:0}
-/* 转场截图里 mix-blend-mode 会失效、白底露出来：给变形层铺上和图片底板相同的颜色和圆角 */
-.morph{background:var(--stage)}
-.sh-stage .morph{border-radius:14px}
-::view-transition-group(.morph){animation-duration:var(--dur-move);animation-timing-function:var(--ease-in-out);z-index:60}
-::view-transition-image-pair(.morph){animation-name:via-blur}
-@keyframes via-blur{30%{filter:blur(2px)}}
 
 
-
-/* 详情面板打开：桌面从右侧滑入，手机从底部升起；支持的浏览器里关掉 CSS 进入动画，避免两套叠加 */
-::view-transition-new(.sheet-in){animation:var(--dur-move) var(--ease-out) both sheet-in}
-@keyframes sheet-in{from{translate:100% 0}}
-@media (max-width:760px){@keyframes sheet-in{from{translate:0 100%}}}
-@supports (view-transition-class:a){
-  @starting-style{.sheet[open]{transform:none}}
-  @starting-style{.sheet[open]::backdrop{opacity:1}}
-}
 
 /* 产品 ⇄ 流程：前进时内容向左滑，后退时向右滑 */
 ::view-transition-old(.nav-forward){--slide:-60px;animation:var(--dur-exit) ease-in both vt-fade reverse,var(--dur-move) var(--ease-in-out) both vt-slide-x reverse}

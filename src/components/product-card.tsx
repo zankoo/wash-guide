@@ -2,7 +2,6 @@ import { BRAND_SHORT, imageSrc, keyRatios, type Product } from '@/data';
 import { FavMark } from './fav-mark';
 import { ProductImage } from './product-image';
 import { ProductLink } from './product-link';
-import { ProductMorph } from './product-morph';
 
 /** eager：首屏的前几张卡片立即加载图片，避免拖慢最大内容绘制（LCP） */
 export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
@@ -10,9 +9,7 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
   return (
     <ProductLink className="card" id={p.id} aria-label={`${p.n}，${p.t}`}>
       <div className="stage">
-        <ProductMorph id={p.id} inCard>
-          <ProductImage src={imageSrc(p)} name={p.n} brand={p.b} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
-        </ProductMorph>
+        <ProductImage src={imageSrc(p)} name={p.n} brand={p.b} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
         <FavMark id={p.id} />
       </div>
       <div className="bd">

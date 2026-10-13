@@ -18,8 +18,6 @@ export function ProductLink({ id, ...props }: { id: string } & Omit<ComponentPro
       href={href}
       scroll={false}
       prefetch={false}
-      // 只有「打开详情」这种转场里，卡片和面板里的瓶子才配对做变形（见 ProductMorph）
-      transitionTypes={['open-detail']}
       onPointerEnter={warm}
       onPointerDown={warm}
       onFocus={warm}
