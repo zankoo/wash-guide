@@ -7,7 +7,7 @@ import { SUBCATS } from '@/data/subcategories';
 import { CATS } from '@/data/taxonomy';
 import type { BrandId, CategoryId } from '@/data/types';
 import { useFavorites } from '@/lib/favorites';
-import { matchesQuery } from '@/lib/search';
+import { matchesQuery, relevance, type RankFields } from '@/lib/search';
 import { useGuide } from './guide-state';
 
 export interface ProductItem {
@@ -18,6 +18,8 @@ export interface ProductItem {
   sub: string;
   /** 归一化后的搜索文本（见 fold） */
   text: string;
+  /** 搜索结果排序用的字段 */
+  rank: RankFields;
   /** 服务端渲染好的卡片 */
   card: ReactNode;
 }
@@ -59,8 +61,8 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
     );
   }
 
-  // 选了分类或在搜索时完整展开
-  const browsing = !category && !query;
+  // 选了分类时完整展开
+  const browsing = !category;
 
   /** 先同步提交展开 / 收起，再滚动到目标（展开前子分类还没渲染） */
   function toggle(c: CategoryId, open: boolean, scrollTo?: string) {
@@ -75,13 +77,27 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
     if (scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // 搜索时不再按分类分组，而是按相关度排成一个列表：名称命中的产品排最前
+  if (query) {
+    const ranked = list
+      .map((p, i) => ({ p, i, score: relevance(p.rank, query) }))
+      .sort((a, b) => b.score - a.score || a.i - b.i);
+    return (
+      <>
+        <p className="found" role="status">
+          找到 {list.length} 款与「{query}」相关的产品，名称匹配的排在前面
+        </p>
+        <div className="grid results">
+          {ranked.map(({ p }) => (
+            <Fragment key={p.id}>{p.card}</Fragment>
+          ))}
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
-      {query && (
-        <p className="found" role="status">
-          找到 {list.length} 款与「{query}」相关的产品
-        </p>
-      )}
       {CATS.map(([k, name]) => {
         const group = list.filter((p) => p.c === k);
         if (!group.length) return null;

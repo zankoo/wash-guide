@@ -111,7 +111,7 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 
 /* ── 分类与子分类 ───────────────────────────── */
 main{padding-block:6px 56px}
-.found{margin:20px 0 -10px;color:var(--muted);font-size:14px}
+.found{margin:20px 0 14px;color:var(--muted);font-size:14px}
 .sec{padding-top:30px;container-type:inline-size;scroll-margin-top:130px}
 .sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
 .sec-h h2{margin:0;font-size:20px;font-weight:800;letter-spacing:.01em}
@@ -164,6 +164,9 @@ main{padding-block:6px 56px}
 .g-lab span:first-child{transform:none}
 .g-lab span:last-child{transform:translateX(-100%)}
 
+/* 已加入常用 */
+.fav-mark{position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#d99a0b;box-shadow:0 1px 3px rgba(15,27,34,.18)}
+.fav-mark svg{width:14px;height:14px}
 /* 名称占位（官网没有产品图） */
 .ph-img{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:6px;padding:12%;text-align:center;color:#2a3540}
 .ph-img b{font:600 clamp(16px,2.2vw,24px)/1.05 var(--f-display);overflow-wrap:anywhere;color:#132028}

@@ -1,4 +1,5 @@
 import { BRAND_SHORT, imageSrc, keyRatios, type Product } from '@/data';
+import { FavMark } from './fav-mark';
 import { Gauge, gaugeValues } from './gauge';
 import { ProductImage } from './product-image';
 import { ProductLink } from './product-link';
@@ -10,6 +11,7 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
     <ProductLink className="card" id={p.id} aria-label={`${p.n}，${p.t}`}>
       <div className="stage">
         <ProductImage src={imageSrc(p)} name={p.n} brand={p.b} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
+        <FavMark id={p.id} />
       </div>
       <div className="bd">
         <span className={`br ${p.b}`}>{BRAND_SHORT[p.b]}</span>

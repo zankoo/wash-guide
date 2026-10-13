@@ -5,7 +5,7 @@ import * as laboManiacFlows from './labo-maniac-flows';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
-import { fold } from '../lib/search';
+import { fold, type RankFields } from '../lib/search';
 
 export * from './subcategories';
 export * from './taxonomy';
@@ -62,6 +62,11 @@ export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
     if (seen.length >= 3) break;
   }
   return seen.length ? seen : 'see-label';
+}
+
+/** 搜索排序用的字段（见 relevance） */
+export function productRankFields(p: Product): RankFields {
+  return { name: fold(p.n), type: fold(p.t), tags: fold([SUB_OF.get(p.id)?.n ?? '', CAT_NAME[p.c], p.m].join(' ')) };
 }
 
 export function productSearchText(p: Product): string {
