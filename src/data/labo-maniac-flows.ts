@@ -5,19 +5,9 @@
 // 步骤字段：ph 阶段名；p 产品 id（可点击）；alt = p 中任选其一；o 本页未收录的工具/产品；r 比例；pH 'alk'|'neu'|'acid'；how 做法
 //          vars = 可切换的变体 [{n 名称, p, r, pH, how, src}]；流程级 branch = {n, steps} 追加分支
 
-const SCENES = [
-  ['daily', '日常洗车'],
-  ['coated', '保护 / 镀膜车'],
-  ['tfr', '交通膜 / 深度清洁'],
-  ['ppf', 'PPF / 改色膜'],
-  ['nowater', '无水 / 少水条件'],
-  ['self', '自助洗车房'],
-  ['wheel', '轮毂'],
-  ['engine', '发动机舱'],
-  ['int', '内饰'],
-];
+import type { Combo, Flow } from './types';
 
-const FLOWS = [
+export const flows: Flow[] = [
 // ───────────── Labocosmetica 官方循环 ─────────────
 {id:'f-3ph-wash',b:'L',name:'3pH® 维护 / 保护洗车',en:'3pH Combined Wash Cycle',sc:'daily',tags:['保护 / 镀膜车','水垢 / 水斑'],
  sum:'官方核心洗车流程。碱性去有机污垢，酸性去无机污垢，中性配合手洗去静态污垢，三种 pH 依次作用，去污彻底又不伤已施工的蜡、封体或镀膜。',
@@ -120,7 +110,7 @@ const FLOWS = [
 ];
 
 // 产品组合：只列特有步骤，base 指向套用的官方循环，at 说明插入位置
-const COMBOS = [
+export const combos: Combo[] = [
 {id:'c-coat',b:'L',name:'镀膜 / 封体车保护叠加',sc:'coated',tags:[],base:'f-3ph-wash',at:'替换第 3 步「中性手洗」',
  sum:'REVÌTAX、BENEFÌCIA、CUPÌDO 使用同一种母粒子，可以层叠施工。',
  steps:[
