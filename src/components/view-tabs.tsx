@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FlowIcon, GridIcon } from './icons';
+import { WakeToggle } from './wake-toggle';
 
 /** 产品速查 / 洗车流程切换：桌面在顶栏，手机在底部固定栏 */
 export function ViewTabs({ className }: { className: string }) {
@@ -17,6 +18,8 @@ export function ViewTabs({ className }: { className: string }) {
         <FlowIcon />
         洗车流程
       </Link>
+      {/* 屏幕常亮只放在手机底部栏 */}
+      {className.includes('bottom') && <WakeToggle />}
     </nav>
   );
 }

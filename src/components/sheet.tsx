@@ -44,9 +44,10 @@ export function Sheet({ children }: { children: ReactNode }) {
         e.preventDefault();
         close();
       }}
-      // 浏览器强制关闭（例如连按 Esc）时同步路由
-      onClose={() => {
-        if (!hidden.current && !closing) router.back();
+      // 浏览器强制关闭（例如连按 Esc）时同步路由。close 事件是异步派发的：
+      // 卸载时的 close() 可能在重新挂载、面板已再次打开之后才到达，这时忽略
+      onClose={(e) => {
+        if (!e.currentTarget.open && !hidden.current && !closing) router.back();
       }}
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
