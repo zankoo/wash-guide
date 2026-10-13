@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono, Noto_Sans_SC, Saira_Condensed } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import { GuideProvider } from '@/components/guide-state';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
@@ -46,6 +47,7 @@ export default function RootLayout({ children, modal }: LayoutProps<'/'>) {
           {modal}
         </GuideProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
