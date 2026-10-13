@@ -4,7 +4,7 @@
   手机优先：顶栏很矮、吸顶只有搜索和分类、产品是带缩略图的列表、底部固定视图切换。
 */
 :root{
-  --paper:#eef1f2; --sheet:#ffffff; --ink:#0f1b22; --muted:#53626b; --faint:#85939a;
+  --paper:#eef1f2; --sheet:#ffffff; --ink:#0f1b22; --muted:#53626b; --faint:#637077;
   --line:#dbe1e4; --line-2:#c3cdd2;
   --rinse:#0b6e99; --rinse-soft:#e0eef5; --water:#d3e6ef;
   --stage:#f5f7f8;
@@ -21,7 +21,7 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#6d7c84;
+  --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#86959c;
   --line:#22313a; --line-2:#33464f;
   --rinse:#62c3ea; --rinse-soft:#123242; --water:#1c3f4f;
   --stage:#e8edef;
@@ -30,7 +30,7 @@
   --lift:none; --float:0 24px 70px rgba(0,0,0,.6);
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#6d7c84;
+  --paper:#0c1418; --sheet:#131e24; --ink:#e4ecef; --muted:#9caab1; --faint:#86959c;
   --line:#22313a; --line-2:#33464f;
   --rinse:#62c3ea; --rinse-soft:#123242; --water:#1c3f4f;
   --stage:#e8edef;
