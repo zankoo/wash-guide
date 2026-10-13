@@ -1,16 +1,18 @@
-import Link from 'next/link';
 import { BRAND_SHORT, imageSrc, keyRatios, type Product } from '@/data';
+import { Gauge, gaugeValues } from './gauge';
 import { ProductImage } from './product-image';
+import { ProductLink } from './product-link';
 
-export function ProductCard({ p }: { p: Product }) {
+/** eager：首屏的前几张卡片立即加载图片，避免拖慢最大内容绘制（LCP） */
+export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
   const pills = keyRatios(p);
   return (
-    <Link className="card" href={`/p/${p.id}`} scroll={false} prefetch={false} aria-label={`${p.n}，${p.t}`}>
+    <ProductLink className="card" id={p.id} aria-label={`${p.n}，${p.t}`}>
       <div className="stage">
-        <ProductImage src={imageSrc(p)} name={p.n} brand={p.b} sizes="(max-width: 460px) 50vw, 256px" />
-        <span className={`br ${p.b}`}>{BRAND_SHORT[p.b]}</span>
+        <ProductImage src={imageSrc(p)} name={p.n} brand={p.b} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
       </div>
       <div className="bd">
+        <span className={`br ${p.b}`}>{BRAND_SHORT[p.b]}</span>
         <span className="nm">{p.n}</span>
         <span className="ty">{p.t}</span>
         <div className="pills">
@@ -26,7 +28,8 @@ export function ProductCard({ p }: { p: Product }) {
             ))
           )}
         </div>
+        <Gauge values={gaugeValues(p.d.map((d) => d[1]))} />
       </div>
-    </Link>
+    </ProductLink>
   );
 }

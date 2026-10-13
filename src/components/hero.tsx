@@ -1,41 +1,22 @@
-import { BRANDS, FLOWS, OFFICIAL_RATIO_ROWS, PRODUCTS } from '@/data';
 import { ViewTabs } from './view-tabs';
 
-const STATS: [number, string][] = [
-  [PRODUCTS.length, '款产品'],
-  [BRANDS.length, '个品牌'],
-  [FLOWS.length, '套流程与组合'],
-  [OFFICIAL_RATIO_ROWS, '条官方比例'],
-];
-
-export function Hero() {
+/** 站点顶栏：站名 + 视图切换（手机上视图切换移到底部栏） */
+export function Masthead() {
   return (
-    <header className="hero">
+    <header className="mast">
       <div className="wrap">
-        <div className="eyebrow">
-          <span>Labocosmetica</span>
-          <span className="x">·</span>
-          <span>Maniac Line</span>
-          <span className="x">·</span>
-          <span>Koch-Chemie</span>
-          <span className="x">·</span>
-          <span>CarPro</span>
-          <span className="x">/</span>
-          <span>Official Application Guide</span>
+        <div className="mast-id">
+          <span className="logo" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>
+          <div>
+            <h1>洗车施工速查</h1>
+            <p>Labocosmetica、Maniac Line、Koch-Chemie、CarPro 的官方稀释比例、施工步骤和洗车流程</p>
+          </div>
         </div>
-        <h1>洗车施工速查</h1>
-        <p className="lede">
-          四个品牌汽美产品的官方施工方式与稀释比例，按场景和材质分行列出。点开产品即可查看步骤，并按施工工具换算加水量和原液量。
-        </p>
-        <div className="stats">
-          {STATS.map(([n, label]) => (
-            <div className="stat" key={label}>
-              <b>{n}</b>
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-        <ViewTabs />
+        <ViewTabs className="tabs top" />
       </div>
     </header>
   );
@@ -47,6 +28,7 @@ export function Footer() {
       <div className="wrap">
         <p>
           比例写法沿用官方：<b>1:10</b> = 1 份原液 + 10 份水。PA壶比例指壶内的调配比例，最终出液浓度取决于高压清洗机。
+          比例旁的刻度条从左到右依次是原液、1:1、1:10、1:100、1:1000，越靠左越浓。
         </p>
         <p>
           数据来源：labocosmetica.com、maniacline.com、koch-chemie.com 与 carpro.global 官方产品页、技术资料和施工手册，2026 年 10

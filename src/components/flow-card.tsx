@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Fragment } from 'react';
 import {
   BRAND,
@@ -12,6 +11,7 @@ import {
   type StepVariant,
 } from '@/data';
 import { FlowLink } from './flow-link';
+import { ProductLink } from './product-link';
 import { WarnIcon } from './icons';
 import { ProductThumb } from './product-image';
 import { VariantTabs } from './variant-tabs';
@@ -19,10 +19,10 @@ import { VariantTabs } from './variant-tabs';
 function ProductChip({ id }: { id: string }) {
   const p = getProduct(id);
   return (
-    <Link className="pc" href={`/p/${id}`} scroll={false} prefetch={false}>
+    <ProductLink className="pc" id={id}>
       <ProductThumb src={imageSrc(p)} name={p.n} brand={p.b} />
       <span>{p.n}</span>
-    </Link>
+    </ProductLink>
   );
 }
 

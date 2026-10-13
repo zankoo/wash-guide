@@ -1,24 +1,13 @@
 import type { Metadata, Viewport } from 'next';
-import { IBM_Plex_Mono, Noto_Sans_SC, Saira_Condensed } from 'next/font/google';
+import { Saira_Condensed } from 'next/font/google';
 import { GuideProvider } from '@/components/guide-state';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const display = Saira_Condensed({
-  weight: ['500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-display',
-});
-const mono = IBM_Plex_Mono({
   weight: ['500', '600'],
   subsets: ['latin'],
-  variable: '--font-mono',
-});
-// 中文字体按 unicode-range 拆成很多小文件，浏览器只下载用到的字；不预加载
-const body = Noto_Sans_SC({
-  subsets: ['latin'],
-  variable: '--font-body',
-  preload: false,
+  variable: '--font-display',
 });
 
 export const metadata: Metadata = {
@@ -31,14 +20,14 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0b1a45' },
-    { media: '(prefers-color-scheme: dark)', color: '#081335' },
+    { media: '(prefers-color-scheme: light)', color: '#eef1f2' },
+    { media: '(prefers-color-scheme: dark)', color: '#0c1418' },
   ],
 };
 
 export default function RootLayout({ children, modal }: LayoutProps<'/'>) {
   return (
-    <html lang="zh-CN" className={`${display.variable} ${mono.variable} ${body.variable}`}>
+    <html lang="zh-CN" className={display.variable}>
       <body>
         <GuideProvider>
           {children}
