@@ -1,4 +1,4 @@
-import { BRAND, CAT_NAME, flowsUsing, imageSrc, type Product } from '@/data';
+import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { Notes } from './flow-card';
 import { FlowLink } from './flow-link';
@@ -22,7 +22,7 @@ export function ProductDetail({ p }: { p: Product }) {
       </div>
       <div className="sh-body">
         <div className="sh-tag">
-          <b>{BRAND[p.b]}</b>　/　{CAT_NAME[p.c]}
+          <b>{BRAND[p.b]}</b>　/　{CAT_NAME[p.c]}　/　{SUB_OF.get(p.id)?.n}
         </div>
         <h2 className="sh-name" id="d-name">
           {p.n}

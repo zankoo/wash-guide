@@ -2,10 +2,11 @@ import * as carpro from './carpro';
 import * as koch from './koch';
 import * as laboManiac from './labo-maniac';
 import * as laboManiacFlows from './labo-maniac-flows';
-import { REMOTE } from './remote-images';
+import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
 
+export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';
 
@@ -27,10 +28,22 @@ export function getProduct(id: string): Product {
   return p;
 }
 
-/** Labocosmetica / Maniac Line 使用 public/img 下的本地图；Koch-Chemie / CarPro 引用官网图床 */
+/** 官网没有提供产品图（或图片已失效）的产品，显示名称卡片 */
+export const NO_IMAGE = new Set([
+  'K-ceramic-neo-c003', 'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
+  'K-quick-shine-plus', 'K-allround-quick-shine', 'K-nanomagic-plast-care', 'K-speed-glass-cleaner',
+  'K-multi-interior-cleaner', 'K-leather-star', 'K-protect-leather-care',
+]);
+
+/** 产品图全部是 public/img 下的本地 webp（720×720 白底） */
 export function imageSrc(p: Product): string | undefined {
-  return p.b === 'L' || p.b === 'M' ? `/img/${p.id}.webp` : REMOTE[p.id];
+  return NO_IMAGE.has(p.id) ? undefined : `/img/${p.id}.webp`;
 }
+
+export const SUB_OF = new Map<string, Subcategory>(SUBCATS.flatMap((s) => s.ids.map((id) => [id, s] as const)));
+
+/** 产品在页面上的排序位置：子分类顺序 → 子分类内顺序 */
+export const PRODUCT_RANK = new Map(SUBCATS.flatMap((s) => s.ids).map((id, i) => [id, i]));
 
 export const stepsOf = (f: Flow): FlowStep[] => [...f.steps, ...(f.branch?.steps ?? [])];
 export const productsOfStep = (x: FlowStep): string[] => [...(x.p ?? []), ...(x.vars ?? []).flatMap((v) => v.p ?? [])];
@@ -51,7 +64,7 @@ export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
 }
 
 export function productSearchText(p: Product): string {
-  return [p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], BRAND[p.b], ...p.d.flat(), ...p.x].join(' ').toLowerCase();
+  return [p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], SUB_OF.get(p.id)?.n ?? '', BRAND[p.b], ...p.d.flat(), ...p.x].join(' ').toLowerCase();
 }
 
 export function flowSearchText(f: FlowEntry): string {
