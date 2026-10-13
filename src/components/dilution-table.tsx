@@ -145,7 +145,7 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
                   </span>
                 )}
               </div>
-              <Gauge values={gaugeValues([ratio])} labels />
+              <Gauge values={gaugeValues([ratio])} />
             </div>
           );
         })}

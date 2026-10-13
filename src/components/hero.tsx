@@ -28,7 +28,7 @@ export function Footer() {
       <div className="wrap">
         <p>
           比例写法沿用官方：<b>1:10</b> = 1 份原液 + 10 份水。PA壶比例指壶内的调配比例，最终出液浓度取决于高压清洗机。
-          比例旁的刻度条从左到右依次是原液、1:1、1:10、1:100、1:1000，越靠左越浓。
+          产品详情里每个比例下面的刻度条左端是原液（最浓），右端是 1:2000（最稀）；指针标出单个比例，括号标出比例范围。
         </p>
         <p>
           数据来源：labocosmetica.com、maniacline.com、koch-chemie.com 与 carpro.global 官方产品页、技术资料和施工手册，2026 年 10

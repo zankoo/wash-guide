@@ -1,6 +1,5 @@
 import { BRAND_SHORT, imageSrc, keyRatios, type Product } from '@/data';
 import { FavMark } from './fav-mark';
-import { Gauge, gaugeValues } from './gauge';
 import { ProductImage } from './product-image';
 import { ProductLink } from './product-link';
 
@@ -30,7 +29,6 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
             ))
           )}
         </div>
-        <Gauge values={gaugeValues(p.d.map((d) => d[1]))} />
       </div>
     </ProductLink>
   );
