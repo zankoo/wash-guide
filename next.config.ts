@@ -5,11 +5,8 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   reactCompiler: true,
   images: {
-    // Koch-Chemie / CarPro 产品图来自官网图床，经 Vercel 图片优化转成 webp 并按尺寸缩放
-    remotePatterns: [
-      new URL('https://media.koch-chemie.com/Mockups/**'),
-      new URL('https://carpro.nyc3.digitaloceanspaces.com/**'),
-    ],
+    // 产品图全部在 public/img 下，不读取任何外部图床；只允许优化这个目录
+    localPatterns: [{ pathname: '/img/**', search: '' }],
     // 只输出 webp，并收窄尺寸档位，控制 Vercel 图片优化的转换次数
     formats: ['image/webp'],
     qualities: [75],

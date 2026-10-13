@@ -1,7 +1,6 @@
 import { readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { FLOWS, FLOW_BY_ID, PRODUCTS, PRODUCT_BY_ID, productsOfStep, stepsOf } from './index';
-import { REMOTE } from './remote-images';
+import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SUBCATS, productsOfStep, stepsOf } from './index';
 import { CAT_NAME, SCENE_NAME } from './taxonomy';
 
 describe('数据完整性', () => {
@@ -22,14 +21,19 @@ describe('数据完整性', () => {
     }
   });
 
-  it('Labocosmetica / Maniac Line 每款产品都有本地图，且没有多余图片', () => {
+  it('除 NO_IMAGE 外每款产品都有本地图，且没有多余图片', () => {
     const files = new Set(readdirSync(new URL('../../public/img', import.meta.url)));
-    const local = PRODUCTS.filter((p) => p.b === 'L' || p.b === 'M').map((p) => `${p.id}.webp`);
+    for (const id of NO_IMAGE) expect(PRODUCT_BY_ID.has(id), id).toBe(true);
+    const local = PRODUCTS.filter((p) => !NO_IMAGE.has(p.id)).map((p) => `${p.id}.webp`);
     for (const f of local) expect(files.has(f), f).toBe(true);
     expect(files.size).toBe(local.length);
   });
 
-  it('官网图地址只对应 Koch-Chemie / CarPro 产品', () => {
-    for (const id of Object.keys(REMOTE)) expect(['K', 'C']).toContain(PRODUCT_BY_ID.get(id)?.b);
+  it('每款产品恰好属于一个子分类，且子分类与产品分类一致', () => {
+    const ids = SUBCATS.flatMap((s) => s.ids);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(new Set(SUBCATS.map((s) => s.id)).size).toBe(SUBCATS.length);
+    for (const s of SUBCATS) for (const id of s.ids) expect(PRODUCT_BY_ID.get(id)?.c, `${s.id} → ${id}`).toBe(s.c);
+    for (const p of PRODUCTS) expect(ids, p.id).toContain(p.id);
   });
 });

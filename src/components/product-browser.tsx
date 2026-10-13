@@ -1,6 +1,8 @@
 'use client';
 
-import { Fragment, useDeferredValue, type ReactNode } from 'react';
+import { Fragment, useDeferredValue, useState, type ReactNode } from 'react';
+import { flushSync } from 'react-dom';
+import { SUBCATS } from '@/data/subcategories';
 import { CATS } from '@/data/taxonomy';
 import type { BrandId, CategoryId } from '@/data/types';
 import { matchesQuery } from '@/lib/search';
@@ -10,37 +12,113 @@ export interface ProductItem {
   id: string;
   b: BrandId;
   c: CategoryId;
+  /** 子分类 id */
+  sub: string;
   /** 小写的搜索文本 */
   text: string;
   /** 服务端渲染好的卡片 */
   card: ReactNode;
 }
 
-/** 按品牌 / 分类 / 搜索词筛选服务端渲染好的产品卡片，并按分类分组 */
+/** 折叠状态下每个分类预览的卡片数（CSS 按列数只露出一整行） */
+const PEEK = 6;
+
+const pad = (n: number) => String(n).padStart(2, '0');
+
+/** 按品牌 / 分类 / 搜索词筛选服务端渲染好的产品卡片，按分类 → 子分类分组；「全部」视图下大分类默认折叠 */
 export function ProductBrowser({ items }: { items: ProductItem[] }) {
   const { brand, category, query: rawQuery } = useGuide();
   const query = useDeferredValue(rawQuery.trim());
+  const [expanded, setExpanded] = useState<ReadonlySet<CategoryId>>(new Set());
+
   const list = items.filter(
     (p) => (!brand || p.b === brand) && (!category || p.c === category) && (!query || matchesQuery(p.text, query)),
   );
 
   if (!list.length) return <p className="empty">没有匹配的产品，换个关键词试试。</p>;
 
+  // 选了分类或在搜索时完整展开
+  const browsing = !category && !query;
+
+  /** 先同步提交展开 / 收起，再滚动到目标（展开前子分类还没渲染） */
+  function toggle(c: CategoryId, open: boolean, scrollTo?: string) {
+    flushSync(() =>
+      setExpanded((s) => {
+        const next = new Set(s);
+        if (open) next.add(c);
+        else next.delete(c);
+        return next;
+      }),
+    );
+    if (scrollTo) document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   return CATS.map(([k, name, en]) => {
     const group = list.filter((p) => p.c === k);
     if (!group.length) return null;
+    const subs = SUBCATS.filter((s) => s.c === k)
+      .map((s) => ({ ...s, items: group.filter((p) => p.sub === s.id) }))
+      .filter((s) => s.items.length);
+    const collapsible = browsing && group.length > PEEK;
+    const collapsed = collapsible && !expanded.has(k);
+
     return (
-      <section className="sec" key={k}>
+      <section className="sec" key={k} id={`cat-${k}`}>
         <div className="sec-h">
           <h2>{name}</h2>
           <span className="en">{en}</span>
-          <span className="n">{String(group.length).padStart(2, '0')} 款</span>
+          <span className="n">{pad(group.length)} 款</span>
         </div>
-        <div className="grid">
-          {group.map((p) => (
-            <Fragment key={p.id}>{p.card}</Fragment>
-          ))}
-        </div>
+        {subs.length > 1 && (
+          <nav className="subnav" aria-label={`${name}子分类`}>
+            {subs.map((s) => (
+              <a
+                key={s.id}
+                href={`#sub-${s.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggle(k, true, `sub-${s.id}`);
+                }}
+              >
+                {s.n}
+                <small>{s.items.length}</small>
+              </a>
+            ))}
+          </nav>
+        )}
+        {collapsed ? (
+          <div className="grid peek">
+            {group.slice(0, PEEK).map((p) => (
+              <Fragment key={p.id}>{p.card}</Fragment>
+            ))}
+          </div>
+        ) : (
+          subs.map((s) => (
+            <div className="sub" key={s.id} id={`sub-${s.id}`}>
+              {subs.length > 1 && (
+                <h3 className="sub-h">
+                  {s.n}
+                  <small>{s.items.length}</small>
+                </h3>
+              )}
+              <div className="grid">
+                {s.items.map((p) => (
+                  <Fragment key={p.id}>{p.card}</Fragment>
+                ))}
+              </div>
+            </div>
+          ))
+        )}
+        {collapsible && (
+          <button
+            type="button"
+            className="more"
+            aria-expanded={!collapsed}
+            onClick={() => toggle(k, collapsed, collapsed ? undefined : `cat-${k}`)}
+          >
+            {collapsed ? `展开全部 ${group.length} 款` : '收起'}
+          </button>
+        )}
       </section>
     );
   });
