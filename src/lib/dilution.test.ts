@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { autoWater, convert, formatMl, ratios } from './dilution';
+import { autoWater, convert, formatMl, parseWater, ratios } from './dilution';
 
 describe('ratios', () => {
   it('提取 1:x 和原液', () => {
@@ -36,5 +36,23 @@ describe('formatMl', () => {
     expect(formatMl(2000)).toBe('2 L');
     expect(formatMl(3.33)).toBe('3.3 ml');
     expect(formatMl(66.6)).toBe('67 ml');
+  });
+});
+
+describe('parseWater', () => {
+  it('支持 ml / L / 升，单位缺省为 ml', () => {
+    expect(parseWater('750')).toBe(750);
+    expect(parseWater('750 ml')).toBe(750);
+    expect(parseWater('1.5L')).toBe(1500);
+    expect(parseWater('20 升')).toBe(20000);
+  });
+  it('无效或超出范围返回 null', () => {
+    expect(parseWater('')).toBeNull();
+    expect(parseWater('abc')).toBeNull();
+    expect(parseWater('5')).toBeNull();
+    expect(parseWater('500L')).toBeNull();
+  });
+  it('自定义水量参与换算', () => {
+    expect(convert('1:10', '喷雾壶', 750)).toBe('水 750 ml + 原液 75 ml');
   });
 });

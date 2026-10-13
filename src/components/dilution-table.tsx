@@ -1,8 +1,8 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import type { DilutionRow } from '@/data/types';
-import { VOLUMES, convert, formatMl, isVolume, type Volume } from '@/lib/dilution';
+import { VOLUMES, convert, formatMl, isVolume, parseWater, type Volume } from '@/lib/dilution';
 import { Gauge, gaugeValues } from './gauge';
 
 // 换算水量记在 localStorage，所有产品共用（沿用旧版的 key）
@@ -41,27 +41,87 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
   const vol = useSyncExternalStore(subscribe, readVolume, () => 'auto' as const);
   const canConvert = rows.some(([, r, tool]) => convert(r, tool, vol));
 
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState('');
+  const isCustom = vol !== 'auto' && !VOLUMES.some(([v]) => v === vol);
+  const parsed = parseWater(draft);
+
+  function commit() {
+    if (parsed) {
+      writeVolume(parsed);
+      setEditing(false);
+    }
+  }
+
   return (
     <>
-      <h3>
-        稀释比例
+      <div className="dil-h">
+        <h3>稀释比例</h3>
         {canConvert && (
           <>
             <span className="vol" role="group" aria-label="按水量换算">
               {VOLUMES.map(([v, label]) => (
-                <button key={v} type="button" aria-pressed={vol === v} onClick={() => writeVolume(v)}>
+                <button
+                  key={v}
+                  type="button"
+                  aria-pressed={!editing && vol === v}
+                  onClick={() => {
+                    setEditing(false);
+                    writeVolume(v);
+                  }}
+                >
                   {label}
                 </button>
               ))}
+              <button
+                type="button"
+                aria-pressed={editing || isCustom}
+                onClick={() => {
+                  setDraft(isCustom ? String(vol) : '');
+                  setEditing(true);
+                }}
+              >
+                {isCustom && !editing ? formatMl(vol) : '自定义'}
+              </button>
             </span>
-            <span className="vnote">
-              {vol === 'auto'
-                ? '常用水量：PA壶 300 ml，喷雾壶 2 L，桶洗 10 L，其他 1 L'
-                : `按每 ${formatMl(vol)} 水换算原液用量`}
-            </span>
+            {editing ? (
+              <form
+                className="vcustom"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  commit();
+                }}
+              >
+                <label>
+                  我的水量
+                  <input
+                    autoFocus
+                    inputMode="decimal"
+                    enterKeyHint="done"
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    placeholder="如 750、1.5L"
+                    aria-invalid={draft !== '' && !parsed}
+                  />
+                </label>
+                <button type="submit" disabled={!parsed}>
+                  换算
+                </button>
+                <button type="button" className="ghost" onClick={() => setEditing(false)}>
+                  取消
+                </button>
+                {draft !== '' && !parsed && <span className="verr">请输入 10 ml 到 100 L 之间的水量</span>}
+              </form>
+            ) : (
+              <span className="vnote">
+                {vol === 'auto'
+                  ? '常用水量：PA壶 300 ml，喷雾壶 2 L，桶洗 10 L，其他 1 L'
+                  : `按每 ${formatMl(vol)} 水换算原液用量`}
+              </span>
+            )}
           </>
         )}
-      </h3>
+      </div>
       <div className="dil">
         {rows.map(([scene, ratio, tool], i) => {
           const c = convert(ratio, tool, vol);

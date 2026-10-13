@@ -201,6 +201,17 @@ html:has(.sheet[open]){overflow:hidden}
 @keyframes pulse{to{opacity:.55}}
 .sh-body{padding:4px clamp(16px,4vw,30px) calc(40px + env(safe-area-inset-bottom,0px))}
 h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;font-size:17px;font-weight:800}
+.dil-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px}
+.dil-h h3{margin:0}
+.vcustom{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;font-size:13.5px;color:var(--muted)}
+.vcustom label{display:inline-flex;align-items:center;gap:8px}
+.vcustom input{width:130px;height:38px;border:1px solid var(--line-2);border-radius:9px;background:var(--sheet);padding:0 10px;font-size:16px;color:var(--ink)}
+.vcustom input:focus{outline:0;border-color:var(--rinse);box-shadow:0 0 0 3px var(--rinse-soft)}
+.vcustom input[aria-invalid="true"]{border-color:var(--acid)}
+.vcustom button{height:38px;padding:0 14px;border-radius:9px;border:0;background:var(--ink);color:var(--paper);font-weight:600;cursor:pointer}
+.vcustom button:disabled{opacity:.4;cursor:default}
+.vcustom button.ghost{background:none;color:var(--muted);border:1px solid var(--line-2)}
+.verr{flex-basis:100%;text-align:right;color:var(--acid);font-size:12.5px}
 .vol{margin-left:auto;display:inline-flex;background:var(--paper);border-radius:10px;padding:3px;gap:2px}
 .vol button{border:0;background:none;font:600 13.5px var(--f-display);color:var(--muted);height:30px;padding:0 10px;border-radius:7px;cursor:pointer}
 .vol button[aria-pressed="true"]{background:var(--sheet);color:var(--ink);box-shadow:var(--lift)}
@@ -371,6 +382,8 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
   .sh-name{font-size:30px}
   .sh-type{font-size:14px}
   .vnote{text-align:left}
+  .vcustom{justify-content:flex-start}
+  .verr{text-align:left}
 }
 /* 手机：产品卡片变成带缩略图的列表行 */
 @media (max-width:600px){
