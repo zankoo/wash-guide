@@ -1,5 +1,6 @@
 import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
+import { FavButton } from './fav-button';
 import { Notes } from './flow-card';
 import { FlowLink } from './flow-link';
 import { ExternalIcon } from './icons';
@@ -10,24 +11,40 @@ export function ProductDetail({ p }: { p: Product }) {
   const used = flowsUsing(p.id);
   return (
     <>
-      <div className={`sh-stage ${p.b}`}>
-        <ProductImage
-          src={imageSrc(p)}
-          name={p.n}
-          brand={p.b}
-          alt={`${p.n} 产品图`}
-          sizes="(max-width: 760px) 100vw, 720px"
-          eager
-        />
+      <div className="sh-head">
+        <div className={`sh-stage ${p.b}`}>
+          <ProductImage
+            src={imageSrc(p)}
+            name={p.n}
+            brand={p.b}
+            alt={`${p.n} 产品图`}
+            sizes="(max-width: 760px) 120px, 220px"
+            eager
+          />
+        </div>
+        <div className="sh-id">
+          <div className="sh-tag">
+            <span className={`br ${p.b}`}>{BRAND[p.b]}</span>
+            <span>
+              {CAT_NAME[p.c]} / {SUB_OF.get(p.id)?.n}
+            </span>
+          </div>
+          <h2 className="sh-name" id="d-name">
+            {p.n}
+          </h2>
+          <p className="sh-type">{p.t}</p>
+          <FavButton id={p.id} />
+        </div>
       </div>
       <div className="sh-body">
-        <div className="sh-tag">
-          <b>{BRAND[p.b]}</b>　/　{CAT_NAME[p.c]}　/　{SUB_OF.get(p.id)?.n}
-        </div>
-        <h2 className="sh-name" id="d-name">
-          {p.n}
-        </h2>
-        <p className="sh-type">{p.t}</p>
+        {p.d.length ? (
+          <DilutionTable rows={p.d} />
+        ) : (
+          <>
+            <h3>稀释比例</h3>
+            <p className="none-msg">配件类产品，无稀释比例。</p>
+          </>
+        )}
         <dl className="facts">
           <div className="fact">
             <dt>规格</dt>
@@ -38,21 +55,9 @@ export function ProductDetail({ p }: { p: Product }) {
             <dd>{p.m}</dd>
           </div>
         </dl>
-        {p.d.length ? (
-          <DilutionTable rows={p.d} />
-        ) : (
-          <>
-            <h3>
-              稀释比例<span className="en">Dilution</span>
-            </h3>
-            <p className="none-msg">配件类产品，无稀释比例。</p>
-          </>
-        )}
         {p.s.length > 0 && (
           <>
-            <h3>
-              施工步骤<span className="en">Application</span>
-            </h3>
+            <h3>施工步骤</h3>
             <ol className="steps">
               {p.s.map((s, i) => (
                 <li key={i}>{s}</li>
@@ -62,23 +67,19 @@ export function ProductDetail({ p }: { p: Product }) {
         )}
         {p.x.length > 0 && (
           <>
-            <h3>
-              注意事项<span className="en">Notes</span>
-            </h3>
+            <h3>注意事项</h3>
             <Notes items={p.x} />
           </>
         )}
         {used.length > 0 && (
           <>
-            <h3>
-              出现在这些流程<span className="en">Used in</span>
-            </h3>
+            <h3>出现在这些流程</h3>
             <div className="rel">
               {used.map((f) => (
                 <FlowLink key={f.id} flow={{ id: f.id, b: f.b, sc: f.sc }}>
                   <b>{f.name}</b>
                   <small>
-                    {f.kind === 'off' ? '官方循环' : '产品组合'} · {BRAND[f.b]} →
+                    {f.kind === 'off' ? '官方循环' : '产品组合'}，{BRAND[f.b]}
                   </small>
                 </FlowLink>
               ))}
@@ -91,5 +92,24 @@ export function ProductDetail({ p }: { p: Product }) {
         </a>
       </div>
     </>
+  );
+}
+
+/** 详情内容到达前的占位：和真实布局同样的位置，避免面板内容跳动 */
+export function DetailSkeleton() {
+  return (
+    <div className="skel" aria-busy="true" aria-label="正在加载产品详情">
+      <div className="sh-head">
+        <div className="sh-stage" />
+        <div className="sh-id">
+          <i style={{ width: '40%' }} />
+          <i className="big" style={{ width: '75%' }} />
+          <i style={{ width: '55%' }} />
+        </div>
+      </div>
+      <div className="sh-body">
+        <i className="block" />
+      </div>
+    </div>
   );
 }

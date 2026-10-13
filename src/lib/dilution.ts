@@ -1,6 +1,7 @@
 // 稀释比例换算：1:10 = 1 份原液 + 10 份水
 
-export type Volume = 'auto' | 300 | 1000 | 2000 | 10000;
+/** 'auto' 按施工工具取常用水量，数字是用户选定或自定义的水量（ml） */
+export type Volume = 'auto' | number;
 
 export const VOLUMES: [Volume, string][] = [
   ['auto', '常用'],
@@ -10,7 +11,17 @@ export const VOLUMES: [Volume, string][] = [
   [10000, '10L'],
 ];
 
-export const isVolume = (v: unknown): v is Volume => VOLUMES.some(([x]) => x === v);
+/** 自定义水量的允许范围：10 ml – 100 L */
+export const isVolume = (v: unknown): v is Volume =>
+  v === 'auto' || (typeof v === 'number' && Number.isFinite(v) && v >= 10 && v <= 100000);
+
+/** 解析用户输入的水量：「750」「750ml」「1.5L」「1.5 升」都可以，单位缺省为 ml；无效时返回 null */
+export function parseWater(input: string): number | null {
+  const m = input.trim().replace(/[。．]/g, '.').match(/^(\d+(?:\.\d+)?)\s*(ml|毫升|l|升)?$/i);
+  if (!m) return null;
+  const ml = /^(l|升)$/i.test(m[2] ?? '') ? Number(m[1]) * 1000 : Number(m[1]);
+  return isVolume(ml) ? Math.round(ml) : null;
+}
 
 /** 「常用」模式下按施工工具取水量 */
 const AUTO_WATER: [RegExp, number][] = [

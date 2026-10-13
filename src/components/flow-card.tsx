@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Fragment } from 'react';
 import {
   BRAND,
@@ -12,6 +11,7 @@ import {
   type StepVariant,
 } from '@/data';
 import { FlowLink } from './flow-link';
+import { ProductLink } from './product-link';
 import { WarnIcon } from './icons';
 import { ProductThumb } from './product-image';
 import { VariantTabs } from './variant-tabs';
@@ -19,10 +19,10 @@ import { VariantTabs } from './variant-tabs';
 function ProductChip({ id }: { id: string }) {
   const p = getProduct(id);
   return (
-    <Link className="pc" href={`/p/${id}`} scroll={false} prefetch={false}>
+    <ProductLink className="pc" id={id}>
       <ProductThumb src={imageSrc(p)} name={p.n} brand={p.b} />
       <span>{p.n}</span>
-    </Link>
+    </ProductLink>
   );
 }
 
@@ -99,7 +99,8 @@ export function FlowCard({ f }: { f: FlowEntry }) {
     <article className={`flow ${f.b} ${f.kind}`} id={f.id}>
       <div className="fl-h">
         <div className="sh-tag">
-          <b>{BRAND[f.b]}</b>　/　{f.en || '产品组合'}
+          <span className={`br ${f.b}`}>{BRAND[f.b]}</span>
+          <span>{f.en || '产品组合'}</span>
         </div>
         <h3>{f.name}</h3>
         {base && f.kind === 'combo' && (
@@ -134,7 +135,7 @@ export function FlowCard({ f }: { f: FlowEntry }) {
       <div className="fl-x">
         {f.x.length > 0 && <Notes items={f.x} />}
         <a className="fl-src" href={f.u} target="_blank" rel="noopener">
-          官方来源 ↗
+          查看官方来源
         </a>
       </div>
     </article>

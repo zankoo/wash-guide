@@ -1,5 +1,6 @@
 import { FilterBar, type CountTable } from '@/components/filter-bar';
-import { Footer, Hero } from '@/components/hero';
+import { Footer, Masthead } from '@/components/hero';
+import { ViewTabs } from '@/components/view-tabs';
 import { BRANDS, FLOWS, PRODUCTS } from '@/data';
 
 /** counts[品牌 | ''][分组 | ''] */
@@ -23,12 +24,13 @@ const flowCounts = countBy(FLOWS, (f) => f.sc);
 export default function GuideLayout({ children }: LayoutProps<'/'>) {
   return (
     <>
-      <Hero />
+      <Masthead />
       <FilterBar productCounts={productCounts} flowCounts={flowCounts} />
       <div className="wrap">
         <main>{children}</main>
       </div>
       <Footer />
+      <ViewTabs className="tabs bottom" />
     </>
   );
 }

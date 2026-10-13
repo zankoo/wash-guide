@@ -11,7 +11,8 @@ export interface FlowItem {
   b: BrandId;
   sc: SceneId;
   kind: 'off' | 'combo';
-  /** 小写的搜索文本 */
+  name: string;
+  /** 归一化后的搜索文本（见 fold） */
   text: string;
   /** 服务端渲染好的流程卡片 */
   card: ReactNode;
@@ -63,6 +64,39 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
   return (
     <>
       {showIntro && intro}
+      {list.length > 3 && (
+        <details className="toc">
+          <summary>
+            流程目录<small>{list.length} 套</small>
+          </summary>
+          <p className="toc-note">实线框是官方循环，虚线框是在官方循环上替换或追加步骤的产品组合</p>
+          {BRANDS.map((b) => {
+            const own = list.filter((f) => f.b === b);
+            if (!own.length) return null;
+            return (
+              <div className="toc-b" key={b}>
+                <span className={`br ${b}`}>{BRAND[b]}</span>
+                <div>
+                  {own.map((f) => (
+                    <a
+                      key={f.id}
+                      href={`#${f.id}`}
+                      className={f.kind}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.currentTarget.closest('details')?.removeAttribute('open');
+                        highlight(f.id);
+                      }}
+                    >
+                      {f.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </details>
+      )}
       {!list.length ? (
         <p className="empty">没有匹配的流程，换个关键词或场景试试。</p>
       ) : (

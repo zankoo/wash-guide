@@ -22,8 +22,9 @@ interface GuideState {
   setBrand: (b: BrandId | '') => void;
   query: string;
   setQuery: (q: string) => void;
-  category: CategoryId | '';
-  setCategory: (c: CategoryId | '') => void;
+  /** 'fav' 表示只看常用产品 */
+  category: CategoryId | 'fav' | '';
+  setCategory: (c: CategoryId | 'fav' | '') => void;
   scene: SceneId | '';
   setScene: (s: SceneId | '') => void;
   flowTarget: FlowTarget | null;
@@ -44,7 +45,7 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [brand, setBrand] = useState<BrandId | ''>('');
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState<CategoryId | ''>('');
+  const [category, setCategory] = useState<CategoryId | 'fav' | ''>('');
   const [scene, setScene] = useState<SceneId | ''>('');
   const [flowTarget, setFlowTarget] = useState<FlowTarget | null>(null);
 

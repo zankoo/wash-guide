@@ -14,6 +14,19 @@ const nextConfig: NextConfig = {
     imageSizes: [64, 128, 256, 384],
     minimumCacheTTL: 2678400, // 31 天：产品图基本不变
   },
+  async headers() {
+    return [
+      {
+        // Service Worker 本身不能被缓存，否则更新后用户拿不到新版本
+        source: '/sw.js',
+        headers: [
+          { key: 'Content-Type', value: 'application/javascript; charset=utf-8' },
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self'" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
