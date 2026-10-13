@@ -136,7 +136,8 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
                 <div className={main.length > 12 ? 'rv long' : 'rv'}>{main}</div>
                 {note && <span className="rn">{note}</span>}
                 {c && (
-                  <span className="cc">
+                  // 换水量时重新挂载，播放一次短暂的入场动画，提示数字变了
+                  <span className="cc" key={String(vol)}>
                     {/* 范围比例有两个换算结果，各占一行，不在中间断开 */}
                     {c.split('　～　').map((part) => (
                       <span key={part}>{part}</span>

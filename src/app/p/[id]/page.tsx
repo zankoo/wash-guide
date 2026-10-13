@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { DetailSkeleton, ProductDetail } from '@/components/product-detail';
+import { DetailSuspense, ProductDetail } from '@/components/product-detail';
 import { BRAND, PRODUCTS, PRODUCT_BY_ID, imageSrc } from '@/data';
 
 export function generateStaticParams() {
@@ -37,9 +36,9 @@ export default function ProductPage({ params }: PageProps<'/p/[id]'>) {
         <Link href="/flows">洗车流程</Link>
       </nav>
       <article className="page-sheet">
-        <Suspense fallback={<DetailSkeleton />}>
+        <DetailSuspense>
           <Detail params={params} />
-        </Suspense>
+        </DetailSuspense>
       </article>
     </div>
   );

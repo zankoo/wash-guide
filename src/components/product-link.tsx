@@ -13,6 +13,16 @@ export function ProductLink({ id, ...props }: { id: string } & Omit<ComponentPro
   const href = `/p/${id}`;
   const warm = () => router.prefetch(href);
   return (
-    <Link {...props} href={href} scroll={false} prefetch={false} onPointerEnter={warm} onPointerDown={warm} onFocus={warm} />
+    <Link
+      {...props}
+      href={href}
+      scroll={false}
+      prefetch={false}
+      // 只有「打开详情」这种转场里，卡片和面板里的瓶子才配对做变形（见 ProductMorph）
+      transitionTypes={['open-detail']}
+      onPointerEnter={warm}
+      onPointerDown={warm}
+      onFocus={warm}
+    />
   );
 }

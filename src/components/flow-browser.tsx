@@ -18,7 +18,7 @@ export interface FlowItem {
   card: ReactNode;
 }
 
-function highlight(id: string): boolean {
+export function highlight(id: string): boolean {
   const el = document.getElementById(id);
   if (!el) return false;
   const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;

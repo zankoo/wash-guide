@@ -18,6 +18,11 @@
   /* 中文用系统字体：网页字体要按字下载上 MB 的文件，洗车现场用流量时太慢 */
   --f-body:system-ui,-apple-system,"PingFang SC","HarmonyOS Sans SC","Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
   --tab-h:0px;
+  /* 吸顶搜索栏的高度，吸顶分类标题贴在它下面 */
+  --bar-h:111px;
+  /* 动画参数：退场快、入场慢一点，位移最长 */
+  --dur-exit:150ms; --dur-enter:220ms; --dur-move:380ms;
+  --ease-out:cubic-bezier(.2,.8,.2,1); --ease-in-out:cubic-bezier(.65,0,.35,1);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -66,7 +71,8 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 .tabs{display:flex;gap:4px}
 .tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-size:14.5px;font-weight:600;color:var(--muted);padding:9px 16px;border-radius:10px}
 .tab:hover{color:var(--ink)}
-.tab[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.tab{position:relative;isolation:isolate}
+.tab[aria-current="page"]{color:var(--ink)}
 .tabs.top{background:var(--sheet);border:1px solid var(--line);border-radius:13px;padding:3px;flex:none}
 .tabs.bottom{display:none}
 
@@ -87,7 +93,8 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 .seg{display:flex;flex:none;background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}
 .seg button{border:0;background:none;color:var(--muted);font-size:13.5px;font-weight:500;padding:0 13px;height:38px;border-radius:9px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
 .seg button:hover{color:var(--ink)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button{position:relative;isolation:isolate}
+.seg button[aria-pressed="true"]{color:var(--ink);font-weight:600}
 .brand-pick{display:none;position:relative;flex:none;align-items:center}
 .brand-pick .dot{position:absolute;left:12px;pointer-events:none}
 .brand-pick select{height:46px;width:116px;border:1px solid var(--line-2);border-radius:12px;background:var(--sheet);font-size:14.5px;font-weight:500;padding:0 30px 0 26px;-webkit-appearance:none;appearance:none;text-overflow:ellipsis;
@@ -100,10 +107,13 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 .chip{flex:none;border:1px solid transparent;background:none;color:var(--muted);font-size:14px;font-weight:500;height:34px;padding:0 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .chip small{font:600 12px var(--f-display);color:var(--faint);margin-left:5px;font-variant-numeric:tabular-nums}
 .chip:hover{color:var(--ink);border-color:var(--line-2)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.chip[aria-pressed="true"] small{color:inherit;opacity:.7}
+.chip{position:relative;isolation:isolate}
+.chip[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.chip[aria-pressed="true"] small{color:inherit}
 .fav-chip{display:inline-flex;align-items:center;gap:5px;color:var(--ink);border-color:var(--line-2)}
+.fav-chip[aria-pressed="true"]{border-color:transparent}
 .fav-chip svg{color:#d99a0b}
+.fav>span{display:inline-grid}
 .fav{display:inline-flex;align-items:center;gap:7px;margin-top:12px;height:38px;padding:0 14px;border:1px solid var(--line-2);border-radius:10px;background:var(--sheet);font-size:14px;font-weight:600;cursor:pointer}
 .fav:hover{border-color:var(--ink)}
 .fav[aria-pressed="true"]{border-color:#d99a0b;background:color-mix(in srgb,#d99a0b 12%,var(--sheet))}
@@ -112,15 +122,15 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 /* ── 分类与子分类 ───────────────────────────── */
 main{padding-block:6px 56px}
 .found{margin:20px 0 14px;color:var(--muted);font-size:14px}
-.sec{padding-top:30px;container-type:inline-size;scroll-margin-top:130px}
-.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
-.sec-h h2{margin:0;font-size:20px;font-weight:800;letter-spacing:.01em}
+.sec{padding-top:22px;container-type:inline-size;scroll-margin-top:calc(var(--bar-h) + 4px)}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin:0 -8px 12px;padding:10px 8px;position:sticky;top:calc(var(--bar-h) - 1px);z-index:3;background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.sec-h h2{margin:0;font-size:22px;font-weight:800;letter-spacing:.01em}
 .sec-h .n{margin-left:auto;font:600 14px var(--f-display);color:var(--faint);font-variant-numeric:tabular-nums}
 .subnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
 .subnav a{font-size:13px;color:var(--muted);text-decoration:none;padding:4px 11px;border:1px solid var(--line-2);border-radius:999px;white-space:nowrap}
 .subnav a:hover{color:var(--ink);border-color:var(--ink)}
 .subnav small,.sub-h small{font:600 12px var(--f-display);color:var(--faint);margin-left:6px}
-.subgrp{scroll-margin-top:130px}
+.subgrp{scroll-margin-top:calc(var(--bar-h) + 56px)}
 .subgrp+.subgrp{margin-top:24px}
 .sub-h{margin:0 0 10px;font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:9px}
 .sub-h::before{content:"";width:12px;height:2px;background:var(--ink)}
@@ -215,7 +225,7 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .dl .rn{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
 .dl .cc>span{display:block;white-space:nowrap}
 .dl .cc>span+span::before{content:"～ "}
-.dl .cc{display:block;font-size:13px;font-weight:500;color:var(--rinse);margin-top:4px;font-variant-numeric:tabular-nums}
+.dl .cc{animation:cc-in 260ms var(--ease-out) both;display:block;font-size:13px;font-weight:500;color:var(--rinse);margin-top:4px;font-variant-numeric:tabular-nums}
 .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:20px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .fact{padding:12px 0;min-width:0}
 .fact+.fact{padding-left:18px;border-left:1px solid var(--line)}
@@ -402,4 +412,126 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
   .fl-x{padding:4px 16px 16px}
   .branch{margin:0 16px 10px}
 }
-@media (prefers-reduced-motion:reduce){.sheet,.sheet::backdrop{transition:none}}
+
+
+/* ── 桌面两栏：左侧索引栏 ───────────────────────────── */
+.side{display:none}
+@media (min-width:1100px){
+  :root{--bar-h:75px}
+  .shell{display:grid;grid-template-columns:260px minmax(0,1fr);align-items:start}
+  .side{display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100dvh;overflow-y:auto;overscroll-behavior:contain;
+    padding:22px 16px 32px;background:var(--sheet);border-right:1px solid var(--line);scrollbar-width:thin}
+  .mast{display:none}
+  .bar .seg,.bar .brand-pick,.bar .chips{display:none}
+  .bar .wrap{padding-block:14px}
+  .toc{display:none}
+  .main-col .wrap{max-width:1180px;margin-inline:0;padding-inline:36px}
+}
+.side-id{display:flex;align-items:center;gap:12px;padding:0 6px;font-size:18px;font-weight:800;letter-spacing:.02em}
+.tabs.side-tabs{background:var(--paper);border-radius:12px;padding:3px;gap:2px}
+.side-tabs .tab{flex:1;padding:8px 6px;font-size:13.5px}
+.side-sec h2{margin:0 0 6px;padding:0 10px;font-size:12.5px;font-weight:700;color:var(--faint)}
+.side-list,.side-index,.side-subs{list-style:none;margin:0;padding:0}
+.side-list{display:grid;gap:2px}
+.side-list button{position:relative;isolation:isolate;width:100%;display:flex;align-items:center;gap:9px;border:0;background:none;padding:7px 10px;border-radius:9px;font-size:14px;color:var(--muted);cursor:pointer;text-align:left}
+.side-list button:hover{color:var(--ink)}
+.side-list button[aria-pressed="true"]{color:var(--ink);font-weight:700}
+.side-list small,.side-index small{margin-left:auto;font:600 13px var(--f-display);font-variant-numeric:tabular-nums;opacity:.75}
+.side-fav svg{color:#d99a0b}
+/* 场景较多：排成可换行的小标签，给下面的流程目录留出位置 */
+.side-list.compact{display:flex;flex-wrap:wrap;gap:4px}
+.side-list.compact button{width:auto;padding:4px 10px;font-size:13px;border:1px solid var(--line);border-radius:999px}
+.side-list.compact button[aria-pressed="true"]{border-color:transparent}
+.side-list.compact small{margin-left:4px}
+.side-index{display:grid;gap:1px;margin-top:4px}
+.side-index a{display:flex;align-items:baseline;gap:8px;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:14px;line-height:1.4;transition:background-color .2s,color .2s}
+.side-index a:hover{color:var(--ink)}
+.side-index a[aria-current="location"]{color:var(--ink);font-weight:700;background:var(--paper)}
+.side-index a.combo{color:var(--faint)}
+.side-subs{margin:2px 0 8px 18px;padding-left:10px;border-left:1px solid var(--line-2);animation:vt-fade var(--dur-enter) var(--ease-out) both}
+.side-subs a{padding:4px 8px;font-size:13px;font-weight:400}
+.side-subs a[aria-current="location"]{background:none;color:var(--rinse);font-weight:600}
+.side-group+.side-group{margin-top:10px}
+.side-group .br{padding:0 10px;color:var(--ink);font-weight:600}
+
+/* 选中项背后的指示块：切换时由 View Transition 从旧位置滑到新位置 */
+.ind{position:absolute;inset:0;z-index:-1;border-radius:inherit;background:color-mix(in srgb,var(--rinse) 12%,transparent);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.tabs.bottom .ind{inset:-6px 30% auto;height:3px;border-radius:0 0 3px 3px;background:var(--ink);box-shadow:none}
+
+/* 吸顶搜索栏：页面滚动后出现阴影（滚动驱动动画，不支持的浏览器就没有阴影） */
+@supports (animation-timeline:scroll()){
+  .bar{animation:bar-lift linear both;animation-timeline:scroll();animation-range:0 64px}
+}
+@keyframes bar-lift{to{box-shadow:0 8px 24px -12px rgba(15,27,34,.22)}}
+
+/* ── 首次加载：pH 色条像液面一样依次升起，站名随后淡入 ───────────────────────────── */
+.logo i{transform-origin:50% 100%;animation:rise 560ms var(--ease-out) both}
+.logo i:nth-child(2){animation-delay:90ms}
+.logo i:nth-child(3){animation-delay:180ms}
+h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
+@keyframes rise{from{scale:1 0}}
+
+/* ── 小的反馈动画 ───────────────────────────── */
+.fav{position:relative}
+.fav .bump svg{animation:pop 420ms var(--ease-out)}
+.fav .bump::after{content:"";position:absolute;left:22px;top:50%;width:10px;height:10px;margin:-5px;border-radius:50%;border:2px solid #d99a0b;opacity:0;animation:ring 560ms var(--ease-out)}
+.fav-mark{animation:pop 380ms var(--ease-out) both}
+@keyframes pop{0%{scale:.4}55%{scale:1.25}100%{scale:1}}
+@keyframes ring{0%{opacity:.9;scale:1}100%{opacity:0;scale:4.2}}
+@keyframes cc-in{from{opacity:0;translate:0 4px}}
+
+/* ── View Transitions ───────────────────────────── */
+/* 转场期间点击直接落到页面上，不被覆盖层吃掉 */
+::view-transition{pointer-events:none}
+
+/* 瓶子从卡片飞进详情（以及飞回去）：中途轻微模糊，掩盖缩放时的像素插值 */
+.morph,.morph-rest{position:absolute;inset:0}
+/* 转场截图里 mix-blend-mode 会失效、白底露出来：给变形层铺上和图片底板相同的颜色和圆角 */
+.morph{background:var(--stage)}
+.sh-stage .morph{border-radius:14px}
+::view-transition-group(.morph){animation-duration:var(--dur-move);animation-timing-function:var(--ease-in-out);z-index:60}
+::view-transition-image-pair(.morph){animation-name:via-blur}
+@keyframes via-blur{30%{filter:blur(2px)}}
+
+
+
+/* 详情面板打开：桌面从右侧滑入，手机从底部升起；支持的浏览器里关掉 CSS 进入动画，避免两套叠加 */
+::view-transition-new(.sheet-in){animation:var(--dur-move) var(--ease-out) both sheet-in}
+@keyframes sheet-in{from{translate:100% 0}}
+@media (max-width:760px){@keyframes sheet-in{from{translate:0 100%}}}
+@supports (view-transition-class:a){
+  @starting-style{.sheet[open]{transform:none}}
+  @starting-style{.sheet[open]::backdrop{opacity:1}}
+}
+
+/* 产品 ⇄ 流程：前进时内容向左滑，后退时向右滑 */
+::view-transition-old(.nav-forward){--slide:-60px;animation:var(--dur-exit) ease-in both vt-fade reverse,var(--dur-move) var(--ease-in-out) both vt-slide-x reverse}
+::view-transition-new(.nav-forward){--slide:60px;animation:var(--dur-enter) ease-out var(--dur-exit) both vt-fade,var(--dur-move) var(--ease-in-out) both vt-slide-x}
+::view-transition-old(.nav-back){--slide:60px;animation:var(--dur-exit) ease-in both vt-fade reverse,var(--dur-move) var(--ease-in-out) both vt-slide-x reverse}
+::view-transition-new(.nav-back){--slide:-60px;animation:var(--dur-enter) ease-out var(--dur-exit) both vt-fade,var(--dur-move) var(--ease-in-out) both vt-slide-x}
+
+/* 切换品牌 / 分类：列表淡出后，新列表略微上浮淡入 */
+::view-transition-old(.list-out){animation:var(--dur-exit) ease-in both vt-fade reverse}
+::view-transition-new(.list-in){animation:var(--dur-enter) var(--ease-out) var(--dur-exit) both vt-fade,var(--dur-move) var(--ease-out) both vt-slide-y}
+
+
+/* 选中指示块滑动 */
+::view-transition-group(.indicator){animation-duration:300ms;animation-timing-function:var(--ease-out)}
+
+@keyframes vt-fade{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:blur(0)}}
+@keyframes vt-slide-y{from{translate:0 10px}}
+@keyframes vt-slide-x{from{translate:var(--slide) 0}}
+
+/* 系统设置了「减少动态效果」：所有转场和动画立即完成 */
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation-duration:0s!important;animation-delay:0s!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .sheet,.sheet::backdrop{transition:none}
+}
+
+/* 展开分类后卡片依次浮入：只给前 12 张错开延迟，后面的一起出现 */
+.subgrp .card{animation:card-in var(--dur-move) var(--ease-out) both}
+.subgrp .card:nth-child(2){animation-delay:30ms}.subgrp .card:nth-child(3){animation-delay:60ms}
+.subgrp .card:nth-child(4){animation-delay:90ms}.subgrp .card:nth-child(5){animation-delay:120ms}
+.subgrp .card:nth-child(6){animation-delay:150ms}.subgrp .card:nth-child(n+7){animation-delay:180ms}
+@keyframes card-in{from{opacity:0;translate:0 12px}}

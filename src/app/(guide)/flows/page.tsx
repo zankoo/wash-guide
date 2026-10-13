@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { FlowBrowser, type FlowItem } from '@/components/flow-browser';
 import { FlowCard } from '@/components/flow-card';
+import { PageSlide } from '@/components/page-slide';
 import { FLOWS, flowSearchText } from '@/data';
 
 export const metadata: Metadata = {
@@ -39,5 +40,9 @@ const intro = (
 );
 
 export default function FlowsPage() {
-  return <FlowBrowser items={items} intro={intro} />;
+  return (
+    <PageSlide>
+      <FlowBrowser items={items} intro={intro} />
+    </PageSlide>
+  );
 }

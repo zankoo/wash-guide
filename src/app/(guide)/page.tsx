@@ -1,5 +1,6 @@
 import { LegacyHashRedirect } from '@/components/legacy-hash-redirect';
 import { ProductBrowser, type ProductItem } from '@/components/product-browser';
+import { PageSlide } from '@/components/page-slide';
 import { ProductCard } from '@/components/product-card';
 import { PRODUCT_RANK, PRODUCTS, SUB_OF, productRankFields, productSearchText } from '@/data';
 
@@ -18,9 +19,9 @@ const items: ProductItem[] = PRODUCTS.toSorted((a, b) => PRODUCT_RANK.get(a.id)!
 
 export default function ProductsPage() {
   return (
-    <>
+    <PageSlide>
       <LegacyHashRedirect />
       <ProductBrowser items={items} />
-    </>
+    </PageSlide>
   );
 }

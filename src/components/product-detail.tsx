@@ -1,3 +1,4 @@
+import { Suspense, type ReactNode } from 'react';
 import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
@@ -5,6 +6,7 @@ import { Notes } from './flow-card';
 import { FlowLink } from './flow-link';
 import { ExternalIcon } from './icons';
 import { ProductImage } from './product-image';
+import { ProductMorph } from './product-morph';
 
 /** 产品详情：弹出面板和独立页面共用 */
 export function ProductDetail({ p }: { p: Product }) {
@@ -13,14 +15,16 @@ export function ProductDetail({ p }: { p: Product }) {
     <>
       <div className="sh-head">
         <div className={`sh-stage ${p.b}`}>
-          <ProductImage
-            src={imageSrc(p)}
-            name={p.n}
-            brand={p.b}
-            alt={`${p.n} 产品图`}
-            sizes="(max-width: 760px) 120px, 220px"
-            eager
-          />
+          <ProductMorph id={p.id}>
+            <ProductImage
+              src={imageSrc(p)}
+              name={p.n}
+              brand={p.b}
+              alt={`${p.n} 产品图`}
+              sizes="(max-width: 760px) 120px, 220px"
+              eager
+            />
+          </ProductMorph>
         </div>
         <div className="sh-id">
           <div className="sh-tag">
@@ -112,4 +116,12 @@ export function DetailSkeleton() {
       </div>
     </div>
   );
+}
+
+/**
+ * 详情内容的 Suspense。没有给骨架屏 → 内容加转场：转场会排在面板滑入动画之后执行，
+ * 内容要多等约 700ms 才出现；查阅速度比这段动画重要。
+ */
+export function DetailSuspense({ children }: { children: ReactNode }) {
+  return <Suspense fallback={<DetailSkeleton />}>{children}</Suspense>;
 }
