@@ -1,8 +1,8 @@
-import { FilterBar, type CountTable } from '@/components/filter-bar';
+import { FilterBar, type CountTable, type ProductCounts } from '@/components/filter-bar';
 import { Footer, Masthead } from '@/components/hero';
 import { Sidebar, type FlowIndexItem } from '@/components/sidebar';
 import { ViewTabs } from '@/components/view-tabs';
-import { BRANDS, FLOWS, PRODUCTS, SUB_OF } from '@/data';
+import { BRANDS, FLOWS, MATERIALS, PRODUCTS, SUB_OF, materialsOf } from '@/data';
 
 /** counts[品牌 | ''][分组 | ''] */
 function countBy<T extends { b: string }>(items: T[], group: (x: T) => string): CountTable {
@@ -19,8 +19,15 @@ function countBy<T extends { b: string }>(items: T[], group: (x: T) => string): 
   return table;
 }
 
-const productCounts = countBy(PRODUCTS, (p) => p.c);
-const subCounts = countBy(PRODUCTS, (p) => SUB_OF.get(p.id)!.id);
+/** 再按材质分一层：'' 表示不限材质 */
+function byMaterial(group: (p: (typeof PRODUCTS)[number]) => string): ProductCounts {
+  const table: ProductCounts = { '': countBy(PRODUCTS, group) };
+  for (const [mt] of MATERIALS) table[mt] = countBy(PRODUCTS.filter((p) => materialsOf(p).includes(mt)), group);
+  return table;
+}
+
+const productCounts = byMaterial((p) => p.c);
+const subCounts = byMaterial((p) => SUB_OF.get(p.id)!.id);
 const flowCounts = countBy(FLOWS, (f) => f.sc);
 const flowIndex: FlowIndexItem[] = FLOWS.map((f) => ({ id: f.id, b: f.b, sc: f.sc, name: f.name, kind: f.kind }));
 

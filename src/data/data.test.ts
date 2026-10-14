@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SUBCATS, productsOfStep, stepsOf } from './index';
+import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SUBCATS, materialsOf, productsOfStep, stepsOf } from './index';
 import { CAT_NAME, SCENE_NAME } from './taxonomy';
 
 describe('数据完整性', () => {
@@ -35,5 +35,38 @@ describe('数据完整性', () => {
     expect(new Set(SUBCATS.map((s) => s.id)).size).toBe(SUBCATS.length);
     for (const s of SUBCATS) for (const id of s.ids) expect(PRODUCT_BY_ID.get(id)?.c, `${s.id} → ${id}`).toBe(s.c);
     for (const p of PRODUCTS) expect(ids, p.id).toContain(p.id);
+  });
+});
+
+describe('适用材质', () => {
+  const of = (m: string) => materialsOf({ m });
+
+  it('只收原文明确写出的材质', () => {
+    expect(of('车漆')).toEqual(['paint']);
+    expect(materialsOf(PRODUCT_BY_ID.get('L-venere')!)).not.toContain('ppf');
+    expect(materialsOf(PRODUCT_BY_ID.get('L-perfecta')!)).toEqual(['paint', 'ppf', 'plastic', 'metal']);
+    expect(of('外部全车')).toEqual(['paint']);
+  });
+
+  it('括号里的否定和提醒不算', () => {
+    expect(of('所有车漆（不可用于涂装塑料和橡胶）')).toEqual(['paint']);
+    expect(of('多种表面（不含皮革、裸铝及未涂层金属）')).toEqual([]);
+    expect(of('硬表面（漆面、皮革慎用）')).toEqual([]);
+  });
+
+  it('轮毂的写法只算轮毂', () => {
+    expect(of('喷漆合金轮毂 · 轮胎')).toEqual(['rubber', 'wheel']);
+    expect(of('轮毂（含黑色喷漆、改色膜、Plastidip）')).toEqual(['wheel']);
+    expect(of('钢圈 · 耐碱烤漆铝圈')).toEqual(['wheel']);
+  });
+
+  it('哑光只在指漆面时算哑光漆', () => {
+    expect(of('哑光/改色膜')).toEqual(['matte', 'wrap']);
+    expect(of('哑光 / 缎面车漆')).toEqual(['paint', 'matte']);
+    expect(of('软硬塑料饰条（亮面 / 哑光）')).toEqual(['plastic']);
+  });
+
+  it('钢琴黑是塑料，不是金属', () => {
+    expect(of('钢琴黑')).toEqual(['plastic']);
   });
 });

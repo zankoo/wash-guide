@@ -102,6 +102,12 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
   background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat}
 .brand-pick:not(.L):not(.M):not(.K):not(.C) select{padding-left:12px}
 .brand-pick:not(.L):not(.M):not(.K):not(.C) .dot{display:none}
+/* 适用材质：样式同品牌下拉；选了材质时描边变色，提示列表正被筛选 */
+.mat-pick{display:flex;position:relative;flex:none;align-items:center}
+.mat-pick select{height:46px;width:112px;border:1px solid var(--line-2);border-radius:12px;background:var(--sheet);font-size:14.5px;font-weight:500;color:var(--muted);padding:0 28px 0 12px;-webkit-appearance:none;appearance:none;text-overflow:ellipsis;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.mat-pick.on select{border-color:var(--rinse);color:var(--ink);font-weight:600;box-shadow:0 0 0 3px var(--rinse-soft)}
 .chips{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none;margin-inline:calc(-1 * clamp(16px,3vw,32px));padding-inline:clamp(16px,3vw,32px)}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:none;border:1px solid transparent;background:none;color:var(--muted);font-size:14px;font-weight:500;height:34px;padding:0 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
@@ -386,6 +392,9 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
 }
 /* 手机：产品卡片变成带缩略图的列表行 */
 @media (max-width:600px){
+  .row{gap:8px}
+  .brand-pick select,.mat-pick select{width:96px;font-size:14px;padding-right:24px}
+  .mat-pick select{padding-left:10px}
   .sec{padding-top:24px}
   .grid{grid-template-columns:1fr;gap:0;background:var(--sheet);border:1px solid var(--line);border-radius:14px;overflow:hidden}
   .card{flex-direction:row;border:0;border-radius:0;border-top:1px solid var(--line)}
@@ -423,7 +432,7 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
   .side{display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100dvh;overflow-y:auto;overscroll-behavior:contain;
     padding:22px 16px 32px;background:var(--sheet);border-right:1px solid var(--line);scrollbar-width:thin}
   .mast{display:none}
-  .bar .seg,.bar .brand-pick,.bar .chips{display:none}
+  .bar .seg,.bar .brand-pick,.bar .mat-pick,.bar .chips{display:none}
   .bar .wrap{padding-block:14px}
   .toc{display:none}
   .main-col .wrap{max-width:1180px;margin-inline:0;padding-inline:36px}
@@ -437,6 +446,7 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
 .side-list button{position:relative;isolation:isolate;width:100%;display:flex;align-items:center;gap:9px;border:0;background:none;padding:7px 10px;border-radius:9px;font-size:14px;color:var(--muted);cursor:pointer;text-align:left}
 .side-list button:hover{color:var(--ink)}
 .side-list button[aria-pressed="true"]{color:var(--ink);font-weight:700}
+.side-list button.none{opacity:.45}
 .side-list small,.side-index small{margin-left:auto;font:600 13px var(--f-display);font-variant-numeric:tabular-nums;opacity:.75}
 .side-fav svg{color:#d99a0b}
 /* 场景较多：排成可换行的小标签，给下面的流程目录留出位置 */

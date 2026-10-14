@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { MATERIALS, type MaterialId } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
 import { BRAND, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { BrandId, SceneId } from '@/data/types';
 import { useFavorites } from '@/lib/favorites';
-import type { CountTable } from './filter-bar';
+import { usePickers, type CountTable, type ProductCounts } from './filter-bar';
 import { highlight } from './flow-browser';
 import { useGuide } from './guide-state';
 import { StarIcon } from './icons';
@@ -93,31 +94,27 @@ export function Sidebar({
   flowCounts,
   flows,
 }: {
-  productCounts: CountTable;
-  /** 各品牌下每个子分类的产品数：选了品牌后只列出该品牌有产品的子分类 */
-  subCounts: CountTable;
+  productCounts: ProductCounts;
+  /** 各材质、品牌下每个子分类的产品数：只列出当前筛选下有产品的子分类 */
+  subCounts: ProductCounts;
   flowCounts: CountTable;
   flows: FlowIndexItem[];
 }) {
-  const { isFlows, brand, setBrand, category, setCategory, scene, setScene, query, jumpTo, expanded } = useGuide();
+  const { isFlows, brand, material, category, setCategory, scene, setScene, query, jumpTo, expanded } = useGuide();
+  const { pickBrand, pickMaterial } = usePickers(productCounts, flowCounts);
   const favorites = useFavorites();
-  const counts = isFlows ? flowCounts : productCounts;
+  const catCounts = productCounts[material];
+  const counts = isFlows ? flowCounts : catCounts;
 
   // 展开分类后会渲染出新的子分类区块，要重新监听
-  const spyCat = useScrollSpy('.sec', [isFlows, brand, category, query, expanded]);
-  const spySub = useScrollSpy('.subgrp', [isFlows, brand, category, query, expanded]);
+  const spyCat = useScrollSpy('.sec', [isFlows, brand, material, category, query, expanded]);
+  const spySub = useScrollSpy('.subgrp', [isFlows, brand, material, category, query, expanded]);
   const spyFlow = useScrollSpy('.flow', [isFlows, brand, scene, query]);
   // 点击跳转时以被点的目标为准；用户自己滚动时跟着滚动位置走
   const [pin, setPin] = usePin();
   const activeCat = pin ? pin.cat : spyCat;
   const activeSub = pin ? pin.sub : spySub;
   const activeFlow = pin ? pin.flow : spyFlow;
-
-  function pickBrand(b: BrandId | '') {
-    setBrand(b);
-    if (category && category !== 'fav' && !productCounts[b][category]) setCategory('');
-    if (scene && !flowCounts[b][scene]) setScene('');
-  }
 
   const shownFlows = flows.filter((f) => (!brand || f.b === brand) && (!scene || f.sc === scene));
 
@@ -134,11 +131,16 @@ export function Sidebar({
         <ul className="side-list" role="list">
           {(['', ...BRANDS] as const).map((b) => (
             <li key={b || 'all'}>
-              <button type="button" aria-pressed={brand === b} onClick={() => pickBrand(b)}>
+              <button
+                type="button"
+                aria-pressed={brand === b}
+                className={counts[b][''] ? undefined : 'none'}
+                onClick={() => pickBrand(b)}
+              >
                 {brand === b && <Indicator name="ind-brand" />}
                 {b && <span className={`dot ${b}`} />}
                 {b ? BRAND[b] : '全部品牌'}
-                <small>{counts[b]['']}</small>
+                <small>{counts[b][''] ?? 0}</small>
               </button>
             </li>
           ))}
@@ -195,76 +197,94 @@ export function Sidebar({
           </nav>
         </>
       ) : (
-        <nav className="side-sec" aria-label="分类目录">
-          <h2>分类</h2>
-          <ul className="side-list" role="list">
-            {(favorites.length > 0 || category === 'fav') && (
-              <li>
-                <button
-                  type="button"
-                  className="side-fav"
-                  aria-pressed={category === 'fav'}
-                  onClick={() => setCategory(category === 'fav' ? '' : 'fav')}
-                >
-                  {category === 'fav' && <Indicator name="ind-cat" />}
-                  <StarIcon filled />
-                  常用
-                  <small>{favorites.length}</small>
-                </button>
-              </li>
-            )}
-            {category && (
-              <li>
-                <button type="button" onClick={() => setCategory('')}>
-                  显示全部分类
-                </button>
-              </li>
-            )}
-          </ul>
-          <ul className="side-index" role="list">
-            {CATS.filter(([k]) => productCounts[brand][k]).map(([k, n]) => {
-              const here = activeCat === `cat-${k}`;
-              const subs = SUBCATS.filter((s) => s.c === k && subCounts[brand][s.id]);
-              return (
-                <li key={k}>
-                  <a
-                    href={`#cat-${k}`}
-                    aria-current={here ? 'location' : undefined}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      // 选了其他分类或「常用」时先回到全部，目标分类才在列表里
-                      if (category && category !== k) setCategory('');
-                      setPin({ cat: `cat-${k}` });
-                      jumpTo(`cat-${k}`, k);
-                    }}
+        <>
+          <div className="side-sec">
+            <h2>适用材质</h2>
+            <ul className="side-list compact" role="list">
+              {([['', '全部'] as const, ...MATERIALS] as const)
+                .filter(([k]) => productCounts[k][brand][''])
+                .map(([k, n]) => (
+                  <li key={k || 'all'}>
+                    <button type="button" aria-pressed={material === k} onClick={() => pickMaterial(k as MaterialId | '')}>
+                      {material === k && <Indicator name="ind-mat" />}
+                      {n}
+                      <small>{productCounts[k][brand]['']}</small>
+                    </button>
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <nav className="side-sec" aria-label="分类目录">
+            <h2>分类</h2>
+            <ul className="side-list" role="list">
+              {(favorites.length > 0 || category === 'fav') && (
+                <li>
+                  <button
+                    type="button"
+                    className="side-fav"
+                    aria-pressed={category === 'fav'}
+                    onClick={() => setCategory(category === 'fav' ? '' : 'fav')}
                   >
-                    {n}
-                    <small>{productCounts[brand][k]}</small>
-                  </a>
-                  {here && subs.length > 1 && (
-                    <ul className="side-subs" role="list">
-                      {subs.map((s) => (
-                        <li key={s.id}>
-                          <a
-                            href={`#sub-${s.id}`}
-                            aria-current={activeSub === `sub-${s.id}` ? 'location' : undefined}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setPin({ cat: `cat-${k}`, sub: `sub-${s.id}` });
-                              jumpTo(`sub-${s.id}`, k);
-                            }}
-                          >
-                            {s.n}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                    {category === 'fav' && <Indicator name="ind-cat" />}
+                    <StarIcon filled />
+                    常用
+                    <small>{favorites.length}</small>
+                  </button>
                 </li>
-              );
-            })}
-          </ul>
-        </nav>
+              )}
+              {category && (
+                <li>
+                  <button type="button" onClick={() => setCategory('')}>
+                    显示全部分类
+                  </button>
+                </li>
+              )}
+            </ul>
+            <ul className="side-index" role="list">
+              {CATS.filter(([k]) => catCounts[brand][k]).map(([k, n]) => {
+                const here = activeCat === `cat-${k}`;
+                const subs = SUBCATS.filter((s) => s.c === k && subCounts[material][brand][s.id]);
+                return (
+                  <li key={k}>
+                    <a
+                      href={`#cat-${k}`}
+                      aria-current={here ? 'location' : undefined}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        // 选了其他分类或「常用」时先回到全部，目标分类才在列表里
+                        if (category && category !== k) setCategory('');
+                        setPin({ cat: `cat-${k}` });
+                        jumpTo(`cat-${k}`, k);
+                      }}
+                    >
+                      {n}
+                      <small>{catCounts[brand][k]}</small>
+                    </a>
+                    {here && subs.length > 1 && (
+                      <ul className="side-subs" role="list">
+                        {subs.map((s) => (
+                          <li key={s.id}>
+                            <a
+                              href={`#sub-${s.id}`}
+                              aria-current={activeSub === `sub-${s.id}` ? 'location' : undefined}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setPin({ cat: `cat-${k}`, sub: `sub-${s.id}` });
+                                jumpTo(`sub-${s.id}`, k);
+                              }}
+                            >
+                              {s.n}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </>
       )}
     </aside>
   );

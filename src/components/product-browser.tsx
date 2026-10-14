@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { Fragment, useDeferredValue, useEffect, useLayoutEffect, useRef, ViewTransition, type ReactNode } from 'react';
+import { MATERIAL_NAME, type MaterialId } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
 import { CATS } from '@/data/taxonomy';
 import type { BrandId, CategoryId } from '@/data/types';
@@ -15,6 +16,8 @@ export interface ProductItem {
   c: CategoryId;
   /** 子分类 id */
   sub: string;
+  /** 官方明确列出的适用材质 */
+  mt: MaterialId[];
   /** 归一化后的搜索文本（见 fold） */
   text: string;
   /** 搜索结果排序用的字段 */
@@ -28,7 +31,7 @@ const PEEK = 6;
 
 /** 按品牌 / 分类 / 搜索词筛选服务端渲染好的产品卡片，按分类 → 子分类分组；「全部」视图下大分类默认折叠 */
 export function ProductBrowser({ items }: { items: ProductItem[] }) {
-  const { brand, category, query: rawQuery, expanded, setExpanded, jumpTo } = useGuide();
+  const { brand, material, category, query: rawQuery, expanded, setExpanded, jumpTo } = useGuide();
   const query = useDeferredValue(rawQuery.trim());
   const favorites = useFavorites();
   const router = useRouter();
@@ -46,11 +49,15 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
   const inCategory = (p: ProductItem) =>
     !category || (category === 'fav' ? favorites.includes(p.id) : p.c === category);
   const list = items.filter(
-    (p) => (!brand || p.b === brand) && inCategory(p) && (!query || matchesQuery(p.text, query)),
+    (p) =>
+      (!brand || p.b === brand) &&
+      (!material || p.mt.includes(material)) &&
+      inCategory(p) &&
+      (!query || matchesQuery(p.text, query)),
   );
 
   // 品牌 / 分类切换时整个列表淡入淡出（不给每张卡片单独命名，244 张太重）
-  const listKey = `${brand}|${category}|${query ? 'q' : ''}`;
+  const listKey = `${brand}|${material}|${category}|${query ? 'q' : ''}`;
 
   // 已经滚进列表里时切换分类：回到新列表开头，不然会停在新列表中间的某个位置
   // （切换品牌时停在哪里由 GuideProvider 决定）。用 layout effect 在转场截取新画面之前完成滚动
@@ -70,7 +77,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
       <p className="empty list" key={listKey} ref={top}>
         {category === 'fav' && !favorites.length
           ? '还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。'
-          : '没有匹配的产品，换个关键词或品牌试试。'}
+          : '没有匹配的产品，换个关键词、品牌或材质试试。'}
       </p>
     );
   }
@@ -102,6 +109,11 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
   return (
     <ViewTransition key={listKey} enter="list-in" exit="list-out" default="none">
       <div className="list" ref={top}>
+        {material && (
+          <p className="found" role="status">
+            只显示官方写明可用于「{MATERIAL_NAME[material]}」的产品
+          </p>
+        )}
         {CATS.map(([k, name]) => {
           const group = list.filter((p) => p.c === k);
           if (!group.length) return null;

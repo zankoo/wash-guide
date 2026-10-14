@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { createContext, startTransition, use, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import type { MaterialId } from '@/data/materials';
 import type { BrandId, CategoryId, SceneId } from '@/data/types';
 
 interface FlowTarget {
@@ -22,6 +23,9 @@ interface GuideState {
   isFlows: boolean;
   brand: BrandId | '';
   setBrand: (b: BrandId | '') => void;
+  /** 产品适用材质（只在产品页使用） */
+  material: MaterialId | '';
+  setMaterial: (m: MaterialId | '') => void;
   query: string;
   setQuery: (q: string) => void;
   /** 'fav' 表示只看常用产品 */
@@ -56,6 +60,9 @@ function reached(el: Element) {
  * 子分类必须属于这个分类（折叠的分类没有子分类区块，不能沿用上一个分类的）。
  */
 function readingAnchor(): string[] | null {
+  // 列表开头还没滚到吸顶栏下面（还在看页面顶部）时不动
+  const list = document.querySelector('main .list');
+  if (!list || list.getBoundingClientRect().top > parseFloat(getComputedStyle(list).scrollMarginTop) - 2) return null;
   const cat = [...document.querySelectorAll('main .sec')].findLast(reached);
   if (!cat) return null;
   const sub = [...cat.querySelectorAll('.subgrp')].findLast(reached);
@@ -73,20 +80,23 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [brand, setBrandState] = useState<BrandId | ''>('');
+  const [material, setMaterialState] = useState<MaterialId | ''>('');
   const [query, setQuery] = useState('');
   const [category, setCategoryState] = useState<CategoryId | 'fav' | ''>('');
   const [scene, setSceneState] = useState<SceneId | ''>('');
   // 筛选切换放在 transition 里：选中指示块滑动、列表淡入淡出都由 View Transition 呈现。
   // 搜索词保持同步更新，输入不卡顿（列表那边用 useDeferredValue）。
   const [scrollTarget, setScrollTarget] = useState<ScrollTarget | null>(null);
-  // 切换品牌时停在原来看的子分类；新品牌没有这个子分类就回到它所在分类的开头，分类也没有就回到列表开头
-  const setBrand = (b: BrandId | '') => {
+  // 切换品牌或材质时停在原来看的子分类；新列表里没有这个子分类就回到它所在分类的开头，分类也没有就回到列表开头
+  function keepReading(update: () => void) {
     const ids = readingAnchor();
     startTransition(() => {
-      setBrandState(b);
+      update();
       if (ids) setScrollTarget({ ids, smooth: false });
     });
-  };
+  }
+  const setBrand = (b: BrandId | '') => keepReading(() => setBrandState(b));
+  const setMaterial = (m: MaterialId | '') => keepReading(() => setMaterialState(m));
   const setCategory = (c: CategoryId | 'fav' | '') => startTransition(() => setCategoryState(c));
   const setScene = (sc: SceneId | '') => startTransition(() => setSceneState(sc));
   const [flowTarget, setFlowTarget] = useState<FlowTarget | null>(null);
@@ -144,6 +154,8 @@ export function GuideProvider({ children }: { children: ReactNode }) {
         isFlows,
         brand,
         setBrand,
+        material,
+        setMaterial,
         query,
         setQuery,
         category,
