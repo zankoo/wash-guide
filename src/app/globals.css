@@ -519,8 +519,9 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
   .sheet,.sheet::backdrop{transition:none}
 }
 
-/* 展开分类后卡片依次浮入：只给前 12 张错开延迟，后面的一起出现 */
-.subgrp .card{animation:card-in var(--dur-move) var(--ease-out) both}
+/* 展开分类后卡片依次浮入：只给前 12 张错开延迟，后面的一起出现。
+   卡片不参与滚动锚定：浏览器会把正在位移的卡片当作锚点，动画结束时把页面「校正」12px，看起来像跳了一下 */
+.subgrp .card{animation:card-in var(--dur-move) var(--ease-out) both;overflow-anchor:none}
 .subgrp .card:nth-child(2){animation-delay:30ms}.subgrp .card:nth-child(3){animation-delay:60ms}
 .subgrp .card:nth-child(4){animation-delay:90ms}.subgrp .card:nth-child(5){animation-delay:120ms}
 .subgrp .card:nth-child(6){animation-delay:150ms}.subgrp .card:nth-child(n+7){animation-delay:180ms}

@@ -52,19 +52,18 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
   // 品牌 / 分类切换时整个列表淡入淡出（不给每张卡片单独命名，244 张太重）
   const listKey = `${brand}|${category}|${query ? 'q' : ''}`;
 
-  // 已经滚进列表里时切换品牌 / 分类：回到新列表开头，不然会停在新列表中间的某个位置。
-  // 用 layout effect 在转场截取新画面之前完成滚动
+  // 已经滚进列表里时切换分类：回到新列表开头，不然会停在新列表中间的某个位置
+  // （切换品牌时停在哪里由 GuideProvider 决定）。用 layout effect 在转场截取新画面之前完成滚动
   const top = useRef<HTMLDivElement>(null);
-  const filterKey = `${brand}|${category}`;
-  const lastFilter = useRef(filterKey);
+  const lastCategory = useRef(category);
   useLayoutEffect(() => {
-    if (lastFilter.current === filterKey) return;
-    lastFilter.current = filterKey;
+    if (lastCategory.current === category) return;
+    lastCategory.current = category;
     const el = top.current;
     if (el && el.getBoundingClientRect().top < parseFloat(getComputedStyle(el).scrollMarginTop)) {
       el.scrollIntoView({ block: 'start' });
     }
-  }, [filterKey]);
+  }, [category]);
 
   if (!list.length) {
     return (
