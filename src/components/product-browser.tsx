@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Fragment, useDeferredValue, useEffect, ViewTransition, type ReactNode } from 'react';
+import { Fragment, useDeferredValue, useEffect, useLayoutEffect, useRef, ViewTransition, type ReactNode } from 'react';
 import { SUBCATS } from '@/data/subcategories';
 import { CATS } from '@/data/taxonomy';
 import type { BrandId, CategoryId } from '@/data/types';
@@ -52,9 +52,23 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
   // 品牌 / 分类切换时整个列表淡入淡出（不给每张卡片单独命名，244 张太重）
   const listKey = `${brand}|${category}|${query ? 'q' : ''}`;
 
+  // 已经滚进列表里时切换品牌 / 分类：回到新列表开头，不然会停在新列表中间的某个位置。
+  // 用 layout effect 在转场截取新画面之前完成滚动
+  const top = useRef<HTMLDivElement>(null);
+  const filterKey = `${brand}|${category}`;
+  const lastFilter = useRef(filterKey);
+  useLayoutEffect(() => {
+    if (lastFilter.current === filterKey) return;
+    lastFilter.current = filterKey;
+    const el = top.current;
+    if (el && el.getBoundingClientRect().top < parseFloat(getComputedStyle(el).scrollMarginTop)) {
+      el.scrollIntoView({ block: 'start' });
+    }
+  }, [filterKey]);
+
   if (!list.length) {
     return (
-      <p className="empty" key={listKey}>
+      <p className="empty list" key={listKey} ref={top}>
         {category === 'fav' && !favorites.length
           ? '还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。'
           : '没有匹配的产品，换个关键词或品牌试试。'}
@@ -72,7 +86,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
       .sort((a, b) => b.score - a.score || a.i - b.i);
     return (
       <ViewTransition key={listKey} enter="list-in" exit="list-out" default="none">
-        <div>
+        <div className="list" ref={top}>
           <p className="found" role="status">
             找到 {list.length} 款与「{query}」相关的产品，名称匹配的排在前面
           </p>
@@ -88,7 +102,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
 
   return (
     <ViewTransition key={listKey} enter="list-in" exit="list-out" default="none">
-      <div>
+      <div className="list" ref={top}>
         {CATS.map(([k, name]) => {
           const group = list.filter((p) => p.c === k);
           if (!group.length) return null;

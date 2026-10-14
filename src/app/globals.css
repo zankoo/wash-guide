@@ -122,6 +122,7 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 /* ── 分类与子分类 ───────────────────────────── */
 main{padding-block:6px 56px}
 .found{margin:20px 0 14px;color:var(--muted);font-size:14px}
+.list{scroll-margin-top:var(--bar-h)}
 .sec{padding-top:22px;container-type:inline-size;scroll-margin-top:calc(var(--bar-h) + 4px)}
 .sec-h{display:flex;align-items:baseline;gap:12px;margin:0 -8px 12px;padding:10px 8px;position:sticky;top:calc(var(--bar-h) - 1px);z-index:3;background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .sec-h h2{margin:0;font-size:22px;font-weight:800;letter-spacing:.01em}
@@ -483,8 +484,14 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 /* ── View Transitions ───────────────────────────── */
 /* 转场期间点击直接落到页面上，不被覆盖层吃掉 */
 ::view-transition{pointer-events:none}
-
-
+/* 转场时吸顶搜索栏和底部栏单独成组，叠在滑动的列表 / 页面上面（否则列表快照会盖住它们，结束时才跳回来）。
+   面板打开时不这样做：命名元素会被提到模态框遮罩之上 */
+:root:active-view-transition:not(:has(dialog[open])) .bar{view-transition-name:bar}
+:root:active-view-transition:not(:has(dialog[open])) .tabs.bottom{view-transition-name:tabbar}
+/* 只出现在新画面里的组（新列表）默认排在最上面，所以显式抬高两条栏，栏里的指示块再高一层 */
+::view-transition-group(bar),::view-transition-group(tabbar){animation:none;z-index:1}
+::view-transition-old(bar),::view-transition-old(tabbar){display:none}
+::view-transition-new(bar),::view-transition-new(tabbar){animation:none}
 
 
 /* 产品 ⇄ 流程：前进时内容向左滑，后退时向右滑 */
@@ -499,7 +506,7 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 
 
 /* 选中指示块滑动 */
-::view-transition-group(.indicator){animation-duration:300ms;animation-timing-function:var(--ease-out)}
+::view-transition-group(.indicator){animation-duration:300ms;animation-timing-function:var(--ease-out);z-index:2}
 
 @keyframes vt-fade{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:blur(0)}}
 @keyframes vt-slide-y{from{translate:0 10px}}
