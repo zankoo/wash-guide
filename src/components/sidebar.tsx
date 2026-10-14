@@ -89,10 +89,13 @@ function usePin(): [Pin | null, (p: Pin) => void] {
 /** 桌面左侧索引栏：品牌、分类目录（产品页）或场景与流程目录（流程页） */
 export function Sidebar({
   productCounts,
+  subCounts,
   flowCounts,
   flows,
 }: {
   productCounts: CountTable;
+  /** 各品牌下每个子分类的产品数：选了品牌后只列出该品牌有产品的子分类 */
+  subCounts: CountTable;
   flowCounts: CountTable;
   flows: FlowIndexItem[];
 }) {
@@ -221,7 +224,7 @@ export function Sidebar({
           <ul className="side-index" role="list">
             {CATS.filter(([k]) => productCounts[brand][k]).map(([k, n]) => {
               const here = activeCat === `cat-${k}`;
-              const subs = SUBCATS.filter((s) => s.c === k);
+              const subs = SUBCATS.filter((s) => s.c === k && subCounts[brand][s.id]);
               return (
                 <li key={k}>
                   <a
