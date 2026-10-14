@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { MATERIALS, type MaterialId } from '@/data/materials';
 import { BRAND, BRAND_SHORT, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { BrandId } from '@/data/types';
 import { useFavorites } from '@/lib/favorites';
@@ -10,11 +11,39 @@ import { Indicator } from './indicator';
 
 /** counts[品牌 或 '' 表示全部][分类/场景 或 '' 表示全部] */
 export type CountTable = Record<string, Record<string, number>>;
+/** 产品数再按材质分一层：counts[材质 或 ''][品牌 或 ''][分类 / 子分类 或 ''] */
+export type ProductCounts = Record<string, CountTable>;
 
-export function FilterBar({ productCounts, flowCounts }: { productCounts: CountTable; flowCounts: CountTable }) {
-  const { isFlows, brand, setBrand, query, setQuery, category, setCategory, scene, setScene } = useGuide();
+/**
+ * 切换品牌 / 材质：新的筛选下没有当前材质、分类或场景时回到「全部」，
+ * 这样分类标签和左栏里不会选着一个已经看不到的分类。
+ */
+export function usePickers(productCounts: ProductCounts, flowCounts: CountTable) {
+  const { brand, setBrand, material, setMaterial, category, setCategory, scene, setScene } = useGuide();
+  function keepCategory(b: BrandId | '', mt: MaterialId | '') {
+    if (category && category !== 'fav' && !productCounts[mt][b][category]) setCategory('');
+  }
+  return {
+    pickBrand(b: BrandId | '') {
+      setBrand(b);
+      const mt = material && !productCounts[material][b][''] ? '' : material;
+      if (mt !== material) setMaterial(mt);
+      keepCategory(b, mt);
+      if (scene && !flowCounts[b][scene]) setScene('');
+    },
+    pickMaterial(mt: MaterialId | '') {
+      setMaterial(mt);
+      keepCategory(brand, mt);
+    },
+  };
+}
+
+export function FilterBar({ productCounts, flowCounts }: { productCounts: ProductCounts; flowCounts: CountTable }) {
+  const { isFlows, brand, material, query, setQuery, category, setCategory, scene, setScene } = useGuide();
+  const { pickBrand, pickMaterial } = usePickers(productCounts, flowCounts);
   const input = useRef<HTMLInputElement>(null);
   const favorites = useFavorites();
+  const counts = productCounts[material];
 
   // 桌面上按 / 直接聚焦搜索框
   useEffect(() => {
@@ -29,16 +58,9 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
     return () => removeEventListener('keydown', onKey);
   }, []);
 
-  function pickBrand(b: BrandId | '') {
-    setBrand(b);
-    // 新品牌下没有当前分类 / 场景时回到「全部」
-    if (category && category !== 'fav' && !productCounts[b][category]) setCategory('');
-    if (scene && !flowCounts[b][scene]) setScene('');
-  }
-
   const chips = isFlows
     ? [['', '全部场景'] as const, ...SCENES].map(([k, n]) => ({ k, n, count: flowCounts[brand][k] ?? 0 }))
-    : [['', '全部'] as const, ...CATS].map(([k, n]) => ({ k, n, count: productCounts[brand][k] ?? 0 }));
+    : [['', '全部'] as const, ...CATS].map(([k, n]) => ({ k, n, count: counts[brand][k] ?? 0 }));
   const selected = isFlows ? scene : category;
 
   return (
@@ -97,6 +119,19 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: CountT
               ))}
             </select>
           </label>
+          {!isFlows && (
+            <label className={`mat-pick${material ? ' on' : ''}`}>
+              <span className="sr">适用材质</span>
+              <select value={material} onChange={(e) => pickMaterial(e.target.value as MaterialId | '')}>
+                <option value="">全部材质</option>
+                {MATERIALS.filter(([k]) => productCounts[k][brand]['']).map(([k, n]) => (
+                  <option key={k} value={k}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
         </div>
         <div className="chips" role="group" aria-label={isFlows ? '场景' : '分类'}>
           {!isFlows && (favorites.length > 0 || category === 'fav') && (

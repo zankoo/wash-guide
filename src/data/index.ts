@@ -7,6 +7,7 @@ import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
 import { fold, type RankFields } from '../lib/search';
 
+export * from './materials';
 export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';

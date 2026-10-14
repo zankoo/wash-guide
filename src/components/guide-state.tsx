@@ -1,7 +1,8 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { createContext, startTransition, use, useEffect, useRef, useState, type ReactNode } from 'react';
+import { createContext, startTransition, use, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import type { MaterialId } from '@/data/materials';
 import type { BrandId, CategoryId, SceneId } from '@/data/types';
 
 interface FlowTarget {
@@ -22,6 +23,9 @@ interface GuideState {
   isFlows: boolean;
   brand: BrandId | '';
   setBrand: (b: BrandId | '') => void;
+  /** 产品适用材质（只在产品页使用） */
+  material: MaterialId | '';
+  setMaterial: (m: MaterialId | '') => void;
   query: string;
   setQuery: (q: string) => void;
   /** 'fav' 表示只看常用产品 */
@@ -40,6 +44,31 @@ interface GuideState {
 
 const GuideContext = createContext<GuideState | null>(null);
 
+/** 滚动目标：按顺序找第一个还在页面上的元素，'list' 表示列表开头；smooth=false 时立即跳过去 */
+interface ScrollTarget {
+  ids: string[];
+  smooth: boolean;
+}
+
+/** 元素顶部已经滚到吸顶栏下沿（按它的 scroll-margin-top 算）就算「正在看」 */
+function reached(el: Element) {
+  return el.getBoundingClientRect().top <= parseFloat(getComputedStyle(el).scrollMarginTop) + 8;
+}
+
+/**
+ * 当前正在看的位置：最后一个滚到顶部的子分类和分类。还没滚进产品列表时返回 null。
+ * 子分类必须属于这个分类（折叠的分类没有子分类区块，不能沿用上一个分类的）。
+ */
+function readingAnchor(): string[] | null {
+  // 列表开头还没滚到吸顶栏下面（还在看页面顶部）时不动
+  const list = document.querySelector('main .list');
+  if (!list || list.getBoundingClientRect().top > parseFloat(getComputedStyle(list).scrollMarginTop) - 2) return null;
+  const cat = [...document.querySelectorAll('main .sec')].findLast(reached);
+  if (!cat) return null;
+  const sub = [...cat.querySelectorAll('.subgrp')].findLast(reached);
+  return [...(sub ? [sub.id] : []), cat.id, 'list'];
+}
+
 export function useGuide(): GuideState {
   const ctx = use(GuideContext);
   if (!ctx) throw new Error('useGuide must be used inside <GuideProvider>');
@@ -51,12 +80,23 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const [brand, setBrandState] = useState<BrandId | ''>('');
+  const [material, setMaterialState] = useState<MaterialId | ''>('');
   const [query, setQuery] = useState('');
   const [category, setCategoryState] = useState<CategoryId | 'fav' | ''>('');
   const [scene, setSceneState] = useState<SceneId | ''>('');
   // 筛选切换放在 transition 里：选中指示块滑动、列表淡入淡出都由 View Transition 呈现。
   // 搜索词保持同步更新，输入不卡顿（列表那边用 useDeferredValue）。
-  const setBrand = (b: BrandId | '') => startTransition(() => setBrandState(b));
+  const [scrollTarget, setScrollTarget] = useState<ScrollTarget | null>(null);
+  // 切换品牌或材质时停在原来看的子分类；新列表里没有这个子分类就回到它所在分类的开头，分类也没有就回到列表开头
+  function keepReading(update: () => void) {
+    const ids = readingAnchor();
+    startTransition(() => {
+      update();
+      if (ids) setScrollTarget({ ids, smooth: false });
+    });
+  }
+  const setBrand = (b: BrandId | '') => keepReading(() => setBrandState(b));
+  const setMaterial = (m: MaterialId | '') => keepReading(() => setMaterialState(m));
   const setCategory = (c: CategoryId | 'fav' | '') => startTransition(() => setCategoryState(c));
   const setScene = (sc: SceneId | '') => startTransition(() => setSceneState(sc));
   const [flowTarget, setFlowTarget] = useState<FlowTarget | null>(null);
@@ -64,7 +104,6 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   const [isFlows, setIsFlows] = useState(pathname === '/flows');
   if (!pathname.startsWith('/p/') && (pathname === '/flows') !== isFlows) setIsFlows(pathname === '/flows');
   const [expanded, setExpandedSet] = useState<ReadonlySet<CategoryId>>(new Set());
-  const [scrollTarget, setScrollTarget] = useState<{ id: string } | null>(null);
 
   function setExpanded(c: CategoryId, open: boolean) {
     // 放在 transition 里，展开 / 收起时分类区块的高度变化会以 View Transition 动画呈现
@@ -82,16 +121,20 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   function jumpTo(id: string, c?: CategoryId) {
     if (c) setExpanded(c, true);
     // 等展开的内容提交到 DOM 之后再滚动
-    startTransition(() => setScrollTarget({ id }));
+    startTransition(() => setScrollTarget({ ids: [id], smooth: true }));
   }
 
-  // 每次跳转都是新对象，重复点同一个目标也会再滚动一次
-  const lastScroll = useRef<{ id: string } | null>(null);
-  useEffect(() => {
+  // 每次跳转都是新对象，重复点同一个目标也会再滚动一次。
+  // 用 layout effect：在转场截取新画面之前滚动到位，画面不会先闪一下旧位置
+  const lastScroll = useRef<ScrollTarget | null>(null);
+  useLayoutEffect(() => {
     if (!scrollTarget || lastScroll.current === scrollTarget) return;
     lastScroll.current = scrollTarget;
-    const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.getElementById(scrollTarget.id)?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+    const el = scrollTarget.ids
+      .map((id) => (id === 'list' ? document.querySelector('main .list') : document.getElementById(id)))
+      .find((x) => x);
+    const smooth = scrollTarget.smooth && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el?.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant', block: 'start' });
   }, [scrollTarget]);
 
   function goToFlow(f: FlowRef) {
@@ -111,6 +154,8 @@ export function GuideProvider({ children }: { children: ReactNode }) {
         isFlows,
         brand,
         setBrand,
+        material,
+        setMaterial,
         query,
         setQuery,
         category,
