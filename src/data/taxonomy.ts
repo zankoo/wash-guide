@@ -1,15 +1,16 @@
 import type { BrandId, CategoryId, SceneId } from './types';
 
-export const BRANDS: BrandId[] = ['L', 'M', 'K', 'C'];
+export const BRANDS: BrandId[] = ['L', 'M', 'K', 'C', 'G'];
 
 export const BRAND: Record<BrandId, string> = {
   L: 'Labocosmetica',
   M: 'Maniac Line',
   K: 'Koch-Chemie',
   C: 'CarPro',
+  G: 'GYEON',
 };
 
-export const BRAND_SHORT: Record<BrandId, string> = { L: 'Labo', M: 'Maniac', K: 'Koch', C: 'CarPro' };
+export const BRAND_SHORT: Record<BrandId, string> = { L: 'Labo', M: 'Maniac', K: 'Koch', C: 'CarPro', G: 'GYEON' };
 
 /** 官方循环的来源说明（流程页的分组标题） */
 export const FLOW_SOURCE: Record<BrandId, string> = {
@@ -17,6 +18,7 @@ export const FLOW_SOURCE: Record<BrandId, string> = {
   M: '官方宣传册的完整流程',
   K: '官方产品页与技术资料给出的施工顺序',
   C: '官方产品页与施工手册（How-to PDF）给出的施工顺序',
+  G: '官方镀膜说明书（Coatings Manual）与产品页给出的施工顺序',
 };
 
 export const CATS: [CategoryId, string, string][] = [

@@ -1,4 +1,5 @@
 import * as carpro from './carpro';
+import * as gyeon from './gyeon';
 import * as koch from './koch';
 import * as laboManiac from './labo-maniac';
 import * as laboManiacFlows from './labo-maniac-flows';
@@ -12,13 +13,13 @@ export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';
 
-export const PRODUCTS: Product[] = [...laboManiac.products, ...koch.products, ...carpro.products];
+export const PRODUCTS: Product[] = [...laboManiac.products, ...koch.products, ...carpro.products, ...gyeon.products];
 
 export type FlowEntry = (Flow & { kind: 'off' }) | (Combo & { kind: 'combo' });
 
 export const FLOWS: FlowEntry[] = [
-  ...[laboManiacFlows.flows, koch.flows, carpro.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
-  ...[laboManiacFlows.combos, koch.combos, carpro.combos].flat().map((f) => ({ ...f, kind: 'combo' as const })),
+  ...[laboManiacFlows.flows, koch.flows, carpro.flows, gyeon.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
+  ...[laboManiacFlows.combos, koch.combos, carpro.combos, gyeon.combos].flat().map((f) => ({ ...f, kind: 'combo' as const })),
 ];
 
 export const PRODUCT_BY_ID = new Map(PRODUCTS.map((p) => [p.id, p]));
