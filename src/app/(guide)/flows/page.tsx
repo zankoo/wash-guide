@@ -6,7 +6,7 @@ import { FLOWS, flowSearchText } from '@/data';
 
 export const metadata: Metadata = {
   title: '洗车流程与组合',
-  description: 'Labocosmetica 3pH®、Maniac Line、Koch-Chemie、CarPro 官方洗车流程，以及在官方流程上替换或追加步骤的产品组合。',
+  description: 'Labocosmetica 3pH®、Maniac Line、Koch-Chemie、CarPro、GYEON 官方洗车流程，以及在官方流程上替换或追加步骤的产品组合。',
 };
 
 const items: FlowItem[] = FLOWS.map((f) => ({
