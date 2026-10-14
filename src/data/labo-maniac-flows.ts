@@ -122,9 +122,9 @@ export const combos: Combo[] = [
  u:'https://www.labocosmetica.com/product/revitax-best-sio2-shampoo-maintenance-ceramic-coated-car/'},
 
 {id:'c-ppf',b:'L',name:'PPF / 改色膜日常养护',sc:'ppf',tags:['哑光'],base:'f-2ph-plus',at:'日常维护版（无需碱性预洗）',
- sum:'RENOVA 在 1:5–1:50 时本身是 2 合 1，日常可单独使用；哑光膜可改用 SÀTINO；定期用 LIMPIA 深层清洁膜孔。',
+ sum:'日常单独用 RENOVA 1:200 维护洗，膜面发灰或有水垢时再用 1:50 深度清洁；哑光膜可改用 SÀTINO；定期用 LIMPIA 深层清洁膜孔。',
  steps:[
-  {ph:'维护洗',pH:'acid',p:['L-renova','L-satino'],alt:true,r:'RENOVA 1:200 / 1:50 · SÀTINO 1:60',how:'PPF 用 RENOVA，在已湿润的表面用手套或海绵均匀清洗后彻底冲洗。哑光漆或改色膜可改用 SÀTINO 水桶 1:60（PA壶 1:5），并留下至少 2 周的抗 UV 保护。'},
+  {ph:'维护洗',pH:'acid',p:['L-renova','L-satino'],alt:true,r:'RENOVA 1:200（深度清洁 1:50） · SÀTINO 1:60',how:'PPF 用 RENOVA 1:200，在已湿润的表面用手套或海绵均匀清洗后彻底冲洗。哑光漆或改色膜可改用 SÀTINO 水桶 1:60（PA壶 1:5），并留下至少 2 周的抗 UV 保护。'},
   {ph:'季节性深层清洁',p:['L-limpia'],r:'即用',how:'喷上后用超纤布擦拭，无需冲水。适合 PPF 发灰发闷，或清理膜孔内积累的污垢。'},
  ],
  x:['RENOVA 和 PURÌFICA 都是酸性：PURÌFICA 让外观焕新，RENOVA 深入 PPF 内部去除渗入的污垢。'],
