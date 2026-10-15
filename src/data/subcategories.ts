@@ -76,9 +76,9 @@ export const SUBCATS: Subcategory[] = [
   { id: 'apc-rtu', c: 'apc', n: '即用型', ids: ['L-varius', 'M-multisurface-cleaner', 'F-hp12', 'F-split'] },
 
   // ── 内饰
-  { id: 'int-clean', c: 'int', n: '综合清洁', ids: ['L-omnia', 'L-igea', 'M-interior-cleaner-purifier', 'C-inside', 'K-multi-interior-cleaner', 'K-allround-surface-cleaner', 'K-schmutzradierer', 'G-trimcleaner', 'F-pulimax-spray', 'F-pulimax', 'F-pulimax-ewo', 'F-deterjet', 'B-i35'] },
+  { id: 'int-clean', c: 'int', n: '综合清洁', ids: ['L-omnia', 'L-igea', 'M-interior-cleaner-purifier', 'C-inside', 'K-multi-interior-cleaner', 'K-allround-surface-cleaner', 'K-schmutzradierer', 'G-trimcleaner', 'F-pulimax-spray', 'F-pulimax', 'F-pulimax-ewo', 'F-deterjet'] },
   { id: 'int-fabric', c: 'int', n: '织物 / Alcantara', ids: ['L-glico', 'L-texia', 'M-alcantara-cleaner', 'K-pol-star', 'K-tinten-kuli-ex', 'K-allround-textile-sealant', 'G-fabriccleaner', 'F-3in1-tessuti', 'F-flash', 'F-flash-liquido', 'F-textile'] },
-  { id: 'int-leather', c: 'int', n: '皮革清洁与养护', ids: ['L-derma-cleaner', 'M-leather-cleaner', 'C-cleanse', 'L-derma-sealant', 'C-lotion', 'K-leather-star', 'K-protect-leather-care', 'G-leathercleaner-natural', 'G-leathercleaner-strong', 'G-leathercoat', 'F-3in1-pelle', 'F-charming', 'F-nutrient', 'F-hydrating', 'B-i43'] },
+  { id: 'int-leather', c: 'int', n: '皮革清洁与养护', ids: ['L-derma-cleaner', 'M-leather-cleaner', 'C-cleanse', 'L-derma-sealant', 'C-lotion', 'K-leather-star', 'K-protect-leather-care', 'G-leathercleaner-natural', 'G-leathercleaner-strong', 'G-leathercoat', 'F-3in1-pelle', 'F-charming', 'F-nutrient', 'F-hydrating', 'B-i35', 'B-i43'] },
   { id: 'int-care', c: 'int', n: '塑料养护 / 快速美容 / 除味', ids: ['M-interior-quick-detailer', 'C-innerqd', 'K-top-star', 'K-cockpit-super-pflege', 'K-gummifix', 'C-so2pure', 'G-interior-detailer', 'G-purify-maintain', 'G-odorremover', 'G-odorremover-pads', 'F-3in1-plast', 'F-plast-shine', 'F-plast-satin', 'F-scic-blu', 'F-odorbact'] },
 
   // ── 配件
