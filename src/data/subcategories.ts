@@ -12,15 +12,16 @@ export interface Subcategory {
 export const SUBCATS: Subcategory[] = [
   // ── 预洗 / TFR
   { id: 'pre-alk', c: 'pre', n: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'C-lift', 'L-libera', 'K-green-star', 'L-initio', 'F-supermafrasol-evo'] },
-  { id: 'pre-neu', c: 'pre', n: '中性预洗', ids: ['L-neve', 'K-gsf', 'B-a33'] },
+  { id: 'pre-neu', c: 'pre', n: '中性预洗', ids: ['L-neve', 'K-gsf'] },
+  { id: 'pre-acid', c: 'pre', n: '酸性预洗', ids: ['B-a55'] },
   { id: 'pre-bug', c: 'pre', n: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer'] },
   { id: 'pre-foam', c: 'pre', n: '泡沫预洗（官方未标 pH）', ids: ['G-foam', 'F-valido', 'F-iglu', 'F-c1', 'F-docg3', 'F-jedy', 'F-mafrasol', 'F-supermafrasol', 'F-idrowash'] },
 
   // ── 洗车香波 / 免冲洗
-  { id: 'wash-neu', c: 'wash', n: '中性香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe', 'B-a43'] },
+  { id: 'wash-neu', c: 'wash', n: '中性香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe', 'B-a43', 'B-a33'] },
   { id: 'wash-plain', c: 'wash', n: '弱碱性香波', ids: ['F-shampoo-power'] },
   { id: 'wash-protect', c: 'wash', n: '洗护一体 / 镀膜香波', ids: ['L-revitax', 'M-ceramic-shampoo', 'K-ceramic-effect-shampoo', 'K-nanomagic-shampoo', 'C-hydro2-foam', 'K-glanzwachsshampoo', 'G-bathe-plus', 'F-shampoo-cera', 'F-polish-express'] },
-  { id: 'wash-acid', c: 'wash', n: '酸性除垢香波', ids: ['L-purifica', 'M-descale-foam-shampoo', 'K-reactivation-shampoo', 'C-descale', 'L-renova', 'B-e55', 'B-a55'] },
+  { id: 'wash-acid', c: 'wash', n: '酸性除垢香波', ids: ['L-purifica', 'M-descale-foam-shampoo', 'K-reactivation-shampoo', 'C-descale', 'L-renova', 'B-e55'] },
   { id: 'wash-deco', c: 'wash', n: '中性除染香波（去铁 / 恢复镀膜）', ids: ['G-restartwash', 'G-ppf-wash'] },
   { id: 'wash-film', c: 'wash', n: '哑光漆 / 改色膜专用', ids: ['L-satino', 'M-black-wrap-shampoo'] },
   { id: 'wash-rinseless', c: 'wash', n: '免冲洗 / 无水洗', ids: ['L-idrosave', 'K-rapid-rinseless-wash', 'M-waterless', 'C-ech2o', 'G-ecowash', 'K-wash-finish', 'L-preludio-alkaline', 'L-preludio-acidic', 'F-waterless', 'F-ecodry'] },
