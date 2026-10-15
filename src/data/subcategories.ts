@@ -11,7 +11,7 @@ export interface Subcategory {
 /** 分类下的第二层：每款产品恰好属于一个子分类，子分类顺序即页面上的显示顺序 */
 export const SUBCATS: Subcategory[] = [
   // ── 预洗 / TFR
-  { id: 'pre-alk', c: 'pre', n: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'C-lift', 'L-libera', 'K-green-star', 'L-initio'] },
+  { id: 'pre-alk', c: 'pre', n: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'C-lift', 'L-libera', 'K-green-star', 'L-initio', 'F-supermafrasol-evo'] },
   { id: 'pre-neu', c: 'pre', n: '中性预洗', ids: ['L-neve', 'K-gsf'] },
   { id: 'pre-bug', c: 'pre', n: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer'] },
   { id: 'pre-foam', c: 'pre', n: '泡沫预洗（官方未标 pH）', ids: ['G-foam', 'F-valido', 'F-iglu', 'F-c1', 'F-docg3', 'F-jedy', 'F-mafrasol', 'F-supermafrasol', 'F-idrowash'] },
