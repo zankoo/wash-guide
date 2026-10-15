@@ -20,7 +20,7 @@ export function Masthead() {
           <Logo />
           <div>
             <h1>洗车施工速查</h1>
-            <p>Labocosmetica、Maniac Line、Koch-Chemie、CarPro、GYEON 的官方稀释比例、施工步骤和洗车流程</p>
+            <p>Labocosmetica、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON 的官方稀释比例、施工步骤和洗车流程</p>
           </div>
         </div>
         <ViewTabs className="tabs top" />
@@ -37,7 +37,7 @@ export function Footer() {
           比例写法沿用官方：<b>1:10</b> = 1 份原液 + 10 份水。PA壶比例指壶内的调配比例，最终出液浓度取决于高压清洗机。
         </p>
         <p>
-          数据来源：labocosmetica.com、maniacline.com、koch-chemie.com、carpro.global 与 gyeon.co 官方产品页、技术资料和施工手册，2026 年 10
+          数据来源：labocosmetica.com、maniacline.com、mafra.it、koch-chemie.com、carpro.global 与 gyeon.co 官方产品页、技术资料和施工手册，2026 年 10
           月整理翻译。产品图取自各品牌官网并保存在本站，官网未提供图片的产品以名称卡片代替。官网未给出比例的产品按原液或即用处理并已注明；镀膜类以包装说明书为准。施工前请先在不显眼处测试。
         </p>
       </div>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: '洗车施工速查', template: '%s · 洗车施工速查' },
   description:
-    'Labocosmetica、Maniac Line、Koch-Chemie、CarPro、GYEON 五个品牌汽美产品的官方稀释比例、施工步骤和洗车流程速查，可按施工工具换算加水量和原液量。',
+    'Labocosmetica、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON 六个品牌汽美产品的官方稀释比例、施工步骤和洗车流程速查，可按施工工具换算加水量和原液量。',
 };
 
 export const viewport: Viewport = {
