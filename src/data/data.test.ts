@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SUBCATS, materialsOf, productsOfStep, stepsOf } from './index';
+import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SUBCATS, keyRatios, materialsOf, productsOfStep, stepsOf } from './index';
 import { CAT_NAME, SCENE_NAME } from './taxonomy';
 
 describe('数据完整性', () => {
@@ -35,6 +35,16 @@ describe('数据完整性', () => {
     expect(new Set(SUBCATS.map((s) => s.id)).size).toBe(SUBCATS.length);
     for (const s of SUBCATS) for (const id of s.ids) expect(PRODUCT_BY_ID.get(id)?.c, `${s.id} → ${id}`).toBe(s.c);
     for (const p of PRODUCTS) expect(ids, p.id).toContain(p.id);
+  });
+});
+
+describe('卡片比例标签', () => {
+  it('只放简短的用量，不放文字说明', () => {
+    for (const p of PRODUCTS) {
+      const r = keyRatios(p);
+      if (Array.isArray(r)) for (const x of r) expect(x.length, `${p.id} → ${x}`).toBeLessThanOrEqual(14);
+    }
+    expect(keyRatios(PRODUCT_BY_ID.get('K-gsf')!)).toEqual(['1:50', '1:200']);
   });
 });
 

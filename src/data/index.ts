@@ -55,13 +55,17 @@ export const productsOfStep = (x: FlowStep): string[] => [...(x.p ?? []), ...(x.
 export const flowsUsing = (id: string): FlowEntry[] =>
   FLOWS.filter((f) => stepsOf(f).some((x) => productsOfStep(x).includes(id)));
 
+/** 卡片标签只放简短的用量：带数字（1:10、3 瓶盖 / 10 L 水、每车 30 g）或原液 / 即用，文字说明留在详情页 */
+const PILL_MAX = 14;
+const isPill = (r: string) => r.length <= PILL_MAX && (/\d/.test(r) || /^(原液|即用)/.test(r));
+
 /** 卡片上显示的最多 3 个比例标签 */
 export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
   if (!p.d.length) return 'accessory';
   const seen: string[] = [];
   for (const [, ratio] of p.d) {
     const r = ratio.split('（')[0].trim();
-    if (r !== '—' && !seen.includes(r)) seen.push(r);
+    if (isPill(r) && !seen.includes(r)) seen.push(r);
     if (seen.length >= 3) break;
   }
   return seen.length ? seen : 'see-label';

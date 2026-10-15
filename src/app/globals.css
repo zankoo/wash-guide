@@ -167,8 +167,8 @@ main{padding-block:6px 56px}
 .br.L::before{background:var(--labo)} .br.M::before{background:var(--maniac)} .br.K::before{background:var(--koch)} .br.C::before{background:var(--carpro)} .br.G::before{background:var(--gyeon)} .br.F::before{background:var(--mafra)}
 .nm{font:600 21px/1.08 var(--f-display);letter-spacing:.01em;margin-top:4px;overflow-wrap:anywhere}
 .ty{font-size:13px;color:var(--muted);line-height:1.45;margin-top:3px}
-.pills{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:auto;padding-top:10px}
-.pill{font:600 16px/1.2 var(--f-display);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pills{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:auto;padding-top:10px;min-width:0}
+.pill{font:600 16px/1.2 var(--f-display);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .pill.ghost{font:500 12.5px var(--f-body);color:var(--faint)}
 
 /* 浓度刻度条：对数刻度，左原液右 1:1000；深色段是这款产品用到的浓度范围 */
