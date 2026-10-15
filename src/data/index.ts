@@ -1,3 +1,4 @@
+import * as bola from './bola';
 import * as carpro from './carpro';
 import * as gyeon from './gyeon';
 import * as koch from './koch';
@@ -14,12 +15,12 @@ export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';
 
-export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products];
+export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products];
 
 export type FlowEntry = (Flow & { kind: 'off' }) | (Combo & { kind: 'combo' });
 
 export const FLOWS: FlowEntry[] = [
-  ...[laboManiacFlows.flows, mafra.flows, koch.flows, carpro.flows, gyeon.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
+  ...[laboManiacFlows.flows, mafra.flows, koch.flows, carpro.flows, gyeon.flows, bola.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
   ...[laboManiacFlows.combos, mafra.combos, koch.combos, carpro.combos, gyeon.combos].flat().map((f) => ({ ...f, kind: 'combo' as const })),
 ];
 
@@ -37,6 +38,7 @@ export const NO_IMAGE = new Set([
   'K-ceramic-neo-c003', 'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
   'K-quick-shine-plus', 'K-allround-quick-shine', 'K-nanomagic-plast-care', 'K-speed-glass-cleaner',
   'K-multi-interior-cleaner', 'K-leather-star', 'K-protect-leather-care',
+  'B-a33', 'B-e55', 'B-a55', 'B-p47-pro', 'B-pf1', 'B-i35',
 ]);
 
 /** 产品图全部是 public/img 下的本地 webp（720×720 白底） */
