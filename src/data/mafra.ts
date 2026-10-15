@@ -239,10 +239,15 @@ export const products: Product[] = [
  s:['湿润光泽：用海绵把原液涂在轮胎上。','中等光泽：原液加等量水稀释后用海绵涂抹。'],
  x:['不油腻、不黏手，防止轮胎龟裂和老化。'],u:MAFRA+'nerissimo-gomme-auto/'},
 
-{id:'F-nouveaunoir',b:'F',c:'trim',n:'Nouveau Noir',t:'轮胎上光剂（专业装）',f:'6 kg · 25 kg',m:'轮胎 · 橡胶脚垫',
+{id:'F-nouveaunoir',b:'F',c:'trim',n:'Nouveau Noir（专业装）',t:'轮胎上光剂（专业装，可稀释）',f:'6 kg · 25 kg',m:'轮胎 · 橡胶脚垫',
  d:[['轮胎','原液 – 1:3','—']],
  s:['原液或加 1–3 份水稀释。','用海绵涂抹，让表面均匀。','擦掉多余产品。'],
  x:['不要过量使用。','不油腻、不黏手，也可用于车内橡胶脚垫。','专业用途。'],u:MAFRA+'nouveau-noir/'},
+
+{id:'F-nouveaunoir-spray',b:'F',c:'trim',n:'Nouveau Noir（500 ml 喷雾）',t:'即用型轮胎上光喷雾（零售装）',f:'500 ml',m:'轮胎 · 橡胶',
+ d:[['轮胎','即用','喷雾壶']],
+ s:['彻底清洁要处理的橡胶或轮胎。','均匀喷在表面上。','用超纤施工块或软毛刷抹匀。'],
+ x:['上光成分来自植物、易生物降解，不含磷酸盐。','防止轮胎龟裂并保持胎侧弹性。','需要稀释使用的专业桶装见 Nouveau Noir。'],u:MAFRA+'pulire-e-lucidare-gomme-nouveau-noir/'},
 
 {id:'F-m1',b:'F',c:'trim',n:'Nero Gomme M1',t:'高遮盖力轮胎上光剂（专业装）',f:'25 kg',m:'轮胎',
  d:[['轮胎','原液 – 1:4','—']],
@@ -332,10 +337,15 @@ export const products: Product[] = [
  x:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB22-01-0996）。意大利官网写的是中性 pH，韩国标签写弱碱性，两处说法不一致。','免冲洗，不含磷酸盐、氯和氨。'],u:MAFRA+'split-750ml-detergente-multisuperficie/'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'F-pulimax',b:'F',c:'int',n:'Pulimax 2.0',t:'超浓缩内饰 APC（无酒精、无溶剂）（弱碱性）',f:'1 L · 4.5 L',m:'中控 · 门板 · 塑料 · 人造革（skay）· 织物座椅',
+{id:'F-pulimax',b:'F',c:'int',n:'Pulimax 2.0（专业浓缩装）',t:'超浓缩内饰 APC（无酒精、无溶剂）',f:'1 L · 4.5 L',m:'中控 · 门板 · 塑料 · 人造革（skay）· 织物座椅',
  d:[['内饰清洁（按脏污程度）','1:5 – 1:20','喷雾壶']],
  s:['按脏污程度稀释。','用手动喷壶喷涂，等几秒。','用湿布擦掉污垢。'],
- x:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB24-01-0285）。','座椅磨损时先在不显眼处测试。','新旧材质都安全，无残留。'],u:MAFRA+'pulimax-2-0-pulitore-interni-auto/'},
+ x:['座椅磨损时先在不显眼处测试。','新旧材质都安全，无残留。'],u:MAFRA+'pulimax-2-0-pulitore-interni-auto/'},
+
+{id:'F-pulimax-spray',b:'F',c:'int',n:'Pulimax（500 ml 喷雾）',t:'即用型内饰清洁喷雾（零售装）（弱碱性）',f:'500 ml',m:'织物座椅 · 人造革（skay）· 内饰塑料',
+ d:[['内饰清洁','即用','喷雾壶']],
+ s:['直接喷在要清洁的部位。','停留几分钟，不要让它干在表面上。','用布有规律地擦拭。'],
+ x:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB24-01-0285，韩国标示的产品名为 Pulimax 2.0 500 ml）。','溶解织物纤维里的污垢和尼古丁，并去除异味。','需要稀释使用的专业浓缩装见 Pulimax 2.0。'],u:MAFRA+'puliziia-e-igienizzazione-auto-pulimax/'},
 
 {id:'F-pulimax-ewo',b:'F',c:'int',n:'Pulimax Ewo',t:'内饰多用途清洁剂（无 VOC，配气动清洁枪）',f:'4.5 kg · 25 kg',m:'中控 · 座椅 · 脚垫 · 门槛',
  d:[['手工清洁','原液 – 1:5','喷雾壶'],['Rotorjet / Tornador 气动清洁枪','1:3 – 1:5','—']],
@@ -561,7 +571,7 @@ export const flows: Flow[] = [
 {id:'f-f-int',b:'F',name:'内饰清洁与皮革护理',en:'MAFRA Interior · Pulimax + Charme',sc:'int',tags:[],
  sum:'按内饰产品页：Pulimax 2.0 清洁硬表面 → 织物用 3in1 Tessuti 或抽洗机 → 皮革先 Charme 清洁泡沫、再 Nutrient 滋养 → 塑料养护。',
  steps:[
-  {ph:'硬表面清洁',p:['F-pulimax'],r:'1:5 – 1:20',how:'喷涂等几秒，用湿布擦掉污垢；座椅磨损时先测试。'},
+  {ph:'硬表面清洁',p:['F-pulimax','F-pulimax-spray'],alt:true,r:'浓缩装 1:5 – 1:20 · 喷雾装即用',how:'喷涂后等几秒（喷雾装可停留几分钟，不要让它干掉），用湿布擦掉污垢；座椅磨损时先测试。'},
   {ph:'织物',p:['F-3in1-tessuti','F-textile'],alt:true,r:'3in1 即用 · Textile Evo 1:10 – 1:20',how:'3in1 Tessuti 喷涂后用软毛刷抹匀泡沫、擦干；大面积用 Textile Evo 配抽洗机。'},
   {ph:'皮革清洁',p:['F-charming'],r:'即用',how:'涂开后在泡沫变液体前打圈按摩，用柔软湿布擦掉。'},
   {ph:'皮革滋养',p:['F-nutrient','F-hydrating'],alt:true,how:'Nutrient 同方向小圈涂抹，吸收 20 分钟后擦掉多余；或喷 Hydrating 渗透几分钟后擦掉。'},
