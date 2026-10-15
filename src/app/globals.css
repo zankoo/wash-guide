@@ -128,6 +128,10 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 /* ── 分类与子分类 ───────────────────────────── */
 main{padding-block:6px 56px}
 .found{margin:20px 0 14px;color:var(--muted);font-size:14px}
+/* 搜索时限定在某个分类：一键回到全部分类的结果 */
+.scope-clear{margin-left:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 11px;font:inherit;font-size:13px;cursor:pointer}
+.scope-clear:hover{border-color:var(--ink)}
+.empty .scope-clear{display:block;margin:14px auto 0}
 .list{scroll-margin-top:var(--bar-h)}
 .sec{padding-top:22px;container-type:inline-size;scroll-margin-top:calc(var(--bar-h) + 4px)}
 .sec-h{display:flex;align-items:baseline;gap:12px;margin:0 -8px 12px;padding:10px 8px;position:sticky;top:calc(var(--bar-h) - 1px);z-index:3;background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -449,6 +453,8 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
 .side-list button:hover{color:var(--ink)}
 .side-list button[aria-pressed="true"]{color:var(--ink);font-weight:700}
 .side-list button.none{opacity:.45}
+.side-list button:disabled{cursor:default}
+.side-list button:disabled:hover{color:var(--muted)}
 .side-list small,.side-index small{margin-left:auto;font:600 13px var(--f-display);font-variant-numeric:tabular-nums;opacity:.75}
 .side-fav svg{color:#d99a0b}
 /* 场景较多：排成可换行的小标签，给下面的流程目录留出位置 */
