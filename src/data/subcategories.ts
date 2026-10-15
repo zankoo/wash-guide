@@ -68,7 +68,7 @@ export const SUBCATS: Subcategory[] = [
   // ── 玻璃
   { id: 'glass-clean', c: 'glass', n: '玻璃清洁', ids: ['L-nitido', 'M-glass-cleaner-degreaser', 'C-clarify', 'C-clarify-phobic', 'K-glas-star', 'K-glass-cleaner', 'K-speed-glass-cleaner', 'G-glass', 'G-glass-plus', 'G-defrost', 'F-glass-plus', 'F-glass-clean', 'F-glass-cleaner', 'F-cristalvetro', 'B-g37'] },
   { id: 'glass-protect', c: 'glass', n: '驱水 / 玻璃封体', ids: ['L-aquavelox', 'M-rain-speed', 'K-nano-glasversiegelung', 'G-quickview'] },
-  { id: 'glass-polish', c: 'glass', n: '研磨 / 去油膜', ids: ['L-vitreo', 'C-ceriglass', 'C-gofx', 'G-glasspolish'] },
+  { id: 'glass-polish', c: 'glass', n: '研磨 / 去油膜', ids: ['L-vitreo', 'C-ceriglass', 'C-gofx', 'G-glasspolish', 'B-g58'] },
   { id: 'glass-winter', c: 'glass', n: '雨刷水 / 除冰', ids: ['F-cristalbel', 'F-notice'] },
 
   // ── 多功能清洁 APC

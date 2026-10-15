@@ -38,7 +38,7 @@ export const NO_IMAGE = new Set([
   'K-ceramic-neo-c003', 'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
   'K-quick-shine-plus', 'K-allround-quick-shine', 'K-nanomagic-plast-care', 'K-speed-glass-cleaner',
   'K-multi-interior-cleaner', 'K-leather-star', 'K-protect-leather-care',
-  'B-a33', 'B-e55', 'B-a55', 'B-p47-pro', 'B-pf1', 'B-i35',
+  'B-a33', 'B-e55', 'B-a55', 'B-p47-pro', 'B-pf1', 'B-i35', 'B-g58',
 ]);
 
 /** 产品图全部是 public/img 下的本地 webp（720×720 白底） */
