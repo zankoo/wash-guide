@@ -14,7 +14,7 @@ export const SUBCATS: Subcategory[] = [
   { id: 'pre-alk', c: 'pre', n: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'C-lift', 'L-libera', 'K-green-star', 'L-initio'] },
   { id: 'pre-neu', c: 'pre', n: '中性预洗', ids: ['L-neve', 'K-gsf'] },
   { id: 'pre-bug', c: 'pre', n: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer'] },
-  { id: 'pre-foam', c: 'pre', n: '泡沫预洗（官方未标 pH）', ids: ['G-foam', 'F-valido', 'F-iglu', 'F-c1', 'F-docg3', 'F-jedy', 'F-mafrasol', 'F-idrowash'] },
+  { id: 'pre-foam', c: 'pre', n: '泡沫预洗（官方未标 pH）', ids: ['G-foam', 'F-valido', 'F-iglu', 'F-c1', 'F-docg3', 'F-jedy', 'F-mafrasol', 'F-supermafrasol', 'F-idrowash'] },
 
   // ── 洗车香波 / 免冲洗
   { id: 'wash-neu', c: 'wash', n: '中性香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe'] },
