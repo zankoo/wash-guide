@@ -38,7 +38,7 @@ export function Footer() {
         </p>
         <p>
           数据来源：labocosmetica.com、maniacline.com、mafra.it、koch-chemie.com、carpro.global、gyeon.co 与 bolasolution.com 官方产品页、技术资料和施工手册，BolaSolution 日本正规代理（乐天 Amazing Green）产品页与韩国环境部申报资料，2026 年 10
-          月整理翻译。产品图取自各品牌官网（BolaSolution 取自日本正规代理产品页）并保存在本站，官网未提供图片的产品以名称卡片代替。官网未给出比例的产品按原液或即用处理并已注明；镀膜类以包装说明书为准。施工前请先在不显眼处测试。
+          月整理翻译。产品图取自各品牌官网（BolaSolution 取自日本正规代理产品页和韩国官方商城 DOXX MALL）并保存在本站，官网未提供图片的产品以名称卡片代替。官网未给出比例的产品按原液或即用处理并已注明；镀膜类以包装说明书为准。施工前请先在不显眼处测试。
         </p>
       </div>
     </footer>
