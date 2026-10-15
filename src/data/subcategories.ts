@@ -18,7 +18,7 @@ export const SUBCATS: Subcategory[] = [
 
   // ── 洗车香波 / 免冲洗
   { id: 'wash-neu', c: 'wash', n: '中性香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe'] },
-  { id: 'wash-plain', c: 'wash', n: '洗车香波（官方未标 pH）', ids: ['F-shampoo-power'] },
+  { id: 'wash-plain', c: 'wash', n: '弱碱性香波', ids: ['F-shampoo-power'] },
   { id: 'wash-protect', c: 'wash', n: '洗护一体 / 镀膜香波', ids: ['L-revitax', 'M-ceramic-shampoo', 'K-ceramic-effect-shampoo', 'K-nanomagic-shampoo', 'C-hydro2-foam', 'K-glanzwachsshampoo', 'G-bathe-plus', 'F-shampoo-cera', 'F-polish-express'] },
   { id: 'wash-acid', c: 'wash', n: '酸性除垢香波', ids: ['L-purifica', 'M-descale-foam-shampoo', 'K-reactivation-shampoo', 'C-descale', 'L-renova'] },
   { id: 'wash-deco', c: 'wash', n: '中性除染香波（去铁 / 恢复镀膜）', ids: ['G-restartwash', 'G-ppf-wash'] },
@@ -27,8 +27,8 @@ export const SUBCATS: Subcategory[] = [
 
   // ── 轮毂轮胎
   { id: 'wheel-neu', c: 'wheel', n: '无酸 / 中性（铁粉变色）', ids: ['M-wheel-decontaminant', 'K-magic-wheel-cleaner', 'K-reactive-wheel-cleaner', 'K-felgenblitz-saeurefrei', 'G-iron-wheelcleaner', 'F-fallout', 'F-regenera-rims'] },
-  { id: 'wheel-alk', c: 'wheel', n: '碱性轮毂 / 轮胎清洁', ids: ['M-wheel-tyre-cleaner', 'M-wheel-foam-cleaner', 'K-alkali-wheel-cleaner', 'C-retyre', 'G-tirecleaner', 'F-rimnet', 'F-powerwheel'] },
-  { id: 'wheel-plain', c: 'wheel', n: '轮毂清洁（官方未标 pH）', ids: ['F-cerchi-gomme', 'F-splendorlega', 'F-splendorlega-pro'] },
+  { id: 'wheel-alk', c: 'wheel', n: '碱性轮毂 / 轮胎清洁', ids: ['M-wheel-tyre-cleaner', 'M-wheel-foam-cleaner', 'K-alkali-wheel-cleaner', 'C-retyre', 'G-tirecleaner', 'F-rimnet', 'F-powerwheel', 'F-cerchi-gomme'] },
+  { id: 'wheel-plain', c: 'wheel', n: '轮毂清洁（官方未标 pH）', ids: ['F-splendorlega', 'F-splendorlega-pro'] },
   { id: 'wheel-acid', c: 'wheel', n: '酸性（强效）', ids: ['C-wheelx', 'K-felgenreiniger-k', 'K-triple-acid-star'] },
 
   // ── 除染 / 去水垢
