@@ -152,7 +152,12 @@ export const products: Product[] = [
  s:['每次在盘上加少量。','旋转机：先 600–900 rpm，逐步升到 1500–1800 rpm，最后轻压 600–900 rpm 收尾。','双动机：1–2 档把研磨剂在 40×40 cm 区域抹匀，升到最高档抛到研磨剂耗尽。'],
  x:['去除 P1500 以内的砂纸痕和划痕（不是填充遮盖），适用于抗刮清漆、原厂漆和补漆。','可用于透明保护膜（PPF），去除老化痕迹。','可配羊毛盘、海绵盘或超纤盘；低粉尘，残留容易擦除。'],u:MAFRA+'polish-corrector-3-0-1000-gr/'},
 
-{id:'F-scratch',b:'F',c:'polish',n:'Scratch & Swirls Remover',t:'去划痕 / 旋纹研磨剂',f:'500 ml',m:'车漆',
+{id:'F-scratch-remover',b:'F',c:'polish',n:'Scratch Remover（SR · Rimuovi Graffi）',t:'手工去划痕膏套装（附海绵施工头和抛光垫）',f:'100 ml',m:'车漆',
+ d:[],
+ s:['表面须干净、不热、在阴凉处。','用管口的海绵施工头把去划痕膏涂在划痕上，来回擦拭。','用随附的抛光垫擦亮，去除残留。'],
+ x:['去除轻微、表层划痕（如门把手周围的指甲划痕、车门细划痕），较深的划痕只能减轻。','适用于各种车漆；膏体不会干在管内。','官网没有给出详细步骤，以上按套装内容（施工头 + 抛光垫）整理。需要机器去旋纹时用 Scratch & Swirls Remover（SSR）。'],u:MAFRA+'togliere-graffi-auto-special-kit/'},
+
+{id:'F-scratch',b:'F',c:'polish',n:'Scratch & Swirls Remover（SSR）',t:'去划痕 / 旋纹研磨剂',f:'500 ml',m:'车漆',
  d:[],
  s:['施工前先用黏土除染；表面须干净、不热、在阴凉处，用前摇匀。','手工：每次处理 30×30 cm，打圈并部分重叠，干掉前用干净超纤布擦掉。','双动机：装研磨盘，把研磨剂直接加在盘上，盘面平贴漆面，中等压力重叠走位，每次约 50×50 cm，直到研磨剂开始被吸收；干掉前擦掉残留。'],
  x:['去除浅划痕、旋纹和氧化，适用于各种颜色的车漆。','官方建议最后用 Glazing Wax 收尾，获得湿润光泽。'],u:MAFRA+'scratch-swirls-remover-heavy-polish-compound/'},

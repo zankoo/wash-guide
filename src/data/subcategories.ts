@@ -40,7 +40,7 @@ export const SUBCATS: Subcategory[] = [
 
   // ── 研磨抛光 / 施工前处理（研磨剂按切削力从强到弱）
   { id: 'polish-heavy', c: 'polish', n: '重切削研磨', ids: ['C-ultracut', 'L-audace', 'K-heavy-cut-h902', 'K-heavy-quick-cut-b901', 'K-schleifpaste-h701', 'G-compound-plus', 'C-clearcut', 'F-corrector'] },
-  { id: 'polish-medium', c: 'polish', n: '中切削 / 一步抛光', ids: ['L-leale', 'K-fine-cut-f601', 'K-one-cut-finish-p602', 'C-fixer', 'G-compound', 'F-scratch'] },
+  { id: 'polish-medium', c: 'polish', n: '中切削 / 一步抛光', ids: ['L-leale', 'K-fine-cut-f601', 'K-one-cut-finish-p602', 'C-fixer', 'G-compound', 'F-scratch', 'F-scratch-remover'] },
   { id: 'polish-fine', c: 'polish', n: '细抛 / 收光', ids: ['K-micro-cut-m302', 'K-micro-cut-finish-p301', 'K-micro-cut-m202', 'K-lack-polish-violett', 'L-fiero', 'C-reflect', 'K-lack-polish-gruen', 'C-essence', 'G-polish', 'G-primer', 'F-illumina', 'F-cleanerwax', 'F-polish-clever'] },
   { id: 'polish-prep', c: 'polish', n: '镀膜前脱脂检验', ids: ['L-veritas', 'C-eraser', 'G-prep', 'G-total-remover', 'K-silicon-wachsentferner', 'K-panel-preparation-spray', 'F-sherlock'] },
   { id: 'polish-special', c: 'polish', n: '大灯 / 金属', ids: ['K-headlight-polish-set', 'K-metal-polish', 'C-metallicut', 'G-metalpolish', 'F-regenera-view', 'F-flashbright'] },
