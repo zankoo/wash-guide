@@ -46,6 +46,22 @@ describe('卡片比例标签', () => {
     }
     expect(keyRatios(PRODUCT_BY_ID.get('K-gsf')!)).toEqual(['1:50', '1:200']);
   });
+
+  it('按浓度从浓到淡排列', () => {
+    expect(keyRatios(PRODUCT_BY_ID.get('L-primus')!)).toEqual(['1:5', '1:10', '1:80']);
+    expect(keyRatios(PRODUCT_BY_ID.get('L-energo')!)).toEqual(['原液', '1:5', '1:10']);
+    expect(keyRatios(PRODUCT_BY_ID.get('L-purifica')!)).toEqual(['1:5 – 1:10', '1:100 – 1:200', '1:100 – 1:400']);
+  });
+
+  it('同一个意思只用一种写法', () => {
+    for (const p of PRODUCTS) {
+      for (const [, r] of p.d) {
+        expect(r, p.id).not.toMatch(/即用原液|水加 .*瓶盖|^最高 1:/);
+        // 不需要稀释的产品写「即用」，「原液」只用在需要稀释的产品上
+        if (/^原液/.test(r)) expect(p.d.some(([, x]) => /\d+\s*:\s*\d/.test(x)), p.id).toBe(true);
+      }
+    }
+  });
 });
 
 describe('适用材质', () => {
