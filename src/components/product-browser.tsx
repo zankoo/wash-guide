@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation';
 import { Fragment, useDeferredValue, useEffect, useLayoutEffect, useRef, ViewTransition, type ReactNode } from 'react';
 import { MATERIAL_NAME, type MaterialId } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
-import { CATS } from '@/data/taxonomy';
+import { CAT_NAME, CATS } from '@/data/taxonomy';
 import type { BrandId, CategoryId } from '@/data/types';
 import { useFavorites } from '@/lib/favorites';
 import { matchesQuery, relevance, type RankFields } from '@/lib/search';
-import { useGuide } from './guide-state';
+import { useGuide, type SearchHits } from './guide-state';
 
 export interface ProductItem {
   id: string;
@@ -31,7 +31,7 @@ const PEEK = 6;
 
 /** 按品牌 / 分类 / 搜索词筛选服务端渲染好的产品卡片，按分类 → 子分类分组；「全部」视图下大分类默认折叠 */
 export function ProductBrowser({ items }: { items: ProductItem[] }) {
-  const { brand, material, category, query: rawQuery, expanded, setExpanded, jumpTo } = useGuide();
+  const { brand, material, category, setCategory, query: rawQuery, expanded, setExpanded, jumpTo, setHits } = useGuide();
   const query = useDeferredValue(rawQuery.trim());
   const favorites = useFavorites();
   const router = useRouter();
@@ -48,13 +48,19 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
 
   const inCategory = (p: ProductItem) =>
     !category || (category === 'fav' ? favorites.includes(p.id) : p.c === category);
-  const list = items.filter(
-    (p) =>
-      (!brand || p.b === brand) &&
-      (!material || p.mt.includes(material)) &&
-      inCategory(p) &&
-      (!query || matchesQuery(p.text, query)),
+  // 先按品牌 / 材质 / 搜索词筛选，再按分类筛选：搜索时左栏和分类标签要显示每个分类各命中几款
+  const matched = items.filter(
+    (p) => (!brand || p.b === brand) && (!material || p.mt.includes(material)) && (!query || matchesQuery(p.text, query)),
   );
+  const list = matched.filter(inCategory);
+
+  // 把搜索命中数交给左栏和分类标签；用字符串比较，内容没变就不更新
+  const hitsKey = query ? JSON.stringify(countHits(matched)) : '';
+  useEffect(() => {
+    setHits(hitsKey ? (JSON.parse(hitsKey) as SearchHits) : null);
+  }, [hitsKey, setHits]);
+  // 离开产品页（例如切到流程页）时清掉，左栏不再按搜索结果显示
+  useEffect(() => () => setHits(null), [setHits]);
 
   // 品牌 / 分类切换时整个列表淡入淡出（不给每张卡片单独命名，244 张太重）
   const listKey = `${brand}|${material}|${category}|${query ? 'q' : ''}`;
@@ -72,12 +78,24 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
     }
   }, [category]);
 
+  // 搜索时选着某个分类：说明只在这个分类里找，并能一键回到全部分类
+  const scope = query && category ? (category === 'fav' ? '常用' : CAT_NAME[category]) : '';
+
   if (!list.length) {
     return (
       <p className="empty list" key={listKey} ref={top}>
-        {category === 'fav' && !favorites.length
-          ? '还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。'
-          : '没有匹配的产品，换个关键词、品牌或材质试试。'}
+        {category === 'fav' && !favorites.length && !query ? (
+          '还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。'
+        ) : scope && matched.length ? (
+          <>
+            「{scope}」里没有与「{query}」相关的产品，其他分类里有 {matched.length} 款。
+            <button type="button" className="scope-clear" onClick={() => setCategory('')}>
+              在全部分类中查看
+            </button>
+          </>
+        ) : (
+          '没有匹配的产品，换个关键词、品牌或材质试试。'
+        )}
       </p>
     );
   }
@@ -94,7 +112,16 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
       <ViewTransition key={listKey} enter="list-in" exit="list-out" default="none">
         <div className="list" ref={top}>
           <p className="found" role="status">
-            找到 {list.length} 款与「{query}」相关的产品，名称匹配的排在前面
+            {scope ? (
+              <>
+                在「{scope}」中找到 {list.length} 款与「{query}」相关的产品
+                <button type="button" className="scope-clear" onClick={() => setCategory('')}>
+                  查看全部 {matched.length} 款
+                </button>
+              </>
+            ) : (
+              <>找到 {list.length} 款与「{query}」相关的产品，名称匹配的排在前面</>
+            )}
           </p>
           <div className="grid results">
             {ranked.map(({ p }) => (
@@ -189,4 +216,11 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
       </div>
     </ViewTransition>
   );
+}
+
+/** 按分类统计命中数，'' 为合计 */
+function countHits(matched: ProductItem[]): SearchHits {
+  const hits: SearchHits = { '': matched.length };
+  for (const p of matched) hits[p.c] = (hits[p.c] ?? 0) + 1;
+  return hits;
 }

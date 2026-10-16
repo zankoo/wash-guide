@@ -10,7 +10,7 @@
   --stage:#f5f7f8;
   --warn:#8a5300; --warn-bg:#fbf3e3;
   --alk:#5b3fd1; --alk-bg:#eeebfc; --neu:#1d8656; --neu-bg:#e2f2e9; --acid:#b0600a; --acid-bg:#fbeedd;
-  --labo:#2747cf; --koch:#d0202e; --carpro:#f06a1a; --gyeon:#6b3fb5;
+  --labo:#2747cf; --koch:#d0202e; --carpro:#f06a1a; --gyeon:#6b3fb5; --mafra:#0e8a6a; --bola:#3a6680;
   --maniac:linear-gradient(100deg,#36d1c4,#6a7cff 40%,#c86bff 70%,#b6f35a);
   --lift:0 1px 2px rgba(15,27,34,.05);
   --float:0 24px 70px rgba(8,18,24,.28);
@@ -55,7 +55,7 @@ a{color:inherit}
 
 /* 品牌色点 */
 .dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--faint)}
-.dot.L{background:var(--labo)} .dot.M{background:var(--maniac)} .dot.K{background:var(--koch)} .dot.C{background:var(--carpro)} .dot.G{background:var(--gyeon)}
+.dot.L{background:var(--labo)} .dot.M{background:var(--maniac)} .dot.K{background:var(--koch)} .dot.C{background:var(--carpro)} .dot.G{background:var(--gyeon)} .dot.F{background:var(--mafra)} .dot.B{background:var(--bola)}
 
 /* ── 顶栏 ───────────────────────────── */
 .mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:18px 14px}
@@ -100,8 +100,8 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 .brand-pick select{height:46px;width:116px;border:1px solid var(--line-2);border-radius:12px;background:var(--sheet);font-size:14.5px;font-weight:500;padding:0 30px 0 26px;-webkit-appearance:none;appearance:none;text-overflow:ellipsis;
   background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
   background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat}
-.brand-pick:not(.L):not(.M):not(.K):not(.C):not(.G) select{padding-left:12px}
-.brand-pick:not(.L):not(.M):not(.K):not(.C):not(.G) .dot{display:none}
+.brand-pick:not(.L):not(.M):not(.K):not(.C):not(.G):not(.F):not(.B) select{padding-left:12px}
+.brand-pick:not(.L):not(.M):not(.K):not(.C):not(.G):not(.F):not(.B) .dot{display:none}
 /* 适用材质：样式同品牌下拉；选了材质时描边变色，提示列表正被筛选 */
 .mat-pick{display:flex;position:relative;flex:none;align-items:center}
 .mat-pick select{height:46px;width:112px;border:1px solid var(--line-2);border-radius:12px;background:var(--sheet);font-size:14.5px;font-weight:500;color:var(--muted);padding:0 28px 0 12px;-webkit-appearance:none;appearance:none;text-overflow:ellipsis;
@@ -128,6 +128,10 @@ h1{margin:0;font-size:21px;line-height:1.2;font-weight:800;letter-spacing:.02em}
 /* ── 分类与子分类 ───────────────────────────── */
 main{padding-block:6px 56px}
 .found{margin:20px 0 14px;color:var(--muted);font-size:14px}
+/* 搜索时限定在某个分类：一键回到全部分类的结果 */
+.scope-clear{margin-left:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 11px;font:inherit;font-size:13px;cursor:pointer}
+.scope-clear:hover{border-color:var(--ink)}
+.empty .scope-clear{display:block;margin:14px auto 0}
 .list{scroll-margin-top:var(--bar-h)}
 .sec{padding-top:22px;container-type:inline-size;scroll-margin-top:calc(var(--bar-h) + 4px)}
 .sec-h{display:flex;align-items:baseline;gap:12px;margin:0 -8px 12px;padding:10px 8px;position:sticky;top:calc(var(--bar-h) - 1px);z-index:3;background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -160,11 +164,11 @@ main{padding-block:6px 56px}
 .bd{padding:12px 14px 14px;display:flex;flex-direction:column;flex:1;min-width:0}
 .br{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted)}
 .br::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--faint)}
-.br.L::before{background:var(--labo)} .br.M::before{background:var(--maniac)} .br.K::before{background:var(--koch)} .br.C::before{background:var(--carpro)} .br.G::before{background:var(--gyeon)}
+.br.L::before{background:var(--labo)} .br.M::before{background:var(--maniac)} .br.K::before{background:var(--koch)} .br.C::before{background:var(--carpro)} .br.G::before{background:var(--gyeon)} .br.F::before{background:var(--mafra)} .br.B::before{background:var(--bola)}
 .nm{font:600 21px/1.08 var(--f-display);letter-spacing:.01em;margin-top:4px;overflow-wrap:anywhere}
 .ty{font-size:13px;color:var(--muted);line-height:1.45;margin-top:3px}
-.pills{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:auto;padding-top:10px}
-.pill{font:600 16px/1.2 var(--f-display);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pills{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:auto;padding-top:10px;min-width:0}
+.pill{font:600 16px/1.2 var(--f-display);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .pill.ghost{font:500 12.5px var(--f-body);color:var(--faint)}
 
 /* 浓度刻度条：对数刻度，左原液右 1:1000；深色段是这款产品用到的浓度范围 */
@@ -177,7 +181,7 @@ main{padding-block:6px 56px}
 .ph-img b{font:600 clamp(16px,2.2vw,24px)/1.05 var(--f-display);overflow-wrap:anywhere;color:#132028}
 .ph-img span{font-size:11px;color:#7d8a91}
 .ph-img i{display:block;width:30px;height:3px;border-radius:2px;background:var(--koch)}
-.ph-img.C i{background:var(--carpro)} .ph-img.L i{background:var(--labo)} .ph-img.M i{background:var(--maniac)} .ph-img.G i{background:var(--gyeon)}
+.ph-img.C i{background:var(--carpro)} .ph-img.L i{background:var(--labo)} .ph-img.M i{background:var(--maniac)} .ph-img.G i{background:var(--gyeon)} .ph-img.F i{background:var(--mafra)} .ph-img.B i{background:var(--bola)}
 
 /* ── 详情面板 ───────────────────────────── */
 html:has(.sheet[open]){overflow:hidden}
@@ -306,6 +310,8 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .flow.K .fl-h::before{background:var(--koch)}
 .flow.C .fl-h::before{background:var(--carpro)}
 .flow.G .fl-h::before{background:var(--gyeon)}
+.flow.F .fl-h::before{background:var(--mafra)}
+.flow.B .fl-h::before{background:var(--bola)}
 .flow.combo .fl-h::before{height:0;border-top:3px dashed var(--line-2)}
 .fl-h .sh-tag{font-size:12.5px}
 .fl-h .sh-tag .br{color:var(--ink);font-weight:600;font-size:12.5px}
@@ -329,7 +335,7 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .pc img{width:34px;height:34px;border-radius:7px;background:var(--stage);object-fit:contain;padding:2px;flex:none}
 .pc span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pc .ph-mini{width:34px;height:34px;border-radius:7px;flex:none;display:grid;place-items:center;font:600 13px var(--f-display);font-style:normal;color:#fff;background:var(--koch)}
-.pc .ph-mini.C{background:var(--carpro)} .pc .ph-mini.L{background:var(--labo)} .pc .ph-mini.G{background:var(--gyeon)}
+.pc .ph-mini.C{background:var(--carpro)} .pc .ph-mini.L{background:var(--labo)} .pc .ph-mini.G{background:var(--gyeon)} .pc .ph-mini.F{background:var(--mafra)} .pc .ph-mini.B{background:var(--bola)}
 .oc{display:inline-flex;align-items:center;font-size:13px;color:var(--muted);border:1px dashed var(--line-2);border-radius:10px;padding:6px 10px}
 .fs-how{margin:4px 0 0;font-size:14.5px}
 .fs-src{margin:6px 0 0;font-size:12.5px;color:var(--faint)}
@@ -448,6 +454,8 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
 .side-list button:hover{color:var(--ink)}
 .side-list button[aria-pressed="true"]{color:var(--ink);font-weight:700}
 .side-list button.none{opacity:.45}
+.side-list button:disabled{cursor:default}
+.side-list button:disabled:hover{color:var(--muted)}
 .side-list small,.side-index small{margin-left:auto;font:600 13px var(--f-display);font-variant-numeric:tabular-nums;opacity:.75}
 .side-fav svg{color:#d99a0b}
 /* 场景较多：排成可换行的小标签，给下面的流程目录留出位置 */

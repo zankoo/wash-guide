@@ -2,7 +2,7 @@
 // - 页面（HTML）和 RSC 数据：先联网，失败时用缓存（所以打开过的页面没网也能看）
 // - 带哈希的静态文件、字体、产品图：先读缓存
 // - 页面可以发消息 { type: 'cache-pages', urls } 让我们提前缓存指定页面（常用产品的详情页）
-const VERSION = 'v2';
+const VERSION = 'v5';
 const PAGES = `pages-${VERSION}`;
 const ASSETS = `assets-${VERSION}`;
 

@@ -40,7 +40,13 @@ interface GuideState {
   setExpanded: (c: CategoryId, open: boolean) => void;
   /** 展开分类 c（可选），提交后再滚动到元素 id */
   jumpTo: (id: string, c?: CategoryId) => void;
+  /** 有搜索词时各分类的命中数（'' 为合计，不受当前分类影响）；没有搜索时为 null */
+  hits: SearchHits | null;
+  setHits: (h: SearchHits | null) => void;
 }
+
+/** 搜索命中数：hits[分类 | ''] */
+export type SearchHits = Partial<Record<CategoryId | '', number>>;
 
 const GuideContext = createContext<GuideState | null>(null);
 
@@ -104,6 +110,7 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   const [isFlows, setIsFlows] = useState(pathname === '/flows');
   if (!pathname.startsWith('/p/') && (pathname === '/flows') !== isFlows) setIsFlows(pathname === '/flows');
   const [expanded, setExpandedSet] = useState<ReadonlySet<CategoryId>>(new Set());
+  const [hits, setHits] = useState<SearchHits | null>(null);
 
   function setExpanded(c: CategoryId, open: boolean) {
     // 放在 transition 里，展开 / 收起时分类区块的高度变化会以 View Transition 动画呈现
@@ -167,6 +174,8 @@ export function GuideProvider({ children }: { children: ReactNode }) {
         expanded,
         setExpanded,
         jumpTo,
+        hits,
+        setHits,
       }}
     >
       {children}

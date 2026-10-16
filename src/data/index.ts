@@ -1,6 +1,8 @@
+import * as bola from './bola';
 import * as carpro from './carpro';
 import * as gyeon from './gyeon';
 import * as koch from './koch';
+import * as mafra from './mafra';
 import * as laboManiac from './labo-maniac';
 import * as laboManiacFlows from './labo-maniac-flows';
 import { SUBCATS, type Subcategory } from './subcategories';
@@ -13,13 +15,13 @@ export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';
 
-export const PRODUCTS: Product[] = [...laboManiac.products, ...koch.products, ...carpro.products, ...gyeon.products];
+export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products];
 
 export type FlowEntry = (Flow & { kind: 'off' }) | (Combo & { kind: 'combo' });
 
 export const FLOWS: FlowEntry[] = [
-  ...[laboManiacFlows.flows, koch.flows, carpro.flows, gyeon.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
-  ...[laboManiacFlows.combos, koch.combos, carpro.combos, gyeon.combos].flat().map((f) => ({ ...f, kind: 'combo' as const })),
+  ...[laboManiacFlows.flows, mafra.flows, koch.flows, carpro.flows, gyeon.flows, bola.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
+  ...[laboManiacFlows.combos, mafra.combos, koch.combos, carpro.combos, gyeon.combos].flat().map((f) => ({ ...f, kind: 'combo' as const })),
 ];
 
 export const PRODUCT_BY_ID = new Map(PRODUCTS.map((p) => [p.id, p]));
@@ -36,6 +38,7 @@ export const NO_IMAGE = new Set([
   'K-ceramic-neo-c003', 'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
   'K-quick-shine-plus', 'K-allround-quick-shine', 'K-nanomagic-plast-care', 'K-speed-glass-cleaner',
   'K-multi-interior-cleaner', 'K-leather-star', 'K-protect-leather-care',
+  'B-pf1',
 ]);
 
 /** 产品图全部是 public/img 下的本地 webp（720×720 白底） */
@@ -54,16 +57,32 @@ export const productsOfStep = (x: FlowStep): string[] => [...(x.p ?? []), ...(x.
 export const flowsUsing = (id: string): FlowEntry[] =>
   FLOWS.filter((f) => stepsOf(f).some((x) => productsOfStep(x).includes(id)));
 
-/** 卡片上显示的最多 3 个比例标签 */
+/** 卡片标签只放简短的用量：带数字（1:10、3 瓶盖 / 10 L 水、每车 30 g）或原液 / 即用，文字说明留在详情页 */
+const PILL_MAX = 14;
+const isPill = (r: string) => r.length <= PILL_MAX && (/\d/.test(r) || /^(原液|即用)/.test(r));
+
+/**
+ * 标签的浓度 [最浓一端, 最稀一端]：原液 / 即用最浓（0），比例 1:5 – 1:10 → [5, 10]。
+ * 瓶盖、每车用量等换算不成比例的排在最后。
+ */
+function strength(r: string): [number, number] {
+  const ratios = [...r.matchAll(/1\s*:\s*(\d+(?:\.\d+)?)/g)].map((m) => Number(m[1]));
+  const strong = /^(原液|即用)/.test(r) ? 0 : (ratios[0] ?? Infinity);
+  // 最浓一端相同时，再比较最稀的一端（1:100 – 1:200 排在 1:100 – 1:400 前面）
+  return [strong, ratios.at(-1) ?? strong];
+}
+
+/** 卡片上显示的最多 3 个比例标签：取详情页里最常用的前 3 个，再按浓度从浓到淡排列 */
 export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
   if (!p.d.length) return 'accessory';
   const seen: string[] = [];
   for (const [, ratio] of p.d) {
     const r = ratio.split('（')[0].trim();
-    if (r !== '—' && !seen.includes(r)) seen.push(r);
+    if (isPill(r) && !seen.includes(r)) seen.push(r);
     if (seen.length >= 3) break;
   }
-  return seen.length ? seen : 'see-label';
+  if (!seen.length) return 'see-label';
+  return seen.map((r, i) => ({ r, i, k: strength(r) })).sort((a, b) => a.k[0] - b.k[0] || a.k[1] - b.k[1] || a.i - b.i).map((x) => x.r);
 }
 
 /** 搜索排序用的字段（见 relevance） */

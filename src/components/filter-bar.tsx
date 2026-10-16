@@ -39,7 +39,7 @@ export function usePickers(productCounts: ProductCounts, flowCounts: CountTable)
 }
 
 export function FilterBar({ productCounts, flowCounts }: { productCounts: ProductCounts; flowCounts: CountTable }) {
-  const { isFlows, brand, material, query, setQuery, category, setCategory, scene, setScene } = useGuide();
+  const { isFlows, brand, material, query, setQuery, category, setCategory, scene, setScene, hits } = useGuide();
   const { pickBrand, pickMaterial } = usePickers(productCounts, flowCounts);
   const input = useRef<HTMLInputElement>(null);
   const favorites = useFavorites();
@@ -60,7 +60,12 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: Produc
 
   const chips = isFlows
     ? [['', '全部场景'] as const, ...SCENES].map(([k, n]) => ({ k, n, count: flowCounts[brand][k] ?? 0 }))
-    : [['', '全部'] as const, ...CATS].map(([k, n]) => ({ k, n, count: counts[brand][k] ?? 0 }));
+    : [['', '全部'] as const, ...CATS].map(([k, n]) => ({
+        k,
+        n,
+        // 有搜索词时显示该分类命中几款，没命中的分类不显示（选着的除外）
+        count: (query.trim() && hits ? hits[k] : counts[brand][k]) ?? 0,
+      }));
   const selected = isFlows ? scene : category;
 
   return (
@@ -148,7 +153,7 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: Produc
             </button>
           )}
           {chips
-            .filter((c) => c.count)
+            .filter((c) => c.count || c.k === selected)
             .map(({ k, n, count }) => (
               <button
                 key={k}
