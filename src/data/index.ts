@@ -1,10 +1,12 @@
 import * as bola from './bola';
 import * as carpro from './carpro';
 import * as gyeon from './gyeon';
+import * as feynlab from './feynlab';
 import * as koch from './koch';
 import * as mafra from './mafra';
 import * as laboManiac from './labo-maniac';
 import * as laboManiacFlows from './labo-maniac-flows';
+import * as ps from './ps';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
@@ -15,12 +17,12 @@ export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';
 
-export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products];
+export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...feynlab.products, ...ps.products];
 
 export type FlowEntry = (Flow & { kind: 'off' }) | (Combo & { kind: 'combo' });
 
 export const FLOWS: FlowEntry[] = [
-  ...[laboManiacFlows.flows, mafra.flows, koch.flows, carpro.flows, gyeon.flows, bola.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
+  ...[laboManiacFlows.flows, mafra.flows, koch.flows, carpro.flows, gyeon.flows, bola.flows, feynlab.flows, ps.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
   ...[laboManiacFlows.combos, mafra.combos, koch.combos, carpro.combos, gyeon.combos].flat().map((f) => ({ ...f, kind: 'combo' as const })),
 ];
 
