@@ -1,6 +1,6 @@
 import type { BrandId, CategoryId, SceneId } from './types';
 
-export const BRANDS: BrandId[] = ['L', 'M', 'F', 'K', 'C', 'G', 'B'];
+export const BRANDS: BrandId[] = ['L', 'M', 'F', 'K', 'C', 'G', 'B', 'E'];
 
 export const BRAND: Record<BrandId, string> = {
   L: 'Labocosmetica',
@@ -10,9 +10,10 @@ export const BRAND: Record<BrandId, string> = {
   C: 'CarPro',
   G: 'GYEON',
   B: 'BolaSolution',
+  E: 'EURODET',
 };
 
-export const BRAND_SHORT: Record<BrandId, string> = { L: 'Labo', M: 'Maniac', F: 'MAFRA', K: 'Koch', C: 'CarPro', G: 'GYEON', B: 'Bola' };
+export const BRAND_SHORT: Record<BrandId, string> = { L: 'Labo', M: 'Maniac', F: 'MAFRA', K: 'Koch', C: 'CarPro', G: 'GYEON', B: 'Bola', E: 'EURODET' };
 
 /** 官方循环的来源说明（流程页的分组标题） */
 export const FLOW_SOURCE: Record<BrandId, string> = {
@@ -23,6 +24,7 @@ export const FLOW_SOURCE: Record<BrandId, string> = {
   C: '官方产品页与施工手册（How-to PDF）给出的施工顺序',
   G: '官方镀膜说明书（Coatings Manual）与产品页给出的施工顺序',
   B: '日本正规代理乐天店的官方流程图与产品页给出的施工顺序',
+  E: '官方产品页给出的施工顺序',
 };
 
 export const CATS: [CategoryId, string, string][] = [

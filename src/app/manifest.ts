@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: '洗车施工速查',
     short_name: '洗车速查',
-    description: 'Labocosmetica、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON、BolaSolution 的官方稀释比例、施工步骤和洗车流程',
+    description: 'Labocosmetica、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON、BolaSolution、EURODET 的官方稀释比例、施工步骤和洗车流程',
     lang: 'zh-CN',
     start_url: '/',
     display: 'standalone',

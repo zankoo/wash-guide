@@ -1,4 +1,4 @@
-export type BrandId = 'L' | 'M' | 'F' | 'K' | 'C' | 'G' | 'B';
+export type BrandId = 'L' | 'M' | 'F' | 'K' | 'C' | 'G' | 'B' | 'E';
 export type CategoryId =
   | 'pre' | 'wash' | 'wheel' | 'deco' | 'polish' | 'coat'
   | 'seal' | 'trim' | 'glass' | 'apc' | 'int' | 'acc';

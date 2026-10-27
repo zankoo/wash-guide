@@ -1,5 +1,6 @@
 import * as bola from './bola';
 import * as carpro from './carpro';
+import * as eurodet from './eurodet';
 import * as gyeon from './gyeon';
 import * as koch from './koch';
 import * as mafra from './mafra';
@@ -15,7 +16,7 @@ export * from './subcategories';
 export * from './taxonomy';
 export type * from './types';
 
-export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products];
+export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...eurodet.products];
 
 export type FlowEntry = (Flow & { kind: 'off' }) | (Combo & { kind: 'combo' });
 
