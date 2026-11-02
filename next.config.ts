@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   reactCompiler: true,
+  experimental: {
+    agentUpgrade: 'security',
+  },
   images: {
     // 产品图全部在 public/img 下，不读取任何外部图床；只允许优化这个目录
     localPatterns: [{ pathname: '/img/**', search: '' }],
