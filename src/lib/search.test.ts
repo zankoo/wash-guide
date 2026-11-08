@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fold, matchesQuery, relevance } from './search';
+import { fold, initials, matchesQuery, relevance } from './search';
 
 describe('搜索', () => {
   it('忽略重音和大小写', () => {
@@ -17,7 +17,7 @@ describe('搜索', () => {
   });
 
   it('名称命中 > 类型开头 > 类型其他位置 > 分类 / 材质 > 其他字段', () => {
-    const f = (name: string, type: string, tags = '') => ({ name: fold(name), type: fold(type), tags: fold(tags) });
+    const f = (name: string, type: string, tags = '') => ({ name: fold(name), type: fold(type), tags: fold(tags), abbr: initials(name) });
     const q = '铁粉';
     const scores = [
       relevance(f('铁粉 X', ''), q),
@@ -28,5 +28,24 @@ describe('搜索', () => {
     ];
     expect(scores).toEqual([...scores].sort((a, b) => b - a));
     expect(new Set(scores).size).toBe(scores.length);
+  });
+
+  it('按首字母搜索', () => {
+    expect(initials('Vorreiniger B')).toEqual(['vb']);
+    expect(initials('ReactiveWheelCleaner')).toEqual(['rwc']);
+    expect(initials('NanoMagic Shampoo')).toEqual(['ns', 'nms']);
+    expect(initials('Heavy Cut H9.02')).toEqual(['hch']);
+    expect(initials('Felgenblitz säurefrei')).toEqual(['fs']);
+    expect(initials('Eulex')).toEqual([]);
+    const name = 'Magic Wheel Cleaner';
+    expect(matchesQuery(fold(name), 'mwc', initials(name))).toBe(true);
+    expect(matchesQuery(fold(name), 'MW', initials(name))).toBe(true);
+    expect(matchesQuery(fold(name), 'wc', initials(name))).toBe(false);
+    expect(matchesQuery(fold('Vorreiniger B 预洗剂'), 'vb 预洗', initials('Vorreiniger B'))).toBe(true);
+  });
+
+  it('首字母命中和名称开头同样排在前面', () => {
+    const f = (name: string, type: string) => ({ name: fold(name), type: fold(type), tags: '', abbr: initials(name) });
+    expect(relevance(f('Vorreiniger B', '预洗剂'), 'vb')).toBeGreaterThan(relevance(f('Other', 'vb 型'), 'vb'));
   });
 });

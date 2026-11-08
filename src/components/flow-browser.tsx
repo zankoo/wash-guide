@@ -14,6 +14,8 @@ export interface FlowItem {
   name: string;
   /** 归一化后的搜索文本（见 fold） */
   text: string;
+  /** 流程英文名和所用产品名的首字母缩写（见 initials） */
+  abbr: string[];
   /** 服务端渲染好的流程卡片 */
   card: ReactNode;
 }
@@ -34,7 +36,7 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
   const { brand, scene, query: rawQuery, flowTarget } = useGuide();
   const query = useDeferredValue(rawQuery.trim());
   const list = items.filter(
-    (f) => (!brand || f.b === brand) && (!scene || f.sc === scene) && (!query || matchesQuery(f.text, query)),
+    (f) => (!brand || f.b === brand) && (!scene || f.sc === scene) && (!query || matchesQuery(f.text, query, f.abbr)),
   );
 
   // 从产品详情或「套用官方」跳转过来：等目标渲染出来后滚动并高亮
