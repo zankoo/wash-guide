@@ -50,7 +50,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
     !category || (category === 'fav' ? favorites.includes(p.id) : p.c === category);
   // 先按品牌 / 材质 / 搜索词筛选，再按分类筛选：搜索时左栏和分类标签要显示每个分类各命中几款
   const matched = items.filter(
-    (p) => (!brand || p.b === brand) && (!material || p.mt.includes(material)) && (!query || matchesQuery(p.text, query)),
+    (p) => (!brand || p.b === brand) && (!material || p.mt.includes(material)) && (!query || matchesQuery(p.text, query, p.rank.abbr)),
   );
   const list = matched.filter(inCategory);
 
