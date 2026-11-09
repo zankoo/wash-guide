@@ -6,7 +6,7 @@ Labocosmetica、Maniac Line、Koch-Chemie、CarPro 四个品牌汽美产品的�
 
 - [Next.js 16](https://nextjs.org)（App Router + Turbopack）、React 19、TypeScript
 - React Compiler：自动记忆化，不需要手写 `useMemo` / `useCallback`
-- Cache Components / Partial Prerendering：全部页面在构建时静态生成（首页、流程页、244 个产品页）
+- Cache Components / Partial Prerendering：全部页面在构建时静态生成（首页、流程页、全部产品页）
 - `next/image`：Koch-Chemie / CarPro 官网的 1248px PNG 产品图由 Vercel 图片优化转成 webp 并按卡片尺寸缩放
 - `next/font`：Noto Sans SC / Saira Condensed / IBM Plex Mono 构建时下载并自托管，访问时不再请求 Google Fonts
 - ESLint（`eslint-config-next`）、Vitest
