@@ -37,7 +37,7 @@ export function getProduct(id: string): Product {
 
 /** 官网没有提供产品图（或图片已失效）的产品，显示名称卡片 */
 export const NO_IMAGE = new Set([
-  'K-ceramic-neo-c003', 'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
+  'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
   'K-quick-shine-plus', 'K-allround-quick-shine', 'K-nanomagic-plast-care', 'K-speed-glass-cleaner',
   'K-multi-interior-cleaner', 'K-leather-star', 'K-protect-leather-care',
   'B-pf1',
