@@ -1,7 +1,7 @@
 export type BrandId = 'L' | 'M' | 'F' | 'K' | 'C' | 'G' | 'B' | 'N' | 'P';
 export type CategoryId =
   | 'pre' | 'wash' | 'wheel' | 'deco' | 'polish' | 'coat'
-  | 'seal' | 'trim' | 'glass' | 'apc' | 'int' | 'acc';
+  | 'seal' | 'trim' | 'glass' | 'apc' | 'int' | 'towel' | 'acc';
 export type SceneId =
   | 'daily' | 'coated' | 'tfr' | 'ppf' | 'nowater' | 'self' | 'wheel' | 'engine' | 'int';
 export type PH = 'alk' | 'neu' | 'acid';
@@ -31,6 +31,12 @@ export interface Product {
   x: string[];
   /** 官网原文 */
   u: string;
+  /**
+   * 产品自身的 pH（原液）：[酸碱性, 官方数值]。
+   * 只收官方来源（产品信息 / 技术资料表 / SDS 第 9 节 / 官网页面 / 韩国申报）；
+   * 'na' = 官方注明不适用（非水性产品，或韩国申报写「해당없음」）；没有这一项 = 官方未公布。
+   */
+  ph?: readonly [PH | 'na', string?];
 }
 
 /** 步骤的可切换变体 */

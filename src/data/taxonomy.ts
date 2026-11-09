@@ -41,6 +41,7 @@ export const CATS: [CategoryId, string, string][] = [
   ['glass', '玻璃', 'Glass'],
   ['apc', '多功能清洁 APC', 'All Purpose Cleaner'],
   ['int', '内饰', 'Interior'],
+  ['towel', '毛巾清洗', 'Towel Care'],
   ['acc', '配件', 'Accessories'],
 ];
 
@@ -62,3 +63,4 @@ export const SCENES: [SceneId, string][] = [
 export const SCENE_NAME = Object.fromEntries(SCENES) as Record<SceneId, string>;
 
 export const PH_LABEL = { alk: '碱性 pH', neu: '中性 pH', acid: '酸性 pH' } as const;
+export const PH_SHORT = { alk: '碱性', neu: '中性', acid: '酸性' } as const;

@@ -8,7 +8,7 @@ import * as laboManiac from './labo-maniac';
 import * as laboManiacFlows from './labo-maniac-flows';
 import * as ps from './ps';
 import { SUBCATS, type Subcategory } from './subcategories';
-import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
+import { BRAND, CAT_EN, CAT_NAME, PH_SHORT, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
 import { fold, initials, type RankFields } from '../lib/search';
 
@@ -76,7 +76,7 @@ function strength(r: string): [number, number] {
 
 /** 卡片上显示的最多 3 个比例标签：取详情页里最常用的前 3 个，再按浓度从浓到淡排列 */
 export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
-  if (!p.d.length) return 'accessory';
+  if (!p.d.length) return p.c === 'acc' ? 'accessory' : 'see-label';
   const seen: string[] = [];
   for (const [, ratio] of p.d) {
     const r = ratio.split('（')[0].trim();
@@ -94,7 +94,14 @@ export function productRankFields(p: Product): RankFields {
 
 export function productSearchText(p: Product): string {
   const sub = SUB_OF.get(p.id)?.n ?? '';
-  return fold([p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], sub, BRAND[p.b], ...p.d.flat(), ...p.x].join(' '));
+  return fold([p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], sub, BRAND[p.b], phText(p) ?? '', ...p.d.flat(), ...p.x].join(' '));
+}
+
+/** pH 标签文字：「碱性 12.5」；官方未公布或不适用时返回 undefined */
+export function phText(p: Product): string | undefined {
+  if (!p.ph || p.ph[0] === 'na') return undefined;
+  const [k, v] = p.ph;
+  return v ? `${PH_SHORT[k]} ${v}` : PH_SHORT[k];
 }
 
 /** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */
