@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { FlowBrowser, type FlowItem } from '@/components/flow-browser';
 import { FlowCard } from '@/components/flow-card';
 import { PageSlide } from '@/components/page-slide';
-import { FLOWS, flowSearchText } from '@/data';
+import { FLOWS, flowInitials, flowSearchText } from '@/data';
 
 export const metadata: Metadata = {
   title: '洗车流程与组合',
@@ -16,6 +16,7 @@ const items: FlowItem[] = FLOWS.map((f) => ({
   kind: f.kind,
   name: f.name,
   text: flowSearchText(f),
+  abbr: flowInitials(f),
   card: <FlowCard f={f} />,
 }));
 

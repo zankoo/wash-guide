@@ -10,7 +10,7 @@ import * as ps from './ps';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
-import { fold, type RankFields } from '../lib/search';
+import { fold, initials, type RankFields } from '../lib/search';
 
 export * from './materials';
 export * from './subcategories';
@@ -89,12 +89,18 @@ export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
 
 /** 搜索排序用的字段（见 relevance） */
 export function productRankFields(p: Product): RankFields {
-  return { name: fold(p.n), type: fold(p.t), tags: fold([SUB_OF.get(p.id)?.n ?? '', CAT_NAME[p.c], p.m].join(' ')) };
+  return { name: fold(p.n), type: fold(p.t), tags: fold([SUB_OF.get(p.id)?.n ?? '', CAT_NAME[p.c], p.m].join(' ')), abbr: initials(p.n) };
 }
 
 export function productSearchText(p: Product): string {
   const sub = SUB_OF.get(p.id)?.n ?? '';
   return fold([p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], sub, BRAND[p.b], ...p.d.flat(), ...p.x].join(' '));
+}
+
+/** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */
+export function flowInitials(f: FlowEntry): string[] {
+  const names = [f.en ?? '', ...stepsOf(f).flatMap((x) => productsOfStep(x).map((id) => getProduct(id).n))];
+  return [...new Set(names.flatMap(initials))];
 }
 
 export function flowSearchText(f: FlowEntry): string {
