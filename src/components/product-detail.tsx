@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, type Product } from '@/data';
+import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, phText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './flow-card';
@@ -34,6 +34,7 @@ export function ProductDetail({ p }: { p: Product }) {
             {p.n}
           </h2>
           <p className="sh-type">{p.t}</p>
+          <PhLine p={p} />
           <FavButton id={p.id} />
         </div>
       </div>
@@ -43,7 +44,7 @@ export function ProductDetail({ p }: { p: Product }) {
         ) : (
           <>
             <h3>稀释比例</h3>
-            <p className="none-msg">配件类产品，无稀释比例。</p>
+            <p className="none-msg">{p.c === 'acc' ? '配件类产品，无稀释比例。' : '官方未给出稀释比例，请按包装说明使用。'}</p>
           </>
         )}
         <dl className="facts">
@@ -118,4 +119,19 @@ export function DetailSkeleton() {
 /** 详情内容的 Suspense：内容到达前显示同样布局的骨架屏 */
 export function DetailSuspense({ children }: { children: ReactNode }) {
   return <Suspense fallback={<DetailSkeleton />}>{children}</Suspense>;
+}
+
+/** 产品自身 pH：有官方数据显示彩色标签；官方标注不适用的写「不适用」；配件不显示 */
+function PhLine({ p }: { p: Product }) {
+  if (p.c === 'acc') return null;
+  const t = phText(p);
+  return (
+    <p className="sh-ph">
+      {t ? (
+        <span className={`phtag ${p.ph![0]}`}>{p.ph![1] ? t.replace(' ', ' · pH ') : `${t} pH`}</span>
+      ) : (
+        <span className="sh-ph-none">pH：{p.ph?.[0] === 'na' ? '不适用（官方标注）' : '官方未公布'}</span>
+      )}
+    </p>
+  );
 }

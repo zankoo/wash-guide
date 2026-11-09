@@ -11,37 +11,37 @@ const CSW = 'https://www.carsupplieswarehouse.com/products/';
 
 export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
-{id:'P-bug-off',b:'P',c:'pre',n:'Bug Off',t:'虫尸去除剂（洗车前预处理）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'前格栅 · 饰条 · 车漆 · 保险杠',
+{id:'P-bug-off',b:'P',c:'pre',ph:['alk','12.4'],n:'Bug Off',t:'虫尸去除剂（洗车前预处理）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'前格栅 · 饰条 · 车漆 · 保险杠',
  d:[['重度虫尸','原液','喷雾壶'],['一般虫尸','1:5','喷雾壶']],
  s:['戴好防护用品。','原液使用，或最多按 1:5 兑水。','喷在要清洁的部位，停留 1 分钟以上，让虫尸软化、松脱。','之后正常洗车，冲掉虫尸残渣。'],
  x:['不要在阳光直射下施工；不要喷在发热的表面，也不要让它在表面干掉。','除虫剂较强，部分表面可能不耐受，每次使用前先在不显眼处测试。','标签：Pro Series F30。'],u:PS+'bug-off-insect-remover'},
 
-{id:'P-frostbite',b:'P',c:'pre',n:'Frostbite',t:'Surface Cleanse 雪泡预洗（泡沫枪 / 手洗两用）',f:'32 oz · 1 gal',m:'车身外部',
+{id:'P-frostbite',b:'P',c:'pre',ph:['alk','9.5'],n:'Frostbite',t:'Surface Cleanse 雪泡预洗（泡沫枪 / 手洗两用）',f:'32 oz · 1 gal',m:'车身外部',
  d:[['泡沫枪','2–3 oz / 32 oz 壶','PA壶'],['手洗','1:128','桶洗']],
  s:['泡沫枪：壶里加 2–3 oz（约 60–90 ml）原液，其余加水（壶容量 32 oz / 约 1 L）。','喷满车身，停留 3–5 分钟，不要让泡沫干掉。','用高压水冲净后再接触式洗车。','手洗：按瓶身标签 1:128 兑水。'],
  x:['瓶身标签：高泡、可直接用于泡沫枪、手洗稀释 128:1。','泡沫枪用量按水压可调到 4–6 oz / 32 oz 壶（经销商 Car Supplies Warehouse 的说明）。','在阴凉处或气温较低时施工，避免泡沫干在车上。'],u:PS+'frostbite-surface-clesnse-snow-foam-quart'},
 
 // ───────────────────────── 洗车香波 ─────────────────────────
-{id:'P-pearl',b:'P',c:'wash',n:'Pearl Auto Shampoo',t:'中性浓缩洗车液（可生物降解）',f:'32 oz · 1 gal · 5 gal',m:'车身外部',
+{id:'P-pearl',b:'P',c:'wash',ph:['alk','10'],n:'Pearl Auto Shampoo',t:'中性浓缩洗车液（可生物降解）',f:'32 oz · 1 gal · 5 gal',m:'车身外部',
  d:[['桶洗（每加仑水 1 oz）','1:128','桶洗'],['较脏时 / 泡沫枪','1:80','PA壶']],
  s:['在阴凉处、排水符合规定的洗车区施工。','每加仑（3.8 L）水加 1 oz（约 30 ml，两瓶盖）；最佳比例 1:80 – 1:128。','先冲车，再用手或泡沫枪涂上洗车液。','用洗车手套清洗后彻底冲净。','用擦干巾擦干。'],
- x:['pH 平衡，不伤车漆也不伤手；泡沫稳定、润滑好。','也可以接比例稀释设备，用于手洗或洗车机。'],u:PS+'pearl-auto-shampoo-doubleblack-collection'},
+ x:['官网称 pH 平衡、不伤车漆也不伤手；SDS 第 9 节写原液 pH 10。泡沫稳定、润滑好。','也可以接比例稀释设备，用于手洗或洗车机。'],u:PS+'pearl-auto-shampoo-doubleblack-collection'},
 
-{id:'P-irs',b:'P',c:'wash',n:'IRS Foaming Auto Shampoo',t:'高浓缩高泡洗车香波（樱桃香，Pro Series）',f:'1 gal · 5 gal',m:'车漆',
+{id:'P-irs',b:'P',c:'wash',ph:['alk','8–9'],n:'IRS Foaming Auto Shampoo',t:'高浓缩高泡洗车香波（樱桃香，Pro Series）',f:'1 gal · 5 gal',m:'车漆',
  d:[['手洗 / 洗车设备','1:128','桶洗']],
  s:['按 1:128 兑水，手洗或用洗车设备清洗。','冲洗干净。'],
  x:['泡沫丰厚持久，冲洗性好不留痕；能去较重的脏污，又温和到可以日常使用。','官方未标 pH。'],u:PS+'irs-foaming-auto-shampoo-car-wash-soap'},
 
-{id:'P-wash-wax',b:'P',c:'wash',n:'Wash & Wax',t:'pH 平衡浓缩洗车香波（Pro Series）',f:'16 oz · 1 gal',m:'车漆',
+{id:'P-wash-wax',b:'P',c:'wash',ph:['alk','8–9'],n:'Wash & Wax',t:'pH 平衡浓缩洗车香波（Pro Series）',f:'16 oz · 1 gal',m:'车漆',
  d:[],s:[],
  x:['高浓缩、pH 平衡、100% 可生物降解，适合各种洗车方式；对车漆和双手温和，清新香。','黏度较低，方便配合稀释设备使用。','官方商城未给出稀释比例和施工步骤。'],u:PS+'wash-wax-car-wash-soap'},
 
-{id:'P-radiance',b:'P',c:'wash',n:'Inspiration Radiance',t:'镀膜维护洗车液（洗后留下光泽和保护）',f:'32 oz · 1 gal · 5 gal',m:'车漆 · 镀膜车',
+{id:'P-radiance',b:'P',c:'wash',ph:['neu','6.5'],n:'Inspiration Radiance',t:'镀膜维护洗车液（洗后留下光泽和保护）',f:'32 oz · 1 gal · 5 gal',m:'车漆 · 镀膜车',
  d:[['桶洗（每加仑水 6 oz）','1:21','桶洗']],
  s:['先把整车冲一遍，去掉浮尘。','每加仑（3.8 L）水加 6 oz（约 180 ml）。','用洗车手套或海绵洗掉污垢。','用清水彻底冲净。','用合适的麂皮或擦干巾擦干。'],
  x:['专为 Inspiration 镀膜搭配，其他镀膜或保养良好的车漆也适用；冲洗后会留下一层光泽和保护，补强原有镀膜。','比例来自 5 加仑桶的旧版标签（当时叫 Radiance Premium Wash & Wax）。','不是打蜡的替代品；避免在阳光直射下洗车。'],u:PS+'radiance-premium-wash-wax-quart'},
 
-{id:'P-absolute',b:'P',c:'wash',n:'Absolute Rinseless Wash',t:'聚合物免冲洗洗车液（软化水质，可多用途稀释）',f:'32 oz · 1 gal',m:'车漆 · 镀膜 · 改色膜 · PPF · 饰条 · 塑料 · 皮革 · 织物',
+{id:'P-absolute',b:'P',c:'wash',ph:['neu','6.0'],n:'Absolute Rinseless Wash',t:'聚合物免冲洗洗车液（软化水质，可多用途稀释）',f:'32 oz · 1 gal',m:'车漆 · 镀膜 · 改色膜 · PPF · 饰条 · 塑料 · 皮革 · 织物',
  d:[['免冲洗（水桶）','1:256','桶洗'],['黏土润滑液','1:128','喷雾壶'],['快速美容剂','1:64','喷雾壶'],['玻璃 / 内饰清洁','1:256','喷雾壶']],
  s:['水桶里每 2 加仑（约 7.6 L）水加 1 oz（约 30 ml）。','很脏的地方先用同样比例装进压力喷壶预喷，减少摩擦。','用洗车手套或毛巾逐块清洗，洗完马上擦干，不需要冲水。','其他用途按比例装进喷壶使用。'],
  x:['官方说明：聚合物包裹并乳化污垢，加进水里立刻软化水质，减少水斑；车外车内各表面都能用。','比例来自经销商 Car Supplies Warehouse 的商品页，官方商城没有写比例。','阳光下或阴凉处都可以施工。'],u:PS+'absolute-rinseless-wash'},
@@ -52,88 +52,88 @@ export const products: Product[] = [
  x:['也可以当快速美容剂，或在冲洗后、擦干前喷在湿车上一起擦干。','标签：Eco-Detail Products EC37。'],u:PS+'epic-rinseless-and-waterless-wash'},
 
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
-{id:'P-brake-buster',b:'P',c:'wheel',n:'Brake Buster',t:'轮毂 + 轮胎凝胶清洁剂（附着停留，留防锈层）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'轮毂 · 轮胎',
+{id:'P-brake-buster',b:'P',c:'wheel',ph:['alk','12.5'],n:'Brake Buster',t:'轮毂 + 轮胎凝胶清洁剂（附着停留，留防锈层）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'轮毂 · 轮胎',
  d:[['轮毂 / 轮胎','即用','喷雾壶'],['日常维护（经销商用法）','1:5','喷雾壶']],
  s:['尽量在轮毂冷却时施工。','在轮毂和轮胎上大量喷涂。','停留 1 分钟以上。','需要时用刷子刷洗。','用高压水枪或强水流冲净。'],
  x:['凝胶会附着在轮毂表面，渗透污垢；同时清洁轮胎，为上轮胎油做准备，并在轮毂上留下一层防锈成分。','每次使用前在轮毂上先做局部测试，避免染色或损伤。','标签按原液使用；经销商 Car Supplies Warehouse 建议日常维护 1:5 稀释，重度污垢用原液。'],u:PS+'brake-buster-doubleblack-collection'},
 
-{id:'P-undressed',b:'P',c:'wheel',n:'Undressed',t:'碱性轮胎清洁剂（去旧轮胎油和发棕）',f:'1 gal · 5 gal',m:'轮胎',
+{id:'P-undressed',b:'P',c:'wheel',ph:['alk','9.0'],n:'Undressed',t:'碱性轮胎清洁剂（去旧轮胎油和发棕）',f:'1 gal · 5 gal',m:'轮胎',
  d:[['重度','原液','喷雾壶'],['一般','1:10','喷雾壶']],
  s:['按轮胎状况原液使用，或最多 1:10 兑水。','喷在要清洁的部位。','让产品作用一会儿，需要时用刷子刷。','用水冲净或擦净。'],
  x:['碱性清洁液 + 水性溶剂 + 洗涤剂，能去掉路面污垢、旧轮胎油和油污，让白字胎更白。','官方定位为上轮胎油前的准备步骤（之后接 Dressed 或 Shine All）。','标签：Pro Series N10。'],u:PS+'undressed-tire-prep'},
 
 // ───────────────────────── 除染 ─────────────────────────
-{id:'P-iron-buster',b:'P',c:'deco',n:'Iron Buster',t:'中性铁粉去除剂（轮毂 + 车漆，变紫）',f:'16 oz · 1 gal · 5 gal',m:'车漆 · 轮毂',
+{id:'P-iron-buster',b:'P',c:'deco',ph:['acid','5.5'],n:'Iron Buster',t:'中性铁粉去除剂（轮毂 + 车漆，变紫）',f:'16 oz · 1 gal · 5 gal',m:'车漆 · 轮毂',
  d:[['车漆 / 轮毂除铁','即用','喷雾壶']],
  s:['车漆：先洗车并擦干，效果最好；轮毂不需要先洗。','大量喷在车漆或轮毂上。','停留 2–5 分钟，有铁粉的地方会变紫。','不要让它在表面完全干掉。','用水管或高压水枪彻底冲净，需要时重复。'],
- x:['pH 平衡，见效快。','每次使用前在轮毂上先做局部测试。'],u:PS+'iron-buster-doubleblack-collection'},
+ x:['官网称 pH 平衡；SDS 第 9 节写原液 pH 5.5。见效快。','每次使用前在轮毂上先做局部测试。'],u:PS+'iron-buster-doubleblack-collection'},
 
-{id:'P-crystal-wash',b:'P',c:'deco',n:'Crystal Wash',t:'有机酸除染剂（工业落尘、铁路粉尘、锈斑；干燥时结晶）',f:'1 gal · 5 gal',m:'车漆 · 轮毂',
+{id:'P-crystal-wash',b:'P',c:'deco',ph:['acid','1.5'],n:'Crystal Wash',t:'有机酸除染剂（工业落尘、铁路粉尘、锈斑；干燥时结晶）',f:'1 gal · 5 gal',m:'车漆 · 轮毂',
  d:[['车漆 / 轮毂除染','即用','喷雾壶']],
  s:['在阴凉处、车身冷却时施工，不要在阳光直射下用。','用喷壶喷在车漆上，避开饰条和哑光表面，以免染色。','停留让产品开始结晶。','车漆用洗车液清洗后冲净；轮毂刷洗后冲净。'],
  x:['官方用途：镀膜施工前和轮毂清洁的预处理。','酸性清洁剂较强，部分表面不耐受，使用前先局部测试。','危险提示：可能造成严重皮肤灼伤和眼睛损伤，戴好防护用品。','标签：Pro Series K35；标签较模糊，以实物为准。'],u:PS+'crystal-wash-fallout-remover-and-surface-cleaner'},
 
-{id:'P-tree-sap',b:'P',c:'deco',n:'Speedy Tree Sap Remover',t:'树脂去除剂（不溶于水的树胶）',f:'32 oz',m:'车漆 · 玻璃',
+{id:'P-tree-sap',b:'P',c:'deco',ph:['neu','6.5'],n:'Speedy Tree Sap Remover',t:'树脂去除剂（不溶于水的树胶）',f:'32 oz',m:'车漆 · 玻璃',
  d:[['树脂点','即用','—']],
  s:['倒在超纤布上，轻轻擦拭树脂。','擦掉后用快速美容剂或洗车清洁残留。'],
  x:['适合最后的细节处理。'],u:PS+'tree-sap-remover-fallout-remover-and-surface-cleaner'},
 
 // ───────────────────────── 研磨 / 施工前处理 ─────────────────────────
-{id:'P-intervention',b:'P',c:'polish',n:'Intervention',t:'高效切削研磨剂（Recovery 系列第一步）',f:'8 oz · 32 oz',m:'车漆',
+{id:'P-intervention',b:'P',c:'polish',ph:['neu','8.0'],n:'Intervention',t:'高效切削研磨剂（Recovery 系列第一步）',f:'8 oz · 32 oz',m:'车漆',
  d:[['机器抛光','即用','—']],
  s:['选择抛光机和切削盘（羊毛、超纤或海绵切削盘都可以）。','在盘上或直接在漆面点 4–5 小滴。','轻到中等压力，每次 60 × 60 cm 或更小，去除缺陷。','保持足够的润滑，不够就补产品。','整车做完后检查缺陷去除情况，再用收光步骤抛亮。'],
  x:['在 Rehab 的基础上加强切削，可去砂纸痕、旋纹和划痕；好擦，省时间。'],u:PS+'intervention-high-performance-compound'},
 
-{id:'P-ego-maker',b:'P',c:'polish',n:'Ego Maker',t:'切削研磨剂（切削后仍很亮，Double Black）',f:'32 oz',m:'车漆',
+{id:'P-ego-maker',b:'P',c:'polish',ph:['neu','7.2'],n:'Ego Maker',t:'切削研磨剂（切削后仍很亮，Double Black）',f:'32 oz',m:'车漆',
  d:[['机器抛光','即用','—']],
  s:['可用于大轨迹 DA、强制旋转或旋转抛光机，各种抛光盘都可以。','去除砂纸痕、划痕和其他漆面缺陷。','之后接收光步骤（Deep Finish 或 Envy）。'],
  x:['高纯度精制氧化铝磨料，粒径和形状控制严格，所以切削后漆面仍然亮。','不含蜡和硅油，钣喷车间可用。'],u:PS+'ego-maker-compound-doubleblack-collection'},
 
-{id:'P-ballistic',b:'P',c:'polish',n:'Ballistic Max Cut Compound',t:'最强切削粗蜡（硬漆 / 玻璃钢，Pro Series）',f:'32 oz',m:'各类车漆（偏硬漆面）· 玻璃钢',
+{id:'P-ballistic',b:'P',c:'polish',ph:['neu','8'],n:'Ballistic Max Cut Compound',t:'最强切削粗蜡（硬漆 / 玻璃钢，Pro Series）',f:'32 oz',m:'各类车漆（偏硬漆面）· 玻璃钢',
  d:[['重切削','即用','羊毛盘 / 海绵切削盘']],
  s:[],
  x:['为较硬的漆面和玻璃钢（gel coat）设计，可去除 1000 目及更细的砂纸痕，以及氧化、落尘、水斑等表面瑕疵；适用于所有漆面。','可配旋转机或大行程偏心机，搭配羊毛或海绵切削盘。','官方商城未给出施工步骤。'],u:PS+'ballistic-max-cut-compound-paint-correction'},
 
-{id:'P-smart-extra-cut',b:'P',c:'polish',n:'Smart Extra Cut Compound',t:'高效粗蜡（硬漆，不含硅 / 蜡，Pro Series）',f:'32 oz · 1 gal',m:'各类车漆（偏硬漆面）',
+{id:'P-smart-extra-cut',b:'P',c:'polish',ph:['neu','7.2'],n:'Smart Extra Cut Compound',t:'高效粗蜡（硬漆，不含硅 / 蜡，Pro Series）',f:'32 oz · 1 gal',m:'各类车漆（偏硬漆面）',
  d:[['重切削','即用','羊毛盘 / 海绵盘']],
  s:[],
  x:['去除砂纸痕、划痕、氧化、落尘和水斑等瑕疵，抛后表面平滑，可进入最终抛光步骤。','按需要的效果搭配传统羊毛盘或海绵盘。不含硅油和蜡。','官方商城未给出施工步骤。'],u:PS+'smart-extra-cut-compund-paint-correction'},
 
-{id:'P-rehab',b:'P',c:'polish',n:'Rehab Correction Creme',t:'多用途研磨剂（切削到收光都能做）',f:'8 oz · 32 oz · 1 gal',m:'车漆',
+{id:'P-rehab',b:'P',c:'polish',ph:['neu','7'],n:'Rehab Correction Creme',t:'多用途研磨剂（切削到收光都能做）',f:'8 oz · 32 oz · 1 gal',m:'车漆',
  d:[['机器抛光','即用','—']],
  s:['按漆面硬度选择抛光盘和机器：切削盘做切削，收光盘做收光。','点几小滴在盘上，每次 60 × 60 cm，抛到缺陷去除。','用超纤布擦净检查。'],
  x:['切削力随漆面硬度、抛光盘和机器而变，可以从强切削一直做到收光；搭配各种海绵盘效果都很好。','可去除砂纸痕、旋纹和划痕。'],u:PS+'rehab-correction-creme-quart'},
 
-{id:'P-deep-finish',b:'P',c:'polish',n:'Deep Finish',t:'中度整平抛光剂（一步出深度和光泽）',f:'32 oz',m:'车漆',
+{id:'P-deep-finish',b:'P',c:'polish',ph:['neu','7.2'],n:'Deep Finish',t:'中度整平抛光剂（一步出深度和光泽）',f:'32 oz',m:'车漆',
  d:[['机器抛光','即用','—']],
  s:['在 Ego Maker 之后，或直接用于一般旋纹的漆面。','点几小滴在抛光盘上，每次 60 × 60 cm 抛到缺陷去除。','用超纤布擦净检查。'],
  x:['除了日常旋纹，也能去掉接近完美时才显出来的最后一些细痕；适合难处理的漆面，一步出光。','不含蜡和硅油，钣喷车间可用。'],u:PS+'deep-finish-restoration-polish-doubleblack-collection'},
 
-{id:'P-full-throttle',b:'P',c:'polish',n:'Full Throttle Cleaner Polish',t:'中等研磨一步抛光（Pro Series）',f:'32 oz · 1 gal',m:'车漆',
+{id:'P-full-throttle',b:'P',c:'polish',ph:['neu','6.5'],n:'Full Throttle Cleaner Polish',t:'中等研磨一步抛光（Pro Series）',f:'32 oz · 1 gal',m:'车漆',
  d:[['一步抛光','即用','羊毛盘 / 海绵盘']],
  s:[],
  x:['去除砂纸痕、太阳纹、划痕和轻到中度氧化，一步抛出亮度和深度；钣喷店和美容店都适用。','可配传统羊毛盘或海绵盘。','官方商城未给出施工步骤。'],u:PS+'full-throttle-cleaner-polish-paint-correction'},
 
-{id:'P-therapy',b:'P',c:'polish',n:'Therapy',t:'收光抛光剂（Recovery 系列最后一步）',f:'8 oz · 32 oz',m:'车漆',
+{id:'P-therapy',b:'P',c:'polish',ph:['neu','7'],n:'Therapy',t:'收光抛光剂（Recovery 系列最后一步）',f:'8 oz · 32 oz',m:'车漆',
  d:[['机器抛光','即用','—']],
  s:['主要配收光海绵盘，特殊情况也可用羊毛或超纤盘。','在盘上点 4–5 小滴。','轻到中等压力，每次 60 × 60 cm 或更小，抛出光泽。','保持润滑，抛完用超纤布擦净检查。'],
  x:['在 Rehab 的基础上调得更细，适合需要轻手的软漆。'],u:PS+'therapy-final-polish'},
 
-{id:'P-headlight-compound',b:'P',c:'polish',n:'Headlight Restoration Compound',t:'大灯翻新研磨剂（Pro Series）',f:'32 oz',m:'大灯灯罩',
+{id:'P-headlight-compound',b:'P',c:'polish',ph:['neu','7.2'],n:'Headlight Restoration Compound',t:'大灯翻新研磨剂（Pro Series）',f:'32 oz',m:'大灯灯罩',
  d:[['研磨','即用','羊毛盘 / 海绵盘']],
  s:[],
  x:['去除大灯灯罩上的砂纸痕、氧化和表面瑕疵，抛后表面平滑，可进入最终抛光步骤。','按需要的效果搭配传统羊毛盘或海绵盘。','之后用 Headlight Restoration Polish 收光。官方商城未给出施工步骤。'],u:PS+'headlight-restoration-compound-paint-correction'},
 
-{id:'P-headlight-polish',b:'P',c:'polish',n:'Headlight Restoration Polish',t:'大灯翻新抛光剂（Pro Series）',f:'32 oz',m:'大灯灯罩',
+{id:'P-headlight-polish',b:'P',c:'polish',ph:['neu','6.5'],n:'Headlight Restoration Polish',t:'大灯翻新抛光剂（Pro Series）',f:'32 oz',m:'大灯灯罩',
  d:[['抛光','即用','羊毛盘 / 海绵盘']],
  s:[],
  x:['去除大灯上的旋纹和划痕，恢复光学透明度；中等研磨，一步抛出亮度。','可配传统羊毛盘或海绵盘。官方商城未给出施工步骤。'],u:PS+'headlight-restoration-polish-paint-correction'},
 
-{id:'P-metal-brite',b:'P',c:'polish',n:'Metal Brite',t:'液体金属抛光剂（Pro Series）',f:'16 oz',m:'镀铬 · 铝 · 铜 · 黄铜等金属 · 轮毂',
+{id:'P-metal-brite',b:'P',c:'polish',ph:['na'],n:'Metal Brite',t:'液体金属抛光剂（Pro Series）',f:'16 oz',m:'镀铬 · 铝 · 铜 · 黄铜等金属 · 轮毂',
  d:[],s:[],
  x:['清洁、抛光并保护镀铬、铝、铜、黄铜等金属，快速去除氧化、锈蚀和残留，让轮毂和车上金属件恢复展车光泽。','曾用于抛光波音 707「空军一号」SAM970 等历史飞机。','官方商城未给出施工步骤。'],u:PS+'metal-brite-liquid-metal-polish-paint-correction'},
 
-{id:'P-envy',b:'P',c:'polish',n:'Envy',t:'珠宝级收光抛光剂（无填充，适合镀膜前）',f:'16 oz',m:'车漆',
+{id:'P-envy',b:'P',c:'polish',ph:['neu','7.2'],n:'Envy',t:'珠宝级收光抛光剂（无填充，适合镀膜前）',f:'16 oz',m:'车漆',
  d:[['机器抛光','即用','—']],
  s:['可用于大轨迹 DA、强制旋转或传统抛光机。','作为最后一步收光，抛出湿润、深邃的光泽。'],
  x:['超细磨料，不含填充物，光泽不会被填充物掩盖后又消失，适合接镀膜。'],u:PS+'envy-jeweling-polish-doubleblack-collection'},
@@ -144,7 +144,7 @@ export const products: Product[] = [
  x:['专为 Inspiration 镀膜配套，去除蜡、硅油等影响镀膜附着的残留。','瓶身也写作「Paint Prep and Glass Cleaner」；官方推荐的玻璃镀膜流程也用它在 VUE 前处理玻璃。'],u:PS+'paint-coating-surface-prep-doubleblack-collection'},
 
 // ───────────────────────── 镀膜 ─────────────────────────
-{id:'P-inspiration-classic',b:'P',c:'coat',n:'Inspiration Classic',t:'专业陶瓷镀膜（车漆 · 轮毂 · 饰条）',f:'30 ml · 50 ml',m:'车漆 · 轮毂 · 塑料饰条',
+{id:'P-inspiration-classic',b:'P',c:'coat',ph:['na'],n:'Inspiration Classic',t:'专业陶瓷镀膜（车漆 · 轮毂 · 饰条）',f:'30 ml · 50 ml',m:'车漆 · 轮毂 · 塑料饰条',
  d:[['镀膜（施工块）','即用','—']],
  s:['施工前必须完成整车抛光。','用 Paint Coating Surface Prep 清洁漆面。','按包装内的培训说明施工。','施工后至少 2–3 小时不要让车淋雨或暴露在外；48–72 小时完全固化。'],
  x:['官方定位为专业产品，不建议未受训练的人施工；可在 inspirationcoating.com 申请认证施工店。','套装含 30 ml 镀膜、施工块、说明书和门框标签。','可罩 SOLE 或 Defender 作面层；日常用 Radiance 洗车。'],u:PS+'inspiration-ceramic-coating-30ml-doubleblack-collection'},
@@ -154,42 +154,42 @@ export const products: Product[] = [
  s:['完成抛光和脱脂（Paint Coating Surface Prep）。','用附带的施工块涂抹。','等它闪干 30 秒–2 分钟（看环境），用干净超纤布流平。','用第二块布擦净残留。','需要多层时，层间间隔 1 小时。','24 小时内不要淋水、不要碰化学品。'],
  x:['Inspiration 系列最新的一款，强调好施工、高光泽和疏水。','闪干、层间和固化时间来自经销商 Car Supplies Warehouse 的商品页，以包装说明为准。'],u:PS+'inspiration-stout'},
 
-{id:'P-sole',b:'P',c:'coat',n:'Inspiration SOLE',t:'一年期镀膜 / Classic 的面层',f:'50 ml · 100 ml',m:'车漆',
+{id:'P-sole',b:'P',c:'coat',ph:['na'],n:'Inspiration SOLE',t:'一年期镀膜 / Classic 的面层',f:'50 ml · 100 ml',m:'车漆',
  d:[['镀膜（施工块）','即用','—']],
  s:['单独使用：抛光、Paint Coating Surface Prep 脱脂后施工，作为一年期镀膜。','作面层：在 Inspiration Classic 上直接罩一层，增加保护。','每年在 Classic 上补一层作为维护镀膜。'],
  x:['比 Classic 好施工，专业和资深爱好者都能用；官方仍建议由专业人员施工。','100 ml 套装含施工块和 4 张门框标签。'],u:PS+'inspiration-sole-doubleblack-collection'},
 
-{id:'P-vue',b:'P',c:'coat',n:'Inspiration VUE',t:'玻璃镀膜（6 个月以上）',f:'30 ml',m:'车外玻璃',
+{id:'P-vue',b:'P',c:'coat',ph:['na'],n:'Inspiration VUE',t:'玻璃镀膜（6 个月以上）',f:'30 ml',m:'车外玻璃',
  d:[['玻璃镀膜（施工块）','即用','—']],
  s:['用 Clarity Creme 研磨玻璃。','用 Paint Coating Surface Prep 清洁玻璃。','用附带的施工块涂 VUE。'],
  x:['一瓶 30 ml 可做 10 块以上前挡。','官方定位为专业产品，需按规范施工。'],u:PS+'inspiration-vue-glass-coating-doubleblack-collection'},
 
 // ───────────────────────── 封体 / 快速养护 ─────────────────────────
-{id:'P-bead-maker',b:'P',c:'seal',n:'Bead Maker',t:'喷雾封体（湿车干车都能用，强拨水）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'车漆 · 玻璃 · 塑料饰条 · 轮毂',
+{id:'P-bead-maker',b:'P',c:'seal',ph:['neu','6.5'],n:'Bead Maker',t:'喷雾封体（湿车干车都能用，强拨水）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'车漆 · 玻璃 · 塑料饰条 · 轮毂',
  d:[['湿车 / 干车喷涂','即用','喷雾壶']],
  s:['先洗车；需要时先用黏土处理漆面。','喷在漆面上；湿车、干车都可以，干车施工效果更好。','用超纤布擦掉，需要时翻面，确保擦净。','整车重复。','至少固化 8 小时，效果最好。'],
  x:['聚合物会迁移到漆面、交联成疏水保护层，含 UV 吸收剂；新漆或刚美容过的车效果最好。','官方商城写固化约 2 小时（看环境），5 加仑桶标签写至少 8 小时。'],u:PS+'beadmaker-paint-protectant-doubleblack-collection'},
 
-{id:'P-spray-it',b:'P',c:'seal',n:'Spray-It Quick Polymer Wax',t:'聚合物喷蜡（擦干时顺便上蜡，Pro Series）',f:'16 oz · 1 gal',m:'车身外部各类表面',
+{id:'P-spray-it',b:'P',c:'seal',ph:['neu','6.8'],n:'Spray-It Quick Polymer Wax',t:'聚合物喷蜡（擦干时顺便上蜡，Pro Series）',f:'16 oz · 1 gal',m:'车身外部各类表面',
  d:[['湿车 / 干车','即用','喷雾壶']],
  s:['洗车后可在擦干车身时一起喷涂施工，湿车、干车都可以用。'],
  x:['聚合物蜡，一步得到持久亮光，可安全喷在所有外部表面上。'],u:PS+'spray-it-quick-polymer-wax-paint-protection'},
 
-{id:'P-matte-protectant',b:'P',c:'seal',n:'Matte Finish Protectant',t:'哑光漆保护剂',f:'32 oz',m:'哑光漆',
+{id:'P-matte-protectant',b:'P',c:'seal',ph:['neu','7.2'],n:'Matte Finish Protectant',t:'哑光漆保护剂',f:'32 oz',m:'哑光漆',
  d:[],s:[],
  x:['保持哑光漆原有的外观并增加一层保护；不要在哑光漆上用普通蜡，会先变亮再不均匀地发雾。','瓶身标注：可在湿车漆上施工，不留蜡残留。','官方商城未给出施工步骤。'],u:PS+'matte-finish-protectant-paint-protection'},
 
-{id:'P-defender',b:'P',c:'seal',n:'Inspiration Defender',t:'SiO₂ 喷雾封体（镀膜面层 / 单独使用）',f:'16 oz · 1 gal',m:'车漆 · 金属 · 玻璃 · 塑料饰条',
+{id:'P-defender',b:'P',c:'seal',ph:['neu','6.5'],n:'Inspiration Defender',t:'SiO₂ 喷雾封体（镀膜面层 / 单独使用）',f:'16 oz · 1 gal',m:'车漆 · 金属 · 玻璃 · 塑料饰条',
  d:[['喷上擦掉','即用','喷雾壶']],
  s:['作镀膜面层时，等镀膜定型后再施工，一般至少 1 小时。','尽量在车身冷却、避开阳光的地方施工。','直接喷在漆面上，或喷在超纤布上擦。','在约 90 × 90 cm 的范围内均匀抹开，稍等片刻，翻面擦亮。','整车重复。'],
  x:['可作 Inspiration 和其他镀膜的面层 / 维护，也可单独作 SiO₂ 保护。'],u:PS+'defender-sio2-protectant'},
 
-{id:'P-paint-gloss',b:'P',c:'seal',n:'Paint Gloss',t:'展厅级快速美容剂（也可当黏土润滑液）',f:'16 oz · 1 gal · 5 gal',m:'车漆',
+{id:'P-paint-gloss',b:'P',c:'seal',ph:['neu','7.5'],n:'Paint Gloss',t:'展厅级快速美容剂（也可当黏土润滑液）',f:'16 oz · 1 gal · 5 gal',m:'车漆',
  d:[['快速美容 / 黏土润滑','即用','喷雾壶']],
  s:['先洗车；最好在阴凉处、车漆冷却时施工。','在 60 × 60 cm 的漆面上轻喷一层。','用干净的超纤布擦拭并抛亮。','当黏土润滑液时多喷一些，保证足够润滑。'],
  x:['水性，去掉灰尘、指纹和污迹，不用做整车美容；配合 Perfect Putty 黏土使用。'],u:PS+'paint-gloss-doubleblack-collection'},
 
-{id:'P-dream-maker',b:'P',c:'seal',n:'Dream Maker',t:'车展光泽增强喷雾（McCall 车队版）',f:'16 oz · 1 gal',m:'车漆',
+{id:'P-dream-maker',b:'P',c:'seal',ph:['alk','8.5'],n:'Dream Maker',t:'车展光泽增强喷雾（McCall 车队版）',f:'16 oz · 1 gal',m:'车漆',
  d:[['喷上擦亮','即用','喷雾壶']],
  s:['喷在干净的漆面上。','用超纤布擦开、抛亮。'],
  x:['为蒙特雷车展周的 McCall 美容团队开发：提升单工序漆和清漆的光泽。','可以叠在 Bead Maker 等现有保护上。','瓶身：交车前处理、车展日增艳、适用所有漆面。'],u:PS+'dream-maker-gloss-amplifier'},
@@ -199,45 +199,45 @@ export const products: Product[] = [
  s:[],
  x:['P&S 同类中最持久、光泽最高、手感最丝滑的一款，适用所有颜色。','可手工或用轨道抛光机施工。官方商城未给出施工步骤。'],u:PS+'ultracoat-paint-sealant-paint-protection'},
 
-{id:'P-velocity-glaze',b:'P',c:'seal',n:'Velocity Glaze',t:'乳液快速釉蜡（Pro Series）',f:'16 oz · 1 gal',m:'汽车 · 货车 · 摩托车 · 船 · 飞机漆面',
+{id:'P-velocity-glaze',b:'P',c:'seal',ph:['neu','6.5'],n:'Velocity Glaze',t:'乳液快速釉蜡（Pro Series）',f:'16 oz · 1 gal',m:'汽车 · 货车 · 摩托车 · 船 · 飞机漆面',
  d:[['手工 / 轨道机 / 偏心机','即用','—']],
  s:[],
  x:['快速提亮漆面；乳液质地易涂抹，擦除时不起粉尘。','可作快速手工蜡、轨道机蜡或偏心机抛光剂使用；配方偏湿润，适合深色或难打蜡的漆面。','官方商城未给出施工步骤。'],u:PS+'velocity-glaze-paint-protection'},
 
-{id:'P-cherry-speed-wax',b:'P',c:'seal',n:'Cherry Speed Wax',t:'快干液体糊蜡（轻度清洁 + 增光，Pro Series）',f:'16 oz · 1 gal',m:'汽车 · 货车 · 摩托车 · 飞机 · 船漆面',
+{id:'P-cherry-speed-wax',b:'P',c:'seal',ph:['neu','7.2'],n:'Cherry Speed Wax',t:'快干液体糊蜡（轻度清洁 + 增光，Pro Series）',f:'16 oz · 1 gal',m:'汽车 · 货车 · 摩托车 · 飞机 · 船漆面',
  d:[['手工 / 轨道机 / 偏心机 / 变速抛光机','即用','—']],
  s:[],
  x:['快干的快速蜡，增加深度和保护，同时轻度清洁漆面；适合日常和快速美容。','官方商城未给出施工步骤。'],u:PS+'cherry-speed-wax-paint-protection'},
 
 // ───────────────────────── 塑料 / 轮胎养护 ─────────────────────────
-{id:'P-shine-all',b:'P',c:'trim',n:'Shine All',t:'水性高光轮胎油（也可用于内饰）',f:'16 oz · 1 gal · 5 gal',m:'轮胎 · 橡胶 · 人造革 · 皮革',
+{id:'P-shine-all',b:'P',c:'trim',ph:['neu','8.0'],n:'Shine All',t:'水性高光轮胎油（也可用于内饰）',f:'16 oz · 1 gal · 5 gal',m:'轮胎 · 橡胶 · 人造革 · 皮革',
  d:[['高光','即用','—'],['降低光泽 / 节省用量','兑水（比例自定）','—']],
  s:['先把要上油的部位清洁、擦干。','喷涂或用施工块手涂，用量看效果需要。','等它干成光亮效果，擦掉多余的。'],
  x:['主要是即用产品；想降低光泽或节省用量时可以兑水，标签没有给固定比例。','虽然主要用于外饰，也可以保养内饰的橡胶、人造革和皮革。'],u:PS+'shine-all-doubleblack-collection'},
 
-{id:'P-bumpercoat',b:'P',c:'trim',n:'Bumpercoat',t:'浓缩高光橡胶 / 乙烯基保养剂（硅油型）',f:'32 oz',m:'黑色保险杠 · 橡胶饰条 · 饰条 · 密封条',
+{id:'P-bumpercoat',b:'P',c:'trim',ph:['neu','7.5'],n:'Bumpercoat',t:'浓缩高光橡胶 / 乙烯基保养剂（硅油型）',f:'32 oz',m:'黑色保险杠 · 橡胶饰条 · 饰条 · 密封条',
  d:[],s:[],
  x:['浓稠的硅油液体，恢复并保护褪色的黑色保险杠和橡胶饰条；收尾时也能遮盖饰条纹理里残留的蜡。','官方商城未给出施工步骤。'],u:PS+'bumpercoat-dressings-interior-exterior'},
 
-{id:'P-rubber-vinyl-shine',b:'P',c:'trim',n:'Rubber & Vinyl Shine',t:'水性硅油保养剂（经济型，Pro Series）',f:'1 gal · 5 gal',m:'内外饰皮革 · 乙烯基 · 橡胶',
+{id:'P-rubber-vinyl-shine',b:'P',c:'trim',ph:['neu','6.5'],n:'Rubber & Vinyl Shine',t:'水性硅油保养剂（经济型，Pro Series）',f:'1 gal · 5 gal',m:'内外饰皮革 · 乙烯基 · 橡胶',
  d:[],s:[],
  x:['调理、软化、保护皮革、乙烯基和橡胶，内外饰都能上光；成本较低的通用保养剂。','官方商城未给出施工步骤。'],u:PS+'rubber-and-vinyl-shine-dressings-interior-dressings'},
 
-{id:'P-shape-up',b:'P',c:'trim',n:'Shape-Up',t:'水性硅油乙烯基 / 橡胶保养剂（柠檬香）',f:'16 oz · 1 gal · 5 gal',m:'内外饰皮革 · 乙烯基 · 橡胶',
+{id:'P-shape-up',b:'P',c:'trim',ph:['neu','6.5'],n:'Shape-Up',t:'水性硅油乙烯基 / 橡胶保养剂（柠檬香）',f:'16 oz · 1 gal · 5 gal',m:'内外饰皮革 · 乙烯基 · 橡胶',
  d:[],s:[],
  x:['调理、软化、保护皮革、乙烯基和橡胶，内外饰都呈自然光泽；带柠檬香，保养同时除味。','官方商城未给出施工步骤。'],u:PS+'shape-up-dressings-interior-exterior'},
 
-{id:'P-no-rub',b:'P',c:'trim',n:'No Rub Aerosol Coating',t:'免擦喷罐保养剂',f:'9 oz 喷罐',m:'塑料 · 橡胶 · 乙烯基 · 空调出风口 · 中控 · 饰条 · 保险杠',
+{id:'P-no-rub',b:'P',c:'trim',ph:['na'],n:'No Rub Aerosol Coating',t:'免擦喷罐保养剂',f:'9 oz 喷罐',m:'塑料 · 橡胶 · 乙烯基 · 空调出风口 · 中控 · 饰条 · 保险杠',
  d:[['塑料 / 橡胶 / 乙烯基','即用','—']],
  s:['喷在要保养的部位，不需要擦。'],
  x:['又称「罐装美容」，适合快速修补出风口、中控、饰条和保险杠的外观。'],u:PS+'no-rub-dressings-interior-exterior'},
 
-{id:'P-dressed',b:'P',c:'trim',n:'Dressed',t:'聚合物水性轮胎油（缎面到高光）',f:'1 gal · 5 gal',m:'轮胎',
+{id:'P-dressed',b:'P',c:'trim',ph:['neu','6.8'],n:'Dressed',t:'聚合物水性轮胎油（缎面到高光）',f:'1 gal · 5 gal',m:'轮胎',
  d:[['轮胎','即用','—']],
  s:['先用 Undressed 清洁轮胎并擦干。','用刷子（效果最好）或喷壶涂在轮胎上。'],
  x:['100 % 水性、不属于危险品，用聚合物模拟溶剂型硅油轮胎油的效果，只用于轮胎。','即用产品；5 加仑桶背标的用法文字与 Undressed 相同，以实际用途为准。','标签：Pro Series L14。'],u:PS+'dressed-tire-finish'},
 
-{id:'P-island-shine',b:'P',c:'trim',n:'Island Shine',t:'高性能水性轮胎 / 饰件保养剂（Pro Series）',f:'1 gal · 5 gal',m:'轮胎 · 外饰 · 内饰皮革 / 橡胶 / 乙烯基',
+{id:'P-island-shine',b:'P',c:'trim',ph:['neu','8.0'],n:'Island Shine',t:'高性能水性轮胎 / 饰件保养剂（Pro Series）',f:'1 gal · 5 gal',m:'轮胎 · 外饰 · 内饰皮革 / 橡胶 / 乙烯基',
  d:[],s:[],
  x:['为洗车房的工业化轮胎上光开发，让轮胎呈亮光；也可用于内外饰件，可调理、软化并保护皮革、橡胶和乙烯基。','可按需要加水稀释（官方未给比例）。官方商城未给出施工步骤。'],u:PS+'island-shine-dressings-interior-exterior'},
 
@@ -245,40 +245,40 @@ export const products: Product[] = [
  d:[],s:[],
  x:['精选硅油配方，在轮胎和其他部位上光泽饱满；内外饰都可以用。','官方商城未给出施工步骤。'],u:PS+'multi-dressing-voc-compliant-dressings-interior-exterior'},
 
-{id:'P-wipe-n-shine',b:'P',c:'trim',n:'Wipe N Shine',t:'凝胶型轮胎 / 饰件保养剂（Pro Series）',f:'16 oz · 1 gal · 5 gal',m:'轮胎 · 外饰 · 内饰乙烯基与橡胶',
+{id:'P-wipe-n-shine',b:'P',c:'trim',ph:['neu','7.5'],n:'Wipe N Shine',t:'凝胶型轮胎 / 饰件保养剂（Pro Series）',f:'16 oz · 1 gal · 5 gal',m:'轮胎 · 外饰 · 内饰乙烯基与橡胶',
  d:[['轮胎 / 饰件','即用','施工块 / 毛巾']],
  s:['直接擦涂在要保养的表面上，不需要喷壶；干、湿状态都可以施工。'],
  x:['光泽在擦上后很快显现并逐渐变好；用于轮胎时不会流挂、不会甩到地上。'],u:PS+'wipe-n-shie-dressings-interior-exterior'},
 
-{id:'P-dynamic',b:'P',c:'trim',n:'Dynamic Dressing',t:'浓缩多用途保养剂（光泽可调）',f:'1 gal（浓缩）· 16 oz（即用版）',m:'轮胎 · 外饰塑料 · 发动机舱 · 底盘 · 内饰塑料 · 皮革 · 人造革',
+{id:'P-dynamic',b:'P',c:'trim',ph:['neu','6.5'],n:'Dynamic Dressing',t:'浓缩多用途保养剂（光泽可调）',f:'1 gal（浓缩）· 16 oz（即用版）',m:'轮胎 · 外饰塑料 · 发动机舱 · 底盘 · 内饰塑料 · 皮革 · 人造革',
  d:[['高光','1:1','喷雾壶'],['自然光泽','1:4','喷雾壶']],
  s:['按需要的光泽兑水：1:1 高光，1:4 自然。','喷涂或用施工块涂抹，擦掉多余的。'],
  x:['一个产品就能用在轮胎、外饰、发动机舱、底盘和内饰。','16 oz 的 Ready To Use 版就是 1:4 稀释好的版本。'],u:PS+'dynamic-dressing'},
 
 // ───────────────────────── 玻璃 ─────────────────────────
-{id:'P-true-vue',b:'P',c:'glass',n:'True Vue',t:'水性玻璃清洁剂（即用版 / 浓缩版）',f:'16 oz（即用）· 1 gal · 5 gal（浓缩）',m:'车内外玻璃',
+{id:'P-true-vue',b:'P',c:'glass',ph:['acid','5.5'],n:'True Vue',t:'水性玻璃清洁剂（即用版 / 浓缩版）',f:'16 oz（即用）· 1 gal · 5 gal（浓缩）',m:'车内外玻璃',
  d:[['即用版','即用','喷雾壶'],['浓缩版','1:4 – 1:10','喷雾壶']],
  s:['喷在玻璃或玻璃布上。','用干净的玻璃布擦干净，再用干布擦亮。'],
  x:['去除路面油膜、烟渍和污垢；热天工作时间长，冷天挥发也够快。','浓缩版按需要的效果 1:4 – 1:10 稀释。'],u:PS+'true-vue-rtu-doubleblack-collection'},
 
 
-{id:'P-paste-glass-chrome',b:'P',c:'glass',n:'Paste Glass & Chrome',t:'玻璃 / 镀铬清洁膏（玻璃蜡）',f:'—',m:'玻璃 · 镀铬',
+{id:'P-paste-glass-chrome',b:'P',c:'glass',ph:['na'],n:'Paste Glass & Chrome',t:'玻璃 / 镀铬清洁膏（玻璃蜡）',f:'—',m:'玻璃 · 镀铬',
  d:[['玻璃 / 镀铬','即用','—']],
  s:['涂在玻璃上，干成一层薄雾。','擦掉即可，不留条纹和残留。'],
  x:['俗称「玻璃蜡」，可去除玻璃和镀铬上的重污、虫尸和水斑。'],u:PS+'paste-glass-chrome-glass-cleaner'},
 
-{id:'P-reflect',b:'P',c:'glass',n:'REFLECT Glass Finisher',t:'玻璃清洁 + SiO₂ 保护（车内外）',f:'16 oz · 1 gal',m:'车内外玻璃',
+{id:'P-reflect',b:'P',c:'glass',ph:['neu','6.5'],n:'REFLECT Glass Finisher',t:'玻璃清洁 + SiO₂ 保护（车内外）',f:'16 oz · 1 gal',m:'车内外玻璃',
  d:[['玻璃','即用','喷雾壶']],
  s:['先擦掉或洗掉玻璃上的重污。','直接在玻璃上均匀喷一层薄雾；大面积分区施工。','用干净干燥的超纤布把产品抛进玻璃。','翻到干面继续擦，直到清晰无痕。'],
  x:['留下一层 SiO₂ 保护，拨水、减少 UV 老化和污垢附着，以后更好清洁。','在阴凉处施工，避开阳光直射和发热的玻璃，以免留痕。'],u:PS+'reflect-glass-finisher'},
 
-{id:'P-clarity',b:'P',c:'glass',n:'Clarity Creme',t:'玻璃研磨乳（去水垢、矿物沉积、雨刷痕）',f:'16 oz',m:'车外玻璃',
+{id:'P-clarity',b:'P',c:'glass',ph:['na'],n:'Clarity Creme',t:'玻璃研磨乳（去水垢、矿物沉积、雨刷痕）',f:'16 oz',m:'车外玻璃',
  d:[['手工 / 机器研磨','即用','—']],
  s:['先洗玻璃，需要时用黏土处理。','轻度：用超纤布手工研磨；中度以上：用机器配海绵或羊毛盘（看严重程度）。','手工或机器都用重叠的路线研磨，直到玻璃恢复原状，需要时重复。','完成后让残留干成雾状，再擦亮。'],
  x:['也用于 Inspiration VUE 玻璃镀膜前的研磨。'],u:PS+'clarity-creme-glass-polish-doubleblack-collection'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'P-xpress',b:'P',c:'int',n:'Xpress Interior Cleaner',t:'内饰多表面清洁剂（皮革、人造革、塑料）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'皮革 · 人造革 · 内饰塑料',
+{id:'P-xpress',b:'P',c:'int',ph:['alk','8.5'],n:'Xpress Interior Cleaner',t:'内饰多表面清洁剂（皮革、人造革、塑料）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'皮革 · 人造革 · 内饰塑料',
  d:[['重度','原液','喷雾壶'],['一般','1:1','喷雾壶']],
  s:['先在不显眼处测试。','原液使用，或最多 1:1 兑水。','喷足量直到起泡。','用毛巾、软毛刷、百洁布或魔术擦等工具刷洗。','刷完用拧湿的毛巾擦净。','需要时再上 Leather Treatment 或其他保养剂提升外观。'],
  x:['清洁不会让表面变干、变色或受损，擦完没有残留。'],u:PS+'xpress-interior-cleaner-doubleblack-collection'},
@@ -292,76 +292,76 @@ export const products: Product[] = [
  s:['处理前确保车内已清洁并干燥。','释放二氧化氯蒸汽熏蒸，处理约需 1 小时。'],
  x:['以蒸汽释放的广谱杀菌剂，去除细菌、霉菌和烟味等顽固异味；官方称强度是传统二氧化氯处理的 8 倍。','官方商城未给出更详细的操作步骤；按包装说明操作。'],u:PS+'odor-doc-doubleblack-collection'},
 
-{id:'P-swift',b:'P',c:'int',n:'Swift Clean & Shine',t:'内饰清洁 + 上光二合一快速美容',f:'16 oz · 1 gal · 5 gal',m:'皮革 · 人造革 · 内饰塑料',
+{id:'P-swift',b:'P',c:'int',ph:['alk','8.5'],n:'Swift Clean & Shine',t:'内饰清洁 + 上光二合一快速美容',f:'16 oz · 1 gal · 5 gal',m:'皮革 · 人造革 · 内饰塑料',
  d:[['内饰快速美容','即用','喷雾壶']],
  s:['用前摇匀。','喷在表面、施工海绵或 Xpress Side Kick 刷洗垫上。','需要时刷洗到干净。','擦掉多余的产品，擦到想要的效果。'],
  x:['清洁后留下有保养感的上光效果，气味宜人。'],u:PS+'swift-clean-shine'},
 
-{id:'P-apc',b:'P',c:'apc',n:'All Purpose Cleaner',t:'浓缩通用清洁剂（Pro Series）',f:'1 gal · 5 gal',m:'乙烯基 · 橡胶 · 地毯脚垫 · 轮胎 · 轮毂 · 织物 · 轮拱 · 发动机舱',
+{id:'P-apc',b:'P',c:'apc',ph:['alk','11'],n:'All Purpose Cleaner',t:'浓缩通用清洁剂（Pro Series）',f:'1 gal · 5 gal',m:'乙烯基 · 橡胶 · 地毯脚垫 · 轮胎 · 轮毂 · 织物 · 轮拱 · 发动机舱',
  d:[['最高稀释','1:15','喷雾壶']],
  s:['先小面积测试。','用原液或稀释后的溶液喷在要清洁的部位，短暂作用，需要时刷洗。','用水冲洗，或用湿毛巾擦净。'],
  x:['高效、可生物降解，能分解油脂、去除污垢；适合车流量大、注重成本的美容店。','最高稀释比例 1:15 和施工步骤参考自美国经销商 Car Supplies Warehouse 的商品页和桶身标签。'],u:PS+'all-purpose-cleaner-cleaners-interior-cleaners'},
 
-{id:'P-blast',b:'P',c:'apc',n:'Blast Super Cleaner',t:'浓缩多用途强力清洁剂（Pro Series）',f:'1 gal',m:'发动机 · 轮毂 · 轮胎 · 乙烯基 · 地毯 · 织物',
+{id:'P-blast',b:'P',c:'apc',ph:['alk','11'],n:'Blast Super Cleaner',t:'浓缩多用途强力清洁剂（Pro Series）',f:'1 gal',m:'发动机 · 轮毂 · 轮胎 · 乙烯基 · 地毯 · 织物',
  d:[],s:[],
  x:['洗涤剂加水性溶剂，松动发动机、轮毂、轮胎、乙烯基、地毯和织物上的油污。','顽固污渍可用原液，轻度清洁加水稀释（官方未给比例）。官方商城未给出施工步骤。'],u:PS+'blast-super-cleaner-cleaners-interior-cleaners'},
 
-{id:'P-hot-shot',b:'P',c:'apc',n:'Hot Shot',t:'强力除油浓缩液（Pro Series）',f:'1 gal',m:'发动机及零件 · 轮毂 · 轮胎 · 底盘',
+{id:'P-hot-shot',b:'P',c:'apc',ph:['alk','> 13'],n:'Hot Shot',t:'强力除油浓缩液（Pro Series）',f:'1 gal',m:'发动机及零件 · 轮毂 · 轮胎 · 底盘',
  d:[['最高稀释','1:15','喷雾壶']],
  s:[],
  x:['高效、可生物降解的洗涤剂和溶剂，彻底溶解油脂和污垢；顽固处可用原液。','最高稀释比例 1:15 来自美国经销商 Car Supplies Warehouse 的商品页。官方商城未给出施工步骤。'],u:PS+'hot-shot-high-power-deg-cleaners-hd-cleaners'},
 
-{id:'P-enviro-clean',b:'P',c:'apc',n:'Enviro-Clean',t:'柑橘浓缩清洁除油剂',f:'16 oz',m:'地毯 · 乙烯基 · 发动机 · 轮拱 · 车漆',
+{id:'P-enviro-clean',b:'P',c:'apc',ph:['alk','10.5'],n:'Enviro-Clean',t:'柑橘浓缩清洁除油剂',f:'16 oz',m:'地毯 · 乙烯基 · 发动机 · 轮拱 · 车漆',
  d:[['视用途','1:4 – 1:20','喷雾壶']],
  s:[],
  x:['柑橘衍生物、可生物降解清洁剂和水性溶剂，溶解油脂、带走污垢，冲走其他清洁剂留下的颗粒和污渍。','也用于地毯喷抽前的局部预处理（见 Extractor Shampoo）。官方商城未给出施工步骤。'],u:PS+'enviro-clean-concentrated-cleaner-cleaners-interior-cleaners'},
 
 
-{id:'P-leather-treatment',b:'P',c:'int',n:'Leather Treatment',t:'皮革保养 / 保护剂（含 UV 抑制剂和皮革香味）',f:'16 oz · 1 gal',m:'皮革',
+{id:'P-leather-treatment',b:'P',c:'int',ph:['neu','7.8'],n:'Leather Treatment',t:'皮革保养 / 保护剂（含 UV 抑制剂和皮革香味）',f:'16 oz · 1 gal',m:'皮革',
  d:[['皮革保养','即用','—']],
  s:['先用 Xpress Interior Cleaner 清洁皮革并擦干。','取适量在施工海绵或超纤布上，均匀涂开。','让它渗入几分钟，再用干净的超纤布擦掉多余的。'],
  x:['滋润、保护皮革，含 UV 抑制剂，并带皮革香味。'],u:PS+'leather-treatment-doubleblack-collection'},
 
-{id:'P-terminator',b:'P',c:'int',n:'Terminator',t:'酶清洁污渍去除剂（内饰清洁系统第 1 步）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'地毯 · 织物',
+{id:'P-terminator',b:'P',c:'int',ph:['alk','8.5'],n:'Terminator',t:'酶清洁污渍去除剂（内饰清洁系统第 1 步）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'地毯 · 织物',
  d:[['地毯 / 织物污渍','即用','喷雾壶']],
  s:['即用，不需要稀释。','开始前先干刷、吸尘地毯和座椅。','直接喷在污渍上，再处理整片区域。','接着喷 Carpet Bomber（第 2 步），用地毯刷刷洗，两步一起效果最好。','至少作用 3 分钟，用蒸汽机或地毯刷搅动，最后吸尘或抽洗。'],
  x:['酶 + 清洁成分，针对嵌入的污垢、油脂和蛋白质类污渍；也可以单独使用。'],u:PS+'terminator-spot-and-stain-remover-doubleblack-collection'},
 
-{id:'P-carpet-bomber',b:'P',c:'int',n:'Carpet Bomber',t:'地毯 / 织物清洁剂（内饰清洁系统第 2 步）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'地毯 · 织物',
+{id:'P-carpet-bomber',b:'P',c:'int',ph:['alk','10.5'],n:'Carpet Bomber',t:'地毯 / 织物清洁剂（内饰清洁系统第 2 步）',f:'16 oz · 32 oz · 1 gal · 5 gal',m:'地毯 · 织物',
  d:[['地毯 / 织物','1:5 – 1:8','喷雾壶']],
  s:['按 1:5 – 1:8 兑水。','开始前先干刷、吸尘地毯和座椅。','作为系统第 2 步时，在 Terminator 之后使用。','在区域上轻喷一层，至少作用 3 分钟。','用蒸汽机或地毯刷刷洗（两者一起最好），最后吸尘或抽洗。'],
  x:['柑橘成分 + 可生物降解清洁剂 + 水性溶剂，溶解油脂、带走污垢；也可以单独使用。'],u:PS+'carpet-bomber-carpet-doubleblack-collection'},
 
-{id:'P-upholstery-shampoo',b:'P',c:'int',n:'Upholstery Shampoo',t:'高泡地毯 / 织物手洗香波（Pro Series）',f:'1 gal · 5 gal',m:'地毯 · 织物内饰',
+{id:'P-upholstery-shampoo',b:'P',c:'int',ph:['alk','8–9'],n:'Upholstery Shampoo',t:'高泡地毯 / 织物手洗香波（Pro Series）',f:'1 gal · 5 gal',m:'地毯 · 织物内饰',
  d:[['地毯 / 织物手洗','1:20','—']],
  s:[],
  x:['泡沫丰富，能把深层地毯里的污垢松动带出；不掉色，pH 平衡，适用所有地毯材质；含温和除味成分。','官方商城未给出施工步骤。'],u:PS+'upholstery-shampoo-cleaners-interior-cleaners'},
 
-{id:'P-extractor-shampoo',b:'P',c:'int',n:'Extractor Shampoo',t:'无泡喷抽机地毯香波（Pro Series）',f:'1 gal · 5 gal',m:'地毯 · 织物内饰',
+{id:'P-extractor-shampoo',b:'P',c:'int',ph:['alk','8.5'],n:'Extractor Shampoo',t:'无泡喷抽机地毯香波（Pro Series）',f:'1 gal · 5 gal',m:'地毯 · 织物内饰',
  d:[['喷抽机','1:60（2 oz / 1 gal）','喷抽机']],
  s:['按 1:60 兑水，加入喷抽机的溶液箱。','油污集中的地方先用 Enviro-Clean 预处理。'],
  x:['无泡配方，不掉色，pH 平衡，适用所有地毯材质。'],u:PS+'extractor-shampoo-cleaners-interior-cleaners'},
 
-{id:'P-extreme-carpet',b:'P',c:'int',n:'EXTREME Carpet Stain Remover',t:'速效地毯去渍喷罐',f:'18 oz 喷罐',m:'地毯 · 织物',
+{id:'P-extreme-carpet',b:'P',c:'int',ph:['alk','11–12'],n:'EXTREME Carpet Stain Remover',t:'速效地毯去渍喷罐',f:'18 oz 喷罐',m:'地毯 · 织物',
  d:[['局部去渍','即用','—']],
  s:[],
  x:['瓶身标注：含表面活性剂和润湿剂的速效去渍剂，不起泡，能迅速渗透，去除墨水、油脂、机油、咖啡、可乐、红酒、鞋油、口红和宠物污渍等。','也适合作喷抽前的预处理。官方商城未给出施工步骤。'],u:PS+'extreme-cerpet-stain-remover-cleaners-interior-cleaners'},
 
-{id:'P-foaming-carpet',b:'P',c:'int',n:'Foaming Carpet Cleaner & Deodorizer',t:'生物酶泡沫地毯清洁除味喷罐（薄荷香）',f:'18 oz 喷罐',m:'地毯 · 织物',
+{id:'P-foaming-carpet',b:'P',c:'int',ph:['alk','11–12'],n:'Foaming Carpet Cleaner & Deodorizer',t:'生物酶泡沫地毯清洁除味喷罐（薄荷香）',f:'18 oz 喷罐',m:'地毯 · 织物',
  d:[],s:[],
  x:['两段作用：先即刻除味并溶解嵌入的污垢和有机物，再由生物酶分解有机残留，从源头去除污渍和异味。','官方商城未给出施工步骤。'],u:PS+'foaming-carpet-cleaner-and-deo-cleaners-interior-cleaners'},
 
-{id:'P-finisher',b:'P',c:'int',n:'Finisher',t:'过氧化物除味除渍（内饰清洁系统第 3 步）',f:'16 oz · 1 gal',m:'地毯 · 织物 · 布座椅',
+{id:'P-finisher',b:'P',c:'int',ph:['na'],n:'Finisher',t:'过氧化物除味除渍（内饰清洁系统第 3 步）',f:'16 oz · 1 gal',m:'地毯 · 织物 · 布座椅',
  d:[['地毯 / 织物','即用','喷雾壶']],
  s:['在 Terminator 和 Carpet Bomber 清洁完之后使用。','喷在地毯、座椅等织物上，让它作用 5–10 分钟。','产品会分解成氧气和水，不需要冲洗或清除残留。'],
  x:['针对清洁后残留的有机污渍、水印和霉味。','作用时间来自经销商 Car Supplies Warehouse 的商品页。'],u:PS+'finisher-peroxide-treatment-doubleblack-collection'},
 
-{id:'P-release',b:'P',c:'int',n:'Release Vacuum Aid',t:'吸尘辅助喷雾（宠物毛、防静电）',f:'16 oz · 1 gal',m:'地毯 · 织物',
+{id:'P-release',b:'P',c:'int',ph:['neu','6.8'],n:'Release Vacuum Aid',t:'吸尘辅助喷雾（宠物毛、防静电）',f:'16 oz · 1 gal',m:'地毯 · 织物',
  d:[['吸尘前喷涂','即用','喷雾壶']],
  s:['吸尘前轻喷在地毯和织物上。','用刷子或吸尘器正常吸尘。'],
  x:['瓶身：帮助去除宠物毛、防静电、给织物除味、减少吸尘时间、让吸头更顺滑。','标签：Pro Series G21。'],u:PS+'release-vacuum-aid'},
 
-{id:'P-natural-finish',b:'P',c:'int',n:'Natural Finish',t:'水性内饰保养剂（低光泽，含 UV 防护和香味）',f:'16 oz · 1 gal · 5 gal',m:'皮革 · 人造革 · 橡胶',
+{id:'P-natural-finish',b:'P',c:'int',ph:['neu','6.5'],n:'Natural Finish',t:'水性内饰保养剂（低光泽，含 UV 防护和香味）',f:'16 oz · 1 gal · 5 gal',m:'皮革 · 人造革 · 橡胶',
  d:[['内饰 / 橡胶','即用','—']],
  s:['先把要保养的部位清洁、擦干。','喷涂或手涂，用量看效果需要。','等它干后擦掉多余的。'],
  x:['当轮胎油用时不要涂太多，涂完把轮胎擦一遍；甩出来的保养剂会弄脏塑料饰条。','标签：Pro Series L60。'],u:PS+'natural-finish-dressings-interior-exterior'},
@@ -380,7 +380,7 @@ export const products: Product[] = [
  s:['配合 Paint Gloss 作润滑剂使用。'],
  x:['标准 Perfect Putty 的加强版，更柔软、更强一些；可去除工业落尘、漆雾、铁路粉尘、表面锈和其他污染物。'],u:PS+'perfect-putty-purple-fallout-remover-surface-cleaner'},
 
-{id:'P-chamois-cleaner',b:'P',c:'acc',n:'Chamois Cleaner/Conditioner',t:'麂皮清洁养护剂',f:'32 oz',m:'天然 / 合成麂皮',
+{id:'P-chamois-cleaner',b:'P',c:'towel',ph:['neu','6.8'],n:'Chamois Cleaner/Conditioner',t:'麂皮清洁养护剂',f:'32 oz',m:'天然 / 合成麂皮',
  d:[['麂皮存放','加入漂洗桶','桶洗']],
  s:['加入漂洗桶，用来存放麂皮。'],
  x:['去除砂粒，并螯合会留下水斑的硬水离子，提升麂皮擦干效果；含软化剂和防腐剂，延长麂皮寿命。','官方未给出用量。'],u:PS+'chamois-cleaner-conditioner-cleaners-interior-cleaners'},
@@ -397,7 +397,7 @@ export const products: Product[] = [
  s:['配合 Xpress Interior Cleaner 或 Swift，喷在垫子上刷洗皮革、人造革和塑料。'],
  x:[],u:PS+'xpress-side-kick-2-pack'},
 
-{id:'P-rags',b:'P',c:'acc',n:'Rags to Riches',t:'超纤毛巾专用洗涤剂',f:'32 oz · 1 gal',m:'—',d:[],
+{id:'P-rags',b:'P',c:'towel',ph:['alk','9.5'],n:'Rags to Riches',t:'超纤毛巾专用洗涤剂',f:'32 oz · 1 gal',m:'—',d:[],
  s:['洗衣机：小量或轻脏一次加 1 oz（约 30 ml），大量加 2 oz。','很脏或失去吸水性的毛巾，先在 2–3 加仑水里加 1–2 oz 浸泡，再机洗。'],
  x:['恢复超纤吸水性和柔软度，所有面料都能用。','用量来自经销商 Car Supplies Warehouse 的商品页。'],u:CSW+'p-s-rags-to-riches-microfiber-detergent'},
 ];
@@ -441,7 +441,7 @@ export const flows: Flow[] = [
  sum:'Brake Buster 清洁轮毂和轮胎 → Iron Buster 去铁粉（变紫）→ 轮胎再用 Undressed 去旧轮胎油 → Dressed 或 Shine All 上光。',
  steps:[
   {ph:'轮毂轮胎清洁',p:['P-brake-buster'],r:'即用',how:'轮毂冷却时大量喷涂，停留 1 分钟以上，刷洗后用强水流冲净。'},
-  {ph:'除铁（需要时）',p:['P-iron-buster'],r:'即用',pH:'neu',how:'喷涂后停留 2–5 分钟，不要干掉，冲净。'},
+  {ph:'除铁（需要时）',p:['P-iron-buster'],r:'即用',pH:'acid',how:'喷涂后停留 2–5 分钟，不要干掉，冲净。'},
   {ph:'轮胎深度清洁',p:['P-undressed'],r:'原液 – 1:10',how:'喷在轮胎上，作用后刷洗，冲净并擦干。'},
   {ph:'轮胎上光',p:['P-dressed','P-shine-all'],alt:true,r:'即用',how:'Dressed 用刷子涂效果最好；Shine All 喷或手涂，干后擦掉多余的。'},
  ],
