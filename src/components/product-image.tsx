@@ -16,10 +16,13 @@ interface Props {
 }
 
 /** 产品图（fill 到定位容器），无图或加载失败时显示名称卡片 */
-export function ProductImage({ src, name, brand, alt = '', sizes, eager }: Props) {
+export function ProductImage({ src, name, brand, alt = name, sizes, eager }: Props) {
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   if (!src || failed) return <Placeholder name={name} brand={brand} />;
   return (
+    <>
+    {!loaded && <Placeholder name={name} brand={brand} />}
     <Image
       src={src}
       alt={alt}
@@ -27,14 +30,16 @@ export function ProductImage({ src, name, brand, alt = '', sizes, eager }: Props
       sizes={sizes}
       loading={eager ? 'eager' : 'lazy'}
       fetchPriority={eager ? 'high' : undefined}
+      onLoad={() => setLoaded(true)}
       onError={() => setFailed(true)}
     />
+    </>
   );
 }
 
 export function Placeholder({ name, brand }: { name: string; brand: BrandId }) {
   return (
-    <div className={`ph-img ${brand}`}>
+    <div className={`ph-img ${brand}`} role="img" aria-label={`${BRAND[brand]} ${name}，暂无产品图`}>
       <i />
       <b>{name}</b>
       <span>{BRAND[brand]} · 暂无产品图</span>
@@ -46,5 +51,5 @@ export function Placeholder({ name, brand }: { name: string; brand: BrandId }) {
 export function ProductThumb({ src, name, brand }: { src: string | undefined; name: string; brand: BrandId }) {
   const [failed, setFailed] = useState(false);
   if (!src || failed) return <i className={`ph-mini ${brand}`}>{name.slice(0, 2)}</i>;
-  return <Image src={src} alt="" width={32} height={32} onError={() => setFailed(true)} />;
+  return <Image src={src} alt={name} width={32} height={32} onError={() => setFailed(true)} />;
 }

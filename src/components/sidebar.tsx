@@ -101,9 +101,9 @@ export function Sidebar({
   flows: FlowIndexItem[];
 }) {
   const { isFlows, brand, material, category, setCategory, scene, setScene, query, jumpTo, expanded, hits } = useGuide();
-  const { pickBrand, pickMaterial } = usePickers(productCounts, flowCounts);
+  const { pickBrand, pickMaterial } = usePickers();
   const favorites = useFavorites();
-  const catCounts = productCounts[material];
+  const catCounts = productCounts[''];
   const counts = isFlows ? flowCounts : catCounts;
 
   // 展开分类后会渲染出新的子分类区块，要重新监听
@@ -117,7 +117,7 @@ export function Sidebar({
   const activeFlow = pin ? pin.flow : spyFlow;
 
   // 产品页有搜索词时，左栏分类显示每个分类的命中数
-  const searching = !isFlows && query.trim() !== '' && hits !== null;
+  const searching = !isFlows && (query.trim() !== '' || material.length > 0 || !!brand || !!category) && hits !== null;
 
   const shownFlows = flows.filter((f) => (!brand || f.b === brand) && (!scene || f.sc === scene));
 
@@ -129,6 +129,7 @@ export function Sidebar({
       </div>
       <ViewTabs className="tabs side-tabs" />
 
+      {!isFlows && <div className="side-sec side-favorites"><button type="button" className="side-fav" aria-pressed={category === 'fav'} onClick={() => setCategory(category === 'fav' ? '' : 'fav')}><StarIcon filled /> 我的常用 · {favorites.length}</button></div>}
       <div className="side-sec">
         <h2>品牌</h2>
         <ul className="side-list" role="list">
@@ -202,14 +203,13 @@ export function Sidebar({
       ) : (
         <>
           <div className="side-sec">
-            <h2>适用材质</h2>
+            <h2>适用材质（多选取交集）</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部'] as const, ...MATERIALS] as const)
                 .filter(([k]) => productCounts[k][brand][''])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
-                    <button type="button" aria-pressed={material === k} onClick={() => pickMaterial(k as MaterialId | '')}>
-                      {material === k && <Indicator name="ind-mat" />}
+                    <button type="button" aria-pressed={(k ? material.includes(k) : material.length === 0)} onClick={() => pickMaterial(k as MaterialId | '')}>
                       {n}
                       <small>{productCounts[k][brand]['']}</small>
                     </button>
@@ -217,8 +217,8 @@ export function Sidebar({
                 ))}
             </ul>
           </div>
-          <nav className="side-sec" aria-label="分类目录">
-            <h2>{searching ? '分类（搜索结果）' : '分类'}</h2>
+          <nav className="side-sec side-categories" aria-label="分类目录">
+            <h2>{searching ? '分类（筛选结果）' : '分类'}</h2>
             <ul className="side-list" role="list">
               {(favorites.length > 0 || category === 'fav') && (
                 <li>
@@ -266,7 +266,7 @@ export function Sidebar({
               <ul className="side-index" role="list">
                 {CATS.filter(([k]) => catCounts[brand][k]).map(([k, n]) => {
                   const here = activeCat === `cat-${k}`;
-                  const subs = SUBCATS.filter((s) => s.c === k && subCounts[material][brand][s.id]);
+                  const subs = SUBCATS.filter((s) => s.c === k && subCounts[''][brand][s.id]);
                   return (
                     <li key={k}>
                       <a

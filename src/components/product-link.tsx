@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useGuide } from './guide-state';
 import { useState, type ComponentProps } from 'react';
 
 /**
@@ -11,12 +12,13 @@ import { useState, type ComponentProps } from 'react';
  * 之前写成 prefetch={false} 会连共享的 App Shell 都不预取，网络慢时点开要等一下才出面板。
  */
 export function ProductLink({ id, ...props }: { id: string } & Omit<ComponentProps<typeof Link>, 'href' | 'prefetch'>) {
+  const { filterSearch } = useGuide();
   const [intent, setIntent] = useState(false);
   const warm = () => setIntent(true);
   return (
     <Link
       {...props}
-      href={`/p/${id}`}
+      href={`/p/${id}${filterSearch}`}
       scroll={false}
       prefetch={intent ? true : 'auto'}
       onPointerEnter={warm}

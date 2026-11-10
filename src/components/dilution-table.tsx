@@ -98,16 +98,21 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
                     inputMode="decimal"
                     enterKeyHint="done"
                     value={draft}
-                    onChange={(e) => setDraft(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setDraft(value);
+                      const water = parseWater(value);
+                      if (water) writeVolume(water);
+                    }}
                     placeholder="如 750、1.5L"
                     aria-invalid={draft !== '' && !parsed}
                   />
                 </label>
                 <button type="submit" disabled={!parsed}>
-                  换算
+                  完成
                 </button>
                 <button type="button" className="ghost" onClick={() => setEditing(false)}>
-                  取消
+                  收起
                 </button>
                 {draft !== '' && !parsed && <span className="verr">请输入 10 ml 到 100 L 之间的水量</span>}
               </form>

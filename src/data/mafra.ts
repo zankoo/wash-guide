@@ -22,7 +22,7 @@ export const products: Product[] = [
 {id:'F-idrowash',b:'F',c:'pre',n:'Idrowash',t:'高压清洗机用超泡沫清洁剂（预洗 / 泡沫香波）',f:'1 L',m:'车漆 · 镀铬 · 车身外部',
  d:[['高压清洗机泡沫枪 / 泡沫壶','1:1','PA壶']],
  s:['原液和水 1:1 倒入高压清洗机的储液罐或 Nebula Foam 2.0。','喷满表面，停留几分钟，不需要刷洗。','彻底冲洗。'],
- x:['官方说明 pH 平衡，对车漆和镀铬安全，冷水也有效。','可去除冬季盐渍、夏季树脂、秋季泥土和春季灰尘。'],u:MAFRA+'idrowash/'},
+ x:['官网核对：1:1 是原液与水在泡沫设备储液罐内的配比，不是高压水混合后的最终出液浓度。','官方说明 pH 平衡，对车漆和镀铬安全，冷水也有效。','可去除冬季盐渍、夏季树脂、秋季泥土和春季灰尘。'],u:MAFRA+'idrowash/'},
 
 {id:'F-killer',b:'F',c:'pre',ph:['alk','10'],n:'Killer',t:'即用型虫尸 / 鸟粪去除剂（弱碱性）',f:'250 ml · 500 ml',m:'车漆 · 玻璃 · 保险杠 · 大灯',
  d:[['虫尸、鸟粪、树脂斑','即用','喷雾壶']],
@@ -215,10 +215,11 @@ export const products: Product[] = [
  s:['喷在轮胎上。','用海绵把产品均匀抹遍整个橡胶面。','干透后再开车。'],
  x:['换季收纳轮胎前使用，可防止龟裂；干爽不油腻。'],u:MAFRA+'nero-gomme-auto-black-3-plus/'},
 
-{id:'F-diamant-dressing',b:'F',c:'trim',n:'Diamant Plast Dressing Pro',t:'内外塑料翻新保护剂（巴西棕榈蜡 + 聚合物）',f:'250 ml · 750 ml',m:'内外塑料 · 橡胶 · 乙烯基 · 中控 · 门板 · 外饰条 · 发动机舱塑料',
+// pH source: https://determashgroup.com/SCHEDE_PRODOTTO/MAFRA/ST/DIAMANT%20PLAST%20DRESSING%20PRO.PDF
+{id:'F-diamant-dressing',b:'F',c:'trim',ph:['alk','9'],n:'Diamant Plast Dressing Pro',t:'内外塑料翻新保护剂（巴西棕榈蜡 + 聚合物）',f:'250 ml · 750 ml',m:'内外塑料 · 橡胶 · 乙烯基 · 中控 · 门板 · 外饰条 · 发动机舱塑料',
  d:[['擦拭养护','即用','喷雾壶']],
  s:['在约 20 cm 外少量均匀喷在表面上。','用干净干燥的超纤布擦匀，去除多余。'],
- x:['产品浓缩，不要过量使用。','自流平，光泽均匀，可维持数周；不油腻、防尘，不会让塑料发白。'],u:MAFRA+'diamant-plast-dressing-pro-750ml-rinnova-lucida-protegge-plastiche-auto/'},
+ x:["pH 9（20 °C）来自 MAFRA 技术表，适用 250 ml / 750 ml 包装（经销商托管）。",'产品浓缩，不要过量使用。','自流平，光泽均匀，可维持数周；不油腻、防尘，不会让塑料发白。'],u:MAFRA+'diamant-plast-dressing-pro-750ml-rinnova-lucida-protegge-plastiche-auto/'},
 
 {id:'F-faspoiler',b:'F',c:'trim',ph:['na'],n:'Faspoiler',t:'外饰塑料 / 橡胶聚合物翻新喷雾',f:'300 ml',m:'保险杠 · 侧裙 · 扰流板 · 敞篷软顶 · FRP 树脂件 · 塑料 · 橡胶',
  d:[['擦拭养护','即用','喷雾壶']],
@@ -310,10 +311,11 @@ export const products: Product[] = [
  d:[],s:[],
  x:['深入表面微孔清洁，填充式配方减轻老化痕迹，让中控恢复原貌并上光；长效抗 UVA、抗静电，减缓积灰、防止过早褪色。','去除车内异味，留下 Ocean 清新香。也可清洁、翻新褪色的外部黑色塑料。','官网未给出施工步骤。'],u:MAFRA+'lucida-cruscotti-3in1/'},
 
-{id:'F-3in1-tessuti',b:'F',c:'int',n:'Trattamento Tessuti 3in1',t:'织物 / Alcantara® 活性泡沫清洁剂',f:'500 ml',m:'织物座椅 · Alcantara · 地毯 · 脚垫',
+// pH source: https://determashgroup.com/SCHEDE_PRODOTTO/MAFRA/ST/TRATTAMENTO%203IN1%20TESSUTI.PDF
+{id:'F-3in1-tessuti',b:'F',c:'int',ph:['alk','11'],n:'Trattamento Tessuti 3in1',t:'织物 / Alcantara® 活性泡沫清洁剂',f:'500 ml',m:'织物座椅 · Alcantara · 地毯 · 脚垫',
  d:[['织物清洁','即用','喷雾壶']],
  s:['在约 20 cm 外少量均匀喷在整个表面上。','用干净超纤布或软毛刷把泡沫抹匀。','去除多余，用第二条干净超纤布擦干。'],
- x:['不会把织物弄得太湿。'],u:MAFRA+'pulire-sedili-auto-3-in-1-tessuti/'},
+ x:["pH 11（20 °C）来自 MAFRA 技术表，适用 500 ml 包装（经销商托管）。",'不会把织物弄得太湿。'],u:MAFRA+'pulire-sedili-auto-3-in-1-tessuti/'},
 
 {id:'F-flash',b:'F',c:'int',ph:['alk','11'],n:'Flash',t:'织物干洗泡沫（附刷子）',f:'400 ml',m:'织物座椅 · 丝绒 · Alcantara · 脚垫',
  d:[['织物干洗','即用','—']],
@@ -428,10 +430,11 @@ export const products: Product[] = [
  s:['先在 MAFRA 刻度瓶里稀释产品，装入壶内最多 1.25 L，旋紧壶头。','手动打气到阀门咔嗒响，或用轮胎气嘴接压缩机充气（最高 3 bar）。','解除扳机锁后喷涂；用完重新上锁，用安全阀泄压。'],
  x:['三个喷嘴：绿色干泡沫、灰色中等（标配）、橙色湿泡沫覆盖面更大。','没有高压清洗机和 PA 壶时也能做泡沫预洗。'],u:MAFRA+'nebula-foam-2-0-nebulizzatore-schiumogeno-bi-uso-accessori-lavaggio-auto/'},
 
-{id:'F-mfwash',b:'F',c:'towel',n:'Microfiber Wash',t:'超纤布专用洗涤剂',f:'—',m:'—',
+// pH source: https://www.mafra.it/wp-content/uploads/2022/05/H0746_1.pdf
+{id:'F-mfwash',b:'F',c:'towel',ph:['alk','9'],n:'Microfiber Wash',t:'超纤布专用洗涤剂',f:'—',m:'—',
  d:[['洗衣机 / 手洗','每 kg 布约 15 ml','—']],
  s:['每 kg 超纤布加约 15 ml。','30 °C 洗涤，不要加柔顺剂。'],
- x:['去除抛光剂、研磨剂和蜡残留；不含柔顺剂和阳离子表面活性剂。'],u:MAFRA+'microfibra-wash/'},
+ x:["pH 9（20 °C，pH 计测量）来自 MAFRA 官网技术表。",'去除抛光剂、研磨剂和蜡残留；不含柔顺剂和阳离子表面活性剂。'],u:MAFRA+'microfibra-wash/'},
 ];
 
 export const flows: Flow[] = [
@@ -439,7 +442,7 @@ export const flows: Flow[] = [
  sum:'按 MAFRA 洗车桶、手套和毛巾产品页给出的做法：轮毂轮胎 → 泡沫预洗 → 双桶手洗 → 冲洗 → Fast Cleaner 辅助擦干 → 轮胎上光。',
  steps:[
   {ph:'轮毂轮胎',p:['F-cerchi-gomme'],r:'即用',how:'先喷轮胎，再抬高喷头喷轮毂，用刷子带进缝隙，停留约 1 分钟后用强水流冲洗。'},
-  {ph:'泡沫预洗',p:['F-idrowash'],o:['Nebula Foam 2.0 或 PA 壶'],r:'1:1',how:'由下往上喷满车身，停留不要干掉，用高压水冲洗。没有 PA 壶时可用 Nebula Foam 2.0。'},
+  {ph:'泡沫预洗',p:['F-idrowash'],o:['Nebula Foam 2.0 或 PA 壶'],r:'泡沫设备储液罐 1:1',how:'由下往上喷满车身，停留不要干掉，用高压水冲洗。没有 PA 壶时可用 Nebula Foam 2.0。'},
   {ph:'双桶手洗',p:['F-shampoo-power','F-guanto','F-secchio-wash','F-gritsafe'],r:'1 瓶盖 / 1 L 水',how:'Secchio Wash 装香波水，Secchio Rinse 装清水并放 Grit Safe。手套浸透香波水，由上往下轻压直线清洗，经常在清水桶的隔砂网上搓洗手套。'},
   {ph:'冲洗',how:'用清水彻底冲洗全车。'},
   {ph:'擦干',p:['F-fast-cleaner','F-superdryer'],r:'即用',how:'在湿车身上喷 Fast Cleaner，再用 Super Dryer 短毛面平铺轻拉吸干，毛巾更顺滑、不留水痕。'},

@@ -61,32 +61,22 @@ export const productsOfStep = (x: FlowStep): string[] => [...(x.p ?? []), ...(x.
 export const flowsUsing = (id: string): FlowEntry[] =>
   FLOWS.filter((f) => stepsOf(f).some((x) => productsOfStep(x).includes(id)));
 
-/** 卡片标签只放简短的用量：带数字（1:10、3 瓶盖 / 10 L 水、每车 30 g）或原液 / 即用，文字说明留在详情页 */
-const PILL_MAX = 14;
-const isPill = (r: string) => r.length <= PILL_MAX && (/\d/.test(r) || /^(原液|即用)/.test(r));
-
-/**
- * 标签的浓度 [最浓一端, 最稀一端]：原液 / 即用最浓（0），比例 1:5 – 1:10 → [5, 10]。
- * 瓶盖、每车用量等换算不成比例的排在最后。
- */
-function strength(r: string): [number, number] {
-  const ratios = [...r.matchAll(/1\s*:\s*(\d+(?:\.\d+)?)/g)].map((m) => Number(m[1]));
-  const strong = /^(原液|即用)/.test(r) ? 0 : (ratios[0] ?? Infinity);
-  // 最浓一端相同时，再比较最稀的一端（1:100 – 1:200 排在 1:100 – 1:400 前面）
-  return [strong, ratios.at(-1) ?? strong];
-}
-
-/** 卡片上显示的最多 3 个比例标签：取详情页里最常用的前 3 个，再按浓度从浓到淡排列 */
+/** 只展示最常用的一项，保留工具 / 场景，完整用法在详情表。 */
 export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
   if (!p.d.length) return p.c === 'acc' ? 'accessory' : 'see-label';
-  const seen: string[] = [];
-  for (const [, ratio] of p.d) {
-    const r = ratio.split('（')[0].trim();
-    if (isPill(r) && !seen.includes(r)) seen.push(r);
-    if (seen.length >= 3) break;
-  }
-  if (!seen.length) return 'see-label';
-  return seen.map((r, i) => ({ r, i, k: strength(r) })).sort((a, b) => a.k[0] - b.k[0] || a.k[1] - b.k[1] || a.i - b.i).map((x) => x.r);
+  const row = p.d.find(([scene, ratio]) => !/VDA|最高使用浓度/.test(scene) && /\d|原液|即用/.test(ratio));
+  if (!row) return 'see-label';
+  const [scene, ratio, tool] = row;
+  const label = tool && tool !== '—' && !scene.includes(tool) ? `${tool} · ${scene}` : scene;
+  return [`${label} ${ratio.split('（')[0].trim()}`];
+}
+
+/** 厂商配方描述与原液 pH 的测量口径不同，直接在卡片上提示。 */
+export function phClaim(p: Product): string | undefined {
+  if (p.id === 'C-reset') return '官方称稀释后中性';
+  if (p.id === 'M-iron-remover' || p.id === 'C-hydro2-foam') return '官方称中性';
+  if (p.ph?.[0] === 'acid' && p.t.includes('无酸')) return '官方称无酸配方';
+  return undefined;
 }
 
 /** 搜索排序用的字段（见 relevance） */
@@ -103,7 +93,8 @@ export function productSearchText(p: Product): string {
 export function phText(p: Product): string | undefined {
   if (!p.ph || p.ph[0] === 'na') return undefined;
   const [k, v] = p.ph;
-  return v ? `${PH_SHORT[k]} ${v}` : PH_SHORT[k];
+  const label = k === 'acid' && v && /^\d+(?:\.\d+)?$/.test(v) && Number(v) >= 5 && Number(v) <= 6 ? '弱酸' : PH_SHORT[k];
+  return v ? `${label} ${v}` : label;
 }
 
 /** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */

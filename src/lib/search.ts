@@ -20,12 +20,25 @@ const isAbbrQuery = (w: string) => /^[a-z0-9]{2,}$/.test(w);
 
 const abbrHit = (abbr: readonly string[], w: string) => isAbbrQuery(w) && abbr.some((a) => a.startsWith(w));
 
-/**
- * 所有搜索词（空格分隔）都要命中已经 fold 过的搜索文本，
- * 或者是某个名称首字母缩写的开头（见 initials）
- */
+/** 用途词扩展；每组内取任一同义词，空格分开的组仍取交集。 */
+const SYNONYMS: Record<string, string[]> = {
+  '大灯发黄': ['大灯', 'headlight'], '车灯发黄': ['大灯', 'headlight'],
+  '发黄': ['发黄', '大灯', '氧化'], '黄灯': ['大灯', 'headlight'],
+  '铁锈': ['铁锈', '铁粉', '锈迹'], '铁粉': ['铁粉', '除铁'],
+  '水印': ['水印', '水斑', '水垢'], '水渍': ['水渍', '水斑', '水垢'],
+  '油膜': ['油膜', '玻璃抛光'], '树胶': ['树胶', '树脂'],
+  '鸟屎': ['鸟屎', '鸟粪'], '虫子': ['虫尸', '飞虫'],
+  '轮胎发褐': ['轮胎', '橡胶'], '皮座椅': ['皮革'],
+};
+function terms(query: string): string[][] {
+  return fold(query).split(/\s+/).filter(Boolean).map((w) => SYNONYMS[w] ?? [w]);
+}
 export function matchesQuery(text: string, query: string, abbr: readonly string[] = []): boolean {
-  return fold(query).split(/\s+/).filter(Boolean).every((w) => text.includes(w) || abbrHit(abbr, w));
+  return terms(query).every((words) => words.some((w) => text.includes(w) || abbrHit(abbr, w)));
+}
+export function suggestions(query: string): string[] {
+  const related = Object.entries(SYNONYMS).filter(([k]) => k.includes(query) || query.includes(k)).flatMap(([, words]) => words);
+  return [...new Set(related.length ? related : ['大灯', '铁粉', '水斑', '皮革'])].slice(0, 4);
 }
 
 /** 搜索结果排序用的字段，都需要先 fold */
