@@ -1,10 +1,10 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SUB_OF, flowsUsing, imageSrc, phText, type Product } from '@/data';
+import { BRAND, CAT_NAME, SDS, SDS_SOURCE, SUB_OF, TOXIC, flowsUsing, imageSrc, phText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './flow-card';
 import { FlowLink } from './flow-link';
-import { ExternalIcon } from './icons';
+import { ExternalIcon, ToxicIcon } from './icons';
 import { ProductImage } from './product-image';
 
 /** 产品详情：弹出面板和独立页面共用 */
@@ -39,6 +39,7 @@ export function ProductDetail({ p }: { p: Product }) {
         </div>
       </div>
       <div className="sh-body">
+        <ToxicLine id={p.id} />
         {p.d.length ? (
           <DilutionTable rows={p.d} />
         ) : (
@@ -88,10 +89,13 @@ export function ProductDetail({ p }: { p: Product }) {
             </div>
           </>
         )}
-        <a className="src" href={p.u} target="_blank" rel="noopener">
-          查看官网原文
-          <ExternalIcon />
-        </a>
+        <div className="src-row">
+          <a className="src" href={p.u} target="_blank" rel="noopener">
+            查看官网原文
+            <ExternalIcon />
+          </a>
+          <SdsLink id={p.id} />
+        </div>
       </div>
     </>
   );
@@ -119,6 +123,42 @@ export function DetailSkeleton() {
 /** 详情内容的 Suspense：内容到达前显示同样布局的骨架屏 */
 export function DetailSuspense({ children }: { children: ReactNode }) {
   return <Suspense fallback={<DetailSkeleton />}>{children}</Suspense>;
+}
+
+/** 安全技术说明书（SDS）：新窗口打开 PDF，下方注明来源、语言和版本 */
+function SdsLink({ id }: { id: string }) {
+  const sds = SDS[id];
+  if (!sds) return null;
+  const [url, src, ver] = sds;
+  const { name, lang } = SDS_SOURCE[src];
+  return (
+    <a className="src sds" href={url} target="_blank" rel="noopener">
+      <span>
+        安全技术说明书（SDS）
+        <small>
+          {name} · {lang}
+          {ver && ` · ${ver}`}
+        </small>
+      </span>
+      <ExternalIcon />
+    </a>
+  );
+}
+
+/** 含氢氟酸 / 氟化氢铵这类极危险化学品时的醒目提醒 */
+function ToxicLine({ id }: { id: string }) {
+  const what = TOXIC[id];
+  if (!what) return null;
+  return (
+    <div className="toxic" role="note">
+      <ToxicIcon size={40} />
+      <p>
+        <b>极危险化学品：含{what}</b>
+        氟化物能穿透皮肤损伤深层组织，低浓度时疼痛可能几小时后才出现。必须戴耐酸手套和护目镜；皮肤沾到立即大量冲水并就医。
+        <small>官方 SDS 给产品整体标的是腐蚀标志，骷髅标志是本站对含氟成分的额外提醒。</small>
+      </p>
+    </div>
+  );
 }
 
 /** 产品自身 pH：有官方数据显示彩色标签；官方标注不适用的写「不适用」；配件不显示 */

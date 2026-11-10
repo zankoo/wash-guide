@@ -1,0 +1,1426 @@
+{
+  "checked_at": "2026-11-10",
+  "scope": "继续搜索缺失 SDS。修订日期按正文记录，不代表最新配方；未使用登录账户或绕过受限下载。",
+  "missing_before": 203,
+  "added": 27,
+  "missing_after": 176,
+  "verified": [
+    {
+      "id": "K-leather-star",
+      "brand": "K",
+      "category": "int",
+      "name": "Leather Star",
+      "file": "public/sds/K-leather-star.pdf",
+      "source_url": "https://media.koch-chemie.com/pdf/SDBL/Leather_Star_Art-__238999_238999_0001_EN.pdf",
+      "source_id": "koch",
+      "revision_date": "2022-11-25",
+      "sha256": "9c4e066a309be7ac5f8adca33da3abb0b79c3ba19e52c139944a93e34820b445",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "P-paint-prep",
+      "brand": "P",
+      "category": "polish",
+      "name": "Paint Coating Surface Prep",
+      "file": "public/sds/P-paint-prep.pdf",
+      "source_url": "https://cdn.shopify.com/s/files/1/0026/8763/1409/files/SDS_Paint_Prep.pdf?v=1597940254",
+      "source_id": "mvp",
+      "revision_date": "2017-03-06",
+      "sha256": "f3fb3200807577b44750c5c7d8e57c56494e10896cd3a7d56fd234a0018eff58",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "L-revitax",
+      "brand": "L",
+      "category": "wash",
+      "name": "REVÌTAX",
+      "file": "public/sds/L-revitax.pdf",
+      "source_url": "https://cdn.shopify.com/s/files/1/0409/2021/9812/files/Revitax-V4-SDS.pdf?v=1754253100",
+      "source_id": "washme",
+      "revision_date": "2023-07-07",
+      "sha256": "c403ffec241ebad0cf8cf3d9afc5a190879704f00e18c0b26ecc7f947bf0d9c4",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "N-plastic-v2",
+      "brand": "N",
+      "category": "coat",
+      "name": "Plastic V2",
+      "file": "public/sds/N-plastic-v2.pdf",
+      "source_url": "https://eu.feynlab.com/wp-content/uploads/woocommerce_uploads/2024/04/Plastic-V2-SDS-m7q047-wr3ey0.pdf",
+      "source_id": "feynlab",
+      "revision_date": "2024-02-23",
+      "sha256": "2b417df6c8b8195a35f8f938b55409fe6741fb139b1d6036be9d06bf5ee14a9d",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "M-wet-coat",
+      "brand": "M",
+      "category": "seal",
+      "name": "Wet Coat",
+      "file": "public/sds/M-wet-coat.pdf",
+      "source_url": "https://www.rokjo.pl/upload/vm298/mafra-karty-charakterystyk/WET-COAT_KARTA-CHARAKTERYSTYKI.pdf",
+      "source_id": "rokjo",
+      "revision_date": "2025-05-07",
+      "sha256": "6d62570350afc18a88e05378369732803162303a25a93b6fc62dcd5ec183dd1c",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "K-speed-glass-cleaner",
+      "brand": "K",
+      "category": "glass",
+      "name": "SpeedGlassCleaner",
+      "file": "public/sds/K-speed-glass-cleaner.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/speedglasscleaner_art-__77703999_77703999_0003_pl.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2024-12-16",
+      "sha256": "ae0bb0bbd3147b3d49bdba44ba3fa970f5e9f5b42c43852ef52e4bc82e046daf",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "K-nanomagic-plast-care",
+      "brand": "K",
+      "category": "trim",
+      "name": "NanoMagicPlastCare",
+      "file": "public/sds/K-nanomagic-plast-care.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/nanomagicplastcare_art-__77707999_77707999_0001_pl.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-06-07",
+      "sha256": "4793f9969a3d1812b1ca9e99e8c357c1120d65d1bfae887c1684cfdd8d9e14d5",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "K-multi-interior-cleaner",
+      "brand": "K",
+      "category": "int",
+      "name": "MultiInteriorCleaner",
+      "file": "public/sds/K-multi-interior-cleaner.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/multiinteriorcleaner_art-__77705999_77705999_0003_pl.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2024-05-23",
+      "sha256": "afbce342d7e64275c21d360504924df251a94c2562a6a1c06d50cf49381325b0",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-ultracut",
+      "brand": "C",
+      "category": "polish",
+      "name": "UltraCut",
+      "file": "public/sds/C-ultracut.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/ultracut-polish_pl-pl_12.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-11",
+      "sha256": "4df288c5fb5aa59874cdf4560b805e7dd691f207a50374cc0ae818bd056280b7",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-spotless",
+      "brand": "C",
+      "category": "deco",
+      "name": "Spotless 2.0",
+      "file": "public/sds/C-spotless.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/spotless-2.0_pl-pl_33.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-04",
+      "sha256": "aae67da469ad530c7cc8dbeb79004b9405c012d3d3efc16e4775b64b75934737",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-lift",
+      "brand": "C",
+      "category": "pre",
+      "name": "Lift",
+      "file": "public/sds/C-lift.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/lift-snow-foam_pl-pl_22.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-11",
+      "sha256": "a11e7c8359021260d92a0cbaaf0bd3a851dc630a445aa5a55556b60548bed828",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-innerqd",
+      "brand": "C",
+      "category": "int",
+      "name": "InnerQD",
+      "file": "public/sds/C-innerqd.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/innerqd-inner-detailer_pl-pl_11.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-11",
+      "sha256": "b80ebb7406fcd090c0e73b78f568201b2f9857b5060af95b2c2ae37c59c8ec14",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-cq-sic",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ SiC",
+      "file": "public/sds/C-cq-sic.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/cquartz-sic_pl-pl_12.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-05",
+      "sha256": "eb167efba8a752ce6b1466094bac8ed91a7a72f7f3df19b5ae4b960c18e822df",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-cleanse",
+      "brand": "C",
+      "category": "int",
+      "name": "Cleanse",
+      "file": "public/sds/C-cleanse.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/leather-cleanse_pl-pl_10.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-06-26",
+      "sha256": "55e3d488706f4869f91f85a87326f02a691cc30d942966bb1ae684a338cde47d",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-clarify-phobic",
+      "brand": "C",
+      "category": "glass",
+      "name": "Clarify PHOBIC",
+      "file": "public/sds/C-clarify-phobic.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/clarifyph2obic_pl-pl_12.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2021-04-23",
+      "sha256": "5a4c0b5e95d6e5d3ce9ddd4adf380ba8b41eeebf632dbaba6a87e634a10518cd",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-cq-leather",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ Leather 2.0",
+      "file": "public/sds/C-cq-leather.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/cquartz-leather-2.0_pl-pl_22.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-05",
+      "sha256": "cb61e05ba081c035429c1e66aae078e939ed278188768a50a6f7b59e0993125e",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-claylube",
+      "brand": "C",
+      "category": "deco",
+      "name": "Claylube",
+      "file": "public/sds/C-claylube.pdf",
+      "source_url": "https://autonablask.pl/app/uploads/2026/02/carpro-claylube.pdf",
+      "source_id": "autonablask",
+      "revision_date": "2023-04-06",
+      "sha256": "fd115994b6afc2aad9d2ff1b2f67f426dc459c7e26eedee5ed9981eb1be82cab",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "K-allround-quick-shine",
+      "brand": "K",
+      "category": "seal",
+      "name": "AllroundQuickShine",
+      "file": "public/sds/K-allround-quick-shine.pdf",
+      "source_url": "https://media.koch-chemie.com/pdf/SDBL/AllroundQuickShine__Art-__77708999_77708999_0004_NO.pdf",
+      "source_id": "koch-no",
+      "revision_date": "2024-11-28",
+      "sha256": "798782690ee12fee5bbf72f8a7a0bd8f68de06dccd9af471851f53dc02bfc034",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "K-protect-leather-care",
+      "brand": "K",
+      "category": "int",
+      "name": "ProtectLeatherCare",
+      "file": "public/sds/K-protect-leather-care.pdf",
+      "source_url": "https://media.koch-chemie.com/pdf/SDBL/ProtectLeatherCare_Art-__77709999_77709999_0004_EN.pdf",
+      "source_id": "koch",
+      "revision_date": "2025-10-07",
+      "sha256": "4a839f3251d04aedcb606f42b9a811ee845ebb33fbf073b6b10834c86717b828",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "L-hpc-pro",
+      "brand": "L",
+      "category": "coat",
+      "name": "HPC PRO",
+      "file": "public/sds/L-hpc-pro.pdf",
+      "source_url": "https://cdn.shopify.com/s/files/1/0409/2021/9812/files/HPC_PRO_2318_GB_2.pdf?v=1781968875",
+      "source_id": "washme",
+      "revision_date": "2026-01-21",
+      "sha256": "986bbe5d263e8b5887ccc220105e8345b40aa441e58eb9354384f29da4f7edf1",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "F-hp12",
+      "brand": "F",
+      "category": "apc",
+      "name": "HP 12",
+      "file": "public/sds/F-hp12.pdf",
+      "source_url": "https://algeria.mafra.com/files/HP12_1138_FR_4.pdf",
+      "source_id": "mafra-fr",
+      "revision_date": "2023-12-20",
+      "sha256": "3e8e76efa29ba5b86370c6ff35eaed7bd176502e2df5b32877f618fe5ac58b7d",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "L-hydra",
+      "brand": "L",
+      "category": "trim",
+      "name": "HYDRA",
+      "file": "public/sds/L-hydra.pdf",
+      "source_url": "https://cdn.shopify.com/s/files/1/0409/2021/9812/files/HYDRA-SDS_745_GB_4.pdf?v=1708379545",
+      "source_id": "washme",
+      "revision_date": "2020-09-04",
+      "sha256": "3c9e9413d446df2566dd1f0267b082a81ead0311ed9cfb12563fcb861b526669",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "F-polish-express",
+      "brand": "F",
+      "category": "wash",
+      "name": "Polish Express",
+      "file": "public/sds/F-polish-express.pdf",
+      "source_url": "https://algeria.mafra.com/files/POLISH%20EXPRESS_433_FR_5.pdf",
+      "source_id": "mafra-fr",
+      "revision_date": "2025-03-28",
+      "sha256": "b089d528332a114c371b78a3c9d0208106efc80b0d33f28e0446b75745ac91d0",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-cq-lite",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ Lite 2.0",
+      "file": "public/sds/C-cq-lite.pdf",
+      "source_url": "https://ingrijireauto.ro/index.php?controller=attachment&id_attachment=421",
+      "source_id": "ingrijireauto",
+      "revision_date": "2021-04-15",
+      "sha256": "c5ecde6de5766bf135a5a07c62dcf6b66df55cb2d4b02bb0e167c034b4940f8c",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-cq-dlight",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ DLight",
+      "file": "public/sds/C-cq-dlight.pdf",
+      "source_url": "https://ingrijireauto.ro/index.php?controller=attachment&id_attachment=420",
+      "source_id": "ingrijireauto",
+      "revision_date": "2024-08-29",
+      "sha256": "8ce0e90ac03cf30bc6ed5effaf6067e70b5432009f79bb24058dfc3844787594",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-lotion",
+      "brand": "C",
+      "category": "int",
+      "name": "Lotion",
+      "file": "public/sds/C-lotion.pdf",
+      "source_url": "https://www.bb-carcare.be/wp-content/uploads/2024/07/Leather-Lotion_B-nl_10.pdf",
+      "source_id": "bb-carcare",
+      "revision_date": "2023-06-23",
+      "sha256": "10ad1d2cd7f234ab323a8a8b97a289d17e60cab2115ad3326034ada53049d2ef",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    },
+    {
+      "id": "C-mfx",
+      "brand": "C",
+      "category": "towel",
+      "name": "MFX",
+      "file": "public/sds/C-mfx.pdf",
+      "source_url": "https://ingrijireauto.ro/index.php?controller=attachment&id_attachment=224",
+      "source_id": "ingrijireauto",
+      "revision_date": "2023-04-11",
+      "sha256": "9f4c5574ee073afe2a72bd2fdcd19c771fd0c2722ddddc8772262c0f0b34abf6",
+      "validation": "PDF and SDS sections checked; product identity manually checked."
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "G-clay",
+      "brand": "G",
+      "category": "deco",
+      "name": "Q²M Clay Bars"
+    },
+    {
+      "id": "G-syncro-evo",
+      "brand": "G",
+      "category": "coat",
+      "name": "Q² Syncro EVO"
+    },
+    {
+      "id": "G-infinite-top-2",
+      "brand": "G",
+      "category": "coat",
+      "name": "Q² INFINITE TopCoat Type 2"
+    },
+    {
+      "id": "G-view-evo",
+      "brand": "G",
+      "category": "coat",
+      "name": "Q² View EVO"
+    },
+    {
+      "id": "F-valido",
+      "brand": "F",
+      "category": "pre",
+      "name": "Valido（专业装）"
+    },
+    {
+      "id": "F-iglu",
+      "brand": "F",
+      "category": "pre",
+      "name": "Iglù 2.0（专业装）"
+    },
+    {
+      "id": "F-c1",
+      "brand": "F",
+      "category": "pre",
+      "name": "C1（专业装）"
+    },
+    {
+      "id": "F-docg3",
+      "brand": "F",
+      "category": "pre",
+      "name": "DOC G3（专业装）"
+    },
+    {
+      "id": "F-jedy",
+      "brand": "F",
+      "category": "pre",
+      "name": "Jedy 2.0（专业装）"
+    },
+    {
+      "id": "F-jedy-super-foam",
+      "brand": "F",
+      "category": "pre",
+      "name": "Jedy 2 Super Foam（专业装）"
+    },
+    {
+      "id": "F-silver-prewash",
+      "brand": "F",
+      "category": "pre",
+      "name": "Silver Pre Wash 2G（专业装）"
+    },
+    {
+      "id": "F-superbrillmax-b2",
+      "brand": "F",
+      "category": "pre",
+      "name": "Super Brillmax B2（专业装）"
+    },
+    {
+      "id": "F-mafrasol",
+      "brand": "F",
+      "category": "pre",
+      "name": "Mafrasol 2.0（专业装）"
+    },
+    {
+      "id": "F-supermafrasol-evo",
+      "brand": "F",
+      "category": "pre",
+      "name": "Super Mafrasol EVO"
+    },
+    {
+      "id": "F-idrowash",
+      "brand": "F",
+      "category": "pre",
+      "name": "Idrowash"
+    },
+    {
+      "id": "F-killer",
+      "brand": "F",
+      "category": "pre",
+      "name": "Killer"
+    },
+    {
+      "id": "F-daytona",
+      "brand": "F",
+      "category": "wash",
+      "name": "Daytona（专业装）"
+    },
+    {
+      "id": "F-waterless",
+      "brand": "F",
+      "category": "wash",
+      "name": "Waterless"
+    },
+    {
+      "id": "F-ecodry",
+      "brand": "F",
+      "category": "wash",
+      "name": "Ecodry Detailer 2G（专业装）"
+    },
+    {
+      "id": "F-cerchi-gomme",
+      "brand": "F",
+      "category": "wheel",
+      "name": "Pulitore Cerchi e Gomme"
+    },
+    {
+      "id": "F-heavy-metal",
+      "brand": "F",
+      "category": "wheel",
+      "name": "Heavy Metal（专业装）"
+    },
+    {
+      "id": "F-splendorlega-pro",
+      "brand": "F",
+      "category": "wheel",
+      "name": "Splendorlega（专业装）"
+    },
+    {
+      "id": "F-rimnet",
+      "brand": "F",
+      "category": "wheel",
+      "name": "Rim Net（专业装）"
+    },
+    {
+      "id": "F-powerwheel",
+      "brand": "F",
+      "category": "wheel",
+      "name": "Power Wheel（专业装）"
+    },
+    {
+      "id": "F-regenera-rims",
+      "brand": "F",
+      "category": "wheel",
+      "name": "Kit Regénera Cerchi"
+    },
+    {
+      "id": "F-pulismog",
+      "brand": "F",
+      "category": "deco",
+      "name": "Pulismog"
+    },
+    {
+      "id": "F-splendorsol-x",
+      "brand": "F",
+      "category": "deco",
+      "name": "Splendorsol X（专业装）"
+    },
+    {
+      "id": "F-splendorsol-r2",
+      "brand": "F",
+      "category": "deco",
+      "name": "Splendorsol R2（专业装）"
+    },
+    {
+      "id": "F-clay-medium",
+      "brand": "F",
+      "category": "deco",
+      "name": "Clay Bar Medium Soft"
+    },
+    {
+      "id": "F-clay-soft",
+      "brand": "F",
+      "category": "deco",
+      "name": "Clay Bar Soft"
+    },
+    {
+      "id": "F-regenera-body",
+      "brand": "F",
+      "category": "deco",
+      "name": "Kit Regénera Carrozzeria"
+    },
+    {
+      "id": "F-corrector",
+      "brand": "F",
+      "category": "polish",
+      "name": "Corréctor 3.0"
+    },
+    {
+      "id": "F-scratch-remover",
+      "brand": "F",
+      "category": "polish",
+      "name": "Scratch Remover（SR · Rimuovi Graffi）"
+    },
+    {
+      "id": "F-scratch",
+      "brand": "F",
+      "category": "polish",
+      "name": "Scratch & Swirls Remover（SSR）"
+    },
+    {
+      "id": "F-illumina",
+      "brand": "F",
+      "category": "polish",
+      "name": "Illúmina 2.0"
+    },
+    {
+      "id": "F-cleanerwax",
+      "brand": "F",
+      "category": "polish",
+      "name": "Cleaner Wax"
+    },
+    {
+      "id": "F-polish-clever",
+      "brand": "F",
+      "category": "polish",
+      "name": "Polish Clever"
+    },
+    {
+      "id": "F-sherlock",
+      "brand": "F",
+      "category": "polish",
+      "name": "Sherlock"
+    },
+    {
+      "id": "F-regenera-view",
+      "brand": "F",
+      "category": "polish",
+      "name": "Regénera View"
+    },
+    {
+      "id": "F-regenera-headlights",
+      "brand": "F",
+      "category": "polish",
+      "name": "Kit Regénera Headlights"
+    },
+    {
+      "id": "F-flashbright",
+      "brand": "F",
+      "category": "polish",
+      "name": "Flash Bright"
+    },
+    {
+      "id": "F-splendida",
+      "brand": "F",
+      "category": "seal",
+      "name": "Spléndida 2.0"
+    },
+    {
+      "id": "F-glazing",
+      "brand": "F",
+      "category": "seal",
+      "name": "Glazing Wax"
+    },
+    {
+      "id": "F-carlux",
+      "brand": "F",
+      "category": "seal",
+      "name": "Carlux"
+    },
+    {
+      "id": "F-metalcar",
+      "brand": "F",
+      "category": "seal",
+      "name": "Metal Car"
+    },
+    {
+      "id": "F-nerissimo",
+      "brand": "F",
+      "category": "trim",
+      "name": "Nerissimo"
+    },
+    {
+      "id": "F-nouveaunoir",
+      "brand": "F",
+      "category": "trim",
+      "name": "Nouveau Noir（专业装）"
+    },
+    {
+      "id": "F-nouveaunoir-spray",
+      "brand": "F",
+      "category": "trim",
+      "name": "Nouveau Noir（500 ml 喷雾）"
+    },
+    {
+      "id": "F-m1",
+      "brand": "F",
+      "category": "trim",
+      "name": "Nero Gomme M1（专业装）"
+    },
+    {
+      "id": "F-extremeblack-pro",
+      "brand": "F",
+      "category": "trim",
+      "name": "Extreme Black Professional（专业装）"
+    },
+    {
+      "id": "F-fastblack-liquid",
+      "brand": "F",
+      "category": "trim",
+      "name": "Fast & Black Liquid（专业装）"
+    },
+    {
+      "id": "F-dark",
+      "brand": "F",
+      "category": "trim",
+      "name": "Dark（专业装）"
+    },
+    {
+      "id": "F-black3",
+      "brand": "F",
+      "category": "trim",
+      "name": "Black 3 Plus"
+    },
+    {
+      "id": "F-diamant-dressing",
+      "brand": "F",
+      "category": "trim",
+      "name": "Diamant Plast Dressing Pro"
+    },
+    {
+      "id": "F-faspoiler",
+      "brand": "F",
+      "category": "trim",
+      "name": "Faspoiler"
+    },
+    {
+      "id": "F-glass-plus",
+      "brand": "F",
+      "category": "glass",
+      "name": "Glass Cleaner Plus"
+    },
+    {
+      "id": "F-glass-cleaner",
+      "brand": "F",
+      "category": "glass",
+      "name": "Glass Cleaner"
+    },
+    {
+      "id": "F-cristalvetro",
+      "brand": "F",
+      "category": "glass",
+      "name": "Cristalvetro（专业装）"
+    },
+    {
+      "id": "F-cristalbel",
+      "brand": "F",
+      "category": "glass",
+      "name": "Cristalbel"
+    },
+    {
+      "id": "F-notice",
+      "brand": "F",
+      "category": "glass",
+      "name": "Not Ice Spray"
+    },
+    {
+      "id": "F-allpurpose",
+      "brand": "F",
+      "category": "apc",
+      "name": "All Purpose（专业装）"
+    },
+    {
+      "id": "F-superapc",
+      "brand": "F",
+      "category": "apc",
+      "name": "Super APC"
+    },
+    {
+      "id": "F-motorsec",
+      "brand": "F",
+      "category": "apc",
+      "name": "Motorsec（专业装）"
+    },
+    {
+      "id": "F-pulimax",
+      "brand": "F",
+      "category": "int",
+      "name": "Pulimax 2.0（专业装）"
+    },
+    {
+      "id": "F-pulimax-spray",
+      "brand": "F",
+      "category": "int",
+      "name": "Pulimax（500 ml 喷雾）"
+    },
+    {
+      "id": "F-pulimax-ewo",
+      "brand": "F",
+      "category": "int",
+      "name": "Pulimax Ewo（专业装）"
+    },
+    {
+      "id": "F-deterjet",
+      "brand": "F",
+      "category": "int",
+      "name": "Deterjet"
+    },
+    {
+      "id": "F-3in1-plast",
+      "brand": "F",
+      "category": "int",
+      "name": "Trattamento 3in1 Plastiche"
+    },
+    {
+      "id": "F-plast-satin",
+      "brand": "F",
+      "category": "int",
+      "name": "Diamant Plast Satin"
+    },
+    {
+      "id": "F-scic-orange",
+      "brand": "F",
+      "category": "int",
+      "name": "Scic Orange"
+    },
+    {
+      "id": "F-3in1-cruscotto",
+      "brand": "F",
+      "category": "int",
+      "name": "Trattamento 3in1 Cruscotto Lucido"
+    },
+    {
+      "id": "F-3in1-tessuti",
+      "brand": "F",
+      "category": "int",
+      "name": "Trattamento Tessuti 3in1"
+    },
+    {
+      "id": "F-flash",
+      "brand": "F",
+      "category": "int",
+      "name": "Flash"
+    },
+    {
+      "id": "F-flash-liquido",
+      "brand": "F",
+      "category": "int",
+      "name": "Flash Liquido（专业装）"
+    },
+    {
+      "id": "F-flash-pet",
+      "brand": "F",
+      "category": "int",
+      "name": "Flash Pet"
+    },
+    {
+      "id": "F-textile",
+      "brand": "F",
+      "category": "int",
+      "name": "Textile Evo（专业装）"
+    },
+    {
+      "id": "F-3in1-pelle",
+      "brand": "F",
+      "category": "int",
+      "name": "Trattamento 3in1 Pelle"
+    },
+    {
+      "id": "F-charming",
+      "brand": "F",
+      "category": "int",
+      "name": "Charme Detergent"
+    },
+    {
+      "id": "F-nutrient",
+      "brand": "F",
+      "category": "int",
+      "name": "Charme Nutrient"
+    },
+    {
+      "id": "F-hydrating",
+      "brand": "F",
+      "category": "int",
+      "name": "Charme Hydrating"
+    },
+    {
+      "id": "F-odorbact",
+      "brand": "F",
+      "category": "int",
+      "name": "Odorbact Out PMC"
+    },
+    {
+      "id": "F-mfwash",
+      "brand": "F",
+      "category": "towel",
+      "name": "Microfiber Wash"
+    },
+    {
+      "id": "L-satino",
+      "brand": "L",
+      "category": "wash",
+      "name": "SÀTINO"
+    },
+    {
+      "id": "L-lubrifica",
+      "brand": "L",
+      "category": "deco",
+      "name": "LUBRIFICA"
+    },
+    {
+      "id": "L-cronos",
+      "brand": "L",
+      "category": "deco",
+      "name": "CRÒNOS"
+    },
+    {
+      "id": "L-veritas",
+      "brand": "L",
+      "category": "polish",
+      "name": "VÈRITAS"
+    },
+    {
+      "id": "L-audace",
+      "brand": "L",
+      "category": "polish",
+      "name": "AUDACE"
+    },
+    {
+      "id": "L-leale",
+      "brand": "L",
+      "category": "polish",
+      "name": "LEALE"
+    },
+    {
+      "id": "L-fiero",
+      "brand": "L",
+      "category": "polish",
+      "name": "FIERO"
+    },
+    {
+      "id": "L-blindo",
+      "brand": "L",
+      "category": "coat",
+      "name": "BLINDO PLUS"
+    },
+    {
+      "id": "L-stc",
+      "brand": "L",
+      "category": "coat",
+      "name": "STC"
+    },
+    {
+      "id": "L-hpc-2",
+      "brand": "L",
+      "category": "coat",
+      "name": "HPC 2.0"
+    },
+    {
+      "id": "L-kit-sam",
+      "brand": "L",
+      "category": "coat",
+      "name": "SAM + HPC 2.0"
+    },
+    {
+      "id": "L-kit-blindo",
+      "brand": "L",
+      "category": "coat",
+      "name": "BLINDO PLUS + HPC PRO"
+    },
+    {
+      "id": "L-kit-stc",
+      "brand": "L",
+      "category": "coat",
+      "name": "STC + HPC PRO"
+    },
+    {
+      "id": "L-cupido",
+      "brand": "L",
+      "category": "seal",
+      "name": "CUPÌDO"
+    },
+    {
+      "id": "L-venere",
+      "brand": "L",
+      "category": "seal",
+      "name": "VÉNERE"
+    },
+    {
+      "id": "L-aquavelox",
+      "brand": "L",
+      "category": "glass",
+      "name": "AQUAVÈLOX"
+    },
+    {
+      "id": "L-vitreo",
+      "brand": "L",
+      "category": "glass",
+      "name": "VITREO"
+    },
+    {
+      "id": "L-glico",
+      "brand": "L",
+      "category": "int",
+      "name": "GLICO"
+    },
+    {
+      "id": "L-derma-cleaner",
+      "brand": "L",
+      "category": "int",
+      "name": "DÈRMA CLEANER 2.0"
+    },
+    {
+      "id": "L-derma-sealant",
+      "brand": "L",
+      "category": "int",
+      "name": "DÈRMA SEALANT"
+    },
+    {
+      "id": "M-wheel-foam-cleaner",
+      "brand": "M",
+      "category": "wheel",
+      "name": "Wheel Foam Cleaner"
+    },
+    {
+      "id": "M-wheel-decontaminant",
+      "brand": "M",
+      "category": "wheel",
+      "name": "Wheel Decontaminant"
+    },
+    {
+      "id": "M-multisurface-cleaner",
+      "brand": "M",
+      "category": "apc",
+      "name": "Multisurface Cleaner"
+    },
+    {
+      "id": "M-interior-quick-detailer",
+      "brand": "M",
+      "category": "int",
+      "name": "Interior Quick Detailer"
+    },
+    {
+      "id": "B-a55",
+      "brand": "B",
+      "category": "pre",
+      "name": "A55"
+    },
+    {
+      "id": "B-a33",
+      "brand": "B",
+      "category": "wash",
+      "name": "A33"
+    },
+    {
+      "id": "B-a43",
+      "brand": "B",
+      "category": "wash",
+      "name": "A43"
+    },
+    {
+      "id": "B-e55",
+      "brand": "B",
+      "category": "wash",
+      "name": "E55"
+    },
+    {
+      "id": "B-w55",
+      "brand": "B",
+      "category": "wheel",
+      "name": "W55"
+    },
+    {
+      "id": "B-w35",
+      "brand": "B",
+      "category": "wheel",
+      "name": "W35"
+    },
+    {
+      "id": "B-a53",
+      "brand": "B",
+      "category": "deco",
+      "name": "A53"
+    },
+    {
+      "id": "B-a35",
+      "brand": "B",
+      "category": "deco",
+      "name": "A35"
+    },
+    {
+      "id": "B-p35",
+      "brand": "B",
+      "category": "deco",
+      "name": "P35"
+    },
+    {
+      "id": "B-p58",
+      "brand": "B",
+      "category": "deco",
+      "name": "P58"
+    },
+    {
+      "id": "B-once",
+      "brand": "B",
+      "category": "polish",
+      "name": "ONCE"
+    },
+    {
+      "id": "B-p45",
+      "brand": "B",
+      "category": "polish",
+      "name": "P45"
+    },
+    {
+      "id": "B-tan",
+      "brand": "B",
+      "category": "coat",
+      "name": "TAN（Noble Shield）"
+    },
+    {
+      "id": "B-p17",
+      "brand": "B",
+      "category": "seal",
+      "name": "P17"
+    },
+    {
+      "id": "B-p27",
+      "brand": "B",
+      "category": "seal",
+      "name": "P27"
+    },
+    {
+      "id": "B-z17",
+      "brand": "B",
+      "category": "seal",
+      "name": "Z17"
+    },
+    {
+      "id": "B-p17s",
+      "brand": "B",
+      "category": "seal",
+      "name": "P17s+"
+    },
+    {
+      "id": "B-p47",
+      "brand": "B",
+      "category": "seal",
+      "name": "P47"
+    },
+    {
+      "id": "B-p47-pro",
+      "brand": "B",
+      "category": "seal",
+      "name": "P47 PRO"
+    },
+    {
+      "id": "B-pf1",
+      "brand": "B",
+      "category": "seal",
+      "name": "PF1"
+    },
+    {
+      "id": "B-t47",
+      "brand": "B",
+      "category": "trim",
+      "name": "T47"
+    },
+    {
+      "id": "B-g37",
+      "brand": "B",
+      "category": "glass",
+      "name": "G37+"
+    },
+    {
+      "id": "B-g58",
+      "brand": "B",
+      "category": "glass",
+      "name": "G58 Glass Polish"
+    },
+    {
+      "id": "B-i43",
+      "brand": "B",
+      "category": "int",
+      "name": "i43"
+    },
+    {
+      "id": "B-i35",
+      "brand": "B",
+      "category": "int",
+      "name": "i35"
+    },
+    {
+      "id": "N-pure-rinseless",
+      "brand": "N",
+      "category": "wash",
+      "name": "Pure Rinseless V3"
+    },
+    {
+      "id": "N-tire-wheel",
+      "brand": "N",
+      "category": "wheel",
+      "name": "Tire & Wheel Cleaner"
+    },
+    {
+      "id": "N-a50",
+      "brand": "N",
+      "category": "polish",
+      "name": "A50"
+    },
+    {
+      "id": "N-a500",
+      "brand": "N",
+      "category": "polish",
+      "name": "A500"
+    },
+    {
+      "id": "N-a1000",
+      "brand": "N",
+      "category": "polish",
+      "name": "A1000"
+    },
+    {
+      "id": "N-panel-prep",
+      "brand": "N",
+      "category": "polish",
+      "name": "Panel Prep"
+    },
+    {
+      "id": "N-original",
+      "brand": "N",
+      "category": "coat",
+      "name": "The Original Ceramic"
+    },
+    {
+      "id": "N-paul-dalton",
+      "brand": "N",
+      "category": "coat",
+      "name": "Ceramic by Paul Dalton"
+    },
+    {
+      "id": "N-ceramic-plus",
+      "brand": "N",
+      "category": "coat",
+      "name": "Ceramic Plus"
+    },
+    {
+      "id": "N-self-heal-plus",
+      "brand": "N",
+      "category": "coat",
+      "name": "Self Heal Plus"
+    },
+    {
+      "id": "N-matte",
+      "brand": "N",
+      "category": "coat",
+      "name": "Matte Ceramic"
+    },
+    {
+      "id": "N-wheel-caliper",
+      "brand": "N",
+      "category": "coat",
+      "name": "Ceramic Wheel & Caliper"
+    },
+    {
+      "id": "N-interior-ceramic",
+      "brand": "N",
+      "category": "coat",
+      "name": "Interior Ceramic"
+    },
+    {
+      "id": "N-overcoat-v3",
+      "brand": "N",
+      "category": "coat",
+      "name": "Overcoat V3"
+    },
+    {
+      "id": "N-leveling-aid",
+      "brand": "N",
+      "category": "coat",
+      "name": "Leveling Aid"
+    },
+    {
+      "id": "N-black-velvet",
+      "brand": "N",
+      "category": "trim",
+      "name": "Black Velvet Tire Sealant"
+    },
+    {
+      "id": "N-window-polish",
+      "brand": "N",
+      "category": "glass",
+      "name": "Window Polish"
+    },
+    {
+      "id": "N-window-coating",
+      "brand": "N",
+      "category": "coat",
+      "name": "Window Coating"
+    },
+    {
+      "id": "N-interior-cleaner",
+      "brand": "N",
+      "category": "int",
+      "name": "Interior Cleaner"
+    },
+    {
+      "id": "P-xpress-wipes",
+      "brand": "P",
+      "category": "int",
+      "name": "Xpress Interior Wipes"
+    },
+    {
+      "id": "C-rinsex",
+      "brand": "C",
+      "category": "wash",
+      "name": "RinseX"
+    },
+    {
+      "id": "C-ironx-limescale",
+      "brand": "C",
+      "category": "deco",
+      "name": "IronX LimeScale"
+    },
+    {
+      "id": "C-tarx",
+      "brand": "C",
+      "category": "deco",
+      "name": "TarX LowVOC"
+    },
+    {
+      "id": "C-allin",
+      "brand": "C",
+      "category": "polish",
+      "name": "ALLiN"
+    },
+    {
+      "id": "C-cq-uk4",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ UK 4.0"
+    },
+    {
+      "id": "C-cq-aqua",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ Aqua"
+    },
+    {
+      "id": "C-dquartz",
+      "brand": "C",
+      "category": "coat",
+      "name": "DQUARTZ Pro"
+    },
+    {
+      "id": "C-dq-gforce",
+      "brand": "C",
+      "category": "coat",
+      "name": "DQUARTZ GForce"
+    },
+    {
+      "id": "C-cq-gliss",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ Gliss 2.0"
+    },
+    {
+      "id": "C-cq-dlux2",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ DLUX 2.0"
+    },
+    {
+      "id": "C-cq-blackout",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ BlackOut 2.0"
+    },
+    {
+      "id": "C-cq-fabric",
+      "brand": "C",
+      "category": "coat",
+      "name": "CQUARTZ Fabric 2.0"
+    },
+    {
+      "id": "C-madmatte",
+      "brand": "C",
+      "category": "seal",
+      "name": "MadMatte"
+    },
+    {
+      "id": "C-gofx",
+      "brand": "C",
+      "category": "glass",
+      "name": "GofX"
+    },
+    {
+      "id": "C-so2pure",
+      "brand": "C",
+      "category": "int",
+      "name": "So2Pure 2.0"
+    },
+    {
+      "id": "K-reinigungsknete-blau",
+      "brand": "K",
+      "category": "deco",
+      "name": "Reinigungsknete blau"
+    },
+    {
+      "id": "K-reinigungsknete-rot",
+      "brand": "K",
+      "category": "deco",
+      "name": "Reinigungsknete rot"
+    },
+    {
+      "id": "K-headlight-polish-set",
+      "brand": "K",
+      "category": "polish",
+      "name": "Headlight Polish Set"
+    },
+    {
+      "id": "K-ceramic-neo-c003",
+      "brand": "K",
+      "category": "coat",
+      "name": "Ceramic Neo C0.03"
+    },
+    {
+      "id": "K-ceramic-glass-cg001",
+      "brand": "K",
+      "category": "coat",
+      "name": "Ceramic Glass Cg0.01"
+    },
+    {
+      "id": "K-plast-shield",
+      "brand": "K",
+      "category": "coat",
+      "name": "Plast Shield"
+    },
+    {
+      "id": "K-quick-shine-plus",
+      "brand": "K",
+      "category": "seal",
+      "name": "Quick & Shine +"
+    },
+    {
+      "id": "K-nano-glasversiegelung",
+      "brand": "K",
+      "category": "glass",
+      "name": "Nano-Glasversiegelung Set"
+    },
+    {
+      "id": "K-allround-textile-sealant",
+      "brand": "K",
+      "category": "int",
+      "name": "Allround Textile Sealant"
+    },
+    {
+      "id": "K-schmutzradierer",
+      "brand": "K",
+      "category": "int",
+      "name": "Schmutzradierer 5er Pack"
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "product": "L-satino",
+      "url": "https://www.labocosmetica.com/files/ImportMassivo/LAB05_GB-1.pdf",
+      "reason": "经销商旧链接返回 HTML，不是 PDF。"
+    },
+    {
+      "product": "L-kit-blindo",
+      "url": "https://cdn.shopify.com/s/files/1/0409/2021/9812/files/HPC_PRO_2318_GB_2.pdf?v=1781968875",
+      "reason": "套装页标注为套装 SDS，但正文只涵盖 HPC PRO；仅关联单品。"
+    },
+    {
+      "product": "F-nerissimo",
+      "url": "https://algeria.mafra.com/files/NERISSIMO_EVO_2182_FR_1.pdf",
+      "reason": "EVO 版本，不能证明与普通版相同。"
+    },
+    {
+      "product": "N-overcoat-v3",
+      "url": "https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/11/Overcoat-V2-0723707821104-kfsxk1.pdf",
+      "reason": "正文为 V2，不是 V3。"
+    },
+    {
+      "product": "F-pulimax-spray",
+      "url": "https://algeria.mafra.com/files/PULIMAX_631_FR_4.pdf",
+      "reason": "仅凭名称无法确认是 500 ml 即用喷雾，正文标注专业用途；未关联喷雾版或 2.0。"
+    }
+  ],
+  "research_notes": [
+    "Bola 英文 SDS/MSDS 和韩文 MSDS 检索未找到匹配公开文件；不代表文件不存在。",
+    "Gyeon View EVO 未找到可核验文件；INFINITE Base Type 2 未替代 TopCoat Type 2。",
+    "Feynlab 已核验 Plastic V2 官方公开 PDF；检查的欧洲产品页未列 SDS 链接，先前提及的媒体库文件未视为已核验。",
+    "CarPro IronX Lemon Scent 不替代 LimeScale；未注明版本的 TarX、So2Pure 不替代 LowVOC、2.0。",
+    "套装、洗车泥、海绵和湿巾保留缺失状态，不据此判断是否依法需要 SDS。",
+    "本轮来源索引：https://katalog.lab28.pl/karty-charakterystyki/；其他文件来自品牌官网搜索结果及经销商产品页。"
+  ]
+}

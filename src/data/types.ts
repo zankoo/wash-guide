@@ -87,3 +87,6 @@ export interface Combo extends Flow {
   /** 套用位置说明 */
   at: string;
 }
+
+/** SDS 的来源：品牌官方、经销商，或本站转存的经销商合集 */
+export type SdsSourceId = 'koch' | 'gyeon' | 'gyeon-be' | 'gyeon-cz' | 'ps' | 'feynlab' | 'gesa' | 'bilnerden' | 'carpro-ws' | 'chemcx' | 'chemcx-nl' | 'bricocenter' | 'ebay' | 'sds-db' | 'autonablask' | 'rokjo' | 'washme' | 'mvp' | 'mafra-fr' | 'koch-no' | 'ingrijireauto' | 'bb-carcare';

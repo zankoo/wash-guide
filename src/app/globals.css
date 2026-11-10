@@ -8,7 +8,7 @@
   --line:#dbe1e4; --line-2:#c3cdd2;
   --rinse:#0b6e99; --rinse-soft:#e0eef5;
   --stage:#f5f7f8;
-  --warn:#8a5300; --warn-bg:#fbf3e3;
+  --warn:#8a5300; --warn-bg:#fbf3e3; --danger:#c81e15;
   --alk:#5b3fd1; --alk-bg:#eeebfc; --neu:#1d8656; --neu-bg:#e2f2e9; --acid:#b0600a; --acid-bg:#fbeedd;
   --labo:#2747cf; --koch:#d0202e; --carpro:#f06a1a; --gyeon:#6b3fb5; --mafra:#0e8a6a; --bola:#3a6680; --feynlab:#9a7a3c; --ps:#c2185b;
   --maniac:linear-gradient(100deg,#36d1c4,#6a7cff 40%,#c86bff 70%,#b6f35a);
@@ -30,7 +30,7 @@
   --line:#22313a; --line-2:#33464f;
   --rinse:#62c3ea; --rinse-soft:#123242;
   --stage:#e8edef;
-  --warn:#f0b65c; --warn-bg:#2a2113;
+  --warn:#f0b65c; --warn-bg:#2a2113; --danger:#ff7a6e;
   --alk:#ab9dff; --alk-bg:#231f45; --neu:#7cd3a3; --neu-bg:#13302a; --acid:#f1ad5c; --acid-bg:#2f2213;
   --lift:none; --float:0 24px 70px rgba(0,0,0,.6);
   color-scheme:dark}}
@@ -39,7 +39,7 @@
   --line:#22313a; --line-2:#33464f;
   --rinse:#62c3ea; --rinse-soft:#123242;
   --stage:#e8edef;
-  --warn:#f0b65c; --warn-bg:#2a2113;
+  --warn:#f0b65c; --warn-bg:#2a2113; --danger:#ff7a6e;
   --alk:#ab9dff; --alk-bg:#231f45; --neu:#7cd3a3; --neu-bg:#13302a; --acid:#f1ad5c; --acid-bg:#2f2213;
   --lift:none; --float:0 24px 70px rgba(0,0,0,.6);
   color-scheme:dark}
@@ -259,6 +259,17 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .rel small{font-size:12.5px;color:var(--muted);white-space:nowrap}
 .src{display:inline-flex;align-items:center;gap:8px;margin-top:28px;height:42px;padding:0 16px;border:1px solid var(--line-2);border-radius:12px;text-decoration:none;font-size:14px;font-weight:600}
 .src:hover{border-color:var(--ink)}
+.src-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.src-row .src{margin-top:0}
+.src.sds{height:auto;min-height:42px;padding:8px 16px}
+.src.sds span{display:grid;gap:1px}
+.src.sds small{font-size:12px;font-weight:500;color:var(--muted)}
+.toxic{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;margin:0 0 20px;padding:12px 14px;border:1.5px solid var(--danger);border-radius:12px;background:var(--sheet)}
+.toxic p{margin:0;font-size:13.5px;display:grid;gap:4px}
+.toxic b{color:var(--danger);font-size:14.5px}
+.toxic small{font-size:12px;color:var(--muted)}
+.toxic-mark{position:absolute;left:6px;top:6px;width:30px;height:30px;display:grid;place-items:center;filter:drop-shadow(0 1px 2px rgba(15,27,34,.25))}
+.toxic-mark svg{width:30px;height:30px}
 
 /* 独立产品页（直接打开 /p/[id]） */
 .page-detail{max-width:760px;margin:0 auto;padding:16px clamp(0px,3vw,16px) 48px}

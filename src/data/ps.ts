@@ -46,7 +46,7 @@ export const products: Product[] = [
  s:['水桶里每 2 加仑（约 7.6 L）水加 1 oz（约 30 ml）。','很脏的地方先用同样比例装进压力喷壶预喷，减少摩擦。','用洗车手套或毛巾逐块清洗，洗完马上擦干，不需要冲水。','其他用途按比例装进喷壶使用。'],
  x:['官方说明：聚合物包裹并乳化污垢，加进水里立刻软化水质，减少水斑；车外车内各表面都能用。','比例来自经销商 Car Supplies Warehouse 的商品页，官方商城没有写比例。','阳光下或阴凉处都可以施工。'],u:PS+'absolute-rinseless-wash'},
 
-{id:'P-epic',b:'P',c:'wash',n:'Epic Waterless Wash',t:'无水洗 / 快速美容（聚合物增光）',f:'16 oz · 1 gal · 5 gal',m:'车漆 · 金属 · 玻璃',
+{id:'P-epic',b:'P',c:'wash',ph:['alk','8.5'],n:'Epic Waterless Wash',t:'无水洗 / 快速美容（聚合物增光）',f:'16 oz · 1 gal · 5 gal',m:'车漆 · 金属 · 玻璃',
  d:[['无水洗 / 快速美容','即用','喷雾壶']],
  s:['在阴凉处、车身冷却且干燥时施工。','准备两块干净超纤布：一块擦拭，一块抛亮。','每次在约 60 × 60 cm 的范围喷一层薄雾。','用超纤布轻轻擦过喷涂区域，擦到雾膜消失。'],
  x:['也可以当快速美容剂，或在冲洗后、擦干前喷在湿车上一起擦干。','标签：Eco-Detail Products EC37。'],u:PS+'epic-rinseless-and-waterless-wash'},
@@ -149,7 +149,7 @@ export const products: Product[] = [
  s:['施工前必须完成整车抛光。','用 Paint Coating Surface Prep 清洁漆面。','按包装内的培训说明施工。','施工后至少 2–3 小时不要让车淋雨或暴露在外；48–72 小时完全固化。'],
  x:['官方定位为专业产品，不建议未受训练的人施工；可在 inspirationcoating.com 申请认证施工店。','套装含 30 ml 镀膜、施工块、说明书和门框标签。','可罩 SOLE 或 Defender 作面层；日常用 Radiance 洗车。'],u:PS+'inspiration-ceramic-coating-30ml-doubleblack-collection'},
 
-{id:'P-stout',b:'P',c:'coat',n:'Inspiration STOUT',t:'全能陶瓷镀膜（车漆、饰条、轮毂通用）',f:'30 ml · 50 ml',m:'车漆 · 塑料饰条 · 轮毂',
+{id:'P-stout',b:'P',c:'coat',ph:['acid','5–5.6'],n:'Inspiration STOUT',t:'全能陶瓷镀膜（车漆、饰条、轮毂通用）',f:'30 ml · 50 ml',m:'车漆 · 塑料饰条 · 轮毂',
  d:[['镀膜（施工块）','即用','—']],
  s:['完成抛光和脱脂（Paint Coating Surface Prep）。','用附带的施工块涂抹。','等它闪干 30 秒–2 分钟（看环境），用干净超纤布流平。','用第二块布擦净残留。','需要多层时，层间间隔 1 小时。','24 小时内不要淋水、不要碰化学品。'],
  x:['Inspiration 系列最新的一款，强调好施工、高光泽和疏水。','闪干、层间和固化时间来自经销商 Car Supplies Warehouse 的商品页，以包装说明为准。'],u:PS+'inspiration-stout'},
