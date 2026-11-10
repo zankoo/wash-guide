@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SUBCATS, keyRatios, materialsOf, productsOfStep, stepsOf } from './index';
+import { FLOWS, FLOW_BY_ID, NO_IMAGE, PRODUCTS, PRODUCT_BY_ID, SDS, SUBCATS, TOXIC, keyRatios, materialsOf, productsOfStep, stepsOf } from './index';
 import { CAT_NAME, SCENE_NAME } from './taxonomy';
 
 describe('数据完整性', () => {
@@ -103,12 +103,12 @@ describe('pH', () => {
     return xs.reduce((a, b) => a + b, 0) / xs.length;
   };
 
-  it('数值写法统一（如 12.5、6–8、> 12）', () => {
+  it('数值写法统一（如 12.5、6–8、> 12、≥ 11）', () => {
     for (const p of PRODUCTS) {
       if (!p.ph) continue;
       const [k, v] = p.ph;
       if (k === 'na') expect(v, p.id).toBeUndefined();
-      if (v) expect(v, p.id).toMatch(/^(?:[<>] )?-?\d+(?:\.\d+)?(?:–\d+(?:\.\d+)?)?$/);
+      if (v) expect(v, p.id).toMatch(/^(?:[<>≥≤] )?-?\d+(?:\.\d+)?(?:–\d+(?:\.\d+)?)?$/);
     }
   });
 
@@ -119,5 +119,24 @@ describe('pH', () => {
       const n = num(v);
       expect(k, `${p.id} pH ${v}`).toBe(n < 6 ? 'acid' : n <= 8 ? 'neu' : 'alk');
     }
+  });
+});
+
+describe('SDS 和危险品标注', () => {
+  it('SDS 只关联已收录的产品，链接是 https 或本站转存的文件', () => {
+    const hosted = new Set(readdirSync(new URL('../../public/sds', import.meta.url)));
+    for (const [id, [url]] of Object.entries(SDS)) {
+      expect(PRODUCT_BY_ID.has(id), id).toBe(true);
+      if (url.startsWith('/sds/')) expect(hosted.has(url.slice(5)), url).toBe(true);
+      else expect(url, id).toMatch(/^https:\/\//);
+    }
+    // 转存的文件都有产品在用
+    const used = new Set(Object.values(SDS).map(([url]) => url));
+    for (const f of hosted) expect(used.has(`/sds/${f}`), f).toBe(true);
+  });
+
+  it('标了危险品的产品都有可以核对的 SDS', () => {
+    for (const id of Object.keys(TOXIC)) expect(SDS[id], id).toBeDefined();
+    expect(Object.keys(TOXIC).sort()).toEqual(['K-triple-acid-star', 'L-energo']);
   });
 });

@@ -15,6 +15,8 @@ import { fold, initials, type RankFields } from '../lib/search';
 export * from './materials';
 export * from './subcategories';
 export * from './taxonomy';
+export * from './hazard';
+export * from './sds';
 export type * from './types';
 
 export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...feynlab.products, ...ps.products];
