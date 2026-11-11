@@ -40,14 +40,7 @@ export function ProductDetail({ p }: { p: Product }) {
       </div>
       <div className="sh-body">
         <ToxicLine p={p} />
-        {p.ph && (
-          <section className="ph-evidence" aria-label="pH 资料与口径">
-            <h3>pH 资料与口径</h3>
-            <p>原液数据 · {PH_SOURCE_LABEL[p.ph.source.kind]}{p.ph.conflict ? ' · 存在资料口径差异' : ''}</p>
-            {p.ph.source.url && <a href={p.ph.source.url} target="_blank" rel="noopener">查看 pH 依据</a>}
-            <Notes items={phEvidenceNotes(p.ph)} />
-          </section>
-        )}
+        <PhEvidence p={p} />
         {p.dilutions.length ? (
           <DilutionTable rows={p.dilutions} />
         ) : (
@@ -106,6 +99,30 @@ export function ProductDetail({ p }: { p: Product }) {
         </div>
       </div>
     </>
+  );
+}
+
+/** pH 来源说明：只有真正关联了来源、依据或口径差异时才展示，避免空壳区块 */
+function PhEvidence({ p }: { p: Product }) {
+  const ph = p.ph;
+  if (!ph) return null;
+  const notes = phEvidenceNotes(ph);
+  const recorded = ph.source.kind !== 'unrecorded';
+  if (!recorded && !ph.source.url && !ph.conflict && notes.length === 0) return null;
+  return (
+    <section className="ph-evidence" aria-label="pH 资料与口径">
+      <h3>pH 资料与口径</h3>
+      <p>
+        原液数据{recorded ? ` · ${PH_SOURCE_LABEL[ph.source.kind]}` : ''}
+        {ph.conflict ? ' · 存在资料口径差异' : ''}
+      </p>
+      {ph.source.url && (
+        <a href={ph.source.url} target="_blank" rel="noopener">
+          查看 pH 依据
+        </a>
+      )}
+      <Notes items={notes} />
+    </section>
   );
 }
 

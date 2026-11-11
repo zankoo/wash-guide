@@ -54,6 +54,11 @@ test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await page.goto('/p/C-clearcut');
   await expect(page.locator('.ph-evidence')).toContainText('本站按 SDS 标注');
+  // 来源未关联且没有任何依据时，不渲染空壳 pH 区块和空提示框
+  await page.goto('/p/L-primus');
+  await expect(page.locator('.sh-ph')).toContainText('pH > 11');
+  await expect(page.locator('.ph-evidence')).toHaveCount(0);
+  await expect(page.locator('.sh-body .notes:empty')).toHaveCount(0);
   const response = await page.request.get('/sds/C-clearcut.pdf');
   expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-');
 });
