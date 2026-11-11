@@ -7,6 +7,13 @@ describe('搜索', () => {
     expect(matchesQuery(fold('SÈMPER'), 'Semper')).toBe(true);
   });
 
+  it('按用途同义词搜索，同时保留多个条件取交集', () => {
+    expect(matchesQuery(fold('大灯 / 金属 抛光修复'), '大灯发黄')).toBe(true);
+    expect(matchesQuery(fold('大灯 / 金属 抛光修复'), '大灯发黄 皮革')).toBe(false);
+    expect(matchesQuery(fold('玻璃水斑去除剂'), '水印')).toBe(true);
+    expect(matchesQuery(fold('飞虫鸟粪清洁剂'), '鸟屎')).toBe(true);
+  });
+
   it('全角冒号等同半角', () => {
     expect(matchesQuery(fold('喷雾壶 1:10'), '1：10')).toBe(true);
   });

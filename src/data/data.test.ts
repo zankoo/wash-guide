@@ -39,18 +39,16 @@ describe('数据完整性', () => {
 });
 
 describe('卡片比例标签', () => {
-  it('只放简短的用量，不放文字说明', () => {
+  it('常用配比带上工具和场景，避免把 PA 壶与喷壶混淆', () => {
+    expect(keyRatios(PRODUCT_BY_ID.get('L-primus')!)).toEqual(['PA壶 · 夏季污垢 1:10']);
     for (const p of PRODUCTS) {
-      const r = keyRatios(p);
-      if (Array.isArray(r)) for (const x of r) expect(x.length, `${p.id} → ${x}`).toBeLessThanOrEqual(14);
+      const ratios = keyRatios(p);
+      if (Array.isArray(ratios)) expect(ratios.length, p.id).toBe(1);
     }
-    expect(keyRatios(PRODUCT_BY_ID.get('K-gsf')!)).toEqual(['1:50', '1:200']);
   });
 
-  it('按浓度从浓到淡排列', () => {
-    expect(keyRatios(PRODUCT_BY_ID.get('L-primus')!)).toEqual(['1:5', '1:10', '1:80']);
-    expect(keyRatios(PRODUCT_BY_ID.get('L-energo')!)).toEqual(['原液', '1:5', '1:10']);
-    expect(keyRatios(PRODUCT_BY_ID.get('L-purifica')!)).toEqual(['1:5 – 1:10', '1:100 – 1:200', '1:100 – 1:400']);
+  it('VDA 浓度上限不会重复成第二个施工配比', () => {
+    expect(keyRatios(PRODUCT_BY_ID.get('K-super-foam')!)).toEqual(['PA壶 1:50 – 1:100']);
   });
 
   it('同一个意思只用一种写法', () => {

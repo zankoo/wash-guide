@@ -11,7 +11,7 @@ import { WakeToggle } from './wake-toggle';
  * 去流程是「前进」、回产品是「后退」，页面内容按方向左右滑动；选中背景从一个标签滑到另一个。
  */
 export function ViewTabs({ className }: { className: string }) {
-  const { isFlows } = useGuide();
+  const { isFlows, filterSearch } = useGuide();
   // 同一页面上有几组标签，指示块的名字要各不相同
   const ind = `ind-tab-${className.split(' ').at(-1)}`;
   const mark = <Indicator name={ind} />;
@@ -19,7 +19,7 @@ export function ViewTabs({ className }: { className: string }) {
     <nav className={className} aria-label="视图">
       <Link
         className="tab"
-        href="/"
+        href={`/${filterSearch}`}
         aria-current={isFlows ? undefined : 'page'}
         scroll={false}
         transitionTypes={['nav-back']}
@@ -30,7 +30,7 @@ export function ViewTabs({ className }: { className: string }) {
       </Link>
       <Link
         className="tab"
-        href="/flows"
+        href={`/flows${filterSearch}`}
         aria-current={isFlows ? 'page' : undefined}
         scroll={false}
         transitionTypes={['nav-forward']}

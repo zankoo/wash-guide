@@ -15,11 +15,11 @@ export const SUBCATS: Subcategory[] = [
   { id: 'pre-neu', c: 'pre', n: '中性预洗', ids: ['L-neve', 'K-gsf'] },
   { id: 'pre-acid', c: 'pre', n: '酸性预洗', ids: ['B-a55'] },
   { id: 'pre-bug', c: 'pre', n: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer', 'P-bug-off'] },
-  { id: 'pre-foam', c: 'pre', n: '泡沫预洗（官方未标 pH）', ids: ['G-foam', 'F-supermafrasol', 'F-idrowash', 'P-frostbite'] },
+  { id: 'pre-foam', c: 'pre', n: '泡沫预洗', ids: ['G-foam', 'F-supermafrasol', 'F-idrowash', 'P-frostbite'] },
 
   // ── 洗车香波 / 免冲洗
-  { id: 'wash-neu', c: 'wash', n: '中性香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe', 'B-a43', 'B-a33', 'N-pure-wash', 'P-pearl', 'P-irs', 'P-wash-wax'] },
-  { id: 'wash-plain', c: 'wash', n: '弱碱性香波', ids: ['F-shampoo-power'] },
+  { id: 'wash-neu', c: 'wash', n: '日常维护香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe', 'B-a43', 'B-a33', 'N-pure-wash', 'P-pearl', 'P-irs', 'P-wash-wax'] },
+  { id: 'wash-plain', c: 'wash', n: '去油香波', ids: ['F-shampoo-power'] },
   { id: 'wash-protect', c: 'wash', n: '洗护一体 / 镀膜香波', ids: ['L-revitax', 'M-ceramic-shampoo', 'K-ceramic-effect-shampoo', 'K-nanomagic-shampoo', 'C-hydro2-foam', 'K-glanzwachsshampoo', 'G-bathe-plus', 'F-shampoo-cera', 'F-polish-express', 'P-radiance'] },
   { id: 'wash-acid', c: 'wash', n: '酸性除垢香波', ids: ['L-purifica', 'M-descale-foam-shampoo', 'K-reactivation-shampoo', 'G-restartwash', 'C-descale', 'L-renova', 'B-e55'] },
   { id: 'wash-deco', c: 'wash', n: '中性除染香波（去铁 / 恢复镀膜）', ids: ['G-ppf-wash'] },
@@ -29,7 +29,7 @@ export const SUBCATS: Subcategory[] = [
   // ── 轮毂轮胎
   { id: 'wheel-neu', c: 'wheel', n: '无酸 / 中性（铁粉变色）', ids: ['M-wheel-decontaminant', 'K-magic-wheel-cleaner', 'K-reactive-wheel-cleaner', 'K-felgenblitz-saeurefrei', 'G-iron-wheelcleaner', 'F-fallout', 'F-regenera-rims', 'B-w35'] },
   { id: 'wheel-alk', c: 'wheel', n: '碱性轮毂 / 轮胎清洁', ids: ['M-wheel-tyre-cleaner', 'M-wheel-foam-cleaner', 'K-alkali-wheel-cleaner', 'K-felgenblitz-alkalisch', 'C-retyre', 'G-tirecleaner', 'F-cerchi-gomme', 'B-w55', 'P-undressed'] },
-  { id: 'wheel-plain', c: 'wheel', n: '轮毂清洁（官方未标 pH）', ids: ['F-splendorlega', 'N-tire-wheel', 'P-brake-buster'] },
+  { id: 'wheel-plain', c: 'wheel', n: '其他轮毂清洁', ids: ['F-splendorlega', 'N-tire-wheel', 'P-brake-buster'] },
   { id: 'wheel-acid', c: 'wheel', n: '酸性（强效）', ids: ['C-wheelx', 'K-felgenreiniger-k', 'K-felgenreiniger-k-viskos', 'K-triple-acid-star', 'K-felgenreiniger-cl', 'K-felgenreiniger-extrem'] },
 
   // ── 除染 / 去水垢
