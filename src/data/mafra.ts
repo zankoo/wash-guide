@@ -9,7 +9,9 @@ const MAFRA = 'https://mafra.it/en/';
 
 export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
-{id:'F-supermafrasol',brand:'F',category:'pre',ph:['alk','> 12'],name:'Supermafrasol',type:'高浓缩重污预洗 / 去油剂（去交通膜）',sizes:'900 ml',materials:'车漆 · 车身外部 · 发动机（不可用于铝和轻合金）',
+{
+ sds:{"url":"https://docs.ebay.com/document/cd1b405e-1e46-4fd1-bf46-a2a0a7986b7b","source":"ebay","language":"意大利文","version":"2025","hosting":"remote"},
+ id:'F-supermafrasol',brand:'F',category:'pre',ph:['alk','> 12'],name:'Supermafrasol',type:'高浓缩重污预洗 / 去油剂（去交通膜）',sizes:'900 ml',materials:'车漆 · 车身外部 · 发动机（不可用于铝和轻合金）',
  dilutions:[['去油清洁（按污垢和停留时间）','1:5 – 1:55','喷雾壶']],
  steps:['按污垢、表面和停留时间稀释。','在阴凉处由下往上喷涂，分布更均匀。','不要让溶液干在表面上，用水彻底冲洗。','擦干。'],
  notes:['不要用于铝、轻合金件和摩托车。','深色、老旧或氧化的车漆不要在车身发热时洗。','可去除浅色车上的交通膜和雾斑；硬水中高倍稀释也有效。','专业用途。'],url:MAFRA+'pulire-e-sgrassare-auto-professionale-supermafrasol/'},
@@ -30,17 +32,23 @@ export const products: Product[] = [
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB19-01-0428）。','不需要刷洗，能溶解已经干掉的虫尸。','对车漆、塑料、玻璃和大灯安全。'],url:MAFRA+'togliere-moscerini-auto-killer/'},
 
 // ───────────────────────── 洗车香波 / 无水洗 ─────────────────────────
-{id:'F-shampoo-power',brand:'F',category:'wash',ph:['neu','7.5'],name:'Shampoo Power',type:'高浓缩自去油洗车香波',sizes:'1 L',materials:'车漆 · 哑光 / 缎面车漆 · 改色膜 · 铝 · 喷漆轮毂',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/93683/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-shampoo-power',brand:'F',category:'wash',ph:['neu','7.5'],name:'Shampoo Power',type:'高浓缩自去油洗车香波',sizes:'1 L',materials:'车漆 · 哑光 / 缎面车漆 · 改色膜 · 铝 · 喷漆轮毂',
  dilutions:[['桶洗','1 瓶盖 / 1 L 水（5 瓶盖 / 5 L）','桶洗'],['桶洗（韩国标签标准用量）','1:400（25 ml / 10 L）','桶洗']],
  steps:['每升水加一瓶盖原液，5 L 水桶加 5 瓶盖。','用海绵或洗车手套洗车。','冲洗后擦干。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB20-01-0725）。','泡沫丰富、易冲洗，不留残留和水痕；一瓶约洗 30 次。','对铝条、喷漆轮毂、哑光 / 缎面漆和改色膜安全。','酸碱性来自韩国生活化学品申报（申报号 EB20-01-0725）：原液弱碱性','pH 按 SDS 第 9 节标注；其他官方资料写的是「碱性」，两者不一致'],url:MAFRA+'shampoo-auto-power-concentrato/'},
 
-{id:'F-shampoo-cera',brand:'F',category:'wash',ph:['alk','8.5'],name:'Car Wash Shampoo e Cera',type:'含蜡洗车香波（洗护一体）（弱碱性）',sizes:'1 L',materials:'车漆 · 玻璃',
+{
+ sds:{"url":"https://www.bricocenter.it/prodotti/media/magma_akeneo_connector/media_files/3/4/f/f/34ff67aad5f0198d003d7e695107dfc22d3e8bab_490000708.pdf","source":"bricocenter","language":"意大利文","version":"2024","hosting":"remote"},
+ id:'F-shampoo-cera',brand:'F',category:'wash',ph:['alk','8.5'],name:'Car Wash Shampoo e Cera',type:'含蜡洗车香波（洗护一体）（弱碱性）',sizes:'1 L',materials:'车漆 · 玻璃',
  dilutions:[['桶洗','1 瓶盖 / 1 L 水','桶洗'],['桶洗（韩国标签标准用量）','1:100（100 ml / 10 L）','桶洗']],
  steps:['先预洗，去掉大部分污垢并让车身降温。','每升水加一瓶盖原液，用手套或超纤海绵洗车。','用大量清水冲洗后擦干。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB22-01-0951）。','蜡成分让前挡上的水珠容易流走，擦干更快。'],url:MAFRA+'shampoo-e-cera-per-auto/'},
 
-{id:'F-polish-express',brand:'F',category:'wash',ph:['neu','7'],name:'Polish Express',type:'当香波用的纳米抛光剂（洗车同时上光）',sizes:'250 ml（套装附海绵）· 4.5 L',materials:'车漆 · 车身外部',
+{
+ sds:{"url":"/sds/F-polish-express.pdf","source":"mafra-fr","language":"法文","version":"2025-03-28","hosting":"local","sha256":"b089d528332a114c371b78a3c9d0208106efc80b0d33f28e0446b75745ac91d0","originalUrl":"https://algeria.mafra.com/files/POLISH%20EXPRESS_433_FR_5.pdf","checkedAt":"2026-11-10"},
+ id:'F-polish-express',brand:'F',category:'wash',ph:['neu','7'],name:'Polish Express',type:'当香波用的纳米抛光剂（洗车同时上光）',sizes:'250 ml（套装附海绵）· 4.5 L',materials:'车漆 · 车身外部',
  dilutions:[['手洗上光','按瓶身刻度稀释（250 ml 约洗 5 辆车）','桶洗']],
  steps:['按瓶身的稀释说明加水。','像香波一样手洗全车（套装附专用海绵）。','冲洗后擦干。'],
  notes:['凝胶状，官方称保护最长 6 周。','官方建议在黏土除染后用它做「封闭洗车」。'],url:MAFRA+'kit-polish-express/'},
@@ -56,12 +64,16 @@ export const products: Product[] = [
  steps:['用泡沫喷头先喷轮胎，再抬高喷头喷到轮毂上。','用刷子把产品带进缝隙，停留约 1 分钟。','看到污垢大量流下时，用强水流冲洗。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：碱性（登记号 EA19-01-0317）。','溶解刹车粉、污垢、结垢和油烟，同时让轮胎恢复原色。','轮毂很脏时，官方建议先用它清洁，再用 Fallout Iron Remover 除铁。'],url:MAFRA+'pulire-cerchi-e-gomme/'},
 
-{id:'F-splendorlega',brand:'F',category:'wheel',ph:['alk','11'],name:'Splendorlega',type:'即用型合金轮毂清洁剂（无酸、无烧碱）',sizes:'500 ml',materials:'合金 / 镁合金轮毂',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/66671/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-splendorlega',brand:'F',category:'wheel',ph:['alk','11'],name:'Splendorlega',type:'即用型合金轮毂清洁剂（无酸、无烧碱）',sizes:'500 ml',materials:'合金 / 镁合金轮毂',
  dilutions:[['合金轮毂','即用','喷雾壶']],
  steps:['距离约 20 cm 均匀喷在轮毂上。','停留后用软毛刷或细刷刷遍每处，辐条轮毂尤其要刷到。','彻底冲洗，擦干轮毂。'],
  notes:['专门溶解刹车片产生的含铁粉尘。','不含酸和烧碱，不会腐蚀或磨损轮毂。'],url:MAFRA+'pulire-cerchi-in-lega-splendorlega/'},
 
-{id:'F-fallout',brand:'F',category:'wheel',ph:['acid','5.5'],name:'Fallout Iron Remover',type:'铁粉去除剂（变紫）',sizes:'500 ml · 1 L',materials:'钢 / 合金 / 镀铬 / 抛光轮毂 · 车漆',
+{
+ sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-fallout-iron-remover/sds.pdf","source":"chemcx","language":"英文","version":"2022","hosting":"remote"},
+ id:'F-fallout',brand:'F',category:'wheel',ph:['acid','5.5'],name:'Fallout Iron Remover',type:'铁粉去除剂（变紫）',sizes:'500 ml · 1 L',materials:'钢 / 合金 / 镀铬 / 抛光轮毂 · 车漆',
  dilutions:[['轮毂','即用','喷雾壶'],['车身除铁','即用','喷雾壶']],
  steps:['轮毂：喷上后停留 3–4 分钟，不要让表面干掉；变紫后用刷子刷到辐条缝隙，再用大量清水冲洗，用超纤布擦干。','车身：先洗车擦干；在约 60 cm 外喷涂，逐块、每次半辆车，停留 2–3 分钟变紫后冲洗。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱酸性（登记号 EB20-01-0464）。意大利官网写的是「无酸、pH 平衡」，韩国标签写弱酸性，两处说法不一致。','不要接触铸铁刹车卡钳；不要用于发热的表面。','有硫磺味，在通风处使用。','官方建议约每 3000 km 给轮毂除铁一次；轮毂很脏时先用 Pulitore Cerchi e Gomme 清洁、冲净擦干。'],url:MAFRA+'fallout-iron-remover-1l-decontaminante-rapido-cerchi-e-carrozzeria/'},
@@ -77,12 +89,16 @@ export const products: Product[] = [
  steps:['先完成除蜡。','用浸满 Pulismog 原液的海绵像用普通香波一样擦过要处理的部位。','用水冲洗车辆即可，不需要再冲第二遍。'],
  notes:['去除铁路运输或停在钢厂、火车站附近造成的油烟、锈斑和氧化斑，适合新车和二手车。','对车漆颜色呈惰性，不伤保险杠和塑料件（包括环保再生塑料）。'],url:MAFRA+'deceranti-copolimeri-pulismog/'},
 
-{id:'F-decaflash',brand:'F',category:'deco',ph:['neu'],name:'Deca Flash',type:'柏油 / 不干胶去除剂（中性）',sizes:'250 ml',materials:'车漆 · 玻璃',
+{
+ sds:{"url":"https://www.bricocenter.it/prodotti/media/magma_akeneo_connector/media_files/5/a/4/c/5a4c400273f42e7ae5d968ca6bcf9318d826bcc4_H0065_IT_1.pdf","source":"bricocenter","language":"意大利文","version":"2018","hosting":"remote"},
+ id:'F-decaflash',brand:'F',category:'deco',ph:['neu'],name:'Deca Flash',type:'柏油 / 不干胶去除剂（中性）',sizes:'250 ml',materials:'车漆 · 玻璃',
  dilutions:[['柏油、不干胶残留','即用','喷雾壶']],
  steps:['喷在柏油或胶痕上，停留几秒。','用干净超纤布擦掉残留。','彻底冲洗，再用另一条干净超纤布擦干。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：中性（登记号 FB22-02-0034）。','也适合去除撕掉车贴后留下的黏胶。','酸碱性来自韩国生活化学品申报（申报号 FB22-02-0034）：原液中性'],url:MAFRA+'togliere-adesivi-auto-e-catrame-deca-flash/'},
 
-{id:'F-resinoff',brand:'F',category:'deco',ph:['na'],name:'Resin Off',type:'树脂 / 盐渍去除剂（弱碱性）',sizes:'250 ml',materials:'车漆 · 车身外部',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/79712/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-resinoff',brand:'F',category:'deco',ph:['na'],name:'Resin Off',type:'树脂 / 盐渍去除剂（弱碱性）',sizes:'250 ml',materials:'车漆 · 车身外部',
  dilutions:[['树脂、松脂、盐渍','即用','喷雾壶']],
  steps:['确认表面不热、不在阳光下，喷在树脂上。','停留 1 分钟后用软布擦掉，不要用力搓。','顽固树脂滴重复操作。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 FB22-01-0293）。','也能去除已经结晶的松树树脂。'],url:MAFRA+'togliere-resina-auto-resin-off/'},
@@ -169,7 +185,9 @@ export const products: Product[] = [
  steps:['用前摇匀，取少量在超纤布或 Microfiber Pad 上。','在车身上画直径约 40 cm 的圈，轻压抹开。','逐小块施工到全车，用干净柔软的超纤布擦掉多余。'],
  notes:['每次洗车后会「自我激活」，能耐多次洗车；深色车增色明显。','酸碱性来自韩国生活化学品申报（申报号 EB20-06-0046，该申报已过期）：不适用'],url:MAFRA+'cera-protettiva-auto-carlux/'},
 
-{id:'F-metalcrem',brand:'F',category:'seal',ph:['na'],name:'Metal Crem',type:'金属漆增亮蜡乳（无研磨）',sizes:'250 ml',materials:'车漆',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/76348/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-metalcrem',brand:'F',category:'seal',ph:['na'],name:'Metal Crem',type:'金属漆增亮蜡乳（无研磨）',sizes:'250 ml',materials:'车漆',
  dilutions:[],
  steps:['取适量用布涂在车身上。','抹匀后擦亮。'],
  notes:['富含合成蜡，不含研磨剂，不会让塑料件发白。','官方页面未给出详细步骤。'],url:MAFRA+'cera-per-lucidare-carrozzeria-auto-metallizzate-metal-crem/'},
@@ -179,12 +197,16 @@ export const products: Product[] = [
  steps:['喷在各部位上。','用布抹开擦亮，形成丝滑手感。'],
  notes:['水性配方，车身没完全擦干也能用；不含研磨剂，可用于任何车漆。','不会让塑料件发白。','酸碱性来自韩国生活化学品申报（申报号 EB19-06-0159，该申报已过期）：不适用'],url:MAFRA+'cera-spray-lucidante-auto-nere_/'},
 
-{id:'F-lasttouch',brand:'F',category:'seal',ph:['alk','10'],name:'Last Touch Express 2.0',type:'含巴西棕榈蜡的快速喷蜡（干湿车都可用）',sizes:'500 ml',materials:'车漆 · 玻璃 · 塑料',
+{
+ sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-last-touch-express/sds.pdf","source":"chemcx","language":"英文","version":"2022","hosting":"remote"},
+ id:'F-lasttouch',brand:'F',category:'seal',ph:['alk','10'],name:'Last Touch Express 2.0',type:'含巴西棕榈蜡的快速喷蜡（干湿车都可用）',sizes:'500 ml',materials:'车漆 · 玻璃 · 塑料',
  dilutions:[['干车或湿车','即用','喷雾壶']],
  steps:['在约 20 cm 外少量均匀喷在要处理的部位。','用超纤布抹开。','用另一条干布擦干。'],
  notes:['可用于玻璃和塑料，不留雾痕。','能防止污垢再次附着，留下丝滑手感。'],url:MAFRA+'cera-istantanea-per-lucidare-carrozzeria-last-touch-express/'},
 
-{id:'F-fast-cleaner',brand:'F',category:'seal',ph:['neu','7'],name:'Fast Cleaner 3in1',type:'快速美容剂 / 擦干辅助 / 黏土润滑液',sizes:'500 ml',materials:'车漆',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/92465/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-fast-cleaner',brand:'F',category:'seal',ph:['neu','7'],name:'Fast Cleaner 3in1',type:'快速美容剂 / 擦干辅助 / 黏土润滑液',sizes:'500 ml',materials:'车漆',
  dilutions:[['快速清洁','即用','喷雾壶'],['擦干辅助（湿车）','即用','喷雾壶'],['黏土润滑','即用','喷雾壶']],
  steps:['快速美容：约 20 cm 外喷在要处理的部位，用超纤布直线擦到完全干，再用第二条干净干布收尾。','擦干辅助：喷在湿车身上，再用 Super Dryer 擦干。','黏土润滑：喷在要除染的部位，过黏土时始终保持表面充分润滑。'],
  notes:['去除新鲜鸟粪、虫尸，也能去除洗车后的水斑和水垢。','留下丝滑抗静电的保护层，减少灰尘附着。','不含硅。'],url:MAFRA+'fast-cleaner-500-ml/'},
@@ -200,12 +222,16 @@ export const products: Product[] = [
  steps:['彻底清洁要处理的橡胶或轮胎。','均匀喷在表面上。','用超纤施工块或软毛刷抹匀。'],
  notes:['上光成分来自植物、易生物降解，不含磷酸盐。','防止轮胎龟裂并保持胎侧弹性。','需要稀释使用的专业桶装见 Nouveau Noir。'],url:MAFRA+'pulire-e-lucidare-gomme-nouveau-noir/'},
 
-{id:'F-extremeblack',brand:'F',category:'trim',name:'Extreme Black',type:'湿润效果轮胎上光喷雾',sizes:'—',materials:'轮胎',
+{
+ sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-extreme-black/sds.pdf","source":"chemcx","language":"英文","version":"2022","hosting":"remote"},
+ id:'F-extremeblack',brand:'F',category:'trim',name:'Extreme Black',type:'湿润效果轮胎上光喷雾',sizes:'—',materials:'轮胎',
  dilutions:[['光亮','即用（喷一圈）','喷雾壶'],['超光亮','即用（喷两圈）','喷雾壶']],
  steps:['直接喷在轮胎上：喷一圈为光亮效果，喷两圈为超光亮效果。','10 分钟后用布擦掉多余。'],
  notes:['避免喷到轮毂上；喷到时在干掉前用干布擦掉。','形成抗静电保护层，抵抗潮湿和灰尘。'],url:MAFRA+'nero-gomme-auto-extreme-black/'},
 
-{id:'F-fastblack',brand:'F',category:'trim',ph:['na'],name:'Fast & Black',type:'抗静电轮胎上光喷雾',sizes:'200 ml · 500 ml',materials:'轮胎 · 橡胶脚垫',
+{
+ sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-fast-black/sds.pdf","source":"chemcx","language":"英文","version":"2021","hosting":"remote"},
+ id:'F-fastblack',brand:'F',category:'trim',ph:['na'],name:'Fast & Black',type:'抗静电轮胎上光喷雾',sizes:'200 ml · 500 ml',materials:'轮胎 · 橡胶脚垫',
  dilutions:[['轮胎','即用','喷雾壶']],
  steps:['均匀喷在轮胎上。','让它自然干燥。'],
  notes:['可耐 3 次洗车；不油腻、不黏手，也可用于橡胶脚垫。','酸碱性来自韩国生活化学品申报（申报号 EB22-06-0259）：不适用'],url:MAFRA+'rinnova-nero-gomme-fast-black/'},
@@ -232,7 +258,9 @@ export const products: Product[] = [
  steps:['喷在表面上。','用干净干燥的超纤布擦净。'],
  notes:['无氨，快干不留雾痕；可用于导航 LCD 屏。'],url:MAFRA+'glass-cleaner-plus-cleaner-and-degreaser-car-750ml/'},
 
-{id:'F-glass-clean',brand:'F',category:'glass',ph:['neu','7'],name:'Glass Clean & Shine',type:'无氨泡沫玻璃清洁剂（罐装）',sizes:'—',materials:'玻璃 · LCD 屏 · 贴膜车窗',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/93135/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-glass-clean',brand:'F',category:'glass',ph:['neu','7'],name:'Glass Clean & Shine',type:'无氨泡沫玻璃清洁剂（罐装）',sizes:'—',materials:'玻璃 · LCD 屏 · 贴膜车窗',
  dilutions:[['玻璃清洁','即用','—']],
  steps:['摇匀罐体。','在 15–25 cm 外喷在表面上。','用干净干布擦净收尾。'],
  notes:['泡沫附着让布更顺滑；无氨，可用于贴了隔热膜的玻璃。','酸碱性来自韩国生活化学品申报（申报号 EB19-01-0688，该申报已过期）：原液中性'],url:MAFRA+'pulire-e-lucidare-vetri-auto-glass-clean/'},
@@ -258,12 +286,16 @@ export const products: Product[] = [
  steps:['按污垢种类、表面和停留时间稀释到 5 %–20 %。','喷涂后让它分解油污。','用水彻底冲洗。'],
  notes:['不要让它干在表面上；不要用于铝和合金。','特殊表面或原液使用前先在不显眼处测试。'],url:MAFRA+'super-apc-detergente-universale-per-sporchi-gravosi/'},
 
-{id:'F-hp12',brand:'F',category:'apc',ph:['alk'],name:'HP 12',type:'即用型万能去油剂（发动机舱）（碱性）',sizes:'125 ml · 750 ml',materials:'发动机 · 镀铬 · 车身外部 · 轮毂',
+{
+ sds:{"url":"/sds/F-hp12.pdf","source":"mafra-fr","language":"法文","version":"2023-12-20","hosting":"local","sha256":"3e8e76efa29ba5b86370c6ff35eaed7bd176502e2df5b32877f618fe5ac58b7d","originalUrl":"https://algeria.mafra.com/files/HP12_1138_FR_4.pdf","checkedAt":"2026-11-10"},
+ id:'F-hp12',brand:'F',category:'apc',ph:['alk'],name:'HP 12',type:'即用型万能去油剂（发动机舱）（碱性）',sizes:'125 ml · 750 ml',materials:'发动机 · 镀铬 · 车身外部 · 轮毂',
  dilutions:[['去油清洁','即用','喷雾壶']],
  steps:['喷在要清洁的部位，等几秒。','需要时用布或刷子辅助。','用超纤布擦净，需要时用水冲洗。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：碱性（登记号 EB23-01-0530）。','可清洁发动机各部位的油污，也能去交通膜、油烟；可用于房车内饰和沙发织物污渍。','官方建议用它手洗 Microfiber Pad。','酸碱性来自韩国生活化学品申报（申报号 EB23-01-0530）：原液碱性'],url:MAFRA+'hp-12/'},
 
-{id:'F-split',brand:'F',category:'apc',ph:['alk','9'],name:'Split',type:'多表面清洁剂（植物表面活性剂）',sizes:'750 ml',materials:'玻璃 · 内饰 · 塑料 · 皮革 · 碳纤维 · 金属 · LCD 屏',
+{
+ sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-split/sds.pdf","source":"chemcx","language":"英文","version":"2021","hosting":"remote"},
+ id:'F-split',brand:'F',category:'apc',ph:['alk','9'],name:'Split',type:'多表面清洁剂（植物表面活性剂）',sizes:'750 ml',materials:'玻璃 · 内饰 · 塑料 · 皮革 · 碳纤维 · 金属 · LCD 屏',
  dilutions:[['多表面清洁','即用','喷雾壶']],
  steps:['喷在表面上。','用干净干燥的优质超纤布擦到完全无残留。'],
  notes:['酸碱性来自韩国官方商城 maframall.com 的安全标示（액성）：弱碱性（登记号 EB22-01-0996）。意大利官网写的是中性 pH，韩国标签写弱碱性，两处说法不一致。','免冲洗，不含磷酸盐、氯和氨。','酸碱性来自韩国生活化学品申报（申报号 EB22-01-0996）：原液弱碱性'],url:MAFRA+'split-750ml-detergente-multisuperficie/'},
@@ -284,7 +316,9 @@ export const products: Product[] = [
  steps:['喷在塑料表面。','用超纤布擦拭清洁并抹匀。'],
  notes:['酸碱性来自韩国生活化学品申报（申报号 EB22-01-0707）：原液弱碱性；意大利官方技术资料表写 pH 7。','留下抗静电、防紫外线保护层，并消除异味。'],url:MAFRA+'pulizia-interni-e-plastiche-auto-3-in-1/'},
 
-{id:'F-plast-shine',brand:'F',category:'int',name:'Diamant Plast Shine',type:'亮光中控上光喷雾（含 UV 滤剂）',sizes:'500 ml',materials:'中控 · 内饰塑料',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/86594/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-plast-shine',brand:'F',category:'int',name:'Diamant Plast Shine',type:'亮光中控上光喷雾（含 UV 滤剂）',sizes:'500 ml',materials:'中控 · 内饰塑料',
  dilutions:[['上光','即用','—']],
  steps:['喷在中控和内饰塑料上。','用超纤布抹匀擦亮。'],
  notes:['让被晒褪色的塑料恢复颜色；不油腻。'],url:MAFRA+'lucida-cruscootti-effetti-brillante-diamant-shine/'},
@@ -294,12 +328,16 @@ export const products: Product[] = [
  steps:['喷在中控和内饰塑料上。','用超纤布抹匀，表面光滑不反光。'],
  notes:['不含硅，抗静电。'],url:MAFRA+'lucida-cruscotti-effetto-opaco-diamant-satin/'},
 
-{id:'F-scic-blu',brand:'F',category:'int',ph:['na'],name:'Scic Blu',type:'中等光泽中控养护喷雾',sizes:'600 ml',materials:'中控 · 内饰塑料',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/86139/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-scic-blu',brand:'F',category:'int',ph:['na'],name:'Scic Blu',type:'中等光泽中控养护喷雾',sizes:'600 ml',materials:'中控 · 内饰塑料',
  dilutions:[['养护','即用','—']],
  steps:['在 20–25 cm 外少量均匀喷在要处理的部位。','用干净干燥的超纤布抹匀到整个表面。','再用第二条干净超纤布收尾。'],
  notes:['不油腻，不会在前挡上反光。'],url:MAFRA+'ravvivante-plastiche-e-cruscotti-auto-scic-blu/'},
 
-{id:'F-scic-green',brand:'F',category:'int',ph:['na'],name:'Scic Green',type:'中控清洁养护喷雾（除菌、去烟味，自然效果）',sizes:'600 ml',materials:'中控 · 内饰塑料 · 铝饰件',
+{
+ sds:{"url":"https://shop.gruppogesa.it/media/attachment/86138/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ id:'F-scic-green',brand:'F',category:'int',ph:['na'],name:'Scic Green',type:'中控清洁养护喷雾（除菌、去烟味，自然效果）',sizes:'600 ml',materials:'中控 · 内饰塑料 · 铝饰件',
  dilutions:[],steps:[],
  notes:['清洁中控并有除菌作用，可去除螨虫、灰尘和烟味，适合吸烟车；对铝饰件特别适用，留下自然效果；雪松香。','官网未给出施工步骤。'],url:MAFRA+'igienizzante-auto-e-cruscotti-scic-green/'},
 

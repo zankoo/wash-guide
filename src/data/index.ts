@@ -15,8 +15,7 @@ import { fold, initials, type RankFields } from '../lib/search';
 export * from './materials';
 export * from './subcategories';
 export * from './taxonomy';
-export * from './hazard';
-export * from './sds';
+export * from './sds-sources';
 export type * from './types';
 
 export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...feynlab.products, ...ps.products];
@@ -37,17 +36,9 @@ export function getProduct(id: string): Product {
   return p;
 }
 
-/** 官网没有提供产品图（或图片已失效）的产品，显示名称卡片 */
-export const NO_IMAGE = new Set([
-  'K-ceramic-glass-cg001', 'K-plast-shield', 'K-perfectfinish-sealant', 'K-wetgloss',
-  'K-quick-shine-plus', 'K-allround-quick-shine', 'K-nanomagic-plast-care', 'K-speed-glass-cleaner',
-  'K-multi-interior-cleaner', 'K-leather-star', 'K-protect-leather-care',
-  'B-pf1',
-]);
-
 /** 产品图全部是 public/img 下的本地 webp（720×720 白底） */
 export function imageSrc(p: Product): string | undefined {
-  return NO_IMAGE.has(p.id) ? undefined : `/img/${p.id}.webp`;
+  return p.image === null ? undefined : p.image ?? `/img/${p.id}.webp`;
 }
 
 export const SUB_OF = new Map<string, Subcategory>(SUBCATS.flatMap((s) => s.ids.map((id) => [id, s] as const)));
