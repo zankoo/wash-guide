@@ -12,25 +12,25 @@ export type DilutionRow = [scene: string, ratio: string, tool: string];
 export interface Product {
   id: string;
   /** 品牌 */
-  b: BrandId;
+  brand: BrandId;
   /** 分类 */
-  c: CategoryId;
+  category: CategoryId;
   /** 名称 */
-  n: string;
+  name: string;
   /** 类型 / 一句话说明 */
-  t: string;
+  type: string;
   /** 规格 */
-  f: string;
+  sizes: string;
   /** 适用材质 */
-  m: string;
+  materials: string;
   /** 稀释表 */
-  d: DilutionRow[];
+  dilutions: DilutionRow[];
   /** 施工步骤 */
-  s: string[];
+  steps: string[];
   /** 注意事项 */
-  x: string[];
+  notes: string[];
   /** 官网原文 */
-  u: string;
+  url: string;
   /**
    * 产品自身的 pH（原液）：[酸碱性, 官方数值]。
    * 只收官方来源（产品信息 / 技术资料表 / SDS 第 9 节 / 官网页面 / 韩国申报）；
@@ -41,9 +41,9 @@ export interface Product {
 
 /** 步骤的可切换变体 */
 export interface StepVariant {
-  n: string;
-  p?: string[];
-  r?: string;
+  name: string;
+  products?: string[];
+  ratio?: string;
   pH?: PH;
   how?: string;
   src?: string;
@@ -51,34 +51,34 @@ export interface StepVariant {
 
 export interface FlowStep {
   /** 阶段名 */
-  ph: string;
+  phase: string;
   /** 产品 id（可点击） */
-  p?: string[];
-  /** p 中任选其一 */
+  products?: string[];
+  /** products 中任选其一 */
   alt?: boolean;
   /** 本站未收录的工具/产品 */
-  o?: string[];
-  r?: string;
+  extras?: string[];
+  ratio?: string;
   pH?: PH;
   how?: string;
   src?: string;
-  vars?: StepVariant[];
+  variants?: StepVariant[];
 }
 
 export interface Flow {
   id: string;
-  b: BrandId;
+  brand: BrandId;
   name: string;
   en?: string;
   /** 唯一主场景（用于筛选） */
-  sc: SceneId;
+  scene: SceneId;
   /** 次要场景（仅显示） */
   tags: string[];
-  sum: string;
+  summary: string;
   steps: FlowStep[];
-  branch?: { n: string; steps: FlowStep[] };
-  x: string[];
-  u: string;
+  branch?: { name: string; steps: FlowStep[] };
+  notes: string[];
+  url: string;
 }
 
 /** 在官方流程（base）上替换或追加步骤的产品组合 */

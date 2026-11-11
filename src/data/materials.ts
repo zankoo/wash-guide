@@ -30,9 +30,9 @@ const INTERIOR = /内饰各类表面|内饰表面|内饰软硬表面|内外饰�
  * - 括号里的否定或提醒（不可用于、不含、不适用、慎用）整段去掉，不让其中的材质被误收；
  * - 写的是轮毂（喷漆轮毂、镀铬轮毂、铝圈……）时只算轮毂，不算车漆或金属。
  */
-export function materialsOf(p: Pick<Product, 'm'>): MaterialId[] {
+export function materialsOf(p: Pick<Product, 'materials'>): MaterialId[] {
   const found = new Set<MaterialId>();
-  const text = p.m.replace(/[（(][^）)]*(不可|不含|不适用|慎用)[^）)]*[）)]/g, '');
+  const text = p.materials.replace(/[（(][^）)]*(不可|不含|不适用|慎用)[^）)]*[）)]/g, '');
   for (const raw of text.split(/\s*[·：:]\s*/)) {
     const t = raw.trim();
     if (!t || t === '—') continue;

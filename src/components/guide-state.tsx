@@ -15,8 +15,8 @@ interface FlowTarget {
 /** 跳转目标流程：只带筛选需要的字段，避免把整份数据打进客户端 */
 export interface FlowRef {
   id: string;
-  b: BrandId;
-  sc: SceneId;
+  brand: BrandId;
+  scene: SceneId;
 }
 
 interface GuideState {
@@ -174,7 +174,7 @@ export function GuideProvider({ children }: { children: ReactNode }) {
 
   function goToFlow(f: FlowRef) {
     // 目标流程被当前筛选隐藏时清空筛选，保证能滚动到它
-    if ((brand && brand !== f.b) || (scene && scene !== f.sc) || query) {
+    if ((brand && brand !== f.brand) || (scene && scene !== f.scene) || query) {
       setBrand('');
       setScene('');
       setQuery('');

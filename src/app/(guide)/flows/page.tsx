@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 const items: FlowItem[] = FLOWS.map((f) => ({
   id: f.id,
-  b: f.b,
-  sc: f.sc,
+  brand: f.brand,
+  scene: f.scene,
   kind: f.kind,
   name: f.name,
   text: flowSearchText(f),

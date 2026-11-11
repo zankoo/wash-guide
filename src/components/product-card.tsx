@@ -10,9 +10,9 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
   const ph = phText(p);
   const claim = phClaim(p);
   return (
-    <ProductLink className="card" id={p.id} aria-label={`${p.n}，${p.t}${TOXIC[p.id] ? '，极危险化学品' : ''}`}>
+    <ProductLink className="card" id={p.id} aria-label={`${p.name}，${p.type}${TOXIC[p.id] ? '，极危险化学品' : ''}`}>
       <div className="stage">
-        <ProductImage src={imageSrc(p)} name={p.n} brand={p.b} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
+        <ProductImage src={imageSrc(p)} name={p.name} brand={p.brand} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
         <FavMark id={p.id} />
         {TOXIC[p.id] && (
           <span className="toxic-mark" title={`极危险化学品：含${TOXIC[p.id]}`}>
@@ -22,9 +22,9 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
         )}
       </div>
       <div className="bd">
-        <span className={`br ${p.b}`}>{BRAND_SHORT[p.b]}</span>
-        <span className="nm">{p.n}</span>
-        <span className="ty">{p.t}</span>
+        <span className={`br ${p.brand}`}>{BRAND_SHORT[p.brand]}</span>
+        <span className="nm">{p.name}</span>
+        <span className="ty">{p.type}</span>
         {ph && <span className={`phtag ${p.ph![0]} card-ph`}>{ph}</span>}
         {claim && <span className="ph-claim" title="配方宣传或使用液描述；pH 标签展示原液数据，详见产品说明">ⓘ {claim}</span>}
         <div className="pills">

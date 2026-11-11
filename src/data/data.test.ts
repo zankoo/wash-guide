@@ -10,8 +10,8 @@ describe('数据完整性', () => {
   });
 
   it('分类和场景都在列表里', () => {
-    for (const p of PRODUCTS) expect(CAT_NAME[p.c], p.id).toBeDefined();
-    for (const f of FLOWS) expect(SCENE_NAME[f.sc], f.id).toBeDefined();
+    for (const p of PRODUCTS) expect(CAT_NAME[p.category], p.id).toBeDefined();
+    for (const f of FLOWS) expect(SCENE_NAME[f.scene], f.id).toBeDefined();
   });
 
   it('流程引用的产品和组合引用的官方流程都存在', () => {
@@ -33,7 +33,7 @@ describe('数据完整性', () => {
     const ids = SUBCATS.flatMap((s) => s.ids);
     expect(new Set(ids).size).toBe(ids.length);
     expect(new Set(SUBCATS.map((s) => s.id)).size).toBe(SUBCATS.length);
-    for (const s of SUBCATS) for (const id of s.ids) expect(PRODUCT_BY_ID.get(id)?.c, `${s.id} → ${id}`).toBe(s.c);
+    for (const s of SUBCATS) for (const id of s.ids) expect(PRODUCT_BY_ID.get(id)?.category, `${s.id} → ${id}`).toBe(s.category);
     for (const p of PRODUCTS) expect(ids, p.id).toContain(p.id);
   });
 });
@@ -53,17 +53,17 @@ describe('卡片比例标签', () => {
 
   it('同一个意思只用一种写法', () => {
     for (const p of PRODUCTS) {
-      for (const [, r] of p.d) {
+      for (const [, r] of p.dilutions) {
         expect(r, p.id).not.toMatch(/即用原液|水加 .*瓶盖|^最高 1:/);
         // 不需要稀释的产品写「即用」，「原液」只用在需要稀释的产品上
-        if (/^原液/.test(r)) expect(p.d.some(([, x]) => /\d+\s*:\s*\d/.test(x)), p.id).toBe(true);
+        if (/^原液/.test(r)) expect(p.dilutions.some(([, x]) => /\d+\s*:\s*\d/.test(x)), p.id).toBe(true);
       }
     }
   });
 });
 
 describe('适用材质', () => {
-  const of = (m: string) => materialsOf({ m });
+  const of = (m: string) => materialsOf({ materials: m });
 
   it('只收原文明确写出的材质', () => {
     expect(of('车漆')).toEqual(['paint']);

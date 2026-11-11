@@ -20,8 +20,8 @@ function ProductChip({ id }: { id: string }) {
   const p = getProduct(id);
   return (
     <ProductLink className="pc" id={id}>
-      <ProductThumb src={imageSrc(p)} name={p.n} brand={p.b} />
-      <span>{p.n}</span>
+      <ProductThumb src={imageSrc(p)} name={p.name} brand={p.brand} />
+      <span>{p.name}</span>
     </ProductLink>
   );
 }
@@ -31,14 +31,14 @@ function StepTop({ name, x }: { name: string; x: StepVariant | FlowStep }) {
     <div className="fs-top">
       <b>{name}</b>
       {x.pH && <span className={`phtag ${x.pH}`}>{PH_LABEL[x.pH]}</span>}
-      {x.r && <span className="fs-r">{x.r}</span>}
+      {x.ratio && <span className="fs-r">{x.ratio}</span>}
     </div>
   );
 }
 
 function StepBody({ x }: { x: StepVariant | FlowStep }) {
-  const ids = x.p ?? [];
-  const others = 'o' in x ? (x.o ?? []) : [];
+  const ids = x.products ?? [];
+  const others = 'extras' in x ? (x.extras ?? []) : [];
   const alt = 'alt' in x && x.alt;
   return (
     <>
@@ -64,10 +64,10 @@ function StepBody({ x }: { x: StepVariant | FlowStep }) {
 }
 
 function Step({ x }: { x: FlowStep }) {
-  if (!x.vars) {
+  if (!x.variants) {
     return (
       <li>
-        <StepTop name={x.ph} x={x} />
+        <StepTop name={x.phase} x={x} />
         <StepBody x={x} />
       </li>
     );
@@ -75,15 +75,15 @@ function Step({ x }: { x: FlowStep }) {
   return (
     <li>
       <div className="fs-top">
-        <b>{x.ph}</b>
-        <span className="vhint">{x.vars.length} 种选择</span>
+        <b>{x.phase}</b>
+        <span className="vhint">{x.variants.length} 种选择</span>
       </div>
       <VariantTabs
-        variants={x.vars.map((v) => ({
-          label: v.n,
+        variants={x.variants.map((v) => ({
+          label: v.name,
           content: (
             <>
-              <StepTop name={v.n} x={v} />
+              <StepTop name={v.name} x={v} />
               <StepBody x={v} />
             </>
           ),
@@ -96,22 +96,22 @@ function Step({ x }: { x: FlowStep }) {
 export function FlowCard({ f }: { f: FlowEntry }) {
   const base = f.kind === 'combo' ? FLOW_BY_ID.get(f.base) : undefined;
   return (
-    <article className={`flow ${f.b} ${f.kind}`} id={f.id}>
+    <article className={`flow ${f.brand} ${f.kind}`} id={f.id}>
       <div className="fl-h">
         <div className="sh-tag">
-          <span className={`br ${f.b}`}>{BRAND[f.b]}</span>
+          <span className={`br ${f.brand}`}>{BRAND[f.brand]}</span>
           <span>{f.en || '产品组合'}</span>
         </div>
         <h3>{f.name}</h3>
         {base && f.kind === 'combo' && (
-          <FlowLink className="basechip" flow={{ id: base.id, b: base.b, sc: base.sc }}>
+          <FlowLink className="basechip" flow={{ id: base.id, brand: base.brand, scene: base.scene }}>
             套用官方：{base.name}
             <em>{f.at}</em>
           </FlowLink>
         )}
-        <p>{f.sum}</p>
+        <p>{f.summary}</p>
         <div className="scn">
-          <span className="main">{SCENE_NAME[f.sc]}</span>
+          <span className="main">{SCENE_NAME[f.scene]}</span>
           {f.tags.map((t) => (
             <span key={t}>{t}</span>
           ))}
@@ -124,7 +124,7 @@ export function FlowCard({ f }: { f: FlowEntry }) {
       </ol>
       {f.branch && (
         <div className="branch">
-          <div className="br-h">分支 · {f.branch.n}</div>
+          <div className="br-h">分支 · {f.branch.name}</div>
           <ol className="fsteps sub">
             {f.branch.steps.map((x, i) => (
               <Step key={i} x={x} />
@@ -133,8 +133,8 @@ export function FlowCard({ f }: { f: FlowEntry }) {
         </div>
       )}
       <div className="fl-x">
-        {f.x.length > 0 && <Notes items={f.x} />}
-        <a className="fl-src" href={f.u} target="_blank" rel="noopener">
+        {f.notes.length > 0 && <Notes items={f.notes} />}
+        <a className="fl-src" href={f.url} target="_blank" rel="noopener">
           查看官方来源
         </a>
       </div>

@@ -17,8 +17,8 @@ import { ViewTabs } from './view-tabs';
 /** 流程目录只需要这几个字段 */
 export interface FlowIndexItem {
   id: string;
-  b: BrandId;
-  sc: SceneId;
+  brand: BrandId;
+  scene: SceneId;
   name: string;
   kind: 'off' | 'combo';
 }
@@ -119,7 +119,7 @@ export function Sidebar({
   // 产品页有搜索词时，左栏分类显示每个分类的命中数
   const searching = !isFlows && (query.trim() !== '' || material.length > 0 || !!brand || !!category) && hits !== null;
 
-  const shownFlows = flows.filter((f) => (!brand || f.b === brand) && (!scene || f.sc === scene));
+  const shownFlows = flows.filter((f) => (!brand || f.brand === brand) && (!scene || f.scene === scene));
 
   return (
     <aside className="side" aria-label="索引">
@@ -172,7 +172,7 @@ export function Sidebar({
           <nav className="side-sec" aria-label="流程目录">
             <h2>流程目录</h2>
             {BRANDS.map((b) => {
-              const own = shownFlows.filter((f) => f.b === b);
+              const own = shownFlows.filter((f) => f.brand === b);
               if (!own.length) return null;
               return (
                 <div className="side-group" key={b}>
@@ -266,7 +266,7 @@ export function Sidebar({
               <ul className="side-index" role="list">
                 {CATS.filter(([k]) => catCounts[brand][k]).map(([k, n]) => {
                   const here = activeCat === `cat-${k}`;
-                  const subs = SUBCATS.filter((s) => s.c === k && subCounts[''][brand][s.id]);
+                  const subs = SUBCATS.filter((s) => s.category === k && subCounts[''][brand][s.id]);
                   return (
                     <li key={k}>
                       <a
@@ -296,7 +296,7 @@ export function Sidebar({
                                   jumpTo(`sub-${s.id}`, k);
                                 }}
                               >
-                                {s.n}
+                                {s.name}
                               </a>
                             </li>
                           ))}
