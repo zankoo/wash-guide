@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SDS, SDS_SOURCE, SUB_OF, TOXIC, flowsUsing, imageSrc, phText, type Product } from '@/data';
+import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './flow-card';
@@ -39,7 +39,7 @@ export function ProductDetail({ p }: { p: Product }) {
         </div>
       </div>
       <div className="sh-body">
-        <ToxicLine id={p.id} />
+        <ToxicLine p={p} />
         {p.dilutions.length ? (
           <DilutionTable rows={p.dilutions} />
         ) : (
@@ -94,7 +94,7 @@ export function ProductDetail({ p }: { p: Product }) {
             查看官网原文
             <ExternalIcon />
           </a>
-          <SdsLink id={p.id} />
+          <SdsLink p={p} />
         </div>
       </div>
     </>
@@ -126,18 +126,18 @@ export function DetailSuspense({ children }: { children: ReactNode }) {
 }
 
 /** 安全技术说明书（SDS）：新窗口打开 PDF，下方注明来源、语言和版本 */
-function SdsLink({ id }: { id: string }) {
-  const sds = SDS[id];
+function SdsLink({ p }: { p: Product }) {
+  const sds = p.sds;
   if (!sds) return null;
-  const [url, src, ver] = sds;
-  const { name, lang } = SDS_SOURCE[src];
+  const { url, source, version, language, hosting } = sds;
+  const { name } = SDS_SOURCES[source];
   return (
     <a className="src sds" href={url} target="_blank" rel="noopener">
       <span>
         安全技术说明书（SDS）
         <small>
-          {name} · {lang}
-          {ver && ` · ${ver}`}
+          {name} · {language}{hosting === 'local' && ' · 本站转存'}
+          {version && ` · ${version}`}
         </small>
       </span>
       <ExternalIcon />
@@ -146,8 +146,8 @@ function SdsLink({ id }: { id: string }) {
 }
 
 /** 含氢氟酸 / 氟化氢铵这类极危险化学品时的醒目提醒 */
-function ToxicLine({ id }: { id: string }) {
-  const what = TOXIC[id];
+function ToxicLine({ p }: { p: Product }) {
+  const what = p.hazard?.ingredient;
   if (!what) return null;
   return (
     <div className="toxic" role="note">

@@ -1,3 +1,6 @@
+import type { SdsSourceId } from './sds-sources';
+export type { SdsSourceId } from './sds-sources';
+
 export type BrandId = 'L' | 'M' | 'F' | 'K' | 'C' | 'G' | 'B' | 'N' | 'P';
 export type CategoryId =
   | 'pre' | 'wash' | 'wheel' | 'deco' | 'polish' | 'coat'
@@ -11,6 +14,10 @@ export type DilutionRow = [scene: string, ratio: string, tool: string];
 
 export interface Product {
   id: string;
+  sds?: SafetyDataSheet;
+  hazard?: ProductHazard;
+  /** 未设置时使用约定图片路径，null 表示暂无图片。 */
+  image?: string | null;
   /** 品牌 */
   brand: BrandId;
   /** 分类 */
@@ -88,5 +95,23 @@ export interface Combo extends Flow {
   at: string;
 }
 
-/** SDS 的来源：品牌官方、经销商，或本站转存的经销商合集 */
-export type SdsSourceId = 'koch' | 'gyeon' | 'gyeon-be' | 'gyeon-cz' | 'ps' | 'feynlab' | 'gesa' | 'bilnerden' | 'carpro-ws' | 'chemcx' | 'chemcx-nl' | 'bricocenter' | 'ebay' | 'sds-db' | 'autonablask' | 'rokjo' | 'washme' | 'mvp' | 'mafra-fr' | 'koch-no' | 'ingrijireauto' | 'bb-carcare';
+/** 每份安全技术说明书的来源与版本；不由来源机构推断语言或托管位置。 */
+export interface SafetyDataSheet {
+  url: string;
+  source: SdsSourceId;
+  language: string;
+  version?: string;
+  hosting: 'remote' | 'local';
+  originalUrl?: string;
+  sha256?: string;
+  checkedAt?: string;
+  /** 旧记录缺少原地址时明确说明，不猜测地址。 */
+  provenanceNote?: string;
+}
+
+export interface ProductHazard {
+  ingredient: string;
+  sdsSection: 3;
+  /** 本站额外提醒，不代表产品整体的官方 GHS 分类。 */
+  siteWarning: true;
+}

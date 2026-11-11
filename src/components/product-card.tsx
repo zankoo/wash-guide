@@ -1,4 +1,4 @@
-import { BRAND_SHORT, TOXIC, imageSrc, keyRatios, phClaim, phText, type Product } from '@/data';
+import { BRAND_SHORT, imageSrc, keyRatios, phClaim, phText, type Product } from '@/data';
 import { FavMark } from './fav-mark';
 import { ToxicIcon } from './icons';
 import { ProductImage } from './product-image';
@@ -10,14 +10,14 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
   const ph = phText(p);
   const claim = phClaim(p);
   return (
-    <ProductLink className="card" id={p.id} aria-label={`${p.name}，${p.type}${TOXIC[p.id] ? '，极危险化学品' : ''}`}>
+    <ProductLink className="card" id={p.id} aria-label={`${p.name}，${p.type}${p.hazard?.ingredient ? '，极危险化学品' : ''}`}>
       <div className="stage">
         <ProductImage src={imageSrc(p)} name={p.name} brand={p.brand} sizes="(max-width: 600px) 88px, 256px" eager={eager} />
         <FavMark id={p.id} />
-        {TOXIC[p.id] && (
-          <span className="toxic-mark" title={`极危险化学品：含${TOXIC[p.id]}`}>
+        {p.hazard?.ingredient && (
+          <span className="toxic-mark" title={`极危险化学品：含${p.hazard?.ingredient}`}>
             <ToxicIcon />
-            <span className="sr">极危险化学品：含{TOXIC[p.id]}</span>
+            <span className="sr">极危险化学品：含{p.hazard?.ingredient}</span>
           </span>
         )}
       </div>
