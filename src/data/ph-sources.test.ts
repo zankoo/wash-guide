@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { PRODUCTS, PRODUCT_BY_ID } from './index';
 
 /** 已逐份核对过官方资料的品牌：除下列例外外，pH 不得再是 unrecorded。 */
-const AUDITED_BRANDS = new Set(['L']);
+const AUDITED_BRANDS = new Set(['K', 'L', 'P']);
 const KNOWN_UNRESOLVED: Record<string, string> = {
   // SDS 第 9 节写「pH < -3 / pH under -3」，明显笔误；官网无资料表，不擅自改写厂商数据
   'L-preludio-acidic': 'SDS 数值疑似笔误',
