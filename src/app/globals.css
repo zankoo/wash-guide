@@ -132,8 +132,8 @@ main{padding-block:6px 56px}
 .scope-clear{margin-left:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:3px 11px;font:inherit;font-size:13px;cursor:pointer}
 .scope-clear:hover{border-color:var(--ink)}
 .empty .scope-clear{display:block;margin:14px auto 0}
-.list{scroll-margin-top:var(--bar-h)}
-.sec{padding-top:22px;container-type:inline-size;scroll-margin-top:calc(var(--bar-h) + 4px)}
+.list{scroll-margin-top:calc(var(--bar-h) + 12px)}
+.sec{padding-top:22px;container-type:inline-size;scroll-margin-top:calc(var(--bar-h) + 16px)}
 .sec-h{display:flex;align-items:baseline;gap:12px;margin:0 -8px 12px;padding:10px 8px;position:sticky;top:calc(var(--bar-h) - 1px);z-index:3;background:color-mix(in srgb,var(--paper) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .sec-h h2{margin:0;font-size:22px;font-weight:800;letter-spacing:.01em}
 .sec-h .n{margin-left:auto;font:600 14px var(--f-display);color:var(--faint);font-variant-numeric:tabular-nums}
@@ -141,7 +141,7 @@ main{padding-block:6px 56px}
 .subnav a{font-size:13px;color:var(--muted);text-decoration:none;padding:4px 11px;border:1px solid var(--line-2);border-radius:999px;white-space:nowrap}
 .subnav a:hover{color:var(--ink);border-color:var(--ink)}
 .subnav small,.sub-h small{font:600 12px var(--f-display);color:var(--faint);margin-left:6px}
-.subgrp{scroll-margin-top:calc(var(--bar-h) + 56px)}
+.subgrp{scroll-margin-top:calc(var(--bar-h) + 68px)}
 .subgrp+.subgrp{margin-top:24px}
 .sub-h{margin:0 0 10px;font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:9px}
 .sub-h::before{content:"";width:12px;height:2px;background:var(--ink)}
@@ -580,7 +580,7 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 
 .material-picker{flex:none}
 .material-picker summary{white-space:nowrap}
-.flow{scroll-margin-top:calc(var(--bar-h) + 12px)}
+.flow{scroll-margin-top:calc(var(--bar-h) + 24px)}
 @media(max-width:600px){.material-picker summary{padding:12px 6px;font-size:12px}}
 
 .offline-status{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:80;padding:8px 14px;border-radius:20px;background:var(--ink,#152b36);color:var(--paper,#fff);font-size:12px;white-space:nowrap;pointer-events:none}
