@@ -28,84 +28,84 @@ export const products: Product[] = [
 // ───────────────────────── Koch-Chemie · 预洗 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Gentle_Snow_Foam_383999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-gsf',brand:'K',category:'pre',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Gsf Gentle Snow Foam',type:'中性雪泡预洗 / 手洗香波（樱桃香）',sizes:'1 L · 5 L',materials:'车漆 · 已打蜡 / 封体表面',
+ id:'K-gsf',brand:'K',category:'pre',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Gentle_Snow_Foam_en.pdf"},"evidence":[],"conflict":false},name:'Gsf Gentle Snow Foam',type:'中性雪泡预洗 / 手洗香波（樱桃香）',sizes:'1 L · 5 L',materials:'车漆 · 已打蜡 / 封体表面',
  dilutions:[['雪泡预洗（泡沫喷壶）','1:50（20 ml / 1 L）','喷雾壶'],['手洗','1:200（50 ml / 10 L）','桶洗'],['活性泡沫（加强版）','预混液中另加 10–30 ml Green Star','喷雾壶']],
  steps:['雪泡：每升水加约 20 ml，用泡沫喷壶把整车打满泡沫。','需要时再用洗车手套等清洗，然后用清水冲净。','手洗：10 L 水加 50 ml，用洗车手套清洗后冲水。','顽固污垢和虫尸：在已稀释好的 Gsf 溶液中加入 10–30 ml Green Star，变成活性泡沫。'],
  notes:['pH 中性，不会侵蚀蜡和封体；泡沫均匀湿润、附着时间长。','官方注明也可用于 PA壶（Foam gun），但未给出壶内比例，请参照雪泡浓度自行调整。','不要让产品在表面干掉；使用前先确认材质兼容。','另有圣诞香型的季节款 Gentle Snow Foam X-Mas（1 L），用法和比例相同。'],url:KOCH+'gentle_snow_foam'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Green_Star_Art-__291999_291999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-green-star',brand:'K',category:'pre',ph:{"category":"alk","value":"12.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Green Star',type:'浓缩碱性通用清洁剂（预洗 / APC）',sizes:'1 L · 5 L · 11 kg · 22 kg · 225 kg',materials:'车漆 · 塑料 · 轮毂 · 发动机舱 · 内饰织物 · 阳极氧化铝',
+ id:'K-green-star',brand:'K',category:'pre',ph:{"category":"alk","value":"12.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Green_Star_en.pdf"},"evidence":[],"conflict":false},name:'Green Star',type:'浓缩碱性通用清洁剂（预洗 / APC）',sizes:'1 L · 5 L · 11 kg · 22 kg · 225 kg',materials:'车漆 · 塑料 · 轮毂 · 发动机舱 · 内饰织物 · 阳极氧化铝',
  dilutions:[['车身外部、发动机（视脏污）','1:5 – 1:30','喷雾壶'],['内饰与织物','1:10 – 1:20','喷雾壶'],['镀膜 / 封体施工前预洗（官方）','1:10','喷雾壶'],['VDA A 级上限','最浓 1:3（作用 ≤ 5 分钟）','—']],
  steps:['外部和发动机：整面喷涂，短暂作用后用高压水彻底冲洗。','内饰和织物：用湿布或干湿两用吸尘器去除残留。'],
  notes:['不含磷酸盐和溶剂，含缓蚀剂，可保护阳极氧化铝等敏感材料；VDA A 级。','不要在热表面使用，不要让其干在表面。','用于喷抽机或地毯清洗机时，官方建议加入 KocEntschäumer 消泡剂。','也可加入 Gsf 溶液做活性泡沫（见 Gsf）。'],url:KOCH+'green_star'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Green_Star_96_Art-__308999_308999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-green-star-96',brand:'K',category:'pre',ph:{"category":"alk","value":"12.4","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Green Star 96',type:'浓缩碱性通用清洁剂 96（预洗 / APC）',sizes:'11 kg · 22 kg · 225 kg',materials:'轿车 · 房车 · 商用车 · 发动机 · 内饰织物',
+ id:'K-green-star-96',brand:'K',category:'pre',ph:{"category":"alk","value":"12.4","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Green_Star_96_en.pdf"},"evidence":[],"conflict":false},name:'Green Star 96',type:'浓缩碱性通用清洁剂 96（预洗 / APC）',sizes:'11 kg · 22 kg · 225 kg',materials:'轿车 · 房车 · 商用车 · 发动机 · 内饰织物',
  dilutions:[['车身外部、发动机（视脏污）','1:4 – 1:20','喷雾壶'],['内饰与织物','1:7 – 1:15','喷雾壶'],['VDA A 级上限','最浓 1:2（作用 ≤ 5 分钟）','—']],
  steps:['外部和发动机：整面喷涂，短暂作用后用高压水彻底冲洗。','内饰和织物：用湿布或干湿两用吸尘器去除残留。'],
  notes:['pH 12.4（官方产品信息）。不含磷酸盐和溶剂，含缓蚀剂，可保护阳极氧化铝等敏感材料；也适合生物法循环水处理设备。','用于喷抽机或地毯清洗机时，官方建议加入 KocEntschäumer 消泡剂。','也可用于车间和工业地面（1:30 – 1:90）。','不要在热表面使用，不要让其干在表面。'],url:KOCH+'green_star_96'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Green_Star_BMP_66999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-green-star-bmp',brand:'K',category:'pre',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Green Star BMP',type:'弱碱性通用清洁剂（低泡，可做预洗 / 洗发动机）',sizes:'1.05 kg · 11 kg · 21 kg · 225 kg',materials:'轿车 · 房车 · 商用车 · 发动机',
+ id:'K-green-star-bmp',brand:'K',category:'pre',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Green_Star_BMP_en.pdf"},"evidence":[],"conflict":false},name:'Green Star BMP',type:'弱碱性通用清洁剂（低泡，可做预洗 / 洗发动机）',sizes:'1.05 kg · 11 kg · 21 kg · 225 kg',materials:'轿车 · 房车 · 商用车 · 发动机',
  dilutions:[['车身外部预洗','1:5 – 1:30','喷雾壶'],['发动机','1:3 – 1:10','喷雾壶'],['VDA A 级上限','最浓 1:2（作用 ≤ 5 分钟）','—']],
  steps:['按脏污程度稀释后喷涂。','短暂作用（VDA A 级最长 5 分钟）。','用高压水彻底冲洗。'],
  notes:['pH 9.5（官方产品信息）。高浓缩、低泡，不含磷酸盐、溶剂和 NTA；材料兼容性高，含回脂成分和暂时防锈；Daimler 认可。','主要用途是车间、工业和办公室地面（1:40 – 1:300），也可清洗机器和零件。','不要在热表面使用，不要让其干在表面。'],url:KOCH+'green_star_bmp'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Insect&Dirt_Remover_Art-__77701999_77701999_0003_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-insect-dirt-remover',brand:'K',category:'pre',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Insect & Dirt Remover',type:'碱性去虫尸 / 环境污垢预处理',sizes:'10 kg（另有 Insect & DirtRemover 零售装）',materials:'车身外部 · 发动机舱',
+ id:'K-insect-dirt-remover',brand:'K',category:'pre',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Insect_Dirt_Remover_en.pdf"},"evidence":[],"conflict":false},name:'Insect & Dirt Remover',type:'碱性去虫尸 / 环境污垢预处理',sizes:'10 kg（另有 Insect & DirtRemover 零售装）',materials:'车身外部 · 发动机舱',
  dilutions:[['虫尸、油污等局部预处理','即用','喷雾壶']],
  steps:['原液直接喷在污染表面。','作用约 1–3 分钟。','需要时用洗车海绵/手套辅助。','彻底冲洗。','再用 NanoMagic Shampoo 手洗，或进洗车房。'],
  notes:['不要在热表面使用，不要让其干在表面。','使用前先确认材质兼容。'],url:KOCH+'insectdirt_remover'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Vorreiniger_B_Art-__283999_283999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-vorreiniger-b',brand:'K',category:'pre',ph:{"category":"alk","value":"13.1","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Vorreiniger B',type:'高泡碱性预洗剂（高浓缩）',sizes:'1.1 kg · 5 kg · 11 kg · 22 kg · 225 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
+ id:'K-vorreiniger-b',brand:'K',category:'pre',ph:{"category":"alk","value":"13.1","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Vorreiniger_B_en.pdf"},"evidence":[],"conflict":false},name:'Vorreiniger B',type:'高泡碱性预洗剂（高浓缩）',sizes:'1.1 kg · 5 kg · 11 kg · 22 kg · 225 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
  dilutions:[['预洗','1:30 – 1:50','喷雾壶'],['轮毂清洗','1:3 – 1:10','喷雾壶'],['去 Copolymer 蜡层','1:5 – 1:10','喷雾壶'],['自助高压洗车','1:300','—']],
  steps:['整面喷涂。','短暂作用：VDA A 级最长 5 分钟，B 级最长 1 分钟。','用高压水彻底冲洗。'],
  notes:['VDA A 级最高使用浓度 1:300，B 级 1:30。','不含磷酸盐，含缓蚀剂（保护阳极氧化铝）；适合非接触式高压洗车。','不要在热表面使用，不要让其干在表面。'],url:KOCH+'vorreiniger_b'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Fruit_Bowl_Art-__253999_253999_0007_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-super-foam-fruit-bowl',brand:'K',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Super Foam Fruit Bowl',type:'碱性高泡活性泡沫（pH 11，果香）',sizes:'20 L',materials:'车身外部',
+ id:'K-super-foam-fruit-bowl',brand:'K',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Super_Foam_Fruit_Bowl_en.pdf"},"evidence":[{"kind":"statement","source":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Fruit_Bowl_Art-__253999_253999_0007_EN.pdf","text":"SDS 第 9 节写 pH 10，与厂商技术资料表的 pH 11 不一致；本站按技术资料表标注"}],"conflict":true},name:'Super Foam Fruit Bowl',type:'碱性高泡活性泡沫（pH 11，果香）',sizes:'20 L',materials:'车身外部',
  dilutions:[['泡沫枪（PA壶）','1:50 – 1:100','PA壶'],['自助洗车站计量泵','约 30–50 ml/min','—'],['VDA A 级最高使用浓度','1:50','—']],
  steps:['泡沫枪：稀释至 1:50 – 1:100 后把整车打满泡沫。','自助洗车站：通过计量泵按约 30–50 ml/min 投加。','作用时间最长 5 分钟（VDA A 级），然后用高压水冲净；泡沫包裹污垢，高压冲洗即可带走，对漆面温和。'],
  notes:['瓶身代号 Sff。泡沫极丰富，果香清新，在洗车区留香持久；官方定位为自助洗车站用清洁泡沫，也可用于泡沫枪。','节约使用；不要以原液排入生物法循环水处理设备。','官网未注明适用材质；使用前先确认材质兼容。'],url:KOCH+'super_foam_fruit_bowl'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Art-__318999_318999_0007_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-super-foam',brand:'K',category:'pre',ph:{"category":"alk","value":"12","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Super Foam',type:'自助洗车 / PA壶高泡碱性活性泡沫（浓郁果香）',sizes:'11 kg · 22 kg · 210 kg',materials:'车身外部',
+ id:'K-super-foam',brand:'K',category:'pre',ph:{"category":"alk","value":"12","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Super_Foam_en.pdf"},"evidence":[{"kind":"statement","source":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Art-__318999_318999_0007_EN.pdf","text":"SDS 第 9 节写 pH 11，与厂商技术资料表的 pH 12 不一致；本站按技术资料表标注"}],"conflict":true},name:'Super Foam',type:'自助洗车 / PA壶高泡碱性活性泡沫（浓郁果香）',sizes:'11 kg · 22 kg · 210 kg',materials:'车身外部',
  dilutions:[['PA壶','1:50 – 1:100','PA壶'],['自助洗车站（计量泵）','约 30–50 ml/min','—'],['VDA A 级最高使用浓度','1:50','—']],
  steps:['PA壶：按 1:50 – 1:100 稀释，把整车打满泡沫。','自助洗车站：用计量泵投加，约 30–50 ml/min。','作用时间最长 5 分钟（VDA A 级），泡沫包裹污垢后用高压水冲净。'],
  notes:['pH 12（官方产品信息）；泡沫极丰富，留香持久。','不要让其干在表面；使用前先确认材质兼容。','同系列另有果香较清淡的 Super Foam Fruit Bowl 和不含 NTA 的 Super Foam NTA-frei，用法相同。'],url:KOCH+'super_foam'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_NTA-frei_421999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-super-foam-nta-frei',brand:'K',category:'pre',ph:{"category":"alk","value":"12","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Super Foam NTA-frei',type:'自助洗车 / PA壶高泡碱性活性泡沫（不含 NTA）',sizes:'10 L · 20 L',materials:'车身外部',
+ id:'K-super-foam-nta-frei',brand:'K',category:'pre',ph:{"category":"alk","value":"12","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Super_Foam_NTA-frei_en.pdf"},"evidence":[{"kind":"statement","source":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_NTA-frei_421999_2.0.0_IE_EN.pdf","text":"SDS 第 9 节写 pH 11.4，与厂商技术资料表的 pH 12 不一致；本站按技术资料表标注"}],"conflict":true},name:'Super Foam NTA-frei',type:'自助洗车 / PA壶高泡碱性活性泡沫（不含 NTA）',sizes:'10 L · 20 L',materials:'车身外部',
  dilutions:[['PA壶','1:50 – 1:100','PA壶'],['自助洗车站（计量泵）','约 30–50 ml/min','—'],['VDA A 级最高使用浓度','1:50','—']],
  steps:['PA壶：按 1:50 – 1:100 稀释，把整车打满泡沫。','自助洗车站：用计量泵投加，约 30–50 ml/min。','作用时间最长 5 分钟（VDA A 级），泡沫包裹污垢后用高压水冲净。'],
  notes:['pH 12（官方产品信息）；不含 NTA（次氮基三乙酸）的 Super Foam，浓郁果香。','不要让其干在表面；使用前先确认材质兼容。'],url:KOCH+'super_foam_nta_frei'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/PreWash_A_Art-__316999_316999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-prewash-a',brand:'K',category:'pre',ph:{"category":"alk","value":"13.9","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PreWash A',type:'强碱性预洗 / 去虫尸剂（含磷酸盐，低泡）',sizes:'1.15 kg · 5 kg · 23 kg · 240 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
+ id:'K-prewash-a',brand:'K',category:'pre',ph:{"category":"alk","value":"13.9","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/PreWash_A_en.pdf"},"evidence":[],"conflict":false},name:'PreWash A',type:'强碱性预洗 / 去虫尸剂（含磷酸盐，低泡）',sizes:'1.15 kg · 5 kg · 23 kg · 240 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
  dilutions:[['预洗（视脏污）','1:50 – 1:150','喷雾壶'],['轮毂清洗','1:5 – 1:20','喷雾壶'],['VDA B 级最高使用浓度','1:70','—']],
  steps:['按脏污程度稀释，整面喷涂。','作用最长 1 分钟（VDA B 级）。','用高压水彻底冲洗。'],
  notes:['pH 13.9（官方产品信息）。高浓缩，能迅速溶解虫尸、鸟粪、环境污垢和轮毂污垢，适合作用时间短的快速洗车。','含磷酸盐，只有条件地适用于生物法循环水处理设备。','不要在热表面使用，不要让其干在表面；使用前先确认材质兼容。'],url:KOCH+'prewash_a'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/PreWash_B_Art-__313999_313999_0009_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-prewash-b',brand:'K',category:'pre',ph:{"category":"alk","value":"13.9","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PreWash B',type:'强碱性预洗 / 去虫尸剂（不含磷酸盐）',sizes:'1.15 kg · 11 kg · 23 kg · 225 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
+ id:'K-prewash-b',brand:'K',category:'pre',ph:{"category":"alk","value":"13.9","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/PreWash_B_en.pdf"},"evidence":[],"conflict":false},name:'PreWash B',type:'强碱性预洗 / 去虫尸剂（不含磷酸盐）',sizes:'1.15 kg · 11 kg · 23 kg · 225 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
  dilutions:[['预洗（视脏污）','1:30 – 1:100','喷雾壶'],['轮毂清洗','1:4 – 1:20','喷雾壶'],['VDA B 级最高使用浓度','1:100','—']],
  steps:['按脏污程度稀释，整面喷涂。','作用最长 1 分钟（VDA B 级）。','用高压水彻底冲洗。'],
  notes:['pH 13.9（官方产品信息）。高浓缩，能迅速溶解虫尸、鸟粪、环境污垢和轮毂污垢；特别适合生物法循环水处理设备。','不要在热表面使用，不要让其干在表面；使用前先确认材质兼容。'],url:KOCH+'prewash_b'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/PreWash_express_Art-__296999_296999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-prewash-express',brand:'K',category:'pre',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PreWash express',type:'快速强碱性预洗剂（不含磷酸盐）',sizes:'1.1 kg · 23 kg · 225 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
+ id:'K-prewash-express',brand:'K',category:'pre',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/PreWash_express_en.pdf"},"evidence":[],"conflict":false},name:'PreWash express',type:'快速强碱性预洗剂（不含磷酸盐）',sizes:'1.1 kg · 23 kg · 225 kg',materials:'轿车 · 商用车 · 钢圈 · 耐碱烤漆铝圈',
  dilutions:[['预洗（视脏污）','1:30 – 1:100','喷雾壶'],['轮毂清洗','1:4 – 1:20','喷雾壶'],['VDA B 级最高使用浓度','1:100','—']],
  steps:['按脏污程度稀释，整面喷涂。','作用最长 1 分钟（VDA B 级）。','用高压水彻底冲洗。'],
  notes:['pH 13（官方产品信息）。溶解虫尸、鸟粪和轮毂污垢的速度极快，适合快速洗车；也适合生物法循环水处理设备。','不要在热表面使用，不要让其干在表面；使用前先确认材质兼容。'],url:KOCH+'prewash_express'},
@@ -113,56 +113,56 @@ export const products: Product[] = [
 // ───────────────────────── 洗车香波 / 免冲洗 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/NanoMagicShampoo_206999_1.1.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-nanomagic-shampoo',brand:'K',category:'wash',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'NanoMagic Shampoo',type:'纳米保护洗车香波（一步清洁 + 长效保护）',sizes:'750 ml · 10 kg',materials:'车漆',
+ id:'K-nanomagic-shampoo',brand:'K',category:'wash',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/NanoMagic_Shampoo_en.pdf"},"evidence":[],"conflict":false},name:'NanoMagic Shampoo',type:'纳米保护洗车香波（一步清洁 + 长效保护）',sizes:'750 ml · 10 kg',materials:'车漆',
  dilutions:[['手洗','1:200（约 50 ml / 10 L 温水，5 瓶盖）','桶洗']],
  steps:['10 L 温水中加入约 50 ml（5 瓶盖）。','用洗车海绵/手套清洗车辆。','用柔和水流冲洗。','用布擦去残余水分；可再用 AllroundQuickShine 让擦干更容易、提升光泽。'],
  notes:['保留已施工的蜡和封体，并留下持久的拒水纳米层。','官方推荐用于 1K-Nano 封体的日常手洗维护。'],url:KOCH+'nanomagic_shampoo'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Effect_Shampoo_Art-__811999_811999_0004_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-ceramic-effect-shampoo',brand:'K',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Ceramic Effect Shampoo',type:'陶瓷效果养护香波（洗护一步）',sizes:'1 L',materials:'车漆 · 玻璃 · 塑料 · 镀膜 / 封体车',
+ id:'K-ceramic-effect-shampoo',brand:'K',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Ceramic_Effect_Shampoo_en.pdf"},"evidence":[],"conflict":false},name:'Ceramic Effect Shampoo',type:'陶瓷效果养护香波（洗护一步）',sizes:'1 L',materials:'车漆 · 玻璃 · 塑料 · 镀膜 / 封体车',
  dilutions:[['手洗','1:200（50 ml / 10 L）','桶洗']],
  steps:['重度脏污先预洗。','在洗车桶中按比例稀释并短暂打泡。','用洗车海绵或 Exterior Wash Mitt 清洗。','用大量清水彻底冲洗，不要让产品干在表面。','用 Pro Drying Towel 擦干。','分区施工。'],
  notes:['可延长 Ceramic Body、Spray Sealant 等已施工保护层的寿命；表面顺滑、强拒水；莓果杏仁香。','使用前摇匀；不要在热表面或阳光直射下使用；防冻防高温。'],url:KOCH+'ceramic_effect_shampoo'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Reactivation_Shampoo_Art-__806999_806999_0008_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-reactivation-shampoo',brand:'K',category:'wash',ph:{"category":"acid","value":"1","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Reactivation Shampoo',type:'酸性镀膜除垢香波（激活镀膜）',sizes:'1 L',materials:'车漆 · 玻璃 · 外部塑料 · 陶瓷镀膜',
+ id:'K-reactivation-shampoo',brand:'K',category:'wash',ph:{"category":"acid","value":"1","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Reactivation_Shampoo_en.pdf"},"evidence":[],"conflict":false},name:'Reactivation Shampoo',type:'酸性镀膜除垢香波（激活镀膜）',sizes:'1 L',materials:'车漆 · 玻璃 · 外部塑料 · 陶瓷镀膜',
  dilutions:[['手洗','1:200（50 ml / 10 L）','桶洗'],['PA壶','按比例相应调整预稀释（官方未给数值）','PA壶']],
  steps:['先用碱性预洗剂和高压水去除粗污。','预洗后车身仍湿时，用洗车海绵清洗。','彻底冲洗，避免留下水渍。','擦干残余水分。'],
  notes:['1:200 时 pH 约 3.0。去除灰尘、水垢、盐分等吸水污垢，恢复镀膜的易洁和拒水性能。','不要让其干在表面；建议戴手套；防冻防高温。'],url:KOCH+'reactivation_shampoo'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Glanzwachsshampoo_46999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-glanzwachsshampoo',brand:'K',category:'wash',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Glanzwachsshampoo',type:'含蜡光亮手洗香波（速干）',sizes:'10 kg · 21 kg · 210 kg',materials:'轿车 · 摩托车 · 房车 · 商用车',
+ id:'K-glanzwachsshampoo',brand:'K',category:'wash',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Glanzwachsshampoo_en.pdf"},"evidence":[],"conflict":false},name:'Glanzwachsshampoo',type:'含蜡光亮手洗香波（速干）',sizes:'10 kg · 21 kg · 210 kg',materials:'轿车 · 摩托车 · 房车 · 商用车',
  dilutions:[['手洗','1:200（50 ml / 10 L）','桶洗']],
  steps:['用洗车海绵或手套手洗，再用清水冲洗。','用擦干布擦干，避免水垢斑。'],
  notes:['含阳离子表面活性剂和养护成分，冲水后水膜迅速散开、利于干燥；Daimler 认可，VDA A 级。','不要让其干在表面。'],url:KOCH+'glanzwachsshampoo'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Autoshampoo_13999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-autoshampoo',brand:'K',category:'wash',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Autoshampoo',type:'通用洗车香波（手洗 / 洗车设备）',sizes:'1 L · 21 kg · 210 kg',materials:'车漆',
+ id:'K-autoshampoo',brand:'K',category:'wash',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Autoshampoo_en.pdf"},"evidence":[],"conflict":false},name:'Autoshampoo',type:'通用洗车香波（手洗 / 洗车设备）',sizes:'1 L · 21 kg · 210 kg',materials:'车漆',
  dilutions:[['手洗','1:150','桶洗'],['洗车设备（计量泵）','原液 – 1:10（每车 6–10 ml）','—']],
  steps:['手洗：按 1:150 稀释后清洗。','洗车设备：用计量泵原液或 1:10 稀释加注，每车约 6–10 ml。'],
  notes:['不含磷酸盐和 NTA；VDA A 级。','不要让其干在表面。'],url:KOCH+'autoshampoo'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Active_Foam_282999_1.1.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-active-foam',brand:'K',category:'wash',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Active Foam',type:'高浓缩芳香强力泡沫（檀香味）',sizes:'10 kg · 21 kg · 210 kg',materials:'车身外部',
+ id:'K-active-foam',brand:'K',category:'wash',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Active_Foam_en.pdf"},"evidence":[],"conflict":false},name:'Active Foam',type:'高浓缩芳香强力泡沫（檀香味）',sizes:'10 kg · 21 kg · 210 kg',materials:'车身外部',
  dilutions:[['手洗','1:300','桶洗'],['洗车设备（计量泵）','原液 – 1:10','—'],['VDA A 级最高使用浓度','1:100','—']],
  steps:['手洗：按 1:300 在水桶中稀释，用洗车手套清洗后冲水。','洗车机 / 自助洗车：原液或稀释至 1:10 后经计量泵投加；建议用量每车泡沫 3–8 ml，香波 1–3 ml。','作用时间最长 5 分钟（VDA A 级），不要让其干在表面。'],
  notes:['不含磷酸盐和 NTA，阴离子表面活性剂含量高，泡沫丰富；适用于洗车龙门、洗车房、自助洗车和手洗，可用于生物法循环水处理设备。','黏度较高，用计量泵投加时可能需要先预稀释。','官网未注明 pH 值和适用材质；使用前先确认材质兼容。','另有 Ocean（清新香）、Spring、X-mas 香型（21 kg · 210 kg 等），用法和比例相同。'],url:KOCH+'active_foam'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Rapid_Rinseless_Wash_Art-__475999_475999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-rapid-rinseless-wash',brand:'K',category:'wash',ph:{"category":"acid","value":"4","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Rapid Rinseless Wash',type:'免冲洗洗车浓缩液',sizes:'1 L · 5 L',materials:'车漆 · 玻璃 · 塑料',
+ id:'K-rapid-rinseless-wash',brand:'K',category:'wash',ph:{"category":"acid","value":"4","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Rapid_Rinseless_Wash_en.pdf"},"evidence":[],"conflict":false},name:'Rapid Rinseless Wash',type:'免冲洗洗车浓缩液',sizes:'1 L · 5 L',materials:'车漆 · 玻璃 · 塑料',
  dilutions:[['洗车桶','1:250（4 ml / 1 L）','桶洗'],['喷壶','1:250','喷雾壶']],
  steps:['在阴凉处、车身冷却且触感干燥时施工；阳光下逐块施工，每块擦干后再进行下一块。','洗车桶法：在 Detailing 桶（需要时加隔砂网）中调配，用洗车海绵或毛巾涂在轻度脏污的车上，再用干净干燥的 Polish & Sealing Towel 带走污垢。','喷壶法：按 1:250 装瓶，均匀喷在表面，用干净干燥的 Polish & Sealing Towel 擦去污垢。','必要时换干净毛巾重复。'],
  notes:['只适合轻度脏污车辆；一步清洁、养护、保护，保留已施工的蜡和抛光层。','使用前摇匀；防冻防高温。'],url:KOCH+'rapid_rinseless_wash'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Wash_&_Finish_317999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-wash-finish',brand:'K',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Wash & Finish',type:'即用型无水洗车喷剂',sizes:'10 L',materials:'车漆 · 玻璃 · 塑料 · 轮毂',
+ id:'K-wash-finish',brand:'K',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Wash_&_Finish_317999_2.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Wash & Finish',type:'即用型无水洗车喷剂',sizes:'10 L',materials:'车漆 · 玻璃 · 塑料 · 轮毂',
  dilutions:[['轻至中度脏污','即用','喷雾壶']],
  steps:['用喷壶均匀喷在待处理部位。','用超纤布擦去污垢。','用第二块超纤布擦亮。','重度脏污重复一次。'],
  notes:['一步清洁、养护、封体，留下拒水光泽，保留已有的蜡和抛光层。','使用前先确认材质兼容。'],url:KOCH+'wash_finish'},
@@ -170,49 +170,49 @@ export const products: Product[] = [
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Magic_Wheel_Cleaner_425999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-magic-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false,"claim":"官方称无酸配方"},name:'Magic Wheel Cleaner',type:'无酸粘稠轮毂清洁剂（铁粉变色）',sizes:'500 ml · 10 L',materials:'烤漆铝合金轮毂 · 高档镀铬轮毂 · 钢圈',
+ id:'K-magic-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Magic_Wheel_Cleaner_en.pdf"},"evidence":[],"conflict":false,"claim":"官方称无酸配方"},name:'Magic Wheel Cleaner',type:'无酸粘稠轮毂清洁剂（铁粉变色）',sizes:'500 ml · 10 L',materials:'烤漆铝合金轮毂 · 高档镀铬轮毂 · 钢圈',
  dilutions:[['轮毂与轮拱内圈','即用','喷雾壶']],
  steps:['使用前短暂摇匀。','把轮毂表面和轮毂内圈彻底喷满。','视脏污程度作用 2–5 分钟。','用高压水彻底冲洗。'],
  notes:['反应成分溶解铁粉，出现红色变色；粘稠配方附着久、作用期间保持湿润。','不要在发热的轮毂/表面或阳光直射下使用。','官方 Ceramic Rims 施工前推荐用它清洁轮毂。'],url:KOCH+'magic_wheel_cleaner'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Reactive_Wheel_Cleaner_77704999_2.1.0_GB_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-reactive-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5–6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB22-01-0392，该申报已过期）：原液弱酸性","registration":"CB22-01-0392"}],"conflict":false,"claim":"官方称无酸配方"},name:'ReactiveWheelCleaner',type:'无酸反应型轮毂清洁剂（零售装）',sizes:'750 ml',materials:'高档轮毂',
+ id:'K-reactive-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5–6","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Reactive_Wheel_Cleaner_77704999_2.1.0_GB_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB22-01-0392，该申报已过期）：原液弱酸性","registration":"CB22-01-0392"}],"conflict":false,"claim":"官方称无酸配方"},name:'ReactiveWheelCleaner',type:'无酸反应型轮毂清洁剂（零售装）',sizes:'750 ml',materials:'高档轮毂',
  dilutions:[['整只轮毂','即用','喷雾壶']],
  steps:['喷满已冷却的整只轮毂。','作用 1–3 分钟；重度脏污可延长到 10 分钟。','需要时用海绵或刷子辅助。','用强力水流彻底冲洗，或直接进洗车房。'],
  notes:["红色反应指示，含光亮添加剂，留下光泽和荷叶效应。","使用前先确认材质兼容。","2026-11 起官网已撤下这款产品的页面，可能已停产；官方产品信息 PDF 仍可下载。"],url:KOCH_PDF+'ReactiveWheelCleaner_en.pdf'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Felgenblitz_s%C3%A4urefrei_218999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-felgenblitz-saeurefrei',brand:'K',category:'wheel',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Felgenblitz säurefrei',type:'中性粘稠轮毂凝胶（无酸）',sizes:'5 L · 11 kg · 19 kg',materials:'铝合金 · 钢 · 镀铬轮毂',
+ id:'K-felgenblitz-saeurefrei',brand:'K',category:'wheel',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Felgenblitz_saeurefrei_en.pdf"},"evidence":[],"conflict":false},name:'Felgenblitz säurefrei',type:'中性粘稠轮毂凝胶（无酸）',sizes:'5 L · 11 kg · 19 kg',materials:'铝合金 · 钢 · 镀铬轮毂',
  dilutions:[['轮毂','即用','喷雾壶']],
  steps:['原液喷在轮毂上。','作用约 3 分钟。','需要时用刷子刷洗。','用高压水彻底冲洗；顽固污垢重复一次。','敏感轮毂要把螺栓孔和凹槽内的残留冲净，必要时擦干。'],
  notes:['pH 中性，去除烧结刹车粉、锈迹等无机污垢；红色显示清洁效果；含拒水和光亮添加剂。','抛光铝等敏感轮毂先在不显眼处测试。'],url:KOCH+'felgenblitz_saeurefrei'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Alkali_Wheel_Cleaner_Art-__328999_328999_0008_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-alkali-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"alk","value":"14","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Alkali Wheel Cleaner',type:'强碱性轮毂清洁剂（低雾低泡）',sizes:'5 L · 20 L',materials:'钢圈 · 耐碱烤漆铝圈',
+ id:'K-alkali-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"alk","value":"14","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Alkali_Wheel_Cleaner_en.pdf"},"evidence":[],"conflict":false},name:'Alkali Wheel Cleaner',type:'强碱性轮毂清洁剂（低雾低泡）',sizes:'5 L · 20 L',materials:'钢圈 · 耐碱烤漆铝圈',
  dilutions:[['轮毂（视脏污）','1:2 – 1:10','喷雾壶']],
  steps:['先冲湿轮毂，再把稀释液均匀涂满整只轮毂，避免流挂。','短暂作用。','需要时用刷子辅助。','用高压水彻底冲洗。'],
  notes:['刹车粉溶解速度接近酸性轮毂清洁剂。','不可用于抛光铝、镀铬等不耐碱表面；不适合用来去饰条上的虫尸或锈膜。','不要在热表面使用，不要让其干在表面。'],url:KOCH+'alkali_wheel_cleaner'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Felgenblitz_alkalisch_274999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-felgenblitz-alkalisch',brand:'K',category:'wheel',ph:{"category":"alk","value":"13.4","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Felgenblitz alkalisch',type:'强碱性粘稠轮毂清洁剂',sizes:'22 kg · 210 kg',materials:'钢圈 · 耐碱烤漆铝圈',
+ id:'K-felgenblitz-alkalisch',brand:'K',category:'wheel',ph:{"category":"alk","value":"13.4","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Felgenblitz_alkalisch_en.pdf"},"evidence":[],"conflict":false},name:'Felgenblitz alkalisch',type:'强碱性粘稠轮毂清洁剂',sizes:'22 kg · 210 kg',materials:'钢圈 · 耐碱烤漆铝圈',
  dilutions:[['轮毂（视脏污）','1:4 – 1:10','喷雾壶'],['VDA B 级最高使用浓度','1:20','—']],
  steps:['先冲湿轮毂，再把稀释液涂满整只轮毂，避免流挂。','短暂作用（VDA B 级最长 1 分钟）。','需要时用刷子辅助。','用高压水彻底冲洗。'],
  notes:['pH 13.4（官方产品信息）。粘稠配方附着时间长，能快速去除烧结的刹车粉和环境污垢；含拒水和增光成分；不含有机络合剂和磷酸盐；Daimler 认可。','不可用于抛光铝、镀铬等不耐碱表面。','不要在热表面使用，不要让其干在表面。'],url:KOCH+'felgenblitz_alkalisch'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Felgenreiniger_K_6999_1.1.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-felgenreiniger-k',brand:'K',category:'wheel',ph:{"category":"acid","value":"0","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Felgenreiniger K',type:'高浓缩酸性轮毂清洁剂',sizes:'1.2 kg · 12 kg · 23 kg · 250 kg',materials:'耐酸表面：车漆 · 玻璃 · 陶瓷 · 金属件',
+ id:'K-felgenreiniger-k',brand:'K',category:'wheel',ph:{"category":"acid","value":"0","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Felgenreiniger_K_6999_1.1.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Felgenreiniger K',type:'高浓缩酸性轮毂清洁剂',sizes:'1.2 kg · 12 kg · 23 kg · 250 kg',materials:'耐酸表面：车漆 · 玻璃 · 陶瓷 · 金属件',
  dilutions:[['轮毂 / 耐酸表面（视脏污）','1:3 – 1:20','喷雾壶']],
  steps:['先冲湿表面，按脏污程度把稀释液涂满。','短暂作用。','需要时用刷子或海绵辅助。','用高压水彻底冲洗。'],
  notes:['去除锈斑、水垢、刹车颗粒等无机污垢；含缓蚀剂，提供暂时防锈；Daimler 认可。','不要用于敏感的未涂装塑料（可能变色）；不要在热表面使用，不要让其干在表面。'],url:KOCH+'felgenreiniger_k'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Felgenreiniger_K_viskos_233999_1.0.0_GB_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-felgenreiniger-k-viskos',brand:'K',category:'wheel',ph:{"category":"acid","value":"0","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Felgenreiniger K viskos',type:'磷酸基粘稠酸性轮毂 / 不锈钢清洁剂',sizes:'11 kg · 23 kg · 240 kg',materials:'耐酸表面：烤漆铝圈 · 钢圈 · 不锈钢',
+ id:'K-felgenreiniger-k-viskos',brand:'K',category:'wheel',ph:{"category":"acid","value":"0","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Felgenreiniger_K_viskos_233999_1.0.0_GB_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Felgenreiniger K viskos',type:'磷酸基粘稠酸性轮毂 / 不锈钢清洁剂',sizes:'11 kg · 23 kg · 240 kg',materials:'耐酸表面：烤漆铝圈 · 钢圈 · 不锈钢',
  dilutions:[['轮毂 / 不锈钢（视脏污）','1:2 – 1:10','喷雾壶']],
  steps:['先冲湿表面，再把稀释液从下往上涂满，避免流挂。','短暂作用。','需要时用海绵或刷子辅助。','用高压水彻底冲洗；不锈钢表面需要时再擦亮。'],
  notes:['快速去除刹车粉和水垢等无机污垢。高粘度附着时间长、喷雾少，施工更安全；含延缓干燥的添加剂，缓蚀剂可减少刹车卡钳腐蚀。','使用前先确认材质兼容。'],url:KOCH+'felgenreiniger_k_viskos'},
@@ -220,21 +220,21 @@ export const products: Product[] = [
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Triple_Acid_Star_242999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
  hazard:{"ingredient":"氢氟酸 < 0.5%","sdsSection":3,"siteWarning":true},
- id:'K-triple-acid-star',brand:'K',category:'wheel',ph:{"category":"acid","value":"-0.3","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Triple Acid Star',type:'强效酸性轮毂清洁剂（含氟氢化铵）',sizes:'11 kg · 23 kg · 225 kg',materials:'钢圈 · 耐酸烤漆铝圈',
+ id:'K-triple-acid-star',brand:'K',category:'wheel',ph:{"category":"acid","value":"-0.3","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Triple_Acid_Star_en.pdf"},"evidence":[],"conflict":false},name:'Triple Acid Star',type:'强效酸性轮毂清洁剂（含氟氢化铵）',sizes:'11 kg · 23 kg · 225 kg',materials:'钢圈 · 耐酸烤漆铝圈',
  dilutions:[['轮毂（视脏污）','1:3 – 1:10','喷雾壶']],
  steps:['先用水冲湿轮毂，避免浓液飞溅。','把稀释液涂在湿轮毂上。','短暂作用。','需要时用刷子辅助。','用高压水彻底冲洗。'],
  notes:['不可用于玻璃、镜面、大理石及锌、铝等未保护金属。','不要在热表面使用，不要让其干在表面；请阅读安全数据表。'],url:KOCH+'triple_acid_star'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Felgenreiniger_CL_247999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-felgenreiniger-cl',brand:'K',category:'wheel',ph:{"category":"acid","value":"-0.2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Felgenreiniger CL',type:'磷酸 + 盐酸基强效酸性轮毂清洁剂',sizes:'23 kg · 225 kg',materials:'耐酸表面：钢圈 · 烤漆铝圈 · 商用车',
+ id:'K-felgenreiniger-cl',brand:'K',category:'wheel',ph:{"category":"acid","value":"-0.2","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Felgenreiniger_CL_en.pdf"},"evidence":[],"conflict":false},name:'Felgenreiniger CL',type:'磷酸 + 盐酸基强效酸性轮毂清洁剂',sizes:'23 kg · 225 kg',materials:'耐酸表面：钢圈 · 烤漆铝圈 · 商用车',
  dilutions:[['轮毂（视脏污）','1:2 – 1:10','喷雾壶']],
  steps:['先冲湿表面，再把稀释液涂满，避免流挂。','短暂作用。','需要时用刷子或海绵辅助。','用高压水彻底冲洗。'],
  notes:['pH -0.2（官方产品信息）。非常快地去除烧结刹车粉、锈斑、水垢和环境污垢，兼顾清洁力与材料兼容性。','也可清洗洗车房瓷砖（1:8 – 1:20），用量大时需用 KocPlus 把污水 pH 调到 7–8。','不可用于大理石和锌、铝等未保护金属。不要在热表面使用，不要让其干在表面。'],url:KOCH+'felgenreiniger_cl'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Felgenreiniger_extrem_187999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-felgenreiniger-extrem',brand:'K',category:'wheel',ph:{"category":"acid","value":"-0.2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Felgenreiniger extrem',type:'盐酸基超强酸性轮毂清洁剂',sizes:'11 kg · 22 kg · 225 kg',materials:'耐盐酸表面：钢圈 · 烤漆铝圈 · 商用车',
+ id:'K-felgenreiniger-extrem',brand:'K',category:'wheel',ph:{"category":"acid","value":"-0.2","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Felgenreiniger_extrem_en.pdf"},"evidence":[],"conflict":false},name:'Felgenreiniger extrem',type:'盐酸基超强酸性轮毂清洁剂',sizes:'11 kg · 22 kg · 225 kg',materials:'耐盐酸表面：钢圈 · 烤漆铝圈 · 商用车',
  dilutions:[['轮毂（视脏污）','1:2 – 1:10','喷雾壶']],
  steps:['先冲湿表面，再涂满稀释液。','短暂作用。','需要时用海绵或刷子辅助。','用高压水彻底冲洗。'],
  notes:['pH -0.2（官方产品信息）。极强酸性，可去除烧结刹车粉、锈花、水垢、水泥残留等无机污垢；也用于商用车、工程车和洗车房瓷砖。','不可用于大理石和锌、铝等未保护金属。不要在热表面使用，不要让其干在表面。'],url:KOCH+'felgenreiniger_extrem'},
@@ -242,21 +242,21 @@ export const products: Product[] = [
 // ───────────────────────── 除染 / 去水垢 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Reactive_Rust_Remover_359999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-reactive-rust-remover',brand:'K',category:'deco',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Reactive Rust Remover',type:'无酸除铁粉 / 除锈剂（变紫）',sizes:'500 ml · 11 kg',materials:'车漆 · 玻璃 · 轮毂',
+ id:'K-reactive-rust-remover',brand:'K',category:'deco',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Reactive_Rust_Remover_en.pdf"},"evidence":[],"conflict":false},name:'Reactive Rust Remover',type:'无酸除铁粉 / 除锈剂（变紫）',sizes:'500 ml · 11 kg',materials:'车漆 · 玻璃 · 轮毂',
  dilutions:[['车漆 / 玻璃 / 轮毂','即用','喷雾壶']],
  steps:['原液喷在表面。','作用约 3–6 分钟，溶解后变为紫色。','需要时用刷子或海绵辅助。','彻底冲洗。'],
  notes:['去除表面锈斑、金属颗粒、烧结刹车粉等无机污染。','抛光铝等敏感表面先在不显眼处测试。','不要在热表面使用，不要让其干在表面。'],url:KOCH+'reactive_rust_remover'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Flugrostentferner_BMP_Art-__224999_224999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-flugrostentferner-bmp',brand:'K',category:'deco',ph:{"category":"acid","value":"0","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Flugrostentferner BMP',type:'高浓缩酸性除锈斑剂',sizes:'12 kg · 23 kg · 250 kg',materials:'耐酸表面：车漆 · 玻璃 · 陶瓷 · 金属件',
+ id:'K-flugrostentferner-bmp',brand:'K',category:'deco',ph:{"category":"acid","value":"0","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Flugrostentferner_BMP_Art-__224999_224999_0006_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Flugrostentferner BMP',type:'高浓缩酸性除锈斑剂',sizes:'12 kg · 23 kg · 250 kg',materials:'耐酸表面：车漆 · 玻璃 · 陶瓷 · 金属件',
  dilutions:[['锈斑 / 水垢 / 刹车颗粒（视脏污）','1:3 – 1:20','喷雾壶']],
  steps:['先冲湿表面。','把稀释液涂满整个已冲湿的区域。','短暂作用。','需要时用刷子或海绵辅助。','用高压水彻底冲洗。'],
  notes:['含缓蚀剂；Daimler 认可。','不要用于敏感的未涂装塑料（可能变色）；不要在热表面使用，不要让其干在表面。'],url:KOCH+'flugrostentferner_bmp'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Teerw%C3%A4sche_A_391999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-teerwaesche-a',brand:'K',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Teerwäsche A',type:'溶剂型柏油 / 沥青清洁剂',sizes:'1 L · 10 L · 20 L',materials:'耐溶剂表面',
+ id:'K-teerwaesche-a',brand:'K',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Teerw%C3%A4sche_A_391999_1.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Teerwäsche A',type:'溶剂型柏油 / 沥青清洁剂',sizes:'1 L · 10 L · 20 L',materials:'耐溶剂表面',
  dilutions:[['柏油 / 沥青','即用（干燥表面）','喷雾壶']],
  steps:['原液施用于干燥表面。','短暂作用。','需要时手工辅助。','用高压水冲掉，或用布擦去。'],
  notes:['不含卤代烃；Daimler 认可。官方镀膜施工前处理中推荐用于去柏油。','与乳化型清洁剂一起使用会影响油水分离器；禁止排入下水道。'],url:KOCH+'teerwaesche_a'},
@@ -270,14 +270,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Eulex_M_Art-__264999_264999_0003_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-eulex-m',brand:'K',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Eulex M',type:'低气味除胶剂（可用于哑光漆）',sizes:'1 L',materials:'车漆（含哑光漆）· 玻璃 · 陶瓷 · 金属',
+ id:'K-eulex-m',brand:'K',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Eulex_M_Art-__264999_264999_0003_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物不溶于水，pH 不适用"}],"conflict":false},name:'Eulex M',type:'低气味除胶剂（可用于哑光漆）',sizes:'1 L',materials:'车漆（含哑光漆）· 玻璃 · 陶瓷 · 金属',
  dilutions:[['胶痕、树液、橡胶印','即用','喷雾壶']],
  steps:['哑光漆：原液喷在已冷却的表面。','停留 1–3 分钟。','需要时用软海绵不加压擦拭，避免改变反光或颜色。','用高压水彻底冲洗。','再用 NanoMagic Shampoo 清洗、冲水，不加压小心擦干。','普通车漆和玻璃：松动的残留可直接用布擦去，无需高压水。'],
  notes:['不易燃、挥发慢、低气味，不含卤代烃；Daimler 认可。','不适用于聚碳酸酯、亚克力等塑料。不要让其干在表面，不要在热表面使用。'],url:KOCH+'eulex_m'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Eulex_V_364999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-eulex-v',brand:'K',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Eulex V',type:'低气味除胶剂（大面积撕膜 / 贴纸后）',sizes:'10 L',materials:'耐溶剂表面：原厂固化漆 · 玻璃 · 陶瓷 · 金属',
+ id:'K-eulex-v',brand:'K',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Eulex_V_364999_1.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Eulex V',type:'低气味除胶剂（大面积撕膜 / 贴纸后）',sizes:'10 L',materials:'耐溶剂表面：原厂固化漆 · 玻璃 · 陶瓷 · 金属',
  dilutions:[['撕膜 / 贴纸后的胶痕','即用','超纤布']],
  steps:['原液喷在超纤布上。','用沾湿的超纤布擦去胶痕。','残留较多时重复一次。'],
  notes:['专门用于撕除大面积车身膜或广告贴纸后的残胶，也能软化树脂和蜡。溶剂特殊，比常见含醋酸酯 / 丙酮的除胶剂气味更低、更温和；VW 认可。','使用前先确认色牢度和材质兼容；不要在热表面使用。'],url:KOCH+'eulex_v'},
@@ -301,14 +301,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Clay_Spray_Art-__368999_368999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-clay-spray',brand:'K',category:'deco',ph:{"category":"neu","value":"6–8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Clay Spray',type:'清洁泥润滑剂（不含硅油）',sizes:'500 ml · 10 L',materials:'车漆 · 玻璃',
+ id:'K-clay-spray',brand:'K',category:'deco',ph:{"category":"neu","value":"6–8","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Clay_Spray_Art-__368999_368999_0005_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Clay Spray',type:'清洁泥润滑剂（不含硅油）',sizes:'500 ml · 10 L',materials:'车漆 · 玻璃',
  dilutions:[['清洁泥 / 泥垫润滑','即用','喷雾壶']],
  steps:['原液喷满整个区域。','在湿润表面上用清洁泥或泥垫处理。','用超纤布擦去残留。'],
  notes:['低残留、不留膜，减少过泥划痕，不会溶解泥块或泥垫。'],url:KOCH+'clay_spray'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Spotless_Ceramic_Finish_Art-__628999_628999_0003_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-spotless-ceramic-finish',brand:'K',category:'deco',ph:{"category":"acid","value":"3.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Spotless Ceramic Finish',type:'镀膜车水斑 / 水垢去除剂',sizes:'Art. 628500 · 628088',materials:'车漆（Koch-Chemie Cb0.01 / C0.02 镀膜）',
+ id:'K-spotless-ceramic-finish',brand:'K',category:'deco',ph:{"category":"acid","value":"3.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Spotless_Ceramic_Finish_Art-__628999_628999_0003_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Spotless Ceramic Finish',type:'镀膜车水斑 / 水垢去除剂',sizes:'Art. 628500 · 628088',materials:'车漆（Koch-Chemie Cb0.01 / C0.02 镀膜）',
  dilutions:[['新鲜水斑、水垢（超纤布）','即用（喷在超纤布上）','—']],
  steps:['重度脏污先清洁；镀膜车先用 Green Star 预洗。','按说明用 Reactivation Shampoo 洗车，彻底冲洗并彻底擦干。','把 Spotless Ceramic Finish 喷在超纤布上，均匀擦涂，应可见一层薄膜。','视水斑程度停留最多 3 分钟。','用专业超纤布擦亮，必要时再用一块干净干布擦拭。'],
  notes:['温和去除镀膜表面的水斑和水垢而不伤镀膜，恢复色深、光泽和顺滑。','使用前摇匀；不要在热表面或阳光下使用；防冻防高温。'],url:KOCH+'spotless_ceramic_finish'},
@@ -316,28 +316,28 @@ export const products: Product[] = [
 // ───────────────────────── 研磨抛光 / 施工前处理 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Heavy_Cut_H9-02_Art-__458999_458999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-heavy-cut-h902',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB22-06-0073）：原液弱碱性","registration":"CB22-06-0073"}],"conflict":false},name:'Heavy Cut H9.02',type:'粗蜡（研磨 9.0 / 光泽 6.0，不含硅油）',sizes:'250 ml · 1 L',materials:'所有车漆（软漆和耐刮漆）',
+ id:'K-heavy-cut-h902',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Heavy_Cut_H9-02_Art-__458999_458999_0006_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB22-06-0073）：原液弱碱性","registration":"CB22-06-0073"}],"conflict":false},name:'Heavy Cut H9.02',type:'粗蜡（研磨 9.0 / 光泽 6.0，不含硅油）',sizes:'250 ml · 1 L',materials:'所有车漆（软漆和耐刮漆）',
  dilutions:[['机抛','即用','—']],
  steps:['十字交叉走位施工，中速、中压。','1200–2500 砂痕用羊毛盘；1500–3000 砂痕用 Heavy Cut Pad。','之后用 Micro Cut M3.02 或 Micro Cut & Finish P3.01 精抛，效果最佳。'],
  notes:["可快速修复严重氧化漆面，去除深划痕、漆雾和 1200 目以内砂痕；长时间操作不粘、低粉尘。","使用前摇匀；不要在热表面使用；防冻防高温。"],url:KOCH+'heavy_cut_h902'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Heavy_Quick_Cut_B9-01_Art-__419999_419999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-heavy-quick-cut-b901',brand:'K',category:'polish',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Heavy Quick Cut B9.01',type:'快速粗蜡（研磨 9.0 / 光泽 5.5，不含硅）',sizes:'250 ml · 1 L',materials:'修补漆与原厂漆（各类漆面）',
+ id:'K-heavy-quick-cut-b901',brand:'K',category:'polish',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Heavy_Quick_Cut_B9-01_Art-__419999_419999_0005_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Heavy Quick Cut B9.01',type:'快速粗蜡（研磨 9.0 / 光泽 5.5，不含硅）',sizes:'250 ml · 1 L',materials:'修补漆与原厂漆（各类漆面）',
  dilutions:[['机抛','即用','—']],
  steps:['用抛光机和抛光盘十字交叉施工。','中速、中压抛出。','之后用 Micro Cut M3.02 精抛，效果最佳。'],
  notes:['去除 1200 目及更细的漆雾和砂痕；可用于新喷漆面，不飞溅、低粉尘。','使用前摇匀；不要在热表面使用；防冻防高温。'],url:KOCH+'heavy_quick_cut_b901'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Schleifpaste_H7-01__Art-__180999_180999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-schleifpaste-h701',brand:'K',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Schleifpaste H7.01',type:'粗蜡（研磨 7.5 / 光泽 3.0，不含硅油）',sizes:'250 ml · 1 L',materials:'车漆（不适用耐刮漆）',
+ id:'K-schleifpaste-h701',brand:'K',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Schleifpaste_H7-01__Art-__180999_180999_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物不溶于水，pH 不适用"}],"conflict":false},name:'Schleifpaste H7.01',type:'粗蜡（研磨 7.5 / 光泽 3.0，不含硅油）',sizes:'250 ml · 1 L',materials:'车漆（不适用耐刮漆）',
  dilutions:[['机抛','即用','—']],
  steps:['挤在硬白盘或中硬黄盘上。','在已预清洁的表面十字交叉抛光，转速不超过 2000 rpm。','先低速高压，再逐渐减压、高速收尾；研磨力可通过压力、盘和转速调节。','用 Profi 超声波切边超纤布去除残留；残留抛痕用高光去太阳纹抛光剂处理。'],
  notes:['去除漆雾和 P2000 以内砂痕。不适用于耐刮漆。','使用前摇匀；不要在热表面使用；防冻防高温。'],url:KOCH+'schleifpaste_h701'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Fine_Cut_F6-01_Art-__405999_405999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-fine-cut-f601',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB22-06-0073）：原液弱碱性","registration":"CB22-06-0073"}],"conflict":false},name:'Fine Cut F6.01',type:'中蜡（研磨 6.0 / 光泽 7.0，不含硅油）',sizes:'250 ml · 1 L',materials:'车漆（含耐刮漆）',
+ id:'K-fine-cut-f601',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Fine_Cut_F6-01_Art-__405999_405999_0006_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB22-06-0073）：原液弱碱性","registration":"CB22-06-0073"}],"conflict":false},name:'Fine Cut F6.01',type:'中蜡（研磨 6.0 / 光泽 7.0，不含硅油）',sizes:'250 ml · 1 L',materials:'车漆（含耐刮漆）',
  dilutions:[['机抛','即用','—']],
  steps:['挤在 Fine Cut Pad 或羊毛盘上。','在已预清洁的表面十字交叉抛光，转速不超过 2000 rpm。','先低速高压，再减压提速直至高光。','用 Profi 超声波切边超纤布去除残留；残留抛痕用 Micro Cut M3.02 去除。'],
  notes:["快速彻底去除洗车划痕等使用痕迹，去除 2500 目砂痕；适合中度至重度氧化漆面，专为耐刮漆设计。","使用前摇匀；不要在热表面使用；防冻防高温。"],url:KOCH+'fine_cut_f601'},
@@ -365,21 +365,21 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Micro_Cut_M2-02_Art-__468999_468999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-micro-cut-m202',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Micro Cut M2.02',type:'高光去太阳纹抛光剂（研磨 2.5 / 光泽 9.0，不含硅油）',sizes:'250 ml · 1 L',materials:'所有车漆（不可用于涂装塑料和橡胶）',
+ id:'K-micro-cut-m202',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Micro_Cut_M2-02_Art-__468999_468999_0005_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Micro Cut M2.02',type:'高光去太阳纹抛光剂（研磨 2.5 / 光泽 9.0，不含硅油）',sizes:'250 ml · 1 L',materials:'所有车漆（不可用于涂装塑料和橡胶）',
  dilutions:[['机抛','即用','—']],
  steps:['用行程 ≥ 15 mm 的偏心机或强制转动偏心机，配 Micro Cut Pad。','均匀点在盘上，最低速铺开。','中压十字交叉抛光，直到出现透明薄膜。','用超声波切边 Polish & Sealing Towel 去除残留。'],
  notes:['去除 4000 目起的抛光雾、太阳纹、细划痕，适合深色等敏感颜色；易抛、易擦、无残留。','该产品用过的盘不要换用其他产品。不要在热表面使用；防冻防高温。'],url:KOCH+'micro_cut_m202'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Lack-Polish_violett_P2-03_Art-__457999_457999_0007_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-lack-polish-violett',brand:'K',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Lack-Polish violett P2.03',type:'研磨光亮抛光剂（研磨 2.0 / 光泽 9.3）',sizes:'1 L · 5 L',materials:'车漆（轻至中度氧化）',
+ id:'K-lack-polish-violett',brand:'K',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Lack-Polish_violett_P2-03_Art-__457999_457999_0007_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Lack-Polish violett P2.03',type:'研磨光亮抛光剂（研磨 2.0 / 光泽 9.3）',sizes:'1 L · 5 L',materials:'车漆（轻至中度氧化）',
  dilutions:[['机抛 / 手抛','即用','—']],
  steps:['追求切削：旋转机中速 + Fine Cut Pad。','追求收尾：偏心机 + Polish & Sealing Pad（轻度氧化、高光）。','也可手工施工。','用 Polish & Sealing Towel 把残留擦到高光。'],
  notes:['使用前摇匀；不要在热表面使用；防冻防高温。'],url:KOCH+'lack_polish_violett_p203'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Lack-Polish_gruen_P1-03_Art-__467999_467999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-lack-polish-gruen',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Lack-Polish grün P1.03',type:'收尾抛光剂（研磨 1.0 / 光泽 9.5）',sizes:'1 L',materials:'新车或近新车漆',
+ id:'K-lack-polish-gruen',brand:'K',category:'polish',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Lack-Polish_gruen_P1-03_Art-__467999_467999_0005_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Lack-Polish grün P1.03',type:'收尾抛光剂（研磨 1.0 / 光泽 9.5）',sizes:'1 L',materials:'新车或近新车漆',
  dilutions:[['机抛 / 手抛','即用','—']],
  steps:['推荐偏心机 + Polish & Sealing Pad，薄而均匀地施工。','手工施工用同样柔软的海绵。','用 KCX Polish & Sealing Towel 擦去残留。','需要一点研磨力时，可用旋转机 + Fine Cut Pad。'],
  notes:['保护、养护并提升新车漆的光泽深度和色深。','使用前摇匀；不要在热表面使用；防冻防高温。'],url:KOCH+'lack_polish_gruen_p103'},
@@ -391,14 +391,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Metal_Polish_Art-__507999_507999_0004_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-metal-polish',brand:'K',category:'polish',ph:{"category":"alk","value":"9.2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Metal Polish',type:'金属抛光剂（去锈 + 保养）',sizes:'Art. 507075',materials:'金属 · 镀铬',
+ id:'K-metal-polish',brand:'K',category:'polish',ph:{"category":"alk","value":"9.2","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Metal_Polish_Art-__507999_507999_0004_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Metal Polish',type:'金属抛光剂（去锈 + 保养）',sizes:'Art. 507075',materials:'金属 · 镀铬',
  dilutions:[['手抛（超纤布）','即用','—']],
  steps:['把抛光剂挤在超纤布上，轻压在表面擦开。','再用干净柔软的超纤布擦亮。'],
  notes:['一步去锈去污并保养，提升金属本色光泽，留下强拒水效果。','不适用于铝和阳极氧化饰条。'],url:KOCH+'metal_polish'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Silicon-_&_Wachsentferner_Art-__207999_207999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-silicon-wachsentferner',brand:'K',category:'polish',ph:{"category":"neu","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Silicon- & Wachsentferner',type:'醇基除硅除蜡剂（镀膜 / 喷漆前脱脂）',sizes:'5 L',materials:'耐溶剂漆面与塑料 · 玻璃 · 金属',
+ id:'K-silicon-wachsentferner',brand:'K',category:'polish',ph:{"category":"neu","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Silicon-_&_Wachsentferner_Art-__207999_207999_0005_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Silicon- & Wachsentferner',type:'醇基除硅除蜡剂（镀膜 / 喷漆前脱脂）',sizes:'5 L',materials:'耐溶剂漆面与塑料 · 玻璃 · 金属',
  dilutions:[['常规漆面（超纤布）','原液 – 1:4','—'],['单层素色漆等敏感漆面（超纤布）','1:4（防发哑）','—']],
  steps:['按表面情况原液或稀释至 1:4 施用。','用干净干燥的布擦去。','镀膜前：先用蘸湿的布轻压擦拭，未干前立即用第二块干净布擦净。'],
  notes:['去除硅油、蜡、抛光残留等油性物质，为喷漆或 1K-Nano / 陶瓷镀膜做准备；不含卤代烃。','先检查色牢度和材质兼容性。'],url:KOCH+'silicon_wachsentferner'},
@@ -413,14 +413,14 @@ export const products: Product[] = [
 // ───────────────────────── 镀膜 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Body_Cb0-01_Art-__807999_807999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-ceramic-body-cb001',brand:'K',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Ceramic Body Cb0.01',type:'车漆陶瓷镀膜（36 个月以上）',sizes:'30 ml',materials:'车身漆面（轿车 · 商用车 · 摩托车 · 房车 · 船）',
+ id:'K-ceramic-body-cb001',brand:'K',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Body_Cb0-01_Art-__807999_807999_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物为非极性/非质子体系，pH 不适用"}],"conflict":false},name:'Ceramic Body Cb0.01',type:'车漆陶瓷镀膜（36 个月以上）',sizes:'30 ml',materials:'车身漆面（轿车 · 商用车 · 摩托车 · 房车 · 船）',
  dilutions:[['整车（用量约 15–30 ml）（施工海绵）','即用','—']],
  steps:[...KOCH_COAT_PREP,'用 Application Sponge，或施工块包 Application Towel，按部件逐块施工，用量充足。','两道十字交叉涂抹，直到可见一层薄而连续的液膜。','闪干后先去除多余部分，再用 Coating Towel 干净的一面不加压画圈擦拭；在良好光线下检查高点。','可叠加两层：第一层后约 30 分钟再上第二层（视温湿度）。'],
  notes:['预期耐久 36 个月以上；强拒水，耐酸碱清洁剂，抗氧化、盐、酸和虫尸。',...KOCH_CERAMIC_RULES],url:KOCH+'ceramic_body_cb001'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Allround_C0-02_Art-__506999_506999_0008_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-ceramic-allround-c002',brand:'K',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Ceramic Allround C0.02',type:'多表面陶瓷镀膜（20–24 个月）',sizes:'75 ml',materials:'车漆 · 外部塑料 · 轮毂',
+ id:'K-ceramic-allround-c002',brand:'K',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Allround_C0-02_Art-__506999_506999_0008_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物遇水反应，pH 不适用"}],"conflict":false},name:'Ceramic Allround C0.02',type:'多表面陶瓷镀膜（20–24 个月）',sizes:'75 ml',materials:'车漆 · 外部塑料 · 轮毂',
  dilutions:[['整车（用量约 15–30 ml）（施工海绵）','即用','—']],
  steps:[...KOCH_COAT_PREP,'把 Application Towel 包在施工块上，用量充足，按部件快速铺开。','两道十字交叉涂抹，直到可见一层薄而连续的液膜。','闪干后先去除多余部分，再用 Coating Towel 新的一面不加压画圈擦拭；检查高点。','双层施工：两层间隔约 45 分钟（视温湿度）。'],
  notes:['耐久 20–24 个月（视负荷），双层 26–30 个月；完全硬化约 9 天。','洗后维护推荐 Hydro Foam Sealant（1:50 – 1:150）或 Spray Sealant。',...KOCH_CERAMIC_RULES],url:KOCH+'ceramic_allround_c002'},
@@ -439,7 +439,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Rims_Cr0-01__Art-__808999_808999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-ceramic-rims-cr001',brand:'K',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Ceramic Rims Cr0.01',type:'烤漆轮毂陶瓷镀膜（最长 12 个月）',sizes:'30 ml',materials:'烤漆轮毂',
+ id:'K-ceramic-rims-cr001',brand:'K',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Ceramic_Rims_Cr0-01__Art-__808999_808999_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物为非极性/非质子体系，pH 不适用"}],"conflict":false},name:'Ceramic Rims Cr0.01',type:'烤漆轮毂陶瓷镀膜（最长 12 个月）',sizes:'30 ml',materials:'烤漆轮毂',
  dilutions:[['每只轮毂约 5–7 ml','即用','—']],
  steps:['用 Magic Wheel Cleaner 等彻底清洁轮毂，刹车粉等粗污用 Detail Wheel Brush 等工具去除。','用 Polish & Sealing Towel 蘸 Panel Preparation Spray 或 Silicon- & Wachsentferner（1:4，最好用蒸馏水）擦拭全部表面，再用干净毛巾擦干；戴手套，不要徒手触摸。','在 15–25 °C、湿度 40–50% 条件下，用 Application Pen 涂满整个表面并均匀推开，应可见薄而连续的液膜。','闪干后整平，用 Coating Towel 去除多余残留。','可做两层：第一层后约 30 分钟（视温湿度）。'],
  notes:['耐久最长 12 个月（视维护）；强拒水，耐酸碱清洁剂，抗盐和刹车粉。',...KOCH_CERAMIC_RULES],url:KOCH+'ceramic_rims_cr001'},
@@ -468,7 +468,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Spray_Sealant_S0.02_427999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-spray-sealant',brand:'K',category:'seal',ph:{"category":"acid","value":"4.05","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Spray Sealant',type:'喷雾封体（高光 + 拒水）',sizes:'500 ml',materials:'车漆',
+ id:'K-spray-sealant',brand:'K',category:'seal',ph:{"category":"acid","value":"4.05","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Spray_Sealant_S0.02_427999_1.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Spray Sealant',type:'喷雾封体（高光 + 拒水）',sizes:'500 ml',materials:'车漆',
  dilutions:[['喷在超纤布上（超纤布）','即用（每次 1–2 喷）','—']],
  steps:['向干净超纤布喷 1–2 下。','逐部件施工，引擎盖、车顶等大面积分区。','短暂挥发后用干净超纤布擦净所有残留。','不要让产品干在表面；当天不要用化学品洗车。'],
  notes:['漆面丝滑、明显加深色泽。官方推荐用于陶瓷镀膜 24 小时后的保护及洗后维护。','使用前摇匀；防冻防高温。'],url:KOCH+'spray_sealant'},
@@ -476,14 +476,14 @@ export const products: Product[] = [
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/PerfectFinish_Sealant_Art-__685999_685999_0004_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
  image:null,
- id:'K-perfectfinish-sealant',brand:'K',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PerfectFinish Sealant',type:'喷雾封体（可作镀膜面层）',sizes:'5 L 等',materials:'车漆',
+ id:'K-perfectfinish-sealant',brand:'K',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/PerfectFinish_Sealant_Art-__685999_685999_0004_EN.pdf","section":9},"evidence":[],"conflict":false},name:'PerfectFinish Sealant',type:'喷雾封体（可作镀膜面层）',sizes:'5 L 等',materials:'车漆',
  dilutions:[['手工 / 机器（超纤布）','即用（喷在毛巾或海绵盘上）','—']],
  steps:['按脏污程度预洗/洗车并彻底擦干。','视漆面情况先用无硅抛光剂处理，再用 Panel Preparation Spray 脱脂。','喷在干净的 Polish & Sealing Towel 上，在连续区域均匀推开，不要直接喷在漆面上。','用干燥的 Polish & Sealing Towel 去除残留。','机器施工：喷在 Polish & Sealing 海绵盘上，用气动或电动偏心机分区抛入，再用干毛巾擦净。','施工后 24 小时内不要洗车。'],
  notes:['可单独使用，也可作为现有陶瓷镀膜的面层；强拒水，后续洗车更容易。','不要在热表面、阳光直射或环境温度低于 10 °C 时使用；不要让其干在表面；使用前摇匀。'],url:KOCH+'perfectfinish_sealant'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Hydro_Foam_Sealant_Art-__465999_465999_0010_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-hydro-foam-sealant',brand:'K',category:'seal',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Hydro Foam Sealant',type:'高端湿式封体浓缩液（樱桃香）',sizes:'1 L',materials:'车漆 · 玻璃 · 塑料 · 敞篷软顶',
+ id:'K-hydro-foam-sealant',brand:'K',category:'seal',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Hydro_Foam_Sealant_Art-__465999_465999_0010_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Hydro Foam Sealant',type:'高端湿式封体浓缩液（樱桃香）',sizes:'1 L',materials:'车漆 · 玻璃 · 塑料 · 敞篷软顶',
  dilutions:[['泡沫喷壶 / 泵壶','1:50 – 1:150','喷雾壶'],['PA壶','按比例相应调整预稀释（官方未给数值）','PA壶']],
  steps:['把稀释液用泡沫喷壶或泵壶施用在已洗净、仍湿润的车身上。','短暂作用。','彻底冲洗，避免留斑。','擦干残余水分。','每次只调配一次的用量，不要存放稀释液。'],
  notes:['手感顺滑、深度光泽，防塑料件褪色和变脆，并可浸润保护敞篷软顶。官方推荐作为 Ceramic Allround 的洗后养护。','防冻防高温。'],url:KOCH+'hydro_foam_sealant'},
@@ -491,21 +491,21 @@ export const products: Product[] = [
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/WetGloss_Art-__684999_684999_0004_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
  image:null,
- id:'K-wetgloss',brand:'K',category:'seal',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'WetGloss',type:'即用型湿式封体（数周保护）',sizes:'500 ml · 5 L',materials:'所有车身外部表面',
+ id:'K-wetgloss',brand:'K',category:'seal',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/WetGloss_Art-__684999_684999_0004_EN.pdf","section":9},"evidence":[],"conflict":false},name:'WetGloss',type:'即用型湿式封体（数周保护）',sizes:'500 ml · 5 L',materials:'所有车身外部表面',
  dilutions:[['整车（约 250 ml，视车型）','即用','喷雾壶']],
  steps:['先预洗/洗车。','使用前摇匀。','喷在湿润的车漆上。','用水流彻底冲洗。','彻底擦干，避免水斑。'],
  notes:['独立使用的封体，顺滑、光亮、强拒水，保护数周。','不要在热表面使用，不要让其干在表面；防冻防高温。'],url:KOCH+'wetgloss'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/ProtectorWax_319999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-protectorwax',brand:'K',category:'seal',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'ProtectorWax',type:'高端保护水蜡（荷叶效应）',sizes:'1 L · 10 L · 20 L',materials:'车漆 · 洗车设备 / 自助洗车 / 泡沫枪',
+ id:'K-protectorwax',brand:'K',category:'seal',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/ProtectorWax_en.pdf"},"evidence":[],"conflict":false},name:'ProtectorWax',type:'高端保护水蜡（荷叶效应）',sizes:'1 L · 10 L · 20 L',materials:'车漆 · 洗车设备 / 自助洗车 / 泡沫枪',
  dilutions:[['手工（泡沫喷壶 / 泵壶）','1:33（约 30 ml / 1 L）','喷雾壶'],['计量泵（洗车设备）','原液 – 1:2','—'],['PA壶','按比例相应调整预稀释（官方未给数值）','PA壶']],
  steps:['可作热蜡、冷蜡或泡沫蜡使用。','手工：把稀释液用泡沫喷壶或泵壶施用在已洗净、仍湿润的车身上，让其渗透。','用高压水彻底冲洗，避免留斑。','擦干残余水分。','每次只调配一次的用量，不要存放。'],
  notes:['不含矿物油烃；高光、长效拒水、易清洁，干燥时不留微水珠；VDA A 级。','洗车设备每车用量：冷/热蜡及泡沫蜡 13–19 ml，Premium 蜡 16–23 ml。','防冻防高温。'],url:KOCH+'protectorwax'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Finish_Spray_exterior_285999_1.0.1_US_US.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-finish-spray-exterior',brand:'K',category:'seal',ph:{"category":"acid","value":"1.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Finish Spray exterior',type:'带去水垢功能的快速美容剂',sizes:'1 L',materials:'车漆 · 玻璃 · 外部塑料',
+ id:'K-finish-spray-exterior',brand:'K',category:'seal',ph:{"category":"acid","value":"1.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Finish_Spray_exterior_en.pdf"},"evidence":[],"conflict":false},name:'Finish Spray exterior',type:'带去水垢功能的快速美容剂',sizes:'1 L',materials:'车漆 · 玻璃 · 外部塑料',
  dilutions:[['外部表面','即用','喷雾壶']],
  steps:['用喷壶均匀喷在待处理部位。','用 Profi 超纤布擦亮。'],
  notes:['无残留去除顽固水垢，一步清洁和保护，恢复色深，留下无痕高光并防止再次脏污。','不要用于内饰或不耐酸表面；不要在热表面使用。'],url:KOCH+'finish_spray_exterior'},
@@ -519,7 +519,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Quick_Finish_Art-__314999_314999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-quick-finish',brand:'K',category:'seal',ph:{"category":"neu","value":"7–8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Quick Finish',type:'全能快速美容喷剂（不含硅油）',sizes:'1 L',materials:'车漆 · 玻璃 · 塑料件 · 中控 · 不锈钢等',
+ id:'K-quick-finish',brand:'K',category:'seal',ph:{"category":"neu","value":"7–8","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Quick_Finish_Art-__314999_314999_0005_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Quick Finish',type:'全能快速美容喷剂（不含硅油）',sizes:'1 L',materials:'车漆 · 玻璃 · 塑料件 · 中控 · 不锈钢等',
  dilutions:[['光滑及漆面表面','即用','喷雾壶']],
  steps:['均匀喷在待处理表面。','用 Profi 超纤布擦亮。'],
  notes:['去除指纹和轻度污垢，留下拒水光泽，保留已有的蜡和抛光层；不含硅油，也适合喷漆车间使用。','不要在热表面使用。'],url:KOCH+'quick_finish'},
@@ -535,42 +535,42 @@ export const products: Product[] = [
 // ───────────────────────── 塑料 / 轮胎养护 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Plast_Star_siliconoelfrei_Art-__173999_173999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-plast-star-siliconoelfrei',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Plast Star siliconölfrei',type:'高端外部塑料养护（不含硅油，半哑光）',sizes:'1 L · 10 L',materials:'外部塑料和橡胶件 · 轮胎 · 门密封条',
+ id:'K-plast-star-siliconoelfrei',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Plast_Star_siliconoelfrei_Art-__173999_173999_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物为非极性/非质子体系，pH 不适用"}],"conflict":false},name:'Plast Star siliconölfrei',type:'高端外部塑料养护（不含硅油，半哑光）',sizes:'1 L · 10 L',materials:'外部塑料和橡胶件 · 轮胎 · 门密封条',
  dilutions:[['外部塑料 / 橡胶（施工海绵）','即用','—']],
  steps:['用海绵均匀涂在干净、干燥的表面。','充分揉入。','完全晾干。'],
  notes:['微乳液体系与表面结合，保护数月、高度抗 UV，还原半哑光外观；防止门密封条冻住；Daimler 认可。','不要用于需要防滑的表面（踏板、方向盘、轮胎胎面）。'],url:KOCH+'plast_star_siliconoelfrei'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Plast_Star_96_109999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-plast-star-96',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Plast Star 96',type:'外部塑料养护 plus（蜡硅分散体）',sizes:'1 L · 10 L',materials:'外部塑料和橡胶件 · 轮胎 · 门密封条',
+ id:'K-plast-star-96',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Plast_Star_96_109999_1.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Plast Star 96',type:'外部塑料养护 plus（蜡硅分散体）',sizes:'1 L · 10 L',materials:'外部塑料和橡胶件 · 轮胎 · 门密封条',
  dilutions:[['外部塑料 / 橡胶（施工海绵）','即用','—']],
  steps:['使用前摇匀。','用海绵均匀涂在干净、干燥的表面。','充分揉入并充分晾干。'],
  notes:['长效焕新外观，防止橡胶密封条冻住。','不要用于需要防滑的表面（踏板、方向盘、轮胎胎面）。'],url:KOCH+'plast_star_96'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Hydro_Plast_Care_Art-__476999_476999_0002_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-hydro-plast-care',brand:'K',category:'trim',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Hydro Plast Care',type:'水性塑料养护浓缩液（稀释调光泽，香草香）',sizes:'1 L · 5 L',materials:'内外塑料与橡胶：中控 · 门板 · 轮胎 · 保险杠',
+ id:'K-hydro-plast-care',brand:'K',category:'trim',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Hydro_Plast_Care_Art-__476999_476999_0002_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Hydro Plast Care',type:'水性塑料养护浓缩液（稀释调光泽，香草香）',sizes:'1 L · 5 L',materials:'内外塑料与橡胶：中控 · 门板 · 轮胎 · 保险杠',
  dilutions:[['高光','原液 – 1:1','喷雾壶'],['中等光泽','1:2','喷雾壶'],['缎面','1:3','喷雾壶'],['自然','1:4','喷雾壶']],
  steps:['原液或按需稀释，用喷壶或海绵均匀施用。','晾干。','必要时用超纤布擦拭。'],
  notes:['不含溶剂，防污防 UV，保持原厂质感。','使用前摇匀；防冻防高温。','不要用于需要防滑的表面（踏板、方向盘、轮胎胎面），不要用于显示屏或聚碳酸酯。'],url:KOCH+'hydro_plast_care'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Gummi-,_Kunststoff-_&_Vinylpflege_Art-__191999_191999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-gummi-kunststoff-vinylpflege',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Gummi-, Kunststoff- & Vinylpflege',type:'外部橡胶 / 塑料 / 乙烯基养护（半光）',sizes:'10 L · 20 L',materials:'外部塑料和橡胶件 · 轮胎 · 乙烯基',
+ id:'K-gummi-kunststoff-vinylpflege',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Gummi-,_Kunststoff-_&_Vinylpflege_Art-__191999_191999_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物为非极性/非质子体系，pH 不适用"}],"conflict":false},name:'Gummi-, Kunststoff- & Vinylpflege',type:'外部橡胶 / 塑料 / 乙烯基养护（半光）',sizes:'10 L · 20 L',materials:'外部塑料和橡胶件 · 轮胎 · 乙烯基',
  dilutions:[['外部塑料 / 橡胶 / 轮胎（施工海绵）','即用','—']],
  steps:['用海绵均匀涂在干净、干燥的表面。','充分揉入。','完全晾干。'],
  notes:['清洁并保护，半光效果；Daimler 认可。','不要用于需要防滑的表面（踏板、方向盘、轮胎胎面）。'],url:KOCH+'gummi_kunststoff_vinylpflege'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Gummi-_&_Kunststoffpflege_gl%C3%A4nzend_295999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-gummi-kunststoffpflege-glaenzend',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Gummi- & Kunststoffpflege glänzend',type:'外部橡胶 / 塑料养护（高光）',sizes:'10 L',materials:'外部塑料和橡胶件 · 轮胎',
+ id:'K-gummi-kunststoffpflege-glaenzend',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Gummi-_&_Kunststoffpflege_gl%C3%A4nzend_295999_1.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Gummi- & Kunststoffpflege glänzend',type:'外部橡胶 / 塑料养护（高光）',sizes:'10 L',materials:'外部塑料和橡胶件 · 轮胎',
  dilutions:[['外部塑料 / 橡胶 / 轮胎（施工海绵）','即用','—']],
  steps:['用海绵均匀涂在干净、干燥的表面。','充分揉入。','完全晾干。'],
  notes:['清洁并保护，高光效果。','不要用于需要防滑的表面（踏板、方向盘、轮胎胎面）。'],url:KOCH+'gummi_kunststoffpflege_glaenzend'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Kcu-Reifenschaum_196612_1.0.1_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-kcu-reifenschaum',brand:'K',category:'trim',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Kcu-Reifenschaum',type:'轮胎养护泡沫（喷罐）',sizes:'600 ml 喷罐',materials:'轮胎侧壁',
+ id:'K-kcu-reifenschaum',brand:'K',category:'trim',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Kcu-Reifenschaum_196612_1.0.1_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Kcu-Reifenschaum',type:'轮胎养护泡沫（喷罐）',sizes:'600 ml 喷罐',materials:'轮胎侧壁',
  dilutions:[['轮胎侧壁','即用','—']],
  steps:['先把轮胎上的污垢全部清除。','用前充分摇匀喷罐。','距离约 20 cm 喷满整个胎侧。','等泡沫开始消退。','需要时用布揉开。'],
  notes:['一步清洁、养护、保护，留下持久光泽。','不要用于轮毂、胎面以及摩托车和自行车轮胎。'],url:KOCH+'kcu_reifenschaum'},
@@ -592,14 +592,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Motorplast_236999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-motorplast',brand:'K',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Motorplast',type:'发动机舱保护剂（耐温 250 °C）',sizes:'500 ml · 5 L · 20 L · 200 L',materials:'发动机 · 壳体 · 橡胶软管 · 动力总成',
+ id:'K-motorplast',brand:'K',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Motorplast_236999_2.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Motorplast',type:'发动机舱保护剂（耐温 250 °C）',sizes:'500 ml · 5 L · 20 L · 200 L',materials:'发动机 · 壳体 · 橡胶软管 · 动力总成',
  dilutions:[['发动机舱（干或湿表面）','即用','喷雾壶']],
  steps:['先预清洁。','用喷壶（最好用 Cyclone 喷枪）均匀喷一层薄膜，干湿表面均可。','晾干。'],
  notes:['自然光泽、排水，不留润滑膜所以不粘灰；弹性保护膜防腐蚀；Daimler 认可。','不要用于需要防滑的表面。'],url:KOCH+'motorplast'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Cabriodach-Versiegelung_Art-__234412_234412_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-cabriodach-versiegelung',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Cabriodach-Versiegelung',type:'敞篷软顶封体喷罐（氟树脂）',sizes:'400 ml 喷罐',materials:'敞篷织物软顶 · 户外织物',
+ id:'K-cabriodach-versiegelung',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Cabriodach-Versiegelung_Art-__234412_234412_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物不溶于水，pH 不适用"}],"conflict":false},name:'Cabriodach-Versiegelung',type:'敞篷软顶封体喷罐（氟树脂）',sizes:'400 ml 喷罐',materials:'敞篷织物软顶 · 户外织物',
  dilutions:[['织物软顶','即用','—']],
  steps:['清洁织物并彻底冲洗，确保无清洁剂（表面活性剂）残留，树脂才能结合。','完全晾干。','摇匀喷罐。','距离约 30 cm 先横向、再纵向喷涂。','晾干约 10 分钟。','用后倒置喷罐把喷嘴喷空。'],
  notes:['防水防污，加深颜色，形成拒水防污保护。'],url:KOCH+'cabriodach_versiegelung'},
@@ -607,14 +607,14 @@ export const products: Product[] = [
 // ───────────────────────── 玻璃 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Glas_Star_Art-__44999_44999_0012_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-glas-star',brand:'K',category:'glass',ph:{"category":"neu","value":"7.6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Glas Star',type:'醇基高端玻璃清洁浓缩液',sizes:'10 L · 20 L · 200 L',materials:'玻璃 · 镜面 · 瓷砖 · 金属板等光滑耐醇表面',
+ id:'K-glas-star',brand:'K',category:'glass',ph:{"category":"neu","value":"7.6","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Glas_Star_Art-__44999_44999_0012_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Glas Star',type:'醇基高端玻璃清洁浓缩液',sizes:'10 L · 20 L · 200 L',materials:'玻璃 · 镜面 · 瓷砖 · 金属板等光滑耐醇表面',
  dilutions:[['日常玻璃','最稀 1:3（最好用去离子水）','喷雾壶'],['玻璃（顽固污垢）','原液','喷雾壶']],
  steps:['原液或最多稀释至 1:3（最好用去离子水）喷上。','擦净。'],
  notes:['去除油、脂、硅、蜡残留、轻度漆雾和虫尸，无痕；含光滑添加剂使擦拭更顺，醇含量让布干得快，适合冬季；Daimler 认可。','官方 Nano-Glasversiegelung 施工前用它清洁玻璃。'],url:KOCH+'glas_star'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Glass_Cleaner_Art-__302999_302999_0006_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-glass-cleaner',brand:'K',category:'glass',ph:{"category":"neu","value":"6–8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Glass Cleaner',type:'即用型专业玻璃清洁剂',sizes:'10 L · 20 L · 200 L',materials:'玻璃 · 镜面 · 瓷砖 · 金属板等光滑表面',
+ id:'K-glass-cleaner',brand:'K',category:'glass',ph:{"category":"neu","value":"6–8","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Glass_Cleaner_Art-__302999_302999_0006_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Glass Cleaner',type:'即用型专业玻璃清洁剂',sizes:'10 L · 20 L · 200 L',materials:'玻璃 · 镜面 · 瓷砖 · 金属板等光滑表面',
  dilutions:[['玻璃','即用','喷雾壶']],
  steps:['原液喷上。','擦净。'],
  notes:['去除油、脂、虫尸，无痕；含光滑添加剂；清新香味。官方 Ceramic Glass 镀膜前用它清洁玻璃。'],url:KOCH+'glass_cleaner'},
@@ -635,7 +635,7 @@ export const products: Product[] = [
 // ───────────────────────── 多功能清洁 APC ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Mehrzweckreiniger_86999_1.1.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-mehrzweckreiniger',brand:'K',category:'apc',ph:{"category":"alk","value":"12.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Mehrzweckreiniger',type:'碱性强力内饰 / 特殊清洁剂',sizes:'1 L · 11 kg · 21 kg · 225 kg',materials:'耐碱表面 · 地毯 · 座椅织物 · 车顶内衬 · 塑料',
+ id:'K-mehrzweckreiniger',brand:'K',category:'apc',ph:{"category":"alk","value":"12.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Mehrzweckreiniger_en.pdf"},"evidence":[],"conflict":false},name:'Mehrzweckreiniger',type:'碱性强力内饰 / 特殊清洁剂',sizes:'1 L · 11 kg · 21 kg · 225 kg',materials:'耐碱表面 · 地毯 · 座椅织物 · 车顶内衬 · 塑料',
  dilutions:[['视脏污程度','1:5 – 1:50','喷雾壶']],
  steps:['按脏污程度选择稀释比例。','用喷壶或超纤手套等施用，短暂作用。','需要时用刷子或布机械辅助。','用湿布擦去残留，或用干湿两用吸尘器吸走。','用于喷抽机或地毯/座椅清洗机时，加入 KocEntschäumer 消泡剂。'],
  notes:['去除油、脂、墨水、烟灰、尼古丁和道路污垢；Daimler 认可。官方推荐作为 Allround Textile Sealant 前的织物清洁剂之一。','不要在热表面使用，不要让其干在表面；不易分离，不适合经轻油分离器排放。'],url:KOCH+'mehrzweckreiniger'},
@@ -643,7 +643,7 @@ export const products: Product[] = [
 // ───────────────────────── 内饰 ─────────────────────────
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/koch-chemie-pol-star.pdf","source":"sds-db","language":"英文","version":"2020","hosting":"remote"},
- id:'K-pol-star',brand:'K',category:'int',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Pol Star',type:'中性织物 / 皮革 / Alcantara 清洁剂',sizes:'1 L · 5 L',materials:'皮革 · Alcantara · 座椅织物 · 地毯',
+ id:'K-pol-star',brand:'K',category:'int',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Pol_Star_en.pdf"},"evidence":[],"conflict":false},name:'Pol Star',type:'中性织物 / 皮革 / Alcantara 清洁剂',sizes:'1 L · 5 L',materials:'皮革 · Alcantara · 座椅织物 · 地毯',
  dilutions:[['视脏污程度','1:5 – 1:20','喷雾壶']],
  steps:['用喷壶、超纤手套等施用稀释液，短暂作用。','用海绵或超纤布顺着主纤维方向仔细揉洗。','用湿布或干湿两用吸尘器去除残留和泡沫。','用于喷抽机或地毯/座椅清洗机时，加入 KocEntschäumer 消泡剂。'],
  notes:['深入纤维去污、不留水印，保留原有防水处理并减缓再次脏污。','先检查色牢度和材质兼容性。','比例与规格取自官方产品信息 PDF（美国版 Pol_Star_en.pdf），产品页信息不完整。','2026-11 起官网已撤下这款产品的页面，可能已停产；官方产品信息 PDF 仍可下载。'],url:KOCH_PDF+'Pol_Star_en.pdf'},
@@ -658,7 +658,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Allround_Surface_Cleaner_Art-__367999_367999_0007_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-allround-surface-cleaner',brand:'K',category:'int',ph:{"category":"neu","value":"6–8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB25-01-0019）：原液中性","registration":"CB25-01-0019"}],"conflict":false},name:'Allround Surface Cleaner',type:'即用型表面清洁剂（内饰 / 家居）',sizes:'500 ml · 10 L',materials:'光滑表面 · 不锈钢 · 塑料 · 皮革 · 织物（仅配清洁枪）',
+ id:'K-allround-surface-cleaner',brand:'K',category:'int',ph:{"category":"neu","value":"6–8","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Allround_Surface_Cleaner_Art-__367999_367999_0007_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB25-01-0019）：原液中性","registration":"CB25-01-0019"}],"conflict":false},name:'Allround Surface Cleaner',type:'即用型表面清洁剂（内饰 / 家居）',sizes:'500 ml · 10 L',materials:'光滑表面 · 不锈钢 · 塑料 · 皮革 · 织物（仅配清洁枪）',
  dilutions:[['手工（超纤布）','即用','—'],['清洁枪（Tornador 类）','即用','—']],
  steps:['手工：原液施用于污渍处，短暂渗透后用超纤布擦拭。','清洁枪：原液喷出后关闭药液，再用压缩空气吹干。'],
  notes:["去除指纹、灰尘、油脂，光滑表面无痕（含非极性塑料）；不留水印或化学残留。","先检查材质兼容性。"],url:KOCH+'allround_surface_cleaner'},
@@ -681,7 +681,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Top_Star_Art-__132999_132999_0009_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-top-star',brand:'K',category:'int',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB23-02-0038，该申报已过期）：原液中性","registration":"CB23-02-0038"}],"conflict":false},name:'Top Star',type:'内饰塑料养护乳（半哑光）',sizes:'1 L · 10 L',materials:'中控 · 内饰板 · 橡胶密封条',
+ id:'K-top-star',brand:'K',category:'int',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Top_Star_Art-__132999_132999_0009_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 CB23-02-0038，该申报已过期）：原液中性","registration":"CB23-02-0038"}],"conflict":false},name:'Top Star',type:'内饰塑料养护乳（半哑光）',sizes:'1 L · 10 L',materials:'中控 · 内饰板 · 橡胶密封条',
  dilutions:[['内饰塑料 / 橡胶（施工海绵）','即用','—']],
  steps:['喷在软海绵上，均匀涂在表面。','晾干，必要时用超纤布擦拭。'],
  notes:["深层清洁并焕新，半光自然质感，防污防 UV，保持塑料柔韧，抗静电；Daimler 认可。","使用前摇匀；防冻防高温。","不要用于踏板、方向盘、轮胎等需防滑表面，不要用于显示屏或聚碳酸酯。"],url:KOCH+'top_star'},
@@ -695,7 +695,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Gummifix_48999_1.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-gummifix',brand:'K',category:'int',ph:{"category":"neu","value":"6.8–7.2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Gummifix',type:'内饰橡胶 / 塑料防滑养护（不含硅油）',sizes:'1 L · 10 L',materials:'橡胶脚垫 · 塑料地面 · 需防滑的内饰部位',
+ id:'K-gummifix',brand:'K',category:'int',ph:{"category":"neu","value":"6.8–7.2","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Gummifix_48999_1.0.0_IE_EN.pdf","section":9},"evidence":[],"conflict":false},name:'Gummifix',type:'内饰橡胶 / 塑料防滑养护（不含硅油）',sizes:'1 L · 10 L',materials:'橡胶脚垫 · 塑料地面 · 需防滑的内饰部位',
  dilutions:[['橡胶脚垫 / 塑料地面（施工海绵）','即用','—']],
  steps:['用海绵或喷壶施用。','均匀涂在干净、干燥的表面。','晾干。'],
  notes:['不油腻、不打滑，焕新外观。'],url:KOCH+'gummifix'},
@@ -707,7 +707,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Tinten-_&_Kuli-Ex_Art-__197999_197999_0005_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-tinten-kuli-ex',brand:'K',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Tinten- & Kuli-Ex',type:'织物墨水 / 圆珠笔印去除剂',sizes:'250 ml',materials:'耐溶剂织物',
+ id:'K-tinten-kuli-ex',brand:'K',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Tinten-_&_Kuli-Ex_Art-__197999_197999_0005_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物不溶于水，pH 不适用"}],"conflict":false},name:'Tinten- & Kuli-Ex',type:'织物墨水 / 圆珠笔印去除剂',sizes:'250 ml',materials:'耐溶剂织物',
  dilutions:[['墨水 / 圆珠笔印（超纤布）','即用','—']],
  steps:['用超纤布蘸取施用。','轻拍（不要揉搓）让污渍松动。','用干燥吸水布轻拍吸走。','重度污渍重复。','最后用合适的清洁剂（如 Pol Star）整面清洁。'],
  notes:['不含卤代烃，橙香。','不适用于人造革和塑料；先检查色牢度和材质兼容性。'],url:KOCH+'tinten_kuli_ex'},
