@@ -46,7 +46,7 @@ async function fetchDocument(url) {
   await store(DOCUMENTS, url, response);
   return response;
 }
-async function cachePage(value) {
+async function cachePage(value, includeImages = true) {
   const url = pageUrl(value);
   if (!url) return;
   const response = await fetchDocument(url);
@@ -57,7 +57,7 @@ async function cachePage(value) {
     const original = asset.pathname === '/_next/image' && asset.searchParams.get('url');
     return original && /^\/img\/[\w-]+\.webp$/.test(original) ? new URL(original, self.location.origin) : asset;
   });
-  await Promise.all([...new Set(urls.filter((u) => assetKind(u)).map((u) => u.href))].map(async (href) => {
+  await Promise.all([...new Set(urls.filter((u) => assetKind(u) === STATIC || (includeImages && assetKind(u) === MEDIA)).map((u) => u.href))].map(async (href) => {
     const kind = assetKind(new URL(href));
     try {
       const cache = await caches.open(kind);
@@ -68,7 +68,7 @@ async function cachePage(value) {
   }));
 }
 self.addEventListener('install', (event) => {
-  event.waitUntil(Promise.all([cachePage('/'), cachePage('/flows')]).then(() => self.skipWaiting()));
+  event.waitUntil(Promise.all([cachePage('/', false), cachePage('/flows', false)]).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {

@@ -11,7 +11,7 @@
     "test": "vitest run",
     "data:report": "node scripts/catalog-report.mjs",
     "test:e2e": "playwright test",
-    "test:e2e:ci": "playwright install --with-deps --no-shell chromium && playwright test",
+    "test:e2e:ci": "sh scripts/e2e-ci.sh",
     "check:payload": "node scripts/check-payload.mjs"
   },
   "dependencies": {

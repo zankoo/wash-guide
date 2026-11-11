@@ -87,7 +87,7 @@ JSON 的 `sds.missing`、`ph` 各项和 `localSds.missingOriginalUrl` 包含产�
 
 ## CI 与部署到 Vercel
 
-Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查、单元测试和 `test:e2e:ci`。浏览器任务安装 Chromium 及其系统依赖，构建并检查传输预算后测试生产服务；失败时在 `test-results/` 留存 trace 和截图。仓库不再重复运行 GitHub Actions。
+Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查、单元测试和 `test:e2e:ci`。浏览器任务在主机构建并检查传输预算，再使用匹配 Playwright 版本的官方容器测试本地生产服务；失败时在 `test-results/` 留存 trace 和截图。仓库不再重复运行 GitHub Actions。
 
 
 在 Vercel 导入此仓库即可：Framework Preset 会自动识别为 Next.js，构建命令和输出目录都用默认值，包管理器按 `pnpm-lock.yaml` 识别为 pnpm。推送到主分支后自动部署，其他分支生成预览地址。
@@ -103,6 +103,7 @@ Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查
 
 `src/offline/service-worker.js` 是源文件；`pnpm build` 根据代码、资源和依赖生成版本及 `public/sw.js`，不要手工编辑生成文件。
 
+- 首次安装仅预存首页、流程页和必要脚本/样式，不后台下载全目录产品图。
 - HTML 与 RSC 分库存储。只有完整页面导航会移除已知的筛选参数；RSC 保留完整 URL 和 Vary 匹配。
 - 断网点击产品或视图链接使用已缓存的 HTML；未缓存页面显示明确的离线回退。
 - 联网、重新聚焦、收藏变化及 worker 更新时刷新收藏页，同时预存其脚本、样式与图片。每批最多预存 80 个收藏，缓存空间不足或未完成下载时不能保证离线可用。

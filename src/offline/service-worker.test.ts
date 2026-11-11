@@ -27,7 +27,7 @@ function harness() {
     },
   };
   const fetch = vi.fn(async () => new Response('fresh', { headers: { 'Content-Type': 'text/html' } }));
-  const self = { location: { origin }, addEventListener: (name: string, handler: (event: unknown) => void) => { handlers[name] = handler; }, clients: { claim: async () => {} } };
+  const self = { skipWaiting: async () => {}, location: { origin }, addEventListener: (name: string, handler: (event: unknown) => void) => { handlers[name] = handler; }, clients: { claim: async () => {} } };
   const context = vm.createContext({ self, caches, fetch, Request, Response, URL, setTimeout, clearTimeout, console });
   vm.runInContext(readFileSync(new URL('./service-worker.js', import.meta.url), 'utf8').replace('__BUILD_VERSION__', 'test'), context);
   async function dispatch(kind: string, props: Record<string, unknown>) {
@@ -42,6 +42,13 @@ function harness() {
 }
 
 describe('离线缓存策略', () => {
+  it('首次安装只缓存页面与脚本，不预下载整份目录的产品图', async () => {
+    const h = harness();
+    h.fetch.mockImplementation(async () => new Response('<script src="/_next/static/app.js"></script><img src="/_next/image?url=%2Fimg%2FC-reset.webp&amp;w=1080">', { headers: { 'Content-Type': 'text/html' } }));
+    await h.dispatch('install', {});
+    expect(h.fetch).toHaveBeenCalledWith(`${h.origin}/_next/static/app.js`, expect.anything());
+    expect(h.fetch).not.toHaveBeenCalledWith(`${h.origin}/img/C-reset.webp`, expect.anything());
+  });
   it('筛选页面回退到 HTML 缓存，不把未知参数随意合并', async () => {
     const h = harness();
     const docs = await h.caches.open('wash-guide-test-documents');
