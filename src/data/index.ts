@@ -10,12 +10,14 @@ import * as ps from './ps';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, PH_SHORT, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
+import { phEvidenceNotes } from './ph';
 import { fold, initials, type RankFields } from '../lib/search';
 
 export * from './materials';
 export * from './subcategories';
 export * from './taxonomy';
 export * from './sds-sources';
+export * from './ph';
 export type * from './types';
 
 export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...feynlab.products, ...ps.products];
@@ -62,14 +64,6 @@ export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
   return [`${label} ${ratio.split('（')[0].trim()}`];
 }
 
-/** 厂商配方描述与原液 pH 的测量口径不同，直接在卡片上提示。 */
-export function phClaim(p: Product): string | undefined {
-  if (p.id === 'C-reset') return '官方称稀释后中性';
-  if (p.id === 'M-iron-remover' || p.id === 'C-hydro2-foam') return '官方称中性';
-  if (p.ph?.[0] === 'acid' && p.type.includes('无酸')) return '官方称无酸配方';
-  return undefined;
-}
-
 /** 搜索排序用的字段（见 relevance） */
 export function productRankFields(p: Product): RankFields {
   return { name: fold(p.name), type: fold(p.type), tags: fold([SUB_OF.get(p.id)?.name ?? '', CAT_NAME[p.category], p.materials].join(' ')), abbr: initials(p.name) };
@@ -77,13 +71,13 @@ export function productRankFields(p: Product): RankFields {
 
 export function productSearchText(p: Product): string {
   const sub = SUB_OF.get(p.id)?.name ?? '';
-  return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...p.notes].join(' '));
+  return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...p.notes, ...phEvidenceNotes(p.ph)].join(' '));
 }
 
 /** pH 标签文字：「碱性 12.5」；官方未公布或不适用时返回 undefined */
 export function phText(p: Product): string | undefined {
-  if (!p.ph || p.ph[0] === 'na') return undefined;
-  const [k, v] = p.ph;
+  if (!p.ph || p.ph.category === 'na') return undefined;
+  const { category: k, value: v } = p.ph;
   const label = k === 'acid' && v && /^\d+(?:\.\d+)?$/.test(v) && Number(v) >= 5 && Number(v) <= 6 ? '弱酸' : PH_SHORT[k];
   return v ? `${label} ${v}` : label;
 }

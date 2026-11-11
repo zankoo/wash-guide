@@ -39,11 +39,11 @@ export interface Product {
   /** 官网原文 */
   url: string;
   /**
-   * 产品自身的 pH（原液）：[酸碱性, 官方数值]。
+   * 产品自身的 pH（原液），包含展示值、来源、证据及冲突标记。
    * 只收官方来源（产品信息 / 技术资料表 / SDS 第 9 节 / 官网页面 / 韩国申报）；
    * 'na' = 官方注明不适用（非水性产品，或韩国申报写「해당없음」）；没有这一项 = 官方未公布。
    */
-  ph?: readonly [PH | 'na', string?];
+  ph?: ProductPh;
 }
 
 /** 步骤的可切换变体 */
@@ -114,4 +114,21 @@ export interface ProductHazard {
   sdsSection: 3;
   /** 本站额外提醒，不代表产品整体的官方 GHS 分类。 */
   siteWarning: true;
+}
+
+export type PhSourceKind = 'product-page' | 'technical-sheet' | 'sds' | 'korean-registration' | 'unrecorded';
+export type PhEvidence =
+  | { kind: 'statement'; source: PhSourceKind; text: string; url?: string; registration?: string }
+  | { kind: 'resolution'; rule: 'sds-overrides-na' }
+  | { kind: 'resolution'; rule: 'sds-overrides-category'; previousCategory: PH };
+
+/** 展示值与证据分开；迁移时无明确依据的来源保留为 unrecorded，不能从 SDS 的存在推断。 */
+export interface ProductPh {
+  category: PH | 'na';
+  value?: string;
+  basis: 'raw';
+  source: { kind: PhSourceKind; url?: string; section?: 9 };
+  evidence: PhEvidence[];
+  conflict: boolean;
+  claim?: string;
 }

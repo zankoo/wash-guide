@@ -1,4 +1,4 @@
-import { BRAND_SHORT, imageSrc, keyRatios, phClaim, phText, type Product } from '@/data';
+import { BRAND_SHORT, imageSrc, keyRatios, phText, type Product } from '@/data';
 import { FavMark } from './fav-mark';
 import { ToxicIcon } from './icons';
 import { ProductImage } from './product-image';
@@ -8,7 +8,7 @@ import { ProductLink } from './product-link';
 export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
   const pills = keyRatios(p);
   const ph = phText(p);
-  const claim = phClaim(p);
+  const claim = p.ph?.claim;
   return (
     <ProductLink className="card" id={p.id} aria-label={`${p.name}，${p.type}${p.hazard?.ingredient ? '，极危险化学品' : ''}`}>
       <div className="stage">
@@ -25,7 +25,7 @@ export function ProductCard({ p, eager }: { p: Product; eager?: boolean }) {
         <span className={`br ${p.brand}`}>{BRAND_SHORT[p.brand]}</span>
         <span className="nm">{p.name}</span>
         <span className="ty">{p.type}</span>
-        {ph && <span className={`phtag ${p.ph![0]} card-ph`}>{ph}</span>}
+        {ph && <span className={`phtag ${p.ph!.category} card-ph`}>{ph}</span>}
         {claim && <span className="ph-claim" title="配方宣传或使用液描述；pH 标签展示原液数据，详见产品说明">ⓘ {claim}</span>}
         <div className="pills">
           {pills === 'accessory' ? (

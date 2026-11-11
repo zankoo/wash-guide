@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phText, type Product } from '@/data';
+import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phEvidenceNotes, PH_SOURCE_LABEL, phText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './flow-card';
@@ -40,6 +40,14 @@ export function ProductDetail({ p }: { p: Product }) {
       </div>
       <div className="sh-body">
         <ToxicLine p={p} />
+        {p.ph && (
+          <section className="ph-evidence" aria-label="pH 资料与口径">
+            <h3>pH 资料与口径</h3>
+            <p>原液数据 · {PH_SOURCE_LABEL[p.ph.source.kind]}{p.ph.conflict ? ' · 存在资料口径差异' : ''}</p>
+            {p.ph.source.url && <a href={p.ph.source.url} target="_blank" rel="noopener">查看 pH 依据</a>}
+            <Notes items={phEvidenceNotes(p.ph)} />
+          </section>
+        )}
         {p.dilutions.length ? (
           <DilutionTable rows={p.dilutions} />
         ) : (
@@ -168,9 +176,9 @@ function PhLine({ p }: { p: Product }) {
   return (
     <p className="sh-ph">
       {t ? (
-        <span className={`phtag ${p.ph![0]}`}>{p.ph![1] ? t.replace(' ', ' · pH ') : `${t} pH`}</span>
+        <span className={`phtag ${p.ph!.category}`}>{p.ph!.value ? t.replace(' ', ' · pH ') : `${t} pH`}</span>
       ) : (
-        <span className="sh-ph-none">pH：{p.ph?.[0] === 'na' ? '不适用（官方标注）' : '官方未公布'}</span>
+        <span className="sh-ph-none">pH：{p.ph?.category === 'na' ? '不适用（官方标注）' : '官方未公布'}</span>
       )}
     </p>
   );
