@@ -29,6 +29,28 @@ describe('pH 证据与口径', () => {
     expect(p.notes.some((n) => n.includes('本站按 SDS 标注'))).toBe(false);
   });
 
+  it('Koch-Chemie 与 P&S 的技术资料表来源必须带文件地址', () => {
+    // TODO: MAFRA 的 F-charming 尚缺资料表地址，补齐后放开到全部品牌
+    for (const p of PRODUCTS) {
+      if ((p.brand === 'K' || p.brand === 'P') && p.ph?.source.kind === 'technical-sheet') {
+        expect(p.ph.source.url, p.id).toMatch(/^https:\/\/.+\.pdf$/i);
+      }
+    }
+  });
+
+  it('Koch-Chemie 与 P&S 的 pH 均已关联到具体文件', () => {
+    const unresolved = PRODUCTS.filter((p) => (p.brand === 'K' || p.brand === 'P') && p.ph?.source.kind === 'unrecorded');
+    expect(unresolved.map((p) => p.id)).toEqual([]);
+  });
+
+  it('技术资料表与 SDS 数值相差较大时保留两者并标记口径差异', () => {
+    const p = PRODUCT_BY_ID.get('K-super-foam')!;
+    expect(p.ph?.value).toBe('12');
+    expect(p.ph?.source.kind).toBe('technical-sheet');
+    expect(p.ph?.conflict).toBe(true);
+    expect(phEvidenceNotes(p.ph).join(' ')).toContain('SDS 第 9 节写 pH 11');
+  });
+
   it('数值来源与 SDS 附件分别记录，不因有附件而臆测来源', () => {
     const unresolved = PRODUCTS.filter((p) => p.sds && p.ph?.source.kind === 'unrecorded');
     expect(unresolved.length).toBeGreaterThan(0);
