@@ -2,7 +2,7 @@ import { Suspense, type ReactNode } from 'react';
 import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phEvidenceNotes, PH_SOURCE_LABEL, phText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
-import { Notes } from './flow-card';
+import { Notes } from './notes';
 import { FlowLink } from './flow-link';
 import { ExternalIcon, ToxicIcon } from './icons';
 import { ProductImage } from './product-image';

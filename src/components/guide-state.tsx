@@ -1,9 +1,9 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { createContext, startTransition, use, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
-import { MATERIALS, type MaterialId } from '@/data/materials';
-import { BRANDS, CATS, SCENES } from '@/data/taxonomy';
+import { createContext, startTransition, use, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import type { MaterialId } from '@/data/materials';
+import { useFilters, readFilterSearch, updateFilters } from './filter-state';
 import type { BrandId, CategoryId, SceneId } from '@/data/types';
 
 interface FlowTarget {
@@ -22,20 +22,8 @@ export interface FlowRef {
 interface GuideState {
   /** 当前视图是否流程页；打开产品详情（/p/…）时保持原来的视图不变 */
   isFlows: boolean;
-  brand: BrandId | '';
-  setBrand: (b: BrandId | '') => void;
-  /** 产品适用材质（只在产品页使用） */
-  material: MaterialId[];
-  filterSearch: string;
-  clearFilters: () => void;
-  setMaterial: (m: MaterialId | '') => void;
-  query: string;
-  setQuery: (q: string) => void;
-  /** 'fav' 表示只看常用产品 */
-  category: CategoryId | 'fav' | '';
-  setCategory: (c: CategoryId | 'fav' | '') => void;
-  scene: SceneId | '';
-  setScene: (s: SceneId | '') => void;
+  setBrand: (brand: BrandId | '') => void;
+  setMaterial: (material: MaterialId | '') => void;
   flowTarget: FlowTarget | null;
   goToFlow: (flow: FlowRef) => void;
   /** 产品页里已展开的分类（折叠的分类只露出一行） */
@@ -43,13 +31,7 @@ interface GuideState {
   setExpanded: (c: CategoryId, open: boolean) => void;
   /** 展开分类 c（可选），提交后再滚动到元素 id */
   jumpTo: (id: string, c?: CategoryId) => void;
-  /** 有搜索词时各分类的命中数（'' 为合计，不受当前分类影响）；没有搜索时为 null */
-  hits: SearchHits | null;
-  setHits: (h: SearchHits | null) => void;
 }
-
-/** 搜索命中数：hits[分类 | ''] */
-export type SearchHits = Partial<Record<CategoryId | '', number>>;
 
 const GuideContext = createContext<GuideState | null>(null);
 
@@ -84,40 +66,11 @@ export function useGuide(): GuideState {
   return ctx;
 }
 
-const FILTER_EVENT = 'guide-filters';
-function readFilters() { return window.location.search; }
-function subscribeFilters(listener: () => void) {
-  window.addEventListener('popstate', listener);
-  window.addEventListener(FILTER_EVENT, listener);
-  return () => {
-    window.removeEventListener('popstate', listener);
-    window.removeEventListener(FILTER_EVENT, listener);
-  };
-}
-function updateFilters(values: Record<string, string>, replace = false) {
-  const url = new URL(window.location.href);
-  for (const [key, value] of Object.entries(values)) {
-    if (value) url.searchParams.set(key, value);
-    else url.searchParams.delete(key);
-  }
-  if (url.href === window.location.href) return;
-  window.history[replace ? 'replaceState' : 'pushState'](null, '', url.pathname + url.search + url.hash);
-  window.dispatchEvent(new Event(FILTER_EVENT));
-}
-
-/** 两个视图共享的筛选状态：品牌和搜索词跨视图保留，分类 / 场景各自独立 */
+/** 导航状态：保留阅读位置、分类展开与流程定位；筛选值来自独立 URL store。 */
 export function GuideProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const filterSearch = useSyncExternalStore(subscribeFilters, readFilters, () => '');
-  const params = new URLSearchParams(filterSearch);
-  const brand = BRANDS.find((b) => b === params.get('brand')) ?? '';
-  const material = MATERIALS.filter(([m]) => (params.get('material') ?? '').split(',').includes(m)).map(([m]) => m);
-  const query = params.get('q') ?? '';
-  const category = params.get('category') === 'fav' ? 'fav' : CATS.find(([c]) => c === params.get('category'))?.[0] ?? '';
-  const scene = SCENES.find(([sc]) => sc === params.get('scene'))?.[0] ?? '';
-  const setQuery = (q: string) => updateFilters({ q }, true);
-  const clearFilters = () => updateFilters({ brand: '', material: '', q: '', category: '', scene: '' });
+  const { brand, material, query, scene } = useFilters();
   // 筛选切换放在 transition 里：选中指示块滑动、列表淡入淡出都由 View Transition 呈现。
   // 搜索词保持同步更新，输入不卡顿（列表那边用 useDeferredValue）。
   const [scrollTarget, setScrollTarget] = useState<ScrollTarget | null>(null);
@@ -131,14 +84,11 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   }
   const setBrand = (b: BrandId | '') => keepReading(() => updateFilters({ brand: b }));
   const setMaterial = (m: MaterialId | '') => keepReading(() => updateFilters({ material: !m ? '' : (material.includes(m) ? material.filter((x) => x !== m) : [...material, m]).join(',') }));
-  const setCategory = (c: CategoryId | 'fav' | '') => startTransition(() => updateFilters({ category: c }));
-  const setScene = (sc: SceneId | '') => startTransition(() => updateFilters({ scene: sc }));
   const [flowTarget, setFlowTarget] = useState<FlowTarget | null>(null);
   // 从流程页点开产品时路径变成 /p/…，但底下还是流程页：只在非详情路径上更新视图
   const [isFlows, setIsFlows] = useState(pathname === '/flows');
   if (!pathname.startsWith('/p/') && (pathname === '/flows') !== isFlows) setIsFlows(pathname === '/flows');
   const [expanded, setExpandedSet] = useState<ReadonlySet<CategoryId>>(new Set());
-  const [hits, setHits] = useState<SearchHits | null>(null);
 
   function setExpanded(c: CategoryId, open: boolean) {
     // 放在 transition 里，展开 / 收起时分类区块的高度变化会以 View Transition 动画呈现
@@ -175,37 +125,26 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   function goToFlow(f: FlowRef) {
     // 目标流程被当前筛选隐藏时清空筛选，保证能滚动到它
     if ((brand && brand !== f.brand) || (scene && scene !== f.scene) || query) {
-      setBrand('');
-      setScene('');
-      setQuery('');
+      updateFilters({ brand: '', scene: '', q: '' }, true);
     }
     setFlowTarget((t) => ({ id: f.id, seq: (t?.seq ?? 0) + 1 }));
-    if (pathname !== '/flows') router.push(`/flows${readFilters()}`, { scroll: false, transitionTypes: ['nav-forward'] });
+    // 离线需要已缓存的 HTML，不能依赖未缓存的客户端 RSC。
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    if (!navigator.onLine) { window.location.assign(`/flows${readFilterSearch()}#${f.id}`); return; }
+    if (pathname !== '/flows') router.push(`/flows${readFilterSearch()}`, { scroll: false, transitionTypes: ['nav-forward'] });
   }
 
   return (
     <GuideContext
       value={{
         isFlows,
-        brand,
         setBrand,
-        material,
-        filterSearch,
-        clearFilters,
         setMaterial,
-        query,
-        setQuery,
-        category,
-        setCategory,
-        scene,
-        setScene,
         flowTarget,
         goToFlow,
         expanded,
         setExpanded,
         jumpTo,
-        hits,
-        setHits,
       }}
     >
       {children}

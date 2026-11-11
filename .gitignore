@@ -42,3 +42,8 @@ next-env.d.ts
 
 # turborepo
 .turbo
+
+# generated offline worker and browser artifacts
+/public/sw.js
+/test-results/
+/playwright-report/

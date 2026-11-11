@@ -26,7 +26,7 @@
 ```
 src/
   app/
-    (guide)/          首页和流程页共用的 hero + 筛选栏布局
+    (guide)/          产品与流程路由，各自提供所需的目录投影
     @modal/(.)p/[id]  拦截 /p/[id]，以弹出面板显示产品详情
     p/[id]/           独立产品页（含 SEO 元数据）
     globals.css       全部样式（颜色变量、深色模式）
@@ -48,7 +48,9 @@ scripts/              开发维护命令
 research/             历史核验记录，不作为当前产品数据库
 ```
 
-产品卡片和流程卡片在服务端渲染，客户端只负责筛选，因此列表页不会把整份产品数据打包进 JS。
+列表使用精简的展示与搜索投影，首屏仍生成静态 HTML，浏览器按投影筛选并渲染卡片。产品与流程路由各自提供所需数据，完整产品记录、SDS 和施工证据只用于服务端详情页。
+
+`filter-state` 管理 URL 筛选，`guide-state` 管理展开和滚动导航；`catalog-state` 统一计算列表、侧栏、分类和材质计数。共享筛选函数位于 `src/lib/catalog-results.ts`，不会通过 effect 把派生结果写回全局状态。
 
 ## 本地开发
 
@@ -61,7 +63,10 @@ pnpm test         # 数据完整性、搜索、pH 证据、报告和稀释换算
 pnpm data:report  # 当前 SDS / pH 覆盖与来源缺口
 pnpm lint
 pnpm typecheck
-pnpm build        # 生产构建
+pnpm build        # 生成有内容版本的 Service Worker，再生产构建
+pnpm exec playwright install --no-shell chromium
+pnpm test:e2e     # 自动构建并启动生产服务，运行浏览器回归
+pnpm check:payload # 对已有生产构建检查 HTML/RSC gzip 预算
 ```
 
 新增或修改数据后运行 `pnpm test`：检查 ID、流程引用、分类、图片、SDS 来源和本地 PDF 校验和等约束。SDS、危险成分、图片例外与 pH 证据直接保存在各品牌的产品记录中；子分类排序由 `subcategories.ts` 管理。
@@ -82,7 +87,7 @@ JSON 的 `sds.missing`、`ph` 各项和 `localSds.missingOriginalUrl` 包含产�
 
 ## CI 与部署到 Vercel
 
-Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查和测试。生产构建由 Vercel 部署运行；仓库不再重复运行 GitHub Actions。
+Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查、单元测试和 `test:e2e:ci`。浏览器任务在主机构建并检查传输预算，再使用匹配 Playwright 版本的官方容器测试本地生产服务；失败时在 `test-results/` 留存 trace 和截图。仓库不再重复运行 GitHub Actions。
 
 
 在 Vercel 导入此仓库即可：Framework Preset 会自动识别为 Next.js，构建命令和输出目录都用默认值，包管理器按 `pnpm-lock.yaml` 识别为 pnpm。推送到主分支后自动部署，其他分支生成预览地址。
@@ -93,3 +98,16 @@ Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查
 ## 数据说明
 
 比例写法沿用官方：1:10 = 1 份原液 + 10 份水；PA壶比例指壶内调配比例。数据整理自各品牌官网产品页、技术资料与施工手册（2026 年 10 月）。施工前请先在不显眼处测试。
+
+## 离线与缓存更新
+
+`src/offline/service-worker.js` 是源文件；`pnpm build` 根据代码、资源和依赖生成版本及 `public/sw.js`，不要手工编辑生成文件。
+
+- 首次安装仅预存首页、流程页和必要脚本/样式，不后台下载全目录产品图。
+- HTML 与 RSC 分库存储。只有完整页面导航会移除已知的筛选参数；RSC 保留完整 URL 和 Vary 匹配。
+- 断网点击产品或视图链接使用已缓存的 HTML；未缓存页面显示明确的离线回退。
+- 联网、重新聚焦、收藏变化及 worker 更新时刷新收藏页，同时预存其脚本、样式与图片。每批最多预存 80 个收藏，缓存空间不足或未完成下载时不能保证离线可用。
+- 页面最多 100 项（保留首页和流程页），RSC 160 项，图片 128 项，哈希静态资源 256 项。产品图后台更新；构建更新会清理本应用旧版本页面和图片，不清除其他应用的缓存。
+- 外部 SDS 不在离线预存范围内。
+
+浏览器回归覆盖筛选刷新恢复、材质交集、换算、弹窗历史导航、流程目录一致性、离线刷新、收藏详情交互和移动端布局。`check:payload` 限制构建后 HTML/RSC 的 gzip 体积，这不是包含图片、字体和 JS 的整页体积。

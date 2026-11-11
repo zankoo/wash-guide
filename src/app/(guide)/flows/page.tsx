@@ -1,24 +1,18 @@
 import type { Metadata } from 'next';
-import { FlowBrowser, type FlowItem } from '@/components/flow-browser';
-import { FlowCard } from '@/components/flow-card';
+import { FlowBrowser } from '@/components/flow-browser';
 import { PageSlide } from '@/components/page-slide';
-import { FLOWS, flowInitials, flowSearchText } from '@/data';
+import { FLOWS, PRODUCTS, imageSrc, productsOfStep, stepsOf } from '@/data';
+import { flowItems } from '@/data/catalog';
+import { CatalogProvider } from '@/components/catalog-state';
+import { GuideShell } from '@/components/guide-shell';
+
+const usedIds = new Set(FLOWS.flatMap((f) => stepsOf(f).flatMap(productsOfStep)));
+const chips = PRODUCTS.filter((p) => usedIds.has(p.id)).map((p) => ({ id: p.id, name: p.name, brand: p.brand, image: imageSrc(p) }));
 
 export const metadata: Metadata = {
   title: '洗车流程与组合',
   description: 'Labocosmetica 3pH®、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON、BolaSolution、FEYNLAB、P&S 官方洗车流程，以及在官方流程上替换或追加步骤的产品组合。',
 };
-
-const items: FlowItem[] = FLOWS.map((f) => ({
-  id: f.id,
-  brand: f.brand,
-  scene: f.scene,
-  kind: f.kind,
-  name: f.name,
-  text: flowSearchText(f),
-  abbr: flowInitials(f),
-  card: <FlowCard f={f} />,
-}));
 
 const intro = (
   <div className="ph-explain">
@@ -42,8 +36,8 @@ const intro = (
 
 export default function FlowsPage() {
   return (
-    <PageSlide>
-      <FlowBrowser items={items} intro={intro} />
-    </PageSlide>
+    <CatalogProvider products={[]} flows={flowItems} chips={chips}><GuideShell><PageSlide>
+      <FlowBrowser cards={FLOWS} intro={intro} />
+    </PageSlide></GuideShell></CatalogProvider>
   );
 }

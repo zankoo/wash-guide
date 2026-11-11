@@ -4,15 +4,11 @@ import { useEffect, useRef } from 'react';
 import { MATERIALS, MATERIAL_NAME } from '@/data/materials';
 import { BRAND, BRAND_SHORT, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { BrandId } from '@/data/types';
-import { useFavorites } from '@/lib/favorites';
 import { useGuide } from './guide-state';
+import { useFilters } from './filter-state';
+import { useCatalogResults } from './catalog-state';
 import { CloseIcon, SearchIcon, StarIcon } from './icons';
 import { Indicator } from './indicator';
-
-/** counts[品牌 或 '' 表示全部][分类/场景 或 '' 表示全部] */
-export type CountTable = Record<string, Record<string, number>>;
-/** 产品数再按材质分一层：counts[材质 或 ''][品牌 或 ''][分类 / 子分类 或 ''] */
-export type ProductCounts = Record<string, CountTable>;
 
 /** 切换单项筛选时保留其他已选条件。 */
 export function usePickers() {
@@ -21,8 +17,10 @@ export function usePickers() {
   return { pickBrand: setBrand, pickMaterial: setMaterial };
 }
 
-export function FilterBar({ productCounts, flowCounts }: { productCounts: ProductCounts; flowCounts: CountTable }) {
-  const { isFlows, brand, material, query, setQuery, category, setCategory, scene, setScene, hits, clearFilters } = useGuide();
+export function FilterBar() {
+  const { isFlows } = useGuide();
+  const { brand, material, query, setQuery, category, setCategory, scene, setScene, clearFilters } = useFilters();
+  const { productCounts, flowSceneCounts, favoriteCount } = useCatalogResults();
   const { pickBrand, pickMaterial } = usePickers();
   const input = useRef<HTMLInputElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -35,8 +33,6 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: Produc
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
-  const favorites = useFavorites();
-  const counts = productCounts[''];
 
   // 桌面上按 / 直接聚焦搜索框
   useEffect(() => {
@@ -52,12 +48,12 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: Produc
   }, []);
 
   const chips = isFlows
-    ? [['', '全部场景'] as const, ...SCENES].map(([k, n]) => ({ k, n, count: flowCounts[brand][k] ?? 0 }))
+    ? [['', '全部场景'] as const, ...SCENES].map(([k, n]) => ({ k, n, count: flowSceneCounts[k] ?? 0 }))
     : [['', '全部'] as const, ...CATS].map(([k, n]) => ({
         k,
         n,
         // 有搜索词时显示该分类命中几款，没命中的分类不显示（选着的除外）
-        count: (hits ? hits[k] : counts[brand][k]) ?? 0,
+        count: productCounts[k] ?? 0,
       }));
   const selected = isFlows ? scene : category;
 
@@ -149,7 +145,7 @@ export function FilterBar({ productCounts, flowCounts }: { productCounts: Produc
               {category === 'fav' && <Indicator name="ind-chip" />}
               <StarIcon filled />
               常用
-              <small>{favorites.length}</small>
+              <small>{favoriteCount}</small>
             </button>
           )}
           {chips
