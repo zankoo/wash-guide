@@ -1,26 +1,21 @@
+'use client';
+
 import { Fragment } from 'react';
-import {
-  BRAND,
-  FLOW_BY_ID,
-  PH_LABEL,
-  SCENE_NAME,
-  getProduct,
-  imageSrc,
-  type FlowEntry,
-  type FlowStep,
-  type StepVariant,
-} from '@/data';
+import { BRAND, PH_LABEL, SCENE_NAME } from '@/data/taxonomy';
+import type { FlowStep, StepVariant } from '@/data/types';
+import type { FlowView } from '@/lib/catalog';
+import { useCatalogData } from './catalog-state';
+import { Notes } from './notes';
 import { FlowLink } from './flow-link';
 import { ProductLink } from './product-link';
-import { WarnIcon } from './icons';
 import { ProductThumb } from './product-image';
 import { VariantTabs } from './variant-tabs';
 
 function ProductChip({ id }: { id: string }) {
-  const p = getProduct(id);
+  const p = useCatalogData().chips.find((p) => p.id === id)!;
   return (
     <ProductLink className="pc" id={id}>
-      <ProductThumb src={imageSrc(p)} name={p.name} brand={p.brand} />
+      <ProductThumb src={p.image} name={p.name} brand={p.brand} />
       <span>{p.name}</span>
     </ProductLink>
   );
@@ -93,8 +88,9 @@ function Step({ x }: { x: FlowStep }) {
   );
 }
 
-export function FlowCard({ f }: { f: FlowEntry }) {
-  const base = f.kind === 'combo' ? FLOW_BY_ID.get(f.base) : undefined;
+export function FlowCard({ f }: { f: FlowView }) {
+  const { flows } = useCatalogData();
+  const base = f.kind === 'combo' ? flows.find((b) => b.id === f.base) : undefined;
   return (
     <article className={`flow ${f.brand} ${f.kind}`} id={f.id}>
       <div className="fl-h">
@@ -139,18 +135,5 @@ export function FlowCard({ f }: { f: FlowEntry }) {
         </a>
       </div>
     </article>
-  );
-}
-
-export function Notes({ items }: { items: string[] }) {
-  return (
-    <div className="notes">
-      {items.map((t, i) => (
-        <p key={i}>
-          <WarnIcon />
-          <span>{t}</span>
-        </p>
-      ))}
-    </div>
   );
 }

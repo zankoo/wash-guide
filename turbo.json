@@ -2,13 +2,25 @@
   "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "lint": {
-      "tags": ["ci"]
+      "tags": [
+        "ci"
+      ]
     },
     "typecheck": {
-      "tags": ["ci"]
+      "tags": [
+        "ci"
+      ]
     },
     "test": {
-      "tags": ["ci"]
+      "tags": [
+        "ci"
+      ]
+    },
+    "test:e2e:ci": {
+      "tags": [
+        "ci"
+      ],
+      "cache": false
     }
   }
 }

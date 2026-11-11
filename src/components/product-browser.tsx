@@ -1,38 +1,26 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Fragment, useDeferredValue, useEffect, useLayoutEffect, useRef, ViewTransition, type ReactNode } from 'react';
-import { MATERIAL_NAME, type MaterialId } from '@/data/materials';
+import { Fragment, useEffect, useLayoutEffect, useRef, ViewTransition } from 'react';
+import { MATERIAL_NAME } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
 import { CAT_NAME, CATS } from '@/data/taxonomy';
-import type { BrandId, CategoryId } from '@/data/types';
 import { useFavorites } from '@/lib/favorites';
-import { matchesQuery, relevance, suggestions, type RankFields } from '@/lib/search';
-import { useGuide, type SearchHits } from './guide-state';
-
-export interface ProductItem {
-  id: string;
-  brand: BrandId;
-  category: CategoryId;
-  /** 子分类 id */
-  sub: string;
-  /** 官方明确列出的适用材质 */
-  materials: MaterialId[];
-  /** 归一化后的搜索文本（见 fold） */
-  text: string;
-  /** 搜索结果排序用的字段 */
-  rank: RankFields;
-  /** 服务端渲染好的卡片 */
-  card: ReactNode;
-}
+import { relevance, suggestions } from '@/lib/search';
+import { useGuide } from './guide-state';
+import { useFilters } from './filter-state';
+import { useCatalogData, useCatalogResults } from './catalog-state';
+import { ProductCard } from './product-card';
 
 /** 折叠状态下每个分类预览的卡片数（CSS 按列数只露出一整行） */
 const PEEK = 6;
 
 /** 按品牌 / 分类 / 搜索词筛选服务端渲染好的产品卡片，按分类 → 子分类分组；「全部」视图下大分类默认折叠 */
-export function ProductBrowser({ items }: { items: ProductItem[] }) {
-  const { brand, material, category, setCategory, query: rawQuery, expanded, setExpanded, jumpTo, setHits, setQuery, clearFilters } = useGuide();
-  const query = useDeferredValue(rawQuery.trim());
+export function ProductBrowser() {
+  const { brand, material, category, setCategory, setQuery, clearFilters } = useFilters();
+  const { expanded, setExpanded, jumpTo } = useGuide();
+  const { products: items } = useCatalogData();
+  const { products: list, matchedProducts: matched, query } = useCatalogResults();
   const favorites = useFavorites();
   const router = useRouter();
 
@@ -45,22 +33,6 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
     const handle = idle(() => router.prefetch(`/p/${warmId}`));
     return () => cancel(handle);
   }, [router, warmId]);
-
-  const inCategory = (p: ProductItem) =>
-    !category || (category === 'fav' ? favorites.includes(p.id) : p.category === category);
-  // 先按品牌 / 材质 / 搜索词筛选，再按分类筛选：搜索时左栏和分类标签要显示每个分类各命中几款
-  const matched = items.filter(
-    (p) => (!brand || p.brand === brand) && material.every((m) => p.materials.includes(m)) && (!query || matchesQuery(p.text, query, p.rank.abbr)),
-  );
-  const list = matched.filter(inCategory);
-
-  // 把搜索命中数交给左栏和分类标签；用字符串比较，内容没变就不更新
-  const hitsKey = JSON.stringify(countHits(matched));
-  useEffect(() => {
-    setHits(hitsKey ? (JSON.parse(hitsKey) as SearchHits) : null);
-  }, [hitsKey, setHits]);
-  // 离开产品页（例如切到流程页）时清掉，左栏不再按搜索结果显示
-  useEffect(() => () => setHits(null), [setHits]);
 
   // 品牌 / 分类切换时整个列表淡入淡出（不给每张卡片单独命名，244 张太重）
   const listKey = `${brand}|${material}|${category}|${query ? 'q' : ''}`;
@@ -132,7 +104,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
             const group = ranked.filter(({ p }) => p.category === c);
             return group.length ? <section className="sec" id={`cat-${c}`} key={c}>
               <div className="sec-h"><h2>{name}</h2><span className="n">{group.length} 款</span></div>
-              <div className="grid results">{group.map(({ p }) => <Fragment key={p.id}>{p.card}</Fragment>)}</div>
+              <div className="grid results">{group.map(({ p }) => <Fragment key={p.id}><ProductCard p={p} eager={items.indexOf(p) < 6} /></Fragment>)}</div>
             </section> : null;
           })}
         </div>
@@ -181,11 +153,11 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
                 </nav>
               )}
               {compact ? (
-                <div className="grid">{group.map((p) => <Fragment key={p.id}>{p.card}</Fragment>)}</div>
+                <div className="grid">{group.map((p) => <Fragment key={p.id}><ProductCard p={p} eager={items.indexOf(p) < 6} /></Fragment>)}</div>
               ) : collapsed ? (
                 <div className="grid peek">
                   {group.slice(0, PEEK).map((p) => (
-                    <Fragment key={p.id}>{p.card}</Fragment>
+                    <Fragment key={p.id}><ProductCard p={p} eager={items.indexOf(p) < 6} /></Fragment>
                   ))}
                 </div>
               ) : (
@@ -199,7 +171,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
                     )}
                     <div className="grid">
                       {s.items.map((p) => (
-                        <Fragment key={p.id}>{p.card}</Fragment>
+                        <Fragment key={p.id}><ProductCard p={p} eager={items.indexOf(p) < 6} /></Fragment>
                       ))}
                     </div>
                   </div>
@@ -225,11 +197,4 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
       </div>
     </ViewTransition>
   );
-}
-
-/** 按分类统计命中数，'' 为合计 */
-function countHits(matched: ProductItem[]): SearchHits {
-  const hits: SearchHits = { '': matched.length };
-  for (const p of matched) hits[p.category] = (hits[p.category] ?? 0) + 1;
-  return hits;
 }

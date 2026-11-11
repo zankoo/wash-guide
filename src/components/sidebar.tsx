@@ -4,24 +4,16 @@ import { useEffect, useState } from 'react';
 import { MATERIALS, type MaterialId } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
 import { BRAND, BRANDS, CATS, SCENES } from '@/data/taxonomy';
-import type { BrandId, SceneId } from '@/data/types';
-import { useFavorites } from '@/lib/favorites';
-import { usePickers, type CountTable, type ProductCounts } from './filter-bar';
+import type { SceneId } from '@/data/types';
+import { usePickers } from './filter-bar';
 import { highlight } from './flow-browser';
 import { useGuide } from './guide-state';
+import { useFilters } from './filter-state';
+import { useCatalogResults } from './catalog-state';
 import { StarIcon } from './icons';
 import { Indicator } from './indicator';
 import { Logo } from './hero';
 import { ViewTabs } from './view-tabs';
-
-/** 流程目录只需要这几个字段 */
-export interface FlowIndexItem {
-  id: string;
-  brand: BrandId;
-  scene: SceneId;
-  name: string;
-  kind: 'off' | 'combo';
-}
 
 /** 滚动监听：返回当前位于视口上部的那个元素的 id */
 function useScrollSpy(selector: string, deps: unknown[]): string {
@@ -88,28 +80,17 @@ function usePin(): [Pin | null, (p: Pin) => void] {
 }
 
 /** 桌面左侧索引栏：品牌、分类目录（产品页）或场景与流程目录（流程页） */
-export function Sidebar({
-  productCounts,
-  subCounts,
-  flowCounts,
-  flows,
-}: {
-  productCounts: ProductCounts;
-  /** 各材质、品牌下每个子分类的产品数：只列出当前筛选下有产品的子分类 */
-  subCounts: ProductCounts;
-  flowCounts: CountTable;
-  flows: FlowIndexItem[];
-}) {
-  const { isFlows, brand, material, category, setCategory, scene, setScene, query, jumpTo, expanded, hits } = useGuide();
+export function Sidebar() {
+  const { isFlows, jumpTo, expanded } = useGuide();
+  const { brand, material, category, setCategory, scene, setScene, query } = useFilters();
   const { pickBrand, pickMaterial } = usePickers();
-  const favorites = useFavorites();
-  const catCounts = productCounts[''];
-  const counts = isFlows ? flowCounts : catCounts;
-
-  // 展开分类后会渲染出新的子分类区块，要重新监听
-  const spyCat = useScrollSpy('.sec', [isFlows, brand, material, category, query, expanded]);
-  const spySub = useScrollSpy('.subgrp', [isFlows, brand, material, category, query, expanded]);
-  const spyFlow = useScrollSpy('.flow', [isFlows, brand, scene, query]);
+  const { products, flows: shownFlows, productCounts: hits, subCounts, productBrandCounts, flowBrandCounts, flowSceneCounts, materialCounts, favoriteCount } = useCatalogResults();
+  const counts = isFlows ? flowBrandCounts : productBrandCounts;
+  const visibleProductIds = products.map((p) => p.id).join(',');
+  // 依赖实际渲染结果，而不是尚未完成 deferred 筛选的输入值。
+  const spyCat = useScrollSpy('.sec', [isFlows, visibleProductIds, expanded]);
+  const spySub = useScrollSpy('.subgrp', [isFlows, visibleProductIds, expanded]);
+  const spyFlow = useScrollSpy('.flow', [isFlows, shownFlows.map((f) => f.id).join(',')]);
   // 点击跳转时以被点的目标为准；用户自己滚动时跟着滚动位置走
   const [pin, setPin] = usePin();
   const activeCat = pin ? pin.cat : spyCat;
@@ -117,9 +98,8 @@ export function Sidebar({
   const activeFlow = pin ? pin.flow : spyFlow;
 
   // 产品页有搜索词时，左栏分类显示每个分类的命中数
-  const searching = !isFlows && (query.trim() !== '' || material.length > 0 || !!brand || !!category) && hits !== null;
+  const searching = !isFlows && (query.trim() !== '' || material.length > 0 || !!brand || !!category);
 
-  const shownFlows = flows.filter((f) => (!brand || f.brand === brand) && (!scene || f.scene === scene));
 
   return (
     <aside className="side" aria-label="索引">
@@ -129,7 +109,7 @@ export function Sidebar({
       </div>
       <ViewTabs className="tabs side-tabs" />
 
-      {!isFlows && <div className="side-sec side-favorites"><button type="button" className="side-fav" aria-pressed={category === 'fav'} onClick={() => setCategory(category === 'fav' ? '' : 'fav')}><StarIcon filled /> 我的常用 · {favorites.length}</button></div>}
+      {!isFlows && <div className="side-sec side-favorites"><button type="button" className="side-fav" aria-pressed={category === 'fav'} onClick={() => setCategory(category === 'fav' ? '' : 'fav')}><StarIcon filled /> 我的常用 · {favoriteCount}</button></div>}
       <div className="side-sec">
         <h2>品牌</h2>
         <ul className="side-list" role="list">
@@ -138,13 +118,13 @@ export function Sidebar({
               <button
                 type="button"
                 aria-pressed={brand === b}
-                className={counts[b][''] ? undefined : 'none'}
+                className={counts[b] ? undefined : 'none'}
                 onClick={() => pickBrand(b)}
               >
                 {brand === b && <Indicator name="ind-brand" />}
                 {b && <span className={`dot ${b}`} />}
                 {b ? BRAND[b] : '全部品牌'}
-                <small>{counts[b][''] ?? 0}</small>
+                <small>{counts[b] ?? 0}</small>
               </button>
             </li>
           ))}
@@ -157,13 +137,13 @@ export function Sidebar({
             <h2>场景</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部场景'] as const, ...SCENES] as const)
-                .filter(([k]) => flowCounts[brand][k])
+                .filter(([k]) => flowSceneCounts[k])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
                     <button type="button" aria-pressed={scene === k} onClick={() => setScene(k as SceneId | '')}>
                       {scene === k && <Indicator name="ind-scene" />}
                       {n}
-                      <small>{flowCounts[brand][k]}</small>
+                      <small>{flowSceneCounts[k]}</small>
                     </button>
                   </li>
                 ))}
@@ -206,12 +186,12 @@ export function Sidebar({
             <h2>适用材质（多选取交集）</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部'] as const, ...MATERIALS] as const)
-                .filter(([k]) => productCounts[k][brand][''])
+                .filter(([k]) => !k || material.includes(k) || materialCounts[k])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
                     <button type="button" aria-pressed={(k ? material.includes(k) : material.length === 0)} onClick={() => pickMaterial(k as MaterialId | '')}>
                       {n}
-                      <small>{productCounts[k][brand]['']}</small>
+                      <small>{k ? materialCounts[k] : products.length}</small>
                     </button>
                   </li>
                 ))}
@@ -220,7 +200,7 @@ export function Sidebar({
           <nav className="side-sec side-categories" aria-label="分类目录">
             <h2>{searching ? '分类（筛选结果）' : '分类'}</h2>
             <ul className="side-list" role="list">
-              {(favorites.length > 0 || category === 'fav') && (
+              {(favoriteCount > 0 || category === 'fav') && (
                 <li>
                   <button
                     type="button"
@@ -231,7 +211,7 @@ export function Sidebar({
                     {category === 'fav' && <Indicator name="ind-cat" />}
                     <StarIcon filled />
                     常用
-                    <small>{favorites.length}</small>
+                    <small>{favoriteCount}</small>
                   </button>
                 </li>
               )}
@@ -246,7 +226,7 @@ export function Sidebar({
             {searching ? (
               // 搜索时列表不按分类分区，没有可以跳转的位置：分类改为在搜索结果里筛选，再点一次取消
               <ul className="side-list side-hits" role="list">
-                {CATS.filter(([k]) => catCounts[brand][k]).map(([k, n]) => (
+                {CATS.filter(([k]) => hits[k] || category === k).map(([k, n]) => (
                   <li key={k}>
                     <button
                       type="button"
@@ -264,9 +244,9 @@ export function Sidebar({
               </ul>
             ) : (
               <ul className="side-index" role="list">
-                {CATS.filter(([k]) => catCounts[brand][k]).map(([k, n]) => {
+                {CATS.filter(([k]) => hits[k] || category === k).map(([k, n]) => {
                   const here = activeCat === `cat-${k}`;
-                  const subs = SUBCATS.filter((s) => s.category === k && subCounts[''][brand][s.id]);
+                  const subs = SUBCATS.filter((s) => s.category === k && subCounts[s.id]);
                   return (
                     <li key={k}>
                       <a
@@ -281,7 +261,7 @@ export function Sidebar({
                         }}
                       >
                         {n}
-                        <small>{catCounts[brand][k]}</small>
+                        <small>{hits[k]}</small>
                       </a>
                       {here && subs.length > 1 && (
                         <ul className="side-subs" role="list">

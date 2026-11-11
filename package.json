@@ -4,12 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/generate-sw.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "data:report": "node scripts/catalog-report.mjs"
+    "data:report": "node scripts/catalog-report.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:ci": "playwright install --with-deps --no-shell chromium && playwright test",
+    "check:payload": "node scripts/check-payload.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -19,6 +22,7 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

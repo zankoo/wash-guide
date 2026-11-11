@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { navigateOffline } from '@/lib/connectivity';
 import { useGuide } from './guide-state';
+import { useFilters } from './filter-state';
 import { FlowIcon, GridIcon } from './icons';
 import { Indicator } from './indicator';
 import { WakeToggle } from './wake-toggle';
@@ -11,7 +13,8 @@ import { WakeToggle } from './wake-toggle';
  * 去流程是「前进」、回产品是「后退」，页面内容按方向左右滑动；选中背景从一个标签滑到另一个。
  */
 export function ViewTabs({ className }: { className: string }) {
-  const { isFlows, filterSearch } = useGuide();
+  const { isFlows } = useGuide();
+  const { filterSearch } = useFilters();
   // 同一页面上有几组标签，指示块的名字要各不相同
   const ind = `ind-tab-${className.split(' ').at(-1)}`;
   const mark = <Indicator name={ind} />;
@@ -20,6 +23,7 @@ export function ViewTabs({ className }: { className: string }) {
       <Link
         className="tab"
         href={`/${filterSearch}`}
+        onNavigate={(event) => navigateOffline(event, `/${filterSearch}`)}
         aria-current={isFlows ? undefined : 'page'}
         scroll={false}
         transitionTypes={['nav-back']}
@@ -31,6 +35,7 @@ export function ViewTabs({ className }: { className: string }) {
       <Link
         className="tab"
         href={`/flows${filterSearch}`}
+        onNavigate={(event) => navigateOffline(event, `/flows${filterSearch}`)}
         aria-current={isFlows ? 'page' : undefined}
         scroll={false}
         transitionTypes={['nav-forward']}

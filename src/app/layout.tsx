@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Saira_Condensed } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
+import { FilterProvider } from '@/components/filter-state';
 import { GuideProvider } from '@/components/guide-state';
 import { OfflineSupport } from '@/components/offline-support';
 import { SITE_URL } from '@/lib/site';
@@ -32,11 +33,11 @@ export default function RootLayout({ children, modal }: LayoutProps<'/'>) {
   return (
     <html lang="zh-CN" className={display.variable}>
       <body>
-        <GuideProvider>
+        <FilterProvider><GuideProvider>
           {children}
           {modal}
           <OfflineSupport />
-        </GuideProvider>
+        </GuideProvider></FilterProvider>
         <SpeedInsights />
         <Analytics />
       </body>

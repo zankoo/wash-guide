@@ -582,3 +582,5 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 .material-picker summary{white-space:nowrap}
 .flow{scroll-margin-top:calc(var(--bar-h) + 12px)}
 @media(max-width:600px){.material-picker summary{padding:12px 6px;font-size:12px}}
+
+.offline-status{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:80;padding:8px 14px;border-radius:20px;background:var(--ink,#152b36);color:var(--paper,#fff);font-size:12px;white-space:nowrap;pointer-events:none}

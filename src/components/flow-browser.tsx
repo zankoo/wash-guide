@@ -1,24 +1,12 @@
 'use client';
 
-import { Fragment, useDeferredValue, useEffect, useRef, type ReactNode } from 'react';
+import { Fragment, useEffect, useRef, type ReactNode } from 'react';
 import { BRAND, BRANDS, FLOW_SOURCE } from '@/data/taxonomy';
-import type { BrandId, SceneId } from '@/data/types';
-import { matchesQuery } from '@/lib/search';
+import type { FlowView } from '@/lib/catalog';
 import { useGuide } from './guide-state';
-
-export interface FlowItem {
-  id: string;
-  brand: BrandId;
-  scene: SceneId;
-  kind: 'off' | 'combo';
-  name: string;
-  /** 归一化后的搜索文本（见 fold） */
-  text: string;
-  /** 流程英文名和所用产品名的首字母缩写（见 initials） */
-  abbr: string[];
-  /** 服务端渲染好的流程卡片 */
-  card: ReactNode;
-}
+import { useFilters } from './filter-state';
+import { useCatalogData, useCatalogResults } from './catalog-state';
+import { FlowCard } from './flow-card';
 
 export function highlight(id: string): boolean {
   const el = document.getElementById(id);
@@ -32,12 +20,12 @@ export function highlight(id: string): boolean {
 }
 
 /** 按品牌 / 场景 / 搜索词筛选流程，按品牌分为「官方循环」和「产品组合」两层 */
-export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactNode }) {
-  const { brand, scene, query: rawQuery, flowTarget } = useGuide();
-  const query = useDeferredValue(rawQuery.trim());
-  const list = items.filter(
-    (f) => (!brand || f.brand === brand) && (!scene || f.scene === scene) && (!query || matchesQuery(f.text, query, f.abbr)),
-  );
+export function FlowBrowser({ cards, intro }: { cards: FlowView[]; intro: ReactNode }) {
+  const { flowTarget } = useGuide();
+  const { brand, scene } = useFilters();
+  const { flows: items } = useCatalogData();
+  const { flows: list, query } = useCatalogResults();
+  const cardById = new Map(cards.map((f) => [f.id, f]));
 
   // 从产品详情或「套用官方」跳转过来：等目标渲染出来后滚动并高亮
   const handled = useRef(0);
@@ -121,7 +109,7 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
                   </div>
                   <div className="flows">
                     {off.map((f) => (
-                      <Fragment key={f.id}>{f.card}</Fragment>
+                      <Fragment key={f.id}><FlowCard f={cardById.get(f.id)!} /></Fragment>
                     ))}
                   </div>
                 </>
@@ -134,7 +122,7 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
                   </div>
                   <div className="flows">
                     {combos.map((f) => (
-                      <Fragment key={f.id}>{f.card}</Fragment>
+                      <Fragment key={f.id}><FlowCard f={cardById.get(f.id)!} /></Fragment>
                     ))}
                   </div>
                 </>
