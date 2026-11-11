@@ -8,10 +8,10 @@ import { PRODUCT_RANK, PRODUCTS, SUB_OF, materialsOf, productRankFields, product
 const items: ProductItem[] = PRODUCTS.toSorted((a, b) => PRODUCT_RANK.get(a.id)! - PRODUCT_RANK.get(b.id)!).map(
   (p, i) => ({
     id: p.id,
-    b: p.b,
-    c: p.c,
+    brand: p.brand,
+    category: p.category,
     sub: SUB_OF.get(p.id)!.id,
-    mt: materialsOf(p),
+    materials: materialsOf(p),
     text: productSearchText(p),
     rank: productRankFields(p),
     card: <ProductCard p={p} eager={i < 6} />,

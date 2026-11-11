@@ -11,13 +11,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<'/p/[id]'>): Promise<Metadata> {
   const p = PRODUCT_BY_ID.get((await params).id);
   if (!p) return {};
-  const ratios = p.d.slice(0, 3).map(([scene, ratio]) => `${scene} ${ratio}`).join('；');
-  const description = `${BRAND[p.b]} ${p.n}：${p.t}。${ratios ? `官方稀释比例：${ratios}。` : ''}`;
+  const ratios = p.dilutions.slice(0, 3).map(([scene, ratio]) => `${scene} ${ratio}`).join('；');
+  const description = `${BRAND[p.brand]} ${p.name}：${p.type}。${ratios ? `官方稀释比例：${ratios}。` : ''}`;
   const image = imageSrc(p);
   return {
-    title: `${p.n} · ${BRAND[p.b]}`,
+    title: `${p.name} · ${BRAND[p.brand]}`,
     description,
-    openGraph: { title: p.n, description, images: image ? [image] : undefined },
+    openGraph: { title: p.name, description, images: image ? [image] : undefined },
   };
 }
 

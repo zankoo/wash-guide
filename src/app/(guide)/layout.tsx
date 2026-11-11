@@ -5,12 +5,12 @@ import { ViewTabs } from '@/components/view-tabs';
 import { BRANDS, FLOWS, MATERIALS, PRODUCTS, SUB_OF, materialsOf } from '@/data';
 
 /** counts[品牌 | ''][分组 | ''] */
-function countBy<T extends { b: string }>(items: T[], group: (x: T) => string): CountTable {
+function countBy<T extends { brand: string }>(items: T[], group: (x: T) => string): CountTable {
   const table: CountTable = {};
   for (const b of ['', ...BRANDS]) {
     const row: Record<string, number> = {};
     for (const x of items) {
-      if (b && x.b !== b) continue;
+      if (b && x.brand !== b) continue;
       row[''] = (row[''] ?? 0) + 1;
       row[group(x)] = (row[group(x)] ?? 0) + 1;
     }
@@ -26,10 +26,10 @@ function byMaterial(group: (p: (typeof PRODUCTS)[number]) => string): ProductCou
   return table;
 }
 
-const productCounts = byMaterial((p) => p.c);
+const productCounts = byMaterial((p) => p.category);
 const subCounts = byMaterial((p) => SUB_OF.get(p.id)!.id);
-const flowCounts = countBy(FLOWS, (f) => f.sc);
-const flowIndex: FlowIndexItem[] = FLOWS.map((f) => ({ id: f.id, b: f.b, sc: f.sc, name: f.name, kind: f.kind }));
+const flowCounts = countBy(FLOWS, (f) => f.scene);
+const flowIndex: FlowIndexItem[] = FLOWS.map((f) => ({ id: f.id, brand: f.brand, scene: f.scene, name: f.name, kind: f.kind }));
 
 export default function GuideLayout({ children }: LayoutProps<'/'>) {
   return (

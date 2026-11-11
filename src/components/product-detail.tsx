@@ -13,65 +13,65 @@ export function ProductDetail({ p }: { p: Product }) {
   return (
     <>
       <div className="sh-head">
-        <div className={`sh-stage ${p.b}`}>
+        <div className={`sh-stage ${p.brand}`}>
           <ProductImage
             src={imageSrc(p)}
-            name={p.n}
-            brand={p.b}
-            alt={`${p.n} 产品图`}
+            name={p.name}
+            brand={p.brand}
+            alt={`${p.name} 产品图`}
             sizes="(max-width: 760px) 120px, 220px"
             eager
           />
         </div>
         <div className="sh-id">
           <div className="sh-tag">
-            <span className={`br ${p.b}`}>{BRAND[p.b]}</span>
+            <span className={`br ${p.brand}`}>{BRAND[p.brand]}</span>
             <span>
-              {CAT_NAME[p.c]} / {SUB_OF.get(p.id)?.n}
+              {CAT_NAME[p.category]} / {SUB_OF.get(p.id)?.name}
             </span>
           </div>
           <h2 className="sh-name" id="d-name">
-            {p.n}
+            {p.name}
           </h2>
-          <p className="sh-type">{p.t}</p>
+          <p className="sh-type">{p.type}</p>
           <PhLine p={p} />
           <FavButton id={p.id} />
         </div>
       </div>
       <div className="sh-body">
         <ToxicLine id={p.id} />
-        {p.d.length ? (
-          <DilutionTable rows={p.d} />
+        {p.dilutions.length ? (
+          <DilutionTable rows={p.dilutions} />
         ) : (
           <>
             <h3>稀释比例</h3>
-            <p className="none-msg">{p.c === 'acc' ? '配件类产品，无稀释比例。' : '官方未给出稀释比例，请按包装说明使用。'}</p>
+            <p className="none-msg">{p.category === 'acc' ? '配件类产品，无稀释比例。' : '官方未给出稀释比例，请按包装说明使用。'}</p>
           </>
         )}
         <dl className="facts">
           <div className="fact">
             <dt>规格</dt>
-            <dd>{p.f}</dd>
+            <dd>{p.sizes}</dd>
           </div>
           <div className="fact">
             <dt>适用材质</dt>
-            <dd>{p.m}</dd>
+            <dd>{p.materials}</dd>
           </div>
         </dl>
-        {p.s.length > 0 && (
+        {p.steps.length > 0 && (
           <>
             <h3>施工步骤</h3>
             <ol className="steps">
-              {p.s.map((s, i) => (
+              {p.steps.map((s, i) => (
                 <li key={i}>{s}</li>
               ))}
             </ol>
           </>
         )}
-        {p.x.length > 0 && (
+        {p.notes.length > 0 && (
           <>
             <h3>注意事项</h3>
-            <Notes items={p.x} />
+            <Notes items={p.notes} />
           </>
         )}
         {used.length > 0 && (
@@ -79,10 +79,10 @@ export function ProductDetail({ p }: { p: Product }) {
             <h3>出现在这些流程</h3>
             <div className="rel">
               {used.map((f) => (
-                <FlowLink key={f.id} flow={{ id: f.id, b: f.b, sc: f.sc }}>
+                <FlowLink key={f.id} flow={{ id: f.id, brand: f.brand, scene: f.scene }}>
                   <b>{f.name}</b>
                   <small>
-                    {f.kind === 'off' ? '官方循环' : '产品组合'}，{BRAND[f.b]}
+                    {f.kind === 'off' ? '官方循环' : '产品组合'}，{BRAND[f.brand]}
                   </small>
                 </FlowLink>
               ))}
@@ -90,7 +90,7 @@ export function ProductDetail({ p }: { p: Product }) {
           </>
         )}
         <div className="src-row">
-          <a className="src" href={p.u} target="_blank" rel="noopener">
+          <a className="src" href={p.url} target="_blank" rel="noopener">
             查看官网原文
             <ExternalIcon />
           </a>
@@ -163,7 +163,7 @@ function ToxicLine({ id }: { id: string }) {
 
 /** 产品自身 pH：有官方数据显示彩色标签；官方标注不适用的写「不适用」；配件不显示 */
 function PhLine({ p }: { p: Product }) {
-  if (p.c === 'acc') return null;
+  if (p.category === 'acc') return null;
   const t = phText(p);
   return (
     <p className="sh-ph">

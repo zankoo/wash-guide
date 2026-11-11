@@ -56,15 +56,15 @@ export const SUB_OF = new Map<string, Subcategory>(SUBCATS.flatMap((s) => s.ids.
 export const PRODUCT_RANK = new Map(SUBCATS.flatMap((s) => s.ids).map((id, i) => [id, i]));
 
 export const stepsOf = (f: Flow): FlowStep[] => [...f.steps, ...(f.branch?.steps ?? [])];
-export const productsOfStep = (x: FlowStep): string[] => [...(x.p ?? []), ...(x.vars ?? []).flatMap((v) => v.p ?? [])];
+export const productsOfStep = (x: FlowStep): string[] => [...(x.products ?? []), ...(x.variants ?? []).flatMap((v) => v.products ?? [])];
 
 export const flowsUsing = (id: string): FlowEntry[] =>
   FLOWS.filter((f) => stepsOf(f).some((x) => productsOfStep(x).includes(id)));
 
 /** 只展示最常用的一项，保留工具 / 场景，完整用法在详情表。 */
 export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
-  if (!p.d.length) return p.c === 'acc' ? 'accessory' : 'see-label';
-  const row = p.d.find(([scene, ratio]) => !/VDA|最高使用浓度/.test(scene) && /\d|原液|即用/.test(ratio));
+  if (!p.dilutions.length) return p.category === 'acc' ? 'accessory' : 'see-label';
+  const row = p.dilutions.find(([scene, ratio]) => !/VDA|最高使用浓度/.test(scene) && /\d|原液|即用/.test(ratio));
   if (!row) return 'see-label';
   const [scene, ratio, tool] = row;
   const label = tool && tool !== '—' && !scene.includes(tool) ? `${tool} · ${scene}` : scene;
@@ -75,18 +75,18 @@ export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
 export function phClaim(p: Product): string | undefined {
   if (p.id === 'C-reset') return '官方称稀释后中性';
   if (p.id === 'M-iron-remover' || p.id === 'C-hydro2-foam') return '官方称中性';
-  if (p.ph?.[0] === 'acid' && p.t.includes('无酸')) return '官方称无酸配方';
+  if (p.ph?.[0] === 'acid' && p.type.includes('无酸')) return '官方称无酸配方';
   return undefined;
 }
 
 /** 搜索排序用的字段（见 relevance） */
 export function productRankFields(p: Product): RankFields {
-  return { name: fold(p.n), type: fold(p.t), tags: fold([SUB_OF.get(p.id)?.n ?? '', CAT_NAME[p.c], p.m].join(' ')), abbr: initials(p.n) };
+  return { name: fold(p.name), type: fold(p.type), tags: fold([SUB_OF.get(p.id)?.name ?? '', CAT_NAME[p.category], p.materials].join(' ')), abbr: initials(p.name) };
 }
 
 export function productSearchText(p: Product): string {
-  const sub = SUB_OF.get(p.id)?.n ?? '';
-  return fold([p.n, p.t, p.m, CAT_NAME[p.c], CAT_EN[p.c], sub, BRAND[p.b], phText(p) ?? '', ...p.d.flat(), ...p.x].join(' '));
+  const sub = SUB_OF.get(p.id)?.name ?? '';
+  return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...p.notes].join(' '));
 }
 
 /** pH 标签文字：「碱性 12.5」；官方未公布或不适用时返回 undefined */
@@ -99,20 +99,20 @@ export function phText(p: Product): string | undefined {
 
 /** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */
 export function flowInitials(f: FlowEntry): string[] {
-  const names = [f.en ?? '', ...stepsOf(f).flatMap((x) => productsOfStep(x).map((id) => getProduct(id).n))];
+  const names = [f.en ?? '', ...stepsOf(f).flatMap((x) => productsOfStep(x).map((id) => getProduct(id).name))];
   return [...new Set(names.flatMap(initials))];
 }
 
 export function flowSearchText(f: FlowEntry): string {
   return fold([
-    f.name, f.en ?? '', f.sum, SCENE_NAME[f.sc], ...f.tags, ...f.x,
-    f.kind === 'combo' ? f.at : '', f.branch?.n ?? '',
+    f.name, f.en ?? '', f.summary, SCENE_NAME[f.scene], ...f.tags, ...f.notes,
+    f.kind === 'combo' ? f.at : '', f.branch?.name ?? '',
     ...stepsOf(f).flatMap((x) => [
-      x.ph, x.r ?? '', x.how ?? '', ...(x.o ?? []),
-      ...(x.vars ?? []).flatMap((v) => [v.n, v.r ?? '', v.how ?? '']),
-      ...productsOfStep(x).map((id) => `${getProduct(id).n} ${getProduct(id).t}`),
+      x.phase, x.ratio ?? '', x.how ?? '', ...(x.extras ?? []),
+      ...(x.variants ?? []).flatMap((v) => [v.name, v.ratio ?? '', v.how ?? '']),
+      ...productsOfStep(x).map((id) => `${getProduct(id).name} ${getProduct(id).type}`),
     ]),
   ].join(' '));
 }
 
-export const OFFICIAL_RATIO_ROWS = PRODUCTS.reduce((n, p) => n + p.d.filter((d) => /1:\d|原液/.test(d[1])).length, 0);
+export const OFFICIAL_RATIO_ROWS = PRODUCTS.reduce((n, p) => n + p.dilutions.filter((d) => /1:\d|原液/.test(d[1])).length, 0);

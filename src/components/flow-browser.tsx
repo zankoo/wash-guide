@@ -8,8 +8,8 @@ import { useGuide } from './guide-state';
 
 export interface FlowItem {
   id: string;
-  b: BrandId;
-  sc: SceneId;
+  brand: BrandId;
+  scene: SceneId;
   kind: 'off' | 'combo';
   name: string;
   /** 归一化后的搜索文本（见 fold） */
@@ -36,7 +36,7 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
   const { brand, scene, query: rawQuery, flowTarget } = useGuide();
   const query = useDeferredValue(rawQuery.trim());
   const list = items.filter(
-    (f) => (!brand || f.b === brand) && (!scene || f.sc === scene) && (!query || matchesQuery(f.text, query, f.abbr)),
+    (f) => (!brand || f.brand === brand) && (!scene || f.scene === scene) && (!query || matchesQuery(f.text, query, f.abbr)),
   );
 
   // 从产品详情或「套用官方」跳转过来：等目标渲染出来后滚动并高亮
@@ -73,7 +73,7 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
           </summary>
           <p className="toc-note">实线框是官方循环，虚线框是在官方循环上替换或追加步骤的产品组合</p>
           {BRANDS.map((b) => {
-            const own = list.filter((f) => f.b === b);
+            const own = list.filter((f) => f.brand === b);
             if (!own.length) return null;
             return (
               <div className="toc-b" key={b}>
@@ -103,8 +103,8 @@ export function FlowBrowser({ items, intro }: { items: FlowItem[]; intro: ReactN
         <p className="empty">没有匹配的流程，换个关键词或场景试试。</p>
       ) : (
         BRANDS.map((b) => {
-          const off = list.filter((f) => f.b === b && f.kind === 'off');
-          const combos = list.filter((f) => f.b === b && f.kind === 'combo');
+          const off = list.filter((f) => f.brand === b && f.kind === 'off');
+          const combos = list.filter((f) => f.brand === b && f.kind === 'combo');
           if (!off.length && !combos.length) return null;
           return (
             <Fragment key={b}>

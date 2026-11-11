@@ -12,12 +12,12 @@ import { useGuide, type SearchHits } from './guide-state';
 
 export interface ProductItem {
   id: string;
-  b: BrandId;
-  c: CategoryId;
+  brand: BrandId;
+  category: CategoryId;
   /** 子分类 id */
   sub: string;
   /** 官方明确列出的适用材质 */
-  mt: MaterialId[];
+  materials: MaterialId[];
   /** 归一化后的搜索文本（见 fold） */
   text: string;
   /** 搜索结果排序用的字段 */
@@ -47,10 +47,10 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
   }, [router, warmId]);
 
   const inCategory = (p: ProductItem) =>
-    !category || (category === 'fav' ? favorites.includes(p.id) : p.c === category);
+    !category || (category === 'fav' ? favorites.includes(p.id) : p.category === category);
   // 先按品牌 / 材质 / 搜索词筛选，再按分类筛选：搜索时左栏和分类标签要显示每个分类各命中几款
   const matched = items.filter(
-    (p) => (!brand || p.b === brand) && material.every((m) => p.mt.includes(m)) && (!query || matchesQuery(p.text, query, p.rank.abbr)),
+    (p) => (!brand || p.brand === brand) && material.every((m) => p.materials.includes(m)) && (!query || matchesQuery(p.text, query, p.rank.abbr)),
   );
   const list = matched.filter(inCategory);
 
@@ -129,7 +129,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
             )}
           </p>
           {CATS.map(([c, name]) => {
-            const group = ranked.filter(({ p }) => p.c === c);
+            const group = ranked.filter(({ p }) => p.category === c);
             return group.length ? <section className="sec" id={`cat-${c}`} key={c}>
               <div className="sec-h"><h2>{name}</h2><span className="n">{group.length} 款</span></div>
               <div className="grid results">{group.map(({ p }) => <Fragment key={p.id}>{p.card}</Fragment>)}</div>
@@ -149,9 +149,9 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
           </p>
         )}
         {CATS.map(([k, name]) => {
-          const group = list.filter((p) => p.c === k);
+          const group = list.filter((p) => p.category === k);
           if (!group.length) return null;
-          const subs = SUBCATS.filter((s) => s.c === k)
+          const subs = SUBCATS.filter((s) => s.category === k)
             .map((s) => ({ ...s, items: group.filter((p) => p.sub === s.id) }))
             .filter((s) => s.items.length);
           const collapsible = browsing && group.length > PEEK;
@@ -174,7 +174,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
                         jumpTo(`sub-${s.id}`, k);
                       }}
                     >
-                      {s.n}
+                      {s.name}
                       <small>{s.items.length}</small>
                     </a>
                   ))}
@@ -193,7 +193,7 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
                   <div className="subgrp" key={s.id} id={`sub-${s.id}`}>
                     {!compact && subs.length > 1 && (
                       <h3 className="sub-h">
-                        {s.n}
+                        {s.name}
                         <small>{s.items.length}</small>
                       </h3>
                     )}
@@ -230,6 +230,6 @@ export function ProductBrowser({ items }: { items: ProductItem[] }) {
 /** 按分类统计命中数，'' 为合计 */
 function countHits(matched: ProductItem[]): SearchHits {
   const hits: SearchHits = { '': matched.length };
-  for (const p of matched) hits[p.c] = (hits[p.c] ?? 0) + 1;
+  for (const p of matched) hits[p.category] = (hits[p.category] ?? 0) + 1;
   return hits;
 }

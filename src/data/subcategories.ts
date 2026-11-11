@@ -2,8 +2,8 @@ import type { CategoryId } from './types';
 
 export interface Subcategory {
   id: string;
-  c: CategoryId;
-  n: string;
+  category: CategoryId;
+  name: string;
   /** 产品 id；同一子分类内跨品牌混排，按用途 / 强度排序 */
   ids: string[];
 }
@@ -11,84 +11,84 @@ export interface Subcategory {
 /** 分类下的第二层：每款产品恰好属于一个子分类，子分类顺序即页面上的显示顺序 */
 export const SUBCATS: Subcategory[] = [
   // ── 预洗 / TFR
-  { id: 'pre-alk', c: 'pre', n: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'K-super-foam-fruit-bowl', 'K-super-foam', 'K-super-foam-nta-frei', 'K-prewash-a', 'K-prewash-b', 'K-prewash-express', 'C-lift', 'L-libera', 'K-green-star', 'K-green-star-96', 'K-green-star-bmp', 'L-initio', 'F-supermafrasol-evo'] },
-  { id: 'pre-neu', c: 'pre', n: '中性预洗', ids: ['L-neve', 'K-gsf'] },
-  { id: 'pre-acid', c: 'pre', n: '酸性预洗', ids: ['B-a55'] },
-  { id: 'pre-bug', c: 'pre', n: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer', 'P-bug-off'] },
-  { id: 'pre-foam', c: 'pre', n: '泡沫预洗', ids: ['G-foam', 'F-supermafrasol', 'F-idrowash', 'P-frostbite'] },
+  { id: 'pre-alk', category: 'pre', name: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'K-super-foam-fruit-bowl', 'K-super-foam', 'K-super-foam-nta-frei', 'K-prewash-a', 'K-prewash-b', 'K-prewash-express', 'C-lift', 'L-libera', 'K-green-star', 'K-green-star-96', 'K-green-star-bmp', 'L-initio', 'F-supermafrasol-evo'] },
+  { id: 'pre-neu', category: 'pre', name: '中性预洗', ids: ['L-neve', 'K-gsf'] },
+  { id: 'pre-acid', category: 'pre', name: '酸性预洗', ids: ['B-a55'] },
+  { id: 'pre-bug', category: 'pre', name: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer', 'P-bug-off'] },
+  { id: 'pre-foam', category: 'pre', name: '泡沫预洗', ids: ['G-foam', 'F-supermafrasol', 'F-idrowash', 'P-frostbite'] },
 
   // ── 洗车香波 / 免冲洗
-  { id: 'wash-neu', c: 'wash', n: '日常维护香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe', 'B-a43', 'B-a33', 'N-pure-wash', 'P-pearl', 'P-irs', 'P-wash-wax'] },
-  { id: 'wash-plain', c: 'wash', n: '去油香波', ids: ['F-shampoo-power'] },
-  { id: 'wash-protect', c: 'wash', n: '洗护一体 / 镀膜香波', ids: ['L-revitax', 'M-ceramic-shampoo', 'K-ceramic-effect-shampoo', 'K-nanomagic-shampoo', 'C-hydro2-foam', 'K-glanzwachsshampoo', 'G-bathe-plus', 'F-shampoo-cera', 'F-polish-express', 'P-radiance'] },
-  { id: 'wash-acid', c: 'wash', n: '酸性除垢香波', ids: ['L-purifica', 'M-descale-foam-shampoo', 'K-reactivation-shampoo', 'G-restartwash', 'C-descale', 'L-renova', 'B-e55'] },
-  { id: 'wash-deco', c: 'wash', n: '中性除染香波（去铁 / 恢复镀膜）', ids: ['G-ppf-wash'] },
-  { id: 'wash-film', c: 'wash', n: '哑光漆 / 改色膜专用', ids: ['L-satino', 'M-black-wrap-shampoo'] },
-  { id: 'wash-rinseless', c: 'wash', n: '免冲洗 / 无水洗', ids: ['L-idrosave', 'K-rapid-rinseless-wash', 'M-waterless', 'C-ech2o', 'C-rinsex', 'G-ecowash', 'K-wash-finish', 'L-preludio-alkaline', 'L-preludio-acidic', 'F-waterless', 'N-pure-rinseless', 'P-absolute', 'P-epic'] },
+  { id: 'wash-neu', category: 'wash', name: '日常维护香波', ids: ['L-semper', 'M-neutral-foam-shampoo', 'C-reset', 'K-autoshampoo', 'K-active-foam', 'G-bathe', 'B-a43', 'B-a33', 'N-pure-wash', 'P-pearl', 'P-irs', 'P-wash-wax'] },
+  { id: 'wash-plain', category: 'wash', name: '去油香波', ids: ['F-shampoo-power'] },
+  { id: 'wash-protect', category: 'wash', name: '洗护一体 / 镀膜香波', ids: ['L-revitax', 'M-ceramic-shampoo', 'K-ceramic-effect-shampoo', 'K-nanomagic-shampoo', 'C-hydro2-foam', 'K-glanzwachsshampoo', 'G-bathe-plus', 'F-shampoo-cera', 'F-polish-express', 'P-radiance'] },
+  { id: 'wash-acid', category: 'wash', name: '酸性除垢香波', ids: ['L-purifica', 'M-descale-foam-shampoo', 'K-reactivation-shampoo', 'G-restartwash', 'C-descale', 'L-renova', 'B-e55'] },
+  { id: 'wash-deco', category: 'wash', name: '中性除染香波（去铁 / 恢复镀膜）', ids: ['G-ppf-wash'] },
+  { id: 'wash-film', category: 'wash', name: '哑光漆 / 改色膜专用', ids: ['L-satino', 'M-black-wrap-shampoo'] },
+  { id: 'wash-rinseless', category: 'wash', name: '免冲洗 / 无水洗', ids: ['L-idrosave', 'K-rapid-rinseless-wash', 'M-waterless', 'C-ech2o', 'C-rinsex', 'G-ecowash', 'K-wash-finish', 'L-preludio-alkaline', 'L-preludio-acidic', 'F-waterless', 'N-pure-rinseless', 'P-absolute', 'P-epic'] },
 
   // ── 轮毂轮胎
-  { id: 'wheel-neu', c: 'wheel', n: '无酸 / 中性（铁粉变色）', ids: ['M-wheel-decontaminant', 'K-magic-wheel-cleaner', 'K-reactive-wheel-cleaner', 'K-felgenblitz-saeurefrei', 'G-iron-wheelcleaner', 'F-fallout', 'F-regenera-rims', 'B-w35'] },
-  { id: 'wheel-alk', c: 'wheel', n: '碱性轮毂 / 轮胎清洁', ids: ['M-wheel-tyre-cleaner', 'M-wheel-foam-cleaner', 'K-alkali-wheel-cleaner', 'K-felgenblitz-alkalisch', 'C-retyre', 'G-tirecleaner', 'F-cerchi-gomme', 'B-w55', 'P-undressed'] },
-  { id: 'wheel-plain', c: 'wheel', n: '其他轮毂清洁', ids: ['F-splendorlega', 'N-tire-wheel', 'P-brake-buster'] },
-  { id: 'wheel-acid', c: 'wheel', n: '酸性（强效）', ids: ['C-wheelx', 'K-felgenreiniger-k', 'K-felgenreiniger-k-viskos', 'K-triple-acid-star', 'K-felgenreiniger-cl', 'K-felgenreiniger-extrem'] },
+  { id: 'wheel-neu', category: 'wheel', name: '无酸 / 中性（铁粉变色）', ids: ['M-wheel-decontaminant', 'K-magic-wheel-cleaner', 'K-reactive-wheel-cleaner', 'K-felgenblitz-saeurefrei', 'G-iron-wheelcleaner', 'F-fallout', 'F-regenera-rims', 'B-w35'] },
+  { id: 'wheel-alk', category: 'wheel', name: '碱性轮毂 / 轮胎清洁', ids: ['M-wheel-tyre-cleaner', 'M-wheel-foam-cleaner', 'K-alkali-wheel-cleaner', 'K-felgenblitz-alkalisch', 'C-retyre', 'G-tirecleaner', 'F-cerchi-gomme', 'B-w55', 'P-undressed'] },
+  { id: 'wheel-plain', category: 'wheel', name: '其他轮毂清洁', ids: ['F-splendorlega', 'N-tire-wheel', 'P-brake-buster'] },
+  { id: 'wheel-acid', category: 'wheel', name: '酸性（强效）', ids: ['C-wheelx', 'K-felgenreiniger-k', 'K-felgenreiniger-k-viskos', 'K-triple-acid-star', 'K-felgenreiniger-cl', 'K-felgenreiniger-extrem'] },
 
   // ── 除染 / 去水垢
-  { id: 'deco-iron', c: 'deco', n: '铁粉 / 锈斑', ids: ['L-sidero', 'M-iron-remover', 'C-ironx', 'G-iron', 'K-reactive-rust-remover', 'C-ironx-paste', 'C-ironx-ss', 'C-ironx-limescale', 'C-trix', 'K-flugrostentferner-bmp', 'F-pulismog', 'B-a53', 'P-iron-buster', 'P-crystal-wash'] },
-  { id: 'deco-water', c: 'deco', n: '水垢 / 水斑', ids: ['L-energo', 'M-water-spot-mineral-remover', 'C-spotless', 'K-spotless-ceramic-finish', 'G-waterspot', 'B-p58', 'B-p35'] },
-  { id: 'deco-tar', c: 'deco', n: '柏油 / 除胶 / 树脂', ids: ['K-teerwaesche-a', 'C-tarx', 'C-tarx-original', 'G-tar', 'K-eulex', 'K-eulex-m', 'K-eulex-v', 'K-orange-power', 'F-decaflash', 'F-resinoff', 'B-a35', 'P-tree-sap'] },
-  { id: 'deco-clay', c: 'deco', n: '清洁泥 / 润滑液', ids: ['K-reinigungsknete-blau', 'K-reinigungsknete-rot', 'L-lubrifica', 'K-clay-spray', 'C-claylube', 'G-clay', 'G-claylube', 'F-clay-soft', 'F-clay-medium', 'F-regenera-body', 'N-prime'] },
-  { id: 'deco-special', c: 'deco', n: '专项（尾喉 / PPF）', ids: ['L-cronos', 'L-limpia', 'G-ppf-renew'] },
+  { id: 'deco-iron', category: 'deco', name: '铁粉 / 锈斑', ids: ['L-sidero', 'M-iron-remover', 'C-ironx', 'G-iron', 'K-reactive-rust-remover', 'C-ironx-paste', 'C-ironx-ss', 'C-ironx-limescale', 'C-trix', 'K-flugrostentferner-bmp', 'F-pulismog', 'B-a53', 'P-iron-buster', 'P-crystal-wash'] },
+  { id: 'deco-water', category: 'deco', name: '水垢 / 水斑', ids: ['L-energo', 'M-water-spot-mineral-remover', 'C-spotless', 'K-spotless-ceramic-finish', 'G-waterspot', 'B-p58', 'B-p35'] },
+  { id: 'deco-tar', category: 'deco', name: '柏油 / 除胶 / 树脂', ids: ['K-teerwaesche-a', 'C-tarx', 'C-tarx-original', 'G-tar', 'K-eulex', 'K-eulex-m', 'K-eulex-v', 'K-orange-power', 'F-decaflash', 'F-resinoff', 'B-a35', 'P-tree-sap'] },
+  { id: 'deco-clay', category: 'deco', name: '清洁泥 / 润滑液', ids: ['K-reinigungsknete-blau', 'K-reinigungsknete-rot', 'L-lubrifica', 'K-clay-spray', 'C-claylube', 'G-clay', 'G-claylube', 'F-clay-soft', 'F-clay-medium', 'F-regenera-body', 'N-prime'] },
+  { id: 'deco-special', category: 'deco', name: '专项（尾喉 / PPF）', ids: ['L-cronos', 'L-limpia', 'G-ppf-renew'] },
 
   // ── 研磨抛光 / 施工前处理（研磨剂按切削力从强到弱）
-  { id: 'polish-heavy', c: 'polish', n: '重切削研磨', ids: ['C-ultracut', 'L-audace', 'K-heavy-cut-h902', 'K-heavy-quick-cut-b901', 'K-schleifpaste-h701', 'G-compound-plus', 'C-clearcut', 'F-corrector', 'N-a50', 'P-intervention', 'P-ego-maker', 'P-ballistic', 'P-smart-extra-cut'] },
-  { id: 'polish-medium', c: 'polish', n: '中切削 / 一步抛光', ids: ['L-leale', 'K-fine-cut-f601', 'K-one-cut-finish-p602', 'C-fixer', 'C-allin', 'G-compound', 'F-scratch', 'F-scratch-remover', 'N-a500', 'P-rehab', 'P-deep-finish', 'P-full-throttle'] },
-  { id: 'polish-fine', c: 'polish', n: '细抛 / 收光', ids: ['K-micro-cut-m302', 'K-micro-cut-finish-p301', 'K-micro-cut-m202', 'K-lack-polish-violett', 'L-fiero', 'C-reflect', 'K-lack-polish-gruen', 'C-essence', 'G-polish', 'G-primer', 'F-illumina', 'F-cleanerwax', 'F-polish-clever', 'B-once', 'N-a1000', 'N-ceramic-primer', 'P-therapy', 'P-envy'] },
-  { id: 'polish-prep', c: 'polish', n: '镀膜前脱脂检验', ids: ['L-veritas', 'C-eraser', 'G-prep', 'G-total-remover', 'K-silicon-wachsentferner', 'K-panel-preparation-spray', 'F-sherlock', 'B-p45', 'N-panel-prep', 'P-paint-prep'] },
-  { id: 'polish-special', c: 'polish', n: '大灯 / 金属', ids: ['K-headlight-polish-set', 'K-metal-polish', 'C-metallicut', 'G-metalpolish', 'F-regenera-view', 'F-regenera-headlights', 'F-flashbright', 'P-headlight-compound', 'P-headlight-polish', 'P-metal-brite'] },
+  { id: 'polish-heavy', category: 'polish', name: '重切削研磨', ids: ['C-ultracut', 'L-audace', 'K-heavy-cut-h902', 'K-heavy-quick-cut-b901', 'K-schleifpaste-h701', 'G-compound-plus', 'C-clearcut', 'F-corrector', 'N-a50', 'P-intervention', 'P-ego-maker', 'P-ballistic', 'P-smart-extra-cut'] },
+  { id: 'polish-medium', category: 'polish', name: '中切削 / 一步抛光', ids: ['L-leale', 'K-fine-cut-f601', 'K-one-cut-finish-p602', 'C-fixer', 'C-allin', 'G-compound', 'F-scratch', 'F-scratch-remover', 'N-a500', 'P-rehab', 'P-deep-finish', 'P-full-throttle'] },
+  { id: 'polish-fine', category: 'polish', name: '细抛 / 收光', ids: ['K-micro-cut-m302', 'K-micro-cut-finish-p301', 'K-micro-cut-m202', 'K-lack-polish-violett', 'L-fiero', 'C-reflect', 'K-lack-polish-gruen', 'C-essence', 'G-polish', 'G-primer', 'F-illumina', 'F-cleanerwax', 'F-polish-clever', 'B-once', 'N-a1000', 'N-ceramic-primer', 'P-therapy', 'P-envy'] },
+  { id: 'polish-prep', category: 'polish', name: '镀膜前脱脂检验', ids: ['L-veritas', 'C-eraser', 'G-prep', 'G-total-remover', 'K-silicon-wachsentferner', 'K-panel-preparation-spray', 'F-sherlock', 'B-p45', 'N-panel-prep', 'P-paint-prep'] },
+  { id: 'polish-special', category: 'polish', name: '大灯 / 金属', ids: ['K-headlight-polish-set', 'K-metal-polish', 'C-metallicut', 'G-metalpolish', 'F-regenera-view', 'F-regenera-headlights', 'F-flashbright', 'P-headlight-compound', 'P-headlight-polish', 'P-metal-brite'] },
 
   // ── 镀膜
-  { id: 'coat-paint', c: 'coat', n: '漆面镀膜', ids: ['L-hpc-2', 'L-hpc-pro', 'L-sam', 'L-blindo', 'L-stc', 'K-ceramic-body-cb001', 'K-ceramic-allround-c002', 'K-ceramic-neo-c003', 'K-1k-nano', 'C-cq-lite', 'C-cq-uk', 'C-cq-uk4', 'C-cq-aqua', 'C-cq-sic', 'C-cq-pro', 'C-cqfr', 'C-dq-go', 'C-dquartz', 'G-one-evo', 'G-pure-evo', 'G-mohs-evo', 'G-syncro-evo', 'G-matte-evo', 'G-cancoat-evo', 'G-flash-evo', 'G-infinite-base-1', 'G-infinite-base-2', 'N-original', 'N-paul-dalton', 'N-ceramic-v3', 'N-ultra-v3', 'N-ceramic-plus', 'N-self-heal-plus', 'N-matte', 'P-sole', 'P-inspiration-classic', 'P-stout'] },
-  { id: 'coat-top', c: 'coat', n: '面层 / 镀膜修复', ids: ['C-cq-gliss', 'C-essence-plus', 'G-infinite-top-1', 'G-infinite-top-2', 'G-cancoat-pro-evo', 'N-overcoat-v3', 'N-leveling-aid'] },
-  { id: 'coat-glass', c: 'coat', n: '玻璃镀膜', ids: ['K-ceramic-glass-cg001', 'C-dq-gforce', 'G-view-evo', 'G-antifog', 'N-window-coating', 'P-vue'] },
-  { id: 'coat-trim', c: 'coat', n: '轮毂 / 塑料 / 轮胎 / 膜', ids: ['K-ceramic-rims-cr001', 'C-cq-dlux', 'C-cq-dlux2', 'K-plast-shield', 'C-cq-blackout', 'C-cq-dlight', 'C-cq-skin', 'G-rim-evo', 'G-trim-evo', 'G-ppf-evo', 'N-wheel-caliper', 'N-ppf-vinyl', 'N-plastic-v2'] },
-  { id: 'coat-int', c: 'coat', n: '皮革 / 织物镀膜', ids: ['C-cq-leather', 'C-cq-fabric', 'G-leathershield-evo', 'G-fabriccoat', 'G-purify-coat', 'B-tan', 'N-interior-ceramic'] },
-  { id: 'coat-kit', c: 'coat', n: '镀膜套装', ids: ['L-kit-sam', 'L-kit-blindo', 'L-kit-stc'] },
+  { id: 'coat-paint', category: 'coat', name: '漆面镀膜', ids: ['L-hpc-2', 'L-hpc-pro', 'L-sam', 'L-blindo', 'L-stc', 'K-ceramic-body-cb001', 'K-ceramic-allround-c002', 'K-ceramic-neo-c003', 'K-1k-nano', 'C-cq-lite', 'C-cq-uk', 'C-cq-uk4', 'C-cq-aqua', 'C-cq-sic', 'C-cq-pro', 'C-cqfr', 'C-dq-go', 'C-dquartz', 'G-one-evo', 'G-pure-evo', 'G-mohs-evo', 'G-syncro-evo', 'G-matte-evo', 'G-cancoat-evo', 'G-flash-evo', 'G-infinite-base-1', 'G-infinite-base-2', 'N-original', 'N-paul-dalton', 'N-ceramic-v3', 'N-ultra-v3', 'N-ceramic-plus', 'N-self-heal-plus', 'N-matte', 'P-sole', 'P-inspiration-classic', 'P-stout'] },
+  { id: 'coat-top', category: 'coat', name: '面层 / 镀膜修复', ids: ['C-cq-gliss', 'C-essence-plus', 'G-infinite-top-1', 'G-infinite-top-2', 'G-cancoat-pro-evo', 'N-overcoat-v3', 'N-leveling-aid'] },
+  { id: 'coat-glass', category: 'coat', name: '玻璃镀膜', ids: ['K-ceramic-glass-cg001', 'C-dq-gforce', 'G-view-evo', 'G-antifog', 'N-window-coating', 'P-vue'] },
+  { id: 'coat-trim', category: 'coat', name: '轮毂 / 塑料 / 轮胎 / 膜', ids: ['K-ceramic-rims-cr001', 'C-cq-dlux', 'C-cq-dlux2', 'K-plast-shield', 'C-cq-blackout', 'C-cq-dlight', 'C-cq-skin', 'G-rim-evo', 'G-trim-evo', 'G-ppf-evo', 'N-wheel-caliper', 'N-ppf-vinyl', 'N-plastic-v2'] },
+  { id: 'coat-int', category: 'coat', name: '皮革 / 织物镀膜', ids: ['C-cq-leather', 'C-cq-fabric', 'G-leathershield-evo', 'G-fabriccoat', 'G-purify-coat', 'B-tan', 'N-interior-ceramic'] },
+  { id: 'coat-kit', category: 'coat', name: '镀膜套装', ids: ['L-kit-sam', 'L-kit-blindo', 'L-kit-stc'] },
 
   // ── 封体 / 快速养护
-  { id: 'seal-rinse', c: 'seal', n: '喷涂即冲 / 湿式封体', ids: ['L-beneficia', 'M-wet-coat', 'C-hydro2', 'C-hydro2-lite', 'K-hydro-foam-sealant', 'K-wetgloss', 'G-wetcoat', 'G-wetcoat-essence', 'B-p47', 'B-p47-pro'] },
-  { id: 'seal-spray', c: 'seal', n: '喷雾 / 擦拭封体', ids: ['L-cupido', 'L-venere', 'K-spray-sealant', 'K-perfectfinish-sealant', 'C-reload', 'C-release', 'C-madmatte', 'G-cure', 'G-cure-matte', 'G-ppf-maintain', 'F-lasttouch', 'F-metalcar', 'B-p17', 'B-p27', 'B-z17', 'B-p17s', 'P-bead-maker', 'P-spray-it', 'P-matte-protectant', 'P-defender'] },
-  { id: 'seal-wax', c: 'seal', n: '蜡', ids: ['M-ceramic-ultra-speed-wax', 'K-hand-wax-w001', 'K-protectorwax', 'G-wax', 'F-carlux', 'F-metalcrem', 'F-glazing', 'F-splendida', 'B-pf1', 'P-ultracoat', 'P-velocity-glaze', 'P-cherry-speed-wax'] },
-  { id: 'seal-qd', c: 'seal', n: '快速美容剂', ids: ['L-perfecta', 'L-perfecta-sio2', 'M-exterior-quick-detailer', 'C-elixir', 'K-quick-shine-plus', 'K-quick-finish', 'K-allround-quick-shine', 'K-finish-spray-exterior', 'G-ceramicdetailer', 'G-quickdetailer', 'F-fast-cleaner', 'N-hybrid-detailer', 'P-paint-gloss', 'P-dream-maker'] },
+  { id: 'seal-rinse', category: 'seal', name: '喷涂即冲 / 湿式封体', ids: ['L-beneficia', 'M-wet-coat', 'C-hydro2', 'C-hydro2-lite', 'K-hydro-foam-sealant', 'K-wetgloss', 'G-wetcoat', 'G-wetcoat-essence', 'B-p47', 'B-p47-pro'] },
+  { id: 'seal-spray', category: 'seal', name: '喷雾 / 擦拭封体', ids: ['L-cupido', 'L-venere', 'K-spray-sealant', 'K-perfectfinish-sealant', 'C-reload', 'C-release', 'C-madmatte', 'G-cure', 'G-cure-matte', 'G-ppf-maintain', 'F-lasttouch', 'F-metalcar', 'B-p17', 'B-p27', 'B-z17', 'B-p17s', 'P-bead-maker', 'P-spray-it', 'P-matte-protectant', 'P-defender'] },
+  { id: 'seal-wax', category: 'seal', name: '蜡', ids: ['M-ceramic-ultra-speed-wax', 'K-hand-wax-w001', 'K-protectorwax', 'G-wax', 'F-carlux', 'F-metalcrem', 'F-glazing', 'F-splendida', 'B-pf1', 'P-ultracoat', 'P-velocity-glaze', 'P-cherry-speed-wax'] },
+  { id: 'seal-qd', category: 'seal', name: '快速美容剂', ids: ['L-perfecta', 'L-perfecta-sio2', 'M-exterior-quick-detailer', 'C-elixir', 'K-quick-shine-plus', 'K-quick-finish', 'K-allround-quick-shine', 'K-finish-spray-exterior', 'G-ceramicdetailer', 'G-quickdetailer', 'F-fast-cleaner', 'N-hybrid-detailer', 'P-paint-gloss', 'P-dream-maker'] },
 
   // ── 塑料 / 轮胎养护
-  { id: 'trim-care', c: 'trim', n: '外饰塑料 / 橡胶养护', ids: ['L-hydra', 'M-all-round-plastic-protectant', 'C-perl', 'K-plast-star-siliconoelfrei', 'K-plast-star-96', 'K-hydro-plast-care', 'K-gummi-kunststoff-vinylpflege', 'K-gummi-kunststoffpflege-glaenzend', 'K-nanomagic-plast-care', 'G-preserve', 'F-diamant-dressing', 'F-faspoiler', 'P-dynamic', 'P-bumpercoat', 'P-rubber-vinyl-shine', 'P-shape-up', 'P-no-rub'] },
-  { id: 'trim-restore', c: 'trim', n: '塑料修复 / 上色', ids: ['L-tpr', 'K-kunststoff-faerber-schwarz', 'N-plastic-black-ultra'] },
-  { id: 'trim-tyre', c: 'trim', n: '轮胎上光', ids: ['L-nero', 'C-darkside', 'K-kcu-reifenschaum', 'G-tire-express', 'G-tire', 'F-nerissimo', 'F-nouveaunoir-spray', 'F-extremeblack', 'F-fastblack', 'F-black3', 'B-t47', 'N-black-velvet', 'P-shine-all', 'P-dressed', 'P-island-shine', 'P-multi-dressing', 'P-wipe-n-shine'] },
-  { id: 'trim-special', c: 'trim', n: '发动机舱 / 敞篷软顶', ids: ['K-motorplast', 'K-cabriodach-versiegelung'] },
+  { id: 'trim-care', category: 'trim', name: '外饰塑料 / 橡胶养护', ids: ['L-hydra', 'M-all-round-plastic-protectant', 'C-perl', 'K-plast-star-siliconoelfrei', 'K-plast-star-96', 'K-hydro-plast-care', 'K-gummi-kunststoff-vinylpflege', 'K-gummi-kunststoffpflege-glaenzend', 'K-nanomagic-plast-care', 'G-preserve', 'F-diamant-dressing', 'F-faspoiler', 'P-dynamic', 'P-bumpercoat', 'P-rubber-vinyl-shine', 'P-shape-up', 'P-no-rub'] },
+  { id: 'trim-restore', category: 'trim', name: '塑料修复 / 上色', ids: ['L-tpr', 'K-kunststoff-faerber-schwarz', 'N-plastic-black-ultra'] },
+  { id: 'trim-tyre', category: 'trim', name: '轮胎上光', ids: ['L-nero', 'C-darkside', 'K-kcu-reifenschaum', 'G-tire-express', 'G-tire', 'F-nerissimo', 'F-nouveaunoir-spray', 'F-extremeblack', 'F-fastblack', 'F-black3', 'B-t47', 'N-black-velvet', 'P-shine-all', 'P-dressed', 'P-island-shine', 'P-multi-dressing', 'P-wipe-n-shine'] },
+  { id: 'trim-special', category: 'trim', name: '发动机舱 / 敞篷软顶', ids: ['K-motorplast', 'K-cabriodach-versiegelung'] },
 
   // ── 玻璃
-  { id: 'glass-clean', c: 'glass', n: '玻璃清洁', ids: ['L-nitido', 'M-glass-cleaner-degreaser', 'C-clarify', 'C-clarify-phobic', 'K-glas-star', 'K-glass-cleaner', 'K-speed-glass-cleaner', 'G-glass', 'G-glass-plus', 'G-defrost', 'F-glass-plus', 'F-glass-clean', 'F-glass-cleaner', 'B-g37', 'N-glass-cleaner', 'P-true-vue', 'P-paste-glass-chrome', 'P-reflect'] },
-  { id: 'glass-protect', c: 'glass', n: '驱水 / 玻璃封体', ids: ['L-aquavelox', 'M-rain-speed', 'K-nano-glasversiegelung', 'G-quickview'] },
-  { id: 'glass-polish', c: 'glass', n: '研磨 / 去油膜', ids: ['L-vitreo', 'C-ceriglass', 'C-gofx', 'G-glasspolish', 'B-g58', 'N-window-polish', 'P-clarity'] },
-  { id: 'glass-winter', c: 'glass', n: '雨刷水 / 除冰', ids: ['F-cristalbel', 'F-notice'] },
+  { id: 'glass-clean', category: 'glass', name: '玻璃清洁', ids: ['L-nitido', 'M-glass-cleaner-degreaser', 'C-clarify', 'C-clarify-phobic', 'K-glas-star', 'K-glass-cleaner', 'K-speed-glass-cleaner', 'G-glass', 'G-glass-plus', 'G-defrost', 'F-glass-plus', 'F-glass-clean', 'F-glass-cleaner', 'B-g37', 'N-glass-cleaner', 'P-true-vue', 'P-paste-glass-chrome', 'P-reflect'] },
+  { id: 'glass-protect', category: 'glass', name: '驱水 / 玻璃封体', ids: ['L-aquavelox', 'M-rain-speed', 'K-nano-glasversiegelung', 'G-quickview'] },
+  { id: 'glass-polish', category: 'glass', name: '研磨 / 去油膜', ids: ['L-vitreo', 'C-ceriglass', 'C-gofx', 'G-glasspolish', 'B-g58', 'N-window-polish', 'P-clarity'] },
+  { id: 'glass-winter', category: 'glass', name: '雨刷水 / 除冰', ids: ['F-cristalbel', 'F-notice'] },
 
   // ── 多功能清洁 APC
-  { id: 'apc-conc', c: 'apc', n: '浓缩型', ids: ['L-ductile', 'M-all-purpose-cleaner', 'C-multix', 'K-mehrzweckreiniger', 'G-apc', 'F-superapc', 'N-apc', 'P-apc', 'P-blast', 'P-hot-shot', 'P-enviro-clean'] },
-  { id: 'apc-rtu', c: 'apc', n: '即用型', ids: ['L-varius', 'M-multisurface-cleaner', 'F-hp12', 'F-split'] },
+  { id: 'apc-conc', category: 'apc', name: '浓缩型', ids: ['L-ductile', 'M-all-purpose-cleaner', 'C-multix', 'K-mehrzweckreiniger', 'G-apc', 'F-superapc', 'N-apc', 'P-apc', 'P-blast', 'P-hot-shot', 'P-enviro-clean'] },
+  { id: 'apc-rtu', category: 'apc', name: '即用型', ids: ['L-varius', 'M-multisurface-cleaner', 'F-hp12', 'F-split'] },
 
   // ── 内饰
-  { id: 'int-clean', c: 'int', n: '综合清洁', ids: ['L-omnia', 'L-igea', 'M-interior-cleaner-purifier', 'C-inside', 'K-multi-interior-cleaner', 'K-allround-surface-cleaner', 'K-schmutzradierer', 'G-trimcleaner', 'F-pulimax-spray', 'F-deterjet', 'N-interior-cleaner', 'P-xpress', 'P-xpress-wipes'] },
-  { id: 'int-fabric', c: 'int', n: '织物 / Alcantara', ids: ['L-glico', 'L-texia', 'M-alcantara-cleaner', 'K-pol-star', 'K-tinten-kuli-ex', 'K-allround-textile-sealant', 'G-fabriccleaner', 'F-3in1-tessuti', 'F-flash', 'F-flash-pet', 'P-terminator', 'P-carpet-bomber', 'P-upholstery-shampoo', 'P-extractor-shampoo', 'P-extreme-carpet', 'P-foaming-carpet', 'P-finisher', 'P-release'] },
-  { id: 'int-leather', c: 'int', n: '皮革清洁与养护', ids: ['L-derma-cleaner', 'M-leather-cleaner', 'C-cleanse', 'L-derma-sealant', 'C-lotion', 'K-leather-star', 'K-protect-leather-care', 'G-leathercleaner-natural', 'G-leathercleaner-strong', 'G-leathercoat', 'F-3in1-pelle', 'F-charming', 'F-nutrient', 'F-hydrating', 'B-i35', 'B-i43', 'P-leather-treatment'] },
-  { id: 'int-care', c: 'int', n: '塑料养护 / 快速美容 / 除味', ids: ['M-interior-quick-detailer', 'C-innerqd', 'K-top-star', 'K-cockpit-super-pflege', 'K-gummifix', 'C-so2pure', 'G-interior-detailer', 'G-purify-maintain', 'G-odorremover', 'G-odorremover-pads', 'F-3in1-plast', 'F-plast-shine', 'F-plast-satin', 'F-scic-blu', 'F-scic-green', 'F-scic-orange', 'F-3in1-cruscotto', 'F-odorbact', 'P-swift', 'P-natural-finish', 'P-odor-doc'] },
+  { id: 'int-clean', category: 'int', name: '综合清洁', ids: ['L-omnia', 'L-igea', 'M-interior-cleaner-purifier', 'C-inside', 'K-multi-interior-cleaner', 'K-allround-surface-cleaner', 'K-schmutzradierer', 'G-trimcleaner', 'F-pulimax-spray', 'F-deterjet', 'N-interior-cleaner', 'P-xpress', 'P-xpress-wipes'] },
+  { id: 'int-fabric', category: 'int', name: '织物 / Alcantara', ids: ['L-glico', 'L-texia', 'M-alcantara-cleaner', 'K-pol-star', 'K-tinten-kuli-ex', 'K-allround-textile-sealant', 'G-fabriccleaner', 'F-3in1-tessuti', 'F-flash', 'F-flash-pet', 'P-terminator', 'P-carpet-bomber', 'P-upholstery-shampoo', 'P-extractor-shampoo', 'P-extreme-carpet', 'P-foaming-carpet', 'P-finisher', 'P-release'] },
+  { id: 'int-leather', category: 'int', name: '皮革清洁与养护', ids: ['L-derma-cleaner', 'M-leather-cleaner', 'C-cleanse', 'L-derma-sealant', 'C-lotion', 'K-leather-star', 'K-protect-leather-care', 'G-leathercleaner-natural', 'G-leathercleaner-strong', 'G-leathercoat', 'F-3in1-pelle', 'F-charming', 'F-nutrient', 'F-hydrating', 'B-i35', 'B-i43', 'P-leather-treatment'] },
+  { id: 'int-care', category: 'int', name: '塑料养护 / 快速美容 / 除味', ids: ['M-interior-quick-detailer', 'C-innerqd', 'K-top-star', 'K-cockpit-super-pflege', 'K-gummifix', 'C-so2pure', 'G-interior-detailer', 'G-purify-maintain', 'G-odorremover', 'G-odorremover-pads', 'F-3in1-plast', 'F-plast-shine', 'F-plast-satin', 'F-scic-blu', 'F-scic-green', 'F-scic-orange', 'F-3in1-cruscotto', 'F-odorbact', 'P-swift', 'P-natural-finish', 'P-odor-doc'] },
 
   // ── 毛巾清洗
-  { id: 'towel-wash', c: 'towel', n: '超纤布 / 毛巾洗涤剂', ids: ['G-towelwash', 'C-mfx', 'F-mfwash', 'P-rags', 'P-chamois-cleaner'] },
+  { id: 'towel-wash', category: 'towel', name: '超纤布 / 毛巾洗涤剂', ids: ['G-towelwash', 'C-mfx', 'F-mfwash', 'P-rags', 'P-chamois-cleaner'] },
   // ── 配件
-  { id: 'acc-towel', c: 'acc', n: '毛巾 / 超纤布', ids: ['L-ideale-ext', 'L-ideale-int', 'L-multi-towel', 'M-all-round-towel', 'L-buffing-towel', 'M-polish-sealant-remover', 'K-coating-towel', 'L-glass-towel', 'M-glass', 'L-drying-towel', 'K-pro-drying-towel', 'C-dhydrate', 'G-silkdryer', 'G-softwipe', 'G-polishwipe', 'G-glasswipe', 'G-suede', 'F-superdryer', 'F-extradry', 'F-martina', 'F-heavywork', 'F-topbuffing', 'F-panno-df', 'F-1shine-vetri', 'B-absorb', 'N-twisted-logic', 'N-glass-towel', 'P-refine'] },
-  { id: 'acc-mitt', c: 'acc', n: '洗车手套 / 施工海绵', ids: ['K-exterior-wash-mitt', 'C-merino-mitt', 'K-application-sponge', 'K-allround-microfiber-sponge', 'C-mf-applicator', 'G-smoothie', 'G-silkmitt', 'G-wheelmitt', 'G-coating-applicator', 'G-mf-applicator', 'G-tire-applicator', 'F-guanto', 'F-allseasons', 'F-comfortpad', 'F-booster', 'F-mfpad', 'F-foampad', 'B-oncepad', 'N-plush-mitt', 'N-foam-block', 'P-applicator', 'P-side-kick'] },
-  { id: 'acc-brush', c: 'acc', n: '刷具', ids: ['L-duo-scrub-pad', 'L-fabric-seat-brush', 'L-floor-carpet-brush', 'K-detail-wheel-brush', 'C-detailing-brushes', 'C-darkside-brush', 'G-wheelbrush', 'G-tirebrush', 'G-leatherbrush'] },
-  { id: 'acc-clay', c: 'acc', n: '除染黏土', ids: ['C-clays', 'C-polyshave', 'N-clay-sponge', 'P-reset-clay', 'P-perfect-putty', 'P-perfect-putty-purple'] },
-  { id: 'acc-pad', c: 'acc', n: '抛光盘', ids: ['G-pad-heavy-cut', 'G-wool-heavy-cut', 'G-pad-cut', 'G-wool-cut', 'G-pad-polish', 'G-pad-finish', 'F-pad-white', 'F-pad-blu', 'F-microwool', 'F-hybrid', 'F-eskimo-white', 'F-eskimo-gold', 'F-pad-yellow', 'F-pad-black'] },
-  { id: 'acc-other', c: 'acc', n: '喷壶 / 其他', ids: ['L-bottle', 'C-dilute', 'K-pressure-foam-sprayer', 'M-be-twin', 'F-secchio-wash', 'F-gritsafe', 'F-nebula'] },
+  { id: 'acc-towel', category: 'acc', name: '毛巾 / 超纤布', ids: ['L-ideale-ext', 'L-ideale-int', 'L-multi-towel', 'M-all-round-towel', 'L-buffing-towel', 'M-polish-sealant-remover', 'K-coating-towel', 'L-glass-towel', 'M-glass', 'L-drying-towel', 'K-pro-drying-towel', 'C-dhydrate', 'G-silkdryer', 'G-softwipe', 'G-polishwipe', 'G-glasswipe', 'G-suede', 'F-superdryer', 'F-extradry', 'F-martina', 'F-heavywork', 'F-topbuffing', 'F-panno-df', 'F-1shine-vetri', 'B-absorb', 'N-twisted-logic', 'N-glass-towel', 'P-refine'] },
+  { id: 'acc-mitt', category: 'acc', name: '洗车手套 / 施工海绵', ids: ['K-exterior-wash-mitt', 'C-merino-mitt', 'K-application-sponge', 'K-allround-microfiber-sponge', 'C-mf-applicator', 'G-smoothie', 'G-silkmitt', 'G-wheelmitt', 'G-coating-applicator', 'G-mf-applicator', 'G-tire-applicator', 'F-guanto', 'F-allseasons', 'F-comfortpad', 'F-booster', 'F-mfpad', 'F-foampad', 'B-oncepad', 'N-plush-mitt', 'N-foam-block', 'P-applicator', 'P-side-kick'] },
+  { id: 'acc-brush', category: 'acc', name: '刷具', ids: ['L-duo-scrub-pad', 'L-fabric-seat-brush', 'L-floor-carpet-brush', 'K-detail-wheel-brush', 'C-detailing-brushes', 'C-darkside-brush', 'G-wheelbrush', 'G-tirebrush', 'G-leatherbrush'] },
+  { id: 'acc-clay', category: 'acc', name: '除染黏土', ids: ['C-clays', 'C-polyshave', 'N-clay-sponge', 'P-reset-clay', 'P-perfect-putty', 'P-perfect-putty-purple'] },
+  { id: 'acc-pad', category: 'acc', name: '抛光盘', ids: ['G-pad-heavy-cut', 'G-wool-heavy-cut', 'G-pad-cut', 'G-wool-cut', 'G-pad-polish', 'G-pad-finish', 'F-pad-white', 'F-pad-blu', 'F-microwool', 'F-hybrid', 'F-eskimo-white', 'F-eskimo-gold', 'F-pad-yellow', 'F-pad-black'] },
+  { id: 'acc-other', category: 'acc', name: '喷壶 / 其他', ids: ['L-bottle', 'C-dilute', 'K-pressure-foam-sprayer', 'M-be-twin', 'F-secchio-wash', 'F-gritsafe', 'F-nebula'] },
 ];
