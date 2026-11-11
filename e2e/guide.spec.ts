@@ -39,6 +39,24 @@ test('筛选分享、刷新恢复、材质交集与实时换算', async ({ page 
   await expect(page.locator('.cc').first()).toContainText('750 ml');
 });
 
+test('分类标题吸顶时紧贴筛选栏，中间不露出滚动内容', async ({ page }) => {
+  for (const width of [1440, 1000, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    // 等筛选栏把实测高度写入 --bar-h（注水完成）后再量，避免只测到 CSS 默认值
+    await page.waitForFunction(() => document.documentElement.style.getPropertyValue('--bar-h') !== '');
+    await page.evaluate(() => {
+      const sec = document.querySelector('.sec')!;
+      window.scrollTo(0, sec.getBoundingClientRect().top + window.scrollY + 40);
+    });
+    const gap = await page.evaluate(
+      () => document.querySelector('.sec-h')!.getBoundingClientRect().top - document.querySelector('.bar')!.getBoundingClientRect().bottom,
+    );
+    expect(gap, `${width}px`).toBeLessThanOrEqual(0);
+    expect(gap, `${width}px`).toBeGreaterThan(-2);
+  }
+});
+
 test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({ page }) => {
   await page.goto('/?q=Reset');
   const card = page.locator('main .card[href^="/p/C-reset?"]');

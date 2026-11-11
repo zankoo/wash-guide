@@ -28,7 +28,8 @@ export function FilterBar() {
     const el = bar.current;
     if (!el) return;
     const observer = new ResizeObserver(() => {
-      document.documentElement.style.setProperty('--bar-h', `${el.getBoundingClientRect().height + 12}px`);
+      // 只记录筛选栏真实高度：分类标题按它吸顶，若掺入留白会在两者之间露出一条缝；锚点留白由各自的 scroll-margin 负责。
+      document.documentElement.style.setProperty('--bar-h', `${el.getBoundingClientRect().height}px`);
     });
     observer.observe(el);
     return () => observer.disconnect();
