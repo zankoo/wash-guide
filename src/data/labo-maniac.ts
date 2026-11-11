@@ -27,75 +27,75 @@ export const products: Product[] = [
 // ───────────────────────── Labocosmetica ─────────────────────────
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/INITIO_2544_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-initio',brand:'L',category:'pre',ph:{"category":"alk","value":"11.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EA26-01-0005）：原液碱性","registration":"EA26-01-0005"}],"conflict":false},name:'INITIO',type:'即用型碱性预洗',sizes:'1000 ml 喷壶',materials:'车漆 · 塑料 · 玻璃 · 轮毂 · 密封条',
+ id:'L-initio',brand:'L',category:'pre',ph:{"category":"alk","value":"11.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/INITIO_2544_NO_1.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EA26-01-0005）：原液碱性","registration":"EA26-01-0005"}],"conflict":false},name:'INITIO',type:'即用型碱性预洗',sizes:'1000 ml 喷壶',materials:'车漆 · 塑料 · 玻璃 · 轮毂 · 密封条',
  dilutions:[['全部外部表面','即用','喷雾壶']],
  steps:['使用前摇匀，在干燥车身上直接喷涂所有外部表面（车漆、塑料、玻璃、轮毂、密封条），由下往上均匀覆盖。','停留约 60 秒。DryShield™ 技术会减缓蒸发、提升清洁效果。','用大量高压水冲洗，同样由下往上。'],
  notes:["无需稀释，面向入门用户设计。","看似干了也会在再次冲水时恢复作用（DryShield™），可在阳光下或较热表面使用。"],url:LABO+'initio/'},
 
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/labocosmetica-primus-2-alkaline-foam-pre-wash.pdf","source":"sds-db","language":"英文","version":"2024","hosting":"remote"},
- id:'L-primus',brand:'L',category:'pre',ph:{"category":"alk","value":"> 11","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PRÌMUS 2.0',type:'碱性泡沫预洗 · VDA 认证',sizes:'1000 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · 玻璃 · PPF · 轮毂 · 轮胎 · 发动机舱',
+ id:'L-primus',brand:'L',category:'pre',ph:{"category":"alk","value":"> 11","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-PRIMUS-2.pdf"},"evidence":[],"conflict":false},name:'PRÌMUS 2.0',type:'碱性泡沫预洗 · VDA 认证',sizes:'1000 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · 玻璃 · PPF · 轮毂 · 轮胎 · 发动机舱',
  dilutions:[['夏季污垢','1:10','PA壶'],['冬季污垢','1:5','PA壶'],['中度脏污（由下往上喷）','1:80','喷雾壶'],['非常脏的车（由下往上喷）','1:50','喷雾壶'],['频繁清洗','1:100','喷雾壶'],['车身下部、侧裙、保险杠、去飞虫','1:20','喷雾壶'],['轮毂和轮胎','1:3 – 1:10','喷雾壶']],
  steps:['按脏污程度在PA壶内稀释 1:5–1:15，将泡沫喷满所有漆面、车轮和轮毂。','停留 3–5 分钟后高压冲洗。','「双重作用」法：先用喷壶 1:5 喷车身下部（污染主要集中在此）→ 换PA壶再覆盖整车 → 等 3–5 分钟后冲洗。'],
  notes:['PA壶最终出液浓度因高压清洗机而异；官方建议使出液浓度接近喷壶推荐值。','对已施工的保护层安全。'],url:LABO+'primus-best-multi-purpose-foam-prewash-for-car-motocycles/'},
 
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/labocosmetica-neve-ph-neutral-foam-prewash.pdf","source":"sds-db","language":"英文","version":"2025","hosting":"remote"},
- id:'L-neve',brand:'L',category:'pre',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'NÈVE',type:'中性泡沫预洗',sizes:'1000 ml · 4.5 L',materials:'车漆 · 铝 · 玻璃 · PPF · 哑光/改色膜',
+ id:'L-neve',brand:'L',category:'pre',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-NEVE-1.pdf"},"evidence":[],"conflict":false},name:'NÈVE',type:'中性泡沫预洗',sizes:'1000 ml · 4.5 L',materials:'车漆 · 铝 · 玻璃 · PPF · 哑光/改色膜',
  dilutions:[['PA壶','1:25 – 1:50','PA壶'],['Nebula 手动泡沫壶','1:20','喷雾壶'],['中度污垢（外部）','1:10','喷雾壶'],['顽固污垢（外部）','1:5','喷雾壶']],
  steps:['按污染程度稀释，用PA壶均匀由下往上喷涂。','等待约 5 分钟，直到泡沫开始消退。','在泡沫变干前由下往上冲洗。','根据污染程度决定是否再用洗车手套。'],
  notes:['极浓缩，请严格按推荐比例。过量会让泡沫过重、反而贴不住表面。','顽固污垢建议用喷雾模式，清洁更快。'],url:LABO+'neve-best-snow-foam-prewash-neutral-shampoo-gun-detailing/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/LIBERA_2522_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-libera',brand:'L',category:'pre',ph:{"category":"alk","value":"> 11.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'LIBERA',type:'浓缩碱性 TFR 预洗（去交通膜）',sizes:'1000 ml',materials:'车漆 · PPF · 镀膜车',
+ id:'L-libera',brand:'L',category:'pre',ph:{"category":"alk","value":"> 11.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/LIBERA_2522_NO_1.pdf","section":9},"evidence":[],"conflict":false},name:'LIBERA',type:'浓缩碱性 TFR 预洗（去交通膜）',sizes:'1000 ml',materials:'车漆 · PPF · 镀膜车',
  dilutions:[['中度污垢','1:10','喷雾壶'],['轻度预洗 / 维护','1:20','喷雾壶'],['白车灰膜 / 多孔漆面','1:5','喷雾壶'],['第二遍预洗（手套）','1:20','桶洗'],['PPF 施工前准备','1:5 – 1:20（视脏污）','喷雾壶']],
  steps:['车辆置于阴凉处，车身冷却。','按推荐比例在压力喷壶中稀释。','以雾状喷在干燥车身上，由下往上。','停留 3–6 分钟，不要让产品干在表面。','高压水由下往上冲洗。'],
  notes:['必须以雾状喷涂，不要当泡沫预洗用。','更深度清洁（交通膜严重、PPF 施工前）：用手套以 1:20 做第二遍预洗，或改用酸性 RENOVA（2pH+ 洗车流程）。','车标、轮毂等复杂区域用软毛刷。'],url:LABO+'libera/'},
 
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/labocosmetica-semper-ph-neutral-car-wash-soap.pdf","source":"sds-db","language":"英文","version":"2025","hosting":"remote"},
- id:'L-semper',brand:'L',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'SÈMPER',type:'中性超浓缩洗车香波',sizes:'500 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · 玻璃',
+ id:'L-semper',brand:'L',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-SEMPER-2.pdf"},"evidence":[],"conflict":false},name:'SÈMPER',type:'中性超浓缩洗车香波',sizes:'500 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · 玻璃',
  dilutions:[['中等污垢','1:1000','桶洗'],['轻度污垢','1:1200','桶洗'],['顽固污垢','1:800','桶洗'],['最高稀释','1:1500','桶洗']],
  steps:['水桶先加约 4/5 的水，加入 SÈMPER。','剩余 1/5 用高压水或 Tornador 冲入，打出泡沫。','用超细纤维手套或软海绵清洗整车。','用大量清水冲洗。'],
  notes:['适用于中等硬度的水；水质更硬时提高浓度，或改用 SÀTINO 以便干燥、减少水垢残留。','对镀膜、封体和棕榈蜡完全安全，不含蜡和增亮剂，可用于玻璃。'],url:LABO+'semper-car-detailing-shampoo-ph-neutro/'},
 
 {
  sds:{"url":"/sds/L-revitax.pdf","source":"washme","language":"英文","version":"2023-07-07","hosting":"local","sha256":"c403ffec241ebad0cf8cf3d9afc5a190879704f00e18c0b26ecc7f947bf0d9c4","originalUrl":"https://cdn.shopify.com/s/files/1/0409/2021/9812/files/Revitax-V4-SDS.pdf?v=1754253100","checkedAt":"2026-11-10"},
- id:'L-revitax',brand:'L',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'REVÌTAX',type:'中性 Wash & Coat 镀膜香波',sizes:'500 ml · 4.5 L',materials:'车漆 · 铝 · PPF · 轮毂',
+ id:'L-revitax',brand:'L',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-REVITAX-1.pdf"},"evidence":[],"conflict":false},name:'REVÌTAX',type:'中性 Wash & Coat 镀膜香波',sizes:'500 ml · 4.5 L',materials:'车漆 · 铝 · PPF · 轮毂',
  dilutions:[['镀膜/封体车维护','最稀 1:150','桶洗'],['未做纳米封体的车','1:100','桶洗'],['PA壶','1:10','PA壶'],['喷壶','1:100','喷雾壶']],
  steps:['按推荐比例稀释，全车施用。','用软海绵或手套清洗车身。','用清水冲洗。'],
  notes:['施工 8 小时后保护达到最强。','与 BENEFÌCIA、CUPÌDO 同源母粒子，可层叠施工。'],url:LABO+'revitax-best-sio2-shampoo-maintenance-ceramic-coated-car/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/_PURIFICA_2127_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-purifica',brand:'L',category:'wash',ph:{"category":"acid","value":"2.1","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB19-01-0316，该申报已过期）：原液酸性","registration":"EB19-01-0316"}],"conflict":false},name:'PURÌFICA（升级配方）',type:'酸性除染香波',sizes:'1000 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · 玻璃 · PPF · 轮毂 · 哑光/改色膜',
+ id:'L-purifica',brand:'L',category:'wash',ph:{"category":"acid","value":"2.1","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/_PURIFICA_2127_NO_1.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB19-01-0316，该申报已过期）：原液酸性","registration":"EB19-01-0316"}],"conflict":false},name:'PURÌFICA（升级配方）',type:'酸性除染香波',sizes:'1000 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · 玻璃 · PPF · 轮毂 · 哑光/改色膜',
  dilutions:[['水桶','1:100 – 1:400','桶洗'],['PA壶','1:5 – 1:10','PA壶'],['喷雾器','1:100 – 1:200','喷雾壶'],['pH ≈ 5（维护洗）','1:400','—'],['pH < 4','1:200 – 1:330','—'],['pH < 3（强效）','1:100 – 1:200','—']],
  steps:['可作手洗香波（水桶），也可作PA壶/喷壶预洗。','按需要的强度选择比例：比例越浓 pH 越低、去水垢越强。'],
  notes:["溶解并封闭水垢和矿物沉积，去除让车漆发闷的钙质薄膜（黑车尤其明显）。","可恢复镀膜和封体的性能；不含蜡和封体成分。保持 VDA 认证。","官网未给出分步说明。"],url:LABO+'purifica-shampoo-revitalize-post-coated-car-water-spot-remover/'},
 
-{id:'L-satino',brand:'L',category:'wash',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'SÀTINO',type:'哑光漆 / 改色膜香波',sizes:'500 ml',materials:'哑光漆 · 改色膜 · PPF · 轮毂',
+{id:'L-satino',brand:'L',category:'wash',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-SATINO-1.pdf"},"evidence":[],"conflict":false},name:'SÀTINO',type:'哑光漆 / 改色膜香波',sizes:'500 ml',materials:'哑光漆 · 改色膜 · PPF · 轮毂',
  dilutions:[['水桶（约 5 L）','1:60 – 1:100','桶洗'],['PA壶','1:5','PA壶']],
  steps:['PA壶：泡沫喷满整车，用软手套轻轻擦洗。','水桶：按比例与约 5 L 水混合（COMODO 桶），用高压水打出泡沫，两桶法从上往下洗，经常清洗手套。','直线移动、不加压。','用冷水冲洗，超细纤维布擦干。'],
  notes:['在车身留下至少 2 周的抗 UV 保护。'],url:LABO+'satino-special-shampoo-matte-and-wrap-paint/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/RENOVA_2542_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-renova',brand:'L',category:'wash',ph:{"category":"acid","value":"< 2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'RENOVA',type:'酸性 TFR 香波（PPF / 改色膜专用）',sizes:'500 ml',materials:'PPF · 改色膜 · 车漆 · 轮毂',
+ id:'L-renova',brand:'L',category:'wash',ph:{"category":"acid","value":"< 2","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/RENOVA_2542_NO_1.pdf","section":9},"evidence":[],"conflict":false},name:'RENOVA',type:'酸性 TFR 香波（PPF / 改色膜专用）',sizes:'500 ml',materials:'PPF · 改色膜 · 车漆 · 轮毂',
  dilutions:[['日常维护洗车','1:200（5 ml / 1 L，50 ml / 10 L）','桶洗'],['深度清洁手洗（去交通膜 / 水垢）','1:50（20 ml / 1 L）','桶洗'],['局部强化处理','1:10（100 ml / 1 L）','喷雾壶'],['手套增效','1:5（200 ml / 1 L）','喷雾壶'],['轮毂/重点区域去油喷雾（软毛刷）','1:5','喷雾壶']],
  steps:['日常维护 1:200：在已湿润表面用手套或海绵均匀清洗，彻底冲洗。','深度清洁 1:50：用高润滑超纤手套，分区从上往下，彻底冲洗后擦干。','局部 1:10：施于有水垢/矿物残留的区域，最多停留 60 秒，立即冲洗。','手套增效 1:5：溶液直接倒在手套上逐区擦过，恢复疏水和光泽；不要让它干，擦完立即冲洗。','轮毂 1:5：喷在轮毂或污染区，软毛刷刷洗后彻底冲洗。'],
  notes:['日常洗车用 1:200 就够；1:50 清洁力强、用量大（10 L 水桶约 200 ml），留给膜面发灰、有水垢或疏水变差时定期做深度清洁。','在敏感表面先做兼容性测试。'],url:LABO+'renova/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/IDROSAVE_2231_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-idrosave',brand:'L',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'IDROSAVE',type:'中性聚合物免冲洗洗车液',sizes:'250 ml · 1000 ml · 4.5 L',materials:'外部全车',
+ id:'L-idrosave',brand:'L',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/IDROSAVE_2231_NO_1.pdf","section":9},"evidence":[],"conflict":false},name:'IDROSAVE',type:'中性聚合物免冲洗洗车液',sizes:'250 ml · 1000 ml · 4.5 L',materials:'外部全车',
  dilutions:[['水桶（免冲洗）（隔砂网）','1:250（20 ml / 5 L）','桶洗'],['无水洗 / 干燥辅助','1:100（10 ml / 1 L）','喷雾壶']],
  steps:['带隔砂网的水桶中按 1:250 稀释。','另装一个喷壶，先把溶液喷在待清洗的板块上软化污垢；有机污垢（虫尸、刹车粉）配合碱性产品、无机污垢（水垢）配合酸性产品，停留不超过 2 分钟，不要干在表面。','软超纤手套浸入水桶，拧到不滴水。','轻轻划过车身，不加压。','软超纤布擦干。','一次一个板块，重复直到全车完成。'],
  notes:['无水洗用法：1:100 喷在板块上，用软超纤布擦过，必要时第二块布再擦一遍。','可与 PRELUDIO 碱性/酸性配合使用。'],url:LABO+'idrosave-polymer-rinseless-wash-neutral-ph/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/PRELUDIO-ALKALINE_2368_NO_1_1_.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-preludio-alkaline',brand:'L',category:'wash',ph:{"category":"alk","value":"10.8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PRELUDIO ALKALINE',type:'碱性预浸液（免冲洗 / 无水洗体系）',sizes:'1000 ml',materials:'车漆 · 塑料 · 玻璃 · PPF · 轮毂 · 轮胎',
+ id:'L-preludio-alkaline',brand:'L',category:'wash',ph:{"category":"alk","value":"10.8","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/PRELUDIO-ALKALINE_2368_NO_1_1_.pdf","section":9},"evidence":[],"conflict":false},name:'PRELUDIO ALKALINE',type:'碱性预浸液（免冲洗 / 无水洗体系）',sizes:'1000 ml',materials:'车漆 · 塑料 · 玻璃 · PPF · 轮毂 · 轮胎',
  dilutions:[['新鲜污垢','1:20','喷雾壶'],['PPF 清洁 / 白车','1:15','喷雾壶'],['重度污垢','1:10','喷雾壶'],['严重污垢','1:5','喷雾壶']],
  steps:['按处理目的稀释。','均匀施于污染区域。','停留约 1 分钟，随后用无水洗或免冲洗方式去除污垢。'],
  notes:['针对有机污垢：轮毂刹车粉、虫尸、尾气、交通膜、PPF 发雾、白车发黄。'],url:LABO+'preludio-alkaline/'},
@@ -109,7 +109,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/labocosmetica-sidero-iron-remover-gel/sds.pdf","source":"chemcx","language":"英文","version":"2024","hosting":"remote"},
- id:'L-sidero',brand:'L',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'SIDERO',type:'铁粉去除凝胶（兼去水垢）',sizes:'500 ml · 4.5 L',materials:'车漆 · 铝 · 玻璃 · 轮毂',
+ id:'L-sidero',brand:'L',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-SIDERO-1.pdf"},"evidence":[],"conflict":false},name:'SIDERO',type:'铁粉去除凝胶（兼去水垢）',sizes:'500 ml · 4.5 L',materials:'车漆 · 铝 · 玻璃 · 轮毂',
  dilutions:[['日常维护（最高稀释）','1:4','喷雾壶'],['重度污染（锈斑、轨道铁粉、轮毂内圈深度清洁）','原液','喷雾壶']],
  steps:['官网未列出文字步骤。要点：干燥慢，可在阳光下更安全地作用；润滑性高，可用刷子清洁喷漆轮毂缝隙。'],
  notes:['遇铁粉变紫；如有水垢，颜色会由紫转为深绿至青铜色，表示钙质已被去除。','对车漆、保险杠、塑料安全，可恢复原有保护的拨水效果；也可溶解锈斑（适用于船舶）。','施工镀膜前清洁轮毂内圈必备。'],url:LABO+'sidero-500ml-iron-remover-gel-anti-limescale-action/'},
@@ -117,44 +117,44 @@ export const products: Product[] = [
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/_ENERGO_788_NO_5_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
  hazard:{"ingredient":"氟化氢铵 3–5%","sdsSection":3,"siteWarning":true},
- id:'L-energo',brand:'L',category:'deco',ph:{"category":"acid","value":"1","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'ÈNERGO',type:'矿物水斑去除剂',sizes:'—',materials:'车漆 · 玻璃 · 发动机舱 · 排气',
+ id:'L-energo',brand:'L',category:'deco',ph:{"category":"acid","value":"1","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-ENERGO-1.pdf"},"evidence":[],"conflict":false},name:'ÈNERGO',type:'矿物水斑去除剂',sizes:'—',materials:'车漆 · 玻璃 · 发动机舱 · 排气',
  dilutions:[['轻度','1:10','喷雾壶'],['中度','1:5','喷雾壶'],['重度（棉片）','原液','喷雾壶']],
  steps:['按污垢程度加水稀释。','喷在需要的区域，用施工棉或软毛刷涂开，作用 2–3 分钟。','清水冲洗。'],
  notes:['PURÌFICA 去不掉的大面积水垢：原液至 1:5 倒在手套上，在湿车上逐板擦拭（避开阳光），随即冲洗。','仍有残留：原液点涂，或浸湿棉片贴在车身上作用 5 分钟并打圈按摩，再用湿超纤布擦去。','软漆、单工序漆须谨慎，避免用原液以防出现光晕。'],url:LABO+'energo-clean-acid-rain-water-stain-mineral-remover-car-detailing/'},
 
-{id:'L-lubrifica',brand:'L',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'LUBRIFICA',type:'粘土 / 打磨 / 抛光润滑液',sizes:'500 ml · 4.5 L',materials:'车漆 · 玻璃 · PPF · 改色膜',
+{id:'L-lubrifica',brand:'L',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-LUBIRIFCA-3.pdf"},"evidence":[],"conflict":false},name:'LUBRIFICA',type:'粘土 / 打磨 / 抛光润滑液',sizes:'500 ml · 4.5 L',materials:'车漆 · 玻璃 · PPF · 改色膜',
  dilutions:[['粘土棒（Clay Bar）','1:10','喷雾壶'],['粘土块（Clay Block）','1:5','喷雾壶'],['PPF 施工','1:15','喷雾壶'],['玻璃隔热膜 / 贴纸','1:20','喷雾壶']],
  steps:['直接喷在需要过泥或打磨的表面，或抛光前喷在抛光盘上。','过泥时持续喷洒，保持表面润滑。','用后以布擦净，无需冲洗。','贴 PPF 或隔热膜：表面和膜的胶面都要喷。'],
  notes:['掉在地上的粘土必须丢弃。','过泥时不要加压，避免阳光直射（润滑液干得太快）。'],url:LABO+'lubricant-for-claying-and-sanding-500ml/'},
 
-{id:'L-cronos',brand:'L',category:'deco',ph:{"category":"alk","value":"> 12.0","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'CRÒNOS',type:'排气尾喉除碳剂',sizes:'250 ml',materials:'排气尾喉（金属）',
+{id:'L-cronos',brand:'L',category:'deco',ph:{"category":"alk","value":"> 12.0","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-CRONOS-3.pdf"},"evidence":[],"conflict":false},name:'CRÒNOS',type:'排气尾喉除碳剂',sizes:'250 ml',materials:'排气尾喉（金属）',
  dilutions:[['尾喉（中软毛刷 / 超纤）','即用','—']],
  steps:['少量 CRÒNOS 倒在中软毛刷上清洁尾喉。','冲水并擦干。残留处把少量产品倒在超纤块上反复擦，直至完全去除。','再冲水，用超纤布擦干。'],
  notes:[],url:LABO+'cronos-rapid-decarbonizer-exhaust-tailpipes-car-detailing/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/LIMPIA_2543_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-limpia',brand:'L',category:'deco',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'LIMPIA',type:'PPF / 改色膜深层清洁剂',sizes:'500 ml 喷壶',materials:'PPF · 改色膜',
+ id:'L-limpia',brand:'L',category:'deco',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/LIMPIA_2543_NO_1.pdf","section":9},"evidence":[],"conflict":false},name:'LIMPIA',type:'PPF / 改色膜深层清洁剂',sizes:'500 ml 喷壶',materials:'PPF · 改色膜',
  dilutions:[['PPF / 改色膜（超纤布）','即用','喷雾壶']],
  steps:['喷在膜面上。','用超细纤维布擦拭并带走污垢，无需冲水。'],
  notes:['适用时机：季节性除染（膜孔内积累的环境污垢）；PPF 发灰发闷时恢复光泽；定期维护以保持透明度、弹性和自修复反应。','可用于已有纳米保护、蜡或镀膜的表面。'],url:LABO+'limpia/'},
 
-{id:'L-veritas',brand:'L',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'VÈRITAS',type:'镀膜前脱脂 / 去油检验剂',sizes:'1000 ml',materials:'车漆 · 玻璃 · 轮毂 · 织物',
+{id:'L-veritas',brand:'L',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-VERITAS.pdf"},"evidence":[],"conflict":false},name:'VÈRITAS',type:'镀膜前脱脂 / 去油检验剂',sizes:'1000 ml',materials:'车漆 · 玻璃 · 轮毂 · 织物',
  dilutions:[['镀膜前脱脂（官方镀膜流程）','1:5','喷雾壶'],['抛光后检查','1:3 – 1:5','喷雾壶'],['点测（spot test）','1:1','喷雾壶'],['去除旧保护层 / 镀膜施工出错（超纤布）','原液（喷在布上）','—']],
  steps:['原液：先喷在短毛超纤布上，再不加压直线擦拭，最后用布的干面收尾。不要把原液直接喷到车身。','稀释液：直接喷在表面，用超纤布不加压抹开，用干面收尾。','检查镀膜状态：洗车后车身仍湿时，距离 60 cm 喷在引擎盖上，再用水冲。'],
  notes:['不要在热表面或热源旁使用；单工序/直接亮光漆面上避免让产品干在表面。'],url:LABO+'veritas-alcool-ipa-verificatore-swirls-oil-wax-remover/'},
 
-{id:'L-audace',brand:'L',category:'polish',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'AUDACE',type:'顶级切削研磨剂',sizes:'250 ml · 1000 ml',materials:'车漆',
+{id:'L-audace',brand:'L',category:'polish',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-AUDACE.pdf"},"evidence":[],"conflict":false},name:'AUDACE',type:'顶级切削研磨剂',sizes:'250 ml · 1000 ml',materials:'车漆',
  dilutions:[['海绵盘（旋转机 / DA）','3 滴','—'],['羊毛盘（旋转机）','4 滴','—']],
  steps:['DA 偏心机：1 档在约 40×40 cm 区域抹开，升至 3 档开始切削，5 档达到最大切削，直到研磨剂耗尽。','旋转机：从 400–600 rpm 开始，升至 1000–1200 rpm（切削与收光的最佳平衡，羊毛盘也不易出现光环）。','加工中经常清洁抛光盘，发挥性能并避免起粉。'],
  notes:['硬漆用 HybridPad；需要较少切削时用白色或蓝色海绵盘。','水性配方，ColdCut 技术，低转速即可高切削。'],url:LABO+'audace-supreme-cut-compound/'},
 
-{id:'L-leale',brand:'L',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'LEALE',type:'中切研磨剂（敏感漆专用）',sizes:'250 ml · 500 ml',materials:'车漆',
+{id:'L-leale',brand:'L',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-LEALE.pdf"},"evidence":[],"conflict":false},name:'LEALE',type:'中切研磨剂（敏感漆专用）',sizes:'250 ml · 500 ml',materials:'车漆',
  dilutions:[['海绵盘（旋转机 / DA）','3 滴','—']],
  steps:['旋转机：400–600 rpm 起步，升至 1000–1200 rpm，最后用 400–600 rpm 收一遍以获得好的光洁度。','DA 偏心机：1 档在约 40×40 cm 区域抹开后加工。','加工中经常清洁抛光盘。'],
  notes:['中等敏感漆：切削用 HybridPad；非常软的漆：用中蓝盘；作一步抛光用蓝盘或黄盘。','不含石蜡和填充剂，不掩盖缺陷。'],url:LABO+'leale-250gr-medium-cut-compound-special-for-sensitive-paint/'},
 
-{id:'L-fiero',brand:'L',category:'polish',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'FIERO',type:'精细收光抛光剂 / 镀膜结合底剂',sizes:'250 ml · 500 ml',materials:'车漆',
+{id:'L-fiero',brand:'L',category:'polish',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-FIERO.pdf"},"evidence":[],"conflict":false},name:'FIERO',type:'精细收光抛光剂 / 镀膜结合底剂',sizes:'250 ml · 500 ml',materials:'车漆',
  dilutions:[['车漆（DA 偏心机）','即用','—']],
  steps:['DA 偏心机恒定 4.5 档，在 40×40 cm 区域均匀推开，直到产品耗尽。','推荐中软黄盘或软黑盘。'],
  notes:['水性，不含蜡和填充剂。'],url:LABO+'fiero-super-finish-genuine-polish/'},
@@ -205,38 +205,38 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/labocosmetica-beneficia/sds.pdf","source":"chemcx","language":"荷兰文","version":"2022","hosting":"remote"},
- id:'L-beneficia',brand:'L',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'BENEFÌCIA',type:'Wet Coat 喷涂即冲镀膜增强剂',sizes:'1000 ml',materials:'车漆 · PPF',
+ id:'L-beneficia',brand:'L',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/wp-content/uploads/2022/02/EN_data-sheet-BENEFICA-1.pdf"},"evidence":[],"conflict":false},name:'BENEFÌCIA',type:'Wet Coat 喷涂即冲镀膜增强剂',sizes:'1000 ml',materials:'车漆 · PPF',
  dilutions:[['冬季','原液','喷雾壶'],['夏季 / 高温','1:1','喷雾壶']],
  steps:['洗车后车身清洁、湿润，引擎盖不能太热。','一次一个板块，距离 40–60 cm 由下往上喷，形成尽量宽而均匀的雾面。','数到 5 后立即用水冲洗。','可用水膜法或吹干；干燥时如有残留，用 PERFÈCTA 2.0 去除。'],
  notes:['避免阳光直射，不要让产品干在表面。','与 REVÌTAX、CUPÌDO 同源，可层叠。'],url:LABO+'beneficia-best-hydrophobicity-booster-wet-coat/'},
 
-{id:'L-cupido',brand:'L',category:'seal',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'CUPÌDO',type:'纳米复合封体',sizes:'500 ml',materials:'车漆',
+{id:'L-cupido',brand:'L',category:'seal',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-CUPIDO-3.pdf"},"evidence":[],"conflict":false},name:'CUPÌDO',type:'纳米复合封体',sizes:'500 ml',materials:'车漆',
  dilutions:[['车漆（施工棉）','即用','—']],
  steps:['每次在 40×40 cm 区域喷 CUPÌDO。','用施工棉以十字交叉（Criss-Cross）方式推开。','用超纤布去除产品，再用 DOUBLE FACE 布去除残留。'],
  notes:['可作为其他封体或纳米蜡上的维护层；与 VÉNERE 搭配可把维护周期由 4 个月延长到 9 个月。'],url:LABO+'cupido-best-spray-on-sealant-sio2-paint-ceramic-coated/'},
 
-{id:'L-venere',brand:'L',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'VÉNERE',type:'Glaze 封体 / 底剂',sizes:'250 ml',materials:'车漆',
+{id:'L-venere',brand:'L',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-VENERE-1.pdf"},"evidence":[],"conflict":false},name:'VÉNERE',type:'Glaze 封体 / 底剂',sizes:'250 ml',materials:'车漆',
  dilutions:[['车漆（DA 偏心机 / 手工）','即用','—']],
  steps:['DA 偏心机：1–3 档在漆面推开并叠加。','手工：2–3 滴在施工棉上，像固体蜡一样左右轻推一到两遍。','感觉表面略油时，用超纤布擦去。'],
  notes:['作为 CUPÌDO 的底剂：帮助 CUPÌDO 完全附着，维护保护期由 4 个月延长至 9 个月。'],url:LABO+'venere-primer-sealant-paint-glaze-best-gloss/'},
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/labocosmetica-perfecta-2-0-quick-detailer/sds.pdf","source":"chemcx","language":"荷兰文","version":"2022","hosting":"remote"},
- id:'L-perfecta',brand:'L',category:'seal',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PERFÉCTA 2.0',type:'光泽快速美容剂（Quick Detailer）',sizes:'500 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · PPF · 镀铬',
+ id:'L-perfecta',brand:'L',category:'seal',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-PERFECTA-2.0-1.pdf"},"evidence":[],"conflict":false},name:'PERFÉCTA 2.0',type:'光泽快速美容剂（Quick Detailer）',sizes:'500 ml · 4.5 L',materials:'车漆 · 塑料 · 铝 · PPF · 镀铬',
  dilutions:[['车门','2 喷','—'],['引擎盖','4 喷','—'],['车顶','6 喷','—']],
  steps:['湿车：在仍湿的板块上喷少量，用 SUPERDRYER 超纤布一次性把产品和水擦干。','干车（方式一）：喷在短毛超纤布上抹开，再用干净的长毛超纤布收尾。','干车（方式二）：直接喷在车身，用短毛超纤布轻抹，再用长毛超纤布擦干。'],
  notes:['pH 4.5，干燥阶段可降低硬水斑风险。','出现条纹只会是用量过多，或用了湿用途的超纤布。','保质期 3 年。'],url:LABO+'perfecta/'},
 
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/labocosmetica-perfecta-sio2-ceramic-booster.pdf","source":"sds-db","language":"英文","version":"2022","hosting":"remote"},
- id:'L-perfecta-sio2',brand:'L',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'PERFÉCTA SiO2',type:'陶瓷快速美容剂',sizes:'500 ml',materials:'车漆 · 塑料 · 铝 · PPF',
+ id:'L-perfecta-sio2',brand:'L',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/05/EN_data-sheet-PERFECTA-SiO2-2.pdf"},"evidence":[],"conflict":false},name:'PERFÉCTA SiO2',type:'陶瓷快速美容剂',sizes:'500 ml',materials:'车漆 · 塑料 · 铝 · PPF',
  dilutions:[['湿车每区域（SUPER DRYER）','2–3 喷（小区域不超过 2 喷）','—']],
  steps:['准备：彻底洗车，用 SIDERO 去除铁粉等沉积。','摇匀，湿车或干车均可，每次处理不超过约半平方米。','干车：喷在短毛超纤布或车身上抹开，用干净的长毛超纤布收尾。','湿车：直接喷在漆面，用 SUPER DRYER 超纤布擦开。','用高质量超纤布擦至镜面后再处理下一区域。'],
  notes:['第二层须间隔 24 小时；完全固化 12 小时。','不要在阳光直射或热漆面使用，最佳 25 °C 以下；干车效果最佳。'],url:LABO+'perfecta-sio2/'},
 
 {
  sds:{"url":"/sds/L-hydra.pdf","source":"washme","language":"英文","version":"2020-09-04","hosting":"local","sha256":"3c9e9413d446df2566dd1f0267b082a81ead0311ed9cfb12563fcb861b526669","originalUrl":"https://cdn.shopify.com/s/files/1/0409/2021/9812/files/HYDRA-SDS_745_GB_4.pdf?v=1708379545","checkedAt":"2026-11-10"},
- id:'L-hydra',brand:'L',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'HYDRA',type:'塑料 / 轮胎超级上光封体',sizes:'100 ml · 500 ml',materials:'内外塑料 · 轮胎',
+ id:'L-hydra',brand:'L',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-HYDRA.pdf"},"evidence":[],"conflict":false},name:'HYDRA',type:'塑料 / 轮胎超级上光封体',sizes:'100 ml · 500 ml',materials:'内外塑料 · 轮胎',
  dilutions:[['外部塑料（海绵 / 超纤施工棉）','1:1','—'],['内饰塑料（海绵 / 超纤施工棉）','1:3 – 1:5','—'],['轮胎','原液','喷雾壶']],
  steps:['在已清洁、脱脂的表面上，用海绵或超纤施工棉涂抹原液或稀释液。','均匀推开，再用干超纤布去除多余部分。','第二层可进一步加强效果。','轮胎要更亮：直接喷在轮胎肩部，待其自然干燥。'],
  notes:['光泽和保护程度可通过稀释比例调节。'],url:LABO+'hydra-best-plastic-hyper-dressing-sealant-plastich-car-detailing/'},
@@ -250,31 +250,31 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/TPR_TRIM_PLASTIC_RESTORER_2506_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-tpr',brand:'L',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'TPR',type:'外饰塑料修复（Trim Plastic Restore）',sizes:'—',materials:'外部塑料',
+ id:'L-tpr',brand:'L',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/TPR_TRIM_PLASTIC_RESTORER_2506_NO_1.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节：混合物不溶于水，pH 不适用"}],"conflict":false},name:'TPR',type:'外饰塑料修复（Trim Plastic Restore）',sizes:'—',materials:'外部塑料',
  dilutions:[['外饰塑料（海绵 / 超纤施工棉）','即用','—']],
  steps:['清洁：视污垢用 DÙCTILE 或 LIBERA，再用 VÈRITAS 彻底脱脂，超纤布完全擦干。','施工：少量倒在海绵或施工棉上，小区域施工，推开至完全吸收。','收尾：停留约 1 分钟，用干布去除多余。','至少 24 小时不要接触水；7 天后再洗车或淋雨效果最佳。','维护：用 Labocosmetica 3pH 洗车流程；每 12–24 个月重涂。'],
  notes:[],url:LABO+'tpr/'},
 
-{id:'L-aquavelox',brand:'L',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'AQUAVÈLOX',type:'玻璃纳米封体（驱水）',sizes:'100 ml',materials:'玻璃',
+{id:'L-aquavelox',brand:'L',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-AQUAVELOX.pdf"},"evidence":[],"conflict":false},name:'AQUAVÈLOX',type:'玻璃纳米封体（驱水）',sizes:'100 ml',materials:'玻璃',
  dilutions:[['玻璃（麂皮超纤布）','即用','—']],
  steps:['前处理：用 ÈNERGO 配合粘土去除玻璃水垢，严重时用玻璃研磨剂；如有洗车房蜡残留，用 VÈRITAS。','在完全干燥的玻璃上距离 20–25 cm 均匀喷涂。','用干净干燥的麂皮超纤布横竖推开，直到覆盖整块玻璃。','用干超纤布收尾。'],
  notes:['20 分钟后可上第二层，效果更强。','8 小时完全激活；官方建议给 12 小时固化以获得最佳性能。'],url:LABO+'aquavelox-best-strong-glass-hydrophobic-water-repellant-anti-rain/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/NITIDO_2184_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'L-nitido',brand:'L',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB24-01-0296）：原液中性","registration":"EB24-01-0296"}],"conflict":false},name:'NITIDO',type:'高透玻璃清洁剂',sizes:'500 ml',materials:'玻璃',
+ id:'L-nitido',brand:'L',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/Labocosmetica/NITIDO_2184_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB24-01-0296）：原液中性","registration":"EB24-01-0296"}],"conflict":false},name:'NITIDO',type:'高透玻璃清洁剂',sizes:'500 ml',materials:'玻璃',
  dilutions:[['玻璃（超纤布）','即用','—']],
  steps:['直接喷在玻璃上。','用干净超纤布擦拭。','用另一块干净干布擦到完全干爽无痕。'],
  notes:["可在阳光直射下使用。"],url:LABO+'nitido-high-clarity-glass-cleaner/'},
 
-{id:'L-vitreo',brand:'L',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'VITREO',type:'玻璃研磨剂（去划痕/氧化/腐蚀）',sizes:'250 ml',materials:'玻璃',
+{id:'L-vitreo',brand:'L',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-VITREO-2.pdf"},"evidence":[],"conflict":false},name:'VITREO',type:'玻璃研磨剂（去划痕/氧化/腐蚀）',sizes:'250 ml',materials:'玻璃',
  dilutions:[['玻璃（旋转机 + 毛毡盘 / 手工超纤施工棉）','即用','—']],
  steps:['用胶带遮蔽橡胶条、塑料等敏感部位。','每次处理约 20×20 cm。','湿润薄毛毡盘，均匀涂抹产品。','加工中喷水或 LUBRIFICA，避免过热产生微划痕。','去划痕：旋转机最高 1000 RPM，建议软背盘以减少毛毡震动；不要过度加压。','用干净、湿润的软超纤布去除残余（表面较热，用干布会留斑）。'],
  notes:['同一区域连续不超过 2 遍；需要再处理时先换区域，待表面冷却后再继续。','去水垢或作为 AQUAVÈLOX 等驱水剂的前处理：可用 DA 偏心机或手工超纤施工棉；精抛用人造丝毛毡盘。'],url:LABO+'vitreo-glass-polish-removes-slight-scratches-oxidation-and-corrosion-on-car-glass-250g/'},
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/labocosmetica-ductile-all-purpose-cleaner/sds.pdf","source":"chemcx","language":"英文","version":"2023","hosting":"remote"},
- id:'L-ductile',brand:'L',category:'apc',ph:{"category":"alk","value":"< 11.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'DÙCTILE',type:'浓缩多功能清洁剂 APC',sizes:'500 ml · 4.5 L',materials:'织物 · 地毯 · 皮革 · 塑料 · Alcantara · 车漆 · 玻璃 · 发动机舱',
+ id:'L-ductile',brand:'L',category:'apc',ph:{"category":"alk","value":"< 11.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-DUCTILE-1.pdf"},"evidence":[],"conflict":false},name:'DÙCTILE',type:'浓缩多功能清洁剂 APC',sizes:'500 ml · 4.5 L',materials:'织物 · 地毯 · 皮革 · 塑料 · Alcantara · 车漆 · 玻璃 · 发动机舱',
  dilutions:[['塑料（刷）','1:20','喷雾壶'],['织物和地毯（刷）','1:10','喷雾壶'],['门槛 / 预洗','1:20 – 1:30','喷雾壶'],['发动机、合金轮毂、轮拱（刷）','1:3','喷雾壶']],
  steps:['按污垢程度稀释，均匀喷涂。','用干净的刷子清除污垢。','最后用干净的布或刷子清理所有处理过的部位。'],
  notes:['无残留，易冲洗。','与 GLICO 组成 2pH 内饰清洁流程（见 GLICO）。'],url:LABO+'ductile-best-apc-all-purpose-cleaner-all-around-detailing/'},
@@ -288,12 +288,12 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/labocosmetica-omnia-2-interior-cleaner.pdf","source":"sds-db","language":"英文","version":"2025","hosting":"remote"},
- id:'L-omnia',brand:'L',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'OMNÌA 2.0',type:'内饰清洁剂',sizes:'500 ml · 4.5 L',materials:'塑料 · 皮革 · 织物 · 地毯 · Alcantara · 铝',
+ id:'L-omnia',brand:'L',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-OMNIA-2.0-1.pdf"},"evidence":[],"conflict":false},name:'OMNÌA 2.0',type:'内饰清洁剂',sizes:'500 ml · 4.5 L',materials:'塑料 · 皮革 · 织物 · 地毯 · Alcantara · 铝',
  dilutions:[['日常 / 维护清洁（超纤布）','1:10','喷雾壶'],['快速内饰清洁（超纤布）','1:15','喷雾壶'],['深度清洁（刷）','1:2','喷雾壶'],['顽固污垢（刷）','原液 – 1:1','喷雾壶'],['皮革','1:4','喷雾壶'],['修复被强力 APC 伤害或晒褪色的塑料（刷）','原液 – 1:1','—'],['Tornador / Rotorjet（气动清洗枪）','1:7','—']],
  steps:['深度清洁：喷在表面，用刷子或软毛刷打出细密泡沫，最后用干超纤布擦去。','日常维护：喷在表面后用超纤布擦拭。','提升塑料自然质感：喷上后停留 5 分钟，再用干超纤布擦去。','老车或洗坏的塑料：原液或最多 1:1，用刷子推开，停留约 10 分钟至干，先用湿超纤布擦，再用干净干布擦干。'],
  notes:[],url:LABO+'omnia-2-0-500ml-interior-cleaner/'},
 
-{id:'L-glico',brand:'L',category:'int',ph:{"category":"acid","value":"2.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'GLICO',type:'乙醇酸织物清洁剂（专利配方）',sizes:'500 ml · 4.5 L',materials:'织物 · 地毯 · Alcantara · 塑料 · 铝',
+{id:'L-glico',brand:'L',category:'int',ph:{"category":"acid","value":"2.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/05/EN_data-sheet-GLICO-1.pdf"},"evidence":[],"conflict":false},name:'GLICO',type:'乙醇酸织物清洁剂（专利配方）',sizes:'500 ml · 4.5 L',materials:'织物 · 地毯 · Alcantara · 塑料 · 铝',
  dilutions:[['单独使用 / 维护（刷）','1:10','喷雾壶'],['重度脏污组合（COMBO）（刷）','1:5','喷雾壶'],['传统清洁后的最后过水','1:50','—'],['刷子浸泡软化（浸泡约 1 小时）','1:5','—']],
  steps:['单独使用：1:10 喷满整个区域并刷开，停留 2–3 分钟，用干净超纤布擦拭后吸尘。','COMBO（很脏的座椅）：GLICO 1:5 喷涂并刷开，停留 2–3 分钟；不要冲洗，接着喷 DÙCTILE 1:10 再刷。','在出现皂化的地方吸尘，最后用喷抽机、蒸汽机或湿布清理。'],
  notes:['Luminol 效果：喷涂时会让肉眼看不到的污渍显形。','误喷到 Alcantara、塑料、皮革、金属、碳纤维、凯夫拉上也安全。','用 1:50 作最后过水，可去除之前碱性表面活性剂的残留。'],url:LABO+'glico/'},
@@ -313,12 +313,12 @@ export const products: Product[] = [
  steps:['摇匀，喷在超纤布上（不要直接喷在表面）。','直线、重叠地擦拭。','需要时用第二块干布收尾。'],
  notes:[],url:LABO+'igea/'},
 
-{id:'L-derma-cleaner',brand:'L',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'DÈRMA CLEANER 2.0',type:'皮革清洁剂',sizes:'500 ml · 4.5 L',materials:'皮革',
+{id:'L-derma-cleaner',brand:'L',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-DERMA-CLEANER-2.0-1.pdf"},"evidence":[],"conflict":false},name:'DÈRMA CLEANER 2.0',type:'皮革清洁剂',sizes:'500 ml · 4.5 L',materials:'皮革',
  dilutions:[['维护清洁（超纤布）','1:1','喷雾壶'],['深度清洁（软毛刷）','原液','—']],
  steps:['先用吸尘器去除灰尘和粗颗粒。','产品直接施于表面或软毛刷上。','用刷子刷到起泡。','用柔软超纤布擦去产品。','维护：喷上稀释液，用干净干燥的超纤布擦拭。'],
  notes:[],url:LABO+'derma-cleaner-2-0-500ml-hydrating-purifying-leather-cleaner/'},
 
-{id:'L-derma-sealant',brand:'L',category:'int',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'DÈRMA SEALANT',type:'皮革保护封体',sizes:'250 ml',materials:'皮革',
+{id:'L-derma-sealant',brand:'L',category:'int',ph:{"category":"acid","value":"4.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://labocosmetica.com/ENG/wp-content/uploads/2022/02/EN_data-sheet-DERMA-SEALANT-1.pdf"},"evidence":[],"conflict":false},name:'DÈRMA SEALANT',type:'皮革保护封体',sizes:'250 ml',materials:'皮革',
  dilutions:[['皮革（软超纤施工棉）','即用','—']],
  steps:['先用 DÈRMA CLEANER 2.0 清洁皮革。','表面清洁干燥后摇匀，把 DÈRMA SEALANT 倒在软超纤施工棉上。','以轻柔的小圈按摩皮革。','用干超纤布收尾。'],
  notes:['保持皮革柔软、透气和原厂质感。'],url:LABO+'derma-best-leather-sealant-nano-coating-protection/'},
