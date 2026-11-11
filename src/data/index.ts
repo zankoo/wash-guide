@@ -10,7 +10,7 @@ import * as ps from './ps';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, PH_SHORT, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
-import { phEvidenceNotes } from './ph';
+import { PH_BASIS_LABEL, phEvidenceNotes } from './ph';
 import { fold, initials, type RankFields } from '../lib/search';
 
 export * from './materials';
@@ -74,12 +74,24 @@ export function productSearchText(p: Product): string {
   return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...p.notes, ...phEvidenceNotes(p.ph)].join(' '));
 }
 
-/** pH 标签文字：「碱性 12.5」；官方未公布或不适用时返回 undefined */
-export function phText(p: Product): string | undefined {
+/** pH 标签主体：「碱性 12.5」，不含测量口径；官方未公布或不适用时返回 undefined */
+export function phValueText(p: Product): string | undefined {
   if (!p.ph || p.ph.category === 'na') return undefined;
   const { category: k, value: v } = p.ph;
   const label = k === 'acid' && v && /^\d+(?:\.\d+)?$/.test(v) && Number(v) >= 5 && Number(v) <= 6 ? '弱酸' : PH_SHORT[k];
   return v ? `${label} ${v}` : label;
+}
+
+/** 非原液口径的说明：「1% 稀释液」；原液返回 undefined */
+export function phBasisText(p: Product): string | undefined {
+  return p.ph && p.ph.basis !== 'raw' ? PH_BASIS_LABEL[p.ph.basis] : undefined;
+}
+
+/** 完整 pH 标签文字：「碱性 12.5」「中性 7 · 1% 稀释液」 */
+export function phText(p: Product): string | undefined {
+  const text = phValueText(p);
+  const basis = phBasisText(p);
+  return text && basis ? `${text} · ${basis}` : text;
 }
 
 /** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */

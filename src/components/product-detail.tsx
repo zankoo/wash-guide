@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phEvidenceNotes, PH_SOURCE_LABEL, phText, type Product } from '@/data';
+import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phBasisText, phValueText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './notes';
@@ -113,7 +113,7 @@ function PhEvidence({ p }: { p: Product }) {
     <section className="ph-evidence" aria-label="pH 资料与口径">
       <h3>pH 资料与口径</h3>
       <p>
-        原液数据{recorded ? ` · ${PH_SOURCE_LABEL[ph.source.kind]}` : ''}
+        {PH_BASIS_LABEL[ph.basis]}数据{recorded ? ` · ${PH_SOURCE_LABEL[ph.source.kind]}` : ''}
         {ph.conflict ? ' · 存在资料口径差异' : ''}
       </p>
       {ph.source.url && (
@@ -189,11 +189,23 @@ function ToxicLine({ p }: { p: Product }) {
 /** 产品自身 pH：有官方数据显示彩色标签；官方标注不适用的写「不适用」；配件不显示 */
 function PhLine({ p }: { p: Product }) {
   if (p.category === 'acc') return null;
-  const t = phText(p);
+  const t = phValueText(p);
+  const basis = phBasisText(p);
   return (
     <p className="sh-ph">
       {t ? (
-        <span className={`phtag ${p.ph!.category}`}>{p.ph!.value ? t.replace(' ', ' · pH ') : `${t} pH`}</span>
+        <span className={`phtag ${p.ph!.category}`}>
+          {/* 内层包一层，窄屏时在「·」处换行，口径说明整体不拆开 */}
+          <span>
+            {p.ph!.value ? t.replace(' ', ' · pH ') : `${t} pH`}
+            {basis && (
+              <>
+                {' '}
+                <span className="ph-basis">· {basis}</span>
+              </>
+            )}
+          </span>
+        </span>
       ) : (
         <span className="sh-ph-none">pH：{p.ph?.category === 'na' ? '不适用（官方标注）' : '官方未公布'}</span>
       )}

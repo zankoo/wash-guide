@@ -116,6 +116,8 @@ export interface ProductHazard {
   siteWarning: true;
 }
 
+/** pH 的测量口径：多数资料给原液；少数厂商资料表只给 1% 稀释液的测量值，按原样记录，不当作原液。 */
+export type PhBasis = 'raw' | '1%';
 export type PhSourceKind = 'product-page' | 'technical-sheet' | 'sds' | 'korean-registration' | 'unrecorded';
 export type PhEvidence =
   | { kind: 'statement'; source: PhSourceKind; text: string; url?: string; registration?: string }
@@ -126,7 +128,7 @@ export type PhEvidence =
 export interface ProductPh {
   category: PH | 'na';
   value?: string;
-  basis: 'raw';
+  basis: PhBasis;
   source: { kind: PhSourceKind; url?: string; section?: 9 };
   evidence: PhEvidence[];
   conflict: boolean;
