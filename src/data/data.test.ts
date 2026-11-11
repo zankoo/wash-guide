@@ -104,7 +104,7 @@ describe('pH', () => {
   it('数值写法统一（如 12.5、6–8、> 12、≥ 11）', () => {
     for (const p of PRODUCTS) {
       if (!p.ph) continue;
-      const [k, v] = p.ph;
+      const { category: k, value: v } = p.ph;
       if (k === 'na') expect(v, p.id).toBeUndefined();
       if (v) expect(v, p.id).toMatch(/^(?:[<>≥≤] )?-?\d+(?:\.\d+)?(?:–\d+(?:\.\d+)?)?$/);
     }
@@ -112,7 +112,7 @@ describe('pH', () => {
 
   it('酸碱性和数值一致：< 6 酸性，6–8 中性，> 8 碱性', () => {
     for (const p of PRODUCTS) {
-      const [k, v] = p.ph ?? [];
+      const { category: k, value: v } = p.ph ?? {};
       if (!k || k === 'na' || !v) continue;
       const n = num(v);
       expect(k, `${p.id} pH ${v}`).toBe(n < 6 ? 'acid' : n <= 8 ? 'neu' : 'alk');
