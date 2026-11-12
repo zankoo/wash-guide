@@ -70,6 +70,22 @@ test('桌面左栏按 品牌 → 材质 → 分类 排列', async ({ page }) => 
   }
 });
 
+test('左栏「我的常用」：分类目录只统计常用、点击跳转不退出常用', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => { localStorage.setItem('wash-favorites', JSON.stringify(['C-reset', 'C-ironx'])); dispatchEvent(new StorageEvent('storage', { key: 'wash-favorites' })); });
+  const side = page.getByRole('complementary', { name: '索引' });
+  await side.getByRole('button', { name: /^我的常用 2$/ }).click();
+  await expect(page.locator('main .card')).toHaveCount(2);
+  const index = side.getByRole('navigation', { name: '分类目录' });
+  await expect(index.getByRole('heading')).toHaveText('分类（我的常用）');
+  await expect(index.getByRole('button')).toHaveCount(0);
+  const links = index.getByRole('link');
+  await expect(links).toHaveCount(2);
+  await links.last().click();
+  await expect(page.locator('main .card')).toHaveCount(2);
+  await expect(side.getByRole('button', { name: /^我的常用/ })).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({ page }) => {
   await page.goto('/?q=Reset');
   const card = page.locator('main .card[href^="/p/C-reset?"]');
@@ -125,7 +141,7 @@ test('离线刷新带筛选参数的页面，收藏详情可交互且能返回',
   await expect(page.getByRole('searchbox')).toHaveValue('铁粉');
   await expect(page.locator('main .card').first()).toBeVisible();
   await page.getByRole('button', { name: '清除全部', exact: true }).click();
-  await page.getByRole('button', { name: /我的常用 · 1/ }).click();
+  await page.getByRole('button', { name: /^我的常用 1$/ }).click();
   await page.locator('main .card[href^="/p/C-reset"]').click();
   await expect(page.locator('#d-name')).toHaveText('Reset');
   await expect(page.locator('.sh-stage img')).toBeVisible();

@@ -576,8 +576,6 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 .pill{white-space:normal;overflow:visible;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
 .ph-img{--placeholder-color:var(--koch);background:color-mix(in srgb,var(--placeholder-color) 9%,var(--stage));border-bottom:3px solid var(--placeholder-color)}
 .ph-img.C{--placeholder-color:var(--carpro)} .ph-img.L{--placeholder-color:var(--labo)} .ph-img.M{--placeholder-color:var(--maniac)} .ph-img.G{--placeholder-color:var(--gyeon)} .ph-img.F{--placeholder-color:var(--mafra)} .ph-img.B{--placeholder-color:var(--bola)} .ph-img.N{--placeholder-color:var(--feynlab)} .ph-img.P{--placeholder-color:var(--ps)}
-.side-favorites button{display:flex;align-items:center;gap:7px;border:1px solid var(--line-2);border-radius:8px;background:var(--sheet);color:var(--ink);padding:10px;width:100%;cursor:pointer}
-.side-favorites svg{width:18px;height:18px}
 
 .material-picker{flex:none}
 .material-picker summary{white-space:nowrap}
