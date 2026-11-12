@@ -21,14 +21,14 @@ export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/sfdk3ruezfotjvt9b06zd/GYEON-Q2M-Foam_M-en_4-1.pdf?rlkey=s0rze2wpq5dsm2srxhk5tku9o&raw=1","source":"gyeon","language":"英文","version":"v4.1","hosting":"remote"},
- id:'G-foam',brand:'G',category:'pre',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0003）：原液碱性","registration":"HA25-01-0003"}],"conflict":false},name:'Q²M Foam',type:'高浓缩泡沫预洗',sizes:'1 L · 4 L',materials:'车漆 · 镀膜车',
+ id:'G-foam',brand:'G',category:'pre',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/sfdk3ruezfotjvt9b06zd/GYEON-Q2M-Foam_M-en_4-1.pdf?rlkey=s0rze2wpq5dsm2srxhk5tku9o&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0003）：原液碱性","registration":"HA25-01-0003"}],"conflict":false},name:'Q²M Foam',type:'高浓缩泡沫预洗',sizes:'1 L · 4 L',materials:'车漆 · 镀膜车',
  dilutions:[['泡沫预洗','1:15','PA壶']],
  steps:['按PA壶或喷壶的设置稀释（官方比例 1:15，约 50 ml / 车）。','喷在干燥的车身上，由下往上均匀覆盖。','让泡沫停留，不要干掉。','用高压水枪彻底冲洗。','接着做接触式手洗。'],
  notes:["镀膜车和未镀膜车都可用，适合每次洗车的第一步。","不需要刷洗，高压冲洗即可；但它不能替代手洗，之后仍要接触式清洗。"],url:GYEON+'foam/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/lw37b8kkwsb1jzigafag0/GYEON-Q2M-Bug-Grime_M-en_7-2.pdf?rlkey=i3h8uudai0eektoesesrtwncp&raw=1","source":"gyeon","language":"英文","version":"v7.2","hosting":"remote"},
- id:'G-buggrime',brand:'G',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M Bug&Grime',type:'即用型虫尸 / 路面油污预洗（pH 11）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车 · 外部各表面',
+ id:'G-buggrime',brand:'G',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"product-page","url":"https://gyeon.co/product/buggrime/"},"evidence":[],"conflict":false},name:'Q²M Bug&Grime',type:'即用型虫尸 / 路面油污预洗（pH 11）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车 · 外部各表面',
  dilutions:[['虫尸、路面污垢','即用','喷雾壶']],
  steps:['喷在虫尸或油污区域。','短暂停留，不要干掉。','用高压水枪彻底冲洗。','污染严重时重复，或轻轻刷洗。','接着正常洗车。'],
  notes:['已蚀入清漆层的虫尸痕迹无法去除。','镀膜车可用，但过量使用可能影响镀膜的疏水性。','用量约 80–150 ml / 车。'],url:GYEON+'buggrime/'},
@@ -36,14 +36,14 @@ export const products: Product[] = [
 // ───────────────────────── 洗车香波 / 免冲洗 ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/zik1zgs6f3cuzdwzi0l12/GYEON-Q2M-Bathe_M-en_6-1.pdf?rlkey=0jk6zpfzz3omc4pyr9c18vzym&raw=1","source":"gyeon","language":"英文","version":"v6.1","hosting":"remote"},
- id:'G-bathe',brand:'G',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M Bathe',type:'中性高润滑香波（pH 6）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车 · 镀铬 · 抛光金属 · 所有外部表面',
+ id:'G-bathe',brand:'G',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"product-page","url":"https://gyeon.co/product/bathe-2/"},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节写的是 pH 8，与官方产品资料的 pH 6 不一致，本站暂按官方产品资料标注"}],"conflict":true},name:'Q²M Bathe',type:'中性高润滑香波（pH 6）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车 · 镀铬 · 抛光金属 · 所有外部表面',
  dilutions:[['手洗','1:500','桶洗']],
  steps:['先彻底冲洗，去掉浮尘。','按 1:500 稀释（约 15–20 ml / 车）。','用柔软洗车手套按正确手法清洗。','用清水彻底冲洗。','用擦干巾擦干。'],
  notes:['pH 中性，不会去除镀膜和封体。','高润滑，减少洗车造成的划痕。'],url:GYEON+'bathe-2/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/w31wjqhiz5mncgu3bfdtb/GYEON-Q2M-Bathe-_M-en_7-2.pdf?rlkey=loyo95gs0q1ipz8j8p6jpqce8&raw=1","source":"gyeon","language":"英文","version":"v7.2","hosting":"remote"},
- id:'G-bathe-plus',brand:'G',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M Bathe+',type:'含 SiO₂ 的中性洗护香波（pH 6）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车 · 轮毂 · 玻璃 · 塑料',
+ id:'G-bathe-plus',brand:'G',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"product-page","url":"https://gyeon.co/product/batheplus/"},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节写的是 pH 7，与官方产品资料的 pH 6 不一致，本站暂按官方产品资料标注"}],"conflict":true},name:'Q²M Bathe+',type:'含 SiO₂ 的中性洗护香波（pH 6）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车 · 轮毂 · 玻璃 · 塑料',
  dilutions:[['手洗','1:500','桶洗']],
  steps:['先彻底冲洗，去掉浮尘。','按 1:500 稀释（约 15–20 ml / 车）。','用柔软洗车手套按正确手法清洗。','用清水彻底冲洗。','用擦干巾擦干。'],
  notes:['洗车同时留下疏水层，实际使用最长约 8 周；不能替代镀膜。','未镀膜的裸漆也可用。','不要在阳光直射下或热的车身上使用。'],url:GYEON+'batheplus/'},
@@ -57,14 +57,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/fayytuucx2bmqqey0n308/GYEON-Q2M-PPF-Wash_M-en_3-1.pdf?rlkey=n1qpti4rtzc6iw5om2eokyjr7&raw=1","source":"gyeon","language":"英文","version":"v3.1","hosting":"remote"},
- id:'G-ppf-wash',brand:'G',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M PPF Wash',type:'PPF / 改色膜除染香波（中性，含去铁成分）',sizes:'500 ml',materials:'PPF · 改色膜 · 车漆 · 镀膜车',
+ id:'G-ppf-wash',brand:'G',category:'wash',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"product-page","url":"https://gyeon.co/product/ppf-wash/"},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节写的是 pH 7.5，与官方产品资料的 pH 6 不一致，本站暂按官方产品资料标注"}],"conflict":true},name:'Q²M PPF Wash',type:'PPF / 改色膜除染香波（中性，含去铁成分）',sizes:'500 ml',materials:'PPF · 改色膜 · 车漆 · 镀膜车',
  dilutions:[['手洗或泡沫','1:500','桶洗']],
  steps:['按 1:500 稀释（约 20–30 ml / 车）。','装进泡沫壶喷泡沫，或当普通香波用。','用洗车手套轻压清洗。','用清水彻底冲洗。','用擦干巾擦干。'],
  notes:['不用黏土即可溶解轻度铁粉，恢复 PPF 和改色膜原本的表面状态。','所有外部表面都可用，镀膜与否均可。'],url:GYEON+'ppf-wash/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/ywjjls2y4uf5vhwgrqhft/GYEON-Q2M-ECO-Wash_M-en_1-1.pdf?rlkey=u9jw3t0odmqtx83341wzpmx0g&raw=1","source":"gyeon","language":"英文","version":"v1.1","hosting":"remote"},
- id:'G-ecowash',brand:'G',category:'wash',ph:{"category":"neu","value":"7–9","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M EcoWash',type:'无水洗 / 免冲洗 / 擦干辅助三用（含 SiO₂）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车',
+ id:'G-ecowash',brand:'G',category:'wash',ph:{"category":"neu","value":"7–9","basis":"raw","source":{"kind":"product-page","url":"https://gyeon.co/product/ecowash/"},"evidence":[],"conflict":false},name:'Q²M EcoWash',type:'无水洗 / 免冲洗 / 擦干辅助三用（含 SiO₂）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜车',
  dilutions:[['无水洗（喷雾）','1:10 – 1:15','喷雾壶'],['免冲洗（水桶）','1:150 – 1:256','桶洗'],['擦干辅助','1:20','喷雾壶']],
  steps:['按用途选择比例稀释。','把稀释液喷在车身或毛巾上。','用干净的超纤毛巾轻轻擦拭。','勤翻毛巾，避免拖着脏污擦。','当擦干辅助时轻轻抛干。'],
  notes:['适合没有自来水或不允许冲水的地方。','擦拭时带来润滑和轻微疏水；镀膜车可用。','pH 7–9。'],url:GYEON+'ecowash/'},
@@ -72,14 +72,14 @@ export const products: Product[] = [
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/2ulojkblfau4vfzyp0twu/GYEON-Q2M-Iron-WheelCleaner_M-en_4-1.pdf?rlkey=h625bij41iam3mwfvkl2gnv3o&raw=1","source":"gyeon","language":"英文","version":"v4.1","hosting":"remote"},
- id:'G-iron-wheelcleaner',brand:'G',category:'wheel',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-01-1036）：原液中性","registration":"HB23-01-1036"}],"conflict":false},name:'Q²M Iron WheelCleaner REDEFINED',type:'中性凝胶轮毂清洁剂（兼除铁粉）',sizes:'500 ml · 1 L · 4 L',materials:'轮毂（各类涂层，含镀膜轮毂）',
+ id:'G-iron-wheelcleaner',brand:'G',category:'wheel',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/2ulojkblfau4vfzyp0twu/GYEON-Q2M-Iron-WheelCleaner_M-en_4-1.pdf?rlkey=h625bij41iam3mwfvkl2gnv3o&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-01-1036）：原液中性","registration":"HB23-01-1036"}],"conflict":false},name:'Q²M Iron WheelCleaner REDEFINED',type:'中性凝胶轮毂清洁剂（兼除铁粉）',sizes:'500 ml · 1 L · 4 L',materials:'轮毂（各类涂层，含镀膜轮毂）',
  dilutions:[['轮毂','即用','喷雾壶']],
  steps:['喷在冷却的轮毂上。','停留，让它与污垢和铁粉反应。','需要时用刷子轻刷。','用水彻底冲洗。','不要让它干在表面上。'],
  notes:["pH 中性、低气味，可作日常轮毂清洁。","镀膜和未镀膜轮毂都可用。","用量约 100 ml / 车。"],url:GYEON+'iron-wheelcleaner-redefined/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/jmrhuiv1drn0zw8nxbaq1/GYEON-Q2M-TireCleaner_M-en_4-1.pdf?rlkey=d0od13f6meedxvh3m8h4mqxes&raw=1","source":"gyeon","language":"英文","version":"v4.1","hosting":"remote"},
- id:'G-tirecleaner',brand:'G',category:'wheel',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M Tire Cleaner',type:'轮胎 / 橡胶深层清洁剂（pH 10）',sizes:'500 ml · 1 L · 4 L',materials:'轮胎 · 橡胶',
+ id:'G-tirecleaner',brand:'G',category:'wheel',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"product-page","url":"https://gyeon.co/product/tirecleaner/"},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节写的是 pH 12，并据此按极端 pH 做危害分类，与官方产品资料的 pH 10 不一致，本站暂按官方产品资料标注"}],"conflict":true},name:'Q²M Tire Cleaner',type:'轮胎 / 橡胶深层清洁剂（pH 10）',sizes:'500 ml · 1 L · 4 L',materials:'轮胎 · 橡胶',
  dilutions:[['轮胎侧壁','即用','喷雾壶']],
  steps:['直接喷在轮胎侧壁上。','用硬毛轮胎刷刷洗。','用水彻底冲洗。','需要时重复，直到泡沫变白。','等轮胎干透再上保护。'],
  notes:['去除旧轮胎油和深层污垢，为上光或镀膜做准备。','白边轮胎也可用；不影响轮毂镀膜。','用量约 20 ml / 条轮胎。'],url:GYEON+'tirecleaner/'},
@@ -87,7 +87,7 @@ export const products: Product[] = [
 // ───────────────────────── 除染 / 去水垢 ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/g0whhwqo1hyumrdhosne1/GYEON-Q2M-Iron_M-en_5-1.pdf?rlkey=n4uuuyjudi9im36dn54lnzl1z&raw=1","source":"gyeon","language":"英文","version":"v5.1","hosting":"remote"},
- id:'G-iron',brand:'G',category:'deco',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-01-1036）：原液中性","registration":"HB23-01-1036"}],"conflict":false},name:'Q²M Iron REDEFINED',type:'中性铁粉去除剂（低气味）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 轮毂 · 外部各表面',
+ id:'G-iron',brand:'G',category:'deco',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/g0whhwqo1hyumrdhosne1/GYEON-Q2M-Iron_M-en_5-1.pdf?rlkey=n4uuuyjudi9im36dn54lnzl1z&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-01-1036）：原液中性","registration":"HB23-01-1036"}],"conflict":false},name:'Q²M Iron REDEFINED',type:'中性铁粉去除剂（低气味）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 轮毂 · 外部各表面',
  dilutions:[['车漆、轮毂','即用','喷雾壶']],
  steps:['喷在冷却的表面上。','停留，让它与铁粉反应。','需要时轻轻揉开。','用水彻底冲洗。','不要让它干在表面上。'],
  notes:["去除刹车粉、铁路粉尘等铁质污染。","pH 中性，敏感表面也可用。","用量约 150 ml / 车。"],url:GYEON+'iron-redefined/'},
@@ -101,14 +101,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/a3zizew8djaegy8czhs3f/GYEON-Q2M-WaterSpot_M-en_6-2.pdf?rlkey=dy0208q8lzsa592ctas6lmdec&raw=1","source":"gyeon","language":"英文","version":"v6.2","hosting":"remote"},
- id:'G-waterspot',brand:'G',category:'deco',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0751）：原液弱酸性","registration":"HB22-01-0751"}],"conflict":false},name:'Q²M WaterSpot',type:'酸性水斑 / 矿物沉积去除剂',sizes:'500 ml · 1 L',materials:'车漆',
+ id:'G-waterspot',brand:'G',category:'deco',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/a3zizew8djaegy8czhs3f/GYEON-Q2M-WaterSpot_M-en_6-2.pdf?rlkey=dy0208q8lzsa592ctas6lmdec&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0751）：原液弱酸性","registration":"HB22-01-0751"}],"conflict":false},name:'Q²M WaterSpot',type:'酸性水斑 / 矿物沉积去除剂',sizes:'500 ml · 1 L',materials:'车漆',
  dilutions:[['水斑区域（超纤布）','即用','—']],
  steps:['先用中性香波洗车并擦干。','把 WaterSpot 喷在漆面或超纤布上。','轻轻擦拭水斑区域。','水斑严重时重复。','之后用水冲洗，或用 Q²M Prep 擦拭。'],
  notes:["多数情况下不用抛光即可去除水斑，通常也不必重新镀膜。","不要用在新做的镀膜上，可能永久降低镀膜性能；对已有镀膜是否安全取决于镀膜种类。","用量约 15 ml / 板块（喷 1–2 下）。"],url:GYEON+'waterspot/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/ptbcl805rh7otrdwurx5y/GYEON-Q2M-ClayLube_M-en_5-1.pdf?rlkey=apgm6ehd3i03vkby6nmd8wd2z&raw=1","source":"gyeon","language":"英文","version":"v5.1","hosting":"remote"},
- id:'G-claylube',brand:'G',category:'deco',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB20-01-1288）：原液中性","registration":"HB20-01-1288"}],"conflict":false},name:'Q²M ClayLube REDEFINED',type:'浓缩黏土润滑液（中性）',sizes:'500 ml',materials:'车漆 · 外部各表面',
+ id:'G-claylube',brand:'G',category:'deco',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/ptbcl805rh7otrdwurx5y/GYEON-Q2M-ClayLube_M-en_5-1.pdf?rlkey=apgm6ehd3i03vkby6nmd8wd2z&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB20-01-1288）：原液中性","registration":"HB20-01-1288"}],"conflict":false},name:'Q²M ClayLube REDEFINED',type:'浓缩黏土润滑液（中性）',sizes:'500 ml',materials:'车漆 · 外部各表面',
  dilutions:[['黏土润滑','原液 – 1:25','喷雾壶']],
  steps:['按需要稀释（最高 1:25）或直接用原液。','大量喷在要过黏土的表面。','让黏土轻轻滑过润滑区域。','全程保持充分润滑。','完成后擦掉残留。'],
  notes:["适用于黏土块、黏土布和黏土盘。","不会在车漆或饰条上留印。"],url:GYEON+'claylube-redefined/'},
@@ -155,14 +155,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/4baa2ts1rt9q9lblvq2gd/GYEON-Q2M-Prep_M-en_6-2.pdf?rlkey=65ks49okqelgrcjh2ft6358vp&raw=1","source":"gyeon","language":"英文","version":"v6.2","hosting":"remote"},
- id:'G-prep',brand:'G',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0925）：原液中性","registration":"HB24-01-0925"}],"conflict":false},name:'Q²M Prep',type:'镀膜前脱脂剂（IPA >50%）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · PPF · 轮毂 · 塑料 · 玻璃 · 外部各表面',
+ id:'G-prep',brand:'G',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/4baa2ts1rt9q9lblvq2gd/GYEON-Q2M-Prep_M-en_6-2.pdf?rlkey=65ks49okqelgrcjh2ft6358vp&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0925）：原液中性","registration":"HB24-01-0925"}],"conflict":false},name:'Q²M Prep',type:'镀膜前脱脂剂（IPA >50%）',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · PPF · 轮毂 · 塑料 · 玻璃 · 外部各表面',
  dilutions:[['镀膜前脱脂（超纤布）','即用','—']],
  steps:['大量喷在表面或干净超纤布上。','彻底擦拭，去除残留。','用第二条毛巾确保擦净。','抛光较重的区域重复一遍。','等 5–10 分钟再施工镀膜（各镀膜说明书写为 15 分钟）。'],
  notes:["去除抛光油、旧蜡残留等，留下干净、抗静电的表面。","任何镀膜或封体施工前都要用；抛光后是必需步骤。"],url:GYEON+'prep/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/m9253w5ravj0gebrdxdwn/GYEON-Q2M-TotalRemover_M-en_1-2.pdf?rlkey=9s1a90s2tmidgcnw8uzsrh2zs&raw=1","source":"gyeon","language":"英文","version":"v1.2","hosting":"remote"},
- id:'G-total-remover',brand:'G',category:'polish',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0751）：原液弱酸性","registration":"HB22-01-0751"}],"conflict":false},name:'Q²M TotalRemover',type:'镀膜 / 封体 / 原厂蜡化学去除剂',sizes:'500 ml · 1 L',materials:'车漆 · 哑光漆',
+ id:'G-total-remover',brand:'G',category:'polish',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/m9253w5ravj0gebrdxdwn/GYEON-Q2M-TotalRemover_M-en_1-2.pdf?rlkey=9s1a90s2tmidgcnw8uzsrh2zs&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0751）：原液弱酸性","registration":"HB22-01-0751"}],"conflict":false},name:'Q²M TotalRemover',type:'镀膜 / 封体 / 原厂蜡化学去除剂',sizes:'500 ml · 1 L',materials:'车漆 · 哑光漆',
  dilutions:[['去除旧保护（超纤布或手套）','即用','—']],
  steps:['先清洁表面。','把 TotalRemover 施于要去除保护的表面。','用超纤布或手套在旧保护层上揉擦。','停留 2–3 分钟后冲掉。','保护层厚的区域重复。'],
  notes:["化学分解封体、旧镀膜和原厂蜡，让新保护正确结合，不一定需要抛光。","哑光等敏感漆面可用；适合镀膜前处理新车。"],url:GYEON+'total-remover/'},
@@ -250,7 +250,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/G-cancoat-pro-evo.pdf","source":"gyeon-cz","language":"英文","version":"2026","hosting":"local","sha256":"78e22c670d0f85741701d78ef04bb1e0037e372dac8197e456e18a8b73e549b4","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'G-cancoat-pro-evo',brand:'G',category:'coat',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q² CanCoat Pro EVO',type:'专业级喷雾镀膜（认证施工店维护 / 补层，12 个月以上）',sizes:'200 ml',materials:'车漆 · 塑料饰条 · 金属 · 轮毂 · 侧窗和后窗玻璃 · 摩托车 · 房车',
+ id:'G-cancoat-pro-evo',brand:'G',category:'coat',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"/sds/G-cancoat-pro-evo.pdf","section":9},"evidence":[],"conflict":false},name:'Q² CanCoat Pro EVO',type:'专业级喷雾镀膜（认证施工店维护 / 补层，12 个月以上）',sizes:'200 ml',materials:'车漆 · 塑料饰条 · 金属 · 轮毂 · 侧窗和后窗玻璃 · 摩托车 · 房车',
  dilutions:[['喷在超纤布上擦拭','即用','—']],
  steps:['抛光后用 Q²M Degrease Tabs 加热水洗车，确认表面干净。','表面须无油且完全干燥：用 Q²M Prep 脱脂，等 15 分钟。','离开车身，把镀膜喷在随附的超纤布上。','擦到选定表面上，再擦到完全光亮。','分小区域施工，避免条纹。'],
  notes:['用于每年或每半年一次的镀膜维护：只在底层镀膜性能下降、并已完全除染后使用。','可让 INFINITE 镀膜恢复光泽和疏水，不改变原有外观；也可作无需 INFINITE 质保项目的入门保护。','有效成分比 CanCoat EVO 高，擦除更轻松。'],url:GYEON+'cancoat-pro-evo/'},
@@ -319,7 +319,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/owd14uw5ambhl6u6q6diw/GYEON-Q2M-WetCoat-Essence_M-en_3-1.pdf?rlkey=pinpup6st8vxwjdh7r5j6mdgw&raw=1","source":"gyeon","language":"英文","version":"v3.1","hosting":"remote"},
- id:'G-wetcoat-essence',brand:'G',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M WetCoat Essence',type:'浓缩型喷涂即冲封体（WetCoat 浓缩版）',sizes:'100 ml · 250 ml',materials:'车漆 · 塑料饰条 · 金属 · 轮毂 · 玻璃 · 镀膜车',
+ id:'G-wetcoat-essence',brand:'G',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/owd14uw5ambhl6u6q6diw/GYEON-Q2M-WetCoat-Essence_M-en_3-1.pdf?rlkey=pinpup6st8vxwjdh7r5j6mdgw&raw=1","section":9},"evidence":[],"conflict":false},name:'Q²M WetCoat Essence',type:'浓缩型喷涂即冲封体（WetCoat 浓缩版）',sizes:'100 ml · 250 ml',materials:'车漆 · 塑料饰条 · 金属 · 轮毂 · 玻璃 · 镀膜车',
  dilutions:[['湿车喷涂','1:5 – 1:15','喷雾壶']],
  steps:['按 1:5–1:15 稀释后装进喷壶。','彻底洗车。','车身仍湿时，逐块板件均匀喷 1–2 下。','立即用较强的水压冲洗，不要让它干在表面上。','用擦干巾擦干。'],
  notes:['和 WetCoat 效果相同，每次用量更少；最长约 12 周。','不需要固化时间。'],url:GYEON+'wet-coat-essence/'},
@@ -391,28 +391,28 @@ export const products: Product[] = [
 // ───────────────────────── 玻璃 ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/7bm5lzvcjab4onwyu2f0i/GYEON-Q2M-Glass_M-en_5-2.pdf?rlkey=1uqvd07th29ulog7si1ako0wf&raw=1","source":"gyeon","language":"英文","version":"v5.2","hosting":"remote"},
- id:'G-glass',brand:'G',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0925）：原液中性","registration":"HB24-01-0925"}],"conflict":false},name:'Q²M Glass',type:'内外玻璃清洁剂',sizes:'500 ml · 1 L · 4 L',materials:'玻璃（车内外） · 贴膜玻璃',
+ id:'G-glass',brand:'G',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/7bm5lzvcjab4onwyu2f0i/GYEON-Q2M-Glass_M-en_5-2.pdf?rlkey=1uqvd07th29ulog7si1ako0wf&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0925）：原液中性","registration":"HB24-01-0925"}],"conflict":false},name:'Q²M Glass',type:'内外玻璃清洁剂',sizes:'500 ml · 1 L · 4 L',materials:'玻璃（车内外） · 贴膜玻璃',
  dilutions:[['玻璃（超纤布）','即用','—']],
  steps:['喷在玻璃或超纤布上。','均匀擦拭去除污染。','把毛巾翻面擦到通透。','很脏的区域重复。','定期使用保持视野清晰。'],
  notes:["对大多数贴膜玻璃安全，不留条纹。","可作玻璃镀膜前的清洁。","用量约 40 ml / 车。"],url:GYEON+'glass/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/ue1zxw4w9y1erwe09r3iz/GYEON-Q2M-Glass-_M-en_2-1.pdf?rlkey=wkkxp4th3pbt3whwxvb7ky83m&raw=1","source":"gyeon","language":"英文","version":"v2.1","hosting":"remote"},
- id:'G-glass-plus',brand:'G',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M Glass+',type:'带驱水效果的玻璃清洁剂',sizes:'500 ml · 1 L',materials:'玻璃（车内外） · 镀膜玻璃',
+ id:'G-glass-plus',brand:'G',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/ue1zxw4w9y1erwe09r3iz/GYEON-Q2M-Glass-_M-en_2-1.pdf?rlkey=wkkxp4th3pbt3whwxvb7ky83m&raw=1","section":9},"evidence":[],"conflict":false},name:'Q²M Glass+',type:'带驱水效果的玻璃清洁剂',sizes:'500 ml · 1 L',materials:'玻璃（车内外） · 镀膜玻璃',
  dilutions:[['玻璃（超纤布）','即用','—']],
  steps:['喷在玻璃或超纤布上。','均匀擦拭去除污染。','用第二条毛巾擦到通透。','确保均匀覆盖，驱水效果才一致。','需要时再次使用。'],
  notes:['只有短期驱水效果，不能替代玻璃镀膜。','不要用太多，并使用干净合适的超纤布，以免留条纹。'],url:GYEON+'glass-plus/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/1cxovs5fmnaocb7wlngwh/GYEON-Q2M-DeFrost_M-en_1-1.pdf?rlkey=noj775u0149k8uylxocmqxgnd&raw=1","source":"gyeon","language":"英文","version":"v1.1","hosting":"remote"},
- id:'G-defrost',brand:'G',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0925）：原液中性","registration":"HB24-01-0925"}],"conflict":false},name:'Q²M Defrost',type:'玻璃除冰剂（–40 °C 有效）',sizes:'500 ml · 4 L',materials:'玻璃 · 镀膜玻璃',
+ id:'G-defrost',brand:'G',category:'glass',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/1cxovs5fmnaocb7wlngwh/GYEON-Q2M-DeFrost_M-en_1-1.pdf?rlkey=noj775u0149k8uylxocmqxgnd&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0925）：原液中性","registration":"HB24-01-0925"}],"conflict":false},name:'Q²M Defrost',type:'玻璃除冰剂（–40 °C 有效）',sizes:'500 ml · 4 L',materials:'玻璃 · 镀膜玻璃',
  dilutions:[['结冰玻璃','即用','喷雾壶']],
  steps:['均匀喷在结冰的玻璃上。','让它反应、削弱冰层。','冰层会自然与玻璃分离。','冰厚时再喷一次。','视野恢复后清理表面。'],
  notes:["几秒内起效，不需要刮冰。","对镀膜和未镀膜玻璃、周围的密封条和饰条都安全。"],url:GYEON+'defrost/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/upvpq6reztzu36mt7pb1f/GYEON-Q2-QuickView_M-en_2-1.pdf?rlkey=06hpn42xxnxk1srdqppc7ub1x&raw=1","source":"gyeon","language":"英文","version":"v2.1","hosting":"remote"},
- id:'G-quickview',brand:'G',category:'glass',ph:{"category":"acid","value":"4","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q² QuickView',type:'快速玻璃驱水剂（最长 6 个月）',sizes:'120 ml',materials:'前挡 · 外部玻璃 · 镀膜玻璃',
+ id:'G-quickview',brand:'G',category:'glass',ph:{"category":"acid","value":"4","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/upvpq6reztzu36mt7pb1f/GYEON-Q2-QuickView_M-en_2-1.pdf?rlkey=06hpn42xxnxk1srdqppc7ub1x&raw=1","section":9},"evidence":[],"conflict":false},name:'Q² QuickView',type:'快速玻璃驱水剂（最长 6 个月）',sizes:'120 ml',materials:'前挡 · 外部玻璃 · 镀膜玻璃',
  dilutions:[['涂抹','即用','—']],
  steps:['先把玻璃彻底清洁干净。','在玻璃上挤一次 QuickView。','适度加压均匀抹开，直到形成均匀、干燥的雾状薄膜。','固化 5–20 分钟（低温时更久），用湿超纤布擦到玻璃通透。'],
  notes:['车速约 70 km/h 起明显驱水。','擦净后即可使用；可叠在玻璃镀膜上作补充或快速翻新。','用量约 30 ml / 车。'],url:GYEON+'quickview/'},
@@ -427,7 +427,7 @@ export const products: Product[] = [
 // ───────────────────────── 多功能清洁 APC ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/xrsqugyph6l55oo7j9kmg/GYEON-Q2M-APC_M-en_4-1.pdf?rlkey=tu8a7heszy7ghh00ygh5e3mfw&raw=1","source":"gyeon","language":"英文","version":"v4.1","hosting":"remote"},
- id:'G-apc',brand:'G',category:'apc',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0004）：原液碱性","registration":"HA25-01-0004"}],"conflict":false},name:'Q²M APC',type:'浓缩多功能清洁剂（强度可调）',sizes:'1 L · 4 L',materials:'内外饰各类表面 · 发动机舱 · 轮拱',
+ id:'G-apc',brand:'G',category:'apc',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/xrsqugyph6l55oo7j9kmg/GYEON-Q2M-APC_M-en_4-1.pdf?rlkey=tu8a7heszy7ghh00ygh5e3mfw&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0004）：原液碱性","registration":"HA25-01-0004"}],"conflict":false},name:'Q²M APC',type:'浓缩多功能清洁剂（强度可调）',sizes:'1 L · 4 L',materials:'内外饰各类表面 · 发动机舱 · 轮拱',
  dilutions:[['常规（官方标注范围）','1:5 – 1:15','喷雾壶'],['重污染 / 外部','1:1 – 1:5','喷雾壶'],['内饰轻度清洁','1:10 – 1:20','喷雾壶']],
  steps:['按清洁任务稀释。','把稀释液施于表面或清洁工具。','需要时轻轻刷洗。','擦掉或冲掉松动的污染，不要让它干掉。','效果不够时调整比例再做一次。'],
  notes:["用于专用清洁剂不够用的场合；内饰稀释后可用。","用量约 150 ml / 车。"],url:GYEON+'apc/'},
@@ -435,14 +435,14 @@ export const products: Product[] = [
 // ───────────────────────── 内饰 ─────────────────────────
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/qoozr5fxlmx1swcjsst94/GYEON-Q2M-TrimCleaner_M-en_3-2.pdf?rlkey=e5jrydhj5j2hcxofgkqvtmawu&raw=1","source":"gyeon","language":"英文","version":"v3.2","hosting":"remote"},
- id:'G-trimcleaner',brand:'G',category:'int',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0008）：原液碱性；官网技术参数写 PH LEVEL NEUTRAL。","registration":"HA25-01-0008"}],"conflict":false},name:'Q²M TrimCleaner',type:'即用型塑料饰件清洁剂（自然哑光、轻度抗静电）',sizes:'500 ml',materials:'内饰塑料 · 外饰塑料',
+ id:'G-trimcleaner',brand:'G',category:'int',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/qoozr5fxlmx1swcjsst94/GYEON-Q2M-TrimCleaner_M-en_3-2.pdf?rlkey=e5jrydhj5j2hcxofgkqvtmawu&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0008）：原液碱性；官网技术参数写 PH LEVEL NEUTRAL。","registration":"HA25-01-0008"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"neu"}],"conflict":true},name:'Q²M TrimCleaner',type:'即用型塑料饰件清洁剂（自然哑光、轻度抗静电）',sizes:'500 ml',materials:'内饰塑料 · 外饰塑料',
  dilutions:[['饰件（超纤布或刷子）','即用','—']],
  steps:['喷在超纤布上或直接喷在表面。','轻轻擦拭，去除灰尘和轻度污垢。','把毛巾翻面擦干净。','常用部位需要时重复。','定期用于内饰维护。'],
  notes:["pH 中性，不留残留；清洁后可接 Q²M Preserve。","官方说明书：Q² Trim EVO 施工前用它清洁外饰塑料。","用量约 100 ml / 车。"],url:GYEON+'trim-cleaner/'},
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/rfd3hm57uj2zmpqcfhm3a/GYEON-Q2M-FabricCleaner-_M-en_3-1.pdf?rlkey=pd6optyh2en3b6b1zlr34arvj&raw=1","source":"gyeon","language":"英文","version":"v3.1","hosting":"remote"},
- id:'G-fabriccleaner',brand:'G',category:'int',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0010）：原液碱性","registration":"HA25-01-0010"}],"conflict":false},name:'Q²M FabricCleaner',type:'织物清洁剂 / 预喷剂（低泡）',sizes:'1 L',materials:'座椅织物 · 地毯 · 织物饰件',
+ id:'G-fabriccleaner',brand:'G',category:'int',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/rfd3hm57uj2zmpqcfhm3a/GYEON-Q2M-FabricCleaner-_M-en_3-1.pdf?rlkey=pd6optyh2en3b6b1zlr34arvj&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0010）：原液碱性","registration":"HA25-01-0010"}],"conflict":false},name:'Q²M FabricCleaner',type:'织物清洁剂 / 预喷剂（低泡）',sizes:'1 L',materials:'座椅织物 · 地毯 · 织物饰件',
  dilutions:[['织物','即用','喷雾壶']],
  steps:['先吸尘。','喷在织物上或刷子上。','轻轻刷洗松动污垢。','用干净毛巾擦掉或抽洗。','让织物完全干燥。'],
  notes:["不留残留，可在 Q² FabricCoat 施工前使用。"],url:GYEON+'fabriccleaner/'},
@@ -456,7 +456,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/h0cxiufbxeg4fwu2m5ygq/GYEON-Q2M-LeatherCleaner-Strong_M-en_4-1.pdf?rlkey=1qzsp8ry838vqenhp6iixyg89&raw=1","source":"gyeon","language":"英文","version":"v4.1","hosting":"remote"},
- id:'G-leathercleaner-strong',brand:'G',category:'int',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB20-01-1248，该申报已过期）：原液弱碱性","registration":"HB20-01-1248"}],"conflict":false},name:'Q²M LeatherCleaner Strong',type:'强力皮革清洁剂（深层清洁 / 镀膜前处理）',sizes:'500 ml · 1 L',materials:'现代汽车皮革',
+ id:'G-leathercleaner-strong',brand:'G',category:'int',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/h0cxiufbxeg4fwu2m5ygq/GYEON-Q2M-LeatherCleaner-Strong_M-en_4-1.pdf?rlkey=1qzsp8ry838vqenhp6iixyg89&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB20-01-1248，该申报已过期）：原液弱碱性","registration":"HB20-01-1248"}],"conflict":false},name:'Q²M LeatherCleaner Strong',type:'强力皮革清洁剂（深层清洁 / 镀膜前处理）',sizes:'500 ml · 1 L',materials:'现代汽车皮革',
  dilutions:[['皮革（皮革刷 / 海绵）','即用','—']],
  steps:['取适量在皮革刷或海绵上。','在皮革表面轻轻揉擦。','用超纤布擦掉松动的污垢。','很脏的区域需要时重复。','清洁后接着上皮革保护。'],
  notes:["用于严重脏污或镀膜前的深层清洁，不用于日常维护。","不留残留，不会去除已有的皮革镀膜。","用量约 100 ml / 车。"],url:GYEON+'leathercleaner-strong/'},
@@ -470,7 +470,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/aobigj13dv85khnrh7bu7/GYEON-Q2M-InteriorDetailer_M-en_3-1.pdf?rlkey=9vg4df7rns3hz3vsaft1v3ust&raw=1","source":"gyeon","language":"英文","version":"v3.1","hosting":"remote"},
- id:'G-interior-detailer',brand:'G',category:'int',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB20-01-1288）：原液中性","registration":"HB20-01-1288"}],"conflict":false},name:'Q²M InteriorDetailer',type:'内饰快速美容剂（含酒精，可杀灭 99% 细菌）',sizes:'500 ml · 1 L · 4 L',materials:'内饰硬塑料 · 液晶屏',
+ id:'G-interior-detailer',brand:'G',category:'int',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/aobigj13dv85khnrh7bu7/GYEON-Q2M-InteriorDetailer_M-en_3-1.pdf?rlkey=9vg4df7rns3hz3vsaft1v3ust&raw=1","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB20-01-1288）：原液中性","registration":"HB20-01-1288"}],"conflict":false},name:'Q²M InteriorDetailer',type:'内饰快速美容剂（含酒精，可杀灭 99% 细菌）',sizes:'500 ml · 1 L · 4 L',materials:'内饰硬塑料 · 液晶屏',
  dilutions:[['喷在超纤布上擦拭','即用','—']],
  steps:['喷在超纤布上。','轻轻擦拭内饰表面。','重点擦方向盘和按键等常接触的部位。','让表面自然风干。','定期使用做快速内饰维护。'],
  notes:["可日常使用，留下自然无残留的表面。","用量约 80 ml / 车。"],url:GYEON+'interior-detailer/'},
@@ -491,7 +491,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.dropbox.com/scl/fi/p4zn4zolaxkfa84tcw0z1/GYEON-Q2M-OdorRemover-pads_M-en_1-1.pdf?rlkey=fx9vn24gbx884t6i8qfof6v5m&raw=1","source":"gyeon","language":"英文","version":"v1.1","hosting":"remote"},
- id:'G-odorremover-pads',brand:'G',category:'int',ph:{"category":"alk","value":"7–10","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Q²M OdorRemover Pads',type:'持续除味贴片（无香味）',sizes:'—',materials:'车内',dilutions:[],
+ id:'G-odorremover-pads',brand:'G',category:'int',ph:{"category":"alk","value":"7–10","basis":"raw","source":{"kind":"sds","url":"https://www.dropbox.com/scl/fi/p4zn4zolaxkfa84tcw0z1/GYEON-Q2M-OdorRemover-pads_M-en_1-1.pdf?rlkey=fx9vn24gbx884t6i8qfof6v5m&raw=1","section":9},"evidence":[],"conflict":false},name:'Q²M OdorRemover Pads',type:'持续除味贴片（无香味）',sizes:'—',materials:'车内',dilutions:[],
  steps:['撕掉贴片背胶。','贴在车内隐蔽处，例如座椅下方或后备箱。','让它持续作用。','效果下降时更换，一片约可用 3–4 周。'],
  notes:['可与 Q²M OdorRemover 喷雾搭配使用。'],url:GYEON+'q2m-odor-remover-pad/'},
 
