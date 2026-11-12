@@ -1,5 +1,5 @@
 import { PH_SHORT } from './taxonomy';
-import type { PhEvidence, PhSourceKind, ProductPh } from './types';
+import type { PhBasis, PhEvidence, PhSourceKind, ProductPh } from './types';
 
 export const PH_SOURCE_LABEL: Record<PhSourceKind, string> = {
   'product-page': '品牌产品资料',
@@ -7,6 +7,11 @@ export const PH_SOURCE_LABEL: Record<PhSourceKind, string> = {
   sds: 'SDS 第 9 节',
   'korean-registration': '韩国生活化学品申报',
   unrecorded: '旧记录尚未关联具体来源',
+};
+
+export const PH_BASIS_LABEL: Record<PhBasis, string> = {
+  raw: '原液',
+  '1%': '1% 稀释液',
 };
 
 export function phEvidenceText(evidence: PhEvidence): string {
