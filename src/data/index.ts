@@ -11,6 +11,7 @@ import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, PH_SHORT, SCENE_NAME } from './taxonomy';
 import type { Combo, Flow, FlowStep, Product } from './types';
 import { PH_BASIS_LABEL, phEvidenceNotes } from './ph';
+import { cautionTexts } from './cautions';
 import { fold, initials, type RankFields } from '../lib/search';
 
 export * from './materials';
@@ -18,6 +19,7 @@ export * from './subcategories';
 export * from './taxonomy';
 export * from './sds-sources';
 export * from './ph';
+export * from './cautions';
 export type * from './types';
 
 export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...feynlab.products, ...ps.products];
@@ -71,7 +73,7 @@ export function productRankFields(p: Product): RankFields {
 
 export function productSearchText(p: Product): string {
   const sub = SUB_OF.get(p.id)?.name ?? '';
-  return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...p.notes, ...phEvidenceNotes(p.ph)].join(' '));
+  return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...cautionTexts(p.cautions), ...p.notes, ...phEvidenceNotes(p.ph)].join(' '));
 }
 
 /** pH 标签主体：「碱性 12.5」，不含测量口径；官方未公布或不适用时返回 undefined */

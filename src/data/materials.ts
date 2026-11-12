@@ -21,7 +21,7 @@ export type MaterialId = (typeof MATERIALS)[number][0];
 export const MATERIAL_NAME = Object.fromEntries(MATERIALS) as Record<MaterialId, string>;
 
 /** 泛指整车外部的写法：一定包括车漆，但不推断车衣、改色膜、哑光漆 */
-const EXTERIOR = /镀膜车|外部全车|整车|全部外部表面|外部各表面|车身外部|全部车身|大部分车身|所有车身|车身$|轿车|商用车|摩托车|房车/;
+const EXTERIOR = /镀膜车|整车|车身外部|全部车身|大部分车身|车身$|轿车|商用车|摩托车|房车/;
 /** 泛指内饰的写法：一定包括塑料，但不推断皮革、织物 */
 const INTERIOR = /内饰各类表面|内饰表面|内饰软硬表面|内外饰各类表面/;
 
@@ -44,8 +44,8 @@ export function materialsOf(p: Pick<Product, 'materials'>): MaterialId[] {
     if (EXTERIOR.test(t)) found.add('paint');
     if (INTERIOR.test(t)) found.add('plastic');
     if (/车漆|漆面|修补漆|原厂漆|深色漆|裸漆/.test(t) && !/漆面家具/.test(t)) found.add('paint');
-    // 哑光只在指漆面时才算（「塑料饰条（亮面 / 哑光）」不算）；Labo 的「哑光/改色膜」指哑光漆和改色膜两种
-    if (/哑光|缎面/.test(t) && /漆|^哑光$|哑光\/改色膜/.test(t)) found.add('matte');
+    // 哑光只在指漆面时才算（「塑料饰条（亮面 / 哑光）」不算）
+    if (/哑光|缎面/.test(t) && /漆|^哑光$/.test(t)) found.add('matte');
     if (/PPF|透明保护膜/.test(t)) found.add('ppf');
     if (/改色膜/.test(t)) found.add('wrap');
     if (/玻璃|车窗|前挡|镜面|后视镜/.test(t)) found.add('glass');

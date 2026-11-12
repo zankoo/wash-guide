@@ -90,5 +90,5 @@ export const SUBCATS: Subcategory[] = [
   { id: 'acc-brush', category: 'acc', name: '刷具', ids: ['L-duo-scrub-pad', 'L-fabric-seat-brush', 'L-floor-carpet-brush', 'K-detail-wheel-brush', 'C-detailing-brushes', 'C-darkside-brush', 'G-wheelbrush', 'G-tirebrush', 'G-leatherbrush'] },
   { id: 'acc-clay', category: 'acc', name: '除染黏土', ids: ['C-clays', 'C-polyshave', 'N-clay-sponge', 'P-reset-clay', 'P-perfect-putty', 'P-perfect-putty-purple'] },
   { id: 'acc-pad', category: 'acc', name: '抛光盘', ids: ['G-pad-heavy-cut', 'G-wool-heavy-cut', 'G-pad-cut', 'G-wool-cut', 'G-pad-polish', 'G-pad-finish', 'F-pad-white', 'F-pad-blu', 'F-microwool', 'F-hybrid', 'F-eskimo-white', 'F-eskimo-gold', 'F-pad-yellow', 'F-pad-black'] },
-  { id: 'acc-other', category: 'acc', name: '喷壶 / 其他', ids: ['L-bottle', 'C-dilute', 'K-pressure-foam-sprayer', 'M-be-twin', 'F-secchio-wash', 'F-gritsafe', 'F-nebula'] },
+  { id: 'acc-other', category: 'acc', name: '喷雾壶 / 其他', ids: ['L-bottle', 'C-dilute', 'K-pressure-foam-sprayer', 'M-be-twin', 'F-secchio-wash', 'F-gritsafe', 'F-nebula'] },
 ];

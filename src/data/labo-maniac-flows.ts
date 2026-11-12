@@ -16,7 +16,7 @@ export const flows: Flow[] = [
   {phase:'酸性除染',pH:'acid',products:['L-purifica'],ratio:'1:60（泡沫）· 局部 1:10',how:'预洗后，用泡沫方式施用 1:60 的 PURÌFICA，由下往上。冬季盐分、水渍集中的门板下部和后备箱下沿可用 1:10 局部预处理。也可在水桶中按 1:60 作为香波使用。'},
   {phase:'中性手洗',variants:[
     {name:'SÈMPER 手洗',pH:'neu',products:['L-semper'],ratio:'1:1000',how:'机械清洗阶段用 SÈMPER 1:1000 手洗，中性 pH 不会影响前一步 PURÌFICA 的除染效果。不含蜡和增亮剂，也可用于玻璃。'},
-    {name:'REVÌTAX 保护收尾',pH:'neu',products:['L-revitax'],ratio:'1:100',how:'需要保护时以 REVÌTAX 1:100 收尾：可泡沫喷涂、Nebula 泵壶或水桶施用，再用手套或海绵推开。推开时用软海绵附着最快；夏季高温附着太快，改用超纤手套更安全。'},
+    {name:'REVÌTAX 保护收尾',pH:'neu',products:['L-revitax'],ratio:'1:100',how:'需要保护时以 REVÌTAX 1:100 收尾：可泡沫喷涂、Nebula 压力喷壶或水桶施用，再用手套或海绵推开。推开时用软海绵附着最快；夏季高温附着太快，改用超纤手套更安全。'},
   ]},
  ],
  notes:['REVÌTAX 在未做保护的车上可提供至少 3 个月、相当于纳米封体的光泽和保护。','本流程的比例取自 3pH® 官方页面，与单品页（如 PRÌMUS PA壶 1:5–1:10）数值不同，因为施用方式和设备不同。'],
@@ -75,8 +75,8 @@ export const flows: Flow[] = [
   {phase:'预洗',products:['M-wheel-tyre-cleaner','M-foam-gun-prewash','M-all-purpose-cleaner'],ratio:'轮毂 1:3–1:10 · PA壶 冬 1:5 / 夏 1:10',how:'先清洁轮毂轮胎，再做车身预洗：PA壶厚喷整车，由下往上，等泡沫开始下滑后冲洗。APC 1:20 可局部处理飞虫和下部重污。'},
   {phase:'除染',products:['M-iron-remover','M-water-spot-mineral-remover'],ratio:'铁粉原液 / 1:1 · 水斑即用',how:'Iron Remover 去除轮毂、车身和玻璃上的铁粉；Water Spot Mineral Remover 去除水垢斑。'},
   {phase:'洗车',variants:[
-    {name:'日常维护',pH:'neu',products:['M-neutral-foam-shampoo'],ratio:'PA壶 1:10 · 桶洗 3 瓶盖 / 10 L',how:'先用 PA壶 1:10 由下往上喷满，停留约 4 分钟后冲洗；再用两桶法手洗，车身湿润，从上往下，小区域、最小压力。WAX SAFE，不伤包括棕榈蜡在内的底层保护，适合每周或双周维护洗。'},
-    {name:'黑车 / 改色膜 / PPF',products:['M-black-wrap-shampoo'],ratio:'4 瓶盖 / 8 L（约 1:300）',how:'两桶法，阴凉处从上往下逐板清洗；特别脏或发闷处在湿手套上再加几滴原液。含矿物螯合剂，可减少擦干时的水垢斑；擦干时喷 Exterior Quick Detailer，用 Super Dryer 擦干，车身和玻璃各用一条。'},
+    {name:'日常维护',pH:'neu',products:['M-neutral-foam-shampoo'],ratio:'PA壶 1:10 · 桶洗 3 瓶盖 / 10 L',how:'先用 PA壶 1:10 由下往上喷满，停留约 4 分钟后冲洗；再用两桶法手洗，车身湿润，由上往下，小区域、最小压力。WAX SAFE，不伤包括棕榈蜡在内的底层保护，适合每周或双周维护洗。'},
+    {name:'黑车 / 改色膜 / PPF',products:['M-black-wrap-shampoo'],ratio:'4 瓶盖 / 8 L（约 1:300）',how:'两桶法，阴凉处由上往下逐板清洗；特别脏或发闷处在湿手套上再加几滴原液。含矿物螯合剂，可减少擦干时的水垢斑；擦干时喷 Exterior Quick Detailer，用 Super Dryer 擦干，车身和玻璃各用一条。'},
     {name:'洗护一步（90 天）',products:['M-ceramic-shampoo'],ratio:'桶洗 4 瓶盖 · 增效 1:5 / 1:3',how:'水桶加 4 瓶盖，由下往上洗（与传统香波相反）。要加强保护有两种方法：一是 1:5 喷在洗车手套上再洗一遍；二是先用 Neutral Foam Shampoo 手洗，再用 PA壶 1:3 由下往上喷满，至少停留 1 分钟后冲洗。'},
     {name:'水垢 / 水斑',pH:'acid',products:['M-descale-foam-shampoo'],ratio:'PA壶 1:5 / 1:10 · 桶洗 3–5 瓶盖 / 5 L',how:'Pillow Foam（泡沫垫）技术：泡沫铺满车身后不冲洗，直接用手套在泡沫上清洗。沙尘雨、雪后或擦干不当留下水斑时使用；日常可与 Neutral Foam Shampoo 交替。',src:'此款为宣传册之后推出的新品，用法取自产品页'},
   ]},
@@ -134,7 +134,7 @@ export const combos: Combo[] = [
  summary:'先按污垢性质用 PRELUDIO 预浸，再用 IDROSAVE 免冲洗清洗。',
  steps:[
   {phase:'预浸',products:['L-preludio-alkaline','L-preludio-acidic'],alt:true,ratio:'碱性 1:5–1:20 · 酸性 1:5–1:50',how:'虫尸、刹车粉、交通膜等有机污垢用 ALKALINE；水垢、沙尘雨等无机污垢用 ACIDIC。喷在污染区，停留约 1 分钟。'},
-  {phase:'免冲洗清洗',pH:'neu',products:['L-idrosave'],ratio:'桶洗 1:250 · 无水洗 1:100',how:'带隔砂网的水桶按 1:250 调配，喷壶先喷湿板块。超纤手套浸湿拧干后不加压轻擦，用柔软超纤布擦干，一次一个板块。'},
+  {phase:'免冲洗清洗',pH:'neu',products:['L-idrosave'],ratio:'桶洗 1:250 · 无水洗 1:100',how:'带隔砂网的水桶按 1:250 调配，喷雾壶先喷湿板块。超纤手套浸湿拧干后不加压轻擦，用柔软超纤布擦干，一次一个板块。'},
  ],
  notes:[],url:'https://www.labocosmetica.com/product/idrosave-polymer-rinseless-wash-neutral-ph/'},
 

@@ -14,90 +14,90 @@ const DOXX = 'https://doxxmall.co.kr/product/detail.html?product_no=';
 
 export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
-{id:'B-a55',brand:'B',category:'pre',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"product-page","url":"https://doxxmall.co.kr/product/detail.html?product_no=1025"},"evidence":[{"kind":"statement","source":"product-page","text":"官方商城的 4 L 桶身标签写「PRE-WASH / PH3 POWER CLEAN」"},{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性（与 E55 同一申报号）","registration":"HB24-01-0322"}],"conflict":false},name:'A55',type:'pH 3 酸性预洗（去水垢、矿物质污垢）',sizes:'4 L',materials:'车身外部',
+{id:'B-a55',brand:'B',category:'pre',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"product-page","url":"https://doxxmall.co.kr/product/detail.html?product_no=1025"},"evidence":[{"kind":"statement","source":"product-page","text":"官方商城的 4 L 桶身标签写「PRE-WASH / PH3 POWER CLEAN」。"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性，与 E55 同一申报号。","registration":"HB24-01-0322"}],"conflict":false},name:'A55',type:'pH 3 酸性预洗（去水垢、矿物质污垢）',sizes:'4 L',materials:'车身外部各表面',
  dilutions:[['预洗','1:10','喷雾壶']],
- steps:['用前摇匀。','按桶身标签 1:10 兑水（韩国申报写 1:30，即 50 ml 原液兑 1500 ml 水，污垢轻时可调稀）。','喷在车身外部，污垢重的地方用洗车手套或海绵轻轻擦洗。','干掉前用高压水冲洗干净。'],
- notes:['官方商城的 4 L 桶身标签写「A55 · PRE-WASH / PH3 POWER CLEAN：稀释 1:10」，商城名称为「산성 프리워시」（酸性预洗）。','日本没有销售；酸碱性来自韩国申报（与 E55 同一申报号 HB24-01-0322）：酸性。','主要成分：乙醇酸、葡萄糖酸钠、表面活性剂。'],url:DOXX+'1025'},
+ steps:['使用前摇匀。','按桶身标签 1:10 兑水（韩国申报写 1:30，即 50 ml 原液兑 1500 ml 水，污垢轻时可调稀）。','喷在车身外部，污垢重的地方用洗车手套或海绵轻轻擦洗。','干掉前用高压水冲洗干净。'],
+ notes:['官方商城的商品名为「산성 프리워시」（酸性预洗），桶身标签写稀释 1:10。','日本没有销售。','主要成分：乙醇酸、葡萄糖酸钠、表面活性剂。'],url:DOXX+'1025'},
 
 // ───────────────────────── 洗车香波 ─────────────────────────
-{id:'B-a33',brand:'B',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0396）：原液中性","registration":"HB22-01-0396"}],"conflict":false},name:'A33',type:'中性泡沫香波（Luxurious Foam）',sizes:'4 L',materials:'车身外部',
- dilutions:[['泡沫枪','1:20','PA壶']],
- steps:['在泡沫枪里按桶身标签 1:20 兑水（韩国申报写最稀 1:25–1:30）。','喷满车身，不要让泡沫干掉。','3–5 分钟内用高压水冲洗干净。'],
- notes:['官方商城的 4 L 桶身标签写「A33 · LUXURIOUS FOAM / FOAM SHAMPOO：稀释 1:20」，商城名称为「럭셔리 중성 폼샴푸」（中性泡沫香波）。','日本没有销售；酸碱性来自韩国申报（申报号 HB22-01-0396）：中性。','主要成分：烷基糖苷、氧化胺、非离子表面活性剂。'],url:DOXX+'1026'},
+{id:'B-a33',brand:'B',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB22-01-0396）：原液中性。","registration":"HB22-01-0396"}],"conflict":false},name:'A33',type:'中性泡沫香波（Luxurious Foam）',sizes:'4 L',materials:'车身外部各表面',
+ dilutions:[['PA壶','1:20','PA壶']],
+ steps:['在 PA壶里按桶身标签 1:20 兑水（韩国申报写最稀 1:25–1:30）。','喷满车身，不要让泡沫干掉。','3–5 分钟内用高压水冲洗干净。'],
+ notes:['官方商城的 4 L 桶身标签写「A33 · LUXURIOUS FOAM / FOAM SHAMPOO：稀释 1:20」，商城名称为「럭셔리 중성 폼샴푸」（中性泡沫香波）。','日本没有销售。','主要成分：烷基糖苷、氧化胺、非离子表面活性剂。'],url:DOXX+'1026'},
 
-{id:'B-a43',brand:'B',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-0956）：原液中性；使用说明写「pH 7 中性洗车液」","registration":"HB21-01-0956"}],"conflict":false},name:'A43',type:'镀膜车专用中性香波（可调成脱脂洗车）',sizes:'500 ml',materials:'车漆 · 玻璃 · 天窗 · 大灯 · 轮毂 · 轮胎',
- dilutions:[['镀膜车日常洗车（不洗掉镀膜）','1:300 – 1:1000','桶洗'],['镀膜前的脱脂洗车','1:10 – 1:100','桶洗'],['泡沫枪','1:10 – 1:30','PA壶']],
+{id:'B-a43',brand:'B',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-0956）：原液中性；申报使用说明写「pH 7 中性洗车液」。","registration":"HB21-01-0956"}],"conflict":false},name:'A43',type:'镀膜车专用中性香波（可调成脱脂洗车）',sizes:'500 ml',materials:'车漆 · 玻璃 · 天窗 · 大灯 · 轮毂 · 轮胎',
+ dilutions:[['镀膜车日常洗车（不洗掉镀膜）','1:300 – 1:1000','桶洗'],['镀膜前的脱脂洗车','1:10 – 1:100','桶洗'],['PA壶','1:10 – 1:30','PA壶']],
  steps:['先用水冲掉大块污垢。','按用途稀释：天气干燥或气温高时调稀，污垢多时调浓。','用超纤布或海绵轻柔清洗。','干掉前用高压水或海绵配大量清水冲净。'],
- notes:['镀膜车可以用；但调到 1:300 以下（更浓）时，可能洗掉简易镀膜和蜡。店里施工的聚硅氮烷类玻璃镀膜即使 1:30 以下也洗不掉。','不要用于座椅等内饰，内饰用 i43。','不要在阳光直射下或车身发热时使用，不要在干的车身上用。','韩国申报写的是 pH 7 中性、标准稀释 1:1500（申报号 HB21-01-0956）。','不含研磨剂。'],url:RAKUTEN+'bola-021/'},
+ cautions:['sun','hot'],notes:['镀膜车可以用；但调到 1:300 以下（更浓）时，可能洗掉简易镀膜和蜡。店里施工的聚硅氮烷类玻璃镀膜即使 1:30 以下也洗不掉。','不要用于座椅等内饰，内饰用 i43。','不要在干的车身上用。','韩国申报的标准稀释比例为 1:1500。','不含研磨剂。'],url:RAKUTEN+'bola-021/'},
 
-{id:'B-e55',brand:'B',category:'wash',ph:{"category":"acid","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性","registration":"HB24-01-0322"}],"conflict":false},name:'E55',type:'pH 3 酸性洗车香波（去水垢，桶洗 / 泡沫枪）',sizes:'500 ml',materials:'车身外部',
- dilutions:[['桶洗','1:1000','桶洗'],['泡沫枪','1:10','PA壶']],
- steps:['桶洗：在水桶里按 1:1000 稀释，打出泡沫，用洗车手套或海绵轻柔清洗，再冲净泡沫和污垢。','泡沫洗：在泡沫枪里按最浓 1:10 兑水喷涂，不要让它干掉，3–5 分钟内用高压水冲净。'],
- notes:['日本没有销售，用法和酸碱性来自韩国申报（申报号 HB24-01-0322）：酸性；韩国经销商标注为 pH 3，主打换用它洗车就能去掉水垢。','主要成分：乙醇酸、葡萄糖酸钠、表面活性剂、EDTA。'],url:N09+'48348'},
+{id:'B-e55',brand:'B',category:'wash',ph:{"category":"acid","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性。","registration":"HB24-01-0322"}],"conflict":false},name:'E55',type:'pH 3 酸性洗车香波（去水垢，桶洗 / PA壶）',sizes:'500 ml',materials:'车身外部各表面',
+ dilutions:[['手洗','1:1000','桶洗'],['PA壶','1:10','PA壶']],
+ steps:['桶洗：在水桶里按 1:1000 稀释，打出泡沫，用洗车手套或海绵轻柔清洗，再冲净泡沫和污垢。','泡沫洗：在 PA壶里按最浓 1:10 兑水喷涂，不要让它干掉，3–5 分钟内用高压水冲净。'],
+ notes:['日本没有销售，用法来自韩国申报（申报号 HB24-01-0322）；韩国经销商标注为 pH 3，主打换用它洗车就能去掉水垢。','主要成分：乙醇酸、葡萄糖酸钠、表面活性剂、EDTA。'],url:N09+'48348'},
 
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
-{id:'B-w55',brand:'B',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA21-01-1990）：原液碱性","registration":"HA21-01-1990"}],"conflict":false},name:'W55',type:'轮毂 + 轮胎清洁剂（去轮胎发黄发棕）',sizes:'500 ml · 1000 ml',materials:'轮毂 · 轮胎',
+{id:'B-w55',brand:'B',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HA21-01-1990）：原液碱性。","registration":"HA21-01-1990"}],"conflict":false},name:'W55',type:'轮毂 + 轮胎清洁剂（去轮胎发黄发棕）',sizes:'500 ml · 1000 ml',materials:'轮毂 · 轮胎',
  dilutions:[['轮毂 / 轮胎','即用','喷雾壶']],
  steps:['先用水冲湿轮毂和轮胎，在湿的状态下喷涂。','立刻用海绵或刷子轻轻刷掉污垢。','干掉前用高压水或大量清水冲净。','清洁后建议用轮胎镀膜保护（T47）。'],
- notes:['选哪款：一般污垢和轮胎发黄发棕用 W55；进口车刹车粉、铁粉多用 W35。','不要用于镀铬轮毂；轮毂轮胎发热时不要用。','过度清洗会加速轮胎老化，官方建议每月不超过 2 次。','韩国申报：碱性（申报号 HA21-01-1990），含氢氧化钾；喷后 1 分钟内冲掉。'],url:RAKUTEN+'bola-028/'},
+ cautions:['hot'],notes:['选哪款：一般污垢和轮胎发黄发棕用 W55；进口车刹车粉、铁粉多用 W35。','不要用于镀铬轮毂。','过度清洗会加速轮胎老化，官方建议每月不超过 2 次。','含氢氧化钾；喷后 1 分钟内冲掉。'],url:RAKUTEN+'bola-028/'},
 
-{id:'B-w35',brand:'B',category:'wheel',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-1981）：原液中性","registration":"HB21-01-1981"}],"conflict":false},name:'W35',type:'轮毂 + 轮胎清洁剂（加强除铁粉，变紫）',sizes:'500 ml',materials:'轮毂 · 轮胎',
+{id:'B-w35',brand:'B',category:'wheel',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-1981）：原液中性。","registration":"HB21-01-1981"}],"conflict":false},name:'W35',type:'轮毂 + 轮胎清洁剂（加强除铁粉，变紫）',sizes:'500 ml',materials:'轮毂 · 轮胎',
  dilutions:[['轮毂 / 轮胎','即用','喷雾壶']],
  steps:['先用水冲湿轮毂和轮胎，在湿的状态下喷涂。','立刻用海绵或刷子轻轻刷掉污垢；有铁粉的地方会变紫。','干掉前用大量清水冲净。','清洁后建议用轮胎镀膜保护（T47）。'],
- notes:['不要用于车身；不要用于镀铬、阳极氧化等表面处理件。','有气味，在室外通风处使用。','韩国申报：中性（申报号 HB21-01-1981），含巯基乙酸铵；韩国用法写的是轮毂或漆面喷涂后 1–2 分钟内冲掉，与日本「不要用于车身」的说法不同。'],url:RAKUTEN+'bola-030/'},
+ cautions:['ventilate'],notes:['不要用于车身；不要用于镀铬、阳极氧化等表面处理件。','有气味，最好在室外施工。','含巯基乙酸铵；韩国用法写的是轮毂或漆面喷涂后 1–2 分钟内冲掉，与日本「不要用于车身」的说法不同。'],url:RAKUTEN+'bola-030/'},
 
 // ───────────────────────── 除染 ─────────────────────────
-{id:'B-a53',brand:'B',category:'deco',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-0971）：原液中性；使用说明写「pH 7 中性铁粉去除剂」","registration":"HB21-01-0971"}],"conflict":false,"value":"7"},name:'A53',type:'镀膜前用中性铁粉去除剂（变紫）',sizes:'500 ml',materials:'车漆 · 轮毂',
+{id:'B-a53',brand:'B',category:'deco',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-0971）：原液中性；申报使用说明写「pH 7 中性铁粉去除剂」。","registration":"HB21-01-0971"}],"conflict":false,"value":"7"},name:'A53',type:'镀膜前用中性铁粉去除剂（变紫）',sizes:'500 ml',materials:'车漆 · 轮毂',
  dilutions:[['车身 / 轮毂除铁','即用','喷雾壶']],
  steps:['先洗掉沙尘，擦干水分。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷，仔细擦。','有铁粉时会变紫，擦到不再变紫为止。','之后用清水或香波再洗一遍。'],
- notes:['中性（日本页面与韩国申报 HB21-01-0971 一致）。','有很重的硫磺味，在室外通风处使用，注意废液。','不要用于镀铬、阳极氧化等表面处理件。','韩国用法是喷在漆面或轮毂上，变紫后在干掉前用高压水冲掉。'],url:RAKUTEN+'bola-022/'},
+ cautions:['ventilate'],notes:['有很重的硫磺味，最好在室外施工，注意废液处理。','不要用于镀铬、阳极氧化等表面处理件。','韩国用法是喷在漆面或轮毂上，变紫后在干掉前用高压水冲掉。'],url:RAKUTEN+'bola-022/'},
 
-{id:'B-a35',brand:'B',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA21-01-1969）：不适用（油性）","registration":"HA21-01-1969"}],"conflict":false},name:'A35',type:'柏油 / 沥青清洁剂（溶剂型）',sizes:'500 ml',materials:'车漆 · 轮拱 · 翼子板内侧',
+{id:'B-a35',brand:'B',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HA21-01-1969）：不适用（油性）。","registration":"HA21-01-1969"}],"conflict":false},name:'A35',type:'柏油 / 沥青清洁剂（溶剂型）',sizes:'500 ml',materials:'车漆 · 轮拱 · 翼子板内侧',
  dilutions:[['柏油 / 沥青点','即用','喷雾壶']],
  steps:['先用香波洗掉沙尘，擦干水分。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷，仔细擦。','擦到不留溶液。','之后用香波再洗一遍。'],
  notes:["油性溶剂（矿物油精、柠檬烯、煤油）。","韩国用法补充：喷在柏油上，等柏油开始溶化再用毛巾擦掉；之后油分多时用 P45 去除。"],url:RAKUTEN+'bola-025/'},
 
-{id:'B-p35',brand:'B',category:'deco',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-1980，该申报已过期）：原液碱性（申报名为 P35 Gallon）","registration":"HB21-01-1980"}],"conflict":false},name:'P35',type:'镀膜重置清洁剂（软研磨剂，湿车施工）',sizes:'500 ml',materials:'车漆',
+{id:'B-p35',brand:'B',category:'deco',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-1980，已过期）：原液碱性，申报名为 P35 Gallon。","registration":"HB21-01-1980"}],"conflict":false},name:'P35',type:'镀膜重置清洁剂（软研磨剂，湿车施工）',sizes:'500 ml',materials:'车漆',
  dilutions:[['湿车施工','即用','—']],
  steps:['先用香波洗掉污垢和异物。','溶剂干了会发白、堵塞缝隙，先把不施工的部位遮蔽好。','车身不要擦干，在湿的超纤布上按 1–2 下泵头。','轻轻擦磨施工部位；布或车身干了就重新打湿再继续。','施工后用清水或香波再洗一遍。'],
- notes:['用柔软颗粒的研磨剂去除蜡、镀膜、顽固水垢和水斑，以及车身发黄发黑，不伤清漆层。','成分含研磨剂和氢氧化钾；韩国申报为碱性（申报号 HB21-01-1980）。','官方流程：重度重置用 P35 → 再洗车 → 镀膜。'],url:RAKUTEN+'bola-026/'},
+ notes:['用柔软颗粒的研磨剂去除蜡、镀膜、顽固水垢和水斑，以及车身发黄发黑，不伤清漆层。','成分含研磨剂和氢氧化钾。','官方流程：重度重置用 P35 → 再洗车 → 镀膜。'],url:RAKUTEN+'bola-026/'},
 
-{id:'B-p58',brand:'B',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 FB23-02-0071，该申报已过期）：不适用","registration":"FB23-02-0071"}],"conflict":false},name:'P58',type:'去雨渍 / 水斑 + 简易镀膜（疏水）',sizes:'300 ml',materials:'车漆 · 镀铬件 · 大灯 · 轮毂（不会变得很烫的部位）',
+{id:'B-p58',brand:'B',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB23-02-0071，已过期）：不适用。","registration":"FB23-02-0071"}],"conflict":false},name:'P58',type:'去雨渍 / 水斑 + 简易镀膜（疏水）',sizes:'300 ml',materials:'车漆 · 镀铬 · 大灯 · 轮毂（不会变得很烫的部位）',
  dilutions:[['轻度或大面积（半干施工）','即用','—'],['局部重度（干式施工）','即用','—']],
- steps:['先用 A43 洗车。','水垢、雨渍、水斑、划痕轻或面积大：轻轻擦掉水分，用拧干的湿布半干施工。','局部严重：完全擦干，用干布干式施工。','用前摇匀；取适量在布或 ONCE PAD 上，按板块或 50 cm 见方施工。','纵横交替擦到液体消失，水垢和细划痕处不要用力、重点多擦几遍；镀铬件同样施工。'],
+ steps:['先用 A43 洗车。','水垢、雨渍、水斑、划痕轻或面积大：轻轻擦掉水分，用拧干的湿布半干施工。','局部严重：完全擦干，用干布干式施工。','使用前摇匀；取适量在布或 ONCE PAD 上，按板块或 50 cm 见方施工。','纵横交替擦到液体消失，水垢和细划痕处不要用力、重点多擦几遍；镀铬件同样施工。'],
  notes:["含超细氧化铝研磨颗粒，专攻雨渍和离子沉积；比 ONCE 更偏去水斑。","重度水斑建议用 ONCE PAD。","用抛光机时注意不要磨出抛光纹。","P47 施工后的水痕擦不掉时，也用 P58 去除。"],url:RAKUTEN+'bola-065/'},
 
 // ───────────────────────── 研磨 / 施工前处理 ─────────────────────────
-{id:'B-once',brand:'B',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 FB23-02-0069，该申报已过期）：不适用","registration":"FB23-02-0069"}],"conflict":false},name:'ONCE',type:'一体式：轻度去水垢 + 前处理 + 陶瓷镀膜（拨水）',sizes:'300 ml',materials:'车漆 · 镀铬件 · 大灯 · 轮毂（不会变得很烫的部位）',
+{id:'B-once',brand:'B',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB23-02-0069，已过期）：不适用。","registration":"FB23-02-0069"}],"conflict":false},name:'ONCE',type:'一体式：轻度去水垢 + 前处理 + 陶瓷镀膜（拨水）',sizes:'300 ml',materials:'车漆 · 镀铬 · 大灯 · 轮毂（不会变得很烫的部位）',
  dilutions:[['干车施工','即用','喷雾壶']],
- steps:['先用 A43 洗车，完全擦干，用干布施工（干式）。','用前摇匀，使用中也不时摇一摇。','直接喷在施工面上，打磨的同时擦净；会飞溅到别处时喷在布或 ONCE PAD 上。','按板块或 50 cm 见方施工，纵横交替擦到液体消失。','水垢和细划痕明显的地方不要用力，重点多擦几遍；镀铬件同样施工。'],
+ steps:['先用 A43 洗车，完全擦干，用干布施工（干式）。','使用前摇匀，使用中也不时摇一摇。','直接喷在施工面上，打磨的同时擦净；会飞溅到别处时喷在布或 ONCE PAD 上。','按板块或 50 cm 见方施工，纵横交替擦到液体消失。','水垢和细划痕明显的地方不要用力，重点多擦几遍；镀铬件同样施工。'],
  notes:["含软质氧化铝研磨剂，不伤清漆层和镀铬件；可以淡化细划痕。","含紫外线防护成分；耐久约 3 个月（官方对比表）。","大面积、要均匀时用 ONCE PAD 更方便。","用抛光机时注意不要磨出抛光纹。"],url:RAKUTEN+'bola-062/'},
 
-{id:'B-p45',brand:'B',category:'polish',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-1982）：原液中性","registration":"HB21-01-1982"}],"conflict":false},name:'P45',type:'镀膜 / 打蜡前脱脂剂',sizes:'500 ml',materials:'车漆',
+{id:'B-p45',brand:'B',category:'polish',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-1982）：原液中性。","registration":"HB21-01-1982"}],"conflict":false},name:'P45',type:'镀膜 / 打蜡前脱脂剂',sizes:'500 ml',materials:'车漆',
  dilutions:[['镀膜前脱脂','即用','喷雾壶']],
- steps:['先用香波或清水洗掉沙尘。','用前摇匀。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷，仔细擦。','擦净后开始镀膜或打蜡。'],
- notes:['脱脂后镀膜和蜡附着更好、更持久，也能减少不均。','不要用于橡胶、织物、皮革和树脂件，可能变质。','易燃，远离火源，在通风处使用。','成分为乙醇和异丙醇（韩国申报 HB21-01-1982：中性）。'],url:RAKUTEN+'bola-027/'},
+ steps:['先用香波或清水洗掉沙尘。','使用前摇匀。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷，仔细擦。','擦净后开始镀膜或打蜡。'],
+ cautions:['ventilate','flammable'],notes:['脱脂后镀膜和蜡附着更好、更持久，也能减少不均。','不要用于橡胶、织物、皮革和树脂件，可能变质。','成分为乙醇和异丙醇。'],url:RAKUTEN+'bola-027/'},
 
 // ───────────────────────── 镀膜 ─────────────────────────
-{id:'B-tan',brand:'B',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-07-0072，该申报已过期）：不适用","registration":"HB23-07-0072"}],"conflict":false},name:'TAN（Noble Shield）',type:'天然皮革镀膜（Superior 系列）',sizes:'—',materials:'天然皮革',
+{id:'B-tan',brand:'B',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB23-07-0072，已过期）：不适用。","registration":"HB23-07-0072"}],"conflict":false},name:'TAN（Noble Shield）',type:'天然皮革镀膜（Superior 系列）',sizes:'—',materials:'天然皮革',
  dilutions:[['皮革镀膜','即用','—']],
  steps:['先把皮革清洁、脱脂干净。','打开车窗车门通风。','用附带的施工块包上麂皮布，滴 5–10 滴。','在要镀膜的地方轻轻擦涂；少量多次比一次涂很多效果好。','涂完 5–10 分钟后用附带的超纤布擦掉。'],
  notes:["不擦掉（不 buffing）会直接固化附着在皮革上。","官方规格：耐久最长 2 年，耐 pH 3–11，接触角 >90°。","施工步骤来自韩国申报（申报号 HB23-07-0072）；主要成分为羟基封端硅油、含氢硅油、异丙醇。"],url:BOLA+'02/menu02.php?topmenu=2&left=2'},
 
 // ───────────────────────── 封体 / 快速养护 ─────────────────────────
-{id:'B-p17',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-07-0876）：不适用","registration":"HB21-07-0876"}],"conflict":false},name:'P17',type:'SiO₂ 陶瓷喷雾镀膜（干车施工）',sizes:'500 ml',materials:'车漆 · 塑料件 · 车窗外侧玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF · 大灯',
+{id:'B-p17',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-07-0876）：不适用。","registration":"HB21-07-0876"}],"conflict":false},name:'P17',type:'SiO₂ 陶瓷喷雾镀膜（干车施工）',sizes:'500 ml',materials:'车漆 · 塑料 · 车外玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF · 大灯',
  dilutions:[['干车擦涂','即用','喷雾壶']],
- steps:['洗车（需要时先抛光）彻底去除污垢和残留，完全擦干；抛光过的要把研磨剂擦干净。','装上喷头，用前摇匀，使用中也不时摇一摇。','在布上喷 2–3 下，尽量薄而均匀地涂开，同时擦干净。','按板块或 50 cm 见方施工。','出现不均或发白时，用拧干的湿布擦掉。','施工后 6 小时内不要淋水，24 小时内不要洗车。'],
+ steps:['洗车（需要时先抛光）彻底去除污垢和残留，完全擦干；抛光过的要把研磨剂擦干净。','装上喷头，使用前摇匀，使用中也不时摇一摇。','在布上喷 2–3 下，尽量薄而均匀地涂开，同时擦干净。','按板块或 50 cm 见方施工。','出现不均或发白时，用拧干的湿布擦掉。','施工后 6 小时内不要淋水，24 小时内不要洗车。'],
  notes:["官方写明适用于车身、树脂件、车窗外侧、轮毂（不会变得很烫的部位），以及改色膜和 PPF；不要涂在车窗内侧，会起雾。","涂在车漆以外的地方，先在不显眼处测试，并喷在布上施工、不要直接喷。","普通轿车每次约 50 ml，SUV 约 80 ml，一瓶约 10 台。","耐久约 3 个月（对比表写 4 个月以上），官方建议每 2–3 个月补涂一次。","已镀膜的车也可以用。","韩国另有 P17 Gold Label、P17e 两个版本（与 P17 同一申报号 HB21-07-0876）。"],url:RAKUTEN+'bola-001/'},
 
-{id:'B-p27',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-07-0877）：不适用","registration":"HB21-07-0877"}],"conflict":false},name:'P27',type:'石墨烯陶瓷喷雾镀膜（干车施工，含 UV 防护）',sizes:'500 ml',materials:'车漆 · 塑料件 · 车窗外侧玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF · 大灯',
+{id:'B-p27',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-07-0877）：不适用。","registration":"HB21-07-0877"}],"conflict":false},name:'P27',type:'石墨烯陶瓷喷雾镀膜（干车施工，含 UV 防护）',sizes:'500 ml',materials:'车漆 · 塑料 · 车外玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF · 大灯',
  dilutions:[['干车擦涂','即用','喷雾壶']],
- steps:['用 A43 洗车，需要时先用 P35 或 P58 做前处理；完全擦干，车身不要发热。','用前摇匀，使用中也不时摇一摇。','直接在施工面喷 1 下，尽量薄地涂开，同时擦干净；标准是「擦完马上就干」。','会飞溅到别处时，喷在布上（第一次 2 下，之后每次 1 下）。','按板块或 50 cm 见方施工；不均或发白时用拧干的湿布擦掉。','施工后 3 小时内不要淋水，12 小时内不要洗车。'],
+ steps:['用 A43 洗车，需要时先用 P35 或 P58 做前处理；完全擦干，车身不要发热。','使用前摇匀，使用中也不时摇一摇。','直接在施工面喷 1 下，尽量薄地涂开，同时擦干净；标准是「擦完马上就干」。','会飞溅到别处时，喷在布上（第一次 2 下，之后每次 1 下）。','按板块或 50 cm 见方施工；不均或发白时用拧干的湿布擦掉。','施工后 3 小时内不要淋水，12 小时内不要洗车。'],
  notes:["官方写明适用于车身、树脂件、车窗外侧、轮毂（不会变得很烫的部位），以及改色膜和 PPF。","第一次施工时，短期内再涂第二次效果更好；之后每 2–3 个月补涂一次。","耐久约 3 个月（官方对比表）。","光泽和拨水变弱时先用 A43 洗车，洗后还不够再补涂 P27。","韩国申报写的是石墨（申报号 HB21-07-0877）。"],url:RAKUTEN+'bola-070/'},
 
-{id:'B-z17',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-07-0876）：不适用","registration":"HB21-07-0876"}],"conflict":false},name:'Z17',type:'硅氧烷 + 聚硅氮烷混合陶瓷喷雾镀膜（疏水）',sizes:'300 ml',materials:'车漆 · 塑料件 · 车窗外侧玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF',
+{id:'B-z17',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-07-0876）：不适用。","registration":"HB21-07-0876"}],"conflict":false},name:'Z17',type:'硅氧烷 + 聚硅氮烷混合陶瓷喷雾镀膜（疏水）',sizes:'300 ml',materials:'车漆 · 塑料 · 车外玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF',
  dilutions:[['干车擦涂','即用','喷雾壶']],
- steps:['用 A43 洗车，需要时先用 P35 或 P58 做前处理；完全擦干。','用前摇匀，使用中也不时摇一摇。','直接在施工面喷 1 下，尽量薄地涂开，同时擦干净；标准是「擦完马上就干」。','会飞溅到别处时，喷在布上（第一次 2 下，之后每次 1 下）。','按板块或 50 cm 见方施工；不均或发白时用拧干的湿布擦掉。','施工后 6 小时内不要淋水，24 小时内不要洗车。'],
+ steps:['用 A43 洗车，需要时先用 P35 或 P58 做前处理；完全擦干。','使用前摇匀，使用中也不时摇一摇。','直接在施工面喷 1 下，尽量薄地涂开，同时擦干净；标准是「擦完马上就干」。','会飞溅到别处时，喷在布上（第一次 2 下，之后每次 1 下）。','按板块或 50 cm 见方施工；不均或发白时用拧干的湿布擦掉。','施工后 6 小时内不要淋水，24 小时内不要洗车。'],
  notes:["官方写明适用于车身、树脂件、车窗外侧、轮毂（不会变得很烫的部位），以及改色膜和 PPF。","6 小时内淋到水，极少数情况会不均或发白，用前处理剂或抛光剂轻轻去掉。","第一次施工时，短期内再涂第二次效果更好；之后每 2–3 个月补涂一次。","成分：硅氧烷化合物、聚硅氮烷、水（韩国申报 HB21-07-0876）。"],url:RAKUTEN+'bola-059/'},
 
 {id:'B-p17s',brand:'B',category:'seal',name:'P17s+',type:'陶瓷镀膜用面层（增光泽）',sizes:'500 ml',materials:'车漆',
@@ -105,28 +105,28 @@ export const products: Product[] = [
  steps:['先施工 P17、P27 或 Z17。','至少等 10 分钟、并在 3 小时内施工 P17s+；超过 3 小时要先重涂一次底层。','喷在干净的干布上（不要直接喷车身），尽量薄地涂开，同时擦干净；不要和底层用同一块布。','按板块或 50 cm 见方施工；不均或发白时用拧干的湿布擦掉。','施工后 6 小时内不要淋水，24 小时内不要洗车。'],
  notes:['第一次施工时，先在短期内涂两次 P17 / P27 / Z17，再上 P17s+ 效果更好。','涂在车漆以外的地方，先在不显眼处测试。','韩国名称 P17S（申报号 HB21-07-0876），成分只有普通硅油。'],url:RAKUTEN+'bola-007/'},
 
-{id:'B-p47',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-07-0154）：不适用","registration":"HB22-07-0154"}],"conflict":false},name:'P47',type:'喷涂即冲镀膜（湿车，拨水）',sizes:'500 ml',materials:'车漆 · 塑料件 · 车窗外侧玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF',
+{id:'B-p47',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB22-07-0154）：不适用。","registration":"HB22-07-0154"}],"conflict":false},name:'P47',type:'喷涂即冲镀膜（湿车，拨水）',sizes:'500 ml',materials:'车漆 · 塑料 · 车外玻璃 · 轮毂（不会变得很烫的部位） · 改色膜 · PPF',
  dilutions:[['湿车喷涂即冲','即用','喷雾壶']],
- steps:['用 A43 洗车，需要时先用 P58 做前处理；用前摇匀。','车身冷却、仍挂满水珠时直接喷，大面积薄而均匀；不够湿就再淋水。','不要用布涂抹，趁没干立刻用强水流和大量清水冲掉；按板块「喷 → 冲」逐块进行。','冲完后轻轻擦掉残留水珠，不要让自来水自然晾干。'],
+ steps:['用 A43 洗车，需要时先用 P58 做前处理；使用前摇匀。','车身冷却、仍挂满水珠时直接喷，大面积薄而均匀；不够湿就再淋水。','不要用布涂抹，趁没干立刻用强水流和大量清水冲掉；按板块「喷 → 冲」逐块进行。','冲完后轻轻擦掉残留水珠，不要让自来水自然晾干。'],
  notes:["用量参考：引擎盖 6–8 下，车顶 8–10 下，每扇车门 4–6 下。","不支持干车施工，也不要用湿布在干车上施工。","车内玻璃、内饰不能用；不要直接喷刹车盘和刹车片；排气管等高温部位不要用。","耐久最长约 3 个月，官方建议每洗 2–3 次或每 2–3 个月施工一次。","出现水痕时用拧干的湿布擦，擦不掉用 P58。","含挥发性硅油 D5 和含氢硅油（韩国申报 HB22-07-0154）。"],url:RAKUTEN+'bola-078/'},
 
-{id:'B-p47-pro',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-07-0154）：不适用","registration":"HB22-07-0154"}],"conflict":false},name:'P47 PRO',type:'喷涂即冲镀膜（浓缩装）',sizes:'4 L',materials:'车身外部',
+{id:'B-p47-pro',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB22-07-0154）：不适用。","registration":"HB22-07-0154"}],"conflict":false},name:'P47 PRO',type:'喷涂即冲镀膜（浓缩装）',sizes:'4 L',materials:'车身外部各表面',
  dilutions:[['湿车喷涂即冲','1:30 – 1:50','喷雾壶']],
- steps:['用前摇匀。','浓缩产品，一定要按比例兑水装进加压喷壶或普通喷壶：500 ml 喷壶约 10–16 ml 原液 + 484–490 ml 水。','洗车后趁车身还湿，均匀喷满全车。','在干掉前用高压水仔细冲净。','最后用擦干毛巾把水完全擦干。'],
+ steps:['使用前摇匀。','浓缩产品，一定要按比例兑水装进压力喷壶或喷雾壶：500 ml 喷雾壶约 10–16 ml 原液 + 484–490 ml 水。','洗车后趁车身还湿，均匀喷满全车。','在干掉前用高压水仔细冲净。','最后用擦干毛巾把水完全擦干。'],
  notes:["官方商城的 4 L 桶身标签写「P47 · WET SPRAY COAT / PRO ONLY：For Dilution」。","日本没有销售；比例和用法来自韩国申报（与 P47 同一申报号 HB22-07-0154）。"],url:DOXX+'1012'},
 
 {
  image:null,
- id:'B-pf1',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-07-0316）：不适用","registration":"HB22-07-0316"}],"conflict":false},name:'PF1',type:'固体蜡（褐煤蜡 + 蜂蜡 + 巴西棕榈蜡）',sizes:'—',materials:'车身外部',
+ id:'B-pf1',brand:'B',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB22-07-0316）：不适用。","registration":"HB22-07-0316"}],"conflict":false},name:'PF1',type:'固体蜡（褐煤蜡 + 蜂蜡 + 巴西棕榈蜡）',sizes:'—',materials:'车身外部各表面',
  dilutions:[['干车上蜡','即用','—']],
  steps:['把车洗干净，完全擦干。','在施工海绵上沾足蜡，薄薄涂开。','一边少量补蜡一边涂完全车（中型轿车），然后擦亮。'],
  notes:["尽量涂得越薄越好；擦亮的时机随温度和湿度变化。","日本没有销售，用法来自韩国申报（申报号 HB22-07-0316）。"],url:ECOLIFE},
 
 // ───────────────────────── 塑料 / 轮胎养护 ─────────────────────────
-{id:'B-t47',brand:'B',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-07-0873）：不适用","registration":"HB21-07-0873"}],"conflict":false},name:'T47',type:'不固化的玻璃系轮胎镀膜凝胶（哑光 / 光泽可调）',sizes:'500 ml',materials:'轮胎',
+{id:'B-t47',brand:'B',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-07-0873）：不适用。","registration":"HB21-07-0873"}],"conflict":false},name:'T47',type:'不固化的玻璃系轮胎镀膜凝胶（哑光 / 光泽可调）',sizes:'500 ml',materials:'轮胎',
  dilutions:[['轮胎','即用','—']],
- steps:['用轮胎清洁剂（W35 或 W55）或香波洗净轮胎，彻底冲水。','擦干水分，能晾干更好。','用前摇匀；在海绵或布上按 1–2 下涂抹到轮胎上。','涂完 3–5 分钟后再用布擦一遍，得到沉稳自然的哑光；想要光泽就不擦。'],
- notes:["不要涂在胎面上，会打滑；不要碰到刹车周围。","不要在阳光直射或轮胎发热时施工。","开封后 1 年内用完。","官方推荐换季拆下轮胎保存前，先清洁再涂 T47。"],url:RAKUTEN+'bola-024/'},
+ steps:['用轮胎清洁剂（W35 或 W55）或香波洗净轮胎，彻底冲水。','擦干水分，能晾干更好。','使用前摇匀；在海绵或布上按 1–2 下涂抹到轮胎上。','涂完 3–5 分钟后再用布擦一遍，得到沉稳自然的哑光；想要光泽就不擦。'],
+ cautions:['sun','hot'],notes:['不要涂在胎面上，会打滑；不要碰到刹车周围。','开封后 1 年内用完。','官方推荐换季拆下轮胎保存前，先清洁再涂 T47。'],url:RAKUTEN+'bola-024/'},
 
 // ───────────────────────── 玻璃 ─────────────────────────
 {id:'B-g37',brand:'B',category:'glass',name:'G37+',type:'玻璃清洁 + 拨水（也可清洁内饰硬表面）',sizes:'500 ml',materials:'车内外玻璃 · 内饰塑料 · 内饰金属 · 钢琴黑',
@@ -134,24 +134,24 @@ export const products: Product[] = [
  steps:['先用水或香波冲掉沙尘；需要时先去除玻璃上的水垢（鱼鳞纹）。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷，仔细擦。','擦到不留溶液。'],
  notes:['不能去除玻璃上的鱼鳞纹（矿物水垢）。','不要用于织物、皮革和老化部位，可能留斑、变色。','刚施工、还没干透时，水汽会暂时让表面起雾，干透后消失。','韩国旧版 G37：中性（申报号 HB21-01-0955），含含氢硅油和乙醇。'],url:RAKUTEN+'bola-076/'},
 
-{id:'B-g58',brand:'B',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 FB26-01-0018）：不适用","registration":"FB26-01-0018"}],"conflict":false},name:'G58 Glass Polish',type:'玻璃去油膜研磨乳液（Poison Frog 系列）',sizes:'100 ml（申报写 110 g）· 附施工手套',materials:'车外玻璃',
+{id:'B-g58',brand:'B',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB26-01-0018）：不适用。","registration":"FB26-01-0018"}],"conflict":false},name:'G58 Glass Polish',type:'玻璃去油膜研磨乳液（Poison Frog 系列）',sizes:'100 ml（申报写 110 g）· 附施工手套',materials:'车外玻璃',
  dilutions:[['玻璃去油膜','即用','—']],
  steps:['先把玻璃彻底洗干净。','用前充分摇匀。','按压适量在施工垫（手套）上。','在玻璃上打圈擦拭，去除油膜。','用清水冲净。'],
- notes:["只在韩国销售（经销商 엔공구），日本代理和北美经销商都没有上架；韩国申报号 FB26-01-0018，2026-03 发证。","标签成分：硅藻土 18 %、甘油 10 %、水 72 %；不含表面活性剂。","步骤按瓶身英文标签整理，标签字很小，只能读出大意；以包装说明为准，先在不显眼处测试。","不要在车内使用（车窗内侧不要用），不要与其他产品混用。"],url:N09+'48046'},
+ cautions:['test'],notes:['只在韩国销售（经销商 엔공구），日本代理和北美经销商都没有上架；韩国申报号 FB26-01-0018，2026-03 发证。','标签成分：硅藻土 18 %、甘油 10 %、水 72 %；不含表面活性剂。','步骤按瓶身英文标签整理，标签字很小，只能读出大意；以包装说明为准。','不要在车内使用（车窗内侧不要用），不要与其他产品混用。'],url:N09+'48046'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'B-i43',brand:'B',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-0970）：原液中性","registration":"HB21-01-0970"}],"conflict":false},name:'i43',type:'皮革 / 树脂件清洁 + 镀膜（中性）',sizes:'500 ml',materials:'真皮 · 人造革 · 内饰塑料 · 外饰未涂装塑料',
+{id:'B-i43',brand:'B',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-0970）：原液中性。","registration":"HB21-01-0970"}],"conflict":false},name:'i43',type:'皮革 / 树脂件清洁 + 镀膜（中性）',sizes:'500 ml',materials:'皮革 · 人造革 · 内饰塑料 · 外饰未涂装塑料',
  dilutions:[['皮革 / 塑料','即用','喷雾壶']],
- steps:['去掉施工部位的沙尘；用前摇匀。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷 1 下，仔细擦。','擦到不留溶液。','需要时再涂一层，光泽和防污更自然。'],
- notes:['可以恢复座椅发乌和未涂装树脂件发白。','用在织物上偶尔会留斑，先在不显眼处测试。','不要用于老化部位；不要在阳光直射或表面发热时使用。','韩国申报：中性（申报号 HB21-01-0970）。'],url:RAKUTEN+'bola-023/'},
+ steps:['去掉施工部位的沙尘；使用前摇匀。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷 1 下，仔细擦。','擦到不留溶液。','需要时再涂一层，光泽和防污更自然。'],
+ cautions:['sun','hot','test'],notes:['可以恢复座椅发乌和未涂装树脂件发白。','用在织物上偶尔会留斑。','不要用于老化部位。'],url:RAKUTEN+'bola-023/'},
 
-{id:'B-i35',brand:'B',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0731）：原液中性","registration":"HB22-01-0731"}],"conflict":false},name:'i35',type:'皮革清洁剂（中性，皮革座椅 / 塑料饰件）',sizes:'500 ml',materials:'真皮 · 人造革 · 内饰塑料',
+{id:'B-i35',brand:'B',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB22-01-0731）：原液中性。","registration":"HB22-01-0731"}],"conflict":false},name:'i35',type:'皮革清洁剂（中性，皮革座椅 / 塑料饰件）',sizes:'500 ml',materials:'皮革 · 人造革 · 内饰塑料',
  dilutions:[['皮革 / 塑料饰件','即用','喷雾壶']],
  steps:['在超纤布上喷 2–3 下。','用适当力度擦洗需要清洁的部位。','还脏的地方重复上面的步骤。','需要保护时，清洁后再用 i43 或 TAN。'],
- notes:['日本没有销售。用法和酸碱性来自韩国申报（申报号 HB22-01-0731）：中性；用途按韩国经销商的商品说明（皮革座椅和皮革内饰清洁，瓶身印 Leather Cleaner）。','适用的皮革种类（真皮 / 人造革）以瓶身标签为准。','主要成分：月桂醇聚醚硫酸钠、EDTA、氯化钠、黄原胶。'],url:N09+'46835'},
+ notes:['日本没有销售；用法来自韩国申报（申报号 HB22-01-0731），用途按韩国经销商的商品说明（皮革座椅和皮革内饰清洁，瓶身印 Leather Cleaner）。','适用的皮革种类（真皮 / 人造革）以瓶身标签为准。','主要成分：月桂醇聚醚硫酸钠、EDTA、氯化钠、黄原胶。'],url:N09+'46835'},
 
 // ───────────────────────── 配件 ─────────────────────────
-{id:'B-absorb',brand:'B',category:'acc',name:'Absorb Drying Towel',type:'双面擦干毛巾（吸水 + 收尾）',sizes:'86 × 74 cm',materials:'—',dilutions:[],
+{id:'B-absorb',brand:'B',category:'acc',name:'Absorb Drying Towel',type:'双面擦干毛巾（吸水 + 收尾）',sizes:'86×74 cm',materials:'—',dilutions:[],
  steps:['洗车后用长毛圈面吸水，只靠毛巾自重轻轻往身前拉。','留下擦痕时，用短毛面（有 BolaSolution 标志的一面）擦掉。','不要用柔顺剂洗涤。'],
  notes:['约可吸水 2 L；包边缝在内侧，不划车。','新毛巾吸水差或掉色时，先单独洗一次。'],url:RAKUTEN+'bola-019/'},
 
