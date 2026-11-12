@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, cautionTexts, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phBasisText, phValueText, type Product } from '@/data';
+import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, cautionTexts, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phDisplay, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './notes';
@@ -30,7 +30,7 @@ export function ProductDetail({ p }: { p: Product }) {
               {CAT_NAME[p.category]} / {SUB_OF.get(p.id)?.name}
             </span>
           </div>
-          <h2 className="sh-name" id="d-name">
+          <h2 className="sh-name" id={`d-name-${p.id}`}>
             {p.name}
           </h2>
           <p className="sh-type">{p.type}</p>
@@ -136,7 +136,8 @@ function PhSourceFact({ p }: { p: Product }) {
 
 /** 备注：这个产品特有的说明和 pH 资料原文，放在页面最下面 */
 function Remarks({ p }: { p: Product }) {
-  const items = [...p.notes, ...phEvidenceNotes(p.ph)];
+  const claim = p.ph?.claim ? [`${p.ph.claim}（这是配方宣传或使用液的说法；pH 标签是原液数据）。`] : [];
+  const items = [...p.notes, ...claim, ...phEvidenceNotes(p.ph)];
   if (items.length === 0) return null;
   return (
     <section className="remarks" aria-label="备注">
@@ -210,29 +211,22 @@ function ToxicLine({ p }: { p: Product }) {
   );
 }
 
-/** 产品自身 pH：有官方数据显示彩色标签；官方标注不适用的写「不适用」；配件不显示 */
+/** 产品自身 pH：和卡片同一套写法；有数值时显示彩色标签，口径说明在窄屏时整体换行 */
 function PhLine({ p }: { p: Product }) {
-  if (p.category === 'acc') return null;
-  const t = phValueText(p);
-  const basis = phBasisText(p);
+  const { category, label, basis } = phDisplay(p);
   return (
     <p className="sh-ph">
-      {t ? (
-        <span className={`phtag ${p.ph!.category}`}>
-          {/* 内层包一层，窄屏时在「·」处换行，口径说明整体不拆开 */}
-          <span>
-            {p.ph!.value ? t.replace(' ', ' · pH ') : `${t} pH`}
-            {basis && (
-              <>
-                {' '}
-                <span className="ph-basis">· {basis}</span>
-              </>
-            )}
-          </span>
+      <span className={`phtag ${category}`}>
+        <span>
+          {label}
+          {basis && (
+            <>
+              {' '}
+              <span className="ph-basis">· {basis}</span>
+            </>
+          )}
         </span>
-      ) : (
-        <span className="sh-ph-none">pH：{p.ph?.category === 'na' ? '不适用（官方标注）' : '官方未公布'}</span>
-      )}
+      </span>
     </p>
   );
 }

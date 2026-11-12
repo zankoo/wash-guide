@@ -8,7 +8,8 @@ export interface ProductItem {
   name: string; type: string; image?: string;
   materials: MaterialId[]; text: string; rank: RankFields;
   pills: string[] | 'accessory' | 'see-label';
-  ph?: { category: PH | 'na'; text: string; claim?: string };
+  /** 每个产品都有：没有数值时是固定说法（官方未公布 / 不适用 / 配件） */
+  ph: { category: PH | 'none'; label: string; basis?: string };
   hazard?: string;
 }
 export interface FlowItem {

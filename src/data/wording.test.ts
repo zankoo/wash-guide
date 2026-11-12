@@ -20,6 +20,16 @@ describe('产品页措辞统一', () => {
     expect(remarks.filter((r) => /pH [-\d.]+（官方产品信息）|^pH 中性，|酸碱性来自韩国申报/.test(r.text))).toEqual([]);
   });
 
+  it('类型名称里的酸碱说法与 pH 标签一致，没有 pH 资料时不在类型里写酸碱', () => {
+    for (const p of PRODUCTS) {
+      const t = p.type.replace(/无酸|耐酸|无烧碱|磷酸盐|耐 pH [\d–]+|2pH/g, '');
+      // 括号里只写酸碱性或 pH 值的说法和卡片上的 pH 标签重复
+      expect(t, p.id).not.toMatch(/pH 平衡|（(弱|强)?(酸|碱|中)性）|（pH [^）]*）/);
+      const said = [/酸/.test(t) && 'acid', /碱|高 pH/.test(t) && 'alk', /中性/.test(t) && 'neu'].filter(Boolean);
+      if (said.length) expect(said, `${p.id}：${p.type}`).toEqual([p.ph?.category]);
+    }
+  });
+
   it('同一器材、动作只用一种叫法', () => {
     const texts = PRODUCTS.flatMap((p) => [p.type, p.materials, ...p.steps, ...p.notes, ...p.dilutions.flat()].map((text) => ({ id: p.id, text })));
     const variants = /泡沫枪|Foam gun|PA 壶|(?<![雾沫力])喷壶|泵壶|从下往上|从上往下|超细纤维布|(?<!使)用前摇匀|不可用于|不适用于|不能用于/;

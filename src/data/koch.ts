@@ -70,7 +70,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Fruit_Bowl_Art-__253999_253999_0007_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-super-foam-fruit-bowl',brand:'K',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Super_Foam_Fruit_Bowl_en.pdf"},"evidence":[{"kind":"statement","source":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Fruit_Bowl_Art-__253999_253999_0007_EN.pdf","text":"SDS 第 9 节写 pH 10，与厂商技术资料表的 pH 11 不一致；本站按厂商技术资料表标注。"}],"conflict":true},name:'Super Foam Fruit Bowl',type:'碱性高泡活性泡沫（pH 11，果香）',sizes:'20 L',materials:'车身外部各表面',
+ id:'K-super-foam-fruit-bowl',brand:'K',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Super_Foam_Fruit_Bowl_en.pdf"},"evidence":[{"kind":"statement","source":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Super_Foam_Fruit_Bowl_Art-__253999_253999_0007_EN.pdf","text":"SDS 第 9 节写 pH 10，与厂商技术资料表的 pH 11 不一致；本站按厂商技术资料表标注。"}],"conflict":true},name:'Super Foam Fruit Bowl',type:'碱性高泡活性泡沫（果香）',sizes:'20 L',materials:'车身外部各表面',
  dilutions:[['PA壶','1:50 – 1:100','PA壶'],['自助洗车站计量泵','约 30–50 ml/min','—'],['VDA A 级最高使用浓度','1:50','—']],
  steps:['PA壶：稀释至 1:50 – 1:100 后把整车打满泡沫。','自助洗车站：通过计量泵按约 30–50 ml/min 投加。','作用时间最长 5 分钟（VDA A 级），然后用高压水冲净；泡沫包裹污垢，高压冲洗即可带走，对漆面温和。'],
  cautions:['test'],notes:['瓶身代号 Sff。泡沫极丰富，果香清新，在洗车区留香持久；官方定位为自助洗车站用清洁泡沫，也可用于 PA壶。','节约使用；不要以原液排入生物法循环水处理设备。','官网未注明适用材质。'],url:KOCH+'super_foam_fruit_bowl'},
@@ -170,14 +170,14 @@ export const products: Product[] = [
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Magic_Wheel_Cleaner_425999_2.0.0_IE_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-magic-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Magic_Wheel_Cleaner_en.pdf"},"evidence":[],"conflict":false,"claim":"官方称无酸配方"},name:'Magic Wheel Cleaner',type:'无酸粘稠轮毂清洁剂（铁粉变色）',sizes:'500 ml · 10 L',materials:'烤漆铝合金轮毂 · 高档镀铬轮毂 · 钢圈',
+ id:'K-magic-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/Magic_Wheel_Cleaner_en.pdf"},"evidence":[],"conflict":false,"claim":"官方称无酸配方"},name:'Magic Wheel Cleaner',type:'粘稠轮毂清洁剂（铁粉变色）',sizes:'500 ml · 10 L',materials:'烤漆铝合金轮毂 · 高档镀铬轮毂 · 钢圈',
  dilutions:[['轮毂与轮拱内圈','即用','喷雾壶']],
  steps:['使用前短暂摇匀。','把轮毂表面和轮毂内圈彻底喷满。','视脏污程度作用 2–5 分钟。','用高压水彻底冲洗。'],
  cautions:['sun','hot'],notes:['反应成分溶解铁粉，出现红色变色；粘稠配方附着久、作用期间保持湿润。','官方 Ceramic Rims 施工前推荐用它清洁轮毂。'],url:KOCH+'magic_wheel_cleaner'},
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/Reactive_Wheel_Cleaner_77704999_2.1.0_GB_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- id:'K-reactive-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5–6","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Reactive_Wheel_Cleaner_77704999_2.1.0_GB_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-01-0392，已过期）：原液弱酸性。","registration":"CB22-01-0392"}],"conflict":false,"claim":"官方称无酸配方"},name:'ReactiveWheelCleaner',type:'无酸反应型轮毂清洁剂（零售装）',sizes:'750 ml',materials:'高档轮毂',
+ id:'K-reactive-wheel-cleaner',brand:'K',category:'wheel',ph:{"category":"acid","value":"5–6","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/Reactive_Wheel_Cleaner_77704999_2.1.0_GB_EN.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-01-0392，已过期）：原液弱酸性。","registration":"CB22-01-0392"}],"conflict":false,"claim":"官方称无酸配方"},name:'ReactiveWheelCleaner',type:'反应型轮毂清洁剂（零售装）',sizes:'750 ml',materials:'高档轮毂',
  dilutions:[['整只轮毂','即用','喷雾壶']],
  steps:['喷满已冷却的整只轮毂。','作用 1–3 分钟；重度脏污可延长到 10 分钟。','需要时用海绵或刷子辅助。','用强力水流彻底冲洗，或直接进洗车房。'],
  cautions:['test'],notes:['红色反应指示，含光亮添加剂，留下光泽和荷叶效应。','2026-11 起官网已撤下这款产品的页面，可能已停产；官方产品信息 PDF 仍可下载。'],url:KOCH_PDF+'ReactiveWheelCleaner_en.pdf'},
