@@ -58,6 +58,18 @@ test('分类标题吸顶时紧贴筛选栏，中间不露出滚动内容', async
   }
 });
 
+test('桌面左栏按 品牌 → 材质 → 分类 排列', async ({ page }) => {
+  for (const width of [1440, 1100]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const side = page.getByRole('complementary', { name: '索引' });
+    const top = async (name: RegExp) => (await side.getByRole('heading', { name }).boundingBox())!.y;
+    const [brand, material, category] = [await top(/^品牌$/), await top(/^适用材质/), await top(/^分类/)];
+    expect(brand, `${width}px`).toBeLessThan(material);
+    expect(material, `${width}px`).toBeLessThan(category);
+  }
+});
+
 test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({ page }) => {
   await page.goto('/?q=Reset');
   const card = page.locator('main .card[href^="/p/C-reset?"]');
