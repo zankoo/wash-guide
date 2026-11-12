@@ -1,7 +1,7 @@
 'use client';
 
 import { Fragment, useEffect, useRef, type ReactNode } from 'react';
-import { BRAND, BRANDS, FLOW_SOURCE } from '@/data/taxonomy';
+import { BRAND, BRANDS, FLOW_SOURCE, SCENES } from '@/data/taxonomy';
 import type { FlowView } from '@/lib/catalog';
 import { useGuide } from './guide-state';
 import { useFilters } from './filter-state';
@@ -88,7 +88,7 @@ export function FlowBrowser({ cards, intro }: { cards: FlowView[]; intro: ReactN
         </details>
       )}
       {!list.length ? (
-        <p className="empty">没有匹配的流程，换个关键词或场景试试。</p>
+        <FlowsEmpty />
       ) : (
         BRANDS.map((b) => {
           const off = list.filter((f) => f.brand === b && f.kind === 'off');
@@ -132,5 +132,28 @@ export function FlowBrowser({ cards, intro }: { cards: FlowView[]; intro: ReactN
         })
       )}
     </>
+  );
+}
+
+/** 流程空结果：说明去掉哪个条件能看到多少个流程 */
+function FlowsEmpty() {
+  const { brand, scene, setScene, setQuery, clearFilters } = useFilters();
+  const { setBrand } = useGuide();
+  const { flowRelaxed, query } = useCatalogResults();
+  const relax = [
+    scene && { key: 'scene', label: `去掉场景「${SCENES.find(([k]) => k === scene)?.[1]}」`, n: flowRelaxed.scene, run: () => setScene('') },
+    brand && { key: 'brand', label: `去掉品牌「${BRAND[brand]}」`, n: flowRelaxed.brand, run: () => setBrand('') },
+    query && { key: 'query', label: `清空搜索「${query}」`, n: flowRelaxed.query, run: () => setQuery('') },
+  ].filter((r): r is { key: string; label: string; n: number; run: () => void } => !!r && r.n > 0);
+  return (
+    <div className="empty" role="status">
+      <p>{query ? `没有与「${query}」相关的流程` : '没有同时符合这些条件的流程'}{relax.length ? '，可以：' : '。'}</p>
+      {relax.map((r) => (
+        <button type="button" className="scope-clear" key={r.key} onClick={r.run}>
+          {r.label}（{r.n} 个）
+        </button>
+      ))}
+      <button type="button" className="scope-clear" onClick={clearFilters}>清除全部筛选</button>
+    </div>
   );
 }

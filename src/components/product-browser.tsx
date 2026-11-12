@@ -4,8 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useLayoutEffect, useRef, ViewTransition } from 'react';
 import { MATERIAL_NAME } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
-import { CAT_NAME, CATS } from '@/data/taxonomy';
-import { useFavorites } from '@/lib/favorites';
+import { BRAND, CAT_NAME, CATS } from '@/data/taxonomy';
 import { relevance, suggestions } from '@/lib/search';
 import { useGuide } from './guide-state';
 import { useFilters } from './filter-state';
@@ -18,10 +17,9 @@ const PEEK = 6;
 /** 按品牌 / 分类 / 搜索词筛选服务端渲染好的产品卡片，按分类 → 子分类分组；「全部」视图下大分类默认折叠 */
 export function ProductBrowser() {
   const { brand, material, category, setCategory, setQuery, clearFilters } = useFilters();
-  const { expanded, setExpanded, jumpTo } = useGuide();
+  const { expanded, setExpanded, jumpTo, setBrand, setMaterial } = useGuide();
   const { products: items } = useCatalogData();
-  const { products: list, matchedProducts: matched, query } = useCatalogResults();
-  const favorites = useFavorites();
+  const { products: list, matchedProducts: matched, query, relaxed, favoriteTotal } = useCatalogResults();
   const router = useRouter();
 
   // 页面空闲时预取一个产品详情：顺带加载详情面板的脚本，第一次点开产品就不用再等它们下载
@@ -54,25 +52,36 @@ export function ProductBrowser() {
   const scope = query && category ? (category === 'fav' ? '常用' : CAT_NAME[category]) : '';
 
   if (!list.length) {
+    if (category === 'fav' && !favoriteTotal) {
+      return (
+        <p className="empty list" key={listKey} ref={top}>
+          还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。
+        </p>
+      );
+    }
+    // 告诉用户去掉哪个条件能看到多少款；只列出确实能看到产品的放宽方式
+    const relax = [
+      category && { key: 'category', label: category === 'fav' ? '退出「我的常用」' : `去掉分类「${CAT_NAME[category]}」`, n: relaxed.category, run: () => setCategory('') },
+      brand && { key: 'brand', label: `去掉品牌「${BRAND[brand]}」`, n: relaxed.brand, run: () => setBrand('') },
+      material && { key: 'material', label: `去掉材质「${MATERIAL_NAME[material]}」`, n: relaxed.material, run: () => setMaterial('') },
+      query && { key: 'query', label: `清空搜索「${query}」`, n: relaxed.query, run: () => setQuery('') },
+    ].filter((r): r is { key: string; label: string; n: number; run: () => void } => !!r && r.n > 0);
     return (
-      <p className="empty list" key={listKey} ref={top}>
-        {category === 'fav' && !favorites.length && !query ? (
-          '还没有常用产品。打开产品详情，点「加入常用」，下次在这里就能直接找到。'
-        ) : scope && matched.length ? (
-          <>
-            「{scope}」里没有与「{query}」相关的产品，其他分类里有 {matched.length} 款。
-            <button type="button" className="scope-clear" onClick={() => setCategory('')}>
-              在全部分类中查看
-            </button>
-          </>
-        ) : (
-          <>
-            没有匹配的产品。试试相关用途：
+      <div className="empty list" key={listKey} ref={top} role="status">
+        <p>{query ? `没有与「${query}」相关的产品` : '没有同时符合这些条件的产品'}{relax.length ? '，可以：' : '。'}</p>
+        {relax.map((r) => (
+          <button type="button" className="scope-clear" key={r.key} onClick={r.run}>
+            {r.label}（{r.n} 款）
+          </button>
+        ))}
+        {query && !relax.length && (
+          <p className="empty-try">
+            试试相关用途：
             {suggestions(query).map((word) => <button type="button" className="scope-clear" key={word} onClick={() => setQuery(word)}>{word}</button>)}
-            <button type="button" className="scope-clear" onClick={clearFilters}>清除全部筛选</button>
-          </>
+          </p>
         )}
-      </p>
+        <button type="button" className="scope-clear" onClick={clearFilters}>清除全部筛选</button>
+      </div>
     );
   }
 

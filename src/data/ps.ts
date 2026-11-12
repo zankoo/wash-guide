@@ -28,7 +28,7 @@ export const products: Product[] = [
 // ───────────────────────── 洗车香波 ─────────────────────────
 {
  sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Pearl_Hand_Wash_NA_SDS_EN.pdf?v=1744646177","source":"ps","language":"英文","hosting":"remote"},
- id:'P-pearl',brand:'P',category:'wash',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Pearl_Hand_Wash_NA_SDS_EN.pdf?v=1744646177","section":9},"evidence":[],"conflict":false},name:'Pearl Auto Shampoo',type:'中性浓缩洗车液（可生物降解）',sizes:'32 oz · 1 gal · 5 gal',materials:'车身外部各表面',
+ id:'P-pearl',brand:'P',category:'wash',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Pearl_Hand_Wash_NA_SDS_EN.pdf?v=1744646177","section":9},"evidence":[],"conflict":false},name:'Pearl Auto Shampoo',type:'浓缩洗车液（可生物降解）',sizes:'32 oz · 1 gal · 5 gal',materials:'车身外部各表面',
  dilutions:[['手洗（每加仑水 1 oz）','1:128','桶洗'],['较脏时 / PA壶','1:80','PA壶']],
  steps:['在阴凉处、排水符合规定的洗车区施工。','每加仑（3.8 L）水加 1 oz（约 30 ml，两瓶盖）；最佳比例 1:80 – 1:128。','先冲车，再用手或 PA壶涂上洗车液。','用洗车手套清洗后彻底冲净。','用擦干巾擦干。'],
  notes:['官网称 pH 平衡、不伤车漆也不伤手；SDS 第 9 节写原液 pH 10。泡沫稳定、润滑好。','也可以接比例稀释设备，用于手洗或洗车机。'],url:PS+'pearl-auto-shampoo-doubleblack-collection'},
@@ -42,9 +42,9 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Wash_Wax_0c5d3d6b-201a-42f1-9e4b-cc663ec530d1.pdf?v=1648503828","source":"ps","language":"英文","hosting":"remote"},
- id:'P-wash-wax',brand:'P',category:'wash',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Wash_Wax_0c5d3d6b-201a-42f1-9e4b-cc663ec530d1.pdf?v=1648503828","section":9},"evidence":[],"conflict":false},name:'Wash & Wax',type:'pH 平衡浓缩洗车香波（Pro Series）',sizes:'16 oz · 1 gal',materials:'车漆',
+ id:'P-wash-wax',brand:'P',category:'wash',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Wash_Wax_0c5d3d6b-201a-42f1-9e4b-cc663ec530d1.pdf?v=1648503828","section":9},"evidence":[],"conflict":false,"claim":"官方称 pH 平衡"},name:'Wash & Wax',type:'浓缩洗车香波（Pro Series）',sizes:'16 oz · 1 gal',materials:'车漆',
  dilutions:[],steps:[],
- notes:['高浓缩、pH 平衡、100% 可生物降解，适合各种洗车方式；对车漆和双手温和，清新香。','黏度较低，方便配合稀释设备使用。','官方商城未给出稀释比例和施工步骤。'],url:PS+'wash-wax-car-wash-soap'},
+ notes:['高浓缩、100% 可生物降解，适合各种洗车方式；对车漆和双手温和，清新香。','黏度较低，方便配合稀释设备使用。','官方商城未给出稀释比例和施工步骤。'],url:PS+'wash-wax-car-wash-soap'},
 
 {
  sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Radiance_96a6193f-f66c-4d4e-86f2-abe5e3a6e255.pdf?v=1699558771","source":"ps","language":"英文","hosting":"remote"},
@@ -85,7 +85,7 @@ export const products: Product[] = [
 // ───────────────────────── 除染 ─────────────────────────
 {
  sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Iron_Buster_NA_SDS_EN_fa4a3c3f-f8c3-4de0-b799-41c32d5aa0c5.pdf?v=1727973279","source":"ps","language":"英文","hosting":"remote"},
- id:'P-iron-buster',brand:'P',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Iron_Buster_NA_SDS_EN_fa4a3c3f-f8c3-4de0-b799-41c32d5aa0c5.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'Iron Buster',type:'中性铁粉去除剂（轮毂 + 车漆，变紫）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆 · 轮毂',
+ id:'P-iron-buster',brand:'P',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Iron_Buster_NA_SDS_EN_fa4a3c3f-f8c3-4de0-b799-41c32d5aa0c5.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'Iron Buster',type:'铁粉去除剂（轮毂 + 车漆，变紫）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆 · 轮毂',
  dilutions:[['车漆 / 轮毂除铁','即用','喷雾壶']],
  steps:['车漆：先洗车并擦干，效果最好；轮毂不需要先洗。','大量喷在车漆或轮毂上。','停留 2–5 分钟，有铁粉的地方会变紫。','不要让它在表面完全干掉。','用水管或高压水彻底冲净，需要时重复。'],
  cautions:['test'],notes:['官网称 pH 平衡；SDS 第 9 节写原液 pH 5.5。见效快。','每次使用前都要在轮毂上测试。'],url:PS+'iron-buster-doubleblack-collection'},

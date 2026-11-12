@@ -14,7 +14,7 @@ const DOXX = 'https://doxxmall.co.kr/product/detail.html?product_no=';
 
 export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
-{id:'B-a55',brand:'B',category:'pre',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"product-page","url":"https://doxxmall.co.kr/product/detail.html?product_no=1025"},"evidence":[{"kind":"statement","source":"product-page","text":"官方商城的 4 L 桶身标签写「PRE-WASH / PH3 POWER CLEAN」。"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性，与 E55 同一申报号。","registration":"HB24-01-0322"}],"conflict":false},name:'A55',type:'pH 3 酸性预洗（去水垢、矿物质污垢）',sizes:'4 L',materials:'车身外部各表面',
+{id:'B-a55',brand:'B',category:'pre',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"product-page","url":"https://doxxmall.co.kr/product/detail.html?product_no=1025"},"evidence":[{"kind":"statement","source":"product-page","text":"官方商城的 4 L 桶身标签写「PRE-WASH / PH3 POWER CLEAN」。"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性，与 E55 同一申报号。","registration":"HB24-01-0322"}],"conflict":false},name:'A55',type:'酸性预洗（去水垢、矿物质污垢）',sizes:'4 L',materials:'车身外部各表面',
  dilutions:[['预洗','1:10','喷雾壶']],
  steps:['使用前摇匀。','按桶身标签 1:10 兑水（韩国申报写 1:30，即 50 ml 原液兑 1500 ml 水，污垢轻时可调稀）。','喷在车身外部，污垢重的地方用洗车手套或海绵轻轻擦洗。','干掉前用高压水冲洗干净。'],
  notes:['官方商城的商品名为「산성 프리워시」（酸性预洗），桶身标签写稀释 1:10。','日本没有销售。','主要成分：乙醇酸、葡萄糖酸钠、表面活性剂。'],url:DOXX+'1025'},
@@ -30,7 +30,7 @@ export const products: Product[] = [
  steps:['先用水冲掉大块污垢。','按用途稀释：天气干燥或气温高时调稀，污垢多时调浓。','用超纤布或海绵轻柔清洗。','干掉前用高压水或海绵配大量清水冲净。'],
  cautions:['sun','hot'],notes:['镀膜车可以用；但调到 1:300 以下（更浓）时，可能洗掉简易镀膜和蜡。店里施工的聚硅氮烷类玻璃镀膜即使 1:30 以下也洗不掉。','不要用于座椅等内饰，内饰用 i43。','不要在干的车身上用。','韩国申报的标准稀释比例为 1:1500。','不含研磨剂。'],url:RAKUTEN+'bola-021/'},
 
-{id:'B-e55',brand:'B',category:'wash',ph:{"category":"acid","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性。","registration":"HB24-01-0322"}],"conflict":false},name:'E55',type:'pH 3 酸性洗车香波（去水垢，桶洗 / PA壶）',sizes:'500 ml',materials:'车身外部各表面',
+{id:'B-e55',brand:'B',category:'wash',ph:{"category":"acid","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB24-01-0322）：原液酸性。","registration":"HB24-01-0322"}],"conflict":false},name:'E55',type:'酸性洗车香波（去水垢，桶洗 / PA壶）',sizes:'500 ml',materials:'车身外部各表面',
  dilutions:[['手洗','1:1000','桶洗'],['PA壶','1:10','PA壶']],
  steps:['桶洗：在水桶里按 1:1000 稀释，打出泡沫，用洗车手套或海绵轻柔清洗，再冲净泡沫和污垢。','泡沫洗：在 PA壶里按最浓 1:10 兑水喷涂，不要让它干掉，3–5 分钟内用高压水冲净。'],
  notes:['日本没有销售，用法来自韩国申报（申报号 HB24-01-0322）；韩国经销商标注为 pH 3，主打换用它洗车就能去掉水垢。','主要成分：乙醇酸、葡萄糖酸钠、表面活性剂、EDTA。'],url:N09+'48348'},
@@ -140,7 +140,7 @@ export const products: Product[] = [
  cautions:['test'],notes:['只在韩国销售（经销商 엔공구），日本代理和北美经销商都没有上架；韩国申报号 FB26-01-0018，2026-03 发证。','标签成分：硅藻土 18 %、甘油 10 %、水 72 %；不含表面活性剂。','步骤按瓶身英文标签整理，标签字很小，只能读出大意；以包装说明为准。','不要在车内使用（车窗内侧不要用），不要与其他产品混用。'],url:N09+'48046'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'B-i43',brand:'B',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-0970）：原液中性。","registration":"HB21-01-0970"}],"conflict":false},name:'i43',type:'皮革 / 树脂件清洁 + 镀膜（中性）',sizes:'500 ml',materials:'皮革 · 人造革 · 内饰塑料 · 外饰未涂装塑料',
+{id:'B-i43',brand:'B',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-0970）：原液中性。","registration":"HB21-01-0970"}],"conflict":false},name:'i43',type:'皮革 / 树脂件清洁 + 镀膜',sizes:'500 ml',materials:'皮革 · 人造革 · 内饰塑料 · 外饰未涂装塑料',
  dilutions:[['皮革 / 塑料','即用','喷雾壶']],
  steps:['去掉施工部位的沙尘；使用前摇匀。','在超纤布上喷 2–3 下，轻轻擦拭；污垢重的地方直接喷 1 下，仔细擦。','擦到不留溶液。','需要时再涂一层，光泽和防污更自然。'],
  cautions:['sun','hot','test'],notes:['可以恢复座椅发乌和未涂装树脂件发白。','用在织物上偶尔会留斑。','不要用于老化部位。'],url:RAKUTEN+'bola-023/'},

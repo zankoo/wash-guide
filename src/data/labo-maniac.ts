@@ -405,7 +405,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/IRON-REMOVER_1859_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-iron-remover',brand:'M',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/IRON-REMOVER_1859_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-01-0704）：原液弱酸性。","registration":"EB23-01-0704"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"neu"}],"conflict":true,"claim":"官方称中性"},name:'Iron Remover',type:'铁粉去除剂（中性、无酸）',sizes:'1000 ml · 5 L',materials:'钢 / 铝合金 / 喷漆 / 镀铬 / 抛光轮毂 · 车漆 · 玻璃',
+ id:'M-iron-remover',brand:'M',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/IRON-REMOVER_1859_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-01-0704）：原液弱酸性。","registration":"EB23-01-0704"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"neu"}],"conflict":true,"claim":"官方称中性"},name:'Iron Remover',type:'铁粉去除剂',sizes:'1000 ml · 5 L',materials:'钢 / 铝合金 / 喷漆 / 镀铬 / 抛光轮毂 · 车漆 · 玻璃',
  dilutions:[['轮毂维护（每洗 3 次做一次）（软毛刷）','1:1（最高稀释）','喷雾壶'],['轮毂深度除铁（软毛刷）','原液','喷雾壶'],['车身除铁（距离约 40 cm）','原液','喷雾壶']],
  steps:['阴凉处，确认表面冷却。','轮毂：喷上后停留 3–4 分钟（不要干），变紫说明在溶解铁粉；用刷子清理辐条间和缝隙，彻底冲洗后用超纤布擦干。','车身：洗车擦干后，距离约 40 cm 均匀喷原液，停留 3–5 分钟，彻底冲洗。'],
  notes:['不要用于未涂装或无保护的金属、未喷漆卡钳和摩托车。','上蜡或做保护前必做，以提升附着。'],url:MANIAC+'products-professional-cleaning-auto-exterior/decontamination/iron-remover/'},

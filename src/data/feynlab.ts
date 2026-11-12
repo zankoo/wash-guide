@@ -31,7 +31,7 @@ export const products: Product[] = [
  notes:["比传统洗车省约 90 % 的水，适合不能冲水的小区、车库。","镀膜车的日常维护和镀膜前清洁都可以用；哑光、缎面、亮面车漆都安全。","稀释后也可以喷在布上清洁仪表台、门板等内饰。","泥沙、盐分很多的车先用高压水冲，直接擦容易划伤。","1 L 原液按 1:250 约可洗 16–22 台车。"],url:FL+'rinseless-car-wash-pure-rinseless/'},
 
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
-{id:'N-tire-wheel',brand:'N',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-2217，已过期）：原液碱性。","registration":"HB21-01-2217"}],"conflict":false},name:'Tire & Wheel Cleaner',type:'轮胎 / 轮毂深层清洁剂（去发棕和旧轮胎油，非酸性）',sizes:'500 ml · 5 L · 20 L',materials:'橡胶轮胎 · 清漆轮毂 · 粉末喷涂轮毂 · 卡钳',
+{id:'N-tire-wheel',brand:'N',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-2217，已过期）：原液碱性。","registration":"HB21-01-2217"}],"conflict":false},name:'Tire & Wheel Cleaner',type:'轮胎 / 轮毂深层清洁剂（去发棕和旧轮胎油）',sizes:'500 ml · 5 L · 20 L',materials:'橡胶轮胎 · 清漆轮毂 · 粉末喷涂轮毂 · 卡钳',
  dilutions:[['轮胎 / 轮毂','即用','喷雾壶']],
  steps:['在 10–30 °C 的环境施工，戴手套，建议戴口罩。','只洗轮胎：由下往上均匀喷在轮胎上，停留至少 10 秒，用硬毛刷刷到看不见污垢，再用流水彻底冲净。','轮胎轮毂一起洗：由下往上同时喷满，先用软毛刷轻刷轮毂，再用硬毛刷刷轮胎，最后彻底冲净。','不方便冲水时：喷在超纤布上直接擦，常翻面；擦完用吸饱清水的毛巾把残留擦干净。','之后轮毂可上 Ceramic Wheel & Caliper，轮胎可上 Black Velvet。'],
  notes:["不是酸性轮毂清洁剂，不能代替酸性产品溶解重度刹车粉。","不要用于裸镁合金、未涂装的铝轮毂。","已经涂了 Black Velvet 的轮胎不要用它日常清洗，会把轮胎封体洗掉；改用 Pure Wash。","可用于已做 Ceramic Wheel & Caliper 的轮毂。","官方标为认证施工店专用（Pro Series）。"],url:FL+'feynlab-tire-and-wheel-cleaner/'},
@@ -188,10 +188,10 @@ export const products: Product[] = [
 // ───────────────────────── 多功能清洁 APC ─────────────────────────
 {
  sds:{"url":"https://eu.feynlab.com/wp-content/uploads/2025/11/All-Purpose-Cleaner-SDS.pdf","source":"feynlab","language":"英文","version":"2025","hosting":"remote"},
- id:'N-apc',brand:'N',category:'apc',name:'All Purpose Cleaner',type:'柑橘 + 弱碱双效 APC（碱度约为一般 APC 的一半）',sizes:'1 L · 5 L · 20 L',materials:'内饰塑料 · 人造革 · 橡胶 · 饰条 · 发动机舱 · 轮毂 · 外饰塑料 · 皮革 · Alcantara',
+ id:'N-apc',brand:'N',category:'apc',name:'All Purpose Cleaner',type:'柑橘双效 APC',sizes:'1 L · 5 L · 20 L',materials:'内饰塑料 · 人造革 · 橡胶 · 饰条 · 发动机舱 · 轮毂 · 外饰塑料 · 皮革 · Alcantara',
  dilutions:[['重度污垢','1:10','喷雾壶'],['一般清洁','1:25','喷雾壶'],['轻度清洁 / 皮革 / Alcantara','1:50','喷雾壶']],
  steps:['按污垢程度选择比例兑水，先用最稀的比例，不够再加浓。','喷在表面或毛巾上，需要时用刷子搅动。','用干净超纤布擦掉，或用水冲净。','皮革和 Alcantara 用最稀的 1:50（官方稀释表里最温和的比例）；清洁后一定要接着上皮革保养或补水产品。'],
- notes:['柑橘油分解有机污垢，表面活性剂带走无机污垢。','镀膜表面被顽固污垢糊住、疏水变差时，配合正常洗车用它可以恢复疏水。','镀铬件先用最稀的比例，并在不显眼处测试。','True Series：DIY 和专业用户都可以买。'],url:FL+'feynlab-all-purpose-cleaner/'},
+ notes:['官方称弱碱配方，碱度约为一般 APC 的一半。','柑橘油分解有机污垢，表面活性剂带走无机污垢。','镀膜表面被顽固污垢糊住、疏水变差时，配合正常洗车用它可以恢复疏水。','镀铬件先用最稀的比例，并在不显眼处测试。','True Series：DIY 和专业用户都可以买。'],url:FL+'feynlab-all-purpose-cleaner/'},
 
 // ───────────────────────── 内饰 ─────────────────────────
 {id:'N-interior-cleaner',brand:'N',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-interior-cleaner/"},"evidence":[{"kind":"statement","source":"product-page","text":"品牌官网写「pH neutral」（中性），未公布具体数值。"}],"conflict":false},name:'Interior Cleaner',type:'中性全内饰清洁剂（皮革、Alcantara、织物、屏幕通用）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'皮革 · Alcantara · 人造革 · 内饰塑料 · 地毯 · 织物 · 屏幕',

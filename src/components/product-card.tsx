@@ -7,9 +7,8 @@ import { ProductLink } from './product-link';
 
 /** eager：首屏的前几张卡片立即加载图片，避免拖慢最大内容绘制（LCP） */
 export function ProductCard({ p, eager }: { p: ProductItem; eager?: boolean }) {
+  // 每张卡片固定显示同样几项：品牌、名称、类型、pH、常用比例；产品特有的说明只在详情页的备注里
   const pills = p.pills;
-  const ph = p.ph?.text;
-  const claim = p.ph?.claim;
   return (
     <ProductLink className="card" id={p.id} aria-label={`${p.name}，${p.type}${p.hazard ? '，极危险化学品' : ''}`}>
       <div className="stage">
@@ -26,13 +25,15 @@ export function ProductCard({ p, eager }: { p: ProductItem; eager?: boolean }) {
         <span className={`br ${p.brand}`}>{BRAND_SHORT[p.brand]}</span>
         <span className="nm">{p.name}</span>
         <span className="ty">{p.type}</span>
-        {ph && <span className={`phtag ${p.ph!.category} card-ph`}>{ph}</span>}
-        {claim && <span className="ph-claim" title="配方宣传或使用液描述；pH 标签展示原液数据，详见产品说明">ⓘ {claim}</span>}
+        <span className={`phtag ${p.ph.category} card-ph`}>
+          {p.ph.label}
+          {p.ph.basis && ` · ${p.ph.basis}`}
+        </span>
         <div className="pills">
           {pills === 'accessory' ? (
-            <span className="pill ghost">配件</span>
+            <span className="pill ghost">配件，无需稀释</span>
           ) : pills === 'see-label' ? (
-            <span className="pill ghost">见包装说明</span>
+            <span className="pill ghost">比例见包装说明</span>
           ) : (
             pills.map((r) => (
               <span className="pill" key={r}>

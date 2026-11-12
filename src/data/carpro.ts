@@ -29,7 +29,7 @@ export const products: Product[] = [
 // ───────────────────────── 洗车香波 / 免冲洗 ─────────────────────────
 {
  sds:{"url":"/sds/C-reset.pdf","source":"carpro-ws","language":"英文","version":"2017","hosting":"local","sha256":"5bdb2d5a9de55c4b4759ff43b33cb1dc628083b674f10cf97b3370920c02b799","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-reset',brand:'C',category:'wash',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB22-01-0719）：原液弱碱性；品牌官网称稀释后为中性。","registration":"FB22-01-0719"}],"conflict":false,"claim":"官方称稀释后中性"},name:'Reset',type:'中性镀膜维护洗车香波',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 镀膜 · 封体 · 车身外部各表面',
+ id:'C-reset',brand:'C',category:'wash',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB22-01-0719）：原液弱碱性；品牌官网称稀释后为中性。","registration":"FB22-01-0719"}],"conflict":false,"claim":"官方称稀释后中性"},name:'Reset',type:'镀膜维护洗车香波',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 镀膜 · 封体 · 车身外部各表面',
  dilutions:[['手洗','1:500（40 ml / 20 L）','桶洗']],
  steps:['按 1:500 稀释（40 ml Reset 加 20 L 水）。','用羊毛洗车手套彻底清洗整车。','用清水彻底冲洗。'],
  cautions:['sun','dry'],notes:['为纳米封体和镀膜专门开发：使用 pH 平衡的表面活性剂，清洁力接近碱性清洁剂，但稀释后仍为中性。','不含增光剂，用于让镀膜恢复原本性能，而不是额外增亮。','泡沫丰富、润滑好、易冲洗无残留。','官方维护指南：两桶法，窄缝处先用软毛细节刷。'],url:CARPRO+'reset/'},
@@ -55,7 +55,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-hydro2-foam/sds.pdf","source":"chemcx","language":"英文","version":"2023","hosting":"remote"},
- id:'C-hydro2-foam',brand:'C',category:'wash',ph:{"category":"acid","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 GB25-01-0085）：原液弱酸性；品牌官网写「pH-neutral」（中性）。","registration":"GB25-01-0085"},{"kind":"statement","source":"sds","text":"SDS 第 9 节（2023 版）写 pH 7，与韩国生活化学品申报的「弱酸性」不一致；本站按韩国生活化学品申报标注。"}],"conflict":true,"claim":"官方称中性"},name:'HydrO2 Foam',type:'中性洗涂一步香波（硅壳保护）',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 玻璃 · 塑料 · 轮毂 · 刹车卡钳 · 轮拱',
+ id:'C-hydro2-foam',brand:'C',category:'wash',ph:{"category":"acid","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 GB25-01-0085）：原液弱酸性；品牌官网写「pH-neutral」（中性）。","registration":"GB25-01-0085"},{"kind":"statement","source":"sds","text":"SDS 第 9 节（2023 版）写 pH 7，与韩国生活化学品申报的「弱酸性」不一致；本站按韩国生活化学品申报标注。"}],"conflict":true,"claim":"官方称中性"},name:'HydrO2 Foam',type:'洗涂一步香波（硅壳保护）',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 玻璃 · 塑料 · 轮毂 · 刹车卡钳 · 轮拱',
  dilutions:[['手洗','1:20','桶洗'],['PA壶（泡沫阀完全关闭）','1:9','PA壶']],
  steps:['PA壶：在阴凉处施工，先彻底冲湿车身 → 按 1:9 稀释并把 PA壶调节阀完全关闭 → 覆盖整车 → 立即用洗车手套清洗，再彻底冲洗。','手洗：在阴凉处施工，先彻底冲湿车身 → 水桶按 1:20 稀释 → 用洗车手套一次清洗一个区域 → 每洗完一个区域立即冲洗 → 用 DHydrate 毛巾擦干或吹干。'],
  cautions:['sun','hot'],notes:['洗车和镀膜一步完成，形成耐用的硅壳层，带 UV 防护，最长约 3 个月保护。','在阳光下或高温表面施工可能留下条纹；出现条纹时把产品喷在湿超纤布上擦拭即可。'],url:CARPRO+'hydro2foam/'},
@@ -78,7 +78,7 @@ export const products: Product[] = [
 // ───────────────────────── 除染 / 去水垢 ─────────────────────────
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-ironx/sds.pdf","source":"chemcx","language":"英文","version":"2023","hosting":"remote"},
- id:'C-ironx',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"product-page","url":"https://carpro.global/product/ironx/"},"evidence":[],"conflict":false},name:'IronX',type:'中性（pH 7）铁粉去除剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 塑料 · 镀铬 · 玻璃 · 合金轮毂',
+ id:'C-ironx',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"product-page","url":"https://carpro.global/product/ironx/"},"evidence":[],"conflict":false},name:'IronX',type:'中性铁粉去除剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 塑料 · 镀铬 · 玻璃 · 合金轮毂',
  dilutions:[['车漆、轮毂','即用','喷雾壶']],
  steps:['先洗车。','充分摇匀。','喷上后等待 3–5 分钟，铁粉污染会变成紫红色。','用湿的软海绵揉开；避免在阳光直射下干掉。','用水彻底冲洗。'],
  notes:['新配方气味更小，有原味和柠檬味。','官方维护指南（轮毂）：喷上停留约 2 分钟 → 刷洗 → 再停 2 分钟 → 冲洗。已镀膜的车漆和轮毂每 6 个月做一次，未镀膜轮毂每 1–2 个月一次。','哑光或磨砂轮毂：先用 Lift 或 MultiX 预喷并冲洗，再用 IronX。'],url:CARPRO+'ironx/'},

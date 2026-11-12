@@ -7,6 +7,7 @@ import type { BrandId } from '@/data/types';
 import { useGuide } from './guide-state';
 import { useFilters } from './filter-state';
 import { useCatalogResults } from './catalog-state';
+import { isDead } from '@/lib/catalog-results';
 import { CloseIcon, SearchIcon, StarIcon } from './icons';
 import { Indicator } from './indicator';
 
@@ -20,7 +21,8 @@ export function usePickers() {
 export function FilterBar() {
   const { isFlows } = useGuide();
   const { brand, material, query, setQuery, category, setCategory, scene, setScene, clearFilters } = useFilters();
-  const { productCounts, flowSceneCounts, favoriteCount, materialCounts } = useCatalogResults();
+  const { productCounts, flowSceneCounts, favoriteCount, favoriteTotal, materialCounts, productBrandCounts, flowBrandCounts } = useCatalogResults();
+  const brandCounts = isFlows ? flowBrandCounts : productBrandCounts;
   const { pickBrand, pickMaterial } = usePickers();
   const input = useRef<HTMLInputElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -53,7 +55,7 @@ export function FilterBar() {
     : [['', '全部'] as const, ...CATS].map(([k, n]) => ({
         k,
         n,
-        // 有搜索词时显示该分类命中几款，没命中的分类不显示（选着的除外）
+        // 数字是点这个分类之后会看到几款；一款都没有的变淡且不可点
         count: productCounts[k] ?? 0,
       }));
   const selected = isFlows ? scene : category;
@@ -95,7 +97,7 @@ export function FilterBar() {
               全部品牌
             </button>
             {BRANDS.map((b) => (
-              <button key={b} type="button" aria-pressed={brand === b} onClick={() => pickBrand(b)}>
+              <button key={b} type="button" aria-pressed={brand === b} disabled={isDead(brandCounts[b], brand === b, false)} onClick={() => pickBrand(b)}>
                 {brand === b && <Indicator name="ind-seg" />}
                 <span className={`dot ${b}`} />
                 {BRAND[b]}
@@ -108,8 +110,8 @@ export function FilterBar() {
             <select value={brand} onChange={(e) => pickBrand(e.target.value as BrandId | '')}>
               <option value="">全部品牌</option>
               {BRANDS.map((b) => (
-                <option key={b} value={b}>
-                  {BRAND_SHORT[b]}
+                <option key={b} value={b} disabled={isDead(brandCounts[b], brand === b, false)}>
+                  {BRAND_SHORT[b]}（{brandCounts[b] ?? 0}）
                 </option>
               ))}
             </select>
@@ -119,9 +121,9 @@ export function FilterBar() {
               <span className="sr">适用材质</span>
               <select value={material} onChange={(e) => pickMaterial(e.target.value as MaterialId | '')}>
                 <option value="">全部材质</option>
-                {MATERIALS.filter(([k]) => k === material || materialCounts[k]).map(([k, n]) => (
-                  <option key={k} value={k}>
-                    {n}
+                {MATERIALS.map(([k, n]) => (
+                  <option key={k} value={k} disabled={isDead(materialCounts[k], material === k, false)}>
+                    {n}（{materialCounts[k] ?? 0}）
                   </option>
                 ))}
               </select>
@@ -144,6 +146,7 @@ export function FilterBar() {
               type="button"
               className="chip fav-chip"
               aria-pressed={category === 'fav'}
+              disabled={category !== 'fav' && favoriteTotal > 0 && !favoriteCount}
               onClick={() => setCategory(category === 'fav' ? '' : 'fav')}
             >
               {category === 'fav' && <Indicator name="ind-chip" />}
@@ -153,13 +156,13 @@ export function FilterBar() {
             </button>
           )}
           {chips
-            .filter((c) => c.count || c.k === selected)
             .map(({ k, n, count }) => (
               <button
                 key={k}
                 type="button"
                 className="chip"
                 aria-pressed={selected === k}
+                disabled={isDead(count, selected === k, !k)}
                 onClick={() => (isFlows ? setScene(k as typeof scene) : setCategory(k as typeof category))}
               >
                 {selected === k && <Indicator name="ind-chip" />}

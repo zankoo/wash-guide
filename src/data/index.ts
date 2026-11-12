@@ -9,7 +9,7 @@ import * as laboManiacFlows from './labo-maniac-flows';
 import * as ps from './ps';
 import { SUBCATS, type Subcategory } from './subcategories';
 import { BRAND, CAT_EN, CAT_NAME, PH_SHORT, SCENE_NAME } from './taxonomy';
-import type { Combo, Flow, FlowStep, Product } from './types';
+import type { Combo, Flow, FlowStep, PH, Product } from './types';
 import { PH_BASIS_LABEL, phEvidenceNotes } from './ph';
 import { cautionTexts } from './cautions';
 import { fold, initials, type RankFields } from '../lib/search';
@@ -94,6 +94,18 @@ export function phText(p: Product): string | undefined {
   const text = phValueText(p);
   const basis = phBasisText(p);
   return text && basis ? `${text} · ${basis}` : text;
+}
+
+/**
+ * 卡片和详情页共用的 pH 显示：每个产品都有一条，写法固定。
+ * label 是主体（「碱性 · pH 12.5」），basis 是非原液时的测量口径（「1% 稀释液」）。
+ */
+export function phDisplay(p: Product): { category: PH | 'none'; label: string; basis?: string } {
+  if (p.category === 'acc') return { category: 'none', label: '配件，无 pH' };
+  if (!p.ph) return { category: 'none', label: 'pH 官方未公布' };
+  if (p.ph.category === 'na') return { category: 'none', label: 'pH 不适用（官方标注）' };
+  const short = phValueText(p)!.split(' ')[0];
+  return { category: p.ph.category, label: p.ph.value ? `${short} · pH ${p.ph.value}` : `${short} · 无具体数值`, basis: phBasisText(p) };
 }
 
 /** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */
