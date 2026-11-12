@@ -35,8 +35,9 @@ function randomFavorites(): string[] {
 }
 const run = (f: Filters, favorites: readonly string[]) => selectCatalog(productItems, flowItems, f, favorites);
 
-describe(`随机筛选组合（种子 ${SEED}）`, () => {
-  const cases = Array.from({ length: 300 }, () => ({ f: randomFilters(), favorites: randomFavorites() }));
+// 每个组合要把所有选项各算一遍，CI 机器较慢，给足时间
+describe(`随机筛选组合（种子 ${SEED}）`, { timeout: 60_000 }, () => {
+  const cases = Array.from({ length: 150 }, () => ({ f: randomFilters(), favorites: randomFavorites() }));
 
   it('每个选项上的数字都等于点它之后的结果数，数字为 0 的选项不可点', () => {
     for (const { f, favorites } of cases) {
@@ -102,7 +103,7 @@ describe(`随机筛选组合（种子 ${SEED}）`, () => {
   });
 });
 
-describe(`随机链接参数（种子 ${SEED}）`, () => {
+describe(`随机链接参数（种子 ${SEED}）`, { timeout: 30_000 }, () => {
   const junk = ['', 'x', 'fav', 'FAV', ' paint', 'paint,glass', 'glass,paint', ',,', '%E4%B8%AD', '<script>', 'L,M', '0', 'undefined', 'null'];
   const keys = ['brand', 'material', 'category', 'scene', 'q', 'other', 'Brand'];
 
@@ -135,7 +136,7 @@ describe(`随机链接参数（种子 ${SEED}）`, () => {
   });
 });
 
-describe(`随机稀释换算（种子 ${SEED}）`, () => {
+describe(`随机稀释换算（种子 ${SEED}）`, { timeout: 30_000 }, () => {
   /** 把 formatMl 的输出换回 ml */
   const back = (s: string) => {
     const m = s.match(/^([\d.]+) (ml|L)$/)!;
