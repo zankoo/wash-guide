@@ -84,6 +84,28 @@ test('适用材质单选：选另一个材质会替换当前选择', async ({ pa
   await expect(page).not.toHaveURL(/material=/);
 });
 
+test('筛选材质或品牌后左栏仍是可跳转的分类目录', async ({ page }) => {
+  await page.goto('/?material=rubber');
+  const side = page.getByRole('complementary', { name: '索引' });
+  const index = side.getByRole('navigation', { name: '分类目录' });
+  await expect(index.getByRole('heading')).toHaveText('分类');
+  await expect(index.getByRole('button')).toHaveCount(0);
+  const link = index.getByRole('link').last();
+  const target = (await link.getAttribute('href'))!;
+  await link.click();
+  // 最后一个分类可能滚不到顶，滚到页面底部也算到位
+  await expect.poll(() => page.locator(target).evaluate((el) => Math.abs(el.getBoundingClientRect().top) < 200 || innerHeight + scrollY >= document.documentElement.scrollHeight - 2)).toBe(true);
+  expect(await page.evaluate(() => scrollY)).toBeGreaterThan(0);
+  await expect(page).toHaveURL(/material=rubber/);
+  // 只看一个分类时（窄屏分类筛选的链接），点别的分类回到全部分类并跳过去
+  await page.goto('/?brand=K&category=wheel');
+  await expect(index.getByRole('heading')).toHaveText('分类');
+  await index.getByRole('link', { name: /^预洗/ }).click();
+  await expect(page).not.toHaveURL(/category=/);
+  await expect(page).toHaveURL(/brand=K/);
+  await expect.poll(() => page.locator('#cat-pre').evaluate((el) => Math.abs(el.getBoundingClientRect().top) < 200)).toBe(true);
+});
+
 test('左栏「我的常用」：分类目录只统计常用、点击跳转不退出常用', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => { localStorage.setItem('wash-favorites', JSON.stringify(['C-reset', 'C-ironx'])); dispatchEvent(new StorageEvent('storage', { key: 'wash-favorites' })); });

@@ -105,8 +105,9 @@ export function Sidebar() {
 
   // 「我的常用」是一个独立范围：分类目录照常用于跳转，只统计常用里的产品
   const favMode = !isFlows && category === 'fav';
-  // 产品页有其他筛选时，左栏分类改为筛选结果里各分类的命中数，点一下只看该分类
-  const searching = !isFlows && !favMode && (query.trim() !== '' || !!material || !!brand || !!category);
+  // 筛选只改变目录里的数字，不改变目录的用法：主列表在任何筛选下都按分类分区，点一下都是跳到那个分类。
+  // 子分类只在不加筛选的完整列表里有分区，有筛选时不显示子分类目录。
+  const narrowed = !!(query.trim() || brand || material || category);
   const indexCounts = favMode ? countBy(products.map((p) => p.category)) : hits;
 
 
@@ -219,71 +220,52 @@ export function Sidebar() {
             </ul>
           </div>
           <nav className="side-sec side-categories" aria-label="分类目录">
-            <h2>{favMode ? '分类（我的常用）' : searching ? '分类（筛选结果）' : '分类'}</h2>
-            {searching ? (
-              // 搜索时列表不按分类分区，没有可以跳转的位置：分类改为在搜索结果里筛选，再点一次取消
-              <ul className="side-list side-hits" role="list">
-                {CATS.filter(([k]) => hits[k] || category === k).map(([k, n]) => (
+            <h2>{favMode ? '分类（我的常用）' : '分类'}</h2>
+            <ul className="side-index" role="list">
+              {CATS.filter(([k]) => indexCounts[k]).map(([k, n]) => {
+                const here = activeCat === `cat-${k}`;
+                const subs = SUBCATS.filter((s) => s.category === k && subCounts[s.id]);
+                return (
                   <li key={k}>
-                    <button
-                      type="button"
-                      aria-pressed={category === k}
-                      className={hits[k] ? undefined : 'none'}
-                      disabled={!hits[k] && category !== k}
-                      onClick={() => setCategory(category === k ? '' : k)}
+                    <a
+                      href={`#cat-${k}`}
+                      aria-current={here ? 'location' : undefined}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setPin({ cat: `cat-${k}` });
+                        // 链接进来时可能只看某一个分类（窄屏的分类筛选）：点别的分类时先回到全部分类再跳
+                        if (category && !favMode && category !== k) setCategory('');
+                        // 常用列表不折叠，不改动全部产品里各分类的展开状态
+                        jumpTo(`cat-${k}`, favMode ? undefined : k);
+                      }}
                     >
-                      {category === k && <Indicator name="ind-cat" />}
                       {n}
-                      <small>{hits[k] ?? 0}</small>
-                    </button>
+                      <small>{indexCounts[k]}</small>
+                    </a>
+                    {/* 常用和筛选后的列表不分子分类，没有可跳转的子分类位置 */}
+                    {here && !narrowed && subs.length > 1 && (
+                      <ul className="side-subs" role="list">
+                        {subs.map((s) => (
+                          <li key={s.id}>
+                            <a
+                              href={`#sub-${s.id}`}
+                              aria-current={activeSub === `sub-${s.id}` ? 'location' : undefined}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setPin({ cat: `cat-${k}`, sub: `sub-${s.id}` });
+                                jumpTo(`sub-${s.id}`, k);
+                              }}
+                            >
+                              {s.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
-                ))}
-              </ul>
-            ) : (
-              <ul className="side-index" role="list">
-                {CATS.filter(([k]) => indexCounts[k]).map(([k, n]) => {
-                  const here = activeCat === `cat-${k}`;
-                  const subs = SUBCATS.filter((s) => s.category === k && subCounts[s.id]);
-                  return (
-                    <li key={k}>
-                      <a
-                        href={`#cat-${k}`}
-                        aria-current={here ? 'location' : undefined}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setPin({ cat: `cat-${k}` });
-                          // 常用列表不折叠，不改动全部产品里各分类的展开状态
-                          jumpTo(`cat-${k}`, favMode ? undefined : k);
-                        }}
-                      >
-                        {n}
-                        <small>{indexCounts[k]}</small>
-                      </a>
-                      {/* 常用列表不分子分类，没有可跳转的子分类位置 */}
-                      {here && !favMode && subs.length > 1 && (
-                        <ul className="side-subs" role="list">
-                          {subs.map((s) => (
-                            <li key={s.id}>
-                              <a
-                                href={`#sub-${s.id}`}
-                                aria-current={activeSub === `sub-${s.id}` ? 'location' : undefined}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  setPin({ cat: `cat-${k}`, sub: `sub-${s.id}` });
-                                  jumpTo(`sub-${s.id}`, k);
-                                }}
-                              >
-                                {s.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+                );
+              })}
+            </ul>
           </nav>
         </>
       )}
