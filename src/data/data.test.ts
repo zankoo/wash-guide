@@ -39,7 +39,7 @@ describe('数据完整性', () => {
 });
 
 describe('卡片比例标签', () => {
-  it('常用配比带上工具和场景，避免把 PA 壶与喷壶混淆', () => {
+  it('常用配比带上工具和场景，避免把 PA壶与喷雾壶混淆', () => {
     expect(keyRatios(PRODUCT_BY_ID.get('L-primus')!)).toEqual(['PA壶 · 夏季污垢 1:10']);
     for (const p of PRODUCTS) {
       const ratios = keyRatios(p);
@@ -69,7 +69,7 @@ describe('适用材质', () => {
     expect(of('车漆')).toEqual(['paint']);
     expect(materialsOf(PRODUCT_BY_ID.get('L-venere')!)).not.toContain('ppf');
     expect(materialsOf(PRODUCT_BY_ID.get('L-perfecta')!)).toEqual(['paint', 'ppf', 'plastic', 'metal']);
-    expect(of('外部全车')).toEqual(['paint']);
+    expect(of('车身外部各表面')).toEqual(['paint']);
   });
 
   it('括号里的否定和提醒不算', () => {
@@ -85,7 +85,7 @@ describe('适用材质', () => {
   });
 
   it('哑光只在指漆面时算哑光漆', () => {
-    expect(of('哑光/改色膜')).toEqual(['matte', 'wrap']);
+    expect(of('哑光漆 · 改色膜')).toEqual(['matte', 'wrap']);
     expect(of('哑光 / 缎面车漆')).toEqual(['paint', 'matte']);
     expect(of('软硬塑料饰条（亮面 / 哑光）')).toEqual(['plastic']);
   });

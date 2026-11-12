@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phBasisText, phValueText, type Product } from '@/data';
+import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, cautionTexts, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phBasisText, phValueText, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './notes';
@@ -40,7 +40,6 @@ export function ProductDetail({ p }: { p: Product }) {
       </div>
       <div className="sh-body">
         <ToxicLine p={p} />
-        <PhEvidence p={p} />
         {p.dilutions.length ? (
           <DilutionTable rows={p.dilutions} />
         ) : (
@@ -58,6 +57,7 @@ export function ProductDetail({ p }: { p: Product }) {
             <dt>适用材质</dt>
             <dd>{p.materials}</dd>
           </div>
+          <PhSourceFact p={p} />
         </dl>
         {p.steps.length > 0 && (
           <>
@@ -69,12 +69,7 @@ export function ProductDetail({ p }: { p: Product }) {
             </ol>
           </>
         )}
-        {p.notes.length > 0 && (
-          <>
-            <h3>注意事项</h3>
-            <Notes items={p.notes} />
-          </>
-        )}
+        <Cautions p={p} />
         {used.length > 0 && (
           <>
             <h3>出现在这些流程</h3>
@@ -90,6 +85,7 @@ export function ProductDetail({ p }: { p: Product }) {
             </div>
           </>
         )}
+        <Remarks p={p} />
         <div className="src-row">
           <a className="src" href={p.url} target="_blank" rel="noopener">
             查看官网原文
@@ -102,26 +98,54 @@ export function ProductDetail({ p }: { p: Product }) {
   );
 }
 
-/** pH 来源说明：只有真正关联了来源、依据或口径差异时才展示，避免空壳区块 */
-function PhEvidence({ p }: { p: Product }) {
-  const ph = p.ph;
-  if (!ph) return null;
-  const notes = phEvidenceNotes(ph);
-  const recorded = ph.source.kind !== 'unrecorded';
-  if (!recorded && !ph.source.url && !ph.conflict && notes.length === 0) return null;
+/** 注意事项：只放固定措辞的通用提醒，所有产品同一种情况写法相同 */
+function Cautions({ p }: { p: Product }) {
+  const items = cautionTexts(p.cautions);
+  if (items.length === 0) return null;
   return (
-    <section className="ph-evidence" aria-label="pH 资料与口径">
-      <h3>pH 资料与口径</h3>
-      <p>
-        {PH_BASIS_LABEL[ph.basis]}数据{recorded ? ` · ${PH_SOURCE_LABEL[ph.source.kind]}` : ''}
-        {ph.conflict ? ' · 存在资料口径差异' : ''}
-      </p>
-      {ph.source.url && (
-        <a href={ph.source.url} target="_blank" rel="noopener">
-          查看 pH 依据
-        </a>
-      )}
-      <Notes items={notes} />
+    <>
+      <h3>注意事项</h3>
+      <Notes items={items} />
+    </>
+  );
+}
+
+/** pH 依据：来源和口径用统一说法，具体原文放到底部备注 */
+function PhSourceFact({ p }: { p: Product }) {
+  const ph = p.ph;
+  if (!ph || p.category === 'acc') return null;
+  const recorded = ph.source.kind !== 'unrecorded';
+  return (
+    <div className="fact wide ph-source">
+      <dt>pH 依据</dt>
+      <dd>
+        {recorded ? `${PH_SOURCE_LABEL[ph.source.kind]} · ${PH_BASIS_LABEL[ph.basis]}数据` : PH_SOURCE_LABEL.unrecorded}
+        {ph.conflict && ' · 官方资料之间不一致，见备注'}
+        {ph.source.url && (
+          <>
+            {' '}
+            <a href={ph.source.url} target="_blank" rel="noopener">
+              查看原文
+            </a>
+          </>
+        )}
+      </dd>
+    </div>
+  );
+}
+
+/** 备注：这个产品特有的说明和 pH 资料原文，放在页面最下面 */
+function Remarks({ p }: { p: Product }) {
+  const items = [...p.notes, ...phEvidenceNotes(p.ph)];
+  if (items.length === 0) return null;
+  return (
+    <section className="remarks" aria-label="备注">
+      <h3>备注</h3>
+      <ul>
+        {items.map((text, i) => (
+          <li key={i}>{text}</li>
+        ))}
+      </ul>
     </section>
   );
 }

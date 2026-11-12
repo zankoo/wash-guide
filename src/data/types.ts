@@ -8,6 +8,9 @@ export type CategoryId =
 export type SceneId =
   | 'daily' | 'coated' | 'tfr' | 'ppf' | 'nowater' | 'self' | 'wheel' | 'engine' | 'int';
 export type PH = 'alk' | 'neu' | 'acid';
+export type CautionId =
+  | 'sun' | 'sunOk' | 'hot' | 'dry' | 'test' | 'shake'
+  | 'gloves' | 'ppe' | 'ventilate' | 'flammable' | 'storage' | 'pro';
 
 /** [适用场景/材质, 比例, 施工工具] */
 export type DilutionRow = [scene: string, ratio: string, tool: string];
@@ -34,7 +37,9 @@ export interface Product {
   dilutions: DilutionRow[];
   /** 施工步骤 */
   steps: string[];
-  /** 注意事项 */
+  /** 注意事项：固定措辞，见 cautions.ts */
+  cautions?: CautionId[];
+  /** 备注：只放这个产品特有的说明，显示在页面底部 */
   notes: string[];
   /** 官网原文 */
   url: string;

@@ -20,20 +20,20 @@ export const products: Product[] = [
 // ───────────────────────── 洗车香波 ─────────────────────────
 {
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2017/10/Pure-Wash-0604286819990-fbq9as.pdf","source":"feynlab","language":"英文","hosting":"remote"},
- id:'N-pure-wash',brand:'N',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-wash-soap-pure-wash/"},"evidence":[{"kind":"statement","source":"product-page","text":"官网写「pH-neutral」（中性），未公布具体 pH 数值"},{"kind":"statement","source":"sds","text":"SDS 第 9 节 pH 写「No data available」"}],"conflict":false},name:'Pure Wash',type:'中性深层清洁香波（镀膜前洗车，不留聚合物残留）',sizes:'250 ml · 1 L · 5 L · 20 L',materials:'车漆 · 哑光漆 · 改色膜 · 塑料 · 橡胶 · 玻璃 · 镀铬',
- dilutions:[['桶洗','1:400','桶洗'],['泡沫枪 / 预洗','1:32','PA壶']],
- steps:['在阴凉、光线好的地方施工，先彻底冲掉浮尘和没粘牢的污垢。','用泡沫枪喷满车身，或用洗车手套沾稀释液涂上。','用柔软的洗车手套从上往下、直线来回擦洗，不要打圈；每洗 2–3 块就清洗一次手套。','只用一只手套时，最脏的车身下三分之一放到最后洗。','从上往下彻底冲净，用超纤毛巾擦干，缝隙可用气枪或吹风机吹干。'],
- notes:['官方定位为镀膜前的深层清洁香波：冲净后不留任何聚合物，能看出漆面真实状态。','可能洗掉耐久性较差的蜡、封体和临时性保护；镀膜车日常保养官方更推荐 Pure Rinseless。','车很脏时可以用泡沫枪喷上停留一会儿当预洗。','轮毂刹车粉多时，先用 Tire & Wheel Cleaner 或 All Purpose Cleaner。','保质期 2 年。'],url:FL+'car-wash-soap-pure-wash/'},
+ id:'N-pure-wash',brand:'N',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-wash-soap-pure-wash/"},"evidence":[{"kind":"statement","source":"product-page","text":"品牌官网写「pH-neutral」（中性），未公布具体数值。"},{"kind":"statement","source":"sds","text":"SDS 第 9 节写「No data available」，未给出数值。"}],"conflict":false},name:'Pure Wash',type:'中性深层清洁香波（镀膜前洗车，不留聚合物残留）',sizes:'250 ml · 1 L · 5 L · 20 L',materials:'车漆 · 哑光漆 · 改色膜 · 塑料 · 橡胶 · 玻璃 · 镀铬',
+ dilutions:[['手洗','1:400','桶洗'],['PA壶 / 预洗','1:32','PA壶']],
+ steps:['在阴凉、光线好的地方施工，先彻底冲掉浮尘和没粘牢的污垢。','用 PA壶喷满车身，或用洗车手套沾稀释液涂上。','用柔软的洗车手套由上往下、直线来回擦洗，不要打圈；每洗 2–3 块就清洗一次手套。','只用一只手套时，最脏的车身下三分之一放到最后洗。','由上往下彻底冲净，用超纤毛巾擦干，缝隙可用气枪或吹风机吹干。'],
+ notes:['官方定位为镀膜前的深层清洁香波：冲净后不留任何聚合物，能看出漆面真实状态。','可能洗掉耐久性较差的蜡、封体和临时性保护；镀膜车日常保养官方更推荐 Pure Rinseless。','车很脏时可以用 PA壶喷上停留一会儿当预洗。','轮毂刹车粉多时，先用 Tire & Wheel Cleaner 或 All Purpose Cleaner。','保质期 2 年。'],url:FL+'car-wash-soap-pure-wash/'},
 
-{id:'N-pure-rinseless',brand:'N',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB25-01-0036）：原液中性","registration":"HB25-01-0036"}],"conflict":false},name:'Pure Rinseless V3',type:'免冲洗 / 无水洗浓缩液（聚合物包裹污垢，可当黏土润滑液）',sizes:'250 ml · 1 L · 5 L · 20 L',materials:'车漆 · 哑光漆 · 镀膜 · 金属 · 塑料 · 橡胶 · 碳纤维',
+{id:'N-pure-rinseless',brand:'N',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB25-01-0036）：原液中性。","registration":"HB25-01-0036"}],"conflict":false},name:'Pure Rinseless V3',type:'免冲洗 / 无水洗浓缩液（聚合物包裹污垢，可当黏土润滑液）',sizes:'250 ml · 1 L · 5 L · 20 L',materials:'车漆 · 哑光漆 · 镀膜 · 金属 · 塑料 · 橡胶 · 碳纤维',
  dilutions:[['免冲洗（水桶）','1:250','桶洗'],['无水洗（喷雾）','1:250','喷雾壶'],['黏土润滑液','1:64','喷雾壶']],
- steps:['在阴凉、干净的地方施工；车很脏时先用高压水冲掉浮尘。','免冲洗：每 3.75 L 水（最好用纯净水）加 15 ml 原液，15 L 水桶加 45 ml；水桶里放隔砂网。','把洗车手套浸进水桶，从上往下整块板块清洗，每次 1–3 块。','洗完的板块马上用擦干巾擦干，不需要冲水。','无水洗：同样 1:250 装进喷壶（1 L 喷壶约 4 ml），先把板块喷湿让污垢被包裹，再用长毛超纤布轻轻带走，立刻用第二块布擦干。'],
+ steps:['在阴凉、干净的地方施工；车很脏时先用高压水冲掉浮尘。','免冲洗：每 3.75 L 水（最好用纯净水）加 15 ml 原液，15 L 水桶加 45 ml；水桶里放隔砂网。','把洗车手套浸进水桶，由上往下整块板块清洗，每次 1–3 块。','洗完的板块马上用擦干巾擦干，不需要冲水。','无水洗：同样 1:250 装进喷雾壶（1 L 喷雾壶约 4 ml），先把板块喷湿让污垢被包裹，再用长毛超纤布轻轻带走，立刻用第二块布擦干。'],
  notes:["比传统洗车省约 90 % 的水，适合不能冲水的小区、车库。","镀膜车的日常维护和镀膜前清洁都可以用；哑光、缎面、亮面车漆都安全。","稀释后也可以喷在布上清洁仪表台、门板等内饰。","泥沙、盐分很多的车先用高压水冲，直接擦容易划伤。","1 L 原液按 1:250 约可洗 16–22 台车。"],url:FL+'rinseless-car-wash-pure-rinseless/'},
 
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
-{id:'N-tire-wheel',brand:'N',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-2217，该申报已过期）：原液碱性","registration":"HB21-01-2217"}],"conflict":false},name:'Tire & Wheel Cleaner',type:'轮胎 / 轮毂深层清洁剂（去发棕和旧轮胎油，非酸性）',sizes:'500 ml · 5 L · 20 L',materials:'橡胶轮胎 · 清漆轮毂 · 粉末喷涂轮毂 · 卡钳',
+{id:'N-tire-wheel',brand:'N',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-2217，已过期）：原液碱性。","registration":"HB21-01-2217"}],"conflict":false},name:'Tire & Wheel Cleaner',type:'轮胎 / 轮毂深层清洁剂（去发棕和旧轮胎油，非酸性）',sizes:'500 ml · 5 L · 20 L',materials:'橡胶轮胎 · 清漆轮毂 · 粉末喷涂轮毂 · 卡钳',
  dilutions:[['轮胎 / 轮毂','即用','喷雾壶']],
- steps:['在 10–30 °C 的环境施工，戴手套，建议戴口罩。','只洗轮胎：从下往上均匀喷在轮胎上，停留至少 10 秒，用硬毛刷刷到看不见污垢，再用流水彻底冲净。','轮胎轮毂一起洗：从下往上同时喷满，先用软毛刷轻刷轮毂，再用硬毛刷刷轮胎，最后彻底冲净。','不方便冲水时：喷在超纤布上直接擦，常翻面；擦完用吸饱清水的毛巾把残留擦干净。','之后轮毂可上 Ceramic Wheel & Caliper，轮胎可上 Black Velvet。'],
+ steps:['在 10–30 °C 的环境施工，戴手套，建议戴口罩。','只洗轮胎：由下往上均匀喷在轮胎上，停留至少 10 秒，用硬毛刷刷到看不见污垢，再用流水彻底冲净。','轮胎轮毂一起洗：由下往上同时喷满，先用软毛刷轻刷轮毂，再用硬毛刷刷轮胎，最后彻底冲净。','不方便冲水时：喷在超纤布上直接擦，常翻面；擦完用吸饱清水的毛巾把残留擦干净。','之后轮毂可上 Ceramic Wheel & Caliper，轮胎可上 Black Velvet。'],
  notes:["不是酸性轮毂清洁剂，不能代替酸性产品溶解重度刹车粉。","不要用于裸镁合金、未涂装的铝轮毂。","已经涂了 Black Velvet 的轮胎不要用它日常清洗，会把轮胎封体洗掉；改用 Pure Wash。","可用于已做 Ceramic Wheel & Caliper 的轮毂。","官方标为认证施工店专用（Pro Series）。"],url:FL+'feynlab-tire-and-wheel-cleaner/'},
 
 // ───────────────────────── 除染 ─────────────────────────
@@ -41,22 +41,22 @@ export const products: Product[] = [
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2016/04/Prime-0604286819983-wqzid1.pdf","source":"feynlab","language":"英文","hosting":"remote"},
  id:'N-prime',brand:'N',category:'deco',name:'Prime',type:'黏土润滑液 / 镀膜前表面处理（浓缩）',sizes:'250 ml · 1 L',materials:'车漆 · 玻璃 · 塑料 · 镀铬',
  dilutions:[['黏土润滑液','1:15','喷雾壶'],['镀膜 / 贴膜前的表面处理','1:64','喷雾壶']],
- steps:['先用 Pure Wash 或 Pure Rinseless 洗净车身。','黏土润滑：按 1:15 兑水装进喷壶，大量喷在板块上，用黏土、黏土手套或 Rubberized Clay Sponge 除染，完成后用擦干巾擦掉残留。','表面处理：按约 15 ml 原液 + 1 L 水稀释，喷湿毛巾 A 擦过板块，立刻用毛巾 B 擦干。','表面处理后至少等 10 分钟再镀膜、贴改色膜或 PPF。'],
- notes:['官方「最佳附着系统」的第二步：Pure Wash 洗车 → Prime 除染 → 抛光 → Panel Prep → 镀膜。','表面处理比例原文为「½ oz : 32 oz 喷壶」，约 1:64。','单次抛光后仍会有大量 Prime 留在漆面上，有助于镀膜附着。','保质期 2 年。'],url:FL+'clay-bar-lubricant-prime/'},
+ steps:['先用 Pure Wash 或 Pure Rinseless 洗净车身。','黏土润滑：按 1:15 兑水装进喷雾壶，大量喷在板块上，用黏土、黏土手套或 Rubberized Clay Sponge 除染，完成后用擦干巾擦掉残留。','表面处理：按约 15 ml 原液 + 1 L 水稀释，喷湿毛巾 A 擦过板块，立刻用毛巾 B 擦干。','表面处理后至少等 10 分钟再镀膜、贴改色膜或 PPF。'],
+ notes:['官方「最佳附着系统」的第二步：Pure Wash 洗车 → Prime 除染 → 抛光 → Panel Prep → 镀膜。','表面处理比例原文为「½ oz : 32 oz 喷雾壶」，约 1:64。','单次抛光后仍会有大量 Prime 留在漆面上，有助于镀膜附着。','保质期 2 年。'],url:FL+'clay-bar-lubricant-prime/'},
 
 // ───────────────────────── 研磨 / 施工前处理 ─────────────────────────
 {id:'N-a50',brand:'N',category:'polish',name:'A50',type:'一步式重切削研磨剂（可去 1000 目砂纸痕）',sizes:'250 ml · 500 ml · 1 L · 5 L',materials:'车漆（亮面清漆 · 单工序漆）',
- dilutions:[['机器抛光','即用','—']],
+ dilutions:[['机抛','即用','—']],
  steps:['先洗车（Pure Wash 或 Pure Rinseless）并用黏土除染。','用前用力摇 1 分钟，每次取用前再摇几下。','新盘先点 4 滴黄豆大小的量抹开，再点 4 滴，用机器在施工区点开。','从 60 × 60 cm 的区域开始，缺陷重时缩小面积。','旋转机 1200–1800 rpm、DA 机 3–4 档，慢速走 2–4 遍，用超纤布擦净，在多角度灯光下检查。','一步完成：切削后不要擦掉残留，换抛光 / 收光盘、稍提高转速（DA 4–5 档）继续抛同一块，直接收光。'],
  notes:['FEYNLAB 切削力最强的研磨剂，几乎不起粉，好擦。','浅色车（银、白、金等）适合一步完成；黑色或很软的漆面，官方建议接 A1000 收光。','不含填充物、硅油和蜡。','每抛完一块用气枪吹干净抛光盘；整车通常要 2–4 块盘。','保质期 1 年。'],url:FL+'feynlab-a50-super-heavy-cutting-compound/'},
 
 {id:'N-a500',brand:'N',category:'polish',name:'A500',type:'中切削抛光剂（多数车一步完成）',sizes:'250 ml · 500 ml · 1 L · 5 L',materials:'车漆（亮面清漆 · 单工序漆）',
- dilutions:[['机器抛光','即用','—']],
+ dilutions:[['机抛','即用','—']],
  steps:['先洗车并用黏土除染。','用前用力摇 1 分钟。','新盘先点 4 滴抹开，再点 4 滴，用机器在 60 × 60 cm 的区域点开。','旋转机 1200–1800 rpm、DA 机 3–4 档，慢速走 2–4 遍；产品始终透明，可以边抛边看。','一步完成：用中等或细抛盘；需要更多切削时先用切削盘，抛完不要擦掉，换收光盘继续抛同一块。','用 300–500 GSM 超纤布擦净，在多角度灯光下检查。'],
  notes:['A 系列里最常用的一款：能去除旋纹、氧化和中度划痕，较新的或保养得好的车一步就够。','黑色或很软的漆面，官方建议再用 A1000 收光。','保质期 1 年。'],url:FL+'feynlab-a500-medium-cut-polish/'},
 
 {id:'N-a1000',brand:'N',category:'polish',name:'A1000',type:'精细收光抛光剂（镀膜前最后一步）',sizes:'250 ml · 500 ml · 1 L · 5 L',materials:'车漆',
- dilutions:[['机器抛光','即用','—']],
+ dilutions:[['机抛','即用','—']],
  steps:['先洗车并用黏土除染；划痕、旋纹重时先用 A50 或 A500。','用前用力摇 1 分钟。','新盘先点 4 滴均匀抹开（每个孔都沾到一点，不要有干的地方），再点 4 滴在施工区点开。','约 60 × 60 cm 一块；旋转机 1200–1800 rpm，DA 机 4–5 档，慢速走 3–4 遍。','收尾时中等压力、中高转速，用 300–500 GSM 超纤布擦净检查。'],
  notes:['去除轻微抛光纹、洗车纹和雾面，切削很少，主要是拉出最高的光泽。','可单独用于轻度瑕疵，也可接在 A50 / A500 之后。','不含填充物和添加剂，抛完是干净的裸漆，适合镀膜前处理。','保质期 1 年。'],url:FL+'feynlab-a1000-fine-finishing-polish/'},
 
@@ -73,7 +73,7 @@ export const products: Product[] = [
  notes:['和酒精类脱脂不同，它能同时带走重质抛光油、填充物和硅油；用了别家含填充物的抛光剂，擦完划痕可能会重新出现。','有残留时，在毛巾上喷一点纯净水再擦一遍。','100 % 不含硅，钣喷车间可用；也能当无痕玻璃清洁剂，内饰也可以用。','未开封保质 2 年，开封后 3–4 个月。'],url:FL+'panel-wipe-prep-spray/'},
 
 // ───────────────────────── 镀膜 ─────────────────────────
-{id:'N-original',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-06-0200，该申报已过期）：不适用","registration":"HB23-06-0200"}],"conflict":false},name:'The Original Ceramic',type:'入门陶瓷镀膜（DIY 可用，1 层 1 年）',sizes:'30 ml',materials:'车漆 · 塑料 · 镀铬 · 大灯 · 尾灯 · 皮革 · 玻璃 · 钢琴黑 · 轮毂 · 卡钳',
+{id:'N-original',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB23-06-0200，已过期）：不适用。","registration":"HB23-06-0200"}],"conflict":false},name:'The Original Ceramic',type:'入门陶瓷镀膜（DIY 可用，1 层 1 年）',sizes:'30 ml',materials:'车漆 · 塑料 · 镀铬 · 大灯 · 尾灯 · 皮革 · 玻璃 · 钢琴黑 · 轮毂 · 卡钳',
  dilutions:[['镀膜（施工块）','即用','—']],
  steps:[...COAT_PREP,'摇瓶 2 分钟，打开静置 1 分钟；瓶口有结晶先擦掉。','在施工块上倒够一个板块的量，按「十字 → 画框 → 直线填满 → 垂直交叉」的手法涂开，抹平流挂。','等约 75 % 干（通常 15–20 分钟，表面出现彩虹纹，戴手套的手指轻划确认）再擦。','把超纤布折成 8 面，从开始涂的地方擦起，再用第二块干净布擦亮；黑色纹理塑料先目测，只擦有残留或不均的地方。','20–30 分钟内检查边缘、车标和缝隙的高点。','引擎盖、前保险杠等易磨损处，可在擦完 1–3 小时内加涂一层。'],
  notes:["FEYNLAB 最容易上手的镀膜：擦涂、擦掉，新手也能做；一瓶够一台中大型车一层。","认证施工店施工时有 1 年保修，登记在车辆 CarFax 记录上。","24 小时内保持干燥，7 天内不要碰化学品、不要洗车。","日常用 Pure Wash 或 Pure Rinseless 洗车，配合 Hybrid Ceramic Detailer 维护。","未开封保质 1 年；开封后 7 天内用完（冷藏可放 1 个月）。","湿度越高固化越快，湿度超过 75 % 要缩短等待时间。"],url:FL+'feynlab-the-original-ceramic-coating-30ml/'},
@@ -85,14 +85,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2022/07/CERAMIC-Version-3-SDS-j73dyx.pdf","source":"feynlab","language":"英文","hosting":"remote"},
- id:'N-ceramic-v3',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-06-0200，该申报已过期）：不适用","registration":"HB23-06-0200"}],"conflict":false},name:'Ceramic V3',type:'高固含单层镀膜（3 年保修，专业施工）',sizes:'30 ml',materials:'车漆 · 塑料 · 大灯 · 尾灯 · 钢琴黑 · 轮毂 · 卡钳',
+ id:'N-ceramic-v3',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB23-06-0200，已过期）：不适用。","registration":"HB23-06-0200"}],"conflict":false},name:'Ceramic V3',type:'高固含单层镀膜（3 年保修，专业施工）',sizes:'30 ml',materials:'车漆 · 塑料 · 大灯 · 尾灯 · 钢琴黑 · 轮毂 · 卡钳',
  dilutions:[['镀膜（施工块）','即用','—']],
  steps:[...COAT_PREP,...COAT_APPLY,'等到 75–85 % 固化再流平，通常 3–12 分钟；先试一块。彩虹纹只代表开始结合，不代表可以擦，要用手指轻划确认。','用两块干净布擦：第一块擦掉大部分，第二块擦出清亮光泽；20–40 分钟内检查边缘、车标和缝隙。','一层就满足 3 年保修；引擎盖、前保险杠等可加第二层，必须在上一层擦完 1–3 小时内涂，超过 3 小时会发雾。','可选红外烤灯：每块板块 60 °C 保持 15 分钟，灯距约 75 cm。'],
  notes:["只卖给 FEYNLAB 认证施工店，3 年保修登记在 CarFax 记录上。","塑料件先在不显眼处测试。","24 小时内保持干燥，7 天内不要碰化学品、不要洗车。","日常用 Pure Wash 或 Pure Rinseless 洗车，配合 Hybrid Ceramic Detailer 维护。","未开封保质 1 年；开封后 7 天内用完（冷藏可放 1 个月）。","湿度越高固化越快，湿度超过 75 % 要缩短等待时间。"],url:FL+'feynlab-ceramic-v3/'},
 
 {
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/04/Ceramic-Ultra-0723707820763-yt8aak.pdf","source":"feynlab","language":"英文","hosting":"remote"},
- id:'N-ultra-v3',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-06-0200，该申报已过期）：不适用","registration":"HB23-06-0200"}],"conflict":false},name:'Ultra V3',type:'双相（Biphasal）旗舰镀膜（一瓶兼做底层和面层，5 年保修）',sizes:'30 ml',materials:'车漆 · 大灯 · 尾灯 · 轮毂 · 卡钳 · 塑料',
+ id:'N-ultra-v3',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB23-06-0200，已过期）：不适用。","registration":"HB23-06-0200"}],"conflict":false},name:'Ultra V3',type:'双相（Biphasal）旗舰镀膜（一瓶兼做底层和面层，5 年保修）',sizes:'30 ml',materials:'车漆 · 大灯 · 尾灯 · 轮毂 · 卡钳 · 塑料',
  dilutions:[['镀膜（施工块）','即用','—']],
  steps:[...COAT_PREP,'准备 6 条以上干净超纤布和 2–3 块施工海绵。','摇瓶 2 分钟，打开静置 1 分钟；按「十字 → 画框 → 直线填满 → 垂直交叉」涂一个板块，抹平流挂。','等到 75–85 % 固化再流平，约 3–20 分钟；从开始涂的地方起，用无边超纤布折叠擦，再用第二块擦亮；20–30 分钟内检查高点。','一层满足 5 年保修；易磨损处可在上一层擦完 1–4 小时内加涂；擦完 1–3 小时内可再罩 Overcoat V3。','可选红外烤灯：每块 60 °C 15 分钟，烤的同时可以继续施工其他板块。'],
  notes:["只卖给认证施工店，5 年保修登记在 CarFax 记录上。","只适用亮面清漆；哑光、缎面漆改用 Matte Ceramic。","24 小时内保持干燥，7 天内不要碰化学品、不要洗车。","日常用 Pure Wash 或 Pure Rinseless 洗车，配合 Hybrid Ceramic Detailer 维护。","未开封保质 1 年；开封后 7 天内用完（冷藏可放 1 个月）。","湿度越高固化越快，湿度超过 75 % 要缩短等待时间。"],url:FL+'feynlab-ultra-v3/'},
@@ -127,7 +127,7 @@ export const products: Product[] = [
 {id:'N-interior-ceramic',brand:'N',category:'coat',name:'Interior Ceramic',type:'内饰陶瓷镀膜（防 UV、防污，保持原本的哑光质感）',sizes:'30 ml',materials:'皮革 · 人造革 · 内饰塑料 · 碳纤维 · 橡胶密封条 · 门板',
  dilutions:[['内饰镀膜（超纤施工块）','即用','—']],
  steps:['先用软毛刷头吸尘，包括板件缝隙和门板边缘。','用中性内饰清洁剂清洁：皮革用专用皮革清洁剂，塑料、人造革用稀释的 APC；每块清洁后完全晾干，这一步不要上任何保养剂。','硬塑料、碳纤维、人造革再用 IPA 轻擦；裸皮、苯胺皮只用干超纤布。遮蔽缝线、玻璃边缘和饰条接缝。','摇到瓶内钢珠能自由滚动后再摇 2 分钟，开盖静置 1 分钟。','在干净的超纤施工块上取少量（不要直接喷在表面），每次 0.1–0.2 m²，交叉涂一层薄而均匀的膜；纹理表面先用软毛刷把产品刷进去。','看起来湿、积液或发亮就是太多，在开始闪干前用干布擦掉。','每块等 1–2 分钟，表面从湿变成微雾时用干超纤布轻轻流平；发黏就再等 30 秒。','顺序：A 柱和车顶边缘 → 仪表台 → 中控 → 门板 → 座椅。'],
- notes:['施工环境 15–30 °C、相对湿度 30–70 %，避开阳光直射，车要先回到室温。','24 小时内不要沾液体、不要触碰，也不要停在阳光下；48–72 小时可正常使用，7 天完全固化。','日常用中性内饰清洁剂（如内饰比例稀释的 APC）直线擦拭；pH 10 以上的强碱、溶剂、硅油类保养剂、漂白剂会损伤镀膜。','未处理的绒面、Alcantara、织物座椅、打孔皮和喷漆内饰件先测试。','True Series，不登记 CarFax 保修；保养得当约 1 年。开封后 3–4 个月内用完。'],url:FL+'feynlab-interior-ceramic/'},
+ cautions:['sun'],notes:['施工环境 15–30 °C、相对湿度 30–70 %，车要先回到室温。','24 小时内不要沾液体、不要触碰，也不要停在阳光下；48–72 小时可正常使用，7 天完全固化。','日常用中性内饰清洁剂（如内饰比例稀释的 APC）直线擦拭；pH 10 以上的强碱、溶剂、硅油类保养剂、漂白剂会损伤镀膜。','未处理的绒面、Alcantara、织物座椅、打孔皮和喷漆内饰件先在不显眼处测试。','True Series，不登记 CarFax 保修；保养得当约 1 年。开封后 3–4 个月内用完。'],url:FL+'feynlab-interior-ceramic/'},
 
 {
  sds:{"url":"/sds/N-plastic-v2.pdf","source":"feynlab","language":"英文","version":"2024-02-23","hosting":"local","sha256":"2b417df6c8b8195a35f8f938b55409fe6741fb139b1d6036be9d06bf5ee14a9d","originalUrl":"https://eu.feynlab.com/wp-content/uploads/woocommerce_uploads/2024/04/Plastic-V2-SDS-m7q047-wr3ey0.pdf","checkedAt":"2026-11-10"},
@@ -139,17 +139,17 @@ export const products: Product[] = [
 // ───────────────────────── 封体 / 快速养护 ─────────────────────────
 {
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/08/Detailer-V3-0723707821081-alxmcr.pdf","source":"feynlab","language":"英文","hosting":"remote"},
- id:'N-hybrid-detailer',brand:'N',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB25-06-0011）：不适用","registration":"HB25-06-0011"}],"conflict":false},name:'Hybrid Ceramic Detailer',type:'水性陶瓷快速美容剂（清洁 + 增光 + 疏水，可当擦干辅助）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'车漆 · 玻璃 · 塑料 · 改色膜 · 皮革 · 橡胶',
+ id:'N-hybrid-detailer',brand:'N',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB25-06-0011）：不适用。","registration":"HB25-06-0011"}],"conflict":false},name:'Hybrid Ceramic Detailer',type:'水性陶瓷快速美容剂（清洁 + 增光 + 疏水，可当擦干辅助）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'车漆 · 玻璃 · 塑料 · 改色膜 · 皮革 · 橡胶',
  dilutions:[['喷上擦掉','即用','喷雾壶']],
  steps:['喷在板块上（或喷在超纤布上）。','用干净超纤布擦开、擦亮，不需要等待固化。','也可以在洗车后喷在湿车上，一边擦干一边上保护。'],
  notes:["可以叠在任何镀膜上，补强疏水和光泽，不会影响底下的镀膜；刚镀完、还在固化期的车也可以用。","单独用在没有镀膜的车上，约 1–3 个月的保护和水珠效果。","阳光下也不留痕；不含硅，钣喷车间可用。","FEYNLAB 镀膜施工手册指定的日常维护产品：24 小时内会淋到水时，镀膜擦完至少 2 小时后先上一层。"],url:FL+'feynlab-hybrid-ceramic-detailer/'},
 
-{id:'N-overcoat-v3',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-06-0200，该申报已过期）：不适用","registration":"HB23-06-0200"}],"conflict":false},name:'Overcoat V3',type:'镀膜面层（恢复 / 增强疏水和自洁，也可单独用）',sizes:'30 ml',materials:'车漆 · 改色膜 · PPF',
+{id:'N-overcoat-v3',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB23-06-0200，已过期）：不适用。","registration":"HB23-06-0200"}],"conflict":false},name:'Overcoat V3',type:'镀膜面层（恢复 / 增强疏水和自洁，也可单独用）',sizes:'30 ml',materials:'车漆 · 改色膜 · PPF',
  dilutions:[['面层（施工块）','即用','—']],
  steps:['罩在其他 FEYNLAB 镀膜上：底层擦完后等 1–3 小时再施工，用和底层相同的手法。','单独使用：按镀膜标准前处理（Pure Wash → Prime → 抛光 → Panel Prep）。','先遮蔽车窗、车门的橡胶条等不适用部位，溶剂可能腐蚀它们；误碰马上擦掉。','摇瓶 2 分钟，瓶口有结晶先擦掉；倒够一个板块（一扇车门或半个引擎盖）的量。','按「十字 → 画框 → 横向重叠直线 → 纵向交叉」涂开。','最多涂 2 块板块后用两块布擦：A 擦掉大部分，B 擦净；难擦或发雾时缩小一次涂的面积。','20–40 分钟内检查高点；可选红外烤灯 60 °C 15 分钟（罩在底层上时，等全车涂完再烤）。'],
  notes:["可罩在 Original、Ceramic V3、Ultra V3、Ceramic Plus、Heal Lite、Self Heal Plus、Plastic、Wheel & Caliper、Plastic Black、PPF & Vinyl 上。","当面层每 12 个月补一次，保持疏水性能；单独使用约 6–12 个月。","24 小时内保持干燥（淋到水轻轻擦掉），7 天内不要碰化学品和洗车。","开封后 3–4 个月内用完。"],url:FL+'feynlab-overcoat-v3/'},
 
-{id:'N-leveling-aid',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB23-06-0200，该申报已过期）：不适用","registration":"HB23-06-0200"}],"conflict":false},name:'Leveling Aid',type:'镀膜流平辅助液（Ceramic Plus 等较难擦的镀膜）',sizes:'120 ml',materials:'车漆',
+{id:'N-leveling-aid',brand:'N',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB23-06-0200，已过期）：不适用。","registration":"HB23-06-0200"}],"conflict":false},name:'Leveling Aid',type:'镀膜流平辅助液（Ceramic Plus 等较难擦的镀膜）',sizes:'120 ml',materials:'车漆',
  dilutions:[['镀膜流平','即用','—']],
  steps:['镀膜涂好、固化到约 75 % 时使用。','用新的超纤施工块在板块上涂足量 Leveling Aid，均匀覆盖但不要多到滴下来。','整块涂好后，按涂抹路线用两块干净布擦：A 擦掉大部分残留，B 擦净；几乎不用力，像擦干车身一样轻。','每次最多半扇车门或四分之一引擎盖；不用时盖紧瓶盖。','20–40 分钟内检查高点。'],
  notes:["帮助较复杂的镀膜（如 Ceramic Plus、Heal Lite）完成最后的流平，强化附着，留下清亮表面。","对其他品牌的镀膜擦拭也有效。","施工后 24 小时内避免淋水，7 天内不要碰化学品和洗车。"],url:FL+'leveling-aid/'},
@@ -162,7 +162,7 @@ export const products: Product[] = [
  steps:['在 10–30 °C、光线好、干净的地方施工；用 Pure Wash 或 Pure Rinseless 洗净，需要时用 APC 深度清洁，再用 Panel Prep 擦一遍。','分小块施工；充分摇匀，颜料会沉淀。','用超纤施工块取少量揉进表面，均匀但不要太湿。','渗透 5–10 分钟，回到起点再轻涂一遍抹匀；再等 5 分钟，用干净超纤布擦掉多余的。','严重褪色需要多层时，间隔 12–24 小时。'],
  notes:['只能用在黑色塑料上：颜料会永久染色灰色、米色等非黑色塑料。','施工后尽量在阳光下固化；4 小时内保持干燥，7 天内不要碰化学品和洗车。','开封后 7 天内用完（冷藏可放 1 个月）；没有正式保修。'],url:FL+'black-trim-restorer/'},
 
-{id:'N-black-velvet',brand:'N',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-06-0821，该申报已过期）：不适用","registration":"HB21-06-0821"}],"conflict":false},name:'Black Velvet Tire Sealant',type:'水性轮胎封体（不甩，最长约 6 个月，可叠层调光泽）',sizes:'120 ml',materials:'轮胎',
+{id:'N-black-velvet',brand:'N',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-06-0821，已过期）：不适用。","registration":"HB21-06-0821"}],"conflict":false},name:'Black Velvet Tire Sealant',type:'水性轮胎封体（不甩，最长约 6 个月，可叠层调光泽）',sizes:'120 ml',materials:'轮胎',
  dilutions:[['轮胎','即用','—']],
  steps:['用 Tire & Wheel Cleaner 把轮胎上旧的硅油类轮胎油彻底洗掉，等轮胎完全干透。','第一次施工建议涂 2 层：在超纤或海绵施工块上取足量，第一层揉进橡胶的毛孔，绕轮胎一圈，不要碰到轮毂。','等几分钟后涂第二层：每次约四分之一圈，用长直线均匀涂满。','四个轮胎（和备胎）都涂完后，至少等 10 分钟再开车，避免甩出和流挂。','日常补涂：用 Pure Wash 或 Pure Rinseless 配软毛刷洗轮胎，干后再涂一层。'],
  notes:["误涂到轮毂上，趁没干用 Panel Prep 和超纤布擦掉。","可以叠层，从「新胎」到「很亮」调节光泽。","正常洗车下约 2–6 个月。","清洗涂过的轮胎：用 Pure Wash 或 Pure Rinseless 加软毛刷；不要用 Tire & Wheel Cleaner、硬毛刷，高压水枪距离至少 5 cm。","开封后 3–4 个月内用完。"],url:FL+'tire-sealant/'},
@@ -170,15 +170,15 @@ export const products: Product[] = [
 // ───────────────────────── 玻璃 ─────────────────────────
 {
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/09/Glass-Cleaner-0723707821159-cqdooc.pdf","source":"feynlab","language":"英文","hosting":"remote"},
- id:'N-glass-cleaner',brand:'N',category:'glass',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB21-01-1847，该申报已过期）：原液弱碱性","registration":"HB21-01-1847"}],"conflict":false},name:'Glass Cleaner',type:'无痕玻璃清洁剂（不含氨，减少内侧起雾）',sizes:'250 ml · 500 ml · 5 L',materials:'车内外玻璃 · 后视镜 · 镀膜玻璃',
+ id:'N-glass-cleaner',brand:'N',category:'glass',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-1847，已过期）：原液弱碱性。","registration":"HB21-01-1847"}],"conflict":false},name:'Glass Cleaner',type:'无痕玻璃清洁剂（不含氨，减少内侧起雾）',sizes:'250 ml · 500 ml · 5 L',materials:'车内外玻璃 · 后视镜 · 镀膜玻璃',
  dilutions:[['玻璃','即用','喷雾壶']],
  steps:['用前轻轻摇匀。','准备两块干净的玻璃布：喷在第一块上擦玻璃，带走约 80 % 的水分。','换第二块布擦干剩余水分。','从多个角度检查有没有残留；毛巾脏了就翻到干净面，否则容易留痕。'],
- notes:["不含氨，贴膜安全；镀膜玻璃也可以用。","一般玻璃清洁剂会在内侧玻璃留下疏水残留导致起雾，这款擦完是裸玻璃，能减少起雾。","车间或阳光下都能用。"],url:FL+'car-glass-cleaner/'},
+ cautions:['sunOk'],notes:['不含氨，贴膜安全；镀膜玻璃也可以用。','一般玻璃清洁剂会在内侧玻璃留下疏水残留导致起雾，这款擦完是裸玻璃，能减少起雾。','车间里也能用。'],url:FL+'car-glass-cleaner/'},
 
 {id:'N-window-polish',brand:'N',category:'glass',name:'Window Polish',type:'玻璃研磨清洁剂（去水垢蚀刻，为玻璃镀膜做底）',sizes:'250 ml',materials:'车外玻璃',
  dilutions:[['手工 / 机器研磨','即用','—']],
  steps:['先洗车，遮蔽玻璃周边的非玻璃部位。','把 Window Polish 挤在超纤施工块上，或装上切削 / 抛光盘用机器（中高速）施工。','在玻璃上重叠走 2–3 遍，然后把残留彻底擦掉。','检测：倒一点水，水应该完全摊平成一片；有任何水珠就再抛一遍。','准备镀膜时，抛完不要再用 IPA 或 Panel Prep 擦，只能碰清水。'],
- notes:['三种成分：氧化铈先软化玻璃表层约 15 nm，陶瓷微珠（约莫氏 7）再把软化层切掉，非氟化酸化剂辅助。','抛完留下的氧化铈反应层就是 Window Coating 附着的基础，溶剂会把它去掉。','不能用于贴膜和塑料。','一瓶 250 ml 约够 10 台以上车。'],url:FL+'feynlab-window-polish/'},
+ notes:['三种成分：氧化铈先软化玻璃表层约 15 nm，陶瓷微珠（约莫氏 7）再把软化层切掉，非氟化酸化剂辅助。','抛完留下的氧化铈反应层就是 Window Coating 附着的基础，溶剂会把它去掉。','不要用于贴膜和塑料。','一瓶 250 ml 约够 10 台以上车。'],url:FL+'feynlab-window-polish/'},
 
 {id:'N-window-coating',brand:'N',category:'coat',name:'Window Coating',type:'自蚀刻玻璃陶瓷镀膜',sizes:'30 ml',materials:'前挡 · 侧窗 · 后挡（车外玻璃）',
  dilutions:[['玻璃镀膜（施工块）','即用','—']],
@@ -194,13 +194,13 @@ export const products: Product[] = [
  notes:['柑橘油分解有机污垢，表面活性剂带走无机污垢。','镀膜表面被顽固污垢糊住、疏水变差时，配合正常洗车用它可以恢复疏水。','镀铬件先用最稀的比例，并在不显眼处测试。','True Series：DIY 和专业用户都可以买。'],url:FL+'feynlab-all-purpose-cleaner/'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'N-interior-cleaner',brand:'N',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-interior-cleaner/"},"evidence":[{"kind":"statement","source":"product-page","text":"官网写「pH neutral」（中性），未公布具体 pH 数值"}],"conflict":false},name:'Interior Cleaner',type:'中性全内饰清洁剂（皮革、Alcantara、织物、屏幕通用）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'皮革 · Alcantara · 人造革 · 内饰塑料 · 地毯 · 织物 · 屏幕',
+{id:'N-interior-cleaner',brand:'N',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-interior-cleaner/"},"evidence":[{"kind":"statement","source":"product-page","text":"品牌官网写「pH neutral」（中性），未公布具体数值。"}],"conflict":false},name:'Interior Cleaner',type:'中性全内饰清洁剂（皮革、Alcantara、织物、屏幕通用）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'皮革 · Alcantara · 人造革 · 内饰塑料 · 地毯 · 织物 · 屏幕',
  dilutions:[['内饰各表面','即用','喷雾壶']],
  steps:['在 10–30 °C、光线好的地方施工。','地毯和织物：直接喷在脏的地方，用软毛刷搅动，再用干净超纤布吸走残留；不要让它在织物上停留太久。','塑料、皮革、人造革、硬饰板和屏幕：喷在干净的超纤布上擦，再用第二块干布擦掉残留。'],
- notes:['和 Panel Prep 同一种清洁技术，浓度调到适合内饰。','pH 中性、无硅、无毒，钣喷车间可用。','能去掉皮屑、体油、食物、化妆品和防晒霜等有机污垢。'],url:FL+'car-interior-cleaner/'},
+ notes:['和 Panel Prep 同一种清洁技术，浓度调到适合内饰。','无硅、无毒，钣喷车间可用。','能去掉皮屑、体油、食物、化妆品和防晒霜等有机污垢。'],url:FL+'car-interior-cleaner/'},
 
 // ───────────────────────── 配件 ─────────────────────────
-{id:'N-twisted-logic',brand:'N',category:'acc',name:'Twisted Logic Drying Towel V2',type:'双面扭绒擦干巾（韩国超纤）',sizes:'40 × 60 cm · 65 × 90 cm',materials:'车漆',dilutions:[],
+{id:'N-twisted-logic',brand:'N',category:'acc',name:'Twisted Logic Drying Towel V2',type:'双面扭绒擦干巾（韩国超纤）',sizes:'40×60 cm · 65×90 cm',materials:'车漆',dilutions:[],
  steps:['洗车后平铺在车身上，轻拉吸水。','也可以配合 Pure Rinseless 免冲洗，洗完一块马上擦干一块。'],
  notes:['双面扭绒，每一下吸水更多；镀膜车和娇贵漆面都安全。'],url:FL+'feynlab-twisted-logic-korean-microfiber-drying-towel-v2/'},
 
@@ -208,15 +208,15 @@ export const products: Product[] = [
  steps:['配合 Glass Cleaner 两块一起用：第一块擦，第二块擦干。','脏了翻到干净面，避免留痕。'],
  notes:[],url:FL+'feynlab-glass-cleaning-towel-korean-microfiber/'},
 
-{id:'N-plush-mitt',brand:'N',category:'acc',name:'Plush Wash Mitt',type:'540 GSM 长毛洗车手套（韩国超纤，无边）',sizes:'20 × 30 cm',materials:'车漆',dilutions:[],
- steps:['浸入洗车水或免冲洗溶液中吸饱。','从上往下直线擦洗，每洗 2–3 块清洗一次手套。'],
+{id:'N-plush-mitt',brand:'N',category:'acc',name:'Plush Wash Mitt',type:'540 GSM 长毛洗车手套（韩国超纤，无边）',sizes:'20×30 cm',materials:'车漆',dilutions:[],
+ steps:['浸入洗车水或免冲洗溶液中吸饱。','由上往下直线擦洗，每洗 2–3 块清洗一次手套。'],
  notes:['吸水量超过自重 5 倍；70 % 涤纶 / 30 % 锦纶，超声波切边无缝。'],url:FL+'feynlab-plush-wash-mitt/'},
 
 {id:'N-clay-sponge',brand:'N',category:'acc',name:'Rubberized Clay Sponge',type:'橡胶聚合物除染海绵块（可重复使用）',sizes:'—',materials:'车漆',dilutions:[],
  steps:['用 Pure Wash 洗车并擦干。','按 1:15 稀释 Prime 当润滑液（与瓶身写的表面处理比例不同）。','在海绵和车身上都喷足润滑液。','橡胶面朝下，几乎不用力地前后滑动，发涩就补润滑液。','滑到表面摸起来光滑为止，用干净超纤布擦干，继续下一块。'],
  notes:['寿命约为传统黏土的 3 倍；掉在地上用清水冲一下就能继续用。','也可以用其他品牌的黏土润滑液。'],url:FL+'feynlab-black-claying-block/'},
 
-{id:'N-foam-block',brand:'N',category:'acc',name:'Foam Applicator Block + Microsuede',type:'镀膜施工块 + 4″ 麂皮布',sizes:'2 块装 · 麂皮布 10 × 10 cm',materials:'—',dilutions:[],
+{id:'N-foam-block',brand:'N',category:'acc',name:'Foam Applicator Block + Microsuede',type:'镀膜施工块 + 4″ 麂皮布',sizes:'2 块装 · 麂皮布 10×10 cm',materials:'—',dilutions:[],
  steps:['把麂皮布包在施工块上，倒上镀膜按施工说明涂抹。','每种镀膜或每种材质用单独的麂皮布，避免交叉污染。'],
  notes:[],url:FL+'foam-applicator-block/'},
 ];
@@ -227,7 +227,7 @@ export const flows: Flow[] = [
 {id:'f-n-coat',brand:'N',name:'镀膜前处理与镀膜（最佳附着系统）',en:'FEYNLAB Optimal Bonding System',scene:'coated',tags:['镀膜前'],
  summary:'官方手册和 Prime 产品页的顺序：Pure Wash 洗车 → Prime 黏土除染 → A 系列抛光 → Panel Prep 脱脂 → 镀膜 → 1–3 小时内可罩 Overcoat V3。DIY 可选 The Original 或 Ceramic by Paul Dalton，其余专业镀膜由认证店施工。',
  steps:[
-  {phase:'洗车',products:['N-pure-wash'],ratio:'1:400',how:'桶洗 1:400 或泡沫枪 1:32，从上往下直线擦洗，冲净擦干；很脏时先用 APC 处理顽固污垢。'},
+  {phase:'洗车',products:['N-pure-wash'],ratio:'1:400',how:'桶洗 1:400 或 PA壶 1:32，由上往下直线擦洗，冲净擦干；很脏时先用 APC 处理顽固污垢。'},
   {phase:'除铁（需要时）',extras:['铁粉去除剂'],how:'有嵌入铁粉时先处理（FEYNLAB 没有自家除铁剂）。'},
   {phase:'黏土除染',products:['N-prime','N-clay-sponge'],ratio:'1:15',how:'Prime 按 1:15 兑水当润滑液，用黏土或 Rubberized Clay Sponge 滑到表面光滑。'},
   {phase:'抛光',variants:[
@@ -247,7 +247,7 @@ export const flows: Flow[] = [
  summary:'官方手册每款镀膜的「施工后护理」：用 Pure Wash 或 Pure Rinseless 洗车，再用 Hybrid Ceramic Detailer 补强；疏水变差时用 APC 配合洗车恢复，每 12 个月补一层 Overcoat V3。',
  steps:[
   {phase:'洗车',variants:[
-    {name:'免冲洗（Pure Rinseless）',products:['N-pure-rinseless','N-plush-mitt'],ratio:'1:250',how:'每 3.75 L 水加 15 ml，手套从上往下洗整块板块，洗完马上擦干。'},
+    {name:'免冲洗（Pure Rinseless）',products:['N-pure-rinseless','N-plush-mitt'],ratio:'1:250',how:'每 3.75 L 水加 15 ml，手套由上往下洗整块板块，洗完马上擦干。'},
     {name:'传统洗车（Pure Wash）',products:['N-pure-wash','N-plush-mitt'],ratio:'1:400',how:'车很脏时用，冲净后擦干。'},
   ]},
   {phase:'擦干 + 补强',products:['N-hybrid-detailer','N-twisted-logic'],ratio:'即用',how:'喷在车身或毛巾上擦开擦亮，可以一边擦干一边上。'},
@@ -260,7 +260,7 @@ export const flows: Flow[] = [
 {id:'f-n-wheel',brand:'N',name:'轮胎轮毂清洁与保护',en:'FEYNLAB Wheels & Tires',scene:'wheel',tags:['轮胎'],
  summary:'Tire & Wheel Cleaner 产品页的建议：深度清洁轮胎和轮毂后，轮毂上 Ceramic Wheel & Caliper，轮胎上 Black Velvet；之后轮胎只用 Pure Wash 清洗。',
  steps:[
-  {phase:'深度清洁',products:['N-tire-wheel'],ratio:'即用',how:'从下往上喷满轮胎和轮毂，轮毂用软毛刷、轮胎用硬毛刷，冲净；顽固刹车粉另用酸性轮毂清洁剂。'},
+  {phase:'深度清洁',products:['N-tire-wheel'],ratio:'即用',how:'由下往上喷满轮胎和轮毂，轮毂用软毛刷、轮胎用硬毛刷，冲净；顽固刹车粉另用酸性轮毂清洁剂。'},
   {phase:'轮毂脱脂',products:['N-panel-prep'],ratio:'即用',how:'需要时黏土、抛光后，用 Panel Prep 擦掉油分。'},
   {phase:'轮毂镀膜',products:['N-wheel-caliper'],ratio:'即用',how:'少量交叉涂抹，停留 5–25 分钟（最多 40 分钟）后流平；不要涂刹车盘。'},
   {phase:'轮胎封体',products:['N-black-velvet'],ratio:'即用',how:'轮胎干透后涂 2 层，第一层揉进毛孔，几分钟后再涂第二层；至少等 10 分钟再开车。'},

@@ -24,9 +24,9 @@ describe('pH 证据与口径', () => {
     const p = PRODUCT_BY_ID.get('C-clearcut')!;
     expect(p.ph?.value).toBe('8.5');
     expect(p.ph?.evidence).toContainEqual({ kind: 'resolution', rule: 'sds-overrides-na' });
-    expect(phEvidenceNotes(p.ph).join(' ')).toContain('本站按 SDS 标注');
-    expect(productSearchText(p)).toContain('本站按 sds 标注');
-    expect(p.notes.some((n) => n.includes('本站按 SDS 标注'))).toBe(false);
+    expect(phEvidenceNotes(p.ph).join(' ')).toContain('本站按 SDS 第 9 节标注');
+    expect(productSearchText(p)).toContain('本站按 sds 第 9 节标注');
+    expect(p.notes.some((n) => n.includes('本站按 SDS 第 9 节标注'))).toBe(false);
   });
 
   it('技术资料表与 SDS 数值相差较大时保留两者并标记口径差异', () => {

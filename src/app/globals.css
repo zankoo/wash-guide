@@ -242,6 +242,10 @@ h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:30px 0 12px;fo
 .fact+.fact{padding-left:18px;border-left:1px solid var(--line)}
 .fact dt{font-size:12.5px;color:var(--faint)}
 .fact dd{margin:2px 0 0;font-size:14.5px}
+.fact.wide{grid-column:1/-1;padding-left:0;border-left:0;border-top:1px solid var(--line)}
+.fact dd a{color:inherit;text-underline-offset:3px;white-space:nowrap}
+.remarks ul{margin:0;padding:0 0 0 18px;display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.remarks li::marker{color:var(--faint)}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s}
 .steps li{counter-increment:s;position:relative;padding:2px 0 14px 42px;min-height:28px}
 .steps li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 15px var(--f-display);color:var(--paper);background:var(--ink)}

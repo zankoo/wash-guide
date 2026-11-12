@@ -1,5 +1,4 @@
 import { expect, test, type Page } from '@playwright/test';
-import { PRODUCTS } from '../src/data';
 
 const errors = new WeakMap<Page, string[]>();
 test.beforeEach(({ page }) => {
@@ -115,19 +114,20 @@ test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({
   await page.goBack();
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await page.goto('/p/C-clearcut');
-  await expect(page.locator('.ph-evidence')).toContainText('本站按 SDS 标注');
-  // 资料表只给 1% 稀释液 pH 时，标签和资料区都写明口径
+  // pH 依据用统一说法，资料原文放在页面最下面的备注里
+  await expect(page.locator('.ph-source')).toContainText('SDS 第 9 节 · 原液数据 · 官方资料之间不一致，见备注');
+  await expect(page.locator('.remarks')).toContainText('本站按 SDS 第 9 节标注');
+  expect(await page.locator('.sh-body > *').evaluateAll((els) => els.at(-2)?.classList.contains('remarks'))).toBe(true);
+  // 资料表只给 1% 稀释液 pH 时，标签和依据都写明口径
   await page.goto('/p/F-cristalbel');
   await expect(page.locator('.sh-ph')).toContainText('pH 6.0–8.0 · 1% 稀释液');
-  await expect(page.locator('.ph-evidence')).toContainText('1% 稀释液数据 · 厂商技术资料表');
-  await expect(page.locator('.ph-evidence a')).toHaveAttribute('href', /H0546_1\.pdf$/);
-  // 来源未关联且没有任何依据时，不渲染空壳 pH 区块和空提示框；随来源回填，这类产品会越来越少
-  const bare = PRODUCTS.find((p) => p.ph?.value && p.ph.source.kind === 'unrecorded' && !p.ph.conflict && p.ph.evidence.length === 0);
-  if (bare) {
-    await page.goto(`/p/${bare.id}`);
-    await expect(page.locator('.sh-ph')).toContainText(`pH ${bare.ph!.value}`);
-    await expect(page.locator('.ph-evidence')).toHaveCount(0);
-    await expect(page.locator('.sh-body .notes:empty')).toHaveCount(0);
+  await expect(page.locator('.ph-source')).toContainText('厂商技术资料表 · 1% 稀释液数据');
+  await expect(page.locator('.ph-source a')).toHaveAttribute('href', /H0546_1\.pdf$/);
+  // 注意事项只放固定措辞；同一种情况在不同品牌页面上写法相同
+  for (const id of ['K-green-star', 'P-bug-off']) {
+    await page.goto(`/p/${id}`);
+    await expect(page.locator('.sh-body .notes')).toContainText('不要在发热的表面上施工。');
+    await expect(page.locator('.sh-body .notes:empty, .remarks ul:empty')).toHaveCount(0);
   }
   const response = await page.request.get('/sds/C-clearcut.pdf');
   expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-');
