@@ -21,7 +21,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/C-bugout.pdf","source":"carpro-ws","language":"英文","version":"2018","hosting":"local","sha256":"9a4b17bcb8e36a41dd3cba0f7a5317ef1b6d990945aaf2267618866937b70445","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-bugout',brand:'C',category:'pre',ph:{"category":"alk","value":"≥ 11","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'BugOut',type:'即用型虫尸清洁泡沫',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜表面 · 玻璃 · PPF',
+ id:'C-bugout',brand:'C',category:'pre',ph:{"category":"alk","value":"≥ 11","basis":"raw","source":{"kind":"sds","url":"/sds/C-bugout.pdf","section":9},"evidence":[],"conflict":false},name:'BugOut',type:'即用型虫尸清洁泡沫',sizes:'500 ml · 1 L · 4 L',materials:'车漆 · 镀膜表面 · 玻璃 · PPF',
  dilutions:[['虫尸污渍','即用','喷雾壶']],
  steps:['充分摇匀。','把泡沫喷在虫尸污渍上。','等待 5–30 秒，让污渍开始溶解。','需要时用超纤布轻轻擦拭。','用 CARPRO Reset 洗车或 ECH2O 去除全部残留。'],
  notes:['在表面停留不要超过 5 分钟；避免阳光直射下使用。','不飞溅的泡沫配方，对镀膜、玻璃和 PPF 安全。','虫尸留得太久可能永久损伤车漆；硬壳虫子要先软化再擦，不要干擦。'],url:CARPRO+'bugout/'},
@@ -36,7 +36,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-descale-acid-wash/sds.pdf","source":"chemcx","language":"英文","version":"2023","hosting":"remote"},
- id:'C-descale',brand:'C',category:'wash',ph:{"category":"acid","value":"2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0138）：原液弱酸性","registration":"HB22-01-0138"}],"conflict":false},name:'Descale',type:'酸性洗车香波（去矿物沉积 / 交通膜）',sizes:'500 ml · 1 L · 4 L',materials:'镀膜车 · 未镀膜车',
+ id:'C-descale',brand:'C',category:'wash',ph:{"category":"acid","value":"2","basis":"raw","source":{"kind":"sds","url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-descale-acid-wash/sds.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB22-01-0138）：原液弱酸性","registration":"HB22-01-0138"}],"conflict":false},name:'Descale',type:'酸性洗车香波（去矿物沉积 / 交通膜）',sizes:'500 ml · 1 L · 4 L',materials:'镀膜车 · 未镀膜车',
  dilutions:[['手洗','1:100','桶洗'],['泡沫壶 / 喷壶','1:10','喷雾壶']],
  steps:['水桶洗车按 1:100 稀释；泡沫壶或喷壶按 1:10 稀释。','轻度污染：当作泡沫预洗喷上，尽量延长停留时间后冲洗，再接手洗。','较重污染：逐板施工，先做水平面；清洗每个板块并让 Descale 尽量多停留，但不要干掉；必要时重复。','用清水彻底冲洗。'],
  notes:["可安全恢复陶瓷镀膜的性能。","整个施工流程都能用：去除旧蜡和封体、抛光前预处理、抛光后脱脂；日常维护洗时也能去交通膜和矿物沉积。"],url:CARPRO+'descale/'},
@@ -63,14 +63,14 @@ export const products: Product[] = [
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-wheelx-wheel-cleaner/sds.pdf","source":"chemcx","language":"英文","version":"2024","hosting":"remote"},
- id:'C-wheelx',brand:'C',category:'wheel',ph:{"category":"acid","value":"5.7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0939）：原液弱酸性","registration":"HB24-01-0939"}],"conflict":false},name:'WheelX',type:'酸性快速轮毂清洁剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'原厂 / 镀膜 / 镀铬 / 粉末喷涂 / 喷漆轮毂 · 刹车卡钳 · 轮拱 · 底盘 · 轮胎',
+ id:'C-wheelx',brand:'C',category:'wheel',ph:{"category":"acid","value":"5.7","basis":"raw","source":{"kind":"sds","url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-wheelx-wheel-cleaner/sds.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HB24-01-0939）：原液弱酸性","registration":"HB24-01-0939"}],"conflict":false},name:'WheelX',type:'酸性快速轮毂清洁剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'原厂 / 镀膜 / 镀铬 / 粉末喷涂 / 喷漆轮毂 · 刹车卡钳 · 轮拱 · 底盘 · 轮胎',
  dilutions:[['轮毂、轮拱、卡钳','即用','喷雾壶']],
  steps:['把 WheelX 大量喷在轮毂、轮拱或刹车卡钳上。','停留反应 1–2 分钟，不要让它干掉。','必要时用细节刷、WheelsMitt 或 Flat/Spot 轮毂刷刷洗。','5 分钟内彻底冲洗。'],
  notes:["不要用于裸铝，可能变色；如已变色，用 MetalliCut 手工或机器抛光恢复。","不能用于车漆（IronX 才可用于车漆）。","可用于碳陶刹车盘；也可去除轮毂、卡钳、轮拱上的旧封体。","与碱性的 MultiX 相比，WheelX 为酸性但更宽容，腐蚀风险更低。"],url:CARPRO+'wheelx/'},
 
 {
  sds:{"url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/carpro-retyre.pdf","source":"sds-db","language":"英文","version":"2021","hosting":"remote"},
- id:'C-retyre',brand:'C',category:'wheel',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0013）：原液碱性","registration":"HA25-01-0013"}],"conflict":false},name:'ReTyre',type:'高 pH 泡沫轮胎清洁剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'轮胎橡胶 · 带清漆层的现代轮毂',
+ id:'C-retyre',brand:'C',category:'wheel',ph:{"category":"alk","value":"13","basis":"raw","source":{"kind":"sds","url":"https://eunoffgsnusqmqgzpigj.supabase.co/storage/v1/object/public/product-media/sds/carpro-retyre.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0013）：原液碱性","registration":"HA25-01-0013"}],"conflict":false},name:'ReTyre',type:'高 pH 泡沫轮胎清洁剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'轮胎橡胶 · 带清漆层的现代轮毂',
  dilutions:[['轮胎','即用','喷雾壶']],
  steps:['先用高压水冲掉轮胎上的浮尘。','把 ReTyre 大量喷在橡胶上，让其起泡并停留 30 秒。','再把产品喷在中硬毛刷上，彻底刷洗橡胶。','冲洗轮胎和刷子。','重复，直到轮胎上的泡沫变为白色。'],
  notes:["专为清洁轮胎橡胶设计；官方注明也可用于清洁大多数带清漆层的现代轮毂。","不要让产品干在轮毂或其他表面上；不要用于敏感表面或涂层。","如滴到轮毂上，用水冲淡该区域。","可去除旧轮胎油、防老化剂析出的发黄发棕，为镀膜或上光做准备。"],url:CARPRO+'retyre/'},
@@ -78,21 +78,21 @@ export const products: Product[] = [
 // ───────────────────────── 除染 / 去水垢 ─────────────────────────
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-ironx/sds.pdf","source":"chemcx","language":"英文","version":"2023","hosting":"remote"},
- id:'C-ironx',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'IronX',type:'中性（pH 7）铁粉去除剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 塑料 · 镀铬 · 玻璃 · 合金轮毂',
+ id:'C-ironx',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"product-page","url":"https://carpro.global/product/ironx/"},"evidence":[],"conflict":false},name:'IronX',type:'中性（pH 7）铁粉去除剂',sizes:'50 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 塑料 · 镀铬 · 玻璃 · 合金轮毂',
  dilutions:[['车漆、轮毂','即用','喷雾壶']],
  steps:['先洗车。','充分摇匀。','喷上后等待 3–5 分钟，铁粉污染会变成紫红色。','用湿的软海绵揉开；避免在阳光直射下干掉。','用水彻底冲洗。'],
  notes:['新配方气味更小，有原味和柠檬味。','官方维护指南（轮毂）：喷上停留约 2 分钟 → 刷洗 → 再停 2 分钟 → 冲洗。已镀膜的车漆和轮毂每 6 个月做一次，未镀膜轮毂每 1–2 个月一次。','哑光或磨砂轮毂：先用 Lift 或 MultiX 预喷并冲洗，再用 IronX。'],url:CARPRO+'ironx/'},
 
 {
  sds:{"url":"/sds/C-ironx-paste.pdf","source":"carpro-ws","language":"英文","version":"2017","hosting":"local","sha256":"41316f5c2a315d12dd3f59be7e24ada096ab0d6a5ff18c61e0b1811e30c9503e","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-ironx-paste',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'IronX Paste',type:'膏状铁粉去除剂（附着更久）',sizes:'—',materials:'车漆 · 塑料 · 镀铬 · 玻璃 · 合金轮毂',
+ id:'C-ironx-paste',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"product-page","url":"https://carpro.global/product/ironxpaste/"},"evidence":[],"conflict":false},name:'IronX Paste',type:'膏状铁粉去除剂（附着更久）',sizes:'—',materials:'车漆 · 塑料 · 镀铬 · 玻璃 · 合金轮毂',
  dilutions:[['局部污染区','即用（原膏）','—']],
  steps:['把产品涂在污染区域。','让其反应 5–6 分钟，必要时搅动刷洗。','用水彻底冲洗。'],
  notes:['IronX 的膏状版本，pH 7，在表面附着时间更长，适合轮毂等立面。','避免在阳光直射下干掉。'],url:CARPRO+'ironxpaste/'},
 
 {
  sds:{"url":"/sds/C-ironx-ss.pdf","source":"carpro-ws","language":"英文","version":"2017","hosting":"local","sha256":"321b978c7aecdeb99c1f6a5039bfa83358067c9cbf0b51d96095171520711516","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-ironx-ss',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 FB21-01-0254）：原液中性","registration":"FB21-01-0254"}],"conflict":false},name:'IronX Snow Soap',type:'除铁泡沫 / 洗车香波',sizes:'500 ml · 1 L',materials:'整车 · CQUARTZ / DQUARTZ 镀膜',
+ id:'C-ironx-ss',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"/sds/C-ironx-ss.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 FB21-01-0254）：原液中性","registration":"FB21-01-0254"}],"conflict":false},name:'IronX Snow Soap',type:'除铁泡沫 / 洗车香波',sizes:'500 ml · 1 L',materials:'整车 · CQUARTZ / DQUARTZ 镀膜',
  dilutions:[['PA壶（阀门关闭）','原液','PA壶'],['手套 / 预洗 / 水桶','1:8','桶洗']],
  steps:['PA壶：不稀释，关闭泡沫枪调节阀，覆盖整车。','手套 / 预洗 / 水桶：按 1:8 加水稀释，覆盖整车。','停留至铁粉反应变色，不要让它干在表面。','彻底冲洗。'],
  notes:["对所有 CQUARTZ 和 DQUARTZ 镀膜安全；薄荷香味。","改变稀释比例还可作维护用轮毂清洁剂或黏土 / 聚合物除染的润滑剂，但官方未给出具体比例。"],url:CARPRO+'ironxss/'},
@@ -104,7 +104,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/carpro-trix-tar-iron-remover/sds.pdf","source":"chemcx","language":"英文","version":"2023","hosting":"remote"},
- id:'C-trix',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'TriX',type:'中性铁粉 + 柏油二合一去除剂',sizes:'500 ml · 1 L',materials:'大部分车身表面 · 合金轮毂',
+ id:'C-trix',brand:'C',category:'deco',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"product-page","url":"https://carpro.global/product/trix/"},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节 pH 一栏写「N/A」，未给出数值"}],"conflict":false},name:'TriX',type:'中性铁粉 + 柏油二合一去除剂',sizes:'500 ml · 1 L',materials:'大部分车身表面 · 合金轮毂',
  dilutions:[['车身、轮毂','即用','喷雾壶']],
  steps:['每次喷之前充分摇匀。','喷在表面上停留 5–7 分钟，污染物会变色。','用湿软海绵或细节刷搅动。','用洗车香波彻底清洗，再用水冲洗。'],
  notes:['结合 IronX 的除铁能力和 TarX 的溶柏油能力，pH 7。','常用于快速深度清洁合金轮毂。'],url:CARPRO+'trix/'},
@@ -300,7 +300,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/C-essence-plus.pdf","source":"carpro-ws","language":"英文","version":"2017","hosting":"local","sha256":"ecf3506502277a69beb52168710f5f844cac6ad14c84eeb222f428c0599fef9b","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-essence-plus',brand:'C',category:'coat',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Essence Plus',type:'SiO2 纳米镀膜 / 镀膜修复增光',sizes:'250 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 已老化的陶瓷镀膜',
+ id:'C-essence-plus',brand:'C',category:'coat',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"/sds/C-essence-plus.pdf","section":9},"evidence":[],"conflict":false},name:'Essence Plus',type:'SiO2 纳米镀膜 / 镀膜修复增光',sizes:'250 ml · 500 ml · 1 L · 4 L',materials:'车漆 · 已老化的陶瓷镀膜',
  dilutions:[['机器（DA / 转盘）（抛光盘）','即用','—'],['手工（施工海绵）','即用','—']],
  steps:['彻底清洗并除染。','擦干并用 CARPRO Eraser 脱脂。','机器：在 CARPRO Gloss 抛光盘上加 4 粒豌豆大小，在 60×60 cm 区域内零压力、低速施工。','手工：涂在软海绵上以画圈方式施工。','至少干燥 30 分钟后用干净超纤布擦掉。'],
  notes:['半永久纳米修复剂：填补陶瓷镀膜缺陷，提升光泽和性能，延长镀膜寿命。'],url:CARPRO+'essenceplus/'},
@@ -391,7 +391,7 @@ export const products: Product[] = [
 // ───────────────────────── 多功能清洁 APC ─────────────────────────
 {
  sds:{"url":"/sds/C-multix.pdf","source":"carpro-ws","language":"英文","version":"2018","hosting":"local","sha256":"b2a9ccca7a697781095244330659b07cfb1841f543b951ccbc068918d6e925e8","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-multix',brand:'C',category:'apc',ph:{"category":"alk","value":"12","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 GA25-01-0001）：原液碱性","registration":"GA25-01-0001"}],"conflict":false},name:'MultiX',type:'浓缩碱性多功能清洁剂',sizes:'500 ml · 1 L · 4 L',materials:'多种表面（不含皮革、裸铝及未涂层金属）',
+ id:'C-multix',brand:'C',category:'apc',ph:{"category":"alk","value":"12","basis":"raw","source":{"kind":"sds","url":"/sds/C-multix.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 GA25-01-0001）：原液碱性","registration":"GA25-01-0001"}],"conflict":false},name:'MultiX',type:'浓缩碱性多功能清洁剂',sizes:'500 ml · 1 L · 4 L',materials:'多种表面（不含皮革、裸铝及未涂层金属）',
  dilutions:[['常规清洁','1:20','喷雾壶'],['高压清洗','1:100','—'],['预洗（官方维护指南）','1:20','PA壶'],['轮胎（官方维护指南，配硬刷）','1:5','喷雾壶']],
  steps:['加水稀释 MultiX。','用海绵、刷子或喷壶施工。','彻底冲洗。'],
  notes:["重度污垢可用比 1:20 更浓的比例（官方未给出具体数值）。","禁止原液使用；不要用于皮革；不要用于裸铝或其他未涂层金属。","可作预洗，也可在洗车最后用于已保护表面的深层清洁和去污渍。"],url:CARPRO+'multix/'},
@@ -399,7 +399,7 @@ export const products: Product[] = [
 // ───────────────────────── 内饰 ─────────────────────────
 {
  sds:{"url":"/sds/C-inside.pdf","source":"carpro-ws","language":"英文","version":"2018","hosting":"local","sha256":"6e9b8b2318f0289c8d7cc31fff97d1bdcd0843570d6ecdc3d40548067c0c2ec7","provenanceNote":"旧合集转存文件；历史记录未保存原始下载地址。"},
- id:'C-inside',brand:'C',category:'int',ph:{"category":"alk","value":"10.8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0015）：原液碱性","registration":"HA25-01-0015"}],"conflict":false},name:'Inside',type:'内饰 / 皮革多用途清洁剂',sizes:'500 ml · 1 L · 4 L',materials:'人造革 · 塑料 · 光面皮革 · 织物 · 木饰 · Alcantara',
+ id:'C-inside',brand:'C',category:'int',ph:{"category":"alk","value":"10.8","basis":"raw","source":{"kind":"sds","url":"/sds/C-inside.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 HA25-01-0015）：原液碱性","registration":"HA25-01-0015"}],"conflict":false},name:'Inside',type:'内饰 / 皮革多用途清洁剂',sizes:'500 ml · 1 L · 4 L',materials:'人造革 · 塑料 · 光面皮革 · 织物 · 木饰 · Alcantara',
  dilutions:[['轻度清洁 / 内饰塑料','1:5','喷雾壶'],['Alcantara','1:10','喷雾壶']],
  steps:['摇匀，喷在超纤布上。','用这块清洁布涂在污渍区域。','用 CARPRO 细节刷或超纤布搅动。','用干净超纤布擦掉。','用湿超纤布去除残留。'],
  notes:["在表面停留不要超过 5 分钟。","不油腻、见效快，不会损伤皮革染色层；也可去除皮衣上的污渍。","官方 Leather 2.0 说明书指定用 Inside 做镀膜前清洁。"],url:CARPRO+'inside/'},

@@ -20,7 +20,7 @@ export const products: Product[] = [
 // ───────────────────────── 洗车香波 ─────────────────────────
 {
  sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2017/10/Pure-Wash-0604286819990-fbq9as.pdf","source":"feynlab","language":"英文","hosting":"remote"},
- id:'N-pure-wash',brand:'N',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Pure Wash',type:'中性深层清洁香波（镀膜前洗车，不留聚合物残留）',sizes:'250 ml · 1 L · 5 L · 20 L',materials:'车漆 · 哑光漆 · 改色膜 · 塑料 · 橡胶 · 玻璃 · 镀铬',
+ id:'N-pure-wash',brand:'N',category:'wash',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-wash-soap-pure-wash/"},"evidence":[{"kind":"statement","source":"product-page","text":"官网写「pH-neutral」（中性），未公布具体 pH 数值"},{"kind":"statement","source":"sds","text":"SDS 第 9 节 pH 写「No data available」"}],"conflict":false},name:'Pure Wash',type:'中性深层清洁香波（镀膜前洗车，不留聚合物残留）',sizes:'250 ml · 1 L · 5 L · 20 L',materials:'车漆 · 哑光漆 · 改色膜 · 塑料 · 橡胶 · 玻璃 · 镀铬',
  dilutions:[['桶洗','1:400','桶洗'],['泡沫枪 / 预洗','1:32','PA壶']],
  steps:['在阴凉、光线好的地方施工，先彻底冲掉浮尘和没粘牢的污垢。','用泡沫枪喷满车身，或用洗车手套沾稀释液涂上。','用柔软的洗车手套从上往下、直线来回擦洗，不要打圈；每洗 2–3 块就清洗一次手套。','只用一只手套时，最脏的车身下三分之一放到最后洗。','从上往下彻底冲净，用超纤毛巾擦干，缝隙可用气枪或吹风机吹干。'],
  notes:['官方定位为镀膜前的深层清洁香波：冲净后不留任何聚合物，能看出漆面真实状态。','可能洗掉耐久性较差的蜡、封体和临时性保护；镀膜车日常保养官方更推荐 Pure Rinseless。','车很脏时可以用泡沫枪喷上停留一会儿当预洗。','轮毂刹车粉多时，先用 Tire & Wheel Cleaner 或 All Purpose Cleaner。','保质期 2 年。'],url:FL+'car-wash-soap-pure-wash/'},
@@ -194,7 +194,7 @@ export const products: Product[] = [
  notes:['柑橘油分解有机污垢，表面活性剂带走无机污垢。','镀膜表面被顽固污垢糊住、疏水变差时，配合正常洗车用它可以恢复疏水。','镀铬件先用最稀的比例，并在不显眼处测试。','True Series：DIY 和专业用户都可以买。'],url:FL+'feynlab-all-purpose-cleaner/'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'N-interior-cleaner',brand:'N',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Interior Cleaner',type:'中性全内饰清洁剂（皮革、Alcantara、织物、屏幕通用）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'皮革 · Alcantara · 人造革 · 内饰塑料 · 地毯 · 织物 · 屏幕',
+{id:'N-interior-cleaner',brand:'N',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"product-page","url":"https://www.feynlab.com/product/car-interior-cleaner/"},"evidence":[{"kind":"statement","source":"product-page","text":"官网写「pH neutral」（中性），未公布具体 pH 数值"}],"conflict":false},name:'Interior Cleaner',type:'中性全内饰清洁剂（皮革、Alcantara、织物、屏幕通用）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'皮革 · Alcantara · 人造革 · 内饰塑料 · 地毯 · 织物 · 屏幕',
  dilutions:[['内饰各表面','即用','喷雾壶']],
  steps:['在 10–30 °C、光线好的地方施工。','地毯和织物：直接喷在脏的地方，用软毛刷搅动，再用干净超纤布吸走残留；不要让它在织物上停留太久。','塑料、皮革、人造革、硬饰板和屏幕：喷在干净的超纤布上擦，再用第二块干布擦掉残留。'],
  notes:['和 Panel Prep 同一种清洁技术，浓度调到适合内饰。','pH 中性、无硅、无毒，钣喷车间可用。','能去掉皮屑、体油、食物、化妆品和防晒霜等有机污垢。'],url:FL+'car-interior-cleaner/'},

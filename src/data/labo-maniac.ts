@@ -339,49 +339,49 @@ export const products: Product[] = [
 // ───────────────────────── Maniac Line ─────────────────────────
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/FOAM-GUN-PREWASH_2017_NO_3.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-foam-gun-prewash',brand:'M',category:'pre',ph:{"category":"alk","value":"> 12","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EA22-01-0296）：原液碱性","registration":"EA22-01-0296"}],"conflict":false},name:'Foam Gun Prewash',type:'PA壶碱性预洗',sizes:'1000 ml · 5 L',materials:'外部全车',
+ id:'M-foam-gun-prewash',brand:'M',category:'pre',ph:{"category":"alk","value":"> 12","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/FOAM-GUN-PREWASH_2017_NO_3.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EA22-01-0296）：原液碱性","registration":"EA22-01-0296"}],"conflict":false},name:'Foam Gun Prewash',type:'PA壶碱性预洗',sizes:'1000 ml · 5 L',materials:'外部全车',
  dilutions:[['夏季污垢（出液约 1:110）','1:10','PA壶'],['冬季污垢（出液约 1:50）','1:5','PA壶'],['夏季污垢','1:100（1 瓶盖 / 1 L）','喷雾壶'],['冬季污垢','1:50（2 瓶盖 / 1 L）','喷雾壶'],['局部（飞虫、泥污、车身下部）','1:10','喷雾壶']],
  steps:['车身下部和局部污垢：先用稀释液直接由下往上喷并冲洗。','PA壶按季节稀释，由下往上厚喷整车，等泡沫开始下滑（最多约 5 分钟）。','高压水由下往上冲洗。','泵壶用法：喷完等 1 分钟让产品软化污垢，再高压冲洗。'],
  notes:["可在未打湿的车身上直接喷；有泥块先用水冲掉。车身不能热，在阴凉处施工；夏季先冲水降温。","夏天或高温下一次处理一个板块。","预洗阶段不要用刷子或海绵，让化学作用完成工作。","不可用于摩托车。"],url:MANIAC+'products-professional-cleaning-auto-exterior/prewash/foam-gun-prewash/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/INSECT-REMOVER_2319_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-insect-remover',brand:'M',category:'pre',ph:{"category":"alk","value":"11.8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB25-01-0020）：原液弱碱性","registration":"EB25-01-0020"}],"conflict":false},name:'Insect Remover',type:'虫尸去除凝胶',sizes:'—',materials:'车漆 · 塑料 · 玻璃 · 后视镜 · 镀铬 · 铝',
+ id:'M-insect-remover',brand:'M',category:'pre',ph:{"category":"alk","value":"11.8","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/INSECT-REMOVER_2319_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB25-01-0020）：原液弱碱性","registration":"EB25-01-0020"}],"conflict":false},name:'Insect Remover',type:'虫尸去除凝胶',sizes:'—',materials:'车漆 · 塑料 · 玻璃 · 后视镜 · 镀铬 · 铝',
  dilutions:[['虫尸','即用','喷雾壶']],
  steps:['有高压清洗机：均匀喷在表面，停留 30 秒，高压水冲掉虫尸；残留处喷少量在 Comfort Car Wash Pad 上再擦一遍；之后用 Neutral Foam Shampoo 洗车。','手工：均匀喷涂，视温度和表面敏感度停留 30 秒–2 分钟，用浸湿产品的超纤布擦去虫尸，然后冲洗。'],
  notes:["对各类封体和镀膜安全。"],url:MANIAC+'products-professional-cleaning-auto-exterior/prewash/insect-remover/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/NEUTRAL_FOAM_SHAMPOO_1852_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-neutral-foam-shampoo',brand:'M',category:'wash',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB22-01-0307）：原液中性","registration":"EB22-01-0307"}],"conflict":false},name:'Neutral Foam Shampoo',type:'中性泡沫洗车香波（2 合 1）',sizes:'1000 ml · 5 L',materials:'外部全车',
+ id:'M-neutral-foam-shampoo',brand:'M',category:'wash',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/NEUTRAL_FOAM_SHAMPOO_1852_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB22-01-0307）：原液中性","registration":"EB22-01-0307"}],"conflict":false},name:'Neutral Foam Shampoo',type:'中性泡沫洗车香波（2 合 1）',sizes:'1000 ml · 5 L',materials:'外部全车',
  dilutions:[['手洗','3 瓶盖 / 10 L 水','桶洗'],['预洗','1:10','PA壶'],['最高稀释','1:400','桶洗']],
  steps:['预洗：PA壶 1:10，整车由下往上喷，停留约 4 分钟让泡沫变薄（勿干），高压由上往下冲洗。','手洗：10 L 水加 3 瓶盖，另备一桶清水洗手套；车身保持湿润，从上往下，小区域、最小压力。','每个板块后在清水桶里冲洗手套，避免带砂划伤。','彻底冲洗，用 Super Dryer 擦干（车身和玻璃各用一条）。'],
  notes:["WAX SAFE：不损伤包括棕榈蜡在内的底层保护，适合每周或双周维护洗。","车跑了很多公里或长时间暴露在外，先用 Foam Gun Prewash 预洗。"],url:MANIAC+'products-professional-cleaning-auto-exterior/wash/neutral-foam-shampoo/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/CERAMIC_SHAMPOO_1853_NO_5.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-ceramic-shampoo',brand:'M',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB23-01-0409）：原液中性","registration":"EB23-01-0409"}],"conflict":false},name:'Ceramic Shampoo',type:'SiO2 陶瓷香波（洗 + 封 + 护 3 合 1）',sizes:'—',materials:'外部全车',
+ id:'M-ceramic-shampoo',brand:'M',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/CERAMIC_SHAMPOO_1853_NO_5.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB23-01-0409）：原液中性","registration":"EB23-01-0409"}],"conflict":false},name:'Ceramic Shampoo',type:'SiO2 陶瓷香波（洗 + 封 + 护 3 合 1）',sizes:'—',materials:'外部全车',
  dilutions:[['手洗','4 瓶盖 / 1 桶水','桶洗'],['增效方法一（喷在手套上）','1:5','喷雾壶'],['增效方法二（泡沫）','1:3','PA壶']],
  steps:['水桶加 4 瓶盖，像普通香波一样使用。','车身湿润、在阴凉处，一次一个板块，由下往上洗（与传统香波相反，避免聚合物流挂不均）。','分半车进行，避免产品干在车身上；冲洗后用 Super Dryer 擦干。','增效一：1:5 喷在洗车手套上，分半车再洗一遍，冲洗并擦干。','增效二：先 Foam Gun Prewash 预洗、Neutral Foam Shampoo 手洗，再用PA壶 1:3 由下往上喷，至少停留 1 分钟，由上往下高压冲洗后擦干。'],
  notes:["保护约 90 天。施工前用 Iron Remover 和 Water Spot Mineral Remover 除染，效果最好。","约两周后可用 Neutral Foam Shampoo 做维护洗。"],url:MANIAC+'products-professional-cleaning-auto-exterior/wash/ceramic-shampoo/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/BLACK-_-WRAP-SHAMPOO_2018_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-black-wrap-shampoo',brand:'M',category:'wash',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB22-01-0979）：原液酸性","registration":"EB22-01-0979"}],"conflict":false},name:'Black & Wrap Shampoo',type:'黑车 / 改色膜 / PPF 香波（防水垢）',sizes:'—',materials:'深色漆 · 哑光 · 改色膜 · PPF',
+ id:'M-black-wrap-shampoo',brand:'M',category:'wash',ph:{"category":"acid","value":"3","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/BLACK-_-WRAP-SHAMPOO_2018_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB22-01-0979）：原液酸性","registration":"EB22-01-0979"}],"conflict":false},name:'Black & Wrap Shampoo',type:'黑车 / 改色膜 / PPF 香波（防水垢）',sizes:'—',materials:'深色漆 · 哑光 · 改色膜 · PPF',
  dilutions:[['手洗','4 瓶盖 / 8 L 水（约 1:300）','桶洗'],['特别脏或发闷的表面','几滴直接倒在湿手套上','桶洗']],
  steps:['先用 Foam Gun Prewash 彻底预洗。','两桶法：一桶香波溶液、一桶清水，配 Double Face 手套或 Microfiber Pad，桶里放隔砂网。','车身湿润、阴凉处，一次一个板块，从上往下；每个板块后在清水桶冲洗手套。','不要让香波干在车身上；完成后由上往下高压冲洗。','干燥：在湿车上喷 Exterior Quick Detailer，用 Super Dryer 擦干。'],
  notes:["含矿物螯合剂，大幅减少干燥阶段的水垢斑。对各种纳米镀膜安全。"],url:MANIAC+'products-professional-cleaning-auto-exterior/wash/black-wrap-shampoo/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/DESCALE-FOAM-SHAMPOO_2386_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-descale-foam-shampoo',brand:'M',category:'wash',ph:{"category":"acid","value":"< 2","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Descale Foam Shampoo',type:'酸性去水垢泡沫香波（2 合 1）',sizes:'1000 ml · 5 L',materials:'车漆 · 塑料 · 镀铬 · 轮毂',
+ id:'M-descale-foam-shampoo',brand:'M',category:'wash',ph:{"category":"acid","value":"< 2","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/DESCALE-FOAM-SHAMPOO_2386_NO_1.pdf","section":9},"evidence":[],"conflict":false},name:'Descale Foam Shampoo',type:'酸性去水垢泡沫香波（2 合 1）',sizes:'1000 ml · 5 L',materials:'车漆 · 塑料 · 镀铬 · 轮毂',
  dilutions:[['水桶手洗','3–5 瓶盖 / 5 L 水','桶洗'],['PA壶：普通污垢','1:10','PA壶'],['PA壶：顽固污垢','1:5','PA壶'],['Nebula Foam 2.0（橙色喷嘴）','1 瓶盖 / 1 L 水','喷雾壶'],['增加润滑 / 沙尘雨斑','1–3 瓶盖 / 1 桶水','桶洗'],['轮毂维护、车身下部水垢','1:10','喷雾壶']],
  steps:['很脏时先用 Foam Gun Prewash 做碱性预洗。','Pillow Foam（泡沫垫）技术：泡沫喷满车身，不冲洗。','水桶按污染程度加 3–5 瓶盖，用 Double Face 手套或 Comfort Car Wash Pad 直接在泡沫上清洗。','彻底冲洗，用 Super Dryer 擦干。','轮毂维护：先用 Wheel & Tyre Cleaner 深度清洁，再喷 1:10 稀释液，停留几秒后彻底冲洗。'],
  notes:['日常维护洗可与 Neutral Foam Shampoo 交替使用。','抛光或上蜡/封体前，可在 Iron Remover 除铁之后使用。'],url:MANIAC+'products-professional-cleaning-auto-exterior/wash/descale-foam-shampoo/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/WATERLESS_2321_NO_1_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-waterless',brand:'M',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Waterless',type:'无水洗车液',sizes:'1000 ml · 5 L',materials:'车漆 · 镀铬 · 外部各表面',
+ id:'M-waterless',brand:'M',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/WATERLESS_2321_NO_1_2.pdf","section":9},"evidence":[],"conflict":false},name:'Waterless',type:'无水洗车液',sizes:'1000 ml · 5 L',materials:'车漆 · 镀铬 · 外部各表面',
  dilutions:[['无水洗','1:5 – 1:15','喷雾壶']],
  steps:['稀释 1:5–1:15。','一次一小块（如一个板块）均匀喷涂。','让产品湿润表面、软化污垢。','超纤布折成四折，第一面朝一个方向擦过，边擦边逐渐抬起带走污垢。','用另一块干净干布收尾。','每一步换用布的干净面。'],
  notes:['可在阳光直射和高温下使用。','不能完全替代传统洗车，尤其是泥浆和结块污垢。','全车建议准备 6–12 块高质量超纤布。'],url:MANIAC+'products-professional-cleaning-auto-exterior/wash/waterless/'},
@@ -393,7 +393,7 @@ export const products: Product[] = [
  steps:['确认表面冷却后，直接喷在轮毂和轮胎胎面，并延伸到轮拱。','停留 2–5 分钟，不要干掉。','用刷子机械清洁顽固处，然后彻底冲洗。','仍有污垢可重复，用刷子深入缝隙。'],
  notes:["每次洗车都可使用；能去除旧轮胎上光剂，为新上光做准备。","冲洗后轮毂缝隙仍有斑点，可能是铁粉污染，改用 Iron Remover。"],url:MANIAC+'products-professional-cleaning-auto-exterior/prewash/wheel-tyre-cleaner/'},
 
-{id:'M-wheel-foam-cleaner',brand:'M',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Wheel Foam Cleaner',type:'即用型碱性轮毂泡沫清洁剂',sizes:'—',materials:'喷漆合金轮毂 · 轮胎 · 轮拱 · 门框',
+{id:'M-wheel-foam-cleaner',brand:'M',category:'wheel',ph:{"category":"alk","basis":"raw","source":{"kind":"product-page","url":"https://maniacline.com/shop/products-professional-cleaning-auto-exterior/wash/wheel-foam-cleaner/"},"evidence":[{"kind":"statement","source":"product-page","text":"官网写「High-performance alkaline formula」（碱性配方），未公布具体 pH 数值"}],"conflict":false},name:'Wheel Foam Cleaner',type:'即用型碱性轮毂泡沫清洁剂',sizes:'—',materials:'喷漆合金轮毂 · 轮胎 · 轮拱 · 门框',
  dilutions:[['轮毂和轮胎','即用','喷雾壶']],
  steps:['直接喷在轮毂和轮胎上（红紫色泡沫便于看清覆盖范围）。冷表面，避开阳光。','让泡沫附着作用，不要干掉。','顽固污垢或辐条间、内圈用专用刷刷洗。','大量清水冲洗。'],
  notes:['无需稀释。'],url:MANIAC+'products-professional-cleaning-auto-exterior/wash/wheel-foam-cleaner/'},
@@ -405,14 +405,14 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/IRON-REMOVER_1859_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-iron-remover',brand:'M',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB23-01-0704）：原液弱酸性；官网称其为中性、无酸配方。","registration":"EB23-01-0704"}],"conflict":false,"claim":"官方称中性"},name:'Iron Remover',type:'铁粉去除剂（中性、无酸）',sizes:'1000 ml · 5 L',materials:'钢/铝合金/喷漆/镀铬/抛光轮毂 · 车漆 · 玻璃',
+ id:'M-iron-remover',brand:'M',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/IRON-REMOVER_1859_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB23-01-0704）：原液弱酸性","registration":"EB23-01-0704"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"neu"}],"conflict":true,"claim":"官方称中性"},name:'Iron Remover',type:'铁粉去除剂（中性、无酸）',sizes:'1000 ml · 5 L',materials:'钢/铝合金/喷漆/镀铬/抛光轮毂 · 车漆 · 玻璃',
  dilutions:[['轮毂维护（每洗 3 次做一次）（软毛刷）','1:1（最高稀释）','喷雾壶'],['轮毂深度除铁（软毛刷）','原液','喷雾壶'],['车身除铁（距离约 40 cm）','原液','喷雾壶']],
  steps:['阴凉处，确认表面冷却。','轮毂：喷上后停留 3–4 分钟（不要干），变紫说明在溶解铁粉；用刷子清理辐条间和缝隙，彻底冲洗后用超纤布擦干。','车身：洗车擦干后，距离约 40 cm 均匀喷原液，停留 3–5 分钟，彻底冲洗。'],
  notes:["不可用于未涂装或无保护的金属、未喷漆卡钳和摩托车。","上蜡或做保护前必做，以提升附着。"],url:MANIAC+'products-professional-cleaning-auto-exterior/decontamination/iron-remover/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/WATER-SPOT-MINERAL-REMOVER_1855_NO_3.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-water-spot-mineral-remover',brand:'M',category:'deco',ph:{"category":"acid","value":"1","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB21-01-1187）：原液酸性","registration":"EB21-01-1187"}],"conflict":false},name:'Water Spot Mineral Remover',type:'水斑 / 矿物去除剂',sizes:'—',materials:'玻璃 · 车漆 · 镀铬 · 塑料',
+ id:'M-water-spot-mineral-remover',brand:'M',category:'deco',ph:{"category":"acid","value":"1","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/WATER-SPOT-MINERAL-REMOVER_1855_NO_3.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB21-01-1187）：原液酸性","registration":"EB21-01-1187"}],"conflict":false},name:'Water Spot Mineral Remover',type:'水斑 / 矿物去除剂',sizes:'—',materials:'玻璃 · 车漆 · 镀铬 · 塑料',
  dilutions:[['水斑（超纤施工棉 / 软毛刷）','即用','—']],
  steps:['先完成轮毂轮胎、预洗和香波手洗。','局部斑点：直接施于表面，停留 30 秒，用湿超纤布擦去，再用干布收尾；顽固处最多停留 60 秒，不要干在车身上。','前后挡风玻璃：一次处理一半，充分冲洗。','整车大面积污染：用 Microfiber Pad 均匀涂开，处理完一个区域冲洗后再做下一个；车标、饰条用软毛刷。'],
  notes:["建议用 Exterior Quick Detailer 辅助安全冲洗/擦拭。","不可用于摩托车；注意敏感塑料。"],url:MANIAC+'products-professional-cleaning-auto-exterior/decontamination/water-spot-mineral-remover/'},
@@ -440,28 +440,28 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/ALL-ROUND-PLASTIC-PROTECTANT_2014_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-all-round-plastic-protectant',brand:'M',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'All Round Plastic Protectant',type:'内外塑料保护剂（抗 UV）',sizes:'—',materials:'内外塑料 · 轮胎侧壁',
+ id:'M-all-round-plastic-protectant',brand:'M',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/ALL-ROUND-PLASTIC-PROTECTANT_2014_NO_1.pdf","section":9},"evidence":[],"conflict":false},name:'All Round Plastic Protectant',type:'内外塑料保护剂（抗 UV）',sizes:'—',materials:'内外塑料 · 轮胎侧壁',
  dilutions:[['外部塑料（超纤施工棉）','1:1','—'],['内饰塑料（含褪色塑料）（超纤施工棉）','1:1','—'],['内外塑料维护（超纤施工棉）','1:2','—'],['外部塑料（超纤施工棉）','原液','—']],
  steps:['外部塑料和橡胶先用 APC 清洁，用干净超纤布擦干。','在刻度瓶中先加水到所需比例刻度，再加产品。','倒在超纤施工棉上，小区域均匀涂开。','用干净干燥的超纤布收尾。'],
  notes:['水性、中性 pH，呈饱满原色而非亮面。'],url:MANIAC+'products-professional-cleaning-auto-exterior/finishing/all-round-plastic-protectant/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/GLASS-CLEANER-_-DEGREASER_1857_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-glass-cleaner-degreaser',brand:'M',category:'glass',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB21-01-1427，该申报已过期）：原液弱酸性","registration":"EB21-01-1427"}],"conflict":false},name:'Glass Cleaner & Degreaser',type:'玻璃清洁去油剂',sizes:'500 ml · 5 L',materials:'玻璃（含深色玻璃）· 屏幕',
+ id:'M-glass-cleaner-degreaser',brand:'M',category:'glass',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/GLASS-CLEANER-_-DEGREASER_1857_NO_1.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB21-01-1427，该申报已过期）：原液弱酸性","registration":"EB21-01-1427"}],"conflict":false},name:'Glass Cleaner & Degreaser',type:'玻璃清洁去油剂',sizes:'500 ml · 5 L',materials:'玻璃（含深色玻璃）· 屏幕',
  dilutions:[['玻璃（短毛超纤布）','即用','—']],
  steps:['直接喷在玻璃上，用干净短毛超纤布擦去。','先擦外侧，再擦同一块玻璃的内侧。','用另一块干净干布收尾。','车内屏幕：先喷在布上再擦。'],
  notes:["不含氨和甲醇；对 Alcantara、皮革、软触材料、防眩屏幕安全，不影响已有玻璃镀膜。","擦车窗时把玻璃降下几厘米，清洁密封条下的部分。"],url:MANIAC+'products-professional-cleaning-car-interior/glass-cleaning/glass-cleaner-degreaser/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/RAIN-SPEED_2249_NO_1.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-rain-speed',brand:'M',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"unrecorded"},"evidence":[],"conflict":false},name:'Rain Speed',type:'玻璃驱水封体',sizes:'—',materials:'玻璃',
+ id:'M-rain-speed',brand:'M',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/RAIN-SPEED_2249_NO_1.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节 pH 一栏写「混合物为非极性 / 非质子性」，不适用 pH"}],"conflict":false},name:'Rain Speed',type:'玻璃驱水封体',sizes:'—',materials:'玻璃',
  dilutions:[['玻璃（超纤布）','即用','—']],
  steps:['去水垢：Water Spot Mineral Remover 倒在超纤施工棉上处理；严重时用玻璃研磨剂。','有洗车房蜡残留：用 Glass Cleaner & Degreaser 清洁。','确认玻璃完全干燥后均匀喷涂，用干净干燥的超纤布横竖推开至全覆盖。','用另一块干超纤布轻擦收尾。'],
  notes:[],url:MANIAC+'products-professional-cleaning-car-interior/glass-cleaning/rain-speed/'},
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/ALL_PURPOSE_CLEANER_1854_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-all-purpose-cleaner',brand:'M',category:'apc',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB22-01-0333）：原液弱碱性","registration":"EB22-01-0333"}],"conflict":false},name:'All Purpose Cleaner',type:'多功能清洁剂 APC',sizes:'500 ml · 5 L',materials:'织物 · 地毯 · 塑料 · 皮革 · 轮毂 · 发动机舱',
+ id:'M-all-purpose-cleaner',brand:'M',category:'apc',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/ALL_PURPOSE_CLEANER_1854_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB22-01-0333）：原液弱碱性","registration":"EB22-01-0333"}],"conflict":false},name:'All Purpose Cleaner',type:'多功能清洁剂 APC',sizes:'500 ml · 5 L',materials:'织物 · 地毯 · 塑料 · 皮革 · 轮毂 · 发动机舱',
  dilutions:[['内饰（织物、塑料、地毯）（刷）','1:5','喷雾壶'],['皮革','1:10','喷雾壶'],['内饰维护清洁','1:15','喷雾壶'],['发动机舱 / 轮毂（视脏污）（软刷）','1:1 – 1:3','喷雾壶'],['预洗 / 去虫（车身和挡风）','1:20','喷雾壶'],['重污 / 普通 / 定期维护','1:3 / 1:10 / 1:20','喷雾壶']],
  steps:['内饰：先彻底吸尘；1:5 喷在表面，用刷子打出泡沫，用湿超纤布去除，再用干布擦干。','外部（发动机舱）：表面冷却，1:1–1:3 距离约 20 cm 喷涂，软刷刷洗，停留几分钟，用超纤布擦去；轮毂用高压水冲洗。','预洗/去虫：1:20。'],
  notes:["只能用手动喷壶，不能用于PA壶。","Odor Stop 去异味。"],url:MANIAC+'products-professional-cleaning-car-interior/cleaning-leather-fabrics-and-carpets/all-purpose-cleaner/'},
@@ -473,7 +473,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/INTERIOR-CLEANER-PURIFIER_2083_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-interior-cleaner-purifier',brand:'M',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB21-01-1389，该申报已过期）：原液碱性","registration":"EB21-01-1389"}],"conflict":false},name:'Interior Cleaner Purifier',type:'内饰清洁净化剂（抗菌抗病毒）',sizes:'500 ml · 5 L',materials:'皮革 · 超纤 · 铝 · 碳纤维 · 织物 · 地毯',
+ id:'M-interior-cleaner-purifier',brand:'M',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/INTERIOR-CLEANER-PURIFIER_2083_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB21-01-1389，该申报已过期）：原液碱性","registration":"EB21-01-1389"}],"conflict":false},name:'Interior Cleaner Purifier',type:'内饰清洁净化剂（抗菌抗病毒）',sizes:'500 ml · 5 L',materials:'皮革 · 超纤 · 铝 · 碳纤维 · 织物 · 地毯',
  dilutions:[['日常清洁（超纤布）','1:3','喷雾壶'],['中等污垢（地毯、内饰下部）（刷）','1:1','喷雾壶'],['顽固污垢和污渍（软毛刷）','原液','—']],
  steps:['清空车内物品，彻底吸尘（防止干后出现水印）。','日常 1:3：均匀喷涂，用干净干超纤布擦拭，再用柔软湿超纤布收尾。','中等 1:1：喷在表面，用刷子打出泡沫，湿超纤布去除后再用干布擦干。','顽固污渍：原液 + 软毛刷，再用柔软超纤布收尾。'],
  notes:["可刷涂、用泡沫扳机喷在立面，或直接喷在表面；最后都用干超纤布带走溶解的污垢。","通过 UNI EN 14476 病毒及 UNI EN 1276 / 1369 细菌测试。"],url:MANIAC+'products-professional-cleaning-car-interior/cleaning-leather-fabrics-and-carpets/interior-cleaner-purifier/'},
@@ -492,7 +492,7 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/ALCANTARA-CLEANER_1860_NO_2.pdf","source":"bilnerden","language":"挪威文","hosting":"remote"},
- id:'M-alcantara-cleaner',brand:'M',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"unrecorded"},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB23-01-0408）：原液弱碱性","registration":"EB23-01-0408"}],"conflict":false},name:'Alcantara® Cleaner',type:'Alcantara 专用清洁剂（官方认证）',sizes:'—',materials:'Alcantara',
+ id:'M-alcantara-cleaner',brand:'M',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"sds","url":"https://bilnerden.no/media/wysiwyg/Sikkerhetsdatablad/ManiacLine/ALCANTARA-CLEANER_1860_NO_2.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"酸碱性来自韩国生活化学品申报（申报号 EB23-01-0408）：原液弱碱性","registration":"EB23-01-0408"}],"conflict":false},name:'Alcantara® Cleaner',type:'Alcantara 专用清洁剂（官方认证）',sizes:'—',materials:'Alcantara',
  dilutions:[['定期维护（软毛刷 + 超纤布）','1:1','—'],['污渍 / 深度清洁（软毛刷 + 超纤布）','原液','—']],
  steps:['先彻底吸尘。','喷在待处理表面，每次一小块。','用软毛刷轻压打圈。','用干净干燥的超纤布轻压吸走污垢。','对整块表面重复，即便只有局部污渍也要整体处理。'],
  notes:["不含 VOC。油性污垢同样适用。"],url:MANIAC+'products-professional-cleaning-car-interior/cleaning-leather-fabrics-and-carpets/alcantara-cleaner/'},
