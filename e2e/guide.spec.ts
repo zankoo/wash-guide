@@ -180,7 +180,7 @@ test('离线刷新带筛选参数的页面，收藏详情可交互且能返回',
   await page.getByRole('button', { name: '清除全部', exact: true }).click();
   await page.getByRole('button', { name: /^我的常用 1$/ }).click();
   await page.locator('main .card[href^="/p/C-reset"]').click();
-  await expect(page.locator('#d-name')).toHaveText('Reset');
+  await expect(page.locator('.sh-name:visible')).toHaveText('Reset');
   await expect(page.locator('.sh-stage img')).toBeVisible();
   await expect.poll(() => page.locator('.sh-stage img').evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
   await page.getByRole('button', { name: '自定义', exact: true }).click();
