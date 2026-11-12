@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { selectCatalog } from './catalog-results';
 import { parseFilters } from './filters';
 import { productItems, flowItems } from '../data/catalog';
-import { PRODUCTS, productSearchText, keyRatios, phText } from '../data';
+import { PRODUCTS, productSearchText, keyRatios, phDisplay } from '../data';
 
 const select = (query: string, favorites: string[] = []) => selectCatalog(productItems, flowItems, parseFilters(query), favorites);
 describe('共享目录筛选', () => {
@@ -27,7 +27,9 @@ describe('共享目录筛选', () => {
   });
   it('已删除产品的收藏不会虚增数字，收藏筛选仍与其他条件取交集', () => {
     const result = select('?category=fav&brand=C', ['C-reset', 'L-primus', 'deleted-product']);
-    expect(result.favoriteCount).toBe(2);
+    // 「我的常用」的数字和其他选项一样跟着品牌走；总数单独给「还没有常用」的提示用
+    expect(result.favoriteCount).toBe(1);
+    expect(result.favoriteTotal).toBe(2);
     expect(result.products.map((p) => p.id)).toEqual(['C-reset']);
   });
   it('非法筛选被忽略，旧的多选材质链接取第一个有效材质', () => {
@@ -38,7 +40,7 @@ describe('共享目录筛选', () => {
       const p = PRODUCTS.find((p) => p.id === item.id)!;
       expect(item.text).toBe(productSearchText(p));
       expect(item.pills).toEqual(keyRatios(p));
-      expect(item.ph?.text || undefined).toBe(phText(p));
+      expect(item.ph).toEqual(phDisplay(p));
       expect(item).not.toHaveProperty('steps');
       expect(item).not.toHaveProperty('sds');
     }

@@ -10,6 +10,7 @@ import { highlight } from './flow-browser';
 import { useGuide } from './guide-state';
 import { useFilters } from './filter-state';
 import { useCatalogResults } from './catalog-state';
+import { isDead } from '@/lib/catalog-results';
 import { StarIcon } from './icons';
 import { Indicator } from './indicator';
 import { Logo } from './hero';
@@ -90,7 +91,7 @@ export function Sidebar() {
   const { isFlows, jumpTo, expanded } = useGuide();
   const { brand, material, category, setCategory, scene, setScene, query } = useFilters();
   const { pickBrand, pickMaterial } = usePickers();
-  const { products, flows: shownFlows, productCounts: hits, subCounts, productBrandCounts, flowBrandCounts, flowSceneCounts, materialCounts, favoriteCount } = useCatalogResults();
+  const { products, flows: shownFlows, productCounts: hits, subCounts, productBrandCounts, flowBrandCounts, flowSceneCounts, materialCounts, favoriteCount, favoriteTotal } = useCatalogResults();
   const counts = isFlows ? flowBrandCounts : productBrandCounts;
   const visibleProductIds = products.map((p) => p.id).join(',');
   // 依赖实际渲染结果，而不是尚未完成 deferred 筛选的输入值。
@@ -122,7 +123,14 @@ export function Sidebar() {
       {!isFlows && (
         <ul className="side-list" role="list">
           <li>
-            <button type="button" className="side-fav" aria-pressed={favMode} onClick={() => setCategory(favMode ? '' : 'fav')}>
+            {/* 还没收藏时仍可点开，看到如何加入常用的说明；收藏了但当前条件下一款都没有时不可点 */}
+            <button
+              type="button"
+              className={`side-fav${favoriteCount ? '' : ' none'}`}
+              aria-pressed={favMode}
+              disabled={!favMode && favoriteTotal > 0 && !favoriteCount}
+              onClick={() => setCategory(favMode ? '' : 'fav')}
+            >
               {favMode && <Indicator name="ind-fav" />}
               <StarIcon filled />
               我的常用
@@ -140,6 +148,7 @@ export function Sidebar() {
                 type="button"
                 aria-pressed={brand === b}
                 className={counts[b] ? undefined : 'none'}
+                disabled={isDead(counts[b], brand === b, !b)}
                 onClick={() => pickBrand(b)}
               >
                 {brand === b && <Indicator name="ind-brand" />}
@@ -158,13 +167,18 @@ export function Sidebar() {
             <h2>场景</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部场景'] as const, ...SCENES] as const)
-                .filter(([k]) => flowSceneCounts[k])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
-                    <button type="button" aria-pressed={scene === k} onClick={() => setScene(k as SceneId | '')}>
+                    <button
+                      type="button"
+                      aria-pressed={scene === k}
+                      className={flowSceneCounts[k] ? undefined : 'none'}
+                      disabled={isDead(flowSceneCounts[k], scene === k, !k)}
+                      onClick={() => setScene(k as SceneId | '')}
+                    >
                       {scene === k && <Indicator name="ind-scene" />}
                       {n}
-                      <small>{flowSceneCounts[k]}</small>
+                      <small>{flowSceneCounts[k] ?? 0}</small>
                     </button>
                   </li>
                 ))}
@@ -207,10 +221,15 @@ export function Sidebar() {
             <h2>适用材质</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部'] as const, ...MATERIALS] as const)
-                .filter(([k]) => !k || material === k || materialCounts[k])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
-                    <button type="button" aria-pressed={material === k} onClick={() => pickMaterial(k as MaterialId | '')}>
+                    <button
+                      type="button"
+                      aria-pressed={material === k}
+                      className={materialCounts[k] ? undefined : 'none'}
+                      disabled={isDead(materialCounts[k], material === k, !k)}
+                      onClick={() => pickMaterial(k as MaterialId | '')}
+                    >
                       {material === k && <Indicator name="ind-mat" />}
                       {n}
                       <small>{materialCounts[k] ?? 0}</small>

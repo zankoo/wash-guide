@@ -8,6 +8,11 @@ function counts<T>(items: T[], key: (item: T) => string) {
   return result;
 }
 
+/** 选了会一款都没有的选项变淡且不可点；已选中的和「全部」始终可点，用来取消 */
+export function isDead(count: number | undefined, selected: boolean, isAll: boolean): boolean {
+  return !count && !selected && !isAll;
+}
+
 /** 同一份派生结果供列表、目录、筛选计数使用，不通过 effect 回写共享状态。 */
 export function selectCatalog(products: ProductItem[], flows: FlowItem[], filters: Filters, favorites: readonly string[]) {
   const { brand, material, category, scene, query } = filters;
@@ -18,6 +23,7 @@ export function selectCatalog(products: ProductItem[], flows: FlowItem[], filter
   const matched = searched.filter((p) => (!brand || p.brand === brand) && hasMaterial(p));
   const visible = matched.filter(inCategory);
   const materialBase = searched.filter((p) => (!brand || p.brand === brand) && inCategory(p));
+  const hasBrand = (p: ProductItem) => !brand || p.brand === brand;
   const searchedFlows = flows.filter((f) => !query || matchesQuery(f.text, query, f.abbr));
   const brandFlows = searchedFlows.filter((f) => !brand || f.brand === brand);
   return {
@@ -31,6 +37,21 @@ export function selectCatalog(products: ProductItem[], flows: FlowItem[], filter
     flows: brandFlows.filter((f) => !scene || f.scene === scene),
     flowSceneCounts: counts(brandFlows, (f) => f.scene),
     flowBrandCounts: counts(searchedFlows.filter((f) => !scene || f.scene === scene), (f) => f.brand),
-    favoriteCount: products.filter((p) => favoriteIds.has(p.id)).length,
+    // 和其他选项一样：数字是点「我的常用」之后会看到几款（保留品牌、材质和搜索）
+    favoriteCount: matched.filter((p) => favoriteIds.has(p.id)).length,
+    flowRelaxed: {
+      brand: searchedFlows.filter((f) => !scene || f.scene === scene).length,
+      scene: brandFlows.length,
+      query: flows.filter((f) => (!brand || f.brand === brand) && (!scene || f.scene === scene)).length,
+    },
+    /** 收藏了多少款（不看筛选），用于「还没有常用产品」的提示 */
+    favoriteTotal: products.filter((p) => favoriteIds.has(p.id)).length,
+    /** 空结果时去掉某一个条件后能看到几款，空状态据此给出可行的放宽方式 */
+    relaxed: {
+      brand: searched.filter((p) => hasMaterial(p) && inCategory(p)).length,
+      material: materialBase.length,
+      category: matched.length,
+      query: products.filter((p) => hasBrand(p) && hasMaterial(p) && inCategory(p)).length,
+    },
   };
 }
