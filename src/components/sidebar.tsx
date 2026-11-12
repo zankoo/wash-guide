@@ -106,7 +106,7 @@ export function Sidebar() {
   // 「我的常用」是一个独立范围：分类目录照常用于跳转，只统计常用里的产品
   const favMode = !isFlows && category === 'fav';
   // 产品页有其他筛选时，左栏分类改为筛选结果里各分类的命中数，点一下只看该分类
-  const searching = !isFlows && !favMode && (query.trim() !== '' || material.length > 0 || !!brand || !!category);
+  const searching = !isFlows && !favMode && (query.trim() !== '' || !!material || !!brand || !!category);
   const indexCounts = favMode ? countBy(products.map((p) => p.category)) : hits;
 
 
@@ -203,15 +203,16 @@ export function Sidebar() {
       ) : (
         <>
           <div className="side-sec">
-            <h2>适用材质（多选取交集）</h2>
+            <h2>适用材质</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部'] as const, ...MATERIALS] as const)
-                .filter(([k]) => !k || material.includes(k) || materialCounts[k])
+                .filter(([k]) => !k || material === k || materialCounts[k])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
-                    <button type="button" aria-pressed={(k ? material.includes(k) : material.length === 0)} onClick={() => pickMaterial(k as MaterialId | '')}>
+                    <button type="button" aria-pressed={material === k} onClick={() => pickMaterial(k as MaterialId | '')}>
+                      {material === k && <Indicator name="ind-mat" />}
                       {n}
-                      <small>{k ? materialCounts[k] : products.length}</small>
+                      <small>{materialCounts[k] ?? 0}</small>
                     </button>
                   </li>
                 ))}

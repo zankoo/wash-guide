@@ -25,7 +25,7 @@ async function cacheFavorite(page: Page, id: string) {
 }
 
 test('筛选分享、刷新恢复、材质交集与实时换算', async ({ page }) => {
-  await page.goto('/?brand=K&category=trim&material=plastic,rubber');
+  await page.goto('/?brand=K&category=trim&material=rubber');
   await expect(page.locator('.active-filters')).toContainText('Koch');
   await expect(page.locator('main .card').first()).toBeVisible();
   const count = await page.locator('main .card').count();
@@ -68,6 +68,21 @@ test('桌面左栏按 品牌 → 材质 → 分类 排列', async ({ page }) => 
     expect(brand, `${width}px`).toBeLessThan(material);
     expect(material, `${width}px`).toBeLessThan(category);
   }
+});
+
+test('适用材质单选：选另一个材质会替换当前选择', async ({ page }) => {
+  await page.goto('/');
+  const side = page.getByRole('complementary', { name: '索引' });
+  const mats = side.locator('.side-sec', { has: page.getByRole('heading', { name: '适用材质' }) });
+  await mats.getByRole('button', { name: /^塑料/ }).click();
+  await mats.getByRole('button', { name: /^车漆/ }).click();
+  await expect(page).toHaveURL(/[?&]material=paint(&|$)/);
+  await expect(mats.locator('button[aria-pressed="true"]')).toHaveCount(1);
+  await expect(mats.locator('button[aria-pressed="true"] .ind')).toHaveCount(1);
+  await expect(page.locator('.active-filters')).toContainText('材质：车漆');
+  await expect(page.locator('.active-filters')).not.toContainText('塑料');
+  await mats.getByRole('button', { name: /^全部/ }).click();
+  await expect(page).not.toHaveURL(/material=/);
 });
 
 test('左栏「我的常用」：分类目录只统计常用、点击跳转不退出常用', async ({ page }) => {

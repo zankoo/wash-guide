@@ -70,7 +70,7 @@ export function useGuide(): GuideState {
 export function GuideProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { brand, material, query, scene } = useFilters();
+  const { brand, query, scene } = useFilters();
   // 筛选切换放在 transition 里：选中指示块滑动、列表淡入淡出都由 View Transition 呈现。
   // 搜索词保持同步更新，输入不卡顿（列表那边用 useDeferredValue）。
   const [scrollTarget, setScrollTarget] = useState<ScrollTarget | null>(null);
@@ -83,7 +83,7 @@ export function GuideProvider({ children }: { children: ReactNode }) {
     });
   }
   const setBrand = (b: BrandId | '') => keepReading(() => updateFilters({ brand: b }));
-  const setMaterial = (m: MaterialId | '') => keepReading(() => updateFilters({ material: !m ? '' : (material.includes(m) ? material.filter((x) => x !== m) : [...material, m]).join(',') }));
+  const setMaterial = (m: MaterialId | '') => keepReading(() => updateFilters({ material: m }));
   const [flowTarget, setFlowTarget] = useState<FlowTarget | null>(null);
   // 从流程页点开产品时路径变成 /p/…，但底下还是流程页：只在非详情路径上更新视图
   const [isFlows, setIsFlows] = useState(pathname === '/flows');

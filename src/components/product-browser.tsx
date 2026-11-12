@@ -77,7 +77,7 @@ export function ProductBrowser() {
   }
 
   // 选了分类时完整展开
-  const browsing = !category && !brand && material.length === 0;
+  const browsing = !category && !brand && !material;
   const compact = !browsing;
 
   // 搜索按分类分组，每组内按相关度排序。
@@ -115,9 +115,9 @@ export function ProductBrowser() {
   return (
     <ViewTransition key={listKey} enter="list-in" exit="list-out" default="none">
       <div className="list" ref={top}>
-        {material.length > 0 && (
+        {material && (
           <p className="found" role="status">
-            只显示官方写明可用于「{material.map((m) => MATERIAL_NAME[m]).join(' + ')}」的产品
+            只显示官方写明可用于「{MATERIAL_NAME[material]}」的产品
           </p>
         )}
         {CATS.map(([k, name]) => {

@@ -568,18 +568,11 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 /* 速查筛选与配比上下文 */
 .active-filters{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .active-filters button{border:1px solid var(--line-2);border-radius:20px;background:var(--sheet);color:var(--ink);padding:6px 10px;cursor:pointer;font:inherit;font-size:12px}
-.material-picker{position:relative;font-size:13px}
-.material-picker summary{cursor:pointer;padding:10px;border:1px solid var(--line-2);border-radius:8px}
-.material-options{position:absolute;right:0;top:100%;z-index:30;width:260px;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--sheet);box-shadow:0 8px 24px #0002}
-.material-options label{display:flex;align-items:center;gap:6px;min-height:30px}
 .ph-claim{font-size:11px;color:var(--muted);margin-top:5px}
 .pill{white-space:normal;overflow:visible;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
 .ph-img{--placeholder-color:var(--koch);background:color-mix(in srgb,var(--placeholder-color) 9%,var(--stage));border-bottom:3px solid var(--placeholder-color)}
 .ph-img.C{--placeholder-color:var(--carpro)} .ph-img.L{--placeholder-color:var(--labo)} .ph-img.M{--placeholder-color:var(--maniac)} .ph-img.G{--placeholder-color:var(--gyeon)} .ph-img.F{--placeholder-color:var(--mafra)} .ph-img.B{--placeholder-color:var(--bola)} .ph-img.N{--placeholder-color:var(--feynlab)} .ph-img.P{--placeholder-color:var(--ps)}
 
-.material-picker{flex:none}
-.material-picker summary{white-space:nowrap}
 .flow{scroll-margin-top:calc(var(--bar-h) + 24px)}
-@media(max-width:600px){.material-picker summary{padding:12px 6px;font-size:12px}}
 
 .offline-status{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:80;padding:8px 14px;border-radius:20px;background:var(--ink,#152b36);color:var(--paper,#fff);font-size:12px;white-space:nowrap;pointer-events:none}
