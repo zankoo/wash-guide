@@ -25,7 +25,7 @@ async function cacheFavorite(page: Page, id: string) {
 }
 
 test('筛选分享、刷新恢复、材质交集与实时换算', async ({ page }) => {
-  await page.goto('/?brand=K&category=trim&material=plastic,rubber');
+  await page.goto('/?brand=K&category=trim&material=rubber');
   await expect(page.locator('.active-filters')).toContainText('Koch');
   await expect(page.locator('main .card').first()).toBeVisible();
   const count = await page.locator('main .card').count();
@@ -56,6 +56,49 @@ test('分类标题吸顶时紧贴筛选栏，中间不露出滚动内容', async
     expect(gap, `${width}px`).toBeLessThanOrEqual(0);
     expect(gap, `${width}px`).toBeGreaterThan(-2);
   }
+});
+
+test('桌面左栏按 品牌 → 材质 → 分类 排列', async ({ page }) => {
+  for (const width of [1440, 1100]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const side = page.getByRole('complementary', { name: '索引' });
+    const top = async (name: RegExp) => (await side.getByRole('heading', { name }).boundingBox())!.y;
+    const [brand, material, category] = [await top(/^品牌$/), await top(/^适用材质/), await top(/^分类/)];
+    expect(brand, `${width}px`).toBeLessThan(material);
+    expect(material, `${width}px`).toBeLessThan(category);
+  }
+});
+
+test('适用材质单选：选另一个材质会替换当前选择', async ({ page }) => {
+  await page.goto('/');
+  const side = page.getByRole('complementary', { name: '索引' });
+  const mats = side.locator('.side-sec', { has: page.getByRole('heading', { name: '适用材质' }) });
+  await mats.getByRole('button', { name: /^塑料/ }).click();
+  await mats.getByRole('button', { name: /^车漆/ }).click();
+  await expect(page).toHaveURL(/[?&]material=paint(&|$)/);
+  await expect(mats.locator('button[aria-pressed="true"]')).toHaveCount(1);
+  await expect(mats.locator('button[aria-pressed="true"] .ind')).toHaveCount(1);
+  await expect(page.locator('.active-filters')).toContainText('材质：车漆');
+  await expect(page.locator('.active-filters')).not.toContainText('塑料');
+  await mats.getByRole('button', { name: /^全部/ }).click();
+  await expect(page).not.toHaveURL(/material=/);
+});
+
+test('左栏「我的常用」：分类目录只统计常用、点击跳转不退出常用', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => { localStorage.setItem('wash-favorites', JSON.stringify(['C-reset', 'C-ironx'])); dispatchEvent(new StorageEvent('storage', { key: 'wash-favorites' })); });
+  const side = page.getByRole('complementary', { name: '索引' });
+  await side.getByRole('button', { name: /^我的常用 2$/ }).click();
+  await expect(page.locator('main .card')).toHaveCount(2);
+  const index = side.getByRole('navigation', { name: '分类目录' });
+  await expect(index.getByRole('heading')).toHaveText('分类（我的常用）');
+  await expect(index.getByRole('button')).toHaveCount(0);
+  const links = index.getByRole('link');
+  await expect(links).toHaveCount(2);
+  await links.last().click();
+  await expect(page.locator('main .card')).toHaveCount(2);
+  await expect(side.getByRole('button', { name: /^我的常用/ })).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({ page }) => {
@@ -113,7 +156,7 @@ test('离线刷新带筛选参数的页面，收藏详情可交互且能返回',
   await expect(page.getByRole('searchbox')).toHaveValue('铁粉');
   await expect(page.locator('main .card').first()).toBeVisible();
   await page.getByRole('button', { name: '清除全部', exact: true }).click();
-  await page.getByRole('button', { name: /我的常用 · 1/ }).click();
+  await page.getByRole('button', { name: /^我的常用 1$/ }).click();
   await page.locator('main .card[href^="/p/C-reset"]').click();
   await expect(page.locator('#d-name')).toHaveText('Reset');
   await expect(page.locator('.sh-stage img')).toBeVisible();

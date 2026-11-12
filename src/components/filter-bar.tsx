@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { MATERIALS, MATERIAL_NAME } from '@/data/materials';
+import { MATERIALS, MATERIAL_NAME, type MaterialId } from '@/data/materials';
 import { BRAND, BRAND_SHORT, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { BrandId } from '@/data/types';
 import { useGuide } from './guide-state';
@@ -20,7 +20,7 @@ export function usePickers() {
 export function FilterBar() {
   const { isFlows } = useGuide();
   const { brand, material, query, setQuery, category, setCategory, scene, setScene, clearFilters } = useFilters();
-  const { productCounts, flowSceneCounts, favoriteCount } = useCatalogResults();
+  const { productCounts, flowSceneCounts, favoriteCount, materialCounts } = useCatalogResults();
   const { pickBrand, pickMaterial } = usePickers();
   const input = useRef<HTMLInputElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -115,20 +115,23 @@ export function FilterBar() {
             </select>
           </label>
           {!isFlows && (
-            <details className="material-picker">
-              <summary>材质{material.length ? ` · ${material.length}` : ' · 多选'}</summary>
-              <div className="material-options">
-                {MATERIALS.map(([k, n]) => (
-                  <label key={k}><input type="checkbox" checked={material.includes(k)} onChange={() => pickMaterial(k)} />{n}</label>
+            <label className={`mat-pick${material ? ' on' : ''}`}>
+              <span className="sr">适用材质</span>
+              <select value={material} onChange={(e) => pickMaterial(e.target.value as MaterialId | '')}>
+                <option value="">全部材质</option>
+                {MATERIALS.filter(([k]) => k === material || materialCounts[k]).map(([k, n]) => (
+                  <option key={k} value={k}>
+                    {n}
+                  </option>
                 ))}
-              </div>
-            </details>
+              </select>
+            </label>
           )}
         </div>
-        {(brand || material.length > 0 || category || scene || query) && (
+        {(brand || material || category || scene || query) && (
           <div className="active-filters" role="group" aria-label="已选条件">
             {brand && <button onClick={() => pickBrand('')} aria-label={`移除品牌 ${BRAND[brand]}`}>{BRAND[brand]} ×</button>}
-            {!isFlows && material.map((m) => <button key={m} onClick={() => pickMaterial(m)} aria-label={`移除材质 ${MATERIAL_NAME[m]}`}>材质：{MATERIAL_NAME[m]} ×</button>)}
+            {!isFlows && material && <button onClick={() => pickMaterial('')} aria-label={`移除材质 ${MATERIAL_NAME[material]}`}>材质：{MATERIAL_NAME[material]} ×</button>}
             {!isFlows && category && <button onClick={() => setCategory('')}>分类：{category === 'fav' ? '我的常用' : CATS.find(([k]) => k === category)?.[1]} ×</button>}
             {isFlows && scene && <button onClick={() => setScene('')}>{SCENES.find(([k]) => k === scene)?.[1]} ×</button>}
             {query && <button onClick={() => setQuery('')}>搜索：{query} ×</button>}

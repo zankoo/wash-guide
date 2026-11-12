@@ -1,4 +1,3 @@
-import { MATERIALS } from '@/data/materials';
 import type { ProductItem, FlowItem } from './catalog';
 import type { Filters } from './filters';
 import { matchesQuery } from './search';
@@ -15,8 +14,10 @@ export function selectCatalog(products: ProductItem[], flows: FlowItem[], filter
   const favoriteIds = new Set(favorites);
   const inCategory = (p: ProductItem) => !category || (category === 'fav' ? favoriteIds.has(p.id) : p.category === category);
   const searched = products.filter((p) => !query || matchesQuery(p.text, query, p.rank.abbr));
-  const matched = searched.filter((p) => (!brand || p.brand === brand) && material.every((m) => p.materials.includes(m)));
+  const hasMaterial = (p: ProductItem) => !material || p.materials.includes(material);
+  const matched = searched.filter((p) => (!brand || p.brand === brand) && hasMaterial(p));
   const visible = matched.filter(inCategory);
+  const materialBase = searched.filter((p) => (!brand || p.brand === brand) && inCategory(p));
   const searchedFlows = flows.filter((f) => !query || matchesQuery(f.text, query, f.abbr));
   const brandFlows = searchedFlows.filter((f) => !brand || f.brand === brand);
   return {
@@ -24,10 +25,9 @@ export function selectCatalog(products: ProductItem[], flows: FlowItem[], filter
     matchedProducts: matched,
     productCounts: counts(matched, (p) => p.category),
     subCounts: counts(visible, (p) => p.sub),
-    productBrandCounts: counts(searched.filter((p) => inCategory(p) && material.every((m) => p.materials.includes(m))), (p) => p.brand),
-    materialCounts: Object.fromEntries(MATERIALS.map(([m]) => [m,
-      searched.filter((p) => (!brand || p.brand === brand) && inCategory(p) && p.materials.includes(m) && material.filter((x) => x !== m).every((x) => p.materials.includes(x))).length,
-    ])),
+    productBrandCounts: counts(searched.filter((p) => inCategory(p) && hasMaterial(p)), (p) => p.brand),
+    // 材质单选：每个材质的数字是选它之后会剩几款（''：不限材质）
+    materialCounts: Object.assign(counts(materialBase.flatMap((p) => p.materials), (m) => m), { '': materialBase.length }),
     flows: brandFlows.filter((f) => !scene || f.scene === scene),
     flowSceneCounts: counts(brandFlows, (f) => f.scene),
     flowBrandCounts: counts(searchedFlows.filter((f) => !scene || f.scene === scene), (f) => f.brand),

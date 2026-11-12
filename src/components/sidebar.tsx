@@ -15,6 +15,12 @@ import { Indicator } from './indicator';
 import { Logo } from './hero';
 import { ViewTabs } from './view-tabs';
 
+function countBy(keys: string[]): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const k of keys) result[k] = (result[k] ?? 0) + 1;
+  return result;
+}
+
 /** 滚动监听：返回当前位于视口上部的那个元素的 id */
 function useScrollSpy(selector: string, deps: unknown[]): string {
   const [active, setActive] = useState('');
@@ -97,8 +103,11 @@ export function Sidebar() {
   const activeSub = pin ? pin.sub : spySub;
   const activeFlow = pin ? pin.flow : spyFlow;
 
-  // 产品页有搜索词时，左栏分类显示每个分类的命中数
-  const searching = !isFlows && (query.trim() !== '' || material.length > 0 || !!brand || !!category);
+  // 「我的常用」是一个独立范围：分类目录照常用于跳转，只统计常用里的产品
+  const favMode = !isFlows && category === 'fav';
+  // 产品页有其他筛选时，左栏分类改为筛选结果里各分类的命中数，点一下只看该分类
+  const searching = !isFlows && !favMode && (query.trim() !== '' || !!material || !!brand || !!category);
+  const indexCounts = favMode ? countBy(products.map((p) => p.category)) : hits;
 
 
   return (
@@ -109,7 +118,18 @@ export function Sidebar() {
       </div>
       <ViewTabs className="tabs side-tabs" />
 
-      {!isFlows && <div className="side-sec side-favorites"><button type="button" className="side-fav" aria-pressed={category === 'fav'} onClick={() => setCategory(category === 'fav' ? '' : 'fav')}><StarIcon filled /> 我的常用 · {favoriteCount}</button></div>}
+      {!isFlows && (
+        <ul className="side-list" role="list">
+          <li>
+            <button type="button" className="side-fav" aria-pressed={favMode} onClick={() => setCategory(favMode ? '' : 'fav')}>
+              {favMode && <Indicator name="ind-fav" />}
+              <StarIcon filled />
+              我的常用
+              <small>{favoriteCount}</small>
+            </button>
+          </li>
+        </ul>
+      )}
       <div className="side-sec">
         <h2>品牌</h2>
         <ul className="side-list" role="list">
@@ -183,46 +203,23 @@ export function Sidebar() {
       ) : (
         <>
           <div className="side-sec">
-            <h2>适用材质（多选取交集）</h2>
+            <h2>适用材质</h2>
             <ul className="side-list compact" role="list">
               {([['', '全部'] as const, ...MATERIALS] as const)
-                .filter(([k]) => !k || material.includes(k) || materialCounts[k])
+                .filter(([k]) => !k || material === k || materialCounts[k])
                 .map(([k, n]) => (
                   <li key={k || 'all'}>
-                    <button type="button" aria-pressed={(k ? material.includes(k) : material.length === 0)} onClick={() => pickMaterial(k as MaterialId | '')}>
+                    <button type="button" aria-pressed={material === k} onClick={() => pickMaterial(k as MaterialId | '')}>
+                      {material === k && <Indicator name="ind-mat" />}
                       {n}
-                      <small>{k ? materialCounts[k] : products.length}</small>
+                      <small>{materialCounts[k] ?? 0}</small>
                     </button>
                   </li>
                 ))}
             </ul>
           </div>
           <nav className="side-sec side-categories" aria-label="分类目录">
-            <h2>{searching ? '分类（筛选结果）' : '分类'}</h2>
-            <ul className="side-list" role="list">
-              {(favoriteCount > 0 || category === 'fav') && (
-                <li>
-                  <button
-                    type="button"
-                    className="side-fav"
-                    aria-pressed={category === 'fav'}
-                    onClick={() => setCategory(category === 'fav' ? '' : 'fav')}
-                  >
-                    {category === 'fav' && <Indicator name="ind-cat" />}
-                    <StarIcon filled />
-                    常用
-                    <small>{favoriteCount}</small>
-                  </button>
-                </li>
-              )}
-              {category && (
-                <li>
-                  <button type="button" onClick={() => setCategory('')}>
-                    显示全部分类
-                  </button>
-                </li>
-              )}
-            </ul>
+            <h2>{favMode ? '分类（我的常用）' : searching ? '分类（筛选结果）' : '分类'}</h2>
             {searching ? (
               // 搜索时列表不按分类分区，没有可以跳转的位置：分类改为在搜索结果里筛选，再点一次取消
               <ul className="side-list side-hits" role="list">
@@ -244,7 +241,7 @@ export function Sidebar() {
               </ul>
             ) : (
               <ul className="side-index" role="list">
-                {CATS.filter(([k]) => hits[k] || category === k).map(([k, n]) => {
+                {CATS.filter(([k]) => indexCounts[k]).map(([k, n]) => {
                   const here = activeCat === `cat-${k}`;
                   const subs = SUBCATS.filter((s) => s.category === k && subCounts[s.id]);
                   return (
@@ -254,16 +251,16 @@ export function Sidebar() {
                         aria-current={here ? 'location' : undefined}
                         onClick={(e) => {
                           e.preventDefault();
-                          // 选了其他分类或「常用」时先回到全部，目标分类才在列表里
-                          if (category && category !== k) setCategory('');
                           setPin({ cat: `cat-${k}` });
-                          jumpTo(`cat-${k}`, k);
+                          // 常用列表不折叠，不改动全部产品里各分类的展开状态
+                          jumpTo(`cat-${k}`, favMode ? undefined : k);
                         }}
                       >
                         {n}
-                        <small>{hits[k]}</small>
+                        <small>{indexCounts[k]}</small>
                       </a>
-                      {here && subs.length > 1 && (
+                      {/* 常用列表不分子分类，没有可跳转的子分类位置 */}
+                      {here && !favMode && subs.length > 1 && (
                         <ul className="side-subs" role="list">
                           {subs.map((s) => (
                             <li key={s.id}>
