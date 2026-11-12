@@ -20,7 +20,17 @@ export function Sheet({ children }: { children: ReactNode }) {
     if (!d) return;
     hidden.current = false;
     if (!d.open) d.showModal();
+    // 前进后退时上一个详情会被隐藏保留在页面里，标题 id 按产品区分；
+    // 面板的无障碍名称指向自己里面的标题（内容在 Suspense 里稍后到达）
+    const label = () => {
+      const h = d.querySelector('.sh-name');
+      if (h?.id) d.setAttribute('aria-labelledby', h.id);
+    };
+    label();
+    const observer = new MutationObserver(label);
+    observer.observe(d, { childList: true, subtree: true });
     return () => {
+      observer.disconnect();
       hidden.current = true;
       d.close();
       setClosing(false);
@@ -39,7 +49,6 @@ export function Sheet({ children }: { children: ReactNode }) {
       ref={ref}
       className="sheet"
       data-closing={closing || undefined}
-      aria-labelledby="d-name"
       onCancel={(e) => {
         e.preventDefault();
         close();
