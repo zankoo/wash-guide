@@ -445,14 +445,12 @@ export const products: Product[] = [
  notes:['耐久最长 12 个月（视维护）；强拒水，耐酸碱清洁剂，抗盐和刹车粉。',...KOCH_CERAMIC_RULES],url:KOCH+'ceramic_rims_cr001'},
 
 {
- image:null,
  id:'K-ceramic-glass-cg001',brand:'K',category:'coat',name:'Ceramic Glass Cg0.01',type:'KCx 无氟玻璃镀膜（2026 新品）',sizes:'—',materials:'车外玻璃',
  dilutions:[['挡风玻璃等外部玻璃（施工海绵）','即用','—']],
  steps:['用 Glass Cleaner 彻底清洁玻璃，需要时用蓝色清洁泥。','按说明用 Glass Pre Polish 去除被侵蚀的表层。','只在干净、干燥、15–25 °C 的玻璃上施工，先做挡风玻璃的一半。','用 Application Sponge 十字交叉推开，直到形成均匀薄膜。','停留 12 分钟后，用 Polish & Sealing Towel 擦亮；已干残留可再加少量镀膜溶解后擦掉。','24 小时内不要扰动，完全固化需 5 天。','日常养护用醇基玻璃清洁剂。'],
  notes:['不含氟（PFAS-free），提升雨天视线、减少雨刮使用。','截至 2026-10 官网尚无独立产品页，资料取自官方 ExpertBlog；Glass Pre Polish 未收录。'],url:KOCH_BLOG_KCX},
 
 {
- image:null,
  id:'K-plast-shield',brand:'K',category:'coat',name:'Plast Shield',type:'KCx 未涂装塑料镀膜（2026 新品）',sizes:'—',materials:'未涂装外部塑料（侧裙、保险杠等）',
  dilutions:[['未涂装外部塑料（施工海绵）','即用','—']],
  steps:['彻底预清洁（如 Green Star），不要使用溶剂型清洁剂，确保无残留。','用 Application Sponge 均匀涂抹。','停留 12 分钟。','如有多余，用 Coating Towel 擦去。','24 小时内避免机械摩擦。'],
@@ -475,7 +473,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/PerfectFinish_Sealant_Art-__685999_685999_0004_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- image:null,
  id:'K-perfectfinish-sealant',brand:'K',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/PerfectFinish_Sealant_Art-__685999_685999_0004_EN.pdf","section":9},"evidence":[],"conflict":false},name:'PerfectFinish Sealant',type:'喷雾封体（可作镀膜面层）',sizes:'5 L 等',materials:'车漆',
  dilutions:[['手工 / 机器（超纤布）','即用（喷在毛巾或海绵盘上）','—']],
  steps:['按脏污程度预洗/洗车并彻底擦干。','视漆面情况先用无硅抛光剂处理，再用 Panel Preparation Spray 脱脂。','喷在干净的 Polish & Sealing Towel 上，在连续区域均匀推开，不要直接喷在漆面上。','用干燥的 Polish & Sealing Towel 去除残留。','机器施工：喷在 Polish & Sealing 海绵盘上，用气动或电动偏心机分区抛入，再用干毛巾擦净。','施工后 24 小时内不要洗车。'],
@@ -490,7 +487,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"https://media.koch-chemie.com/pdf/SDBL/WetGloss_Art-__684999_684999_0004_EN.pdf","source":"koch","language":"英文","hosting":"remote"},
- image:null,
  id:'K-wetgloss',brand:'K',category:'seal',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://media.koch-chemie.com/pdf/SDBL/WetGloss_Art-__684999_684999_0004_EN.pdf","section":9},"evidence":[],"conflict":false},name:'WetGloss',type:'即用型湿式封体（数周保护）',sizes:'500 ml · 5 L',materials:'车身外部各表面',
  dilutions:[['整车（约 250 ml，视车型）','即用','喷雾壶']],
  steps:['先预洗/洗车。','使用前摇匀。','喷在湿润的车漆上。','用水流彻底冲洗。','彻底擦干，避免水斑。'],
@@ -511,7 +507,6 @@ export const products: Product[] = [
  cautions:['hot'],notes:['无残留去除顽固水垢，一步清洁和保护，恢复色深，留下无痕高光并防止再次脏污。','不要用于内饰或不耐酸表面。'],url:KOCH+'finish_spray_exterior'},
 
 {
- image:null,
  id:'K-quick-shine-plus',brand:'K',category:'seal',name:'Quick & Shine +',type:'全能快速美容喷剂（2026 新版）',sizes:'1 L · 10 L',materials:'车漆 · 玻璃 · 塑料 · 中控 · 不锈钢 · 漆面家具等',
  dilutions:[['光滑及漆面表面','即用','喷雾壶']],
  steps:['均匀喷在待处理表面。','用 Polish & Sealing Towel 擦亮。'],
@@ -526,7 +521,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/K-allround-quick-shine.pdf","source":"koch","language":"挪威文","version":"2024-11-28","hosting":"local","sha256":"798782690ee12fee5bbf72f8a7a0bd8f68de06dccd9af471851f53dc02bfc034","originalUrl":"https://media.koch-chemie.com/pdf/SDBL/AllroundQuickShine__Art-__77708999_77708999_0004_NO.pdf","checkedAt":"2026-11-10"},
- image:null,
  id:'K-allround-quick-shine',brand:'K',category:'seal',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-01-0388，已过期）：原液中性。","registration":"CB22-01-0388"}],"conflict":false},name:'AllroundQuickShine',type:'全能快速美容剂（零售装）',sizes:'500 ml',materials:'车漆 · 玻璃 · 塑料 · 家具',
  dilutions:[['光滑及漆面表面','即用','喷雾壶']],
  steps:['少量均匀地喷在表面。','用干净的布擦亮。'],
@@ -577,7 +571,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/K-nanomagic-plast-care.pdf","source":"autonablask","language":"波兰文","version":"2023-06-07","hosting":"local","sha256":"4793f9969a3d1812b1ca9e99e8c357c1120d65d1bfae887c1684cfdd8d9e14d5","originalUrl":"https://autonablask.pl/app/uploads/2026/02/nanomagicplastcare_art-__77707999_77707999_0001_pl.pdf","checkedAt":"2026-11-10"},
- image:null,
  id:'K-nanomagic-plast-care',brand:'K',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-07-0135，已过期）：不适用。","registration":"CB22-07-0135"}],"conflict":false},name:'NanoMagicPlastCare',type:'外部塑料 / 橡胶养护（零售装）',sizes:'500 ml',materials:'外部塑料饰条 · 橡胶',
  dilutions:[['外部塑料 / 橡胶（施工海绵）','即用','—']],
  steps:['喷在干净海绵上。','均匀涂在已清洁、干燥的表面。','完全晾干。','必要时用软布擦拭。'],
@@ -621,7 +614,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/K-speed-glass-cleaner.pdf","source":"autonablask","language":"波兰文","version":"2024-12-16","hosting":"local","sha256":"ae0bb0bbd3147b3d49bdba44ba3fa970f5e9f5b42c43852ef52e4bc82e046daf","originalUrl":"https://autonablask.pl/app/uploads/2026/02/speedglasscleaner_art-__77703999_77703999_0003_pl.pdf","checkedAt":"2026-11-10"},
- image:null,
  id:'K-speed-glass-cleaner',brand:'K',category:'glass',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-01-0423，已过期）：原液中性。","registration":"CB22-01-0423"}],"conflict":false},name:'SpeedGlassCleaner',type:'即用型玻璃清洁剂（零售装）',sizes:'750 ml',materials:'玻璃 · 镜面等光滑表面',
  dilutions:[['玻璃','即用','喷雾壶']],
  steps:['原液喷上。','擦净。'],
@@ -650,7 +642,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/K-multi-interior-cleaner.pdf","source":"autonablask","language":"波兰文","version":"2024-05-23","hosting":"local","sha256":"afbce342d7e64275c21d360504924df251a94c2562a6a1c06d50cf49381325b0","originalUrl":"https://autonablask.pl/app/uploads/2026/02/multiinteriorcleaner_art-__77705999_77705999_0003_pl.pdf","checkedAt":"2026-11-10"},
- image:null,
  id:'K-multi-interior-cleaner',brand:'K',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-01-0566，已过期）：原液中性。","registration":"CB22-01-0566"}],"conflict":false},name:'MultiInteriorCleaner',type:'即用型内饰清洁剂（零售装）',sizes:'750 ml',materials:'座椅 · 织物 · 车顶内衬 · 地面 · 塑料饰板',
  dilutions:[['内饰各类材质','即用','喷雾壶']],
  steps:['喷在脏污部位。','短暂作用。','用布或软刷擦拭。','再用清水和干净的布处理一遍。'],
@@ -665,7 +656,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/K-leather-star.pdf","source":"koch","language":"英文","version":"2022-11-25","hosting":"local","sha256":"9c4e066a309be7ac5f8adca33da3abb0b79c3ba19e52c139944a93e34820b445","originalUrl":"https://media.koch-chemie.com/pdf/SDBL/Leather_Star_Art-__238999_238999_0001_EN.pdf","checkedAt":"2026-11-10"},
- image:null,
  id:'K-leather-star',brand:'K',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB23-06-0053，已过期）：不适用。","registration":"CB23-06-0053"}],"conflict":false},name:'Leather Star',type:'皮革深层养护乳（自然半光）',sizes:'—',materials:'光面皮 · 麂皮 · 打孔皮',
  dilutions:[['皮革养护（超纤布）','即用','—']],
  steps:['先用合适的清洁剂（如 Pol Star）去污。','用湿布擦拭并彻底晾干。','使用前摇匀。','用海绵或柔软超纤布大面积均匀涂抹，晾干。','用软布擦去多余部分。'],
@@ -673,7 +663,6 @@ export const products: Product[] = [
 
 {
  sds:{"url":"/sds/K-protect-leather-care.pdf","source":"koch","language":"英文","version":"2025-10-07","hosting":"local","sha256":"4a839f3251d04aedcb606f42b9a811ee845ebb33fbf073b6b10834c86717b828","originalUrl":"https://media.koch-chemie.com/pdf/SDBL/ProtectLeatherCare_Art-__77709999_77709999_0004_EN.pdf","checkedAt":"2026-11-10"},
- image:null,
  id:'K-protect-leather-care',brand:'K',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 CB22-07-0149，已过期）：不适用。","registration":"CB22-07-0149"}],"conflict":false},name:'ProtectLeatherCare',type:'皮革养护乳（零售装）',sizes:'500 ml',materials:'皮革',
  dilutions:[['皮革养护（施工海绵）','即用','—']],
  steps:['皮革很脏时先用合适的清洁剂清洁并晾干。','摇匀。','用软布或海绵薄而均匀地涂一层。','作用后必要时擦亮。'],
