@@ -87,7 +87,7 @@ JSON 的 `sds.missing`、`ph` 各项和 `localSds.missingOriginalUrl` 包含产�
 
 ## CI 与部署到 Vercel
 
-Vercel CI 根据 `turbo.json` 中标为 `ci` 的任务运行 lint、类型检查、单元测试和 `test:e2e:ci`。浏览器任务在主机构建并检查传输预算，再使用匹配 Playwright 版本的官方容器测试本地生产服务；失败时在 `test-results/` 留存 trace 和截图。仓库不再重复运行 GitHub Actions。
+CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，测的是合入 main 后的结果，合并后不在 main 上重跑；只改 Markdown 或 `research/` 时跳过。依次运行 lint、类型检查、单元测试、生产构建、传输预算检查和 Playwright 浏览器测试；失败时把 `test-results/` 的 trace 和截图作为构件上传。探索测试每次运行换一个随机种子，单次轮数较少，覆盖面靠多次运行累积。
 
 
 在 Vercel 导入此仓库即可：Framework Preset 会自动识别为 Next.js，构建命令和输出目录都用默认值，包管理器按 `pnpm-lock.yaml` 识别为 pnpm。推送到主分支后自动部署，其他分支生成预览地址。

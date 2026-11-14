@@ -225,7 +225,8 @@ for (const mobile of [false, true]) {
     test.setTimeout(240000);
     if (mobile) await page.setViewportSize({ width: 390, height: 844 });
     const r = rng(SEED + (mobile ? 1 : 0));
-    for (let run = 0; run < 5; run++) {
+    // 每次 CI 换一个种子，覆盖面靠多次运行累积；单次只跑 3 轮，控制 CI 用时
+    for (let run = 0; run < 3; run++) {
       await page.goto(run === 0 ? '/' : await randomState(r));
       const history: string[] = [page.url().replace(/^https?:\/\/[^/]+/, '')];
       for (let step = 0; step < 8; step++) {
@@ -241,7 +242,7 @@ test('探索：流程页筛选任意点击顺序', async ({ page }) => {
   const r = rng(SEED + 2);
   const side = page.getByRole('complementary', { name: '索引' });
   const sec = (h: string) => side.locator('.side-sec', { has: page.getByRole('heading', { name: h, exact: true }) });
-  for (let run = 0; run < 4; run++) {
+  for (let run = 0; run < 2; run++) {
     await page.goto('/flows');
     const history: string[] = [];
     for (let step = 0; step < 8; step++) {

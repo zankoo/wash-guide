@@ -11,7 +11,6 @@
     "test": "vitest run",
     "data:report": "node scripts/catalog-report.mjs",
     "test:e2e": "playwright test",
-    "test:e2e:ci": "sh scripts/e2e-ci.sh",
     "check:payload": "node scripts/check-payload.mjs"
   },
   "dependencies": {
@@ -29,7 +28,6 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
-    "turbo": "^2.11.10",
     "typescript": "^5",
     "vitest": "^5.0.4"
   },
