@@ -5,11 +5,14 @@ export default defineConfig({
   worker: defineWorker({
     name: "wash-guide",
     workersDev: true,
+    previewUrls: true,
+    placement: { mode: "smart" },
     domains: ["wash.kokoda.fun"],
     entrypoint: "vinext/server/fetch-handler",
     compatibilityDate: "2026-11-17",
     observability: {
       enabled: true,
+      issues: { enabled: true },
       traces: { enabled: true },
     },
     assets: {
