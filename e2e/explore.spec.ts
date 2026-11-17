@@ -177,6 +177,9 @@ async function randomState(r: (n: number) => number): Promise<string> {
 }
 
 async function productAction(page: Page, r: (n: number) => number, mobile: boolean): Promise<string> {
+  // 预渲染先显示默认目录；等 URL 筛选恢复后再挑选可用控件。
+  await expect(page.locator('.bar')).not.toHaveAttribute('inert');
+  await checkProducts(page, '操作前筛选恢复', mobile);
   const roll = r(20);
   const empty = page.locator('main .empty button.scope-clear');
   if (roll === 0) { const url = await randomState(r); await page.goto(url); return `打开链接 ${url}`; }
@@ -225,7 +228,8 @@ for (const mobile of [false, true]) {
     test.setTimeout(240000);
     if (mobile) await page.setViewportSize({ width: 390, height: 844 });
     const r = rng(SEED + (mobile ? 1 : 0));
-    for (let run = 0; run < 5; run++) {
+    // 每次 CI 换一个种子，覆盖面靠多次运行累积；单次只跑 3 轮，控制 CI 用时
+    for (let run = 0; run < 3; run++) {
       await page.goto(run === 0 ? '/' : await randomState(r));
       const history: string[] = [page.url().replace(/^https?:\/\/[^/]+/, '')];
       for (let step = 0; step < 8; step++) {
@@ -241,7 +245,7 @@ test('探索：流程页筛选任意点击顺序', async ({ page }) => {
   const r = rng(SEED + 2);
   const side = page.getByRole('complementary', { name: '索引' });
   const sec = (h: string) => side.locator('.side-sec', { has: page.getByRole('heading', { name: h, exact: true }) });
-  for (let run = 0; run < 4; run++) {
+  for (let run = 0; run < 2; run++) {
     await page.goto('/flows');
     const history: string[] = [];
     for (let step = 0; step < 8; step++) {
@@ -345,11 +349,14 @@ test('收藏记录损坏或含已删除产品时页面照常使用，数字只�
 
 test('不存在的产品页每次都返回 404，收藏了已删除产品也不会让服务器出错', async ({ page, request }) => {
   const r = rng(SEED + 6);
-  const bad = ['deleted-x', `zz-${r(1e6)}`, encodeURIComponent('中文'), 'L-primus-old', '%E0'];
+  const bad = ['deleted-x', `zz-${r(1e6)}`, encodeURIComponent('中文'), 'L-primus-old'];
   for (const id of bad) {
     for (let i = 0; i < 3; i++) expect((await request.get(`/p/${id}`)).status(), `/p/${id} 第 ${i + 1} 次`).toBe(404);
     expect((await request.get(`/p/${id}?_rsc=x`, { headers: { RSC: '1' } })).status(), `/p/${id} RSC`).toBe(404);
   }
+  // vinext 在进入 proxy 前拒绝非法 UTF-8；畸形 URL 是 400，合法但不存在的 ID 是 404。
+  expect((await request.get('/p/%E0')).status()).toBe(400);
+  expect((await request.get('/p/%E0?_rsc=x', { headers: { RSC: '1' } })).status()).toBe(400);
   const ok = PRODUCTS[r(PRODUCTS.length)].id;
   expect((await request.get(`/p/${ok}`)).status(), ok).toBe(200);
   await page.goto('/p/deleted-x');

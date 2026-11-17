@@ -1,0 +1,61 @@
+name: CI
+
+# 只在 PR 上跑：pull_request 测的是 PR 合入 main 后的结果，合并后不在 main 上重跑。
+# 没开 PR 的分支（如 tmp/* 传图分支）不会触发。
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'research/**'
+  workflow_dispatch:
+
+# 同一个 PR 推了新提交就取消还在跑的旧运行，不为过时的提交花分钟数
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+
+      - run: pnpm build
+      - run: pnpm check:payload
+
+      - id: pw
+        run: echo "version=$(node -p 'require("@playwright/test/package.json").version')" >> "$GITHUB_OUTPUT"
+      - id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ steps.pw.outputs.version }}
+      # playwright.config.ts 用 channel: 'chromium'，不需要 headless shell
+      - if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: pnpm exec playwright install --with-deps --no-shell chromium
+      - if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps chromium
+      - run: pnpm exec playwright test
+        env:
+          PLAYWRIGHT_SKIP_BUILD: 1
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7

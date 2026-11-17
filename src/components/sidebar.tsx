@@ -89,7 +89,7 @@ function usePin(): [Pin | null, (p: Pin) => void] {
 /** 桌面左侧索引栏：品牌、分类目录（产品页）或场景与流程目录（流程页） */
 export function Sidebar() {
   const { isFlows, jumpTo, expanded } = useGuide();
-  const { brand, material, category, setCategory, scene, setScene, query } = useFilters();
+  const { ready, brand, material, category, setCategory, scene, setScene, query } = useFilters();
   const { pickBrand, pickMaterial } = usePickers();
   const { products, flows: shownFlows, productCounts: hits, subCounts, productBrandCounts, flowBrandCounts, flowSceneCounts, materialCounts, favoriteCount, favoriteTotal } = useCatalogResults();
   const counts = isFlows ? flowBrandCounts : productBrandCounts;
@@ -113,7 +113,7 @@ export function Sidebar() {
 
 
   return (
-    <aside className="side" aria-label="索引">
+    <aside className="side" aria-label="索引" inert={!ready}>
       <div className="side-id">
         <Logo />
         <span>洗车施工速查</span>

@@ -14,14 +14,14 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:3130',
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3130',
     channel: 'chromium',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 1000 } } }],
-  webServer: {
-    command: process.env.PLAYWRIGHT_SKIP_BUILD ? 'node node_modules/next/dist/bin/next start --port 3130' : 'pnpm build && pnpm check:payload && pnpm start --port 3130',
+  webServer: process.env.PLAYWRIGHT_BASE_URL ? undefined : {
+    command: process.env.PLAYWRIGHT_SKIP_BUILD ? 'pnpm start --host 127.0.0.1 --port 3130' : 'pnpm build && pnpm check:payload && pnpm start --host 127.0.0.1 --port 3130',
     url: 'http://127.0.0.1:3130',
     reuseExistingServer: !process.env.CI,
     timeout: 180000,

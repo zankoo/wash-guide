@@ -39,6 +39,47 @@ test('筛选分享、刷新恢复、材质交集与实时换算', async ({ page 
   await expect(page.locator('.cc').first()).toContainText('750 ml');
 });
 
+test('慢网络下先显示配比，换算按钮在交互脚本就绪后才可点击', async ({ page }) => {
+  let release!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => { release = resolve; });
+  await page.route('**/_next/static/**/*.js', async (route) => {
+    await scriptsReady;
+    await route.continue();
+  });
+  try {
+    await page.goto('/p/L-primus', { waitUntil: 'commit' });
+    await expect(page.getByRole('heading', { name: 'PRÌMUS 2.0', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: '自定义', exact: true })).toBeDisabled();
+  } finally {
+    release();
+  }
+  await page.getByRole('button', { name: '自定义', exact: true }).click();
+  await page.getByRole('textbox', { name: '我的水量' }).fill('750');
+  await expect(page.locator('.cc').first()).toContainText('75 ml');
+});
+
+test('慢网络下筛选恢复后才能编辑搜索，清空不会丢失', async ({ page }) => {
+  let release!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => { release = resolve; });
+  await page.route('**/_next/static/**/*.js', async (route) => {
+    await scriptsReady;
+    await route.continue();
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  try {
+    await page.goto('/?brand=F&q=皮革', { waitUntil: 'commit' });
+    await expect(page.locator('input[type="search"]')).toBeDisabled();
+    await expect(page.locator('.bar')).toHaveAttribute('inert', '');
+  } finally {
+    release();
+  }
+  const search = page.getByRole('searchbox');
+  await expect(search).toHaveValue('皮革');
+  await search.fill('');
+  await expect.poll(() => new URL(page.url()).searchParams.has('q')).toBe(false);
+  await expect(search).toHaveValue('');
+});
+
 test('分类标题吸顶时紧贴筛选栏，中间不露出滚动内容', async ({ page }) => {
   for (const width of [1440, 1000, 390]) {
     await page.setViewportSize({ width, height: 900 });

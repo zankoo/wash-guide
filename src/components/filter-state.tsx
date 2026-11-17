@@ -21,6 +21,7 @@ export function updateFilters(values: Record<string, string>, replace = false) {
   window.dispatchEvent(new Event(EVENT));
 }
 interface FilterState extends Filters {
+  ready: boolean;
   filterSearch: string;
   setQuery: (query: string) => void;
   setCategory: (category: Filters['category']) => void;
@@ -29,9 +30,10 @@ interface FilterState extends Filters {
 }
 const Context = createContext<FilterState | null>(null);
 export function FilterProvider({ children }: { children: ReactNode }) {
+  const ready = useSyncExternalStore(subscribe, () => true, () => false);
   const filterSearch = useSyncExternalStore(subscribe, readFilterSearch, () => '');
   const filters = parseFilters(filterSearch);
-  return <Context value={{ ...filters, filterSearch,
+  return <Context value={{ ...filters, filterSearch, ready,
     setQuery: (q) => updateFilters({ q }, true),
     setCategory: (category) => updateFilters({ category }),
     setScene: (scene) => updateFilters({ scene }),

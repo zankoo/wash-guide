@@ -7,6 +7,9 @@ import { VOLUMES, convert, formatMl, isVolume, parseWater, type Volume } from '@
 // 换算水量记在 localStorage，所有产品共用（沿用旧版的 key）
 const KEY = 'mafra-water';
 const listeners = new Set<() => void>();
+const subscribeHydration = () => () => {};
+const clientReady = () => true;
+const serverReady = () => false;
 
 function readVolume(): Volume {
   try {
@@ -37,6 +40,8 @@ function splitRatio(ratio: string): [string, string] {
 }
 
 export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
+  // 公网慢速加载时，先显示配比；事件处理器就绪后才开放换算按钮，避免吞掉首次点击。
+  const ready = useSyncExternalStore(subscribeHydration, clientReady, serverReady);
   const vol = useSyncExternalStore(subscribe, readVolume, () => 'auto' as const);
   const canConvert = rows.some(([, r, tool]) => convert(r, tool, vol));
 
@@ -63,6 +68,7 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
                 <button
                   key={v}
                   type="button"
+                  disabled={!ready}
                   aria-pressed={!editing && vol === v}
                   onClick={() => {
                     setEditing(false);
@@ -74,6 +80,7 @@ export function DilutionTable({ rows }: { rows: DilutionRow[] }) {
               ))}
               <button
                 type="button"
+                disabled={!ready}
                 aria-pressed={editing || isCustom}
                 onClick={() => {
                   setDraft(isCustom ? String(vol) : '');
