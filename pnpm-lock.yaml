@@ -30,6 +30,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 2.0.0-rc.0
         version: 2.0.0-rc.0(@types/node@22.20.5)(vite@8.3.0(@types/node@22.20.5)(terser@5.51.2))(workerd@1.20261116.1)
+      '@cloudflare/workers-types':
+        specifier: ^5.20261117.1
+        version: 5.20261117.1
       '@playwright/test':
         specifier: ^1.65.0
         version: 1.65.0
@@ -60,6 +63,9 @@ importers:
       eslint-config-next:
         specifier: 16.4.3
         version: 16.4.3(@typescript-eslint/parser@8.71.2(eslint@9.39.5)(typescript@5.9.3))(eslint@9.39.5)(typescript@5.9.3)
+      miniflare:
+        specifier: 5.20261116.0-beta
+        version: 5.20261116.0-beta(@types/node@22.20.5)
       oxc-transform-react:
         specifier: ^0.156.0
         version: 0.156.0
@@ -72,6 +78,18 @@ importers:
       vitest:
         specifier: ^5.0.4
         version: 5.0.4(@types/node@22.20.5)(vite@8.3.0(@types/node@22.20.5)(terser@5.51.2))
+
+  platform/jobs:
+    devDependencies:
+      '@cloudflare/vite-plugin':
+        specifier: 2.0.0-rc.0
+        version: 2.0.0-rc.0(@types/node@22.20.5)(vite@8.3.0(@types/node@22.20.5)(terser@5.51.2))(workerd@1.20261116.1)
+      cf:
+        specifier: 1.0.0-rc.0
+        version: 1.0.0-rc.0(@types/node@22.20.5)
+      vite:
+        specifier: 8.3.0
+        version: 8.3.0(@types/node@22.20.5)(terser@5.51.2)
 
 packages:
 
@@ -199,6 +217,9 @@ packages:
   '@cloudflare/workers-response-store@1.2.0':
     resolution: {integrity: sha512-bFW0NV7i6qThxp6AhVPQ80VMouuO537RPDS+mYCLtJjKlKudgQTt34QE87/plaZBXDjEjxyLCK/+PYYTA5ZD4w==}
     engines: {node: '>=22'}
+
+  '@cloudflare/workers-types@5.20261117.1':
+    resolution: {integrity: sha512-0Qg3kAn8DPRQLaT8ZkqCm6+2/ctc61zdWZqN/1JtlrXV+Db1fNwnjHBLz+/GB/yX+/JgdDAFs+fr8vYyC0w9aw==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -3026,6 +3047,8 @@ snapshots:
     optional: true
 
   '@cloudflare/workers-response-store@1.2.0': {}
+
+  '@cloudflare/workers-types@5.20261117.1': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:

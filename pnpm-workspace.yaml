@@ -1,3 +1,6 @@
+packages:
+  - '.'
+  - 'platform/jobs'
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver

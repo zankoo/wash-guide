@@ -122,6 +122,22 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 
 参考：[Static Assets 缓存](https://developers.cloudflare.com/workers/static-assets/)、[Speed Brain 限制](https://developers.cloudflare.com/speed/optimization/content/speed-brain/)、[Free WAF 默认部署](https://developers.cloudflare.com/waf/get-started/)。
 
+### 重构中的 R2 费用约束
+
+用户允许接入 R2，并以邮件告警辅助监控，要求合理使用、不能无限浪费。公开图片和 PDF 继续由 Static Assets 提供；R2 用于后台来源文档的有限期快照，不承担公开页面或文件的直接回源。
+
+截至 2026-11-17，[Spend Management](https://developers.cloudflare.com/billing/manage/spend-management/) 的产品限额只覆盖 Workers 和 Durable Objects，不覆盖 R2；预算告警也不会停止请求。不能把告警、缓存命中率或应用计数器描述为账户级零费用保证。[R2 免费额度](https://developers.cloudflare.com/r2/pricing/) 包括 Standard 存储及 A/B 类操作，三者都必须纳入控制，且免费额度由账户共享。
+
+私有桶 `wash-guide-archive` 已在 APAC 创建，Standard 存储，r2.dev 公开访问关闭；已回读确认 `platform/archive-lifecycle.json` 中的 90 天快照清理和 1 天未完成上传清理规则。
+
+`platform/archive.ts` 使用 D1 持久化预留记录，在 R2 操作之前通过原子 SQL 检查额度。内部上限为单文件 5 MB、总容量 1 GB、每日写入尝试 100 次、读取尝试 1,000 次；同一来源相同 SHA-256 不重复上传，每个对象最多尝试 3 次。失败也消耗操作预算，结果不明的上传继续占用容量，只有确认 R2 删除成功才释放预留；数据库或预算不可用时停止归档。日期按 UTC，故任意 31 天最多 3,100 次写入尝试和 31,000 次读取尝试，不依赖账单周期起始日。
+
+`platform/jobs/cloudflare.config.ts` 定义独立后台 Worker：每日最多检查 50 个已登记来源，队列消费者并发 1、每批 1 条、失败最多重试 2 次且间隔 300 秒；来源请求总超时 20 秒，最多跟随 4 次跳转，使用 ETag/Last-Modified 条件请求。归档超额、类型不支持或文件过大时记录跳过，不反复重试。来源变化进入 D1 待审核记录，不自动改写产品说明。没有公开上传、抓取或桶列表接口。
+
+D1 `wash-guide` 已创建于 APAC 并启用自动读副本；已导入 585 个产品、70 个流程和 997 个来源，外键检查通过。现有网站仍使用原来的发布数据，尚未切换到 D1 读取。`scripts/catalog-export.mjs <output.sql>` 生成建表及初始数据，`--data-only` 只生成初始数据；它用于首次迁移，不能当作生产更新或重复导入命令。后续表结构变更按 `platform/migrations/` 顺序执行。后台 Worker 独立构建命令为 `pnpm build:jobs`，已加入 CI。
+
+这些应用限额只约束通过本模块产生的用量，不覆盖控制台、S3 客户端或同账户其他应用。生命周期清理非即时，不能代替容量预留。进程在上传或删除途中崩溃时会保守保留预留记录，需要核对对象后修复，避免凭空释放容量。上述代码已通过本地 D1/R2 模拟运行测试；后台 Worker 尚未部署，定时任务尚未启动。用户表示已有邮件告警，本次没有创建或验证告警收件人。
+
 ## 数据说明
 
 比例写法沿用官方：1:10 = 1 份原液 + 10 份水；PA壶比例指壶内调配比例。数据整理自各品牌官网产品页、技术资料与施工手册（2026 年 10 月）。施工前请先在不显眼处测试。
