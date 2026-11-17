@@ -4,11 +4,11 @@
 
 ## 技术栈
 
-- [Next.js 16](https://nextjs.org)（App Router + Turbopack）、React 19、TypeScript
+- Next.js App Router API、React 19、TypeScript；生产使用 [vinext](https://vinext.dev/) + Vite 构建并部署到 Cloudflare Workers
 - React Compiler：自动记忆化，不需要手写 `useMemo` / `useCallback`
-- Cache Components / Partial Prerendering：全部页面在构建时静态生成（首页、流程页、全部产品页）
-- `next/image`：产品图统一来自 `public/img/`，按卡片尺寸优化；缺图产品使用品牌占位图
-- `next/font`：Noto Sans SC / Saira Condensed / IBM Plex Mono 构建时下载并自托管，访问时不再请求 Google Fonts
+- 首页、流程页和产品页在构建时预渲染，HTML / RSC 随版本保存到 Workers Static Assets；拦截路由由 Worker 处理
+- `next/image`：产品图统一来自 `public/img/`，直接分发已有 WebP，不做在线图片转换；缺图产品使用品牌占位图
+- `next/font`：Saira Condensed 构建时下载并自托管
 - ESLint（`eslint-config-next`）、Vitest
 
 ## 页面与路由
@@ -54,16 +54,18 @@ research/             历史核验记录，不作为当前产品数据库
 
 ## 本地开发
 
-需要 Node.js 20.9+ 和 pnpm。
+需要官方 Node.js 22.18+（须包含原生 TypeScript 支持）和 pnpm。
 
 ```bash
 pnpm install
-pnpm dev          # http://localhost:3000
+pnpm dev          # http://localhost:3000，本地 Workers 运行时
 pnpm test         # 数据完整性、搜索、pH 证据、报告和稀释换算测试
 pnpm data:report  # 当前 SDS / pH 覆盖与来源缺口
 pnpm lint
 pnpm typecheck
-pnpm build        # 生成有内容版本的 Service Worker，再生产构建
+pnpm build        # 生成有内容版本的 Service Worker，构建并预渲染
+pnpm start        # 本地预览生产 Worker
+pnpm deploy       # 构建并部署到 Cloudflare Workers
 pnpm exec playwright install --no-shell chromium
 pnpm test:e2e     # 自动构建并启动生产服务，运行浏览器回归
 pnpm check:payload # 对已有生产构建检查 HTML/RSC gzip 预算
@@ -85,15 +87,40 @@ JSON 的 `sds.missing`、`ph` 各项和 `localSds.missingOriginalUrl` 包含产�
 
 `research/sds-snapshot-2026-11-10.json` 是删除 MAFRA 专业装后的历史快照，保留当时的删除清单；其余日期文件也是历史核验依据。当前数量以报告命令为准，不手工更新历史文件。
 
-## CI 与部署到 Vercel
+## CI 与部署到 Cloudflare Workers
 
 CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，测的是合入 main 后的结果，合并后不在 main 上重跑；只改 Markdown 或 `research/` 时跳过。依次运行 lint、类型检查、单元测试、生产构建、传输预算检查和 Playwright 浏览器测试；失败时把 `test-results/` 的 trace 和截图作为构件上传。探索测试每次运行换一个随机种子，单次轮数较少，覆盖面靠多次运行累积。
 
 
-在 Vercel 导入此仓库即可：Framework Preset 会自动识别为 Next.js，构建命令和输出目录都用默认值，包管理器按 `pnpm-lock.yaml` 识别为 pnpm。推送到主分支后自动部署，其他分支生成预览地址。
+`cloudflare.config.ts` 定义账号、Worker、静态资源路由和日志/追踪。`vite.config.ts` 配置 vinext、React Compiler 和只读预渲染缓存。使用匹配的 Cloudflare Vite 插件与 `cf` 版本，避免 Build Output 格式不兼容。
 
-- 站点地址、`sitemap.xml` 和 `robots.txt` 自动使用 Vercel 的生产域名（`VERCEL_PROJECT_PRODUCTION_URL`），不需要配置环境变量。
-- 图片优化按「源图 × 尺寸档位」计入 Vercel 的图片转换额度。`next.config.ts` 已经只输出 webp、收窄了尺寸档位，并缓存 31 天。如果额度紧张，可以在 `images` 里加 `unoptimized: true` 关掉优化（本地 webp 会按原图加载）。
+首次部署先运行 `pnpm exec cf auth login`。之后运行 `pnpm deploy`；已构建时可以执行 `pnpm exec cf deploy --prebuilt --mode production`。不要提交登录凭据。
+
+- 正式地址为 `https://wash.kokoda.fun`；SEO、`sitemap.xml` 和 `robots.txt` 使用这个地址，可在构建时用 `SITE_URL` 覆盖。
+- `/img/*`、`/sds/*` 和哈希 JS/CSS 由 Static Assets 直接提供。页面和 RSC 经过 Worker，私有预渲染缓存目录不会公开访问。
+- 静态页面缓存随部署替换，无需 KV、R2 或数据库；收藏仍保存在用户浏览器。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
+- Vercel Analytics / Speed Insights 已移除。运行错误和请求可在 Cloudflare Workers Logs / Traces 中查看。
+- GitHub 仓库 `zankoo/wash-guide` 已连接 Workers Builds：`main` 自动生产部署，其他分支生成独立预览；构建依赖缓存已开启，Markdown / research 变更跳过构建。生产部署前运行 lint、类型检查、单元测试、构建和传输预算检查，GitHub Actions 另跑完整浏览器回归。
+
+保留 `pnpm dev:next`、`pnpm build:next` 和 `pnpm start:next` 用于比较 Next.js 行为。关闭尚未完整兼容的 Cache Components / 分段预取，使用完整预渲染；React ViewTransition 的支持与 Next.js 不完全相同。页面导航、弹窗、离线、慢网络交互和 404 行为由浏览器回归保护。
+
+### 域名与边缘配置
+
+`wash.kokoda.fun` 直接绑定 Worker Custom Domain，证书由 Cloudflare 管理；已移除原 Vercel CNAME 和 ACME 安全豁免。以下为 2026-11-17 的配置记录，域名设置在 Cloudflare 控制台管理：
+
+| 能力 | 配置与用途 |
+| --- | --- |
+| HTTPS | 强制 HTTPS、自动重写、Full (strict)、最低 TLS 1.2、TLS 1.3、ECH；HSTS 86400 秒，不含子域、不 preload |
+| 传输 | HTTP/2、HTTP/3、0-RTT、IPv6、Brotli；Early Hints 已实测返回 103，提前加载首屏图片和自托管字体 |
+| 静态资源 | Workers Static Assets 自动边缘缓存和分层取回；哈希 JS/CSS 使用 immutable，图片/PDF 通过 ETag 验证版本 |
+| 更新一致性 | 移除旧图片 30 天强制 TTL；Service Worker 和 RSC 请求绕过域名缓存，预渲染内容随 Worker 版本更新 |
+| 安全 | DNSSEC active、自动 DDoS 防护、Free Managed Ruleset 默认防护；nosniff 和 strict-origin-when-cross-origin 响应头 |
+| 可观测性 | Workers Logs / Traces；已有 Cloudflare Web Analytics 自动安装，避免重复添加统计脚本 |
+| 持续交付 | Workers Builds GitHub 连接、依赖缓存、生产分支部署与分支预览；GitHub Actions 浏览器回归 |
+
+静态资源已经具有分层缓存，不需要额外引入 R2/KV 才能缓存。Speed Brain 不预取经过 Worker 的页面，应用自己的路由预取与离线缓存负责这一部分。Rocket Loader 保持关闭，避免改写 React 脚本执行顺序；现有 WebP 无需再次进行在线有损转换。Turnstile、Queues、D1、Durable Objects 等在出现表单、后台任务或服务端持久化需求时再引入；当前浏览器收藏不需要登录或服务端数据库。
+
+参考：[Static Assets 缓存](https://developers.cloudflare.com/workers/static-assets/)、[Speed Brain 限制](https://developers.cloudflare.com/speed/optimization/content/speed-brain/)、[Free WAF 默认部署](https://developers.cloudflare.com/waf/get-started/)。
 
 ## 数据说明
 

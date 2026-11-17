@@ -346,11 +346,14 @@ test('收藏记录损坏或含已删除产品时页面照常使用，数字只�
 
 test('不存在的产品页每次都返回 404，收藏了已删除产品也不会让服务器出错', async ({ page, request }) => {
   const r = rng(SEED + 6);
-  const bad = ['deleted-x', `zz-${r(1e6)}`, encodeURIComponent('中文'), 'L-primus-old', '%E0'];
+  const bad = ['deleted-x', `zz-${r(1e6)}`, encodeURIComponent('中文'), 'L-primus-old'];
   for (const id of bad) {
     for (let i = 0; i < 3; i++) expect((await request.get(`/p/${id}`)).status(), `/p/${id} 第 ${i + 1} 次`).toBe(404);
     expect((await request.get(`/p/${id}?_rsc=x`, { headers: { RSC: '1' } })).status(), `/p/${id} RSC`).toBe(404);
   }
+  // vinext 在进入 proxy 前拒绝非法 UTF-8；畸形 URL 是 400，合法但不存在的 ID 是 404。
+  expect((await request.get('/p/%E0')).status()).toBe(400);
+  expect((await request.get('/p/%E0?_rsc=x', { headers: { RSC: '1' } })).status()).toBe(400);
   const ok = PRODUCTS[r(PRODUCTS.length)].id;
   expect((await request.get(`/p/${ok}`)).status(), ok).toBe(200);
   await page.goto('/p/deleted-x');

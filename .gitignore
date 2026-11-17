@@ -47,3 +47,6 @@ next-env.d.ts
 /public/sw.js
 /test-results/
 /playwright-report/
+/dist/
+.vinext/
+.cloudflare/

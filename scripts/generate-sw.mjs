@@ -15,7 +15,7 @@ function add(path) {
 }
 add('src');
 add('public');
-for (const file of ['pnpm-lock.yaml', 'next.config.ts']) hash.update(readFileSync(join(root, file)));
+for (const file of ['pnpm-lock.yaml', 'next.config.ts', 'vite.config.ts', 'cloudflare.config.ts']) hash.update(readFileSync(join(root, file)));
 const version = hash.digest('hex').slice(0, 16);
 const source = readFileSync(join(root, 'src/offline/service-worker.js'), 'utf8');
 writeFileSync(join(root, 'public/sw.js'), source.replace('__BUILD_VERSION__', version));
