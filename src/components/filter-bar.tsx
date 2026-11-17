@@ -20,7 +20,7 @@ export function usePickers() {
 
 export function FilterBar() {
   const { isFlows } = useGuide();
-  const { brand, material, query, setQuery, category, setCategory, scene, setScene, clearFilters } = useFilters();
+  const { ready, brand, material, query, setQuery, category, setCategory, scene, setScene, clearFilters } = useFilters();
   const { productCounts, flowSceneCounts, favoriteCount, favoriteTotal, materialCounts, productBrandCounts, flowBrandCounts } = useCatalogResults();
   const brandCounts = isFlows ? flowBrandCounts : productBrandCounts;
   const { pickBrand, pickMaterial } = usePickers();
@@ -61,7 +61,7 @@ export function FilterBar() {
   const selected = isFlows ? scene : category;
 
   return (
-    <div className="bar" ref={bar}>
+    <div className="bar" ref={bar} inert={!ready}>
       <div className="wrap">
         <div className="row">
           <label className="search">
@@ -69,6 +69,7 @@ export function FilterBar() {
             <input
               ref={input}
               type="search"
+              disabled={!ready}
               enterKeyHint="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}

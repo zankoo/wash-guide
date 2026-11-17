@@ -177,6 +177,9 @@ async function randomState(r: (n: number) => number): Promise<string> {
 }
 
 async function productAction(page: Page, r: (n: number) => number, mobile: boolean): Promise<string> {
+  // 预渲染先显示默认目录；等 URL 筛选恢复后再挑选可用控件。
+  await expect(page.locator('.bar')).not.toHaveAttribute('inert');
+  await checkProducts(page, '操作前筛选恢复', mobile);
   const roll = r(20);
   const empty = page.locator('main .empty button.scope-clear');
   if (roll === 0) { const url = await randomState(r); await page.goto(url); return `打开链接 ${url}`; }

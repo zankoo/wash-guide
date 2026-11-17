@@ -58,6 +58,28 @@ test('慢网络下先显示配比，换算按钮在交互脚本就绪后才可�
   await expect(page.locator('.cc').first()).toContainText('75 ml');
 });
 
+test('慢网络下筛选恢复后才能编辑搜索，清空不会丢失', async ({ page }) => {
+  let release!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => { release = resolve; });
+  await page.route('**/_next/static/**/*.js', async (route) => {
+    await scriptsReady;
+    await route.continue();
+  });
+  await page.setViewportSize({ width: 390, height: 844 });
+  try {
+    await page.goto('/?brand=F&q=皮革', { waitUntil: 'commit' });
+    await expect(page.locator('input[type="search"]')).toBeDisabled();
+    await expect(page.locator('.bar')).toHaveAttribute('inert', '');
+  } finally {
+    release();
+  }
+  const search = page.getByRole('searchbox');
+  await expect(search).toHaveValue('皮革');
+  await search.fill('');
+  await expect.poll(() => new URL(page.url()).searchParams.has('q')).toBe(false);
+  await expect(search).toHaveValue('');
+});
+
 test('分类标题吸顶时紧贴筛选栏，中间不露出滚动内容', async ({ page }) => {
   for (const width of [1440, 1000, 390]) {
     await page.setViewportSize({ width, height: 900 });
