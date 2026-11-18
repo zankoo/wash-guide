@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "node scripts/generate-sw.mjs && vite build",
-    "build:jobs": "cd platform/jobs && cf build --mode production",
+    "build:jobs": "cd platform/jobs && vite build --mode production",
     "start": "vite preview",
     "dev:next": "next dev",
     "build:next": "node scripts/generate-sw.mjs && next build",

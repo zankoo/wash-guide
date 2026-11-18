@@ -79,18 +79,6 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4(@types/node@22.20.5)(vite@8.3.0(@types/node@22.20.5)(terser@5.51.2))
 
-  platform/jobs:
-    devDependencies:
-      '@cloudflare/vite-plugin':
-        specifier: 2.0.0-rc.0
-        version: 2.0.0-rc.0(@types/node@22.20.5)(vite@8.3.0(@types/node@22.20.5)(terser@5.51.2))(workerd@1.20261116.1)
-      cf:
-        specifier: 1.0.0-rc.0
-        version: 1.0.0-rc.0(@types/node@22.20.5)
-      vite:
-        specifier: 8.3.0
-        version: 8.3.0(@types/node@22.20.5)(terser@5.51.2)
-
 packages:
 
   '@babel/code-frame@7.29.7':
