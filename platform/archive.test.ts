@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Miniflare } from 'miniflare';
+import { auditProductionGuide } from './browser-audit';
 import { archiveDocument, cleanupArchives, readArchive } from './archive';
 import { consumeSourceChecks, scheduleSourceChecks, sourceURL } from './jobs';
 
@@ -38,6 +39,33 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
       .bind(sourceId, 'https://example.com/document', 'example.com').run();
   });
   afterEach(async () => { vi.unstubAllGlobals(); vi.restoreAllMocks(); await mf?.dispose(); });
+
+  it('starts only one browser per UTC day and closes the verified session', async () => {
+    const browser = {
+      script: vi.fn().mockResolvedValue(Response.json({success:true,result:'offline-calculation-passed'}, {
+        headers:{'cf-browser-session-id':'session'},
+      })),
+      closeSession: vi.fn(),
+    };
+    const time = Date.now();
+    await auditProductionGuide(db,browser,time - 86400000);
+    await Promise.all([auditProductionGuide(db,browser,time),auditProductionGuide(db,browser,time)]);
+    expect(browser.script).toHaveBeenCalledTimes(1);
+    expect(browser.closeSession).toHaveBeenCalledWith('session');
+    expect(await db.prepare("SELECT state FROM audit_runs WHERE kind='browser'").first('state')).toBe('completed');
+  });
+
+  it('records a browser failure and does not spend another session on redelivery', async () => {
+    const browser = { script:vi.fn().mockResolvedValue(Response.json({success:true,result:'failed:offline-filter'}, {
+      headers:{'cf-browser-session-id':'session'},
+    })), closeSession:vi.fn() };
+    const time = Date.now();
+    await expect(auditProductionGuide(db,browser,time)).rejects.toThrow('failed:offline-filter');
+    await auditProductionGuide(db,browser,time);
+    expect(browser.script).toHaveBeenCalledTimes(1);
+    expect(browser.closeSession).toHaveBeenCalledWith('session');
+    expect(await db.prepare("SELECT state FROM audit_runs WHERE kind='browser'").first('state')).toBe('failed');
+  });
 
   async function delivery(runId = 'sources-2026-11-17', attempts = 1) {
     await db.prepare("INSERT OR IGNORE INTO audit_runs(id,started_at,state,kind,expected_count) VALUES (?,?,'running','sources',1)")
