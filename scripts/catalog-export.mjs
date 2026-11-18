@@ -9,9 +9,10 @@ import { createHash } from 'node:crypto';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const require = createRequire(import.meta.url);
 const output = process.argv[2];
-const dataOnly = process.argv[3] === '--data-only';
+const statements = process.argv[3] === '--statements';
+const dataOnly = statements || process.argv[3] === '--data-only';
 if (!output || (process.argv.length !== 3 && !(process.argv.length === 4 && dataOnly))) {
-  throw new Error('Usage: node scripts/catalog-export.mjs <output.sql> [--data-only]');
+  throw new Error('Usage: node scripts/catalog-export.mjs <output.sql> [--data-only|--statements]');
 }
 const temporary = mkdtempSync(join(tmpdir(), 'wash-catalog-export-'));
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -55,7 +56,7 @@ try {
     for(const id of new Set(stepsOf(f).flatMap(productsOfStep))) insert('flow_products',['version_id','flow_id','product_id'],[version,f.id,id]);
   });
   insert('catalog_publication',['singleton','version_id'],[1,version]);
-  writeFileSync(resolve(output),sql.join('\n')+'\n');
+  writeFileSync(resolve(output),statements ? JSON.stringify(sql) : sql.join('\n')+'\n');
   writeFileSync(resolve(output)+'.json',content);
   console.log(JSON.stringify({version,checksum,products:PRODUCTS.length,flows:FLOWS.length,sources:sources.size,output:resolve(output)}));
 } finally {

@@ -6,7 +6,7 @@
 
 - Next.js App Router API、React 19、TypeScript；生产使用 [vinext](https://vinext.dev/) + Vite 构建并部署到 Cloudflare Workers
 - React Compiler：自动记忆化，不需要手写 `useMemo` / `useCallback`
-- 首页、流程页和产品页在构建时预渲染，HTML / RSC 随版本保存到 Workers Static Assets；拦截路由由 Worker 处理
+- 主站 Worker 从 D1 读取当前发布版本，渲染产品列表、流程、详情和站点地图。图片、PDF 和前端资源由 Workers Static Assets 分发
 - `next/image`：产品图统一来自 `public/img/`，直接分发已有 WebP，不做在线图片转换；缺图产品使用品牌占位图
 - `next/font`：Saira Condensed 构建时下载并自托管
 - ESLint（`eslint-config-next`）、Vitest
@@ -48,7 +48,7 @@ scripts/              开发维护命令
 research/             历史核验记录，不作为当前产品数据库
 ```
 
-列表使用精简的展示与搜索投影，首屏仍生成静态 HTML，浏览器按投影筛选并渲染卡片。产品与流程路由各自提供所需数据，完整产品记录、SDS 和施工证据只用于服务端详情页。
+列表使用精简的展示与搜索投影，首屏由 Worker 生成 HTML，浏览器按投影筛选并渲染卡片。产品与流程路由各自提供所需数据，完整产品记录、SDS 和施工证据只用于服务端详情页。
 
 `filter-state` 管理 URL 筛选，`guide-state` 管理展开和滚动导航；`catalog-state` 统一计算列表、侧栏、分类和材质计数。共享筛选函数位于 `src/lib/catalog-results.ts`，不会通过 effect 把派生结果写回全局状态。
 
@@ -63,7 +63,7 @@ pnpm test         # 数据完整性、搜索、pH 证据、报告和稀释换算
 pnpm data:report  # 当前 SDS / pH 覆盖与来源缺口
 pnpm lint
 pnpm typecheck
-pnpm build        # 生成有内容版本的 Service Worker，构建并预渲染
+pnpm build        # 生成有内容版本的 Service Worker，构建生产 Worker
 pnpm start        # 本地预览生产 Worker
 pnpm deploy       # 构建并部署到 Cloudflare Workers
 pnpm exec playwright install --no-shell chromium
@@ -98,11 +98,11 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 
 - 正式地址为 `https://wash.kokoda.fun`；SEO、`sitemap.xml` 和 `robots.txt` 使用这个地址，可在构建时用 `SITE_URL` 覆盖。
 - `/img/*`、`/sds/*` 和哈希 JS/CSS 由 Static Assets 直接提供。页面和 RSC 经过 Worker，私有预渲染缓存目录不会公开访问。
-- 静态页面缓存随部署替换，无需 KV、R2 或数据库；收藏仍保存在用户浏览器。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
+- 产品和流程投影按 D1 发布版本缓存在 Worker 实例内。收藏仍保存在用户浏览器。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
 - Vercel Analytics / Speed Insights 已移除。运行错误和请求可在 Cloudflare Workers Logs / Traces 中查看。
 - GitHub 仓库 `zankoo/wash-guide` 已连接 Workers Builds：`main` 自动生产部署，其他分支生成独立预览；构建依赖缓存已开启，Markdown / research 变更跳过构建。生产部署前运行 lint、类型检查、单元测试、构建和传输预算检查，GitHub Actions 另跑完整浏览器回归。
 
-保留 `pnpm dev:next`、`pnpm build:next` 和 `pnpm start:next` 用于比较 Next.js 行为。关闭尚未完整兼容的 Cache Components / 分段预取，使用完整预渲染；React ViewTransition 的支持与 Next.js 不完全相同。页面导航、弹窗、离线、慢网络交互和 404 行为由浏览器回归保护。
+保留 `pnpm dev:next`、`pnpm build:next` 和 `pnpm start:next` 用于比较 Next.js 行为。关闭尚未完整兼容的 Cache Components / 分段预取，动态目录的集成测试使用 Vite 和本地 D1；React ViewTransition 的支持与 Next.js 不完全相同。页面导航、弹窗、离线、慢网络交互和 404 行为由浏览器回归保护。
 
 ### 域名与边缘配置
 
@@ -113,7 +113,7 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 | HTTPS | 强制 HTTPS、自动重写、Full (strict)、最低 TLS 1.2、TLS 1.3、ECH；HSTS 86400 秒，不含子域、不 preload |
 | 传输 | HTTP/2、HTTP/3、0-RTT、IPv6、Brotli；Early Hints 已实测返回 103，提前加载首屏图片和自托管字体 |
 | 静态资源 | Workers Static Assets 自动边缘缓存和分层取回；哈希 JS/CSS 使用 immutable，图片/PDF 通过 ETag 验证版本 |
-| 更新一致性 | 移除旧图片 30 天强制 TTL；Service Worker 和 RSC 请求绕过域名缓存，预渲染内容随 Worker 版本更新 |
+| 更新一致性 | 移除旧图片 30 天强制 TTL；Service Worker 和 RSC 请求绕过域名缓存，目录页面随 D1 发布版本更新 |
 | 安全 | DNSSEC active、自动 DDoS 防护、Free Managed Ruleset 默认防护；nosniff 和 strict-origin-when-cross-origin 响应头 |
 | 可观测性 | Workers Logs / Traces；已有 Cloudflare Web Analytics 自动安装，避免重复添加统计脚本 |
 | 持续交付 | Workers Builds GitHub 连接、依赖缓存、生产分支部署与分支预览；GitHub Actions 浏览器回归 |
@@ -134,7 +134,7 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 
 `platform/jobs/cloudflare.config.ts` 定义独立后台 Worker：每日最多检查 50 个已登记来源，队列消费者并发 1、每批 1 条、失败最多重试 2 次且间隔 300 秒；来源请求总超时 20 秒，最多跟随 4 次跳转，使用 ETag/Last-Modified 条件请求。归档超额、类型不支持或文件过大时记录跳过，不反复重试。来源变化进入 D1 待审核记录，不自动改写产品说明。没有公开上传、抓取或桶列表接口。
 
-D1 `wash-guide` 已创建于 APAC 并启用自动读副本；已导入 585 个产品、70 个流程和 997 个来源，外键检查通过。现有网站仍使用原来的发布数据，尚未切换到 D1 读取。`scripts/catalog-export.mjs <output.sql>` 生成建表及初始数据，`--data-only` 只生成初始数据；它用于首次迁移，不能当作生产更新或重复导入命令。后续表结构变更按 `platform/migrations/` 顺序执行。后台 Worker 独立构建命令为 `pnpm build:jobs`，已加入 CI。
+D1 `wash-guide` 已创建于 APAC 并启用自动读副本；已导入 585 个产品、70 个流程和 997 个来源，外键检查通过。主站读取 `catalog_publication.version_id` 指向的快照。发布和回滚通过切换该指针生效，本地启动时会在模拟 D1 首次创建目录。`scripts/catalog-export.mjs <output.sql>` 生成建表及初始数据，`--data-only` 只生成初始数据；它用于首次迁移，不能当作生产更新或重复导入命令。后续表结构变更按 `platform/migrations/` 顺序执行。后台 Worker 独立构建命令为 `pnpm build:jobs`，已加入 CI。
 
 这些应用限额只约束通过本模块产生的用量，不覆盖控制台、S3 客户端或同账户其他应用。生命周期清理非即时，不能代替容量预留。进程在上传或删除途中崩溃时会保守保留预留记录，需要核对对象后修复，避免凭空释放容量。上述代码已通过本地 D1/R2 模拟运行测试；后台 Worker 已部署，每天北京时间 11:00 检查来源。用户表示已有邮件告警，本次没有创建或验证告警收件人。
 
@@ -144,13 +144,13 @@ D1 `wash-guide` 已创建于 APAC 并启用自动读副本；已导入 585 个�
 
 ## 离线与缓存更新
 
-`src/offline/service-worker.js` 是源文件；`pnpm build` 根据代码、资源和依赖生成版本及 `public/sw.js`，不要手工编辑生成文件。
+`src/offline/service-worker.js` 是源文件；`pnpm build` 根据代码、资源和依赖生成版本及 `public/sw.js`，浏览器注册的 `/catalog-sw.js` 将这个脚本与当前 D1 版本一起返回。
 
 - 首次安装仅预存首页、流程页和必要脚本/样式，不后台下载全目录产品图。
 - HTML 与 RSC 分库存储。只有完整页面导航会移除已知的筛选参数；RSC 保留完整 URL 和 Vary 匹配。
 - 断网点击产品或视图链接使用已缓存的 HTML；未缓存页面显示明确的离线回退。
 - 联网、重新聚焦、收藏变化及 worker 更新时刷新收藏页，同时预存其脚本、样式与图片。每批最多预存 80 个收藏，缓存空间不足或未完成下载时不能保证离线可用。
-- 页面最多 100 项（保留首页和流程页），RSC 160 项，图片 128 项，哈希静态资源 256 项。产品图后台更新；构建更新会清理本应用旧版本页面和图片，不清除其他应用的缓存。
+- 页面最多 100 项（保留首页和流程页），RSC 160 项，图片 128 项，哈希静态资源 256 项。产品图后台更新；构建或目录发布版本更新后，新 Service Worker 激活时会清理本应用旧版本页面和图片，不清除其他应用的缓存。
 - 外部 SDS 不在离线预存范围内。
 
 浏览器回归覆盖筛选刷新恢复、材质交集、换算、弹窗历史导航、流程目录一致性、离线刷新、收藏详情交互和移动端布局。`check:payload` 限制构建后 HTML/RSC 的 gzip 体积，这不是包含图片、字体和 JS 的整页体积。

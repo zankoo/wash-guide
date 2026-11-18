@@ -1,5 +1,5 @@
 // 构建时注入内容版本。HTML 与 RSC 严格分库；只有页面导航可以规范化筛选参数。
-const VERSION = '__BUILD_VERSION__';
+const VERSION = '__BUILD_VERSION__' + (self.catalogPublication ? '-' + self.catalogPublication : '');
 const PREFIX = 'wash-guide-';
 const DOCUMENTS = `${PREFIX}${VERSION}-documents`;
 const RSC = `${PREFIX}${VERSION}-rsc`;
@@ -126,7 +126,7 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
-  if (request.headers.get('RSC') === '1') {
+  if (request.headers.get('RSC') === '1' && pageUrl(url)) {
     event.respondWith(networkFirst(event, RSC, request, false));
   } else if (request.mode === 'navigate' && pageUrl(url)) {
     event.respondWith(networkFirst(event, DOCUMENTS, pageUrl(url), true));
