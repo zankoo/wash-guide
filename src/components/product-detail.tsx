@@ -93,8 +93,8 @@ export function ProductDetail({ p }: { p: Product }) {
             <ExternalIcon />
           </a>
           <SdsLink p={p} />
+          <ProductCorrection product={p.id} />
         </div>
-        <ProductCorrection product={p.id} />
       </div>
     </>
   );

@@ -71,6 +71,25 @@ export function GuideProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const { brand, query, scene } = useFilters();
+  useLayoutEffect(() => {
+    // After a full document restore, the browser can still traverse product
+    // entries whose intercepted modal tree belonged to the previous document.
+    const navigation = (window as Window & { navigation?: {
+      currentEntry: NavigationHistoryEntry | null;
+      entries(): NavigationHistoryEntry[];
+    } }).navigation;
+    if (!navigation) return;
+    const previousProducts = new Set(navigation.entries().filter(entry =>
+      entry.key !== navigation.currentEntry?.key && entry.sameDocument &&
+      entry.url && new URL(entry.url).pathname.startsWith('/p/'),
+    ).map(entry => entry.key));
+    if (!previousProducts.size) return;
+    const restore = () => {
+      if (previousProducts.has(navigation.currentEntry?.key ?? '')) location.reload();
+    };
+    window.addEventListener('popstate', restore, true);
+    return () => window.removeEventListener('popstate', restore, true);
+  }, []);
   // 筛选切换放在 transition 里：选中指示块滑动、列表淡入淡出都由 View Transition 呈现。
   // 搜索词保持同步更新，输入不卡顿（列表那边用 useDeferredValue）。
   const [scrollTarget, setScrollTarget] = useState<ScrollTarget | null>(null);
