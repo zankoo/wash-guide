@@ -1,6 +1,6 @@
 import type { AiSearchInstance, D1Database, RateLimit } from '@cloudflare/workers-types';
 
-type Bindings = { DB: D1Database; SEARCH: AiSearchInstance; SEARCH_LIMIT: RateLimit };
+type Bindings = { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
 
 function reply(value: unknown, status = 200) {
   return Response.json(value, {status,headers:{'Cache-Control':'no-store'}});

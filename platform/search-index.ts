@@ -30,7 +30,7 @@ async function prepareWorklist(db: D1Database, version: string) {
   ]);
 }
 
-export async function syncSearchIndex(db: D1Database, search: AiSearchInstance) {
+export async function syncSearchIndex(db: D1Database, search: { items: Pick<AiSearchInstance['items'], 'upload'> }) {
   const version = await db.prepare('SELECT version_id FROM catalog_publication WHERE singleton=1').first<string>('version_id');
   if (!version) return;
   await prepareWorklist(db, version);
