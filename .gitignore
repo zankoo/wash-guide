@@ -52,3 +52,4 @@ next-env.d.ts
 .cloudflare/
 platform/jobs/dist/
 platform/api/dist/
+.wrangler/
