@@ -3,29 +3,24 @@ import type { JobBindings } from '../jobs';
 import { catalogReviewer } from './access';
 import { compareEvidence } from './evidence';
 
-const responseHeaders = {
-  'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex, nofollow',
-  'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'",
-};
-const escape = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
-const message = (text: string, status: number) => new Response(text, { status, headers: responseHeaders });
-function page(title: string, body: string) {
-  const html = `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${escape(title)} · 洗车施工速查</title>
-    <style>body{max-width:60rem;margin:3rem auto;padding:0 1rem;font:1rem/1.65 system-ui,sans-serif;color:#17282b}a{color:#065b69}li{margin:.6rem 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:1rem;background:#f3f6f6}</style>
-    <main><h1>${escape(title)}</h1>${body}</main></html>`;
-  return new Response(html, { headers: { ...responseHeaders, 'Content-Type': 'text/html; charset=utf-8' } });
-}
+import { escape, message, page, responseHeaders } from './html';
+import { decisionRequest } from './forms';
+import type { ReviewEnv } from './dispatch';
 
 type Review = { id: string; kind: string; state: string; source_id: string | null; product_id: string | null; body: string; url: string | null; created_at: string; evidence_diff?: string | null };
 const selectReview = 'SELECT r.*, s.url FROM review_items r LEFT JOIN sources s ON s.id = r.source_id';
 const target = (r: Review) => r.url || r.product_id || r.id;
 const pathFor = (id: string) => '/admin/reviews/' + encodeURIComponent(id);
 
-export async function adminRequest(request: Request, env: Pick<JobBindings, 'DB' | 'ARCHIVE'>, authenticate = catalogReviewer) {
+export async function adminRequest(request: Request, env: Pick<JobBindings, 'DB' | 'ARCHIVE'> & Partial<Pick<ReviewEnv, 'REVIEW'>>, authenticate = catalogReviewer) {
   const { pathname, searchParams } = new URL(request.url);
   if (pathname !== '/admin' && !pathname.startsWith('/admin/')) return message('页面不存在', 404);
-  if (!await authenticate(request)) return message('需要管理员登录', 403);
+  const actor = await authenticate(request);
+  if (!actor) return message('需要管理员登录', 403);
+  if (pathname.startsWith('/admin/decisions/')) {
+    if (!env.REVIEW) return message('审核工作流暂不可用', 503);
+    return decisionRequest(request, { DB: env.DB, REVIEW: env.REVIEW }, actor.subject);
+  }
   if (request.method !== 'GET') return message('请求方法不支持', 405);
   if (pathname === '/admin' || pathname === '/admin/') {
     const after = searchParams.get('after');
@@ -35,8 +30,8 @@ export async function adminRequest(request: Request, env: Pick<JobBindings, 'DB'
       LEFT JOIN sources s ON s.id = r.source_id WHERE r.state='pending' ${start} ORDER BY r.created_at, r.id LIMIT 101`);
     const rows = (await (after ? statement.bind(after) : statement).all<Review>()).results;
     const next = rows.length > 100 ? `<p><a href="/admin/?after=${encodeURIComponent(rows[99].id)}">下一页</a></p>` : '';
-    return page('待审核资料', rows.length ? '<ol>' + rows.slice(0, 100).map(r =>
-      `<li><a href="${pathFor(r.id)}">${escape(target(r))}</a> · ${r.kind === 'correction' ? '读者纠错' : '来源变化'} · ${escape(r.created_at)}</li>`).join('') + '</ol>' + next : '<p>暂无待审核资料。</p>');
+    return page('待审核资料', '<p><a href="/admin/decisions/history">审核记录与回滚</a></p>' + (rows.length ? '<ol>' + rows.slice(0, 100).map(r =>
+      `<li><a href="${pathFor(r.id)}">${escape(target(r))}</a> · ${r.kind === 'correction' ? '读者纠错' : '来源变化'} · ${escape(r.created_at)}</li>`).join('') + '</ol>' + next : '<p>暂无待审核资料。</p>'));
   }
   const match = /^\/admin\/reviews\/([\w-]{1,160})(?:\/(compare|previous|current))?$/.exec(pathname);
   if (!match) return message('页面不存在', 404);
@@ -45,13 +40,14 @@ export async function adminRequest(request: Request, env: Pick<JobBindings, 'DB'
   if (!review) return message('记录不存在', 404);
   const root = pathFor(id);
   const back = '<p><a href="/admin">返回审核列表</a></p>';
+  const decide = review.state === 'pending' ? `<p><a href="/admin/decisions/review/${encodeURIComponent(id)}">处理这条资料</a></p>` : '';
   if (review.kind === 'correction') {
     if (operation) return message('页面不存在', 404);
-    return page('读者纠错', back + '<p>' + escape(target(review)) + '</p><pre>' + escape(review.body) + '</pre>');
+    return page('读者纠错', back + '<p>' + escape(target(review)) + '</p><pre>' + escape(review.body) + '</pre>' + decide);
   }
   if (!operation) {
     return page('来源变化', back + '<p>' + escape(target(review)) + '</p>' +
-      `<p><a href="${root}/compare">查看内容差异</a></p><p><a href="${root}/previous">下载旧版原文</a> · <a href="${root}/current">下载新版原文</a></p>`);
+      `<p><a href="${root}/compare">查看内容差异</a></p><p><a href="${root}/previous">下载旧版原文</a> · <a href="${root}/current">下载新版原文</a></p>` + decide);
   }
   const diffPage = (text: string) => page('来源内容差异', `<a href="${root}">返回资料</a><pre>${escape(text)}</pre>`);
   if (operation === 'compare' && review.evidence_diff) return diffPage(review.evidence_diff);

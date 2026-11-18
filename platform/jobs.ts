@@ -1,3 +1,4 @@
+import { recoverReviews, type ReviewEnv } from './review/dispatch';
 import { adminRequest } from './review/admin';
 import { syncSearchIndex } from './search-index';
 import type { AiSearchInstance, D1Database, MessageBatch } from '@cloudflare/workers-types';
@@ -136,8 +137,8 @@ export async function consumeSourceChecks(batch: MessageBatch, env: JobBindings)
 const worker = {
   // There is no public upload, crawl, or bucket-list endpoint.
   fetch(request: Request, env: JobBindings) { return adminRequest(request, env); },
-  async scheduled(controller: { cron: string }, env: JobBindings & { DB: D1Database; SEARCH: AiSearchInstance }) {
-    if (controller.cron === '*/15 * * * *') await syncSearchIndex(env.DB, env.SEARCH);
+  async scheduled(controller: { cron: string }, env: JobBindings & ReviewEnv & { DB: D1Database; SEARCH: AiSearchInstance }) {
+    if (controller.cron === '*/15 * * * *') await Promise.all([syncSearchIndex(env.DB, env.SEARCH), recoverReviews(env)]);
     else await scheduleSourceChecks(env);
   },
   queue: consumeSourceChecks,

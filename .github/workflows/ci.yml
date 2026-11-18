@@ -37,6 +37,7 @@ jobs:
       - run: pnpm check:payload
       - run: pnpm build:api
       - run: pnpm build:jobs
+      - run: node scripts/check-review-workflow.mjs
 
       - id: pw
         run: echo "version=$(node -p 'require("@playwright/test/package.json").version')" >> "$GITHUB_OUTPUT"
