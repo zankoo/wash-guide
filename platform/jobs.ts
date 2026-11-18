@@ -138,7 +138,7 @@ const worker = {
   // There is no public upload, crawl, or bucket-list endpoint.
   fetch(request: Request, env: JobBindings) { return adminRequest(request, env); },
   async scheduled(controller: { cron: string }, env: JobBindings & ReviewEnv & { DB: D1Database; SEARCH: AiSearchInstance }) {
-    if (controller.cron === '*/15 * * * *') await Promise.all([syncSearchIndex(env.DB, env.SEARCH), recoverReviews(env)]);
+    if (controller.cron === '*/15 * * * *') await Promise.all([syncSearchIndex(env.DB, env.SEARCH, env.ARCHIVE), recoverReviews(env)]);
     else await scheduleSourceChecks(env);
   },
   queue: consumeSourceChecks,
