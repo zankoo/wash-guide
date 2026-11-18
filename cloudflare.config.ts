@@ -23,8 +23,6 @@ export default defineConfig({
     env: {
       ASSETS: bindings.assets(),
       DB: bindings.d1({ name: "wash-guide", id: "fe14705e-4532-4b31-afb5-455132ec1e7e" }),
-      ARCHIVE: bindings.r2({ name: "wash-guide-archive" }),
-      SEARCH: bindings.aiSearch({ name: "wash-guide" }),
       PLATFORM: bindings.worker({ worker: "wash-guide-api" }),
     },
   }),

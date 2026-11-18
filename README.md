@@ -157,7 +157,7 @@ D1 `wash-guide` 已创建于 APAC 并启用自动读副本；已导入 585 个�
 
 ### Cloudflare 资料检索
 
-主站 `wash-guide` 绑定 `DB`（D1）、`ARCHIVE`（私有 R2）、`SEARCH`（AI Search）和内部服务 `PLATFORM`。资料检索页面将请求通过服务绑定发给 `wash-guide-api`，API 使用 D1 预留查询额度，检索 AI Search，再按当前发布版本核对引用。公开搜索不读取归档桶。原产品速查可继续离线使用。
+主站 `wash-guide` 使用静态资源、目录数据库 `DB` 和内部服务 `PLATFORM`。后台作业 `wash-guide-jobs` 独占私有 R2 归档绑定，并向 AI Search 写入索引。资料检索页面将请求通过服务绑定发给 `wash-guide-api`，API 使用 D1 预留查询额度，检索 AI Search，再按当前发布版本核对引用。公开搜索不读取归档桶。原产品速查可继续离线使用。
 
 在目录或检索表有更新时，先执行对应的 D1 迁移。部署顺序为后台 Worker、API Worker、主站。后台 Worker 每 15 分钟最多处理 6 份产品资料或站内 SDS，按 UTC 每日最多上传 100 次、400 万字节，每月最多 2400 万字节。公开检索全站每天最多 25 次，单个客户端每分钟最多 4 次（Cloudflare 区域限速）。搜索返回命中片段及出处。API 和后台 Worker 通过各自目录的 Cloudflare 配置构建，均关闭 workers.dev 和预览地址。
 
