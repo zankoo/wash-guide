@@ -1,4 +1,5 @@
 import { auditProductionGuide } from './browser-audit';
+import { healthResponse, recordIndexRun } from './job-health';
 import { syncSearchIndex } from './search-index';
 import type { AiSearchInstance, BrowserRun, D1Database, MessageBatch } from '@cloudflare/workers-types';
 import { archiveDocument, ArchiveUnavailable, cleanupArchives } from './archive';
@@ -134,10 +135,11 @@ export async function consumeSourceChecks(batch: MessageBatch, env: JobBindings)
 }
 
 const worker = {
-  // There is no public upload, crawl, or bucket-list endpoint.
-  fetch() { return new Response('Not found', { status: 404 }); },
+  fetch(request: Request, env: Parameters<typeof healthResponse>[1]) {
+    return healthResponse(request,env,(caches as CacheStorage & {default:Cache}).default);
+  },
   async scheduled(controller: { cron: string; scheduledTime: number }, env: JobBindings & { DB: D1Database; SEARCH: AiSearchInstance; BROWSER: BrowserRun }) {
-    if (controller.cron === '*/15 * * * *') await syncSearchIndex(env.DB, env.SEARCH);
+    if (controller.cron === '*/15 * * * *') await recordIndexRun(env.DB, controller.scheduledTime, () => syncSearchIndex(env.DB, env.SEARCH));
     else if (controller.cron === '35 3 * * *') await auditProductionGuide(env.DB, env.BROWSER, controller.scheduledTime);
     else if (controller.cron === '0 3 * * *') await scheduleSourceChecks(env);
   },

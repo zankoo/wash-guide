@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Miniflare } from 'miniflare';
+import { jobHealth, recordIndexRun, healthResponse } from './job-health';
 import { auditProductionGuide } from './browser-audit';
 import { archiveDocument, cleanupArchives, readArchive } from './archive';
 import { consumeSourceChecks, scheduleSourceChecks, sourceURL } from './jobs';
@@ -39,6 +40,38 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
       .bind(sourceId, 'https://example.com/document', 'example.com').run();
   });
   afterEach(async () => { vi.unstubAllGlobals(); vi.restoreAllMocks(); await mf?.dispose(); });
+
+  it('reports absent, late, failed and healthy jobs plus allocated R2 usage without reading the bucket', async () => {
+    const now = Date.now();
+    const report = await jobHealth(db,now);
+    expect(report.checks).toMatchObject({browser:'missing',sources:'missing',index:'missing',queue:'incomplete'});
+    const tick = vi.fn().mockResolvedValue(undefined);
+    await Promise.all([recordIndexRun(db,now,tick),recordIndexRun(db,now,tick)]);
+    expect(tick).toHaveBeenCalledOnce();
+    for(const kind of ['sources','browser']) await db.prepare(`INSERT INTO audit_runs(id,kind,state,started_at,expected_count)
+      VALUES(?,?,'completed',datetime('now'),?)`).bind(kind+'-'+report.day,kind,kind==='sources' ? 1 : 0).run();
+    const runId='sources-'+report.day;
+    expect((await jobHealth(db,now)).checks.queue).toBe('incomplete');
+    await db.prepare("INSERT INTO source_checks(run_id,source_id,checked_at,outcome) VALUES(?,?,datetime('now'),'failed')").bind(runId,sourceId).run();
+    expect((await jobHealth(db,now)).checks.queue).toBe('failed');
+    await db.prepare("UPDATE source_checks SET outcome='unchanged'").run();
+    expect((await jobHealth(db,now)).ok).toBe(true);
+    expect((await jobHealth(db,now+46*60000)).checks.index).toBe('stale');
+    const cache = {match:vi.fn().mockResolvedValue(undefined),put:vi.fn()} as unknown as Cache;
+    const limit = vi.fn().mockResolvedValue({success:true});
+    const env = {DB:db,HEALTH_LIMIT:{limit}};
+    const request = new Request('https://wash.kokoda.fun/health/jobs');
+    expect((await healthResponse(new Request(request.url+'?key=1'),env,cache)).status).toBe(404);
+    expect(limit).not.toHaveBeenCalled();
+    expect((await healthResponse(request,env,cache)).status).toBe(200);
+    await db.prepare('UPDATE archive_storage SET reserved_bytes=800000000').run();
+    expect((await healthResponse(request,env,cache)).status).toBe(503);
+    expect((await jobHealth(db,now)).checks.archive).toBe('near-limit');
+    await expect(recordIndexRun(db,now+1,async()=>{throw Error('index failed');})).rejects.toThrow('index failed');
+    expect((await jobHealth(db,now)).checks.index).toBe('failed');
+    limit.mockResolvedValue({success:false});
+    expect((await healthResponse(request,env,cache)).status).toBe(429);
+  });
 
   it('starts only one browser per UTC day and closes the verified session', async () => {
     const browser = {
