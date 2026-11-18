@@ -10,6 +10,8 @@ export default defineConfig({
     previewUrls: false,
     observability: { enabled: true, traces: { enabled: true } },
     triggers: [
+      triggers.fetch({ pattern: 'wash.kokoda.fun/admin', zone: 'kokoda.fun' }),
+      triggers.fetch({ pattern: 'wash.kokoda.fun/admin/*', zone: 'kokoda.fun' }),
       triggers.scheduled({ schedule: '*/15 * * * *' }),
       triggers.scheduled({ schedule: '0 3 * * *' }),
       triggers.queue({ name: 'wash-guide-sources', deadLetterQueue: 'wash-guide-sources-dead', maxBatchSize: 1, maxConcurrency: 1, maxRetries: 2, retryDelay: 300 }),

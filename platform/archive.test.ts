@@ -1,3 +1,4 @@
+import { adminRequest } from './review/admin';
 import { readFile } from 'node:fs/promises';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Miniflare } from 'miniflare';
@@ -28,7 +29,7 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
       get: key => binding.get(key),
       delete: key => binding.delete(key),
     };
-    for (const name of ['0001_catalog.sql', '0002_archive.sql', '0003_source_jobs.sql']) {
+    for (const name of ['0001_catalog.sql', '0002_archive.sql', '0003_source_jobs.sql', '0007_review_evidence.sql']) {
       const sql = await readFile(new URL(`./migrations/${name}`, import.meta.url), 'utf8');
       // D1 exec treats line breaks as statement boundaries. Flatten these
       // trusted migrations so multi-line CREATE TABLE/TRIGGER stays intact.
@@ -38,6 +39,37 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
       .bind(sourceId, 'https://example.com/document', 'example.com').run();
   });
   afterEach(async () => { vi.unstubAllGlobals(); vi.restoreAllMocks(); await mf?.dispose(); });
+
+  it('authenticates before archive access and compares only the two recorded snapshots under the read budget', async () => {
+    const env = { DB: db, ARCHIVE: bucket };
+    const html = (ratio: string) => new Response('<script>hidden</script><p>Ratio ' + ratio + '</p>', { headers: { 'Content-Type': 'text/html' } });
+    const before = await archiveDocument(db, bucket, sourceId, html('1:10'));
+    const after = await archiveDocument(db, bucket, sourceId, html('1:20'));
+    await db.prepare("INSERT INTO review_items (id,source_id,kind,body,created_at) VALUES ('review-a',?,'source-change',?,datetime('now'))")
+      .bind(sourceId, JSON.stringify({ previous: before.sha256, current: after.sha256 })).run();
+    const allow = async () => ({ email: 'owner@example.test', subject: 'owner' });
+    const request = (path: string) => new Request('https://wash.kokoda.fun' + path);
+    const compare = request('/admin/reviews/review-a/compare');
+    expect((await adminRequest(compare, env)).status).toBe(403);
+    expect(await (await adminRequest(request('/admin'), env, allow)).text()).toContain('example.com/document');
+    const reads = () => db.prepare("SELECT gets FROM archive_daily WHERE day=date('now')").first('gets');
+    expect(await reads()).toBe(0);
+    const response = await adminRequest(compare, env, allow);
+    const content = await response.text();
+    expect(content).toContain('− Ratio 1:10');
+    expect(content).toContain('+ Ratio 1:20');
+    expect(content).not.toContain('hidden');
+    expect(response.headers.get('cache-control')).toContain('no-store');
+    expect(await reads()).toBe(2);
+    expect(await (await adminRequest(compare, env, allow)).text()).toBe(content);
+    expect(await reads()).toBe(2);
+    const download = await adminRequest(request('/admin/reviews/review-a/current'), env, allow);
+    expect(download.headers.get('content-disposition')).toContain('attachment');
+    expect(await download.text()).toBe(await html('1:20').text());
+    await db.prepare('UPDATE archive_policy SET daily_gets=3').run();
+    expect((await adminRequest(request('/admin/reviews/review-a/previous'), env, allow)).status).toBe(503);
+    expect(await reads()).toBe(3);
+  });
 
   async function delivery(runId = 'sources-2026-11-17', attempts = 1) {
     await db.prepare("INSERT OR IGNORE INTO audit_runs(id,started_at,state,kind,expected_count) VALUES (?,?,'running','sources',1)")
