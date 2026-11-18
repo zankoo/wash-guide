@@ -1,6 +1,8 @@
+import { libraryRequest, type LibraryBindings } from '../library/api';
+import { submitCorrection, type CorrectionBindings } from './corrections';
 import type { AiSearchInstance, D1Database, RateLimit } from '@cloudflare/workers-types';
 
-type Bindings = { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
+type Bindings = LibraryBindings & CorrectionBindings & { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
 
 function reply(value: unknown, status = 200) {
   return Response.json(value, {status,headers:{'Cache-Control':'no-store'}});
@@ -39,7 +41,11 @@ async function search(request: Request, env: Bindings) {
   const {results: rows} = await env.DB.prepare(`SELECT s.indexed_key,s.item_key,p.id,p.name,p.source_url,
     json_extract(p.document,'$.sds.url') AS sds_url FROM search_documents s JOIN catalog_publication v ON v.version_id=s.version_id
     JOIN products p ON p.id=s.product_id AND p.version_id=v.version_id
-    WHERE s.indexed_key IN (${keys.map(()=>'?').join(',')}) AND s.state='submitted'`).bind(...keys)
+    WHERE s.indexed_key IN (${keys.map(()=>'?').join(',')}) AND s.state='submitted'
+    UNION ALL SELECT d.upload_key,'sds-external',p.id,p.name,p.source_url,r.url
+    FROM search_archived_sds d JOIN published_remote_sds r ON (r.source_id,r.digest)=(d.source_id,d.digest)
+    JOIN catalog_publication v ON v.singleton=1 JOIN products p ON (p.version_id,p.id)=(v.version_id,r.product_id)
+    WHERE d.submitted=1 AND d.upload_key IN (${keys.map(()=>'?').join(',')})`).bind(...keys,...keys)
     .all<{indexed_key:string; item_key:string; id:string; name:string; source_url:string; sds_url:string|null}>();
   const citations = new Map(rows.map(row=>[row.indexed_key,row]));
   return reply({results: keys.flatMap(key=>{
@@ -54,7 +60,15 @@ async function search(request: Request, env: Bindings) {
 }
 const worker = {
   async fetch(request: Request, env: Bindings) {
-    if (request.method==='POST' && new URL(request.url).pathname==='/api/platform/search') {
+    const path = new URL(request.url).pathname;
+    if (request.method === 'POST' && path === '/api/platform/corrections') {
+      try { return await submitCorrection(request, env); } catch { return reply({ error: '纠错暂时无法提交，请稍后重试' }, 503); }
+    }
+    if (request.method === 'POST' && path.startsWith('/api/platform/library/')) {
+      try { return await libraryRequest(request, env, path.slice('/api/platform/library/'.length)); }
+      catch { return reply({ error:'资料库暂不可用，请稍后重试' },503); }
+    }
+    if (request.method==='POST' && path==='/api/platform/search') {
       try {return await search(request,env);} catch {return reply({error:'资料检索暂时不可用，请稍后再试'},503);}
     }
     return reply({error:'页面不存在'},404);

@@ -153,8 +153,18 @@ async function checkProducts(page: Page, where: string, mobile: boolean) {
 
 /** 后退；退到浏览器的空白起始页时再前进回来（那已经不是本站页面） */
 async function goBack(page: Page) {
+  // Chromium can return from goBack while restoring a document whose URL
+  // was previously updated by pushState. Read the target before traversing.
+  const target = await page.evaluate(() => {
+    const nav = (window as Window & { navigation?: {
+      entries(): NavigationHistoryEntry[];
+      currentEntry: NavigationHistoryEntry;
+    } }).navigation;
+    return nav?.entries()[nav.currentEntry.index - 1]?.url;
+  });
   await page.goBack();
-  if (!page.url().startsWith('http')) await page.goForward();
+  if (target?.startsWith('http')) await page.waitForURL(target);
+  else if (!page.url().startsWith('http')) await page.goForward();
 }
 
 /** 随机挑一个可点的元素 */
@@ -264,7 +274,7 @@ test('探索：流程页筛选任意点击顺序', async ({ page }) => {
       for (const [i, k] of (['', ...SCENES.map(([k]) => k)] as const).entries()) {
         const btn = sec('场景').locator('button').nth(i);
         const want = select({ ...s, scene: k }).flows.length;
-        expect(await num(btn), `${where} 场景「${k ? SCENE_NAME[k] : '全部'}」数字`).toBe(want);
+        await expect.poll(() => num(btn), {message: `${where} 场景「${k ? SCENE_NAME[k] : '全部'}」数字`}).toBe(want);
         expect(await btn.isDisabled(), `${where} 场景「${k || '全部'}」可点状态`).toBe(isDead(want, s.scene === k, !k));
       }
       for (const [i, b] of (['', ...BRANDS] as const).entries()) {
@@ -316,7 +326,18 @@ test('探索：详情弹窗、常用收藏与浏览器前进后退', async ({ pa
         history.push(`切换常用 ${id}`);
       } else if (roll < 6) { history.push('后退'); await goBack(page); }
       else if (roll < 7) { history.push('前进'); await page.goForward(); }
-      else { const b = BRANDS[r(BRANDS.length)]; if (!open) { history.push(`品牌:${b}`); await page.getByRole('complementary', { name: '索引' }).locator('.side-sec').first().getByRole('button').nth(BRANDS.indexOf(b) + 1).click(); } }
+      else {
+        const b = BRANDS[r(BRANDS.length)];
+        if (!open) {
+          // History restored after a reload can show the standalone product.
+          if (await page.locator('.page-detail').isVisible()) {
+            history.push('从独立详情返回产品速查');
+            await page.getByRole('link', {name:'← 产品速查'}).click();
+          }
+          history.push(`品牌:${b}`);
+          await page.getByRole('complementary', { name: '索引' }).locator('.side-sec').first().getByRole('button').nth(BRANDS.indexOf(b) + 1).click();
+        }
+      }
     });
     const where = `种子 ${SEED}：${history.join(' → ')}`;
     // 关闭有动画：等界面稳定后，详情只在 /p/ 路径出现，其他路径没有弹窗

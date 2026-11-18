@@ -92,3 +92,11 @@ export const SUBCATS: Subcategory[] = [
   { id: 'acc-pad', category: 'acc', name: '抛光盘', ids: ['G-pad-heavy-cut', 'G-wool-heavy-cut', 'G-pad-cut', 'G-wool-cut', 'G-pad-polish', 'G-pad-finish', 'F-pad-white', 'F-pad-blu', 'F-microwool', 'F-hybrid', 'F-eskimo-white', 'F-eskimo-gold', 'F-pad-yellow', 'F-pad-black'] },
   { id: 'acc-other', category: 'acc', name: '喷雾壶 / 其他', ids: ['L-bottle', 'C-dilute', 'K-pressure-foam-sprayer', 'M-be-twin', 'F-secchio-wash', 'F-gritsafe', 'F-nebula'] },
 ];
+
+export function otherSubcategory(category: CategoryId): Subcategory {
+  return { category, id: category + '-unassigned', name: '其他产品', ids: [] };
+}
+
+export function subcategoriesFor(category: CategoryId): Subcategory[] {
+  return [...SUBCATS.filter(sub => sub.category === category), otherSubcategory(category)];
+}

@@ -1,8 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { MATERIALS, type MaterialId } from '@/data/materials';
-import { SUBCATS } from '@/data/subcategories';
+import { subcategoriesFor } from '@/data/subcategories';
 import { BRAND, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { SceneId } from '@/data/types';
 import { usePickers } from './filter-bar';
@@ -136,6 +137,7 @@ export function Sidebar() {
               我的常用
               <small>{favoriteCount}</small>
             </button>
+            {favMode && <Link className="scope-clear" href="/library">同步收藏与私人清单</Link>}
           </li>
         </ul>
       )}
@@ -243,7 +245,7 @@ export function Sidebar() {
             <ul className="side-index" role="list">
               {CATS.filter(([k]) => indexCounts[k]).map(([k, n]) => {
                 const here = activeCat === `cat-${k}`;
-                const subs = SUBCATS.filter((s) => s.category === k && subCounts[s.id]);
+                const subs = subcategoriesFor(k).filter((s) => subCounts[s.id]);
                 return (
                   <li key={k}>
                     <a

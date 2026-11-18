@@ -1,0 +1,16 @@
+name: Production job health
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify scheduled jobs and archive budget
+        shell: bash
+        run: |
+          curl --silent --show-error --fail-with-body --retry 2 --retry-max-time 60 --max-time 15 https://wash.kokoda.fun/health/jobs | tee health.json
+          jq --exit-status --arg day "$(date -u -d '5 hours ago' +%F)" '.ok == true and .day == $day and .checks.sources == "completed" and .checks.browser == "completed" and .checks.queue == "completed" and .checks.index == "completed" and .checks.archive == "within-budget"' health.json

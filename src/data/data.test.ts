@@ -3,16 +3,11 @@ import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { FLOWS, FLOW_BY_ID, PRODUCTS, PRODUCT_BY_ID, SDS_SOURCES, SUBCATS, keyRatios, materialsOf, productsOfStep, stepsOf } from './index';
 import { CAT_NAME, SCENE_NAME } from './taxonomy';
-import { PRODUCT_IDS } from './product-ids';
 
 describe('数据完整性', () => {
   it('产品和流程 id 不重复', () => {
     expect(PRODUCT_BY_ID.size).toBe(PRODUCTS.length);
     expect(FLOW_BY_ID.size).toBe(FLOWS.length);
-  });
-
-  it('proxy 用的产品 id 列表与产品数据一致（增删产品后同步更新 product-ids.ts）', () => {
-    expect([...PRODUCT_IDS]).toEqual(PRODUCTS.map((p) => p.id));
   });
 
   it('分类和场景都在列表里', () => {

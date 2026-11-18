@@ -1,3 +1,6 @@
+import { jobHealth, recordIndexRun, healthResponse } from './job-health';
+import { auditProductionGuide } from './browser-audit';
+import { adminRequest } from './review/admin';
 import { readFile } from 'node:fs/promises';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Miniflare } from 'miniflare';
@@ -28,7 +31,7 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
       get: key => binding.get(key),
       delete: key => binding.delete(key),
     };
-    for (const name of ['0001_catalog.sql', '0002_archive.sql', '0003_source_jobs.sql']) {
+    for (const name of ['0001_catalog.sql', '0002_archive.sql', '0003_source_jobs.sql', '0007_review_evidence.sql']) {
       const sql = await readFile(new URL(`./migrations/${name}`, import.meta.url), 'utf8');
       // D1 exec treats line breaks as statement boundaries. Flatten these
       // trusted migrations so multi-line CREATE TABLE/TRIGGER stays intact.
@@ -39,6 +42,65 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
   });
   afterEach(async () => { vi.unstubAllGlobals(); vi.restoreAllMocks(); await mf?.dispose(); });
 
+  it('reports absent, late, failed and healthy jobs plus allocated R2 usage without reading the bucket', async () => {
+    const now = Date.now();
+    const report = await jobHealth(db,now);
+    expect(report.checks).toMatchObject({browser:'missing',sources:'missing',index:'missing',queue:'incomplete'});
+    const tick = vi.fn().mockResolvedValue(undefined);
+    await Promise.all([recordIndexRun(db,now,tick),recordIndexRun(db,now,tick)]);
+    expect(tick).toHaveBeenCalledOnce();
+    for(const kind of ['sources','browser']) await db.prepare(`INSERT INTO audit_runs(id,kind,state,started_at,expected_count)
+      VALUES(?,?,'completed',datetime('now'),?)`).bind(kind+'-'+report.day,kind,kind==='sources' ? 1 : 0).run();
+    const runId='sources-'+report.day;
+    expect((await jobHealth(db,now)).checks.queue).toBe('incomplete');
+    await db.prepare("INSERT INTO source_checks(run_id,source_id,checked_at,outcome) VALUES(?,?,datetime('now'),'failed')").bind(runId,sourceId).run();
+    expect((await jobHealth(db,now)).checks.queue).toBe('failed');
+    await db.prepare("UPDATE source_checks SET outcome='unchanged'").run();
+    expect((await jobHealth(db,now)).ok).toBe(true);
+    expect((await jobHealth(db,now+46*60000)).checks.index).toBe('stale');
+    const cache = {match:vi.fn().mockResolvedValue(undefined),put:vi.fn()} as unknown as Cache;
+    const limit = vi.fn().mockResolvedValue({success:true});
+    const env = {DB:db,HEALTH_LIMIT:{limit}};
+    const request = new Request('https://wash.kokoda.fun/health/jobs');
+    expect((await healthResponse(new Request(request.url+'?key=1'),env,cache)).status).toBe(404);
+    expect(limit).not.toHaveBeenCalled();
+    expect((await healthResponse(request,env,cache)).status).toBe(200);
+    await db.prepare('UPDATE archive_storage SET reserved_bytes=800000000').run();
+    expect((await healthResponse(request,env,cache)).status).toBe(503);
+    expect((await jobHealth(db,now)).checks.archive).toBe('near-limit');
+    await expect(recordIndexRun(db,now+1,async()=>{throw Error('index failed');})).rejects.toThrow('index failed');
+    expect((await jobHealth(db,now)).checks.index).toBe('failed');
+    limit.mockResolvedValue({success:false});
+    expect((await healthResponse(request,env,cache)).status).toBe(429);
+  });
+
+  it('starts only one browser per UTC day and closes the verified session', async () => {
+    const browser = {
+      script: vi.fn().mockResolvedValue(Response.json({success:true,result:'offline-calculation-passed'}, {
+        headers:{'cf-browser-session-id':'session'},
+      })),
+      closeSession: vi.fn(),
+    };
+    const time = Date.now();
+    await auditProductionGuide(db,browser,time - 86400000);
+    await Promise.all([auditProductionGuide(db,browser,time),auditProductionGuide(db,browser,time)]);
+    expect(browser.script).toHaveBeenCalledTimes(1);
+    expect(browser.closeSession).toHaveBeenCalledWith('session');
+    expect(await db.prepare("SELECT state FROM audit_runs WHERE kind='browser'").first('state')).toBe('completed');
+  });
+
+  it('records a browser failure and does not spend another session on redelivery', async () => {
+    const browser = { script:vi.fn().mockResolvedValue(Response.json({success:true,result:'failed:offline-filter'}, {
+      headers:{'cf-browser-session-id':'session'},
+    })), closeSession:vi.fn() };
+    const time = Date.now();
+    await expect(auditProductionGuide(db,browser,time)).rejects.toThrow('failed:offline-filter');
+    await auditProductionGuide(db,browser,time);
+    expect(browser.script).toHaveBeenCalledTimes(1);
+    expect(browser.closeSession).toHaveBeenCalledWith('session');
+    expect(await db.prepare("SELECT state FROM audit_runs WHERE kind='browser'").first('state')).toBe('failed');
+  });
+
   async function delivery(runId = 'sources-2026-11-17', attempts = 1) {
     await db.prepare("INSERT OR IGNORE INTO audit_runs(id,started_at,state,kind,expected_count) VALUES (?,?,'running','sources',1)")
       .bind(runId, new Date().toISOString()).run();
@@ -47,6 +109,37 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
     const env = { DB: db, ARCHIVE: bucket, SOURCE_QUEUE: { sendBatch: vi.fn() } };
     return { message, run: () => consumeSourceChecks(batch, env) };
   }
+
+  it('authenticates before archive access and compares only the two recorded snapshots under the read budget', async () => {
+    const env = { DB: db, ARCHIVE: bucket };
+    const html = (ratio: string) => new Response('<script>hidden</script><p>Ratio ' + ratio + '</p>', { headers: { 'Content-Type': 'text/html' } });
+    const before = await archiveDocument(db, bucket, sourceId, html('1:10'));
+    const after = await archiveDocument(db, bucket, sourceId, html('1:20'));
+    await db.prepare("INSERT INTO review_items (id,source_id,kind,body,created_at) VALUES ('review-a',?,'source-change',?,datetime('now'))")
+      .bind(sourceId, JSON.stringify({ previous: before.sha256, current: after.sha256 })).run();
+    const allow = async () => ({ email: 'owner@example.test', subject: 'owner' });
+    const request = (path: string) => new Request('https://wash.kokoda.fun' + path);
+    const compare = request('/admin/reviews/review-a/compare');
+    expect((await adminRequest(compare, env)).status).toBe(403);
+    expect(await (await adminRequest(request('/admin'), env, allow)).text()).toContain('example.com/document');
+    const reads = () => db.prepare("SELECT gets FROM archive_daily WHERE day=date('now')").first('gets');
+    expect(await reads()).toBe(0);
+    const response = await adminRequest(compare, env, allow);
+    const content = await response.text();
+    expect(content).toContain('− Ratio 1:10');
+    expect(content).toContain('+ Ratio 1:20');
+    expect(content).not.toContain('hidden');
+    expect(response.headers.get('cache-control')).toContain('no-store');
+    expect(await reads()).toBe(2);
+    expect(await (await adminRequest(compare, env, allow)).text()).toBe(content);
+    expect(await reads()).toBe(2);
+    const download = await adminRequest(request('/admin/reviews/review-a/current'), env, allow);
+    expect(download.headers.get('content-disposition')).toContain('attachment');
+    expect(await download.text()).toBe(await html('1:20').text());
+    await db.prepare('UPDATE archive_policy SET daily_gets=3').run();
+    expect((await adminRequest(request('/admin/reviews/review-a/previous'), env, allow)).status).toBe(503);
+    expect(await reads()).toBe(3);
+  });
 
   it('stores once and serves the original bytes, with no R2 HEAD/list on a duplicate', async () => {
     const put = vi.spyOn(bucket, 'put');

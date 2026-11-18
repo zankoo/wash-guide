@@ -12,6 +12,7 @@ export default defineConfig({
     }),
     cloudflare({
       remoteBindings: false,
+      persistState: process.env.WASH_LOCAL_STATE ? { path: process.env.WASH_LOCAL_STATE } : true,
       viteEnvironment: {
         name: "rsc",
         childEnvironments: ["ssr"],
