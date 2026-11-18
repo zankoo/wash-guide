@@ -5,6 +5,7 @@ import { cautionTexts } from '@/data/cautions';
 import { phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL } from '@/data/ph';
 import { imageSrc, subcategoryOf, phDisplay, type FlowEntry } from '@/data/presentation';
 import type { Product } from '@/data/types';
+import { ProductCorrection } from './product-correction';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './notes';
@@ -96,6 +97,7 @@ export function ProductDetail({ p, used }: { p: Product; used: FlowEntry[] }) {
             <ExternalIcon />
           </a>
           <SdsLink p={p} />
+          <ProductCorrection product={p.id} />
         </div>
       </div>
     </>
