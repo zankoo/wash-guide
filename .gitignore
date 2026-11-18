@@ -51,3 +51,5 @@ next-env.d.ts
 .vinext/
 .cloudflare/
 platform/jobs/dist/
+platform/api/dist/
+.wrangler/

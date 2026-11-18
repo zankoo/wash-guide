@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ViewTabs } from './view-tabs';
 
 /** 三段 pH 色条（碱性 / 中性 / 酸性）；首次加载时像液面一样依次升起 */
@@ -23,6 +24,7 @@ export function Masthead() {
             <p>Labocosmetica、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON、BolaSolution、FEYNLAB、P&S 的官方稀释比例、施工步骤和洗车流程</p>
           </div>
         </div>
+        <Link href="/research-search" className="source-search-link">资料检索</Link>
         <ViewTabs className="tabs top" />
       </div>
     </header>
@@ -33,6 +35,9 @@ export function Footer() {
   return (
     <footer>
       <div className="wrap">
+        <p>
+          <Link href="/research-search">搜索产品资料与 SDS</Link>
+        </p>
         <p>
           比例写法沿用官方：<b>1:10</b> = 1 份原液 + 10 份水。PA壶比例指壶内的调配比例，最终出液浓度取决于高压清洗机。
         </p>

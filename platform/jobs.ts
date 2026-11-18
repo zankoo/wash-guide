@@ -1,4 +1,5 @@
-import type { MessageBatch } from '@cloudflare/workers-types';
+import { syncSearchIndex } from './search-index';
+import type { AiSearchInstance, D1Database, MessageBatch } from '@cloudflare/workers-types';
 import { archiveDocument, ArchiveUnavailable, cleanupArchives } from './archive';
 
 // These are binding contracts; configuration lives in jobs/cloudflare.config.ts.
@@ -134,7 +135,10 @@ export async function consumeSourceChecks(batch: MessageBatch, env: JobBindings)
 const worker = {
   // There is no public upload, crawl, or bucket-list endpoint.
   fetch() { return new Response('Not found', { status: 404 }); },
-  async scheduled(_controller: unknown, env: JobBindings) { await scheduleSourceChecks(env); },
+  async scheduled(controller: { cron: string }, env: JobBindings & { DB: D1Database; SEARCH: AiSearchInstance }) {
+    if (controller.cron === '*/15 * * * *') await syncSearchIndex(env.DB, env.SEARCH);
+    else await scheduleSourceChecks(env);
+  },
   queue: consumeSourceChecks,
 };
 export default worker;

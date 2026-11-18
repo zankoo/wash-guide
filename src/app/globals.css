@@ -586,3 +586,12 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 .flow{scroll-margin-top:calc(var(--bar-h) + 24px)}
 
 .offline-status{position:fixed;bottom:calc(72px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:80;padding:8px 14px;border-radius:20px;background:var(--ink,#152b36);color:var(--paper,#fff);font-size:12px;white-space:nowrap;pointer-events:none}
+
+.source-search{max-width:54rem;margin:auto;padding-block:2rem}
+.source-search form{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.source-search label{width:100%}
+.source-search input,.source-search button{font:inherit;padding:.7rem;border:1px solid var(--line-2);border-radius:.4rem;color:var(--ink);background:var(--sheet)}
+.source-search input{flex:1;min-width:12rem}
+.source-search article{border-top:1px solid var(--line-2);padding-block:1rem}
+.source-search article p{white-space:pre-line;overflow-wrap:anywhere}
+.source-search-link{white-space:nowrap}
