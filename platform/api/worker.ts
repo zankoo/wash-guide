@@ -1,7 +1,8 @@
+import { libraryRequest, type LibraryBindings } from '../library/api';
 import { submitCorrection, type CorrectionBindings } from './corrections';
 import type { AiSearchInstance, D1Database, RateLimit } from '@cloudflare/workers-types';
 
-type Bindings = CorrectionBindings & { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
+type Bindings = LibraryBindings & CorrectionBindings & { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
 
 function reply(value: unknown, status = 200) {
   return Response.json(value, {status,headers:{'Cache-Control':'no-store'}});
@@ -58,6 +59,10 @@ const worker = {
     const path = new URL(request.url).pathname;
     if (request.method === 'POST' && path === '/api/platform/corrections') {
       try { return await submitCorrection(request, env); } catch { return reply({ error: '纠错暂时无法提交，请稍后重试' }, 503); }
+    }
+    if (request.method === 'POST' && path.startsWith('/api/platform/library/')) {
+      try { return await libraryRequest(request, env, path.slice('/api/platform/library/'.length)); }
+      catch { return reply({ error:'资料库暂不可用，请稍后重试' },503); }
     }
     if (request.method==='POST' && path==='/api/platform/search') {
       try {return await search(request,env);} catch {return reply({error:'资料检索暂时不可用，请稍后再试'},503);}

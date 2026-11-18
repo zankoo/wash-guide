@@ -36,6 +36,7 @@ jobs:
       - run: pnpm build
       - run: pnpm check:payload
       - run: pnpm build:api
+      - run: node scripts/check-library.mjs
       - run: pnpm build:jobs
       - run: node scripts/check-review-workflow.mjs
 

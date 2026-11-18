@@ -36,7 +36,7 @@ export function Footer() {
     <footer>
       <div className="wrap">
         <p>
-          <Link href="/research-search">搜索产品资料与 SDS</Link>
+          <Link href="/research-search">搜索产品资料与 SDS</Link> · <Link href="/library">同步收藏与私人清单</Link>
         </p>
         <p>
           比例写法沿用官方：<b>1:10</b> = 1 份原液 + 10 份水。PA壶比例指壶内的调配比例，最终出液浓度取决于高压清洗机。
