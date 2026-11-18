@@ -11,6 +11,7 @@ export default defineConfig({
       prerender: { routes: "*" },
     }),
     cloudflare({
+      remoteBindings: false,
       viteEnvironment: {
         name: "rsc",
         childEnvironments: ["ssr"],
