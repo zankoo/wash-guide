@@ -36,7 +36,9 @@ BEGIN
       AND current.version_id=NEW.version_id AND CASE WHEN search_documents.item_key LIKE 'sds-%' THEN
         json_extract(current.document,'$.sds.hosting')='local'
         AND json_extract(current.document,'$.sds.url')=json_extract(original.document,'$.sds.url')
-        AND json_extract(current.document,'$.sds.sha256')=json_extract(original.document,'$.sds.sha256')
+        AND json_extract(current.document,'$.sds.sha256') IS json_extract(original.document,'$.sds.sha256')
+        AND (json_extract(current.document,'$.sds.sha256') IS NOT NULL OR
+             json_extract(current.document,'$.sds')=json_extract(original.document,'$.sds'))
       ELSE json_extract(current.document,'$.brand','$.name','$.type','$.materials','$.dilutions','$.steps','$.cautions','$.notes','$.ph.evidence','$.url') =
            json_extract(original.document,'$.brand','$.name','$.type','$.materials','$.dilutions','$.steps','$.cautions','$.notes','$.ph.evidence','$.url')
       END

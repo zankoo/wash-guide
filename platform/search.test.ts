@@ -145,3 +145,20 @@ it('records an in-flight final upload after an unchanged product moves to anothe
   expect(await db.prepare('SELECT state,attempts,indexed_key,version_id FROM search_documents').first())
     .toEqual({state:'submitted',attempts:3,indexed_key:upload.mock.calls[0][0],version_id:'v2'});
 });
+
+it('keeps an unchanged legacy SDS with no digest when the next version is published', async () => {
+  const sheet = {url:'/sds/legacy.pdf',hosting:'local',version:'2025'};
+  const record = {...product,sds:sheet};
+  await db.prepare('UPDATE products SET document=?').bind(JSON.stringify(record)).run();
+  vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('PDF',{headers:{
+    'Content-Type':'application/pdf','Content-Length':'3',
+  }})));
+  await syncSearchIndex(db,{items});
+  const read = () => db.prepare("SELECT indexed_key,state FROM search_documents WHERE item_key='sds-legacy.pdf'").first();
+  const previous = await read();
+  expect(previous).toMatchObject({state:'submitted'});
+  await publishRevision({...record,sizes:'new packaging'});
+  expect(await read()).toEqual(previous);
+  await syncSearchIndex(db,{items});
+  expect(upload).toHaveBeenCalledTimes(2);
+});
