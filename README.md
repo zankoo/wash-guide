@@ -98,7 +98,7 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 
 - 正式地址为 `https://wash.kokoda.fun`；SEO、`sitemap.xml` 和 `robots.txt` 使用这个地址，可在构建时用 `SITE_URL` 覆盖。
 - `/img/*`、`/sds/*` 和哈希 JS/CSS 由 Static Assets 直接提供。页面和 RSC 经过 Worker，私有预渲染缓存目录不会公开访问。
-- 产品和流程投影按 D1 发布版本缓存在 Worker 实例内。收藏仍保存在用户浏览器。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
+- 产品和流程投影按 D1 发布版本缓存在 Worker 实例内。收藏默认保存在浏览器；读者可以在 `/library` 配对自己的设备，同步收藏及私人施工清单。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
 - Vercel Analytics / Speed Insights 已移除。运行错误和请求可在 Cloudflare Workers Logs / Traces 中查看。
 - GitHub 仓库 `zankoo/wash-guide` 已连接 Workers Builds：`main` 自动生产部署，其他分支生成独立预览；构建依赖缓存已开启，Markdown / research 变更跳过构建。生产部署前运行 lint、类型检查、单元测试、构建和传输预算检查，GitHub Actions 另跑完整浏览器回归。
 
@@ -118,7 +118,7 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 | 可观测性 | Workers Logs / Traces；已有 Cloudflare Web Analytics 自动安装，避免重复添加统计脚本 |
 | 持续交付 | Workers Builds GitHub 连接、依赖缓存、生产分支部署与分支预览；GitHub Actions 浏览器回归 |
 
-静态资源已经具有分层缓存，不需要额外引入 R2/KV 才能缓存。Speed Brain 不预取经过 Worker 的页面，应用自己的路由预取与离线缓存负责这一部分。Rocket Loader 保持关闭，避免改写 React 脚本执行顺序；现有 WebP 无需再次进行在线有损转换。Turnstile、Queues、D1、Durable Objects 等在出现表单、后台任务或服务端持久化需求时再引入；当前浏览器收藏不需要登录或服务端数据库。
+静态资源已经具有分层缓存，不需要额外引入 R2/KV 才能缓存。Speed Brain 不预取经过 Worker 的页面，应用自己的路由预取与离线缓存负责这一部分。Rocket Loader 保持关闭，避免改写 React 脚本执行顺序；现有 WebP 无需再次进行在线有损转换。产品纠错经 Turnstile 验证，来源巡检通过 Queues 分批处理。审核员通过 Cloudflare Access 进入 `/admin`，在 Workflows 确认后发布或回滚 D1 目录版本。私人清单保存在 D1，Durable Objects 管理设备配对。
 
 参考：[Static Assets 缓存](https://developers.cloudflare.com/workers/static-assets/)、[Speed Brain 限制](https://developers.cloudflare.com/speed/optimization/content/speed-brain/)、[Free WAF 默认部署](https://developers.cloudflare.com/waf/get-started/)。
 
@@ -136,7 +136,7 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 
 D1 `wash-guide` 已创建于 APAC 并启用自动读副本；已导入 585 个产品、70 个流程和 997 个来源，外键检查通过。主站读取 `catalog_publication.version_id` 指向的快照。发布和回滚通过切换该指针生效，本地启动时会在模拟 D1 首次创建目录。`scripts/catalog-export.mjs <output.sql>` 生成建表及初始数据，`--data-only` 只生成初始数据；它用于首次迁移，不能当作生产更新或重复导入命令。后续表结构变更按 `platform/migrations/` 顺序执行。后台 Worker 独立构建命令为 `pnpm build:jobs`，已加入 CI。
 
-这些应用限额只约束通过本模块产生的用量，不覆盖控制台、S3 客户端或同账户其他应用。生命周期清理非即时，不能代替容量预留。进程在上传或删除途中崩溃时会保守保留预留记录，需要核对对象后修复，避免凭空释放容量。上述代码已通过本地 D1/R2 模拟运行测试；后台 Worker 已部署，每天北京时间 11:00 检查来源。用户表示已有邮件告警，本次没有创建或验证告警收件人。
+这些应用限额只约束通过本模块产生的用量，不覆盖控制台、S3 客户端或同账户其他应用。生命周期清理非即时，不能代替容量预留。进程在上传或删除途中崩溃时会保守保留预留记录，需要核对对象后修复，避免凭空释放容量。上述代码已通过本地 D1/R2 模拟运行测试；后台 Worker 已部署，每天北京时间 11:00 检查来源。账户已有启用的费用预算邮件告警；项目的存储和操作限额由 D1 原子计数独立执行。
 
 ## 数据说明
 

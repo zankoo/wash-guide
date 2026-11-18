@@ -141,15 +141,6 @@ describe('bounded R2 archive with real D1 and R2 bindings', () => {
     expect(await reads()).toBe(3);
   });
 
-  async function delivery(runId = 'sources-2026-11-17', attempts = 1) {
-    await db.prepare("INSERT OR IGNORE INTO audit_runs(id,started_at,state,kind,expected_count) VALUES (?,?,'running','sources',1)")
-      .bind(runId, new Date().toISOString()).run();
-    const message = { id: 'test-message', timestamp: new Date(), attempts, body: { runId, sourceId }, ack: vi.fn(), retry: vi.fn() };
-    const batch = { queue: 'wash-guide-sources', messages: [message], metadata: { metrics: { backlogCount: 0, backlogBytes: 0 } }, ackAll: vi.fn(), retryAll: vi.fn() };
-    const env = { DB: db, ARCHIVE: bucket, SOURCE_QUEUE: { sendBatch: vi.fn() } };
-    return { message, run: () => consumeSourceChecks(batch, env) };
-  }
-
   it('stores once and serves the original bytes, with no R2 HEAD/list on a duplicate', async () => {
     const put = vi.spyOn(bucket, 'put');
     const result = await archiveDocument(db, bucket, sourceId, document());
