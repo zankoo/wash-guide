@@ -73,7 +73,7 @@ export async function syncSearchIndex(db: D1Database, search: {items: IndexItems
           await sha256(content) !== p.sds.sha256.toLowerCase()) {
         // Static asset deployment may lag publication. Retry in an hour without
         // consuming an AI upload or exhausting the transient failure attempts.
-        await defer(db,key,version,now,now+3600000);
+        await defer(db,claim.upload_key,now,now+3600000);
         continue;
       }
       await db.prepare("INSERT OR IGNORE INTO search_usage(day) VALUES(date('now'))").run();
@@ -82,14 +82,14 @@ export async function syncSearchIndex(db: D1Database, search: {items: IndexItems
         (SELECT SUM(bytes) FROM search_usage WHERE day>=date('now','start of month'))+?<=24000000 RETURNING uploads`)
         .bind(size,size,size).first();
       if (!reserved) {
-        await defer(db,key,version,now);
+        await defer(db,claim.upload_key,now);
         return;
       }
       await search.items.upload(claim.upload_key,content);
-      await db.prepare("UPDATE search_documents SET state='submitted',indexed_key=?,upload_key=NULL WHERE item_key=? AND version_id=? AND updated_at=?")
-        .bind(claim.upload_key,key,version,now).run();
+      await db.prepare("UPDATE search_documents SET state='submitted',indexed_key=?,upload_key=NULL WHERE upload_key=? AND updated_at=? AND state='uploading'")
+        .bind(claim.upload_key,claim.upload_key,now).run();
     } catch {
-      await db.prepare("UPDATE search_documents SET state=CASE WHEN attempts>=3 THEN 'error' ELSE 'pending' END WHERE item_key=? AND version_id=? AND updated_at=?").bind(key,version,now).run();
+      await db.prepare("UPDATE search_documents SET state=CASE WHEN attempts>=3 THEN 'error' ELSE 'pending' END WHERE upload_key=? AND updated_at=? AND state='uploading'").bind(claim.upload_key,now).run();
     }
   }
 }
@@ -99,7 +99,7 @@ async function sha256(blob: WorkerBlob) {
   return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2,'0')).join('');
 }
 
-async function defer(db: D1Database, key: string, version: string, stamp: number, retryAfter = 0) {
-  await db.prepare("UPDATE search_documents SET state='pending',attempts=attempts-1,retry_after=? WHERE item_key=? AND version_id=? AND updated_at=?")
-    .bind(retryAfter,key,version,stamp).run();
+async function defer(db: D1Database, uploadKey: string, stamp: number, retryAfter = 0) {
+  await db.prepare("UPDATE search_documents SET state='pending',attempts=attempts-1,retry_after=? WHERE upload_key=? AND updated_at=? AND state='uploading'")
+    .bind(retryAfter,uploadKey,stamp).run();
 }

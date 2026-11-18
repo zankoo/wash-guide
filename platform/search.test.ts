@@ -129,3 +129,19 @@ it('retries a mismatched SDS without charging an upload, then submits the matchi
   expect(upload).toHaveBeenCalledTimes(2);
   expect(await upload.mock.calls[1][1].text()).toBe(bytes);
 });
+
+it('records an in-flight final upload after an unchanged product moves to another publication', async () => {
+  // Defer the first tick so the next claim can exercise the third attempt.
+  await db.prepare("INSERT INTO search_usage(day,uploads) VALUES(date('now'),100)").run();
+  await syncSearchIndex(db, {items});
+  await db.prepare("UPDATE search_usage SET uploads=0").run();
+  await db.prepare('UPDATE search_documents SET attempts=2').run();
+  upload.mockImplementationOnce(async () => {
+    await publishRevision({...product,sds:undefined,sizes:'new packaging'});
+  });
+  await syncSearchIndex(db, {items});
+  await syncSearchIndex(db, {items});
+  expect(upload).toHaveBeenCalledTimes(1);
+  expect(await db.prepare('SELECT state,attempts,indexed_key,version_id FROM search_documents').first())
+    .toEqual({state:'submitted',attempts:3,indexed_key:upload.mock.calls[0][0],version_id:'v2'});
+});
