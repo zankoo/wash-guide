@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { Miniflare } from 'miniflare';
 import { PRODUCTS } from '../src/data';
+import { archiveDocument } from './archive';
 import { syncSearchIndex } from './search-index';
 import api from './api/worker';
 
@@ -22,10 +23,10 @@ beforeEach(async () => {
   runtime = new Miniflare({ workers: [{ config: {
     name: 'search-test', compatibilityDate: '2026-11-17',
     manifest: { mainModule: 'worker.js', modules: { 'worker.js': { type: 'esm', contents: 'export default {}' } } },
-    env: { DB: { type: 'd1', id: 'search-test' } },
+    env: { DB: { type: 'd1', id: 'search-test' }, ARCHIVE: {type:'r2',name:'local-sds'} },
   } }] });
   db = await runtime.getD1Database('DB');
-  for (const name of ['0001_catalog', '0004_search','0005_search_publications']) {
+  for (const name of ['0001_catalog','0002_archive','0004_search','0005_search_publications','0011_archived_sds_search']) {
     const sql = await readFile(new URL('./migrations/' + name + '.sql', import.meta.url), 'utf8');
     await db.exec(sql.replace(/^\s*--.*$/gm, '').replaceAll('\n', ' '));
   }
@@ -161,4 +162,50 @@ it('keeps an unchanged legacy SDS with no digest when the next version is publis
   expect(await read()).toEqual(previous);
   await syncSearchIndex(db,{items});
   expect(upload).toHaveBeenCalledTimes(2);
+});
+
+it('indexes a shared archived remote SDS once and withdraws citations immediately for an unreviewed revision', async () => {
+  const bucket = await runtime.getR2Bucket('ARCHIVE');
+  const url='https://manufacturer.example/technical/sds.pdf';
+  const source=createHash('sha256').update(url).digest('hex');
+  const document=JSON.stringify({...product,sds:{url,hosting:'remote'}});
+  await db.prepare('INSERT INTO sources(id,url,hostname) VALUES(?,?,?)').bind(source,url,'manufacturer.example').run();
+  await db.prepare('UPDATE products SET document=?').bind(document).run();
+  await db.prepare("INSERT INTO products SELECT version_id,'shared-product',brand_id,category_id,name,description,source_url,position,document FROM products").run();
+  await db.prepare("INSERT INTO product_sources SELECT version_id,id,?,'sds' FROM products").bind(source).run();
+  const snapshot=async (version:string) => {
+    const response=new Response('%PDF-1.7\n'+version, {headers:{'Content-Type':'application/pdf'}});
+    const stored=await archiveDocument(db,bucket,source,response);
+    await db.prepare('UPDATE sources SET content_sha256=? WHERE id=?').bind(stored.sha256,source).run();
+    return stored;
+  };
+  const first=await snapshot('initial');
+  await db.prepare("INSERT INTO search_usage(day,bytes) VALUES(date('now'),4000000)").run();
+  await syncSearchIndex(db,{items},bucket);
+  expect((await db.prepare("SELECT gets FROM archive_daily WHERE day=date('now')").first())?.gets).toBe(0);
+  await db.prepare('UPDATE search_usage SET bytes=0').run();
+  await syncSearchIndex(db,{items},bucket);
+  await syncSearchIndex(db,{items},bucket);
+  const pdf=upload.mock.calls.filter(([key])=>key.endsWith('-external.pdf'));
+  expect(pdf).toHaveLength(1);
+  expect(await pdf[0][1].text()).toContain('initial');
+  const [key]=pdf[0];
+  search.mockResolvedValue({chunks:[{item:{key},text:'PDF evidence'}]});
+  const citations=async()=> (await (await api.fetch(query(),bindings())).json()).results;
+  expect(await citations()).toEqual([expect.objectContaining({kind:'安全技术说明书',href:url})]);
+  const updated=await snapshot('changed');
+  await db.prepare("INSERT INTO review_items(id,source_id,kind,body,created_at) VALUES('review',?,'source-change',?,datetime('now'))")
+    .bind(source,JSON.stringify({previous:first.sha256,current:updated.sha256})).run();
+  expect(await citations()).toEqual([]);
+  await syncSearchIndex(db,{items},bucket);
+  expect(await db.prepare('SELECT item_key FROM search_retirements WHERE item_key=?').bind(key).first()).toBeTruthy();
+  expect(upload.mock.calls.filter(([k])=>k.endsWith('-external.pdf'))).toHaveLength(1);
+  await db.prepare("UPDATE review_items SET state='approved' WHERE id='review'").run();
+  await syncSearchIndex(db,{items},bucket);
+  expect(upload.mock.calls.filter(([k])=>k.endsWith('-external.pdf'))).toHaveLength(2);
+  const [current]=upload.mock.calls.at(-1)!;
+  search.mockResolvedValue({chunks:[{item:{key:current},text:'new evidence'}]});
+  expect(await citations()).toHaveLength(1);
+  await db.prepare('UPDATE sources SET last_http_status=410').run();
+  expect(await citations()).toEqual([]);
 });

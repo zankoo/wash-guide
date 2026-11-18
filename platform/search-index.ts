@@ -1,4 +1,6 @@
 import type { AiSearchInstance, Blob as WorkerBlob, D1Database } from '@cloudflare/workers-types';
+import { uploadCapacity } from './search-budget';
+import { syncArchivedSds } from './archived-sds-search';
 import type { Product } from '../src/data/types';
 import { cautionTexts } from '../src/data/cautions';
 import { BRAND } from '../src/data/taxonomy';
@@ -31,7 +33,7 @@ async function retireDocuments(db: D1Database, items: IndexItems, now: number) {
   }
 }
 
-export async function syncSearchIndex(db: D1Database, search: {items: IndexItems}) {
+export async function syncSearchIndex(db: D1Database, search: {items: IndexItems}, archive?: Parameters<typeof syncArchivedSds>[1]) {
   const version = await db.prepare('SELECT version_id FROM catalog_publication WHERE singleton=1').first<string>('version_id');
   if (!version) return;
   // On a fresh installation the catalog may predate the publication trigger.
@@ -42,10 +44,11 @@ export async function syncSearchIndex(db: D1Database, search: {items: IndexItems
   const available = await db.prepare(`SELECT COALESCE(MAX(CASE WHEN day=date('now') THEN uploads END),0)<100
     AND SUM(bytes)<24000000 AS ok FROM search_usage WHERE day>=date('now','start of month')`).first<{ok:number|null}>();
   if (available?.ok === 0) return;
+  const archived = archive && await syncArchivedSds(db,archive,search.items);
   const { results } = await db.prepare(`SELECT s.item_key,p.document FROM search_documents s JOIN products p
     ON p.id=s.product_id AND p.version_id=s.version_id WHERE s.version_id=? AND s.retry_after<=? AND s.attempts<3
     AND (s.state='pending' OR (s.state='uploading' AND s.updated_at<?))
-    ORDER BY s.updated_at,s.product_id,s.item_key LIMIT 6`).bind(version,now,now-900000).all<{item_key:string; document:string}>();
+    ORDER BY s.updated_at,s.product_id,s.item_key LIMIT ?`).bind(version,now,now-900000,archived ? 5 : 6).all<{item_key:string; document:string}>();
   for (const row of results) {
     const p: Product = JSON.parse(row.document);
     const key = row.item_key;
@@ -76,12 +79,7 @@ export async function syncSearchIndex(db: D1Database, search: {items: IndexItems
         await defer(db,claim.upload_key,now,now+3600000);
         continue;
       }
-      await db.prepare("INSERT OR IGNORE INTO search_usage(day) VALUES(date('now'))").run();
-      const reserved = await db.prepare(`UPDATE search_usage SET bytes=bytes+?,uploads=uploads+1 WHERE day=date('now')
-        AND uploads<100 AND bytes+?<=4000000 AND
-        (SELECT SUM(bytes) FROM search_usage WHERE day>=date('now','start of month'))+?<=24000000 RETURNING uploads`)
-        .bind(size,size,size).first();
-      if (!reserved) {
+      if (!await uploadCapacity(db,size,true)) {
         await defer(db,claim.upload_key,now);
         return;
       }

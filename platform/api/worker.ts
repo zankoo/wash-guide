@@ -39,7 +39,11 @@ async function search(request: Request, env: Bindings) {
   const {results: rows} = await env.DB.prepare(`SELECT s.indexed_key,s.item_key,p.id,p.name,p.source_url,
     json_extract(p.document,'$.sds.url') AS sds_url FROM search_documents s JOIN catalog_publication v ON v.version_id=s.version_id
     JOIN products p ON p.id=s.product_id AND p.version_id=v.version_id
-    WHERE s.indexed_key IN (${keys.map(()=>'?').join(',')}) AND s.state='submitted'`).bind(...keys)
+    WHERE s.indexed_key IN (${keys.map(()=>'?').join(',')}) AND s.state='submitted'
+    UNION ALL SELECT d.upload_key,'sds-external',p.id,p.name,p.source_url,r.url
+    FROM search_archived_sds d JOIN published_remote_sds r ON (r.source_id,r.digest)=(d.source_id,d.digest)
+    JOIN catalog_publication v ON v.singleton=1 JOIN products p ON (p.version_id,p.id)=(v.version_id,r.product_id)
+    WHERE d.submitted=1 AND d.upload_key IN (${keys.map(()=>'?').join(',')})`).bind(...keys,...keys)
     .all<{indexed_key:string; item_key:string; id:string; name:string; source_url:string; sds_url:string|null}>();
   const citations = new Map(rows.map(row=>[row.indexed_key,row]));
   return reply({results: keys.flatMap(key=>{
