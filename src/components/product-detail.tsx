@@ -1,5 +1,6 @@
 import { Suspense, type ReactNode } from 'react';
 import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, cautionTexts, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phDisplay, type Product } from '@/data';
+import { ProductCorrection } from './product-correction';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './notes';
@@ -93,6 +94,7 @@ export function ProductDetail({ p }: { p: Product }) {
           </a>
           <SdsLink p={p} />
         </div>
+        <ProductCorrection product={p.id} />
       </div>
     </>
   );

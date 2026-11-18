@@ -12,7 +12,7 @@ const upload = vi.fn();
 const search = vi.fn();
 const limit = vi.fn();
 const query = () => new Request('https://wash.kokoda.fun/api/platform/search', { method: 'POST', body: '如何去除车漆上的水斑' });
-const bindings = () => ({ DB: db, SEARCH: { search }, SEARCH_LIMIT: { limit } });
+const bindings = () => ({ DB: db, SEARCH: { search }, SEARCH_LIMIT: { limit }, CORRECTION_LIMIT: { limit }, TURNSTILE_SECRET: 'local-test' });
 
 beforeEach(async () => {
   vi.resetAllMocks();
@@ -23,7 +23,7 @@ beforeEach(async () => {
     env: { DB: { type: 'd1', id: 'search-test' } },
   } }] });
   db = await runtime.getD1Database('DB');
-  for (const name of ['0001_catalog', '0004_search']) {
+  for (const name of ['0001_catalog', '0004_search', '0009_reader_corrections']) {
     const sql = await readFile(new URL('./migrations/' + name + '.sql', import.meta.url), 'utf8');
     await db.exec(sql.replace(/^\s*--.*$/gm, '').replaceAll('\n', ' '));
   }
@@ -36,7 +36,7 @@ beforeEach(async () => {
       .bind(product.id,product.brand,product.category,product.name,product.type,product.url,JSON.stringify({...product,sds:undefined})),
   ]);
 });
-afterEach(async () => { await runtime?.dispose(); });
+afterEach(async () => { vi.unstubAllGlobals(); await runtime?.dispose(); });
 
 it('indexes a published product once and resolves search citations against D1', async () => {
   await syncSearchIndex(db, {items:{upload}});
@@ -69,4 +69,34 @@ it('skips the provider when an upload would cross the monthly byte budget', asyn
   await syncSearchIndex(db, {items:{upload}});
   expect(upload).not.toHaveBeenCalled();
   expect(await db.prepare('SELECT state,attempts FROM search_documents').first()).toMatchObject({state:'pending',attempts:0});
+});
+
+it('stores only verified corrections for published products and deduplicates delivery under the daily limit', async () => {
+  const origin = 'https://wash.kokoda.fun';
+  const verified = { success: true, hostname: 'wash.kokoda.fun', action: 'product_correction' };
+  const verify = vi.fn(async () => Response.json(verified));
+  vi.stubGlobal('fetch', verify);
+  const id = crypto.randomUUID();
+  const send = (submission = id, productId = product.id, token = 'test-token') =>
+    api.fetch(new Request(origin + '/api/platform/corrections', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin },
+      body: JSON.stringify({ id: submission, product: productId, message: '请核对说明书第九节', token }),
+    }), bindings());
+  expect((await send(id, product.id, '')).status).toBe(400);
+  expect(verify).not.toHaveBeenCalled();
+  for (const invalid of [{ ...verified, success:false }, { ...verified, action:'signup' }, { ...verified, hostname:'example.net' }]) {
+    verify.mockResolvedValueOnce(Response.json(invalid));
+    expect((await send()).status).toBe(403);
+  }
+  expect((await send(id, 'not-published')).status).toBe(404);
+  await db.batch(Array.from({length:29}, (_, i) => db.prepare("INSERT INTO review_items(id,kind,body,created_at) VALUES (?,'correction','old',datetime('now'))").bind('existing-' + i)));
+  expect((await send()).status).toBe(201);
+  expect((await send()).status).toBe(200);
+  expect((await send(crypto.randomUUID())).status).toBe(429);
+  const row = await db.prepare("SELECT product_id,body,state FROM review_items WHERE id=?").bind('correction-' + id).first();
+  expect(row).toEqual({ product_id:product.id, body:'请核对说明书第九节', state:'pending' });
+  limit.mockResolvedValueOnce({success:false});
+  verify.mockClear();
+  expect((await send()).status).toBe(429);
+  expect(verify).not.toHaveBeenCalled();
 });
