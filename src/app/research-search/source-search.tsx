@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState, useSyncExternalStore, type FormEvent } from 'react';
 import Link from 'next/link';
 
 type Citation = {title:string; productId:string; kind:string; href:string; excerpt:string};
 
+const subscribeHydration = () => () => {};
+
 export function SourceSearch() {
+  const ready = useSyncExternalStore(subscribeHydration, () => true, () => false);
   const [results,setResults] = useState<Citation[]>([]);
   const [status,setStatus] = useState('');
   const [busy,setBusy] = useState(false);
@@ -31,8 +34,8 @@ export function SourceSearch() {
   return <>
     <form onSubmit={submit} role="search">
       <label htmlFor="source-query">想查什么？</label>
-      <input name="q" id="source-query" type="search" minLength={2} maxLength={200} required placeholder="例如：哪些产品适合去除车漆水斑？" />
-      <button type="submit" disabled={busy}>检索</button>
+      <input name="q" id="source-query" disabled={!ready} type="search" minLength={2} maxLength={200} required placeholder="例如：哪些产品适合去除车漆水斑？" />
+      <button type="submit" disabled={!ready || busy}>检索</button>
     </form>
     <p role="status">{status}</p>
     {results.map(item=><article key={item.productId+item.kind}>

@@ -1,3 +1,3 @@
 declare module 'cloudflare:workers' {
-  export const env: { PLATFORM: { fetch(request: Request): Promise<Response> } };
+  export const env: { PLATFORM: { fetch(url: string, init: RequestInit): Promise<Response> } };
 }
