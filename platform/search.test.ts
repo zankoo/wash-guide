@@ -206,6 +206,17 @@ it('indexes a shared archived remote SDS once and withdraws citations immediatel
   const [current]=upload.mock.calls.at(-1)!;
   search.mockResolvedValue({chunks:[{item:{key:current},text:'new evidence'}]});
   expect(await citations()).toHaveLength(1);
-  await db.prepare('UPDATE sources SET last_http_status=410').run();
+  const check = async (run:string,status:number|null,outcome:string) => {
+    await db.prepare("INSERT INTO audit_runs(id,kind,state,started_at) VALUES(?,'sources','completed',datetime('now'))").bind(run).run();
+    await db.prepare("INSERT INTO source_checks(run_id,source_id,checked_at,status,outcome) VALUES(?,?,datetime('now'),?,?)")
+      .bind(run,source,status,outcome).run();
+    await db.prepare('UPDATE sources SET last_http_status=? WHERE id=?').bind(status,source).run();
+  };
+  await check('withdrawn',410,'http-error');
+  await check('timeout',null,'failed');
+  await check('denied',403,'http-error');
+  await check('not-a-pdf',200,'archive-skipped');
   expect(await citations()).toEqual([]);
+  await check('verified',304,'unchanged');
+  expect(await citations()).toHaveLength(1);
 });
