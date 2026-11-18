@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite dev --port 3000",
+    "dev": "node scripts/seed-local-catalog.mjs && vite dev --port 3000",
     "build": "node scripts/generate-sw.mjs && vite build",
     "build:api": "cd platform/api && vite build --mode production",
     "build:jobs": "cd platform/jobs && vite build --mode production",
-    "start": "vite preview",
+    "start": "node scripts/seed-local-catalog.mjs && vite preview",
     "dev:next": "next dev",
     "build:next": "node scripts/generate-sw.mjs && next build",
     "start:next": "next start",
@@ -18,9 +18,9 @@
     "data:report": "node scripts/catalog-report.mjs",
     "test:e2e": "playwright test",
     "check:payload": "node scripts/check-payload.mjs",
-    "dev:vinext": "vite dev --port 3001",
+    "dev:vinext": "node scripts/seed-local-catalog.mjs && vite dev --port 3001",
     "build:vinext": "node scripts/generate-sw.mjs && vite build",
-    "start:vinext": "vite preview",
+    "start:vinext": "node scripts/seed-local-catalog.mjs && vite preview",
     "deploy:vinext": "vinext-cloudflare deploy"
   },
   "dependencies": {

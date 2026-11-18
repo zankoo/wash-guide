@@ -2,15 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DetailSuspense, ProductDetail } from '@/components/product-detail';
-import { BRAND, PRODUCTS, PRODUCT_BY_ID, imageSrc } from '@/data';
+import { BRAND } from '@/data/taxonomy';
+import { imageSrc } from '@/data/presentation';
+import { publishedDetail } from '@/data/published-catalog';
 
-export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ id: p.id }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: PageProps<'/p/[id]'>): Promise<Metadata> {
-  const p = PRODUCT_BY_ID.get((await params).id);
-  if (!p) return {};
+  const detail = await publishedDetail((await params).id);
+  if (!detail) return {};
+  const p = detail.product;
   const ratios = p.dilutions.slice(0, 3).map(([scene, ratio]) => `${scene} ${ratio}`).join('；');
   const description = `${BRAND[p.brand]} ${p.name}：${p.type}。${ratios ? `官方稀释比例：${ratios}。` : ''}`;
   const image = imageSrc(p);
@@ -22,9 +23,9 @@ export async function generateMetadata({ params }: PageProps<'/p/[id]'>): Promis
 }
 
 async function Detail({ params }: { params: PageProps<'/p/[id]'>['params'] }) {
-  const p = PRODUCT_BY_ID.get((await params).id);
-  if (!p) notFound();
-  return <ProductDetail p={p} />;
+  const detail = await publishedDetail((await params).id);
+  if (!detail) notFound();
+  return <ProductDetail p={detail.product} used={detail.flows} />;
 }
 
 /** 直接打开或刷新 /p/[id] 时的独立产品页 */

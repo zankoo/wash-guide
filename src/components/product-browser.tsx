@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useLayoutEffect, useRef, ViewTransition } from 'react';
 import { MATERIAL_NAME } from '@/data/materials';
-import { SUBCATS } from '@/data/subcategories';
+import { subcategoriesFor } from '@/data/subcategories';
 import { BRAND, CAT_NAME, CATS } from '@/data/taxonomy';
 import { relevance, suggestions } from '@/lib/search';
 import { useGuide } from './guide-state';
@@ -132,7 +132,7 @@ export function ProductBrowser() {
         {CATS.map(([k, name]) => {
           const group = list.filter((p) => p.category === k);
           if (!group.length) return null;
-          const subs = SUBCATS.filter((s) => s.category === k)
+          const subs = subcategoriesFor(k)
             .map((s) => ({ ...s, items: group.filter((p) => p.sub === s.id) }))
             .filter((s) => s.items.length);
           const collapsible = browsing && group.length > PEEK;
