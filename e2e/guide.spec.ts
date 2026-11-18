@@ -257,3 +257,19 @@ test('手机布局与产品图片替代文字', async ({ page }, testInfo) => {
   await expect(page.locator('img:not([alt]), img[alt=""]')).toHaveCount(0);
   await page.screenshot({ path: testInfo.outputPath('mobile.png') });
 });
+
+test('重新载入列表以后，前进到旧的产品记录仍显示正确详情', async ({ page }) => {
+  await page.goto('/');
+  const card = page.locator('main .card').first();
+  const href = await card.getAttribute('href');
+  const name = await card.locator('.nm').innerText();
+  await card.click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator('main .card').first()).toBeVisible();
+  await page.goForward();
+  await expect(page).toHaveURL(new URL(href!, page.url()).href);
+  await expect(page.locator('.sh-name:visible')).toHaveText(name);
+});
