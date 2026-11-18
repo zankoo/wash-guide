@@ -167,7 +167,9 @@ export async function libraryRequest(request: Request, env: LibraryBindings, ope
   if (operation === 'favorites') {
     if (
       !Number.isSafeInteger(data.seq) ||
-      Number(data.seq) <= 0 ||
+      !Number.isSafeInteger(data.baseSeq) ||
+      Number(data.baseSeq) < 0 ||
+      Number(data.seq) <= Number(data.baseSeq) ||
       !Array.isArray(data.changes) ||
       data.changes.length < 1 ||
       data.changes.length > 1000 ||
@@ -178,21 +180,27 @@ export async function libraryRequest(request: Request, env: LibraryBindings, ope
       return fail(400, '收藏内容无效');
     const changes = new Map<string, boolean>(data.changes.map((v) => [v.id, v.on]));
     try {
-      await db
+      const applied = await db
         .prepare(
-          `INSERT OR REPLACE INTO library_favorite_commands(user_id,device,seq,changes) SELECT ?,?,?,?
-        WHERE NOT EXISTS(SELECT 1 FROM library_favorite_commands WHERE user_id=? AND device=? AND seq>=?)`,
+          `INSERT OR REPLACE INTO library_favorite_commands(user_id,device,seq,changes)
+        SELECT ?1,?2,?3,?4 WHERE COALESCE((SELECT seq FROM library_favorite_commands
+        WHERE user_id=?1 AND device=?2),0)=?5 RETURNING seq`,
         )
         .bind(
           user,
           device,
           data.seq,
           JSON.stringify(Array.from(changes, ([id, on]) => ({ id, on }))),
-          user,
-          device,
-          data.seq,
+          data.baseSeq,
         )
-        .run();
+        .first();
+      if (!applied) {
+        const current = await db
+          .prepare('SELECT seq FROM library_favorite_commands WHERE user_id=? AND device=?')
+          .bind(user, device)
+          .first<number>('seq');
+        if ((current ?? 0) < Number(data.seq)) return fail(412, '同步记录已变化，请重新同步');
+      }
     } catch (e) {
       if (String(e).includes('library_favorites_limit')) return fail(409, '每个资料库最多收藏 1000 个产品');
       throw e;

@@ -46,9 +46,11 @@ export function refreshLibrary(): Promise<Library> {
   const next = async () => {
     let state = await libraryApi<Library>('state');
     if (linkedDevice() !== state.scope) return state;
-    const queue = await pending(state.scope);
-    // Consume in order. All older local commands are included in each new
-    // high-water mark, including when two tabs flush concurrently.
+    const journal = await pending(state.scope);
+    const applied = journal.filter((entry) => entry.seq <= state.seq);
+    if (applied.length) await acknowledge(applied);
+    const queue = journal.filter((entry) => entry.seq > state.seq);
+    let baseSeq = state.seq;
     for (let start = 0; start < queue.length; ) {
       const batch = [];
       let count = 0;
@@ -57,13 +59,19 @@ export function refreshLibrary(): Promise<Library> {
         batch.push(item);
         count += item.changes.length;
       } while (start < queue.length && count + queue[start].changes.length <= 1000);
-      if (batch.at(-1)!.seq > state.seq) {
+      const seq = batch.at(-1)!.seq;
+      try {
         await libraryApi('favorites', {
           scope: state.scope,
-          seq: batch.at(-1)!.seq,
+          seq,
+          baseSeq,
           changes: combine(batch.map((r) => r.changes)),
         });
+      } catch (error) {
+        if (error instanceof LibraryError && error.status === 412) window.dispatchEvent(new Event(CHANGED));
+        throw error;
       }
+      baseSeq = seq;
       await acknowledge(batch);
     }
     if (queue.length) state = await libraryApi<Library>('state');

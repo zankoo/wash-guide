@@ -39,11 +39,43 @@ try {
   assert.deepEqual(claims.map((c) => c.status).sort(), [200, 400]);
   const b = claims.find((c) => c.status === 200).cookie;
   const { value: second } = await call('state', {}, b);
-  await call('favorites', { scope: first.scope, seq: 1, changes: [{ id: 'C-reset', on: true }] }, a);
+  await call(
+    'favorites',
+    { scope: first.scope, seq: 1, baseSeq: 0, changes: [{ id: 'C-reset', on: true }] },
+    a,
+  );
   assert.deepEqual((await call('state', {}, b)).value.favorites, ['C-reset']);
-  await call('favorites', { scope: second.scope, seq: 1, changes: [{ id: 'C-reset', on: false }] }, b);
-  await call('favorites', { scope: first.scope, seq: 1, changes: [{ id: 'C-reset', on: true }] }, a);
+  await call(
+    'favorites',
+    { scope: second.scope, seq: 1, baseSeq: 0, changes: [{ id: 'C-reset', on: false }] },
+    b,
+  );
+  await call(
+    'favorites',
+    { scope: first.scope, seq: 1, baseSeq: 0, changes: [{ id: 'C-reset', on: true }] },
+    a,
+  );
   assert.deepEqual((await call('state', {}, a)).value.favorites, []);
+  await call(
+    'favorites',
+    {
+      scope: first.scope,
+      baseSeq: 0,
+      seq: 2,
+      changes: [
+        { id: 'C-reset', on: true },
+        { id: 'L-primus', on: true },
+      ],
+    },
+    a,
+    412,
+  );
+  await call(
+    'favorites',
+    { scope: first.scope, baseSeq: 1, seq: 2, changes: [{ id: 'L-primus', on: true }] },
+    a,
+  );
+  assert.deepEqual((await call('state', {}, b)).value.favorites, ['L-primus']);
   const id = randomUUID();
   const list = { id, title: '洗车前准备', items: [{ text: '准备手套', done: false }], revision: 0 };
   await call('checklist', { ...list, scope: first.scope }, a);

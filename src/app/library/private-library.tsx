@@ -250,88 +250,90 @@ export function PrivateLibrary() {
                   void run(() => save());
                 }}
               >
-                <label>
-                  清单名称
-                  <input
-                    value={draft.title}
-                    required
-                    maxLength={80}
-                    onChange={(e) => setDraft({ ...draft, title: e.target.value })}
-                  />
-                </label>
-                <fieldset>
-                  <legend>施工步骤</legend>
-                  {draft.items.map((item, i) => (
-                    <div className="library-task" key={i}>
-                      <input
-                        type="checkbox"
-                        aria-label={'第 ' + (i + 1) + ' 步已完成'}
-                        checked={item.done}
-                        onChange={(e) => updateItem(i, { done: e.target.checked })}
-                      />
-                      <input
-                        aria-label={'第 ' + (i + 1) + ' 步'}
-                        value={item.text}
-                        maxLength={180}
-                        onChange={(e) => updateItem(i, { text: e.target.value })}
-                      />
+                <fieldset className="library-editor" disabled={busy}>
+                  <label>
+                    清单名称
+                    <input
+                      value={draft.title}
+                      required
+                      maxLength={80}
+                      onChange={(e) => setDraft({ ...draft, title: e.target.value })}
+                    />
+                  </label>
+                  <fieldset>
+                    <legend>施工步骤</legend>
+                    {draft.items.map((item, i) => (
+                      <div className="library-task" key={i}>
+                        <input
+                          type="checkbox"
+                          aria-label={'第 ' + (i + 1) + ' 步已完成'}
+                          checked={item.done}
+                          onChange={(e) => updateItem(i, { done: e.target.checked })}
+                        />
+                        <input
+                          aria-label={'第 ' + (i + 1) + ' 步'}
+                          value={item.text}
+                          maxLength={180}
+                          onChange={(e) => updateItem(i, { text: e.target.value })}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setDraft({ ...draft, items: draft.items.filter((_, j) => i !== j) })}
+                        >
+                          移除
+                        </button>
+                      </div>
+                    ))}
+                  </fieldset>
+                  <button
+                    type="button"
+                    disabled={draft.items.length >= 60}
+                    onClick={() => setDraft({ ...draft, items: [...draft.items, { text: '', done: false }] })}
+                  >
+                    添加步骤
+                  </button>
+                  {draft.conflict && (
+                    <aside>
+                      <p>云端版本已变化。当前草稿仍在，可检查差异后另存为新清单。</p>
+                      {remoteDraft && (
+                        <>
+                          <strong>{remoteDraft.title}</strong>
+                          <ul>
+                            {remoteDraft.items.map((t, i) => (
+                              <li key={i}>
+                                {t.done ? '☑' : '☐'} {t.text}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
                       <button
                         type="button"
-                        onClick={() => setDraft({ ...draft, items: draft.items.filter((_, j) => i !== j) })}
+                        onClick={() =>
+                          setDraft({ ...draft, id: crypto.randomUUID(), revision: 0, conflict: false })
+                        }
                       >
-                        移除
+                        将草稿另存为新清单
                       </button>
-                    </div>
-                  ))}
+                    </aside>
+                  )}
+                  <button disabled={busy || draft.conflict || !draft.title.trim()}>保存清单</button>
+                  <button type="button" onClick={() => setDraft(null)}>
+                    返回列表
+                  </button>
+                  {draft.revision > 0 && (
+                    <details>
+                      <summary>删除清单</summary>
+                      <button
+                        type="button"
+                        disabled={busy || draft.conflict}
+                        onClick={() => run(() => save(true))}
+                      >
+                        确认删除此清单
+                      </button>
+                    </details>
+                  )}
                 </fieldset>
-                <button
-                  type="button"
-                  disabled={draft.items.length >= 60}
-                  onClick={() => setDraft({ ...draft, items: [...draft.items, { text: '', done: false }] })}
-                >
-                  添加步骤
-                </button>
-                {draft.conflict && (
-                  <aside>
-                    <p>云端版本已变化。当前草稿仍在，可检查差异后另存为新清单。</p>
-                    {remoteDraft && (
-                      <>
-                        <strong>{remoteDraft.title}</strong>
-                        <ul>
-                          {remoteDraft.items.map((t, i) => (
-                            <li key={i}>
-                              {t.done ? '☑' : '☐'} {t.text}
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setDraft({ ...draft, id: crypto.randomUUID(), revision: 0, conflict: false })
-                      }
-                    >
-                      将草稿另存为新清单
-                    </button>
-                  </aside>
-                )}
-                <button disabled={busy || draft.conflict || !draft.title.trim()}>保存清单</button>
-                <button type="button" onClick={() => setDraft(null)}>
-                  返回列表
-                </button>
-                {draft.revision > 0 && (
-                  <details>
-                    <summary>删除清单</summary>
-                    <button
-                      type="button"
-                      disabled={busy || draft.conflict}
-                      onClick={() => run(() => save(true))}
-                    >
-                      确认删除此清单
-                    </button>
-                  </details>
-                )}
               </form>
             )}
           </section>
