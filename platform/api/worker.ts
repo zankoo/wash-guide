@@ -1,6 +1,7 @@
+import { libraryRequest, type LibraryBindings } from '../library/api';
 import type { AiSearchInstance, D1Database, RateLimit } from '@cloudflare/workers-types';
 
-type Bindings = { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
+type Bindings = LibraryBindings & { DB: D1Database; SEARCH: Pick<AiSearchInstance, 'search'>; SEARCH_LIMIT: RateLimit };
 
 function reply(value: unknown, status = 200) {
   return Response.json(value, {status,headers:{'Cache-Control':'no-store'}});
@@ -54,7 +55,12 @@ async function search(request: Request, env: Bindings) {
 }
 const worker = {
   async fetch(request: Request, env: Bindings) {
-    if (request.method==='POST' && new URL(request.url).pathname==='/api/platform/search') {
+    const path = new URL(request.url).pathname;
+    if (request.method === 'POST' && path.startsWith('/api/platform/library/')) {
+      try { return await libraryRequest(request, env, path.slice('/api/platform/library/'.length)); }
+      catch { return reply({ error:'资料库暂不可用，请稍后重试' },503); }
+    }
+    if (request.method==='POST' && path==='/api/platform/search') {
       try {return await search(request,env);} catch {return reply({error:'资料检索暂时不可用，请稍后再试'},503);}
     }
     return reply({error:'页面不存在'},404);

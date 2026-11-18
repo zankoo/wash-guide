@@ -12,7 +12,7 @@ const upload = vi.fn();
 const search = vi.fn();
 const limit = vi.fn();
 const query = () => new Request('https://wash.kokoda.fun/api/platform/search', { method: 'POST', body: '如何去除车漆上的水斑' });
-const bindings = () => ({ DB: db, SEARCH: { search }, SEARCH_LIMIT: { limit } });
+const bindings = () => ({ DB: db, SEARCH: { search }, SEARCH_LIMIT: { limit }, DEVICES: {getByName: vi.fn()}, LIBRARY_LIMIT: { limit }, PAIR_LIMIT: { limit } });
 
 beforeEach(async () => {
   vi.resetAllMocks();

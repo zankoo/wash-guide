@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { MATERIALS, type MaterialId } from '@/data/materials';
 import { SUBCATS } from '@/data/subcategories';
@@ -136,6 +137,7 @@ export function Sidebar() {
               我的常用
               <small>{favoriteCount}</small>
             </button>
+            {favMode && <Link className="scope-clear" href="/library">同步收藏与私人清单</Link>}
           </li>
         </ul>
       )}

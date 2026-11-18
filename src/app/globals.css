@@ -595,3 +595,14 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 .source-search article{border-top:1px solid var(--line-2);padding-block:1rem}
 .source-search article p{white-space:pre-line;overflow-wrap:anywhere}
 .source-search-link{white-space:nowrap}
+
+.private-library section{margin-block:2rem}
+.private-library section h2{margin-block:1rem}
+.private-library form,.private-library details,.private-library aside{margin-block:1rem}
+.private-library label{display:grid;gap:.4rem;margin:.8rem 0}
+.private-library input:not([type=checkbox]){padding:.55rem .7rem;border:1px solid var(--line-2);border-radius:8px;color:var(--ink);background:transparent;font:inherit;min-width:0}
+.private-library button{padding:.45rem .8rem;border:1px solid var(--line-2);border-radius:8px;margin:0 .5rem .4rem 0;color:var(--ink);background:transparent;font:inherit;cursor:pointer}
+.private-library button:disabled{opacity:.5;cursor:default}
+.private-library fieldset{border:1px solid var(--line-2);padding:1rem}
+.library-task{display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem}
+.library-task input:not([type=checkbox]){flex:1}
