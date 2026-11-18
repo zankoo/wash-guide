@@ -14,40 +14,45 @@ export function searchDocument(p: Product) {
   ].join('\n');
 }
 
-// Commit a new index worklist together with its version marker. Replayed cron
-// events pick up unfinished rows, including uploads interrupted mid-request.
-async function prepareWorklist(db: D1Database, version: string) {
-  if (await db.prepare('SELECT 1 FROM search_index_versions WHERE version_id=?').bind(version).first()) return;
-  const enqueue = (key: string, predicate: string) => db.prepare(`INSERT INTO search_documents(item_key,version_id,product_id,state)
-    SELECT ${key},version_id,id,'pending' FROM products WHERE version_id=? ${predicate}
-    ON CONFLICT(item_key) DO UPDATE SET version_id=excluded.version_id, product_id=excluded.product_id,
-    state='pending',attempts=0,updated_at=0 WHERE search_documents.version_id!=excluded.version_id`).bind(version);
-  await db.batch([
-    enqueue("'product-'||id||'.md'", ''),
-    enqueue("'sds-'||substr(json_extract(document,'$.sds.url'),6)", "AND json_extract(document,'$.sds.hosting')='local'"),
-    db.prepare('DELETE FROM search_index_versions'),
-    db.prepare('INSERT INTO search_index_versions VALUES (?)').bind(version),
-  ]);
+type IndexItems = Pick<AiSearchInstance['items'], 'upload' | 'list' | 'delete'>;
+
+async function retireDocuments(db: D1Database, items: IndexItems, now: number) {
+  const { results } = await db.prepare(`UPDATE search_retirements SET retry_after=? WHERE item_key IN
+    (SELECT item_key FROM search_retirements WHERE retry_after<=? ORDER BY retry_after,item_key LIMIT 2)
+    RETURNING item_key`).bind(now+3600000,now).all<{item_key:string}>();
+  for (const {item_key: key} of results) {
+    const matches = await items.list({key,source:'builtin'});
+    const item = matches.result.find(record => record.key === key);
+    if (!item) {
+      await db.prepare('DELETE FROM search_retirements WHERE item_key=?').bind(key).run();
+    } else if (item.next_action !== 'DELETE') {
+      await items.delete(item.id);
+    }
+  }
 }
 
-export async function syncSearchIndex(db: D1Database, search: { items: Pick<AiSearchInstance['items'], 'upload'> }) {
+export async function syncSearchIndex(db: D1Database, search: {items: IndexItems}) {
   const version = await db.prepare('SELECT version_id FROM catalog_publication WHERE singleton=1').first<string>('version_id');
   if (!version) return;
-  await prepareWorklist(db, version);
+  // On a fresh installation the catalog may predate the publication trigger.
+  await db.prepare(`UPDATE catalog_publication SET version_id=version_id WHERE version_id=?1
+    AND NOT EXISTS (SELECT 1 FROM search_index_versions WHERE version_id=?1)`).bind(version).run();
+  const now = Date.now();
+  await retireDocuments(db,search.items,now);
   const available = await db.prepare(`SELECT COALESCE(MAX(CASE WHEN day=date('now') THEN uploads END),0)<100
     AND SUM(bytes)<24000000 AS ok FROM search_usage WHERE day>=date('now','start of month')`).first<{ok:number|null}>();
   if (available?.ok === 0) return;
-  const now = Date.now();
-  const { results } = await db.prepare(`SELECT s.item_key,s.indexed_key,p.document FROM search_documents s JOIN products p
-    ON p.id=s.product_id AND p.version_id=s.version_id WHERE s.version_id=? AND s.attempts<3
+  const { results } = await db.prepare(`SELECT s.item_key,p.document FROM search_documents s JOIN products p
+    ON p.id=s.product_id AND p.version_id=s.version_id WHERE s.version_id=? AND s.retry_after<=? AND s.attempts<3
     AND (s.state='pending' OR (s.state='uploading' AND s.updated_at<?))
-    ORDER BY s.updated_at,s.product_id,s.item_key LIMIT 6`).bind(version, now-900000).all<{item_key:string; indexed_key:string|null; document:string}>();
+    ORDER BY s.updated_at,s.product_id,s.item_key LIMIT 6`).bind(version,now,now-900000).all<{item_key:string; document:string}>();
   for (const row of results) {
     const p: Product = JSON.parse(row.document);
     const key = row.item_key;
-    const claim = await db.prepare(`UPDATE search_documents SET state='uploading', attempts=attempts+1,updated_at=?
-      WHERE item_key=? AND version_id=? AND attempts<3 AND (state='pending' OR (state='uploading' AND updated_at<?)) RETURNING item_key`)
-      .bind(now,key,version,now-900000).first();
+    const claim = await db.prepare(`UPDATE search_documents SET state='uploading', attempts=attempts+1,updated_at=?,
+      upload_key=coalesce(upload_key,lower(hex(randomblob(16)))||'-'||item_key)
+      WHERE item_key=? AND version_id=? AND attempts<3 AND (state='pending' OR (state='uploading' AND updated_at<?)) RETURNING upload_key`)
+      .bind(now,key,version,now-900000).first<{upload_key:string}>();
     if (!claim) continue;
     try {
       let content: string | WorkerBlob;
@@ -64,30 +69,37 @@ export async function syncSearchIndex(db: D1Database, search: { items: Pick<AiSe
         content = blob;
       } else content = searchDocument(p);
       const size = typeof content === 'string' ? new TextEncoder().encode(content).length : content.size;
-      const digest = await crypto.subtle.digest('SHA-256', typeof content === 'string' ? new TextEncoder().encode(content) : await content.arrayBuffer());
-      const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2,'0')).join('');
-      const indexedKey = hash + '-' + key;
-      if (row.indexed_key !== indexedKey) {
-        await db.prepare("INSERT OR IGNORE INTO search_usage(day) VALUES(date('now'))").run();
-        const reserved = await db.prepare(`UPDATE search_usage SET bytes=bytes+?,uploads=uploads+1 WHERE day=date('now')
-          AND uploads<100 AND bytes+?<=4000000 AND
-          (SELECT SUM(bytes) FROM search_usage WHERE day>=date('now','start of month'))+?<=24000000 RETURNING uploads`)
-          .bind(size,size,size).first();
-        if (!reserved) {
-          await defer(db,key,version,now);
-          return;
-        }
-        await search.items.upload(indexedKey,content);
+      if (typeof content !== 'string' && p.sds?.sha256 &&
+          await sha256(content) !== p.sds.sha256.toLowerCase()) {
+        // Static asset deployment may lag publication. Retry in an hour without
+        // consuming an AI upload or exhausting the transient failure attempts.
+        await defer(db,key,version,now,now+3600000);
+        continue;
       }
-      await db.prepare("UPDATE search_documents SET state='submitted',indexed_key=? WHERE item_key=? AND version_id=? AND updated_at=?")
-        .bind(indexedKey,key,version,now).run();
+      await db.prepare("INSERT OR IGNORE INTO search_usage(day) VALUES(date('now'))").run();
+      const reserved = await db.prepare(`UPDATE search_usage SET bytes=bytes+?,uploads=uploads+1 WHERE day=date('now')
+        AND uploads<100 AND bytes+?<=4000000 AND
+        (SELECT SUM(bytes) FROM search_usage WHERE day>=date('now','start of month'))+?<=24000000 RETURNING uploads`)
+        .bind(size,size,size).first();
+      if (!reserved) {
+        await defer(db,key,version,now);
+        return;
+      }
+      await search.items.upload(claim.upload_key,content);
+      await db.prepare("UPDATE search_documents SET state='submitted',indexed_key=?,upload_key=NULL WHERE item_key=? AND version_id=? AND updated_at=?")
+        .bind(claim.upload_key,key,version,now).run();
     } catch {
       await db.prepare("UPDATE search_documents SET state=CASE WHEN attempts>=3 THEN 'error' ELSE 'pending' END WHERE item_key=? AND version_id=? AND updated_at=?").bind(key,version,now).run();
     }
   }
 }
 
-async function defer(db: D1Database, key: string, version: string, stamp: number) {
-  await db.prepare("UPDATE search_documents SET state='pending',attempts=attempts-1 WHERE item_key=? AND version_id=? AND updated_at=?")
-    .bind(key,version,stamp).run();
+async function sha256(blob: WorkerBlob) {
+  const digest = await crypto.subtle.digest('SHA-256', await blob.arrayBuffer());
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2,'0')).join('');
+}
+
+async function defer(db: D1Database, key: string, version: string, stamp: number, retryAfter = 0) {
+  await db.prepare("UPDATE search_documents SET state='pending',attempts=attempts-1,retry_after=? WHERE item_key=? AND version_id=? AND updated_at=?")
+    .bind(retryAfter,key,version,stamp).run();
 }
