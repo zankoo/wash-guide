@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "node scripts/generate-sw.mjs && vite build",
+    "build:jobs": "cd platform/jobs && vite build --mode production",
     "start": "vite preview",
     "dev:next": "next dev",
     "build:next": "node scripts/generate-sw.mjs && next build",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "2.0.0-rc.0",
+    "@cloudflare/workers-types": "^5.20261117.1",
     "@playwright/test": "^1.65.0",
     "@types/node": "^22.20.5",
     "@types/react": "^19",
@@ -41,6 +43,7 @@
     "cf": "1.0.0-rc.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "miniflare": "5.20261116.0-beta",
     "oxc-transform-react": "^0.156.0",
     "typescript": "^5",
     "vite": "8.3.0",

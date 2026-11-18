@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "id": "expire-snapshots-90-days",
+      "enabled": true,
+      "conditions": { "prefix": "snapshots/" },
+      "deleteObjectsTransition": { "condition": { "type": "Age", "maxAge": 7776000 } }
+    },
+    {
+      "id": "abort-incomplete-uploads-1-day",
+      "enabled": true,
+      "conditions": { "prefix": "" },
+      "abortMultipartUploadsTransition": { "condition": { "type": "Age", "maxAge": 86400 } }
+    }
+  ]
+}
