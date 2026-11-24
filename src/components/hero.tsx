@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DocSearchIcon, LibraryIcon } from './icons';
 import { ViewTabs } from './view-tabs';
 
 /** 三段 pH 色条（碱性 / 中性 / 酸性）；首次加载时像液面一样依次升起 */
@@ -12,7 +13,7 @@ export function Logo() {
   );
 }
 
-/** 窄屏顶栏：站名 + 视图切换（手机上视图切换移到底部栏；桌面由左侧索引栏代替） */
+/** 窄屏顶栏：站名 + 工具入口 + 视图切换（手机上视图切换移到底部栏；桌面由左侧索引栏代替） */
 export function Masthead() {
   return (
     <header className="mast">
@@ -24,8 +25,19 @@ export function Masthead() {
             <p>Labocosmetica、Maniac Line、MAFRA、Koch-Chemie、CarPro、GYEON、BolaSolution、FEYNLAB、P&S 的官方稀释比例、施工步骤和洗车流程</p>
           </div>
         </div>
-        <Link href="/research-search" className="source-search-link">资料检索</Link>
-        <ViewTabs className="tabs top" />
+        <div className="mast-actions">
+          <nav className="mast-tools" aria-label="扩展工具">
+            <Link href="/research-search" className="mast-tool">
+              <DocSearchIcon />
+              <span>资料检索</span>
+            </Link>
+            <Link href="/library" className="mast-tool">
+              <LibraryIcon />
+              <span>资料库</span>
+            </Link>
+          </nav>
+          <ViewTabs className="tabs top" />
+        </div>
       </div>
     </header>
   );
@@ -35,8 +47,10 @@ export function Footer() {
   return (
     <footer>
       <div className="wrap">
-        <p>
-          <Link href="/research-search">搜索产品资料与 SDS</Link> · <Link href="/library">同步收藏与私人清单</Link>
+        <p className="foot-links">
+          <Link href="/research-search">搜索产品资料与 SDS</Link>
+          <span aria-hidden="true">·</span>
+          <Link href="/library">同步收藏与私人清单</Link>
         </p>
         <p>
           比例写法沿用官方：<b>1:10</b> = 1 份原液 + 10 份水。PA壶比例指壶内的调配比例，最终出液浓度取决于高压清洗机。
