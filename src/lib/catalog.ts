@@ -7,7 +7,7 @@ export interface ProductItem {
   id: string; brand: BrandId; category: CategoryId; sub: string;
   name: string; type: string; image?: string;
   materials: MaterialId[]; text: string; rank: RankFields;
-  pills: string[] | 'accessory' | 'see-label';
+  pills: string[] | 'accessory' | 'see-label' | 'ready';
   /** 每个产品都有：没有数值时是固定说法（官方未公布 / 不适用 / 配件） */
   ph: { category: PH | 'none'; label: string; basis?: string };
   hazard?: string;

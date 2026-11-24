@@ -39,11 +39,20 @@ describe('数据完整性', () => {
 });
 
 describe('卡片比例标签', () => {
-  it('常用配比带上工具和场景，避免把 PA壶与喷雾壶混淆', () => {
+  it('常用配比带上工具和简短场景，去掉括号注释与重复词', () => {
     expect(keyRatios(PRODUCT_BY_ID.get('L-primus')!)).toEqual(['PA壶 · 夏季污垢 1:10']);
+    expect(keyRatios(PRODUCT_BY_ID.get('M-foam-gun-prewash')!)).toEqual(['PA壶 · 夏季污垢 1:10']);
+    expect(keyRatios(PRODUCT_BY_ID.get('C-reset')!)).toEqual(['桶洗 1:500']);
+    expect(keyRatios(PRODUCT_BY_ID.get('L-idrosave')!)).toEqual(['桶洗 1:250']);
+    expect(keyRatios(PRODUCT_BY_ID.get('M-exterior-quick-detailer')!)).toBe('ready');
+    expect(keyRatios(PRODUCT_BY_ID.get('L-audace')!)).toBe('ready');
     for (const p of PRODUCTS) {
       const ratios = keyRatios(p);
-      if (Array.isArray(ratios)) expect(ratios.length, p.id).toBe(1);
+      if (Array.isArray(ratios)) {
+        expect(ratios.length, p.id).toBe(1);
+        expect(ratios[0], p.id).not.toMatch(/[（()）]/);
+        expect(ratios[0], p.id).not.toMatch(/桶洗 · (水桶|洗车桶|手洗)|视脏污|按污垢和表面|视用途/);
+      }
     }
   });
 
