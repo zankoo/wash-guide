@@ -29,9 +29,9 @@ export async function adminRequest(request: Request, env: Pick<JobBindings, 'DB'
     const statement = env.DB.prepare(`SELECT r.id, r.kind, r.product_id, r.created_at, s.url FROM review_items r
       LEFT JOIN sources s ON s.id = r.source_id WHERE r.state='pending' ${start} ORDER BY r.created_at, r.id LIMIT 101`);
     const rows = (await (after ? statement.bind(after) : statement).all<Review>()).results;
-    const next = rows.length > 100 ? `<p><a href="/admin/?after=${encodeURIComponent(rows[99].id)}">下一页</a></p>` : '';
-    return page('待审核资料', '<p><a href="/admin/decisions/history">审核记录与回滚</a></p>' + (rows.length ? '<ol>' + rows.slice(0, 100).map(r =>
-      `<li><a href="${pathFor(r.id)}">${escape(target(r))}</a> · ${r.kind === 'correction' ? '读者纠错' : '来源变化'} · ${escape(r.created_at)}</li>`).join('') + '</ol>' + next : '<p>暂无待审核资料。</p>'));
+    const next = rows.length > 100 ? `<div class="actions"><a class="btn" href="/admin/?after=${encodeURIComponent(rows[99].id)}">下一页 →</a></div>` : '';
+    return page('待审核资料', (rows.length ? '<ol class="list">' + rows.slice(0, 100).map(r =>
+      `<li><a href="${pathFor(r.id)}">${escape(target(r))}</a><span class="meta"><span class="tag ${r.kind === 'correction' ? 'rinse' : 'alk'}">${r.kind === 'correction' ? '读者纠错' : '来源变化'}</span><span>${escape(r.created_at)}</span></span></li>`).join('') + '</ol>' + next : '<p class="empty">暂无待审核资料。</p>'));
   }
   const match = /^\/admin\/reviews\/([\w-]{1,160})(?:\/(compare|previous|current))?$/.exec(pathname);
   if (!match) return message('页面不存在', 404);
@@ -39,17 +39,15 @@ export async function adminRequest(request: Request, env: Pick<JobBindings, 'DB'
   const review = await env.DB.prepare(selectReview + ' WHERE r.id = ?').bind(id).first<Review>();
   if (!review) return message('记录不存在', 404);
   const root = pathFor(id);
-  const back = '<p><a href="/admin">返回审核列表</a></p>';
-  const decide = review.state === 'pending' ? `<p><a href="/admin/decisions/review/${encodeURIComponent(id)}">处理这条资料</a></p>` : '';
+  const decide = review.state === 'pending' ? `<a class="btn primary" href="/admin/decisions/review/${encodeURIComponent(id)}">处理这条资料</a>` : '';
   if (review.kind === 'correction') {
     if (operation) return message('页面不存在', 404);
-    return page('读者纠错', back + '<p>' + escape(target(review)) + '</p><pre>' + escape(review.body) + '</pre>' + decide);
+    return page('读者纠错', `<div class="card"><div class="meta"><span class="tag rinse">读者纠错</span><span>${escape(target(review))}</span><span>${escape(review.created_at)}</span></div><pre>${escape(review.body)}</pre><div class="actions">${decide}<a class="btn" href="/admin">返回审核列表</a></div></div>`);
   }
   if (!operation) {
-    return page('来源变化', back + '<p>' + escape(target(review)) + '</p>' +
-      `<p><a href="${root}/compare">查看内容差异</a></p><p><a href="${root}/previous">下载旧版原文</a> · <a href="${root}/current">下载新版原文</a></p>` + decide);
+    return page('来源变化', `<div class="card"><div class="meta"><span class="tag alk">来源变化</span><span>${escape(target(review))}</span><span>${escape(review.created_at)}</span></div><div class="actions">${decide}<a class="btn" href="${root}/compare">查看内容差异</a><a class="btn" href="${root}/previous">下载旧版原文</a><a class="btn" href="${root}/current">下载新版原文</a></div></div>`);
   }
-  const diffPage = (text: string) => page('来源内容差异', `<a href="${root}">返回资料</a><pre>${escape(text)}</pre>`);
+  const diffPage = (text: string) => page('来源内容差异', `<div class="actions"><a class="btn" href="${root}">← 返回资料</a></div><pre>${escape(text)}</pre>`);
   if (operation === 'compare' && review.evidence_diff) return diffPage(review.evidence_diff);
   const hashes = JSON.parse(review.body);
   if (!review.source_id || ![review.source_id, hashes.previous, hashes.current].every(s => typeof s === 'string' && /^[a-f0-9]{64}$/.test(s))) {

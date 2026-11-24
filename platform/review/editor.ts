@@ -14,8 +14,8 @@ export const addRowScript = `document.querySelectorAll('button[data-add]').forEa
 });`;
 
 function repeat(title: string, rows: string[], blank: string) {
-  return '<fieldset><legend>' + title + '</legend><div>' + rows.join('') + (rows.length < 64 ? blank : '') +
-    '</div><template>' + blank + '</template><button type="button" data-add>添加一行</button></fieldset>';
+  return '<fieldset><legend>' + title + '</legend><div class="repeat-list">' + rows.join('') + (rows.length < 64 ? blank : '') +
+    '</div><template>' + blank + '</template><button type="button" data-add>+ 添加一行</button></fieldset>';
 }
 
 export function editFields(p: ProductEdit) {

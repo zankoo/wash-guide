@@ -7,7 +7,7 @@ import type { Product } from '../../src/data/types';
 const prefix = '/admin/decisions/';
 const labels = { edit: '修改产品并发布', approve: '核对通过，无需改动目录', reject: '驳回', rollback: '回滚目录' } as const;
 const states = { proposed: '待确认', queued: '处理中', applied: '已完成', conflict: '未执行' } as const;
-const back = '<p><a href="/admin">返回待审核资料</a> · <a href="/admin/decisions/history">审核记录</a></p>';
+const stateTone = { proposed: 'acid', queued: 'rinse', applied: 'neu', conflict: 'none' } as const;
 const redirect = (id: string) => new Response(null, { status: 303, headers: { ...responseHeaders, Location: prefix + 'action/' + id } });
 const currentVersion = (env: ReviewEnv) => env.DB.prepare('SELECT version_id FROM catalog_publication WHERE singleton=1').first<string>('version_id');
 const editable = ({ name, type, materials, sizes, steps, notes, dilutions }: Product): ProductEdit => ({ name, type, materials, sizes, steps, notes, dilutions });
@@ -72,13 +72,13 @@ async function reviewForm(request: Request, env: ReviewEnv, actor: string, revie
     return wake(env, id);
   }
   const doc = productId && await env.DB.prepare('SELECT document FROM products WHERE version_id=? AND id=?').bind(version, productId).first<string>('document');
-  const select = results.length > 1 ? '<form><label>关联产品 <select name="product">' + results.map(p =>
-    `<option value="${escape(p.id)}"${p.id === productId ? ' selected' : ''}>${escape(p.name)}</option>`).join('') + '</select></label><button>切换产品</button></form>' : '';
+  const select = results.length > 1 ? '<form class="card soft"><label>关联产品 <select name="product">' + results.map(p =>
+    `<option value="${escape(p.id)}"${p.id === productId ? ' selected' : ''}>${escape(p.name)}</option>`).join('') + '</select></label><div class="actions"><button>切换产品</button></div></form>' : '';
   const editor = doc ? editFields(JSON.parse(doc)) : '';
-  return page('处理资料', back + `<a href="/admin/reviews/${encodeURIComponent(reviewId)}">查看提交资料</a>` + select +
-    '<form method="post">' + hidden('product', productId) + hidden('base', version) + editor + noteField +
+  return page('处理资料', `<div class="actions"><a class="btn" href="/admin/reviews/${encodeURIComponent(reviewId)}">← 查看提交资料</a></div>` + select +
+    '<form class="card" method="post">' + hidden('product', productId) + hidden('base', version) + editor + noteField +
     '<label>处理方式 <select name="kind">' + (doc ? '<option value="edit">修改产品并发布</option>' : '') +
-    '<option value="approve">核对通过，无需改动目录</option><option value="reject">驳回</option></select></label><button>核对决定</button></form>', doc ? addRowScript : undefined);
+    '<option value="approve">核对通过，无需改动目录</option><option value="reject">驳回</option></select></label><div class="actions"><button class="primary">核对决定</button></div></form>', doc ? addRowScript : undefined);
 }
 
 async function history(env: ReviewEnv, actor: string, form?: URLSearchParams) {
@@ -96,10 +96,10 @@ async function history(env: ReviewEnv, actor: string, form?: URLSearchParams) {
     return wake(env, id);
   }
   const { results } = await env.DB.prepare('SELECT id,kind,state,note FROM review_actions ORDER BY created_at DESC LIMIT 100').all<Decision>();
-  const rollback = release && version ? `<form method="post"><p>从 ${escape(version)} 回滚至 ${escape(release)}</p>` +
-    hidden('base', version) + hidden('to', release) + noteField + '<button>核对回滚</button></form>' : '';
-  return page('审核记录', '<p><a href="/admin">返回待审核资料</a></p>' + rollback + '<ul>' + results.map(r =>
-    `<li><a href="${prefix}action/${encodeURIComponent(r.id)}">${labels[r.kind]} · ${states[r.state]}</a> · ${escape(r.note)}</li>`).join('') + '</ul>');
+  const rollback = release && version ? `<form class="card soft" method="post"><h2>快速回滚</h2><p class="muted">从 ${escape(version)} 回滚至 ${escape(release)}</p>` +
+    hidden('base', version) + hidden('to', release) + noteField + '<div class="actions"><button class="danger">核对回滚</button></div></form>' : '';
+  return page('审核记录', rollback + (results.length ? '<ul class="list">' + results.map(r =>
+    `<li><a href="${prefix}action/${encodeURIComponent(r.id)}">${labels[r.kind]} · ${escape(r.note)}</a><span class="tag ${stateTone[r.state]}">${states[r.state]}</span></li>`).join('') + '</ul>' : '<p class="empty">暂无审核记录。</p>'));
 }
 
 export async function decisionRequest(request: Request, env: ReviewEnv, actor: string) {
@@ -131,10 +131,8 @@ export async function decisionRequest(request: Request, env: ReviewEnv, actor: s
     const before = editable(JSON.parse(old));
     const after: ProductEdit = JSON.parse(action.change_json);
     return (Object.keys(before) as (keyof ProductEdit)[]).filter(k => JSON.stringify(before[k]) !== JSON.stringify(after[k])).map(k =>
-      `<h2>${fieldNames[k]}</h2><pre>原内容\n${escape(JSON.stringify(before[k], null, 2))}</pre><pre>拟发布\n${escape(JSON.stringify(after[k], null, 2))}</pre>`).join('');
+      `<section class="card"><h2>${fieldNames[k]}</h2><div class="diff-grid"><div class="diff-box"><span>原内容</span><pre>${escape(JSON.stringify(before[k], null, 2))}</pre></div><div class="diff-box"><span>拟发布</span><pre>${escape(JSON.stringify(after[k], null, 2))}</pre></div></div></section>`).join('');
   })() : '';
-  const confirm = action.state === 'proposed' ? '<form method="post"><button name="choice" value="confirm">确认执行</button> <button name="choice" value="cancel">撤销提议</button></form>' : '';
-  return page(labels[action.kind], back + `<p>${states[action.state]} · ${escape(action.note)}</p><p>依据版本 ${escape(action.base_version)}</p>` +
-    (action.rollback_version ? '<p>回滚至 ' + escape(action.rollback_version) + '</p>' : '') +
-    (action.reason ? '<p>' + escape(action.reason) + '</p>' : '') + changes + confirm);
+  const confirm = action.state === 'proposed' ? '<form class="actions" method="post"><button class="primary" name="choice" value="confirm">确认执行</button><button class="danger" name="choice" value="cancel">撤销提议</button></form>' : '';
+  return page(labels[action.kind], `<section class="card"><div class="meta"><span class="tag ${stateTone[action.state]}">${states[action.state]}</span><span>依据版本 ${escape(action.base_version)}</span>${action.rollback_version ? `<span>回滚至 ${escape(action.rollback_version)}</span>` : ''}</div><p class="muted">${escape(action.note)}</p>${action.reason ? `<p class="muted">${escape(action.reason)}</p>` : ''}${confirm}</section>` + changes);
 }
