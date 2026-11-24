@@ -34,6 +34,8 @@ export function ProductCard({ p, eager }: { p: ProductItem; eager?: boolean }) {
             <span className="pill ghost">配件，无需稀释</span>
           ) : pills === 'see-label' ? (
             <span className="pill ghost">比例见包装说明</span>
+          ) : pills === 'ready' ? (
+            <span className="pill ready">即用，无需稀释</span>
           ) : (
             pills.map((r) => (
               <span className="pill" key={r}>

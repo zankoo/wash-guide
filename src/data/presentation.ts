@@ -25,14 +25,38 @@ export const PRODUCT_RANK = new Map(SUBCATS.flatMap((s) => s.ids).map((id, i) =>
 export const stepsOf = (f: Flow): FlowStep[] => [...f.steps, ...(f.branch?.steps ?? [])];
 export const productsOfStep = (x: FlowStep): string[] => [...(x.products ?? []), ...(x.variants ?? []).flatMap((v) => v.products ?? [])];
 
-/** 只展示最常用的一项，保留工具 / 场景，完整用法在详情表。 */
-export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' {
+const stripNotes = (text: string) => text.replace(/[（(][^）)]*[）)]/g, '').replace(/\s+/g, ' ').trim();
+const isReadyRatio = (ratio: string) => ratio === '即用' || /^\d+(?:[–-]\d+)?\s*[滴喷]$/.test(ratio);
+
+function cardScene(tool: string, rawScene: string): string {
+  const cleaned = stripNotes(rawScene).replace(/\s*·\s*/g, ' / ');
+  if (!cleaned || cleaned === tool) return '';
+  if (/^(视脏污程度|视脏污|按污垢和表面|视用途|常规|最高稀释)$/.test(cleaned)) return '';
+  if (tool === '桶洗') {
+    const bucket = cleaned.replace(/^手洗(?:\s*\/\s*|\s*或\s*)?/, '').trim();
+    if (!bucket || /^(水桶|洗车桶|水桶手洗|洗车设备|泡沫)$/.test(bucket)) return '';
+    return bucket.includes(' / ') || bucket.includes('、') ? bucket.split(/\s*\/\s*|、/)[0].trim() : bucket;
+  }
+  if (tool === '喷雾壶' && /^(泡沫喷壶|压力喷壶|泡沫喷壶\s*\/\s*压力喷壶|手工)$/.test(cleaned)) return '';
+  if (cleaned === '洗衣机洗超纤布') return '洗衣机';
+  const concise = cleaned.includes(' / ') || cleaned.includes('、') ? cleaned.split(/\s*\/\s*|、/)[0].trim() : cleaned;
+  return concise === tool ? '' : concise;
+}
+
+/** 只展示最常用的一项，保留工具 / 简短场景并去除括号注释，完整用法在详情表。 */
+export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' | 'ready' {
   if (!p.dilutions.length) return p.category === 'acc' ? 'accessory' : 'see-label';
-  const row = p.dilutions.find(([scene, ratio]) => !/VDA|最高使用浓度/.test(scene) && /\d|原液|即用/.test(ratio));
-  if (!row) return 'see-label';
-  const [scene, ratio, tool] = row;
-  const label = tool && tool !== '—' && !scene.includes(tool) ? `${tool} · ${scene}` : scene;
-  return [`${label} ${ratio.split('（')[0].trim()}`];
+  const valid = p.dilutions.filter(([scene, ratio]) => !/VDA|最高使用浓度/.test(scene) && /\d|原液|即用/.test(ratio));
+  if (!valid.length) return 'see-label';
+  if (valid.every(([, ratio]) => isReadyRatio(stripNotes(ratio)))) return 'ready';
+  const [rawScene, rawRatio, tool] = valid[0];
+  let ratio = stripNotes(rawRatio);
+  if (ratio === '按瓶身刻度稀释') return 'see-label';
+  if (stripNotes(rawScene) === '最高稀释' && !ratio.startsWith('最稀')) ratio = `最稀 ${ratio}`;
+  const hasTool = Boolean(tool && tool !== '—');
+  const scene = cardScene(hasTool ? tool : '', rawScene);
+  const label = hasTool ? (scene && !scene.includes(tool) ? `${tool} · ${scene}` : scene || tool) : scene;
+  return [label ? `${label} ${ratio}` : ratio];
 }
 
 /** 搜索排序用的字段（见 relevance） */

@@ -45,7 +45,7 @@
   color-scheme:dark}
 
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:var(--tab-h)}
 .wrap{max-width:1320px;margin:0 auto;padding-inline:clamp(16px,3vw,32px)}
 button,input,select{font:inherit;color:inherit}
@@ -174,8 +174,9 @@ main{padding-block:6px 56px}
 .nm{font:600 21px/1.08 var(--f-display);letter-spacing:.01em;margin-top:4px;overflow-wrap:anywhere}
 .ty{font-size:13px;color:var(--muted);line-height:1.45;margin-top:3px}
 .pills{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:auto;padding-top:10px;min-width:0}
-.pill{font:600 16px/1.2 var(--f-display);color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;max-width:100%;overflow:hidden;text-overflow:ellipsis}
-.pill.ghost{font:500 12.5px var(--f-body);color:var(--faint)}
+.pill{font:600 14.5px/1.45 var(--f-display);color:var(--ink);font-variant-numeric:tabular-nums;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.pill.ready{font:500 13px/1.45 var(--f-body);color:var(--muted)}
+.pill.ghost{font:500 12.5px/1.45 var(--f-body);color:var(--faint)}
 
 /* 浓度刻度条：对数刻度，左原液右 1:1000；深色段是这款产品用到的浓度范围 */
 
@@ -464,7 +465,9 @@ footer b{color:var(--ink);font:600 15px var(--f-display)}
   .nm{font-size:19px;margin-top:2px}
   .ty{font-size:12.5px}
   .pills{padding-top:6px}
-  .pill{font-size:15px}
+  .pill{font-size:14px}
+  .pill.ready{font-size:12.5px}
+  .pill.ghost{font-size:12px}
   .dl{gap:4px 12px}
   .dl .rv{font-size:23px}
   .dl:has(.rv.long){grid-template-columns:1fr}
@@ -596,7 +599,6 @@ h1,.side-id>span{animation:vt-fade 420ms var(--ease-out) 260ms both}
 /* 速查筛选与配比上下文 */
 .active-filters{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .active-filters button{border:1px solid var(--line-2);border-radius:20px;background:var(--sheet);color:var(--ink);padding:6px 10px;cursor:pointer;font:inherit;font-size:12px}
-.pill{white-space:normal;overflow:visible;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
 .ph-img{--placeholder-color:var(--koch);background:color-mix(in srgb,var(--placeholder-color) 9%,var(--stage));border-bottom:3px solid var(--placeholder-color)}
 .ph-img.C{--placeholder-color:var(--carpro)} .ph-img.L{--placeholder-color:var(--labo)} .ph-img.M{--placeholder-color:var(--maniac)} .ph-img.G{--placeholder-color:var(--gyeon)} .ph-img.F{--placeholder-color:var(--mafra)} .ph-img.B{--placeholder-color:var(--bola)} .ph-img.N{--placeholder-color:var(--feynlab)} .ph-img.P{--placeholder-color:var(--ps)}
 
