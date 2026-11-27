@@ -110,6 +110,13 @@ export const products: Product[] = [
  steps:['按脏污程度稀释，整面喷涂。','作用最长 1 分钟（VDA B 级）。','用高压水彻底冲洗。'],
  cautions:['hot','dry','test'],notes:['溶解虫尸、鸟粪和轮毂污垢的速度极快，适合快速洗车；也适合生物法循环水处理设备。'],url:KOCH+'prewash_express'},
 
+{
+ sds:{"url":"https://sds.kokoda.fun/K-prefoam-efficient.pdf","source":"koch","language":"英文","version":"2026-03-01","hosting":"r2","originalUrl":"https://media.koch-chemie.com/pdf/SDBL/PreFoam_efficient_Art-__461999_461999_0004_EN.pdf","checkedAt":"2026-11-27","sha256":"6b67ea921777014702b13575fe204fe34753aea91cfa901a101fa7a6a6d6b944"},
+ id:'K-prefoam-efficient',brand:'K',category:'pre',ph:{"category":"alk","value":"13.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.koch-chemie.com/pdf/datasheet/PreFoam_efficient_en.pdf"},"evidence":[],"conflict":false},name:'PreFoam efficient',type:'强碱性发泡预洗 / 去虫尸剂（不含磷酸盐）',sizes:'20 L · 200 L · 1000 L',materials:'轿车 · 商用车',
+ dilutions:[['轿车预洗','1:30','喷雾壶'],['虫尸清洁','1:20','喷雾壶'],['货车预洗','1:15 – 1:20','喷雾壶'],['VDA B 级最高使用浓度','1:100','—']],
+ steps:['按用途稀释：轿车预洗 1:30，虫尸清洁 1:20，货车预洗 1:15 – 1:20。','由下往上整面喷涂覆盖。','作用最长 1 分钟（VDA B 级）。','用高压水彻底冲洗。'],
+ cautions:['hot','dry','test'],notes:['瓶身代号 Pfe。高浓缩、不含磷酸盐的发泡预洗剂，带清新柑橘香；络合剂与表面活性剂组合能快速分解虫尸、鸟粪和环境污垢。','官方定位为轿车、商用车及自助洗车站用发泡预洗。'],url:KOCH+'prefoam_efficient'},
+
 // ───────────────────────── 洗车香波 / 免冲洗 ─────────────────────────
 {
  sds:{"url":"https://sds.kokoda.fun/K-nanomagic-shampoo.pdf","source":"koch","language":"英文","hosting":"r2","originalUrl":"https://media.koch-chemie.com/pdf/SDBL/NanoMagicShampoo_206999_1.1.0_IE_EN.pdf","checkedAt":"2026-11-27","sha256":"e3007b40b2837a28091894ee904480f1b533a4d64a1ba4f1e93a856e309e4337"},
