@@ -43,7 +43,6 @@ src/
     types.ts              数据结构说明
   lib/                稀释换算、搜索
 public/img/           本地产品图（文件名 = 产品 id）
-public/sds/           需转存的 SDS PDF
 scripts/              开发维护命令
 research/             历史核验记录，不作为当前产品数据库
 ```
@@ -71,7 +70,7 @@ pnpm test:e2e     # 自动构建并启动生产服务，运行浏览器回归
 pnpm check:payload # 对已有生产构建检查 HTML/RSC gzip 预算
 ```
 
-新增或修改数据后运行 `pnpm test`：检查 ID、流程引用、分类、图片、SDS 来源和本地 PDF 校验和等约束。SDS、危险成分、图片例外与 pH 证据直接保存在各品牌的产品记录中；子分类排序由 `subcategories.ts` 管理。
+新增或修改数据后运行 `pnpm test`：检查 ID、流程引用、分类、图片、SDS 来源和 R2 托管地址与校验和等约束。SDS、危险成分、图片例外与 pH 证据直接保存在各品牌的产品记录中；子分类排序由 `subcategories.ts` 管理。
 
 ### 资料报告
 
@@ -83,7 +82,7 @@ pnpm --silent data:report --json > /tmp/wash-guide-audit.json
 
 报告只读当前产品数据，不联网、不修改目录。统计排除 `category: acc` 的配件，保留洗车泥和套装。pH 分为有数值、仅定性、不适用和未记录四种互斥状态；来源未关联、口径差异是另外两个可重叠的指标。未关联 SDS 不代表网上不存在公开文件，有链接也不等于本次已验证可下载。
 
-JSON 的 `sds.missing`、`ph` 各项和 `localSds.missingOriginalUrl` 包含产品 ID、名称、品牌及分类。输出不含运行时间，同一份数据生成相同结果，便于比较。
+JSON 的 `sds.missing`、`ph` 各项和 `hostedSds.missingOriginalUrl` 包含产品 ID、名称、品牌及分类。输出不含运行时间，同一份数据生成相同结果，便于比较。
 
 `research/sds-snapshot-2026-11-10.json` 是删除 MAFRA 专业装后的历史快照，保留当时的删除清单；其余日期文件也是历史核验依据。当前数量以报告命令为准，不手工更新历史文件。
 
@@ -97,8 +96,8 @@ CI 用 GitHub Actions（`.github/workflows/ci.yml`），只在 PR 上运行，�
 首次部署先运行 `pnpm exec cf auth login`。之后运行 `pnpm deploy`；已构建时可以执行 `pnpm exec cf deploy --prebuilt --mode production`。不要提交登录凭据。
 
 - 正式地址为 `https://wash.kokoda.fun`；SEO、`sitemap.xml` 和 `robots.txt` 使用这个地址，可在构建时用 `SITE_URL` 覆盖。
-- `/img/*`、`/sds/*` 和哈希 JS/CSS 由 Static Assets 直接提供。页面和 RSC 经过 Worker，私有预渲染缓存目录不会公开访问。
-- 静态页面缓存随部署替换，无需 KV、R2 或数据库；收藏仍保存在用户浏览器。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
+- `/img/*` 和哈希 JS/CSS 由 Static Assets 直接提供；SDS PDF 统一托管在纯静态 Cloudflare R2 桶（`https://sds.kokoda.fun/<id>.pdf`）。页面和 RSC 经过 Worker，私有预渲染缓存目录不会公开访问。
+- 静态页面缓存随部署替换，无需 KV 或数据库；收藏仍保存在用户浏览器。保留正式域名可以继续使用原有收藏和离线缓存更新机制。
 - Vercel Analytics / Speed Insights 已移除。运行错误和请求可在 Cloudflare Workers Logs / Traces 中查看。
 - GitHub 仓库 `zankoo/wash-guide` 已连接 Workers Builds：`main` 自动生产部署，其他分支生成独立预览；构建依赖缓存已开启，Markdown / research 变更跳过构建。生产部署前运行 lint、类型检查、单元测试、构建和传输预算检查，GitHub Actions 另跑完整浏览器回归。
 

@@ -130,7 +130,7 @@ export const products: Product[] = [
  cautions:['sun'],notes:['施工环境 15–30 °C、相对湿度 30–70 %，车要先回到室温。','24 小时内不要沾液体、不要触碰，也不要停在阳光下；48–72 小时可正常使用，7 天完全固化。','日常用中性内饰清洁剂（如内饰比例稀释的 APC）直线擦拭；pH 10 以上的强碱、溶剂、硅油类保养剂、漂白剂会损伤镀膜。','未处理的绒面、Alcantara、织物座椅、打孔皮和喷漆内饰件先在不显眼处测试。','True Series，不登记 CarFax 保修；保养得当约 1 年。开封后 3–4 个月内用完。'],url:FL+'feynlab-interior-ceramic/'},
 
 {
- sds:{"url":"/sds/N-plastic-v2.pdf","source":"feynlab","language":"英文","version":"2024-02-23","hosting":"local","sha256":"2b417df6c8b8195a35f8f938b55409fe6741fb139b1d6036be9d06bf5ee14a9d","originalUrl":"https://eu.feynlab.com/wp-content/uploads/woocommerce_uploads/2024/04/Plastic-V2-SDS-m7q047-wr3ey0.pdf","checkedAt":"2026-11-10"},
+ sds:{"url":"https://sds.kokoda.fun/N-plastic-v2.pdf","source":"feynlab","language":"英文","hosting":"r2","version":"2024-02-23","originalUrl":"https://eu.feynlab.com/wp-content/uploads/woocommerce_uploads/2024/04/Plastic-V2-SDS-m7q047-wr3ey0.pdf","checkedAt":"2026-11-10","sha256":"2b417df6c8b8195a35f8f938b55409fe6741fb139b1d6036be9d06bf5ee14a9d"},
  id:'N-plastic-v2',brand:'N',category:'coat',name:'Plastic V2',type:'塑料镀膜 / 修复（渗入老化塑料恢复颜色，含 UV 防护）',sizes:'30 ml',materials:'外饰纹理塑料 · 外饰光面塑料 · 内饰塑料 · 钢琴黑 · 灯罩 · 门板 · 仪表台',
  dilutions:[['塑料件','即用','—']],
  steps:['用 Pure Wash 或 Pure Rinseless 洗净，再用 Panel Prep 擦一遍。','在 10–30 °C、湿度低的环境施工；摇匀瓶子。','在超纤施工块上取少量，均匀地揉进表面，不要太湿。','停留吸收 5–10 分钟，回到起点轻轻再涂一遍抹匀，用干净超纤布擦掉多余的。','需要多层时，两层之间间隔 12–24 小时。'],
@@ -138,7 +138,7 @@ export const products: Product[] = [
 
 // ───────────────────────── 封体 / 快速养护 ─────────────────────────
 {
- sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/08/Detailer-V3-0723707821081-alxmcr.pdf","source":"feynlab","language":"英文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/N-hybrid-detailer.pdf","source":"feynlab","language":"英文","hosting":"r2","originalUrl":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/08/Detailer-V3-0723707821081-alxmcr.pdf","checkedAt":"2026-11-27","sha256":"1caa3330e8c6a7804aa675cace09f2eff975dc2f2ce4933d4abfd809a94d83ac"},
  id:'N-hybrid-detailer',brand:'N',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB25-06-0011）：不适用。","registration":"HB25-06-0011"}],"conflict":false},name:'Hybrid Ceramic Detailer',type:'水性陶瓷快速美容剂（清洁 + 增光 + 疏水，可当擦干辅助）',sizes:'250 ml · 500 ml · 5 L · 20 L',materials:'车漆 · 玻璃 · 塑料 · 改色膜 · 皮革 · 橡胶',
  dilutions:[['喷上擦掉','即用','喷雾壶']],
  steps:['喷在板块上（或喷在超纤布上）。','用干净超纤布擦开、擦亮，不需要等待固化。','也可以在洗车后喷在湿车上，一边擦干一边上保护。'],
@@ -156,7 +156,7 @@ export const products: Product[] = [
 
 // ───────────────────────── 塑料 / 轮胎养护 ─────────────────────────
 {
- sds:{"url":"https://eu.feynlab.com/wp-content/uploads/2024/04/Plastic-Black-Ultra-SDS-7vciyp.pdf","source":"feynlab","language":"英文","version":"2024","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/N-plastic-black-ultra.pdf","source":"feynlab","language":"英文","hosting":"r2","originalUrl":"https://eu.feynlab.com/wp-content/uploads/2024/04/Plastic-Black-Ultra-SDS-7vciyp.pdf","checkedAt":"2026-11-27","version":"2024","sha256":"01b4efe6da6aeeb88f828ff2bdee72a2758720eda984e99d709f64ba7bf8aa2e"},
  id:'N-plastic-black-ultra',brand:'N',category:'trim',name:'Plastic Black Ultra',type:'黑色塑料陶瓷修复（含黑色颜料，1–2 遍恢复深黑）',sizes:'30 ml',materials:'黑色纹理塑料 · 黑色塑料保险杠',
  dilutions:[['黑色塑料','即用','—']],
  steps:['在 10–30 °C、光线好、干净的地方施工；用 Pure Wash 或 Pure Rinseless 洗净，需要时用 APC 深度清洁，再用 Panel Prep 擦一遍。','分小块施工；充分摇匀，颜料会沉淀。','用超纤施工块取少量揉进表面，均匀但不要太湿。','渗透 5–10 分钟，回到起点再轻涂一遍抹匀；再等 5 分钟，用干净超纤布擦掉多余的。','严重褪色需要多层时，间隔 12–24 小时。'],
@@ -169,7 +169,7 @@ export const products: Product[] = [
 
 // ───────────────────────── 玻璃 ─────────────────────────
 {
- sds:{"url":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/09/Glass-Cleaner-0723707821159-cqdooc.pdf","source":"feynlab","language":"英文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/N-glass-cleaner.pdf","source":"feynlab","language":"英文","hosting":"r2","originalUrl":"https://www.feynlab.com/wp-content/uploads/woocommerce_uploads/2020/09/Glass-Cleaner-0723707821159-cqdooc.pdf","checkedAt":"2026-11-27","sha256":"513f73c6ba51ede71185127172269bfec60784d38be9c8dabd08e3c3ff418f19"},
  id:'N-glass-cleaner',brand:'N',category:'glass',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 HB21-01-1847，已过期）：原液弱碱性。","registration":"HB21-01-1847"}],"conflict":false},name:'Glass Cleaner',type:'无痕玻璃清洁剂（不含氨，减少内侧起雾）',sizes:'250 ml · 500 ml · 5 L',materials:'车内外玻璃 · 后视镜 · 镀膜玻璃',
  dilutions:[['玻璃','即用','喷雾壶']],
  steps:['用前轻轻摇匀。','准备两块干净的玻璃布：喷在第一块上擦玻璃，带走约 80 % 的水分。','换第二块布擦干剩余水分。','从多个角度检查有没有残留；毛巾脏了就翻到干净面，否则容易留痕。'],

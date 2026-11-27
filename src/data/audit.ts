@@ -18,15 +18,17 @@ export function auditCatalog(products: readonly Product[]) {
     missingSource: list((p) => p.ph?.source.kind === 'unrecorded'),
     conflictingEvidence: list((p) => p.ph?.conflict === true),
   };
-  const localSds = included.filter((p) => p.sds?.hosting === 'local');
+  const hostedSds = included.filter((p) => p.sds?.hosting === 'r2');
+  const remoteSds = included.filter((p) => p.sds?.hosting === 'remote');
   return {
     schemaVersion: 1,
     scope: { total: products.length, excludedAccessories: products.length - included.length, included: included.length },
     sds: { linked: included.length - missingSds.length, missing: missingSds },
     ph,
-    localSds: {
-      count: localSds.length,
-      missingOriginalUrl: list((p) => p.sds?.hosting === 'local' && !p.sds.originalUrl),
+    hostedSds: {
+      count: hostedSds.length,
+      remoteCount: remoteSds.length,
+      missingOriginalUrl: list((p) => p.sds?.hosting === 'r2' && !p.sds.originalUrl),
     },
     byBrand: BRANDS.map((brand) => {
       const own = included.filter((p) => p.brand === brand);
@@ -37,13 +39,13 @@ export function auditCatalog(products: readonly Product[]) {
 }
 
 export function formatCatalogAudit(report: ReturnType<typeof auditCatalog>): string {
-  const { scope, sds, ph, localSds } = report;
+  const { scope, sds, ph, hostedSds } = report;
   return [
     `产品 ${scope.total} 款；排除配件 ${scope.excludedAccessories} 款；统计 ${scope.included} 款。`,
     `SDS：已关联 ${sds.linked}；未关联 ${sds.missing.length}。`,
     `pH：有数值 ${ph.withValue.length}；仅定性 ${ph.qualitativeOnly.length}；不适用 ${ph.notApplicable.length}；未记录 ${ph.unrecorded.length}。`,
     `pH 证据：来源未关联 ${ph.missingSource.length}；存在口径差异 ${ph.conflictingEvidence.length}（与数值状态重叠）。`,
-    `站内 SDS：${localSds.count} 份；缺原始地址 ${localSds.missingOriginalUrl.length} 份。`,
+    `R2 托管 SDS：${hostedSds.count} 份（远程外链 ${hostedSds.remoteCount} 份）；缺原始地址 ${hostedSds.missingOriginalUrl.length} 份。`,
     '',
     '品牌\t产品\t已关联 SDS\t未关联 SDS',
     ...report.byBrand.map((b) => `${b.name}\t${b.products}\t${b.linkedSds}\t${b.missingSds}`),

@@ -191,6 +191,7 @@ export const PRODUCT_IDS: readonly string[] = [
   'K-prewash-a',
   'K-prewash-b',
   'K-prewash-express',
+  'K-prefoam-efficient',
   'K-nanomagic-shampoo',
   'K-ceramic-effect-shampoo',
   'K-reactivation-shampoo',

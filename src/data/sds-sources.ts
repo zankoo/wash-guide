@@ -1,4 +1,7 @@
-/** 来源只标识机构；语言、版本和转存信息属于每份文件。 */
+/** 统一托管在 Cloudflare R2 自定义域名的 SDS 基准地址。 */
+export const SDS_R2_ORIGIN = 'https://sds.kokoda.fun';
+
+/** 来源只标识机构；语言、版本和托管信息属于每份文件。 */
 export const SDS_SOURCES = {
   "koch": {
     "name": "Koch-Chemie 官方"
@@ -59,6 +62,12 @@ export const SDS_SOURCES = {
   },
   "bb-carcare": {
     "name": "比利时经销商 BB CARcare"
+  },
+  "alphadetails": {
+    "name": "澳大利亚经销商 Alpha Details"
+  },
+  "car-wash-gr": {
+    "name": "希腊经销商 car-wash.gr"
   }
 } as const;
 export type SdsSourceId = keyof typeof SDS_SOURCES;

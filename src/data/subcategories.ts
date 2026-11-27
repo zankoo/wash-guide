@@ -11,7 +11,7 @@ export interface Subcategory {
 /** 分类下的第二层：每款产品恰好属于一个子分类，子分类顺序即页面上的显示顺序 */
 export const SUBCATS: Subcategory[] = [
   // ── 预洗 / TFR
-  { id: 'pre-alk', category: 'pre', name: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'K-super-foam-fruit-bowl', 'K-super-foam', 'K-super-foam-nta-frei', 'K-prewash-a', 'K-prewash-b', 'K-prewash-express', 'C-lift', 'L-libera', 'K-green-star', 'K-green-star-96', 'K-green-star-bmp', 'L-initio', 'F-supermafrasol-evo'] },
+  { id: 'pre-alk', category: 'pre', name: '碱性预洗 / TFR', ids: ['L-primus', 'M-foam-gun-prewash', 'K-vorreiniger-b', 'K-super-foam-fruit-bowl', 'K-super-foam', 'K-super-foam-nta-frei', 'K-prewash-a', 'K-prewash-b', 'K-prewash-express', 'K-prefoam-efficient', 'C-lift', 'L-libera', 'K-green-star', 'K-green-star-96', 'K-green-star-bmp', 'L-initio', 'F-supermafrasol-evo'] },
   { id: 'pre-neu', category: 'pre', name: '中性预洗', ids: ['L-neve', 'K-gsf'] },
   { id: 'pre-acid', category: 'pre', name: '酸性预洗', ids: ['B-a55'] },
   { id: 'pre-bug', category: 'pre', name: '虫尸去除', ids: ['M-insect-remover', 'K-insect-dirt-remover', 'C-bugout', 'G-buggrime', 'F-killer', 'P-bug-off'] },

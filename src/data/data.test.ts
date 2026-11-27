@@ -1,7 +1,7 @@
-import { readFileSync, readdirSync } from 'node:fs';
-import { createHash } from 'node:crypto';
+import { existsSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { FLOWS, FLOW_BY_ID, PRODUCTS, PRODUCT_BY_ID, SDS_SOURCES, SUBCATS, keyRatios, materialsOf, productsOfStep, stepsOf } from './index';
+import { SDS_R2_ORIGIN } from './sds-sources';
 import { CAT_NAME, SCENE_NAME } from './taxonomy';
 import { PRODUCT_IDS } from './product-ids';
 
@@ -135,24 +135,22 @@ describe('pH', () => {
 });
 
 describe('SDS 和危险品标注', () => {
-  it('SDS 只关联已收录的产品，链接是 https 或本站转存的文件', () => {
-    const hosted = new Set(readdirSync(new URL('../../public/sds', import.meta.url)));
+  it('SDS 只关联已收录的产品，统一托管在 R2 或保留受限远程地址', () => {
+    expect(existsSync(new URL('../../public/sds', import.meta.url))).toBe(false);
     for (const p of PRODUCTS) {
       if (!p.sds) continue;
       const { url, source, hosting } = p.sds;
       expect(SDS_SOURCES[source], p.id).toBeDefined();
       expect(p.sds.language, p.id).toBeTruthy();
-      if (hosting === 'local') {
-        expect(url).toMatch(/^\/sds\//);
-        expect(hosted.has(url.slice(5)), url).toBe(true);
+      if (hosting === 'r2') {
+        expect(url, p.id).toBe(`${SDS_R2_ORIGIN}/${p.id}.pdf`);
         expect(p.sds.originalUrl || p.sds.provenanceNote, p.id).toBeTruthy();
-        const bytes = readFileSync(new URL('../../public' + url, import.meta.url));
-        expect(createHash('sha256').update(bytes).digest('hex'), p.id).toBe(p.sds.sha256);
-      } else expect(url, p.id).toMatch(/^https:\/\//);
+        expect(p.sds.sha256, p.id).toMatch(/^[a-f0-9]{64}$/);
+      } else {
+        expect(url, p.id).toMatch(/^https:\/\//);
+        expect(url, p.id).not.toMatch(new RegExp(`^${SDS_R2_ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/`));
+      }
     }
-    // 转存的文件都有产品在用
-    const used = new Set(PRODUCTS.flatMap((p) => p.sds ? [p.sds.url] : []));
-    for (const f of hosted) expect(used.has(`/sds/${f}`), f).toBe(true);
   });
 
   it('标了危险品的产品都有可以核对的 SDS', () => {
