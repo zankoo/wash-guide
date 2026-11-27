@@ -26,7 +26,7 @@ describe('目录资料报告', () => {
       product('na', { ph: { ...base, category: 'na' } }),
       product('qualitative', { ph: { ...base, category: 'alk' } }),
       product('value', { ph: { ...base, category: 'acid', value: '0', conflict: true },
-        sds: { url: '/sds/value.pdf', source: 'koch', language: '英文', hosting: 'local' } }),
+        sds: { url: 'https://sds.kokoda.fun/value.pdf', source: 'koch', language: '英文', hosting: 'r2' } }),
     ]);
     expect(report.ph.unrecorded.map((p) => p.id)).toEqual(['none']);
     expect(report.ph.notApplicable.map((p) => p.id)).toEqual(['na']);
@@ -34,7 +34,7 @@ describe('目录资料报告', () => {
     expect(report.ph.withValue.map((p) => p.id)).toEqual(['value']);
     expect(report.ph.missingSource).toHaveLength(3);
     expect(report.ph.conflictingEvidence.map((p) => p.id)).toEqual(['value']);
-    expect(report.localSds.missingOriginalUrl.map((p) => p.id)).toEqual(['value']);
+    expect(report.hostedSds.missingOriginalUrl.map((p) => p.id)).toEqual(['value']);
     expect(report.sds.linked).toBe(1);
   });
 

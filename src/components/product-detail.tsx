@@ -179,14 +179,14 @@ export function DetailSuspense({ children }: { children: ReactNode }) {
 function SdsLink({ p }: { p: Product }) {
   const sds = p.sds;
   if (!sds) return null;
-  const { url, source, version, language, hosting } = sds;
+  const { url, source, version, language } = sds;
   const { name } = SDS_SOURCES[source];
   return (
     <a className="src sds" href={url} target="_blank" rel="noopener">
       <span>
         安全技术说明书（SDS）
         <small>
-          {name} · {language}{hosting === 'local' && ' · 本站转存'}
+          {name} · {language}
           {version && ` · ${version}`}
         </small>
       </span>

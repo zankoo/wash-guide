@@ -12,381 +12,381 @@ const CSW = 'https://www.carsupplieswarehouse.com/products/';
 export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/F30_Bug_Off_NA_SDS_EN_12-25.pdf?v=1785872981","source":"ps","language":"英文","hosting":"remote"},
- id:'P-bug-off',brand:'P',category:'pre',ph:{"category":"alk","value":"12.4","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/F30_Bug_Off_NA_SDS_EN_12-25.pdf?v=1785872981","section":9},"evidence":[],"conflict":false},name:'Bug Off',type:'虫尸去除剂（洗车前预处理）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'前格栅 · 饰条 · 车漆 · 保险杠',
+ sds:{"url":"https://sds.kokoda.fun/P-bug-off.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/F30_Bug_Off_NA_SDS_EN_12-25.pdf?v=1785872981","checkedAt":"2026-11-27","sha256":"bc52bc4e1b83fc3ef9236fffc6bf0c65288ae5257ef37feba3a6c694fccb51ef"},
+ id:'P-bug-off',brand:'P',category:'pre',ph:{"category":"alk","value":"12.4","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-bug-off.pdf","section":9},"evidence":[],"conflict":false},name:'Bug Off',type:'虫尸去除剂（洗车前预处理）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'前格栅 · 饰条 · 车漆 · 保险杠',
  dilutions:[['重度虫尸','原液','喷雾壶'],['一般虫尸','1:5','喷雾壶']],
  steps:['戴好防护用品。','原液使用，或最多按 1:5 兑水。','喷在要清洁的部位，停留 1 分钟以上，让虫尸软化、松脱。','之后正常洗车，冲掉虫尸残渣。'],
  cautions:['sun','hot','dry','test'],notes:['除虫剂较强，部分表面可能不耐受，每次使用前都要测试。','标签：Pro Series F30。'],url:PS+'bug-off-insect-remover'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Frostbite_Snow_Foam_US_EN_v1.0_DRAFT.pdf?v=1710278544","source":"ps","language":"英文","hosting":"remote"},
- id:'P-frostbite',brand:'P',category:'pre',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Frostbite_Snow_Foam_US_EN_v1.0_DRAFT.pdf?v=1710278544","section":9},"evidence":[],"conflict":false},name:'Frostbite',type:'Surface Cleanse 雪泡预洗（PA壶 / 手洗两用）',sizes:'32 oz · 1 gal',materials:'车身外部各表面',
+ sds:{"url":"https://sds.kokoda.fun/P-frostbite.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Frostbite_Snow_Foam_US_EN_v1.0_DRAFT.pdf?v=1710278544","checkedAt":"2026-11-27","sha256":"e92fead68e80dcd5b098645c6ec97bd844d1d209ba1ac384fa453286af055395"},
+ id:'P-frostbite',brand:'P',category:'pre',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-frostbite.pdf","section":9},"evidence":[],"conflict":false},name:'Frostbite',type:'Surface Cleanse 雪泡预洗（PA壶 / 手洗两用）',sizes:'32 oz · 1 gal',materials:'车身外部各表面',
  dilutions:[['PA壶','2–3 oz / 32 oz 壶','PA壶'],['手洗','1:128','桶洗']],
  steps:['PA壶：壶里加 2–3 oz（约 60–90 ml）原液，其余加水（壶容量 32 oz / 约 1 L）。','喷满车身，停留 3–5 分钟，不要让泡沫干掉。','用高压水冲净后再接触式洗车。','手洗：按瓶身标签 1:128 兑水。'],
  cautions:['sun','dry'],notes:['瓶身标签：高泡、可直接用于 PA壶、手洗稀释 128:1。','PA壶用量按水压可调到 4–6 oz / 32 oz 壶（经销商 Car Supplies Warehouse 的说明）。','气温较低时施工更好。'],url:PS+'frostbite-surface-clesnse-snow-foam-quart'},
 
 // ───────────────────────── 洗车香波 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Pearl_Hand_Wash_NA_SDS_EN.pdf?v=1744646177","source":"ps","language":"英文","hosting":"remote"},
- id:'P-pearl',brand:'P',category:'wash',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Pearl_Hand_Wash_NA_SDS_EN.pdf?v=1744646177","section":9},"evidence":[],"conflict":false},name:'Pearl Auto Shampoo',type:'浓缩洗车液（可生物降解）',sizes:'32 oz · 1 gal · 5 gal',materials:'车身外部各表面',
+ sds:{"url":"https://sds.kokoda.fun/P-pearl.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Pearl_Hand_Wash_NA_SDS_EN.pdf?v=1744646177","checkedAt":"2026-11-27","sha256":"3f59c07e155c394e140e8a3ac04bb0520bf88aeb96ad9f16c1bf02048f67f902"},
+ id:'P-pearl',brand:'P',category:'wash',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-pearl.pdf","section":9},"evidence":[],"conflict":false},name:'Pearl Auto Shampoo',type:'浓缩洗车液（可生物降解）',sizes:'32 oz · 1 gal · 5 gal',materials:'车身外部各表面',
  dilutions:[['手洗（每加仑水 1 oz）','1:128','桶洗'],['较脏时 / PA壶','1:80','PA壶']],
  steps:['在阴凉处、排水符合规定的洗车区施工。','每加仑（3.8 L）水加 1 oz（约 30 ml，两瓶盖）；最佳比例 1:80 – 1:128。','先冲车，再用手或 PA壶涂上洗车液。','用洗车手套清洗后彻底冲净。','用擦干巾擦干。'],
  notes:['官网称 pH 平衡、不伤车漆也不伤手；SDS 第 9 节写原液 pH 10。泡沫稳定、润滑好。','也可以接比例稀释设备，用于手洗或洗车机。'],url:PS+'pearl-auto-shampoo-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_IRS.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-irs',brand:'P',category:'wash',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_IRS.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'IRS Foaming Auto Shampoo',type:'高浓缩高泡洗车香波（樱桃香，Pro Series）',sizes:'1 gal · 5 gal',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-irs.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_IRS.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"2081695ead116034ad9aee9737214d609ec15fcfad4a50b4ddacaa5e072b23c4"},
+ id:'P-irs',brand:'P',category:'wash',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-irs.pdf","section":9},"evidence":[],"conflict":false},name:'IRS Foaming Auto Shampoo',type:'高浓缩高泡洗车香波（樱桃香，Pro Series）',sizes:'1 gal · 5 gal',materials:'车漆',
  dilutions:[['手洗 / 洗车设备','1:128','桶洗']],
  steps:['按 1:128 兑水，手洗或用洗车设备清洗。','冲洗干净。'],
  notes:['泡沫丰厚持久，冲洗性好不留痕；能去较重的脏污，又温和到可以日常使用。'],url:PS+'irs-foaming-auto-shampoo-car-wash-soap'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Wash_Wax_0c5d3d6b-201a-42f1-9e4b-cc663ec530d1.pdf?v=1648503828","source":"ps","language":"英文","hosting":"remote"},
- id:'P-wash-wax',brand:'P',category:'wash',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Wash_Wax_0c5d3d6b-201a-42f1-9e4b-cc663ec530d1.pdf?v=1648503828","section":9},"evidence":[],"conflict":false,"claim":"官方称 pH 平衡"},name:'Wash & Wax',type:'浓缩洗车香波（Pro Series）',sizes:'16 oz · 1 gal',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-wash-wax.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Wash_Wax_0c5d3d6b-201a-42f1-9e4b-cc663ec530d1.pdf?v=1648503828","checkedAt":"2026-11-27","sha256":"5bf9f118366bab51c68a379ba531e2cc50283036ec4967279758b96dd57959d5"},
+ id:'P-wash-wax',brand:'P',category:'wash',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-wash-wax.pdf","section":9},"evidence":[],"conflict":false,"claim":"官方称 pH 平衡"},name:'Wash & Wax',type:'浓缩洗车香波（Pro Series）',sizes:'16 oz · 1 gal',materials:'车漆',
  dilutions:[],steps:[],
  notes:['高浓缩、100% 可生物降解，适合各种洗车方式；对车漆和双手温和，清新香。','黏度较低，方便配合稀释设备使用。','官方商城未给出稀释比例和施工步骤。'],url:PS+'wash-wax-car-wash-soap'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Radiance_96a6193f-f66c-4d4e-86f2-abe5e3a6e255.pdf?v=1699558771","source":"ps","language":"英文","hosting":"remote"},
- id:'P-radiance',brand:'P',category:'wash',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Radiance_96a6193f-f66c-4d4e-86f2-abe5e3a6e255.pdf?v=1699558771","section":9},"evidence":[],"conflict":false},name:'Inspiration Radiance',type:'镀膜维护洗车液（洗后留下光泽和保护）',sizes:'32 oz · 1 gal · 5 gal',materials:'车漆 · 镀膜车',
+ sds:{"url":"https://sds.kokoda.fun/P-radiance.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Radiance_96a6193f-f66c-4d4e-86f2-abe5e3a6e255.pdf?v=1699558771","checkedAt":"2026-11-27","sha256":"83fd4d6477c680da605503adce7c6c39ccd29c8dc1e42861c5ac28f62d1ff353"},
+ id:'P-radiance',brand:'P',category:'wash',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-radiance.pdf","section":9},"evidence":[],"conflict":false},name:'Inspiration Radiance',type:'镀膜维护洗车液（洗后留下光泽和保护）',sizes:'32 oz · 1 gal · 5 gal',materials:'车漆 · 镀膜车',
  dilutions:[['手洗（每加仑水 6 oz）','1:21','桶洗']],
  steps:['先把整车冲一遍，去掉浮尘。','每加仑（3.8 L）水加 6 oz（约 180 ml）。','用洗车手套或海绵洗掉污垢。','用清水彻底冲净。','用合适的麂皮或擦干巾擦干。'],
  cautions:['sun'],notes:['专为 Inspiration 镀膜搭配，其他镀膜或保养良好的车漆也适用；冲洗后会留下一层光泽和保护，补强原有镀膜。','比例来自 5 加仑桶的旧版标签（当时叫 Radiance Premium Wash & Wax）。','不是打蜡的替代品。'],url:PS+'radiance-premium-wash-wax-quart'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Absolute_Rinseless.pdf?v=1662675339","source":"ps","language":"英文","hosting":"remote"},
- id:'P-absolute',brand:'P',category:'wash',ph:{"category":"neu","value":"6.0","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Absolute_Rinseless.pdf?v=1662675339","section":9},"evidence":[],"conflict":false},name:'Absolute Rinseless Wash',type:'聚合物免冲洗洗车液（软化水质，可多用途稀释）',sizes:'32 oz · 1 gal',materials:'车漆 · 镀膜 · 改色膜 · PPF · 饰条 · 塑料 · 皮革 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-absolute.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Absolute_Rinseless.pdf?v=1662675339","checkedAt":"2026-11-27","sha256":"60a4b5c86f07a23a3f247ea2f5895cfff338ab9a042971705ddf16b785857bbb"},
+ id:'P-absolute',brand:'P',category:'wash',ph:{"category":"neu","value":"6.0","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-absolute.pdf","section":9},"evidence":[],"conflict":false},name:'Absolute Rinseless Wash',type:'聚合物免冲洗洗车液（软化水质，可多用途稀释）',sizes:'32 oz · 1 gal',materials:'车漆 · 镀膜 · 改色膜 · PPF · 饰条 · 塑料 · 皮革 · 织物',
  dilutions:[['免冲洗（水桶）','1:256','桶洗'],['黏土润滑液','1:128','喷雾壶'],['快速美容剂','1:64','喷雾壶'],['玻璃 / 内饰清洁','1:256','喷雾壶']],
  steps:['水桶里每 2 加仑（约 7.6 L）水加 1 oz（约 30 ml）。','很脏的地方先用同样比例装进压力喷壶预喷，减少摩擦。','用洗车手套或毛巾逐块清洗，洗完马上擦干，不需要冲水。','其他用途按比例装进喷雾壶使用。'],
  cautions:['sunOk'],notes:['官方说明：聚合物包裹并乳化污垢，加进水里立刻软化水质，减少水斑；车外车内各表面都能用。','比例来自经销商 Car Supplies Warehouse 的商品页，官方商城没有写比例。'],url:PS+'absolute-rinseless-wash'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Epic_Waterless_Wash_-_NA_9aa794cf-5c10-45e7-a9c8-291c40b74b1c.pdf?v=1744646193","source":"ps","language":"英文","hosting":"remote"},
- id:'P-epic',brand:'P',category:'wash',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Epic_Waterless_Wash_-_NA_9aa794cf-5c10-45e7-a9c8-291c40b74b1c.pdf?v=1744646193","section":9},"evidence":[],"conflict":false},name:'Epic Waterless Wash',type:'无水洗 / 快速美容（聚合物增光）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆 · 金属 · 玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-epic.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Epic_Waterless_Wash_-_NA_9aa794cf-5c10-45e7-a9c8-291c40b74b1c.pdf?v=1744646193","checkedAt":"2026-11-27","sha256":"0d3cdb652bb7f3a795a6c1b6196c075ac74accc9824ee4eae102ec0636f87b75"},
+ id:'P-epic',brand:'P',category:'wash',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-epic.pdf","section":9},"evidence":[],"conflict":false},name:'Epic Waterless Wash',type:'无水洗 / 快速美容（聚合物增光）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆 · 金属 · 玻璃',
  dilutions:[['无水洗 / 快速美容','即用','喷雾壶']],
  steps:['在阴凉处、车身冷却且干燥时施工。','准备两块干净超纤布：一块擦拭，一块抛亮。','每次在约 60 × 60 cm 的范围喷一层薄雾。','用超纤布轻轻擦过喷涂区域，擦到雾膜消失。'],
  notes:['也可以当快速美容剂，或在冲洗后、擦干前喷在湿车上一起擦干。','标签：Eco-Detail Products EC37。'],url:PS+'epic-rinseless-and-waterless-wash'},
 
 // ───────────────────────── 轮毂轮胎 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Brake_Buster_NA_EN_10-24.pdf?v=1744646183","source":"ps","language":"英文","hosting":"remote"},
- id:'P-brake-buster',brand:'P',category:'wheel',ph:{"category":"alk","value":"12.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Brake_Buster_NA_EN_10-24.pdf?v=1744646183","section":9},"evidence":[],"conflict":false},name:'Brake Buster',type:'轮毂 + 轮胎凝胶清洁剂（附着停留，留防锈层）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'轮毂 · 轮胎',
+ sds:{"url":"https://sds.kokoda.fun/P-brake-buster.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Brake_Buster_NA_EN_10-24.pdf?v=1744646183","checkedAt":"2026-11-27","sha256":"9cc7fb407ce19040261ae541e1f9c5c330f8c7c763cb67415156b93b2b93b3a5"},
+ id:'P-brake-buster',brand:'P',category:'wheel',ph:{"category":"alk","value":"12.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-brake-buster.pdf","section":9},"evidence":[],"conflict":false},name:'Brake Buster',type:'轮毂 + 轮胎凝胶清洁剂（附着停留，留防锈层）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'轮毂 · 轮胎',
  dilutions:[['轮毂 / 轮胎','即用','喷雾壶'],['日常维护（经销商用法）','1:5','喷雾壶']],
  steps:['尽量在轮毂冷却时施工。','在轮毂和轮胎上大量喷涂。','停留 1 分钟以上。','需要时用刷子刷洗。','用高压水或强水流冲净。'],
  cautions:['test'],notes:['凝胶会附着在轮毂表面，渗透污垢；同时清洁轮胎，为上轮胎油做准备，并在轮毂上留下一层防锈成分。','每次使用前都要在轮毂上测试，避免染色或损伤。','标签按原液使用；经销商 Car Supplies Warehouse 建议日常维护 1:5 稀释，重度污垢用原液。'],url:PS+'brake-buster-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Undressed.pdf?v=1631822783","source":"ps","language":"英文","hosting":"remote"},
- id:'P-undressed',brand:'P',category:'wheel',ph:{"category":"alk","value":"9.0","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Undressed.pdf?v=1631822783","section":9},"evidence":[],"conflict":false},name:'Undressed',type:'碱性轮胎清洁剂（去旧轮胎油和发棕）',sizes:'1 gal · 5 gal',materials:'轮胎',
+ sds:{"url":"https://sds.kokoda.fun/P-undressed.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Undressed.pdf?v=1631822783","checkedAt":"2026-11-27","sha256":"c30eedb5c53196a6901045c3d38e7c7366b8ccf05531b60b74bba1875338d683"},
+ id:'P-undressed',brand:'P',category:'wheel',ph:{"category":"alk","value":"9.0","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-undressed.pdf","section":9},"evidence":[],"conflict":false},name:'Undressed',type:'碱性轮胎清洁剂（去旧轮胎油和发棕）',sizes:'1 gal · 5 gal',materials:'轮胎',
  dilutions:[['重度','原液','喷雾壶'],['一般','1:10','喷雾壶']],
  steps:['按轮胎状况原液使用，或最多 1:10 兑水。','喷在要清洁的部位。','让产品作用一会儿，需要时用刷子刷。','用水冲净或擦净。'],
  notes:['碱性清洁液 + 水性溶剂 + 洗涤剂，能去掉路面污垢、旧轮胎油和油污，让白字胎更白。','官方定位为上轮胎油前的准备步骤（之后接 Dressed 或 Shine All）。','标签：Pro Series N10。'],url:PS+'undressed-tire-prep'},
 
 // ───────────────────────── 除染 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Iron_Buster_NA_SDS_EN_fa4a3c3f-f8c3-4de0-b799-41c32d5aa0c5.pdf?v=1727973279","source":"ps","language":"英文","hosting":"remote"},
- id:'P-iron-buster',brand:'P',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Iron_Buster_NA_SDS_EN_fa4a3c3f-f8c3-4de0-b799-41c32d5aa0c5.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'Iron Buster',type:'铁粉去除剂（轮毂 + 车漆，变紫）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆 · 轮毂',
+ sds:{"url":"https://sds.kokoda.fun/P-iron-buster.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Iron_Buster_NA_SDS_EN_fa4a3c3f-f8c3-4de0-b799-41c32d5aa0c5.pdf?v=1727973279","checkedAt":"2026-11-27","sha256":"af614ab8d272d6d20c18fcdb23a0273b06be64de43fc56addf971d4f83d2758a"},
+ id:'P-iron-buster',brand:'P',category:'deco',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-iron-buster.pdf","section":9},"evidence":[],"conflict":false},name:'Iron Buster',type:'铁粉去除剂（轮毂 + 车漆，变紫）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆 · 轮毂',
  dilutions:[['车漆 / 轮毂除铁','即用','喷雾壶']],
  steps:['车漆：先洗车并擦干，效果最好；轮毂不需要先洗。','大量喷在车漆或轮毂上。','停留 2–5 分钟，有铁粉的地方会变紫。','不要让它在表面完全干掉。','用水管或高压水彻底冲净，需要时重复。'],
  cautions:['test'],notes:['官网称 pH 平衡；SDS 第 9 节写原液 pH 5.5。见效快。','每次使用前都要在轮毂上测试。'],url:PS+'iron-buster-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Crystal_Wash_NA_SDS_EN.pdf?v=1781810313","source":"ps","language":"英文","hosting":"remote"},
- id:'P-crystal-wash',brand:'P',category:'deco',ph:{"category":"acid","value":"1.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Crystal_Wash_NA_SDS_EN.pdf?v=1781810313","section":9},"evidence":[],"conflict":false},name:'Crystal Wash',type:'有机酸除染剂（工业落尘、铁路粉尘、锈斑；干燥时结晶）',sizes:'1 gal · 5 gal',materials:'车漆 · 轮毂',
+ sds:{"url":"https://sds.kokoda.fun/P-crystal-wash.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Crystal_Wash_NA_SDS_EN.pdf?v=1781810313","checkedAt":"2026-11-27","sha256":"f53440732e265c8075709042b48a9bf5dc7fd24ee1022476ccc1a29508940dd5"},
+ id:'P-crystal-wash',brand:'P',category:'deco',ph:{"category":"acid","value":"1.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-crystal-wash.pdf","section":9},"evidence":[],"conflict":false},name:'Crystal Wash',type:'有机酸除染剂（工业落尘、铁路粉尘、锈斑；干燥时结晶）',sizes:'1 gal · 5 gal',materials:'车漆 · 轮毂',
  dilutions:[['车漆 / 轮毂除染','即用','喷雾壶']],
  steps:['在阴凉处、车身冷却时施工，不要在阳光直射下用。','用喷雾壶喷在车漆上，避开饰条和哑光表面，以免染色。','停留让产品开始结晶。','车漆用洗车液清洗后冲净；轮毂刷洗后冲净。'],
  cautions:['test','ppe'],notes:['官方用途：镀膜施工前和轮毂清洁的预处理。','酸性清洁剂较强，部分表面不耐受。','危险提示：可能造成严重皮肤灼伤和眼睛损伤。','标签：Pro Series K35；标签较模糊，以实物为准。'],url:PS+'crystal-wash-fallout-remover-and-surface-cleaner'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Tree_Sap_Remover_NA-en_SDS_06-26.pdf?v=1781810313","source":"ps","language":"英文","hosting":"remote"},
- id:'P-tree-sap',brand:'P',category:'deco',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Tree_Sap_Remover_NA-en_SDS_06-26.pdf?v=1781810313","section":9},"evidence":[],"conflict":false},name:'Speedy Tree Sap Remover',type:'树脂去除剂（不溶于水的树胶）',sizes:'32 oz',materials:'车漆 · 玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-tree-sap.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Tree_Sap_Remover_NA-en_SDS_06-26.pdf?v=1781810313","checkedAt":"2026-11-27","sha256":"51905cea985052c765793402afc0e4ea7158bd2197e7bbb057f13df2a4f09de8"},
+ id:'P-tree-sap',brand:'P',category:'deco',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-tree-sap.pdf","section":9},"evidence":[],"conflict":false},name:'Speedy Tree Sap Remover',type:'树脂去除剂（不溶于水的树胶）',sizes:'32 oz',materials:'车漆 · 玻璃',
  dilutions:[['树脂点','即用','—']],
  steps:['倒在超纤布上，轻轻擦拭树脂。','擦掉后用快速美容剂或洗车清洁残留。'],
  notes:['适合最后的细节处理。'],url:PS+'tree-sap-remover-fallout-remover-and-surface-cleaner'},
 
 // ───────────────────────── 研磨 / 施工前处理 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Intervention.pdf?v=1761694179","source":"ps","language":"英文","hosting":"remote"},
- id:'P-intervention',brand:'P',category:'polish',ph:{"category":"neu","value":"8.0","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Intervention.pdf?v=1761694179","section":9},"evidence":[],"conflict":false},name:'Intervention',type:'高效切削研磨剂（Recovery 系列第一步）',sizes:'8 oz · 32 oz',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-intervention.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Intervention.pdf?v=1761694179","checkedAt":"2026-11-27","sha256":"3438a73d4d57458c3dbc2cdb50f0b62f269a654d37c6d5f1c1b0b0f94da5b2ff"},
+ id:'P-intervention',brand:'P',category:'polish',ph:{"category":"neu","value":"8.0","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-intervention.pdf","section":9},"evidence":[],"conflict":false},name:'Intervention',type:'高效切削研磨剂（Recovery 系列第一步）',sizes:'8 oz · 32 oz',materials:'车漆',
  dilutions:[['机抛','即用','—']],
  steps:['选择抛光机和切削盘（羊毛、超纤或海绵切削盘都可以）。','在盘上或直接在漆面点 4–5 小滴。','轻到中等压力，每次 60 × 60 cm 或更小，去除缺陷。','保持足够的润滑，不够就补产品。','整车做完后检查缺陷去除情况，再用收光步骤抛亮。'],
  notes:['在 Rehab 的基础上加强切削，可去砂纸痕、旋纹和划痕；好擦，省时间。'],url:PS+'intervention-high-performance-compound'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ego_Maker.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-ego-maker',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ego_Maker.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Ego Maker',type:'切削研磨剂（切削后仍很亮，Double Black）',sizes:'32 oz',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-ego-maker.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ego_Maker.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"cfbd6157da740efece34d04db144d114eca93e35a1b8854ae5e979d55074a5af"},
+ id:'P-ego-maker',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-ego-maker.pdf","section":9},"evidence":[],"conflict":false},name:'Ego Maker',type:'切削研磨剂（切削后仍很亮，Double Black）',sizes:'32 oz',materials:'车漆',
  dilutions:[['机抛','即用','—']],
  steps:['可用于大轨迹 DA、强制旋转或旋转抛光机，各种抛光盘都可以。','去除砂纸痕、划痕和其他漆面缺陷。','之后接收光步骤（Deep Finish 或 Envy）。'],
  notes:['高纯度精制氧化铝磨料，粒径和形状控制严格，所以切削后漆面仍然亮。','不含蜡和硅油，钣喷车间可用。'],url:PS+'ego-maker-compound-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ballistic_Compound.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-ballistic',brand:'P',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ballistic_Compound.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Ballistic Max Cut Compound',type:'最强切削粗蜡（硬漆 / 玻璃钢，Pro Series）',sizes:'32 oz',materials:'各类车漆（偏硬漆面）· 玻璃钢',
+ sds:{"url":"https://sds.kokoda.fun/P-ballistic.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ballistic_Compound.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"d0ebf30d9d6f5c160aef43c7287b11d5ddd84aa7af87cd8c284de2e35552edc4"},
+ id:'P-ballistic',brand:'P',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-ballistic.pdf","section":9},"evidence":[],"conflict":false},name:'Ballistic Max Cut Compound',type:'最强切削粗蜡（硬漆 / 玻璃钢，Pro Series）',sizes:'32 oz',materials:'各类车漆（偏硬漆面）· 玻璃钢',
  dilutions:[['重切削','即用','羊毛盘 / 海绵切削盘']],
  steps:[],
  notes:['为较硬的漆面和玻璃钢（gel coat）设计，可去除 1000 目及更细的砂纸痕，以及氧化、落尘、水斑等表面瑕疵；适用于所有漆面。','可配旋转机或大行程偏心机，搭配羊毛或海绵切削盘。','官方商城未给出施工步骤。'],url:PS+'ballistic-max-cut-compound-paint-correction'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Extracut.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-smart-extra-cut',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Extracut.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Smart Extra Cut Compound',type:'高效粗蜡（硬漆，不含硅 / 蜡，Pro Series）',sizes:'32 oz · 1 gal',materials:'各类车漆（偏硬漆面）',
+ sds:{"url":"https://sds.kokoda.fun/P-smart-extra-cut.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Extracut.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"6885c80711c7a4d08090f084d65a28c445c5c387d6dfc22d28096b4dd79d5ff5"},
+ id:'P-smart-extra-cut',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-smart-extra-cut.pdf","section":9},"evidence":[],"conflict":false},name:'Smart Extra Cut Compound',type:'高效粗蜡（硬漆，不含硅 / 蜡，Pro Series）',sizes:'32 oz · 1 gal',materials:'各类车漆（偏硬漆面）',
  dilutions:[['重切削','即用','羊毛盘 / 海绵盘']],
  steps:[],
  notes:['去除砂纸痕、划痕、氧化、落尘和水斑等瑕疵，抛后表面平滑，可进入最终抛光步骤。','按需要的效果搭配传统羊毛盘或海绵盘。不含硅油和蜡。','官方商城未给出施工步骤。'],url:PS+'smart-extra-cut-compund-paint-correction'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Rehab_Correction_Creme_NA_SDS_EN.pdf?v=1781551959","source":"ps","language":"英文","hosting":"remote"},
- id:'P-rehab',brand:'P',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Rehab_Correction_Creme_NA_SDS_EN.pdf?v=1781551959","section":9},"evidence":[],"conflict":false},name:'Rehab Correction Creme',type:'多用途研磨剂（切削到收光都能做）',sizes:'8 oz · 32 oz · 1 gal',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-rehab.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Rehab_Correction_Creme_NA_SDS_EN.pdf?v=1781551959","checkedAt":"2026-11-27","sha256":"fa4b5262c72b87ddfb503266d3d025cdf4d076033a049ecfe591cbdc59eb785d"},
+ id:'P-rehab',brand:'P',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-rehab.pdf","section":9},"evidence":[],"conflict":false},name:'Rehab Correction Creme',type:'多用途研磨剂（切削到收光都能做）',sizes:'8 oz · 32 oz · 1 gal',materials:'车漆',
  dilutions:[['机抛','即用','—']],
  steps:['按漆面硬度选择抛光盘和机器：切削盘做切削，收光盘做收光。','点几小滴在盘上，每次 60 × 60 cm，抛到缺陷去除。','用超纤布擦净检查。'],
  notes:['切削力随漆面硬度、抛光盘和机器而变，可以从强切削一直做到收光；搭配各种海绵盘效果都很好。','可去除砂纸痕、旋纹和划痕。'],url:PS+'rehab-correction-creme-quart'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Deep_Finish.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-deep-finish',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Deep_Finish.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Deep Finish',type:'中度整平抛光剂（一步出深度和光泽）',sizes:'32 oz',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-deep-finish.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Deep_Finish.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"c81734ae31c3ca9691ab30829002a74a292ebc229348d9606c48fd6421c6a13b"},
+ id:'P-deep-finish',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-deep-finish.pdf","section":9},"evidence":[],"conflict":false},name:'Deep Finish',type:'中度整平抛光剂（一步出深度和光泽）',sizes:'32 oz',materials:'车漆',
  dilutions:[['机抛','即用','—']],
  steps:['在 Ego Maker 之后，或直接用于一般旋纹的漆面。','点几小滴在抛光盘上，每次 60 × 60 cm 抛到缺陷去除。','用超纤布擦净检查。'],
  notes:['除了日常旋纹，也能去掉接近完美时才显出来的最后一些细痕；适合难处理的漆面，一步出光。','不含蜡和硅油，钣喷车间可用。'],url:PS+'deep-finish-restoration-polish-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Full_Throttle.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-full-throttle',brand:'P',category:'polish',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Full_Throttle.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Full Throttle Cleaner Polish',type:'中等研磨一步抛光（Pro Series）',sizes:'32 oz · 1 gal',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-full-throttle.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Full_Throttle.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"2d0731bd67a517a00bc9638136ac819244375a6b807c0dd525ea42d73625d1a3"},
+ id:'P-full-throttle',brand:'P',category:'polish',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-full-throttle.pdf","section":9},"evidence":[],"conflict":false},name:'Full Throttle Cleaner Polish',type:'中等研磨一步抛光（Pro Series）',sizes:'32 oz · 1 gal',materials:'车漆',
  dilutions:[['一步抛光','即用','羊毛盘 / 海绵盘']],
  steps:[],
  notes:['去除砂纸痕、太阳纹、划痕和轻到中度氧化，一步抛出亮度和深度；钣喷店和美容店都适用。','可配传统羊毛盘或海绵盘。','官方商城未给出施工步骤。'],url:PS+'full-throttle-cleaner-polish-paint-correction'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Therapy_Final_Polish_NA_SDS_EN.pdf?v=1781810313","source":"ps","language":"英文","hosting":"remote"},
- id:'P-therapy',brand:'P',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Therapy_Final_Polish_NA_SDS_EN.pdf?v=1781810313","section":9},"evidence":[],"conflict":false},name:'Therapy',type:'收光抛光剂（Recovery 系列最后一步）',sizes:'8 oz · 32 oz',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-therapy.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Therapy_Final_Polish_NA_SDS_EN.pdf?v=1781810313","checkedAt":"2026-11-27","sha256":"2895e8ce9867f164c593ffcd65b2aa1516f94d85a8a61064f10ab26cc187671c"},
+ id:'P-therapy',brand:'P',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-therapy.pdf","section":9},"evidence":[],"conflict":false},name:'Therapy',type:'收光抛光剂（Recovery 系列最后一步）',sizes:'8 oz · 32 oz',materials:'车漆',
  dilutions:[['机抛','即用','—']],
  steps:['主要配收光海绵盘，特殊情况也可用羊毛或超纤盘。','在盘上点 4–5 小滴。','轻到中等压力，每次 60 × 60 cm 或更小，抛出光泽。','保持润滑，抛完用超纤布擦净检查。'],
  notes:['在 Rehab 的基础上调得更细，适合需要轻手的软漆。'],url:PS+'therapy-final-polish'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Headlight_Compound_163cf816-1ba2-42e0-a9ee-72b1489b1185.pdf?v=1651788054","source":"ps","language":"英文","hosting":"remote"},
- id:'P-headlight-compound',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Headlight_Compound_163cf816-1ba2-42e0-a9ee-72b1489b1185.pdf?v=1651788054","section":9},"evidence":[],"conflict":false},name:'Headlight Restoration Compound',type:'大灯翻新研磨剂（Pro Series）',sizes:'32 oz',materials:'大灯灯罩',
+ sds:{"url":"https://sds.kokoda.fun/P-headlight-compound.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Headlight_Compound_163cf816-1ba2-42e0-a9ee-72b1489b1185.pdf?v=1651788054","checkedAt":"2026-11-27","sha256":"44652b01dda6b2b69fadb5697feb89ac182bc727dc3f4bc17a45225c6605f484"},
+ id:'P-headlight-compound',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-headlight-compound.pdf","section":9},"evidence":[],"conflict":false},name:'Headlight Restoration Compound',type:'大灯翻新研磨剂（Pro Series）',sizes:'32 oz',materials:'大灯灯罩',
  dilutions:[['研磨','即用','羊毛盘 / 海绵盘']],
  steps:[],
  notes:['去除大灯灯罩上的砂纸痕、氧化和表面瑕疵，抛后表面平滑，可进入最终抛光步骤。','按需要的效果搭配传统羊毛盘或海绵盘。','之后用 Headlight Restoration Polish 收光。官方商城未给出施工步骤。'],url:PS+'headlight-restoration-compound-paint-correction'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Headlight_Polish_7da652d1-2f32-4abf-9fa9-14af67298330.pdf?v=1651788162","source":"ps","language":"英文","hosting":"remote"},
- id:'P-headlight-polish',brand:'P',category:'polish',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Headlight_Polish_7da652d1-2f32-4abf-9fa9-14af67298330.pdf?v=1651788162","section":9},"evidence":[],"conflict":false},name:'Headlight Restoration Polish',type:'大灯翻新抛光剂（Pro Series）',sizes:'32 oz',materials:'大灯灯罩',
+ sds:{"url":"https://sds.kokoda.fun/P-headlight-polish.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Headlight_Polish_7da652d1-2f32-4abf-9fa9-14af67298330.pdf?v=1651788162","checkedAt":"2026-11-27","sha256":"7e57a843a37067610d19054a15034b6862488ad74b8773e40169c0250b842893"},
+ id:'P-headlight-polish',brand:'P',category:'polish',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-headlight-polish.pdf","section":9},"evidence":[],"conflict":false},name:'Headlight Restoration Polish',type:'大灯翻新抛光剂（Pro Series）',sizes:'32 oz',materials:'大灯灯罩',
  dilutions:[['抛光','即用','羊毛盘 / 海绵盘']],
  steps:[],
  notes:['去除大灯上的旋纹和划痕，恢复光学透明度；中等研磨，一步抛出亮度。','可配传统羊毛盘或海绵盘。官方商城未给出施工步骤。'],url:PS+'headlight-restoration-polish-paint-correction'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Metal_Bright.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-metal-brite',brand:'P',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Metal_Bright.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Metal Brite',type:'液体金属抛光剂（Pro Series）',sizes:'16 oz',materials:'镀铬 · 铝 · 铜 · 黄铜等金属 · 轮毂',
+ sds:{"url":"https://sds.kokoda.fun/P-metal-brite.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Metal_Bright.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"d39bccaf4f6bae93fa15d4b2a7283ceb4ae7d05e588d892432d27a15fda73dcf"},
+ id:'P-metal-brite',brand:'P',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-metal-brite.pdf","section":9},"evidence":[],"conflict":false},name:'Metal Brite',type:'液体金属抛光剂（Pro Series）',sizes:'16 oz',materials:'镀铬 · 铝 · 铜 · 黄铜等金属 · 轮毂',
  dilutions:[],steps:[],
  notes:['清洁、抛光并保护镀铬、铝、铜、黄铜等金属，快速去除氧化、锈蚀和残留，让轮毂和车上金属件恢复展车光泽。','曾用于抛光波音 707「空军一号」SAM970 等历史飞机。','官方商城未给出施工步骤。'],url:PS+'metal-brite-liquid-metal-polish-paint-correction'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Envy.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-envy',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Envy.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Envy',type:'珠宝级收光抛光剂（无填充，适合镀膜前）',sizes:'16 oz',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-envy.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Envy.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"5fb78ab6fe4ee0d0431949f340bd86507724dd8467c350ab3f379abc64ae8e52"},
+ id:'P-envy',brand:'P',category:'polish',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-envy.pdf","section":9},"evidence":[],"conflict":false},name:'Envy',type:'珠宝级收光抛光剂（无填充，适合镀膜前）',sizes:'16 oz',materials:'车漆',
  dilutions:[['机抛','即用','—']],
  steps:['可用于大轨迹 DA、强制旋转或传统抛光机。','作为最后一步收光，抛出湿润、深邃的光泽。'],
  notes:['超细磨料，不含填充物，光泽不会被填充物掩盖后又消失，适合接镀膜。'],url:PS+'envy-jeweling-polish-doubleblack-collection'},
 
 {
- sds:{"url":"/sds/P-paint-prep.pdf","source":"mvp","language":"英文","version":"2017-03-06","hosting":"local","sha256":"f3fb3200807577b44750c5c7d8e57c56494e10896cd3a7d56fd234a0018eff58","originalUrl":"https://cdn.shopify.com/s/files/1/0026/8763/1409/files/SDS_Paint_Prep.pdf?v=1597940254","checkedAt":"2026-11-10"},
- id:'P-paint-prep',brand:'P',category:'polish',name:'Paint Coating Surface Prep',type:'镀膜前脱脂（也可清洁玻璃）',sizes:'16 oz · 1 gal',materials:'车漆 · 玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-paint-prep.pdf","source":"mvp","language":"英文","hosting":"r2","version":"2017-03-06","originalUrl":"https://cdn.shopify.com/s/files/1/0026/8763/1409/files/SDS_Paint_Prep.pdf?v=1597940254","checkedAt":"2026-11-10","sha256":"f3fb3200807577b44750c5c7d8e57c56494e10896cd3a7d56fd234a0018eff58"},
+ id:'P-paint-prep',brand:'P',category:'polish',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-paint-prep.pdf","section":9},"evidence":[],"conflict":false},name:'Paint Coating Surface Prep',type:'镀膜前脱脂（也可清洁玻璃）',sizes:'16 oz · 1 gal',materials:'车漆 · 玻璃',
  dilutions:[['镀膜前脱脂','即用','喷雾壶']],
  steps:['抛光完成后施工。','大量喷在漆面上，让表面完全湿润。','停留 30 秒，用超纤布擦净，勤翻毛巾。','整车重复，镀膜前仔细检查漆面。'],
  notes:['专为 Inspiration 镀膜配套，去除蜡、硅油等影响镀膜附着的残留。','瓶身也写作「Paint Prep and Glass Cleaner」；官方推荐的玻璃镀膜流程也用它在 VUE 前处理玻璃。'],url:PS+'paint-coating-surface-prep-doubleblack-collection'},
 
 // ───────────────────────── 镀膜 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-inspiration-classic',brand:'P',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Inspiration Classic',type:'专业陶瓷镀膜（车漆 · 轮毂 · 饰条）',sizes:'30 ml · 50 ml',materials:'车漆 · 轮毂 · 塑料饰条',
+ sds:{"url":"https://sds.kokoda.fun/P-inspiration-classic.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"2bec1597d7884372ef7909e1f9b10e90f41a50d97e4c0a9b49f1b844602edeb7"},
+ id:'P-inspiration-classic',brand:'P',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-inspiration-classic.pdf","section":9},"evidence":[],"conflict":false},name:'Inspiration Classic',type:'专业陶瓷镀膜（车漆 · 轮毂 · 饰条）',sizes:'30 ml · 50 ml',materials:'车漆 · 轮毂 · 塑料饰条',
  dilutions:[['镀膜（施工块）','即用','—']],
  steps:['施工前必须完成整车抛光。','用 Paint Coating Surface Prep 清洁漆面。','按包装内的培训说明施工。','施工后至少 2–3 小时不要让车淋雨或暴露在外；48–72 小时完全固化。'],
  cautions:['pro'],notes:['不建议未受训练的人施工；可在 inspirationcoating.com 申请认证施工店。','套装含 30 ml 镀膜、施工块、说明书和门框标签。','可罩 SOLE 或 Defender 作面层；日常用 Radiance 洗车。'],url:PS+'inspiration-ceramic-coating-30ml-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/2024_SDS_Stout_Ultimate_Ceramic_Coating_C3330.pdf?v=1732311035","source":"ps","language":"英文","hosting":"remote"},
- id:'P-stout',brand:'P',category:'coat',ph:{"category":"acid","value":"5–5.6","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/2024_SDS_Stout_Ultimate_Ceramic_Coating_C3330.pdf?v=1732311035","section":9},"evidence":[],"conflict":false},name:'Inspiration STOUT',type:'全能陶瓷镀膜（车漆、饰条、轮毂通用）',sizes:'30 ml · 50 ml',materials:'车漆 · 塑料饰条 · 轮毂',
+ sds:{"url":"https://sds.kokoda.fun/P-stout.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/2024_SDS_Stout_Ultimate_Ceramic_Coating_C3330.pdf?v=1732311035","checkedAt":"2026-11-27","sha256":"e4c3e3891c677eaa988030396d0d95d735ffd6ba7e3d8e8b3d2ecdd80828a2ba"},
+ id:'P-stout',brand:'P',category:'coat',ph:{"category":"acid","value":"5–5.6","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-stout.pdf","section":9},"evidence":[],"conflict":false},name:'Inspiration STOUT',type:'全能陶瓷镀膜（车漆、饰条、轮毂通用）',sizes:'30 ml · 50 ml',materials:'车漆 · 塑料饰条 · 轮毂',
  dilutions:[['镀膜（施工块）','即用','—']],
  steps:['完成抛光和脱脂（Paint Coating Surface Prep）。','用附带的施工块涂抹。','等它闪干 30 秒–2 分钟（看环境），用干净超纤布流平。','用第二块布擦净残留。','需要多层时，层间间隔 1 小时。','24 小时内不要淋水、不要碰化学品。'],
  notes:['Inspiration 系列最新的一款，强调好施工、高光泽和疏水。','闪干、层间和固化时间来自经销商 Car Supplies Warehouse 的商品页，以包装说明为准。'],url:PS+'inspiration-stout'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration_SOLE.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-sole',brand:'P',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration_SOLE.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Inspiration SOLE',type:'一年期镀膜 / Classic 的面层',sizes:'50 ml · 100 ml',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-sole.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration_SOLE.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"fbaf50a3b590d21ddd050ecaedf7fc12ba435edbd0f680d8bb94141407748d38"},
+ id:'P-sole',brand:'P',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-sole.pdf","section":9},"evidence":[],"conflict":false},name:'Inspiration SOLE',type:'一年期镀膜 / Classic 的面层',sizes:'50 ml · 100 ml',materials:'车漆',
  dilutions:[['镀膜（施工块）','即用','—']],
  steps:['单独使用：抛光、Paint Coating Surface Prep 脱脂后施工，作为一年期镀膜。','作面层：在 Inspiration Classic 上直接罩一层，增加保护。','每年在 Classic 上补一层作为维护镀膜。'],
  notes:['比 Classic 好施工，专业和资深爱好者都能用；官方仍建议由专业人员施工。','100 ml 套装含施工块和 4 张门框标签。'],url:PS+'inspiration-sole-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration_Vue.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-vue',brand:'P',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration_Vue.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Inspiration VUE',type:'玻璃镀膜（6 个月以上）',sizes:'30 ml',materials:'车外玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-vue.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Inspiration_Vue.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"e001667fd199f7e8b4eb666c72e4634863b28b32fd8fecf2a229bf8e36f62c09"},
+ id:'P-vue',brand:'P',category:'coat',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-vue.pdf","section":9},"evidence":[],"conflict":false},name:'Inspiration VUE',type:'玻璃镀膜（6 个月以上）',sizes:'30 ml',materials:'车外玻璃',
  dilutions:[['玻璃镀膜（施工块）','即用','—']],
  steps:['用 Clarity Creme 研磨玻璃。','用 Paint Coating Surface Prep 清洁玻璃。','用附带的施工块涂 VUE。'],
  cautions:['pro'],notes:['一瓶 30 ml 可做 10 块以上前挡。','需按规范施工。'],url:PS+'inspiration-vue-glass-coating-doubleblack-collection'},
 
 // ───────────────────────── 封体 / 快速养护 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Bead_Maker_US_SDS_8de6acc3-b9d0-45fa-871e-ed89170305df.pdf?v=1727973279","source":"ps","language":"英文","hosting":"remote"},
- id:'P-bead-maker',brand:'P',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Bead_Maker_US_SDS_8de6acc3-b9d0-45fa-871e-ed89170305df.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'Bead Maker',type:'喷雾封体（湿车干车都能用，强拨水）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'车漆 · 玻璃 · 塑料饰条 · 轮毂',
+ sds:{"url":"https://sds.kokoda.fun/P-bead-maker.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Bead_Maker_US_SDS_8de6acc3-b9d0-45fa-871e-ed89170305df.pdf?v=1727973279","checkedAt":"2026-11-27","sha256":"df6721d0d399dbf83388eebba243fc38c338ec31d58cc938307afe7f2364ae2e"},
+ id:'P-bead-maker',brand:'P',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-bead-maker.pdf","section":9},"evidence":[],"conflict":false},name:'Bead Maker',type:'喷雾封体（湿车干车都能用，强拨水）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'车漆 · 玻璃 · 塑料饰条 · 轮毂',
  dilutions:[['湿车 / 干车喷涂','即用','喷雾壶']],
  steps:['先洗车；需要时先用黏土处理漆面。','喷在漆面上；湿车、干车都可以，干车施工效果更好。','用超纤布擦掉，需要时翻面，确保擦净。','整车重复。','至少固化 8 小时，效果最好。'],
  notes:['聚合物会迁移到漆面、交联成疏水保护层，含 UV 吸收剂；新漆或刚美容过的车效果最好。','官方商城写固化约 2 小时（看环境），5 加仑桶标签写至少 8 小时。'],url:PS+'beadmaker-paint-protectant-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Spray_It.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-spray-it',brand:'P',category:'seal',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Spray_It.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Spray-It Quick Polymer Wax',type:'聚合物喷蜡（擦干时顺便上蜡，Pro Series）',sizes:'16 oz · 1 gal',materials:'车身外部各表面',
+ sds:{"url":"https://sds.kokoda.fun/P-spray-it.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Spray_It.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"883468f03704006735cabc362c08fba7c2b5270e51dc777d004864e736647f0c"},
+ id:'P-spray-it',brand:'P',category:'seal',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-spray-it.pdf","section":9},"evidence":[],"conflict":false},name:'Spray-It Quick Polymer Wax',type:'聚合物喷蜡（擦干时顺便上蜡，Pro Series）',sizes:'16 oz · 1 gal',materials:'车身外部各表面',
  dilutions:[['湿车 / 干车','即用','喷雾壶']],
  steps:['洗车后可在擦干车身时一起喷涂施工，湿车、干车都可以用。'],
  notes:['聚合物蜡，一步得到持久亮光，可安全喷在所有外部表面上。'],url:PS+'spray-it-quick-polymer-wax-paint-protection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Matte_Finish.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-matte-protectant',brand:'P',category:'seal',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Matte_Finish.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Matte Finish Protectant',type:'哑光漆保护剂',sizes:'32 oz',materials:'哑光漆',
+ sds:{"url":"https://sds.kokoda.fun/P-matte-protectant.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Matte_Finish.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"a181da3170727d1a5f9e2edbe14d927cd2471c899ef87818fd54ef6e2c324051"},
+ id:'P-matte-protectant',brand:'P',category:'seal',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-matte-protectant.pdf","section":9},"evidence":[],"conflict":false},name:'Matte Finish Protectant',type:'哑光漆保护剂',sizes:'32 oz',materials:'哑光漆',
  dilutions:[],steps:[],
  notes:['保持哑光漆原有的外观并增加一层保护；不要在哑光漆上用普通蜡，会先变亮再不均匀地发雾。','瓶身标注：可在湿车漆上施工，不留蜡残留。','官方商城未给出施工步骤。'],url:PS+'matte-finish-protectant-paint-protection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Defender_US_SDS_05-26.pdf?v=1781810313","source":"ps","language":"英文","hosting":"remote"},
- id:'P-defender',brand:'P',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Defender_US_SDS_05-26.pdf?v=1781810313","section":9},"evidence":[],"conflict":false},name:'Inspiration Defender',type:'SiO₂ 喷雾封体（镀膜面层 / 单独使用）',sizes:'16 oz · 1 gal',materials:'车漆 · 金属 · 玻璃 · 塑料饰条',
+ sds:{"url":"https://sds.kokoda.fun/P-defender.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Defender_US_SDS_05-26.pdf?v=1781810313","checkedAt":"2026-11-27","sha256":"b1969adfa6cbdfbd9034e40849f6e4c758171ebb2a21786dcd884d441cdfa7d5"},
+ id:'P-defender',brand:'P',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-defender.pdf","section":9},"evidence":[],"conflict":false},name:'Inspiration Defender',type:'SiO₂ 喷雾封体（镀膜面层 / 单独使用）',sizes:'16 oz · 1 gal',materials:'车漆 · 金属 · 玻璃 · 塑料饰条',
  dilutions:[['喷上擦掉','即用','喷雾壶']],
  steps:['作镀膜面层时，等镀膜定型后再施工，一般至少 1 小时。','尽量在车身冷却、避开阳光的地方施工。','直接喷在漆面上，或喷在超纤布上擦。','在约 90 × 90 cm 的范围内均匀抹开，稍等片刻，翻面擦亮。','整车重复。'],
  notes:['可作 Inspiration 和其他镀膜的面层 / 维护，也可单独作 SiO₂ 保护。'],url:PS+'defender-sio2-protectant'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Paint_Gloss_US_SDS_05-26.pdf?v=1781810312","source":"ps","language":"英文","hosting":"remote"},
- id:'P-paint-gloss',brand:'P',category:'seal',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Paint_Gloss_US_SDS_05-26.pdf?v=1781810312","section":9},"evidence":[],"conflict":false},name:'Paint Gloss',type:'展厅级快速美容剂（也可当黏土润滑液）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-paint-gloss.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Paint_Gloss_US_SDS_05-26.pdf?v=1781810312","checkedAt":"2026-11-27","sha256":"3cf3cc5c140f4ecf844b0e4d716918f6738e12412b6e21fbebfe33a97a445d49"},
+ id:'P-paint-gloss',brand:'P',category:'seal',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-paint-gloss.pdf","section":9},"evidence":[],"conflict":false},name:'Paint Gloss',type:'展厅级快速美容剂（也可当黏土润滑液）',sizes:'16 oz · 1 gal · 5 gal',materials:'车漆',
  dilutions:[['快速美容 / 黏土润滑','即用','喷雾壶']],
  steps:['先洗车；最好在阴凉处、车漆冷却时施工。','在 60 × 60 cm 的漆面上轻喷一层。','用干净的超纤布擦拭并抛亮。','当黏土润滑液时多喷一些，保证足够润滑。'],
  notes:['水性，去掉灰尘、指纹和污迹，不用做整车美容；配合 Perfect Putty 黏土使用。'],url:PS+'paint-gloss-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dream_Maker_NA_SDS_EN_06-26.pdf?v=1781810313","source":"ps","language":"英文","hosting":"remote"},
- id:'P-dream-maker',brand:'P',category:'seal',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dream_Maker_NA_SDS_EN_06-26.pdf?v=1781810313","section":9},"evidence":[],"conflict":false},name:'Dream Maker',type:'车展光泽增强喷雾（McCall 车队版）',sizes:'16 oz · 1 gal',materials:'车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-dream-maker.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dream_Maker_NA_SDS_EN_06-26.pdf?v=1781810313","checkedAt":"2026-11-27","sha256":"d48e4c9284442e0dd35ea453454d02f9fd3171a7da473bb69e9ba1ec5104ddd3"},
+ id:'P-dream-maker',brand:'P',category:'seal',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-dream-maker.pdf","section":9},"evidence":[],"conflict":false},name:'Dream Maker',type:'车展光泽增强喷雾（McCall 车队版）',sizes:'16 oz · 1 gal',materials:'车漆',
  dilutions:[['喷上擦亮','即用','喷雾壶']],
  steps:['喷在干净的漆面上。','用超纤布擦开、抛亮。'],
  notes:['为蒙特雷车展周的 McCall 美容团队开发：提升单工序漆和清漆的光泽。','可以叠在 Bead Maker 等现有保护上。','瓶身：交车前处理、车展日增艳、适用所有漆面。'],url:PS+'dream-maker-gloss-amplifier'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ultracoat_Paint_Sealant_-_NA_7325207a-09b9-45ca-83e9-c136ce60a1d4.pdf?v=1744646198","source":"ps","language":"英文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/P-ultracoat.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Ultracoat_Paint_Sealant_-_NA_7325207a-09b9-45ca-83e9-c136ce60a1d4.pdf?v=1744646198","checkedAt":"2026-11-27","sha256":"bcbb64b9bcef190450719bfa648c563bf369010fd42cf52ec9afe8255bcf0dfa"},
  id:'P-ultracoat',brand:'P',category:'seal',name:'Ultracoat Paint Sealant',type:'聚合物 + 聚氨酯漆面封体（Pro Series 最持久）',sizes:'32 oz · 1 gal',materials:'聚氨酯清漆 · 硝基漆 · 瓷漆',
  dilutions:[['手工 / 轨道机','即用','—']],
  steps:[],
  notes:['P&S 同类中最持久、光泽最高、手感最丝滑的一款，适用所有颜色。','可手工或用轨道抛光机施工。官方商城未给出施工步骤。'],url:PS+'ultracoat-paint-sealant-paint-protection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Velocity.pdf?v=1631822783","source":"ps","language":"英文","hosting":"remote"},
- id:'P-velocity-glaze',brand:'P',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Velocity.pdf?v=1631822783","section":9},"evidence":[],"conflict":false},name:'Velocity Glaze',type:'乳液快速釉蜡（Pro Series）',sizes:'16 oz · 1 gal',materials:'汽车 · 货车 · 摩托车 · 船 · 飞机漆面',
+ sds:{"url":"https://sds.kokoda.fun/P-velocity-glaze.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Velocity.pdf?v=1631822783","checkedAt":"2026-11-27","sha256":"5023f938ba2cc8ea843677ad9a886abdf85551792555169868a7798eb7f04b34"},
+ id:'P-velocity-glaze',brand:'P',category:'seal',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-velocity-glaze.pdf","section":9},"evidence":[],"conflict":false},name:'Velocity Glaze',type:'乳液快速釉蜡（Pro Series）',sizes:'16 oz · 1 gal',materials:'汽车 · 货车 · 摩托车 · 船 · 飞机漆面',
  dilutions:[['手工 / 轨道机 / 偏心机','即用','—']],
  steps:[],
  notes:['快速提亮漆面；乳液质地易涂抹，擦除时不起粉尘。','可作快速手工蜡、轨道机蜡或偏心机抛光剂使用；配方偏湿润，适合深色或难打蜡的漆面。','官方商城未给出施工步骤。'],url:PS+'velocity-glaze-paint-protection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Cherry_Wax.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-cherry-speed-wax',brand:'P',category:'seal',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Cherry_Wax.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Cherry Speed Wax',type:'快干液体糊蜡（轻度清洁 + 增光，Pro Series）',sizes:'16 oz · 1 gal',materials:'汽车 · 货车 · 摩托车 · 飞机 · 船漆面',
+ sds:{"url":"https://sds.kokoda.fun/P-cherry-speed-wax.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Cherry_Wax.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"9cfec8d9e607788777f6129d4789142d89eff13df10086156943e100bb39af90"},
+ id:'P-cherry-speed-wax',brand:'P',category:'seal',ph:{"category":"neu","value":"7.2","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-cherry-speed-wax.pdf","section":9},"evidence":[],"conflict":false},name:'Cherry Speed Wax',type:'快干液体糊蜡（轻度清洁 + 增光，Pro Series）',sizes:'16 oz · 1 gal',materials:'汽车 · 货车 · 摩托车 · 飞机 · 船漆面',
  dilutions:[['手工 / 轨道机 / 偏心机 / 变速抛光机','即用','—']],
  steps:[],
  notes:['快干的快速蜡，增加深度和保护，同时轻度清洁漆面；适合日常和快速美容。','官方商城未给出施工步骤。'],url:PS+'cherry-speed-wax-paint-protection'},
 
 // ───────────────────────── 塑料 / 轮胎养护 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Shine_All_81b32979-671f-4e6c-b3a0-f3896c2f3baa.pdf?v=1678488513","source":"ps","language":"英文","hosting":"remote"},
- id:'P-shine-all',brand:'P',category:'trim',ph:{"category":"neu","value":"8.0","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Shine_All_81b32979-671f-4e6c-b3a0-f3896c2f3baa.pdf?v=1678488513","section":9},"evidence":[],"conflict":false},name:'Shine All',type:'水性高光轮胎油（也可用于内饰）',sizes:'16 oz · 1 gal · 5 gal',materials:'轮胎 · 橡胶 · 人造革 · 皮革',
+ sds:{"url":"https://sds.kokoda.fun/P-shine-all.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Shine_All_81b32979-671f-4e6c-b3a0-f3896c2f3baa.pdf?v=1678488513","checkedAt":"2026-11-27","sha256":"8e16e6bd675f57391795b3cb198116de25ed22933ead2d25b7bf34286b73a3a2"},
+ id:'P-shine-all',brand:'P',category:'trim',ph:{"category":"neu","value":"8.0","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-shine-all.pdf","section":9},"evidence":[],"conflict":false},name:'Shine All',type:'水性高光轮胎油（也可用于内饰）',sizes:'16 oz · 1 gal · 5 gal',materials:'轮胎 · 橡胶 · 人造革 · 皮革',
  dilutions:[['高光','即用','—'],['降低光泽 / 节省用量','兑水（比例自定）','—']],
  steps:['先把要上油的部位清洁、擦干。','喷涂或用施工块手涂，用量看效果需要。','等它干成光亮效果，擦掉多余的。'],
  notes:['主要是即用产品；想降低光泽或节省用量时可以兑水，标签没有给固定比例。','虽然主要用于外饰，也可以保养内饰的橡胶、人造革和皮革。'],url:PS+'shine-all-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Bumpercoat.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-bumpercoat',brand:'P',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Bumpercoat.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Bumpercoat',type:'浓缩高光橡胶 / 乙烯基保养剂（硅油型）',sizes:'32 oz',materials:'黑色保险杠 · 橡胶饰条 · 饰条 · 密封条',
+ sds:{"url":"https://sds.kokoda.fun/P-bumpercoat.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Bumpercoat.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"6ce144f5cb61a1114104e080ab4958061c758463e2a6bc1d1752f7d1257a8461"},
+ id:'P-bumpercoat',brand:'P',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-bumpercoat.pdf","section":9},"evidence":[],"conflict":false},name:'Bumpercoat',type:'浓缩高光橡胶 / 乙烯基保养剂（硅油型）',sizes:'32 oz',materials:'黑色保险杠 · 橡胶饰条 · 饰条 · 密封条',
  dilutions:[],steps:[],
  notes:['浓稠的硅油液体，恢复并保护褪色的黑色保险杠和橡胶饰条；收尾时也能遮盖饰条纹理里残留的蜡。','官方商城未给出施工步骤。'],url:PS+'bumpercoat-dressings-interior-exterior'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_RVS_198965c4-38a8-4cfa-a73e-7ea387a58c79.pdf?v=1755619702","source":"ps","language":"英文","hosting":"remote"},
- id:'P-rubber-vinyl-shine',brand:'P',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_RVS_198965c4-38a8-4cfa-a73e-7ea387a58c79.pdf?v=1755619702","section":9},"evidence":[],"conflict":false},name:'Rubber & Vinyl Shine',type:'水性硅油保养剂（经济型，Pro Series）',sizes:'1 gal · 5 gal',materials:'内外饰皮革 · 乙烯基 · 橡胶',
+ sds:{"url":"https://sds.kokoda.fun/P-rubber-vinyl-shine.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_RVS_198965c4-38a8-4cfa-a73e-7ea387a58c79.pdf?v=1755619702","checkedAt":"2026-11-27","sha256":"f34004ab4ed48674388be5a3f8da32a0f26242c5e345a79f5adb2ff3c0b64a40"},
+ id:'P-rubber-vinyl-shine',brand:'P',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-rubber-vinyl-shine.pdf","section":9},"evidence":[],"conflict":false},name:'Rubber & Vinyl Shine',type:'水性硅油保养剂（经济型，Pro Series）',sizes:'1 gal · 5 gal',materials:'内外饰皮革 · 乙烯基 · 橡胶',
  dilutions:[],steps:[],
  notes:['调理、软化、保护皮革、乙烯基和橡胶，内外饰都能上光；成本较低的通用保养剂。','官方商城未给出施工步骤。'],url:PS+'rubber-and-vinyl-shine-dressings-interior-dressings'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Shape_Up.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-shape-up',brand:'P',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Shape_Up.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Shape-Up',type:'水性硅油乙烯基 / 橡胶保养剂（柠檬香）',sizes:'16 oz · 1 gal · 5 gal',materials:'内外饰皮革 · 乙烯基 · 橡胶',
+ sds:{"url":"https://sds.kokoda.fun/P-shape-up.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Shape_Up.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"8d3b2819eef0826ae08c4f2455cc69713c32dc6f50bc93616f3948c289225abe"},
+ id:'P-shape-up',brand:'P',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-shape-up.pdf","section":9},"evidence":[],"conflict":false},name:'Shape-Up',type:'水性硅油乙烯基 / 橡胶保养剂（柠檬香）',sizes:'16 oz · 1 gal · 5 gal',materials:'内外饰皮革 · 乙烯基 · 橡胶',
  dilutions:[],steps:[],
  notes:['调理、软化、保护皮革、乙烯基和橡胶，内外饰都呈自然光泽；带柠檬香，保养同时除味。','官方商城未给出施工步骤。'],url:PS+'shape-up-dressings-interior-exterior'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_L450_No_Rub_Polish.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-no-rub',brand:'P',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_L450_No_Rub_Polish.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'No Rub Aerosol Coating',type:'免擦喷罐保养剂',sizes:'9 oz 喷罐',materials:'塑料 · 橡胶 · 乙烯基 · 空调出风口 · 中控 · 饰条 · 保险杠',
+ sds:{"url":"https://sds.kokoda.fun/P-no-rub.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_L450_No_Rub_Polish.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"6b9b9c661dfd2e91ef695c9304a74b663ba41e57ca345b91a4c5029ce65b5c44"},
+ id:'P-no-rub',brand:'P',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-no-rub.pdf","section":9},"evidence":[],"conflict":false},name:'No Rub Aerosol Coating',type:'免擦喷罐保养剂',sizes:'9 oz 喷罐',materials:'塑料 · 橡胶 · 乙烯基 · 空调出风口 · 中控 · 饰条 · 保险杠',
  dilutions:[['塑料 / 橡胶 / 乙烯基','即用','—']],
  steps:['喷在要保养的部位，不需要擦。'],
  notes:['又称「罐装美容」，适合快速修补出风口、中控、饰条和保险杠的外观。'],url:PS+'no-rub-dressings-interior-exterior'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dressed.pdf?v=1648488530","source":"ps","language":"英文","hosting":"remote"},
- id:'P-dressed',brand:'P',category:'trim',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dressed.pdf?v=1648488530","section":9},"evidence":[],"conflict":false},name:'Dressed',type:'聚合物水性轮胎油（缎面到高光）',sizes:'1 gal · 5 gal',materials:'轮胎',
+ sds:{"url":"https://sds.kokoda.fun/P-dressed.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dressed.pdf?v=1648488530","checkedAt":"2026-11-27","sha256":"f03215080588e2534d467c1867db34abddc76bece2f6e0652627a93e3416c62f"},
+ id:'P-dressed',brand:'P',category:'trim',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-dressed.pdf","section":9},"evidence":[],"conflict":false},name:'Dressed',type:'聚合物水性轮胎油（缎面到高光）',sizes:'1 gal · 5 gal',materials:'轮胎',
  dilutions:[['轮胎','即用','—']],
  steps:['先用 Undressed 清洁轮胎并擦干。','用刷子（效果最好）或喷雾壶涂在轮胎上。'],
  notes:['100 % 水性、不属于危险品，用聚合物模拟溶剂型硅油轮胎油的效果，只用于轮胎。','即用产品；5 加仑桶背标的用法文字与 Undressed 相同，以实际用途为准。','标签：Pro Series L14。'],url:PS+'dressed-tire-finish'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Island_Shine_50b3f8ee-de45-40ec-88e0-d24a24ca466a.pdf?v=1667929796","source":"ps","language":"英文","hosting":"remote"},
- id:'P-island-shine',brand:'P',category:'trim',ph:{"category":"neu","value":"8.0","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Island_Shine_50b3f8ee-de45-40ec-88e0-d24a24ca466a.pdf?v=1667929796","section":9},"evidence":[],"conflict":false},name:'Island Shine',type:'高性能水性轮胎 / 饰件保养剂（Pro Series）',sizes:'1 gal · 5 gal',materials:'轮胎 · 外饰 · 内饰皮革 / 橡胶 / 乙烯基',
+ sds:{"url":"https://sds.kokoda.fun/P-island-shine.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Island_Shine_50b3f8ee-de45-40ec-88e0-d24a24ca466a.pdf?v=1667929796","checkedAt":"2026-11-27","sha256":"ae6728229f97327b9a4806d429aabcc29420d471615e675dec56c84d6bf935bd"},
+ id:'P-island-shine',brand:'P',category:'trim',ph:{"category":"neu","value":"8.0","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-island-shine.pdf","section":9},"evidence":[],"conflict":false},name:'Island Shine',type:'高性能水性轮胎 / 饰件保养剂（Pro Series）',sizes:'1 gal · 5 gal',materials:'轮胎 · 外饰 · 内饰皮革 / 橡胶 / 乙烯基',
  dilutions:[],steps:[],
  notes:['为洗车房的工业化轮胎上光开发，让轮胎呈亮光；也可用于内外饰件，可调理、软化并保护皮革、橡胶和乙烯基。','可按需要加水稀释（官方未给比例）。官方商城未给出施工步骤。'],url:PS+'island-shine-dressings-interior-exterior'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Multi_Dressing_NA_SDS_EN.pdf?v=1744646170","source":"ps","language":"英文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/P-multi-dressing.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Multi_Dressing_NA_SDS_EN.pdf?v=1744646170","checkedAt":"2026-11-27","sha256":"d8222cf7abe32ee1e49ad6093d7e4a0719b0bb84197ed8d6d83b09f363b77577"},
  id:'P-multi-dressing',brand:'P',category:'trim',name:'Multi-Dressing（VOC 合规）',type:'溶剂 + 硅油型多用途保养剂（蓝色，Pro Series）',sizes:'1 gal · 5 gal',materials:'轮胎 · 饰条 · 保险杠 · 乙烯基座椅 · 中控 · 乙烯基车顶',
  dilutions:[],steps:[],
  notes:['精选硅油配方，在轮胎和其他部位上光泽饱满；内外饰都可以用。','官方商城未给出施工步骤。'],url:PS+'multi-dressing-voc-compliant-dressings-interior-exterior'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_WNS.pdf?v=1631822783","source":"ps","language":"英文","hosting":"remote"},
- id:'P-wipe-n-shine',brand:'P',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_WNS.pdf?v=1631822783","section":9},"evidence":[],"conflict":false},name:'Wipe N Shine',type:'凝胶型轮胎 / 饰件保养剂（Pro Series）',sizes:'16 oz · 1 gal · 5 gal',materials:'轮胎 · 外饰 · 内饰乙烯基与橡胶',
+ sds:{"url":"https://sds.kokoda.fun/P-wipe-n-shine.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_WNS.pdf?v=1631822783","checkedAt":"2026-11-27","sha256":"14968d582274211a81522d6cecde59f515eddbd89315d6cc771a299d69cfc823"},
+ id:'P-wipe-n-shine',brand:'P',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-wipe-n-shine.pdf","section":9},"evidence":[],"conflict":false},name:'Wipe N Shine',type:'凝胶型轮胎 / 饰件保养剂（Pro Series）',sizes:'16 oz · 1 gal · 5 gal',materials:'轮胎 · 外饰 · 内饰乙烯基与橡胶',
  dilutions:[['轮胎 / 饰件','即用','施工块 / 毛巾']],
  steps:['直接擦涂在要保养的表面上，不需要喷雾壶；干、湿状态都可以施工。'],
  notes:['光泽在擦上后很快显现并逐渐变好；用于轮胎时不会流挂、不会甩到地上。'],url:PS+'wipe-n-shie-dressings-interior-exterior'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dynamic_Dressing.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-dynamic',brand:'P',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dynamic_Dressing.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Dynamic Dressing',type:'浓缩多用途保养剂（光泽可调）',sizes:'1 gal（浓缩）· 16 oz（即用版）',materials:'轮胎 · 外饰塑料 · 发动机舱 · 底盘 · 内饰塑料 · 皮革 · 人造革',
+ sds:{"url":"https://sds.kokoda.fun/P-dynamic.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Dynamic_Dressing.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"e0417c161e108b108c650a0752d1b5387adc0d2386cce7ae07b2a30c4621e9f5"},
+ id:'P-dynamic',brand:'P',category:'trim',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-dynamic.pdf","section":9},"evidence":[],"conflict":false},name:'Dynamic Dressing',type:'浓缩多用途保养剂（光泽可调）',sizes:'1 gal（浓缩）· 16 oz（即用版）',materials:'轮胎 · 外饰塑料 · 发动机舱 · 底盘 · 内饰塑料 · 皮革 · 人造革',
  dilutions:[['高光','1:1','喷雾壶'],['自然光泽','1:4','喷雾壶']],
  steps:['按需要的光泽兑水：1:1 高光，1:4 自然。','喷涂或用施工块涂抹，擦掉多余的。'],
  notes:['一个产品就能用在轮胎、外饰、发动机舱、底盘和内饰。','16 oz 的 Ready To Use 版就是 1:4 稀释好的版本。'],url:PS+'dynamic-dressing'},
 
 // ───────────────────────── 玻璃 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Tru_Vue_a75db59f-8f7a-4aa7-b2f8-9b1c2a13e679.pdf?v=1727973279","source":"ps","language":"英文","hosting":"remote"},
- id:'P-true-vue',brand:'P',category:'glass',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Tru_Vue_a75db59f-8f7a-4aa7-b2f8-9b1c2a13e679.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'True Vue',type:'水性玻璃清洁剂（即用版 / 浓缩版）',sizes:'16 oz（即用）· 1 gal · 5 gal（浓缩）',materials:'车内外玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-true-vue.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Tru_Vue_a75db59f-8f7a-4aa7-b2f8-9b1c2a13e679.pdf?v=1727973279","checkedAt":"2026-11-27","sha256":"d378b358b99546188c58c6282af6d93bb0ac2c71aa02b14257ad259d66cd0929"},
+ id:'P-true-vue',brand:'P',category:'glass',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-true-vue.pdf","section":9},"evidence":[],"conflict":false},name:'True Vue',type:'水性玻璃清洁剂（即用版 / 浓缩版）',sizes:'16 oz（即用）· 1 gal · 5 gal（浓缩）',materials:'车内外玻璃',
  dilutions:[['即用版','即用','喷雾壶'],['浓缩版','1:4 – 1:10','喷雾壶']],
  steps:['喷在玻璃或玻璃布上。','用干净的玻璃布擦干净，再用干布擦亮。'],
  notes:['去除路面油膜、烟渍和污垢；热天工作时间长，冷天挥发也够快。','浓缩版按需要的效果 1:4 – 1:10 稀释。'],url:PS+'true-vue-rtu-doubleblack-collection'},
 
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Paste_Glass_Chrome.pdf?v=1720460853","source":"ps","language":"英文","hosting":"remote"},
- id:'P-paste-glass-chrome',brand:'P',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Paste_Glass_Chrome.pdf?v=1720460853","section":9},"evidence":[],"conflict":false},name:'Paste Glass & Chrome',type:'玻璃 / 镀铬清洁膏（玻璃蜡）',sizes:'—',materials:'玻璃 · 镀铬',
+ sds:{"url":"https://sds.kokoda.fun/P-paste-glass-chrome.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Paste_Glass_Chrome.pdf?v=1720460853","checkedAt":"2026-11-27","sha256":"eb7b31dc357d4a25e5b208b25ba5658b10f135521b23a359d9afa1e6b38bd40b"},
+ id:'P-paste-glass-chrome',brand:'P',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-paste-glass-chrome.pdf","section":9},"evidence":[],"conflict":false},name:'Paste Glass & Chrome',type:'玻璃 / 镀铬清洁膏（玻璃蜡）',sizes:'—',materials:'玻璃 · 镀铬',
  dilutions:[['玻璃 / 镀铬','即用','—']],
  steps:['涂在玻璃上，干成一层薄雾。','擦掉即可，不留条纹和残留。'],
  notes:['俗称「玻璃蜡」，可去除玻璃和镀铬上的重污、虫尸和水斑。'],url:PS+'paste-glass-chrome-glass-cleaner'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Reflect_Glass_Cleaner_NA_EN.pdf?v=1744646188","source":"ps","language":"英文","hosting":"remote"},
- id:'P-reflect',brand:'P',category:'glass',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Reflect_Glass_Cleaner_NA_EN.pdf?v=1744646188","section":9},"evidence":[],"conflict":false},name:'REFLECT Glass Finisher',type:'玻璃清洁 + SiO₂ 保护（车内外）',sizes:'16 oz · 1 gal',materials:'车内外玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-reflect.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Reflect_Glass_Cleaner_NA_EN.pdf?v=1744646188","checkedAt":"2026-11-27","sha256":"5cb927a7bdabc19666ceca292f406365405cc48582c70bda43c8af4cf01b1fe9"},
+ id:'P-reflect',brand:'P',category:'glass',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-reflect.pdf","section":9},"evidence":[],"conflict":false},name:'REFLECT Glass Finisher',type:'玻璃清洁 + SiO₂ 保护（车内外）',sizes:'16 oz · 1 gal',materials:'车内外玻璃',
  dilutions:[['玻璃','即用','喷雾壶']],
  steps:['先擦掉或洗掉玻璃上的重污。','直接在玻璃上均匀喷一层薄雾；大面积分区施工。','用干净干燥的超纤布把产品抛进玻璃。','翻到干面继续擦，直到清晰无痕。'],
  cautions:['sun','hot'],notes:['留下一层 SiO₂ 保护，拨水、减少 UV 老化和污垢附着，以后更好清洁。','在阳光下或发热的玻璃上施工容易留痕。'],url:PS+'reflect-glass-finisher'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Clarity_Creme.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-clarity',brand:'P',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Clarity_Creme.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Clarity Creme',type:'玻璃研磨乳（去水垢、矿物沉积、雨刷痕）',sizes:'16 oz',materials:'车外玻璃',
+ sds:{"url":"https://sds.kokoda.fun/P-clarity.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Clarity_Creme.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"5df2c7314d8f1d8573683f0e63eedc1ecacd762da16118026b8eafc4d9a934d0"},
+ id:'P-clarity',brand:'P',category:'glass',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-clarity.pdf","section":9},"evidence":[],"conflict":false},name:'Clarity Creme',type:'玻璃研磨乳（去水垢、矿物沉积、雨刷痕）',sizes:'16 oz',materials:'车外玻璃',
  dilutions:[['手工 / 机器研磨','即用','—']],
  steps:['先洗玻璃，需要时用黏土处理。','轻度：用超纤布手工研磨；中度以上：用机器配海绵或羊毛盘（看严重程度）。','手工或机器都用重叠的路线研磨，直到玻璃恢复原状，需要时重复。','完成后让残留干成雾状，再擦亮。'],
  notes:['也用于 Inspiration VUE 玻璃镀膜前的研磨。'],url:PS+'clarity-creme-glass-polish-doubleblack-collection'},
 
 // ───────────────────────── 内饰 ─────────────────────────
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Xpress_Interior_NA_SDS_EN_ecac1c78-38ff-490c-bbaa-3e3b77a04e76.pdf?v=1727973279","source":"ps","language":"英文","hosting":"remote"},
- id:'P-xpress',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Xpress_Interior_NA_SDS_EN_ecac1c78-38ff-490c-bbaa-3e3b77a04e76.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'Xpress Interior Cleaner',type:'内饰多表面清洁剂（皮革、人造革、塑料）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'皮革 · 人造革 · 内饰塑料',
+ sds:{"url":"https://sds.kokoda.fun/P-xpress.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Xpress_Interior_NA_SDS_EN_ecac1c78-38ff-490c-bbaa-3e3b77a04e76.pdf?v=1727973279","checkedAt":"2026-11-27","sha256":"9542773d6cc53e17c074f4baf147fb97e291b916211b2e379cfd0f95fcf6601e"},
+ id:'P-xpress',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-xpress.pdf","section":9},"evidence":[],"conflict":false},name:'Xpress Interior Cleaner',type:'内饰多表面清洁剂（皮革、人造革、塑料）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'皮革 · 人造革 · 内饰塑料',
  dilutions:[['重度','原液','喷雾壶'],['一般','1:1','喷雾壶']],
  steps:['先在不显眼处测试。','原液使用，或最多 1:1 兑水。','喷足量直到起泡。','用毛巾、软毛刷、百洁布或魔术擦等工具刷洗。','刷完用拧湿的毛巾擦净。','需要时再上 Leather Treatment 或其他保养剂提升外观。'],
  notes:['清洁不会让表面变干、变色或受损，擦完没有残留。'],url:PS+'xpress-interior-cleaner-doubleblack-collection'},
@@ -396,112 +396,112 @@ export const products: Product[] = [
  notes:['与 Xpress Interior Cleaner 同类的湿巾版：清洁不发干、不褪色、不伤表面，擦后不留残留；能去污垢、油脂和日常使用留下的痕迹。','也可擦抛光机、工具箱等。'],url:PS+'xpress-interior-wipes'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Odor_Doc_US.pdf?v=1781537764","source":"ps","language":"英文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/P-odor-doc.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Odor_Doc_US.pdf?v=1781537764","checkedAt":"2026-11-27","sha256":"d6b94cf714e85b151d76a494b587b8de193301ad0a360650863e896dab14ba86"},
  id:'P-odor-doc',brand:'P',category:'int',name:'Odor Doc',type:'二氧化氯熏蒸除味套装',sizes:'单件',materials:'车内（封闭空间）',
  dilutions:[],
  steps:['处理前确保车内已清洁并干燥。','释放二氧化氯蒸汽熏蒸，处理约需 1 小时。'],
  notes:['以蒸汽释放的广谱杀菌剂，去除细菌、霉菌和烟味等顽固异味；官方称强度是传统二氧化氯处理的 8 倍。','官方商城未给出更详细的操作步骤；按包装说明操作。'],url:PS+'odor-doc-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Swift.pdf?v=1685482411","source":"ps","language":"英文","hosting":"remote"},
- id:'P-swift',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Swift.pdf?v=1685482411","section":9},"evidence":[],"conflict":false},name:'Swift Clean & Shine',type:'内饰清洁 + 上光二合一快速美容',sizes:'16 oz · 1 gal · 5 gal',materials:'皮革 · 人造革 · 内饰塑料',
+ sds:{"url":"https://sds.kokoda.fun/P-swift.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Swift.pdf?v=1685482411","checkedAt":"2026-11-27","sha256":"5dc19881f88f47c8daf36fdbfcccf21f1fbc27945861cce566ef5c44a9aecf79"},
+ id:'P-swift',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-swift.pdf","section":9},"evidence":[],"conflict":false},name:'Swift Clean & Shine',type:'内饰清洁 + 上光二合一快速美容',sizes:'16 oz · 1 gal · 5 gal',materials:'皮革 · 人造革 · 内饰塑料',
  dilutions:[['内饰快速美容','即用','喷雾壶']],
  steps:['使用前摇匀。','喷在表面、施工海绵或 Xpress Side Kick 刷洗垫上。','需要时刷洗到干净。','擦掉多余的产品，擦到想要的效果。'],
  notes:['清洁后留下有保养感的上光效果，气味宜人。'],url:PS+'swift-clean-shine'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_APC.pdf?v=1631822781","source":"ps","language":"英文","hosting":"remote"},
- id:'P-apc',brand:'P',category:'apc',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_APC.pdf?v=1631822781","section":9},"evidence":[],"conflict":false},name:'All Purpose Cleaner',type:'浓缩通用清洁剂（Pro Series）',sizes:'1 gal · 5 gal',materials:'乙烯基 · 橡胶 · 地毯脚垫 · 轮胎 · 轮毂 · 织物 · 轮拱 · 发动机舱',
+ sds:{"url":"https://sds.kokoda.fun/P-apc.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_APC.pdf?v=1631822781","checkedAt":"2026-11-27","sha256":"ff4a2f7c133f5d4ea36b5328a8933bb1782e9280326a770798ad64e21dd31370"},
+ id:'P-apc',brand:'P',category:'apc',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-apc.pdf","section":9},"evidence":[],"conflict":false},name:'All Purpose Cleaner',type:'浓缩通用清洁剂（Pro Series）',sizes:'1 gal · 5 gal',materials:'乙烯基 · 橡胶 · 地毯脚垫 · 轮胎 · 轮毂 · 织物 · 轮拱 · 发动机舱',
  dilutions:[['最高稀释','1:15','喷雾壶']],
  steps:['先小面积测试。','用原液或稀释后的溶液喷在要清洁的部位，短暂作用，需要时刷洗。','用水冲洗，或用湿毛巾擦净。'],
  notes:['高效、可生物降解，能分解油脂、去除污垢；适合车流量大、注重成本的美容店。','最高稀释比例 1:15 和施工步骤参考自美国经销商 Car Supplies Warehouse 的商品页和桶身标签。'],url:PS+'all-purpose-cleaner-cleaners-interior-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Blast.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-blast',brand:'P',category:'apc',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Blast.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Blast Super Cleaner',type:'浓缩多用途强力清洁剂（Pro Series）',sizes:'1 gal',materials:'发动机 · 轮毂 · 轮胎 · 乙烯基 · 地毯 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-blast.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Blast.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"a10014ae784e60ad0fa56ef07f4af25fb5e75dafdb897ef749a9867968006968"},
+ id:'P-blast',brand:'P',category:'apc',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-blast.pdf","section":9},"evidence":[],"conflict":false},name:'Blast Super Cleaner',type:'浓缩多用途强力清洁剂（Pro Series）',sizes:'1 gal',materials:'发动机 · 轮毂 · 轮胎 · 乙烯基 · 地毯 · 织物',
  dilutions:[],steps:[],
  notes:['洗涤剂加水性溶剂，松动发动机、轮毂、轮胎、乙烯基、地毯和织物上的油污。','顽固污渍可用原液，轻度清洁加水稀释（官方未给比例）。官方商城未给出施工步骤。'],url:PS+'blast-super-cleaner-cleaners-interior-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Hot_Shot_Degreaser_NA_SDS_EN.pdf?v=1744643780","source":"ps","language":"英文","hosting":"remote"},
- id:'P-hot-shot',brand:'P',category:'apc',ph:{"category":"alk","value":"> 13","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Hot_Shot_Degreaser_NA_SDS_EN.pdf?v=1744643780","section":9},"evidence":[],"conflict":false},name:'Hot Shot',type:'强力除油浓缩液（Pro Series）',sizes:'1 gal',materials:'发动机及零件 · 轮毂 · 轮胎 · 底盘',
+ sds:{"url":"https://sds.kokoda.fun/P-hot-shot.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/Hot_Shot_Degreaser_NA_SDS_EN.pdf?v=1744643780","checkedAt":"2026-11-27","sha256":"dbe9a9ce90cca0e64b5b8321097819c138e0b170999f1be7246ad42ed5ad2e60"},
+ id:'P-hot-shot',brand:'P',category:'apc',ph:{"category":"alk","value":"> 13","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-hot-shot.pdf","section":9},"evidence":[],"conflict":false},name:'Hot Shot',type:'强力除油浓缩液（Pro Series）',sizes:'1 gal',materials:'发动机及零件 · 轮毂 · 轮胎 · 底盘',
  dilutions:[['最高稀释','1:15','喷雾壶']],
  steps:[],
  notes:['高效、可生物降解的洗涤剂和溶剂，彻底溶解油脂和污垢；顽固处可用原液。','最高稀释比例 1:15 来自美国经销商 Car Supplies Warehouse 的商品页。官方商城未给出施工步骤。'],url:PS+'hot-shot-high-power-deg-cleaners-hd-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Enviro.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-enviro-clean',brand:'P',category:'apc',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Enviro.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Enviro-Clean',type:'柑橘浓缩清洁除油剂',sizes:'16 oz',materials:'地毯 · 乙烯基 · 发动机 · 轮拱 · 车漆',
+ sds:{"url":"https://sds.kokoda.fun/P-enviro-clean.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Enviro.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"d22764f9d1ac0f413aa0d50c3ad76e62b4edf3527011463c749535a07eb87a5f"},
+ id:'P-enviro-clean',brand:'P',category:'apc',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-enviro-clean.pdf","section":9},"evidence":[],"conflict":false},name:'Enviro-Clean',type:'柑橘浓缩清洁除油剂',sizes:'16 oz',materials:'地毯 · 乙烯基 · 发动机 · 轮拱 · 车漆',
  dilutions:[['视用途','1:4 – 1:20','喷雾壶']],
  steps:[],
  notes:['柑橘衍生物、可生物降解清洁剂和水性溶剂，溶解油脂、带走污垢，冲走其他清洁剂留下的颗粒和污渍。','也用于地毯喷抽前的局部预处理（见 Extractor Shampoo）。官方商城未给出施工步骤。'],url:PS+'enviro-clean-concentrated-cleaner-cleaners-interior-cleaners'},
 
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Leather_trtmt.pdf?v=1633544875","source":"ps","language":"英文","hosting":"remote"},
- id:'P-leather-treatment',brand:'P',category:'int',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Leather_trtmt.pdf?v=1633544875","section":9},"evidence":[],"conflict":false},name:'Leather Treatment',type:'皮革保养 / 保护剂（含 UV 抑制剂和皮革香味）',sizes:'16 oz · 1 gal',materials:'皮革',
+ sds:{"url":"https://sds.kokoda.fun/P-leather-treatment.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Leather_trtmt.pdf?v=1633544875","checkedAt":"2026-11-27","sha256":"d0675755920b870871471add614e724c61b62db2acd5e83100204298f024220a"},
+ id:'P-leather-treatment',brand:'P',category:'int',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-leather-treatment.pdf","section":9},"evidence":[],"conflict":false},name:'Leather Treatment',type:'皮革保养 / 保护剂（含 UV 抑制剂和皮革香味）',sizes:'16 oz · 1 gal',materials:'皮革',
  dilutions:[['皮革保养','即用','—']],
  steps:['先用 Xpress Interior Cleaner 清洁皮革并擦干。','取适量在施工海绵或超纤布上，均匀涂开。','让它渗入几分钟，再用干净的超纤布擦掉多余的。'],
  notes:['滋润、保护皮革，含 UV 抑制剂，并带皮革香味。'],url:PS+'leather-treatment-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Terminator_-_NA_74aa10c2-c8fb-4cc8-afaf-6b130d10c755.pdf?v=1727973279","source":"ps","language":"英文","hosting":"remote"},
- id:'P-terminator',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Terminator_-_NA_74aa10c2-c8fb-4cc8-afaf-6b130d10c755.pdf?v=1727973279","section":9},"evidence":[],"conflict":false},name:'Terminator',type:'酶清洁污渍去除剂（内饰清洁系统第 1 步）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'地毯 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-terminator.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Terminator_-_NA_74aa10c2-c8fb-4cc8-afaf-6b130d10c755.pdf?v=1727973279","checkedAt":"2026-11-27","sha256":"7f2d5459636f73fb6cd5f016765016815602e641d77f5c22e48f4f36d9b68c3e"},
+ id:'P-terminator',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-terminator.pdf","section":9},"evidence":[],"conflict":false},name:'Terminator',type:'酶清洁污渍去除剂（内饰清洁系统第 1 步）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'地毯 · 织物',
  dilutions:[['地毯 / 织物污渍','即用','喷雾壶']],
  steps:['即用，不需要稀释。','开始前先干刷、吸尘地毯和座椅。','直接喷在污渍上，再处理整片区域。','接着喷 Carpet Bomber（第 2 步），用地毯刷刷洗，两步一起效果最好。','至少作用 3 分钟，用蒸汽机或地毯刷搅动，最后吸尘或抽洗。'],
  notes:['酶 + 清洁成分，针对嵌入的污垢、油脂和蛋白质类污渍；也可以单独使用。'],url:PS+'terminator-spot-and-stain-remover-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_CarpetBomber.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-carpet-bomber',brand:'P',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_CarpetBomber.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Carpet Bomber',type:'地毯 / 织物清洁剂（内饰清洁系统第 2 步）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'地毯 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-carpet-bomber.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_CarpetBomber.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"b9e9c08b8da88c736972008bb49ba7b4a21d627fbb15643cc437993197de3324"},
+ id:'P-carpet-bomber',brand:'P',category:'int',ph:{"category":"alk","value":"10.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-carpet-bomber.pdf","section":9},"evidence":[],"conflict":false},name:'Carpet Bomber',type:'地毯 / 织物清洁剂（内饰清洁系统第 2 步）',sizes:'16 oz · 32 oz · 1 gal · 5 gal',materials:'地毯 · 织物',
  dilutions:[['地毯 / 织物','1:5 – 1:8','喷雾壶']],
  steps:['按 1:5 – 1:8 兑水。','开始前先干刷、吸尘地毯和座椅。','作为系统第 2 步时，在 Terminator 之后使用。','在区域上轻喷一层，至少作用 3 分钟。','用蒸汽机或地毯刷刷洗（两者一起最好），最后吸尘或抽洗。'],
  notes:['柑橘成分 + 可生物降解清洁剂 + 水性溶剂，溶解油脂、带走污垢；也可以单独使用。'],url:PS+'carpet-bomber-carpet-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Upholstery.pdf?v=1631822784","source":"ps","language":"英文","hosting":"remote"},
- id:'P-upholstery-shampoo',brand:'P',category:'int',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Upholstery.pdf?v=1631822784","section":9},"evidence":[],"conflict":false},name:'Upholstery Shampoo',type:'高泡地毯 / 织物手洗香波（Pro Series）',sizes:'1 gal · 5 gal',materials:'地毯 · 织物内饰',
+ sds:{"url":"https://sds.kokoda.fun/P-upholstery-shampoo.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Upholstery.pdf?v=1631822784","checkedAt":"2026-11-27","sha256":"791779086b2c4fe2e51dc5cdffb45189dfb91a626a07ffd67da9c3c4049c2f4b"},
+ id:'P-upholstery-shampoo',brand:'P',category:'int',ph:{"category":"alk","value":"8–9","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-upholstery-shampoo.pdf","section":9},"evidence":[],"conflict":false},name:'Upholstery Shampoo',type:'高泡地毯 / 织物手洗香波（Pro Series）',sizes:'1 gal · 5 gal',materials:'地毯 · 织物内饰',
  dilutions:[['地毯 / 织物手洗','1:20','—']],
  steps:[],
  notes:['泡沫丰富，能把深层地毯里的污垢松动带出；不掉色，pH 平衡，适用所有地毯材质；含温和除味成分。','官方商城未给出施工步骤。'],url:PS+'upholstery-shampoo-cleaners-interior-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Extractor.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-extractor-shampoo',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Extractor.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Extractor Shampoo',type:'无泡喷抽机地毯香波（Pro Series）',sizes:'1 gal · 5 gal',materials:'地毯 · 织物内饰',
+ sds:{"url":"https://sds.kokoda.fun/P-extractor-shampoo.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Extractor.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"530057afff7aec08fc28b23f4bcf57fdba46feb5d4a6c4237b624f8c76c6400d"},
+ id:'P-extractor-shampoo',brand:'P',category:'int',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-extractor-shampoo.pdf","section":9},"evidence":[],"conflict":false},name:'Extractor Shampoo',type:'无泡喷抽机地毯香波（Pro Series）',sizes:'1 gal · 5 gal',materials:'地毯 · 织物内饰',
  dilutions:[['喷抽机','1:60（2 oz / 1 gal）','喷抽机']],
  steps:['按 1:60 兑水，加入喷抽机的溶液箱。','油污集中的地方先用 Enviro-Clean 预处理。'],
  notes:['无泡配方，不掉色，pH 平衡，适用所有地毯材质。'],url:PS+'extractor-shampoo-cleaners-interior-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_G3520.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-extreme-carpet',brand:'P',category:'int',ph:{"category":"alk","value":"11–12","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_G3520.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'EXTREME Carpet Stain Remover',type:'速效地毯去渍喷罐',sizes:'18 oz 喷罐',materials:'地毯 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-extreme-carpet.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_G3520.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"7d59b8e2351834d184cf349d712b9e622f96ac684b5765958cf0d16e927640c3"},
+ id:'P-extreme-carpet',brand:'P',category:'int',ph:{"category":"alk","value":"11–12","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-extreme-carpet.pdf","section":9},"evidence":[],"conflict":false},name:'EXTREME Carpet Stain Remover',type:'速效地毯去渍喷罐',sizes:'18 oz 喷罐',materials:'地毯 · 织物',
  dilutions:[['局部去渍','即用','—']],
  steps:[],
  notes:['瓶身标注：含表面活性剂和润湿剂的速效去渍剂，不起泡，能迅速渗透，去除墨水、油脂、机油、咖啡、可乐、红酒、鞋油、口红和宠物污渍等。','也适合作喷抽前的预处理。官方商城未给出施工步骤。'],url:PS+'extreme-cerpet-stain-remover-cleaners-interior-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_G3510_57a92bbf-5039-40fa-a214-b4ea8aa2ae67.pdf?v=1730306287","source":"ps","language":"英文","hosting":"remote"},
- id:'P-foaming-carpet',brand:'P',category:'int',ph:{"category":"alk","value":"11–12","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_G3510_57a92bbf-5039-40fa-a214-b4ea8aa2ae67.pdf?v=1730306287","section":9},"evidence":[],"conflict":false},name:'Foaming Carpet Cleaner & Deodorizer',type:'生物酶泡沫地毯清洁除味喷罐（薄荷香）',sizes:'18 oz 喷罐',materials:'地毯 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-foaming-carpet.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_G3510_57a92bbf-5039-40fa-a214-b4ea8aa2ae67.pdf?v=1730306287","checkedAt":"2026-11-27","sha256":"28106a2b300dde3f22a1d91d44d6e85f451d0ac3ef66f14ce5f8c6f6bcb131d6"},
+ id:'P-foaming-carpet',brand:'P',category:'int',ph:{"category":"alk","value":"11–12","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-foaming-carpet.pdf","section":9},"evidence":[],"conflict":false},name:'Foaming Carpet Cleaner & Deodorizer',type:'生物酶泡沫地毯清洁除味喷罐（薄荷香）',sizes:'18 oz 喷罐',materials:'地毯 · 织物',
  dilutions:[],steps:[],
  notes:['两段作用：先即刻除味并溶解嵌入的污垢和有机物，再由生物酶分解有机残留，从源头去除污渍和异味。','官方商城未给出施工步骤。'],url:PS+'foaming-carpet-cleaner-and-deo-cleaners-interior-cleaners'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Finisher_1.pdf?v=1761759988","source":"ps","language":"英文","hosting":"remote"},
- id:'P-finisher',brand:'P',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Finisher_1.pdf?v=1761759988","section":9},"evidence":[],"conflict":false},name:'Finisher',type:'过氧化物除味除渍（内饰清洁系统第 3 步）',sizes:'16 oz · 1 gal',materials:'地毯 · 织物 · 布座椅',
+ sds:{"url":"https://sds.kokoda.fun/P-finisher.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Finisher_1.pdf?v=1761759988","checkedAt":"2026-11-27","sha256":"688853df15f195a23766ae177bcf571ca6fedc1b8ced2f390870ee54ff5f555c"},
+ id:'P-finisher',brand:'P',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-finisher.pdf","section":9},"evidence":[],"conflict":false},name:'Finisher',type:'过氧化物除味除渍（内饰清洁系统第 3 步）',sizes:'16 oz · 1 gal',materials:'地毯 · 织物 · 布座椅',
  dilutions:[['地毯 / 织物','即用','喷雾壶']],
  steps:['在 Terminator 和 Carpet Bomber 清洁完之后使用。','喷在地毯、座椅等织物上，让它作用 5–10 分钟。','产品会分解成氧气和水，不需要冲洗或清除残留。'],
  notes:['针对清洁后残留的有机污渍、水印和霉味。','作用时间来自经销商 Car Supplies Warehouse 的商品页。'],url:PS+'finisher-peroxide-treatment-doubleblack-collection'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Release_Vacuum_Aid.pdf?v=1744048800","source":"ps","language":"英文","hosting":"remote"},
- id:'P-release',brand:'P',category:'int',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Release_Vacuum_Aid.pdf?v=1744048800","section":9},"evidence":[],"conflict":false},name:'Release Vacuum Aid',type:'吸尘辅助喷雾（宠物毛、防静电）',sizes:'16 oz · 1 gal',materials:'地毯 · 织物',
+ sds:{"url":"https://sds.kokoda.fun/P-release.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Release_Vacuum_Aid.pdf?v=1744048800","checkedAt":"2026-11-27","sha256":"baccebecfae103cf829d64463ee21cac812438c8284d865da71eddd680ae9442"},
+ id:'P-release',brand:'P',category:'int',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-release.pdf","section":9},"evidence":[],"conflict":false},name:'Release Vacuum Aid',type:'吸尘辅助喷雾（宠物毛、防静电）',sizes:'16 oz · 1 gal',materials:'地毯 · 织物',
  dilutions:[['吸尘前喷涂','即用','喷雾壶']],
  steps:['吸尘前轻喷在地毯和织物上。','用刷子或吸尘器正常吸尘。'],
  notes:['瓶身：帮助去除宠物毛、防静电、给织物除味、减少吸尘时间、让吸头更顺滑。','标签：Pro Series G21。'],url:PS+'release-vacuum-aid'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Natural_Finish_88f07355-5401-44bb-a5aa-fc2ffbbf58c2.pdf?v=1648503942","source":"ps","language":"英文","hosting":"remote"},
- id:'P-natural-finish',brand:'P',category:'int',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Natural_Finish_88f07355-5401-44bb-a5aa-fc2ffbbf58c2.pdf?v=1648503942","section":9},"evidence":[],"conflict":false},name:'Natural Finish',type:'水性内饰保养剂（低光泽，含 UV 防护和香味）',sizes:'16 oz · 1 gal · 5 gal',materials:'皮革 · 人造革 · 橡胶',
+ sds:{"url":"https://sds.kokoda.fun/P-natural-finish.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Natural_Finish_88f07355-5401-44bb-a5aa-fc2ffbbf58c2.pdf?v=1648503942","checkedAt":"2026-11-27","sha256":"f4912a59db0e592cf646540028a0e3a2468b26b5eba14ff4da1f92aaa9c0d54e"},
+ id:'P-natural-finish',brand:'P',category:'int',ph:{"category":"neu","value":"6.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-natural-finish.pdf","section":9},"evidence":[],"conflict":false},name:'Natural Finish',type:'水性内饰保养剂（低光泽，含 UV 防护和香味）',sizes:'16 oz · 1 gal · 5 gal',materials:'皮革 · 人造革 · 橡胶',
  dilutions:[['内饰 / 橡胶','即用','—']],
  steps:['先把要保养的部位清洁、擦干。','喷涂或手涂，用量看效果需要。','等它干后擦掉多余的。'],
  notes:['当轮胎油用时不要涂太多，涂完把轮胎擦一遍；甩出来的保养剂会弄脏塑料饰条。','标签：Pro Series L60。'],url:PS+'natural-finish-dressings-interior-exterior'},
@@ -521,8 +521,8 @@ export const products: Product[] = [
  notes:['标准 Perfect Putty 的加强版，更柔软、更强一些；可去除工业落尘、漆雾、铁路粉尘、表面锈和其他污染物。'],url:PS+'perfect-putty-purple-fallout-remover-surface-cleaner'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Chamois_Cleaner.pdf?v=1631822782","source":"ps","language":"英文","hosting":"remote"},
- id:'P-chamois-cleaner',brand:'P',category:'towel',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Chamois_Cleaner.pdf?v=1631822782","section":9},"evidence":[],"conflict":false},name:'Chamois Cleaner/Conditioner',type:'麂皮清洁养护剂',sizes:'32 oz',materials:'天然 / 合成麂皮',
+ sds:{"url":"https://sds.kokoda.fun/P-chamois-cleaner.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Chamois_Cleaner.pdf?v=1631822782","checkedAt":"2026-11-27","sha256":"11b1a57164acb990290ffd259eef0e9bc9ee932135018912f873c1eb24f76dc3"},
+ id:'P-chamois-cleaner',brand:'P',category:'towel',ph:{"category":"neu","value":"6.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-chamois-cleaner.pdf","section":9},"evidence":[],"conflict":false},name:'Chamois Cleaner/Conditioner',type:'麂皮清洁养护剂',sizes:'32 oz',materials:'天然 / 合成麂皮',
  dilutions:[['麂皮存放','加入漂洗桶','桶洗']],
  steps:['加入漂洗桶，用来存放麂皮。'],
  notes:['去除砂粒，并螯合会留下水斑的硬水离子，提升麂皮擦干效果；含软化剂和防腐剂，延长麂皮寿命。','官方未给出用量。'],url:PS+'chamois-cleaner-conditioner-cleaners-interior-cleaners'},
@@ -540,8 +540,8 @@ export const products: Product[] = [
  notes:[],url:PS+'xpress-side-kick-2-pack'},
 
 {
- sds:{"url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Rags_2_Riches_-_EN_SDS_NA.pdf?v=1781810313","source":"ps","language":"英文","hosting":"remote"},
- id:'P-rags',brand:'P',category:'towel',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"sds","url":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Rags_2_Riches_-_EN_SDS_NA.pdf?v=1781810313","section":9},"evidence":[],"conflict":false},name:'Rags to Riches',type:'超纤毛巾专用洗涤剂',sizes:'32 oz · 1 gal',materials:'—',dilutions:[],
+ sds:{"url":"https://sds.kokoda.fun/P-rags.pdf","source":"ps","language":"英文","hosting":"r2","originalUrl":"https://cdn.shopify.com/s/files/1/0317/0631/6932/files/SDS_Rags_2_Riches_-_EN_SDS_NA.pdf?v=1781810313","checkedAt":"2026-11-27","sha256":"acf9ee4fc45ee039931e0ca7ae710a2229c63257e5918bc72461b6480918d515"},
+ id:'P-rags',brand:'P',category:'towel',ph:{"category":"alk","value":"9.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/P-rags.pdf","section":9},"evidence":[],"conflict":false},name:'Rags to Riches',type:'超纤毛巾专用洗涤剂',sizes:'32 oz · 1 gal',materials:'—',dilutions:[],
  steps:['洗衣机：小量或轻脏一次加 1 oz（约 30 ml），大量加 2 oz。','很脏或失去吸水性的毛巾，先在 2–3 加仑水里加 1–2 oz 浸泡，再机洗。'],
  notes:['恢复超纤吸水性和柔软度，所有面料都能用。','用量来自经销商 Car Supplies Warehouse 的商品页。'],url:CSW+'p-s-rags-to-riches-microfiber-detergent'},
 ];

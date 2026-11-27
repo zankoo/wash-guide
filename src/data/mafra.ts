@@ -10,7 +10,7 @@ const MAFRA = 'https://mafra.it/en/';
 export const products: Product[] = [
 // ───────────────────────── 预洗 ─────────────────────────
 {
- sds:{"url":"https://docs.ebay.com/document/cd1b405e-1e46-4fd1-bf46-a2a0a7986b7b","source":"ebay","language":"意大利文","version":"2025","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-supermafrasol.pdf","source":"ebay","language":"意大利文","hosting":"r2","originalUrl":"https://docs.ebay.com/document/cd1b405e-1e46-4fd1-bf46-a2a0a7986b7b","checkedAt":"2026-11-27","version":"2025","sha256":"091afe097bde88548c7ec08448801bfd512ad1649bf3b82b43ebcf4ab78053bd"},
  id:'F-supermafrasol',brand:'F',category:'pre',ph:{"category":"alk","value":"> 12","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0267_1.pdf"},"evidence":[],"conflict":false},name:'Supermafrasol',type:'高浓缩重污预洗 / 去油剂（去交通膜）',sizes:'900 ml',materials:'车漆 · 车身外部各表面 · 发动机',
  dilutions:[['去油清洁（按污垢和停留时间）','1:5 – 1:55','喷雾壶']],
  steps:['按污垢、表面和停留时间稀释。','在阴凉处由下往上喷涂，分布更均匀。','不要让溶液干在表面上，用水彻底冲洗。','擦干。'],
@@ -21,33 +21,37 @@ export const products: Product[] = [
  steps:['先用水把灰尘和大颗粒脏污轻轻冲掉。','按脏污程度稀释（瓶盖带刻度，可直接量取）。','在阴凉处均匀喷在车身上，让它和污垢反应 30 秒 – 2 分钟，不要让它干掉。','干掉之前用高压水彻底冲净，不留残留；如果留下水痕，再喷一次后冲洗或擦掉。'],
  cautions:['sun','hot','gloves','ventilate'],notes:['标签注明为碱性原液，按 1:5–1:50 使用（20–200 ml / 1 L）。','不要用于铝和铝合金表面。','只用于外部，不要在车内使用。','镀膜车：高浓度反复使用会影响镀膜的持久度，只在需要的部位局部使用。','塑料和橡胶饰条在推荐比例内可用，用完要充分冲洗；其他敏感材质先在不显眼处测试。','不要和其他产品混合。','这是 MAFRA 2025 年在韩国推出的新品，mafra.it 还没有收录，资料来自韩国官方商城 maframall.com 和韩国安全标示（EA25-01-0020）。'],url:'https://maframall.com/product/detail.html?product_no=1097'},
 
-{id:'F-idrowash',brand:'F',category:'pre',name:'Idrowash',type:'高压清洗机用超泡沫清洁剂（预洗 / 泡沫香波）',sizes:'1 L',materials:'车漆 · 镀铬 · 车身外部各表面',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-idrowash.pdf","source":"car-wash-gr","language":"希腊文","version":"2026-01-29","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/IDROWASH_2538_GR_2.pdf","checkedAt":"2026-11-27","sha256":"40da7ad1dd3a0d8d1423bc6533575d1830517f83fad51a4c34435a73e839bc50"},
+ id:'F-idrowash',brand:'F',category:'pre',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-idrowash.pdf","section":9},"evidence":[],"conflict":false},name:'Idrowash',type:'高压清洗机用超泡沫清洁剂（预洗 / 泡沫香波）',sizes:'1 L',materials:'车漆 · 镀铬 · 车身外部各表面',
  dilutions:[['PA壶','1:1','PA壶']],
  steps:['原液和水 1:1 倒入高压清洗机的储液罐或 Nebula Foam 2.0。','喷满表面，停留几分钟，不需要刷洗。','彻底冲洗。'],
  notes:['官网核对：1:1 是原液与水在泡沫设备储液罐内的配比，不是高压水混合后的最终出液浓度。','官方说明 pH 平衡，对车漆和镀铬安全，冷水也有效。','可去除冬季盐渍、夏季树脂、秋季泥土和春季灰尘。'],url:MAFRA+'idrowash/'},
 
-{id:'F-killer',brand:'F',category:'pre',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0785_1.pdf"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB19-01-0428，见韩国官方商城 maframall.com 的安全标示）：弱碱性。","registration":"EB19-01-0428"}],"conflict":false},name:'Killer',type:'即用型虫尸 / 鸟粪去除剂',sizes:'250 ml · 500 ml',materials:'车漆 · 玻璃 · 保险杠 · 大灯',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-killer.pdf","source":"car-wash-gr","language":"希腊文","version":"2023-05-12","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/KILLER_193_GR_3.pdf","checkedAt":"2026-11-27","sha256":"67b8653fd55e213a58ca4fc75589a0109be45751f57311809a3edcd0180bcadf"},
+ id:'F-killer',brand:'F',category:'pre',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0785_1.pdf"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB19-01-0428，见韩国官方商城 maframall.com 的安全标示）：弱碱性。","registration":"EB19-01-0428"}],"conflict":false},name:'Killer',type:'即用型虫尸 / 鸟粪去除剂',sizes:'250 ml · 500 ml',materials:'车漆 · 玻璃 · 保险杠 · 大灯',
  dilutions:[['虫尸、鸟粪、树脂斑','即用','喷雾壶']],
  steps:['先冲洗车身，去掉粗大的污垢。','均匀喷在虫尸上，停留约 1 分钟。','用干燥超纤布擦掉（或用海绵 / 手套），再正常洗车。'],
  notes:["不需要刷洗，能溶解已经干掉的虫尸。","对车漆、塑料、玻璃和大灯安全。"],url:MAFRA+'togliere-moscerini-auto-killer/'},
 
 // ───────────────────────── 洗车香波 / 无水洗 ─────────────────────────
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/93683/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
- id:'F-shampoo-power',brand:'F',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://shop.gruppogesa.it/media/attachment/93683/scheda%20sicurezza.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0725，见韩国官方商城 maframall.com 的安全标示）：弱碱性。","registration":"EB20-01-0725"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0725）：原液弱碱性。","registration":"EB20-01-0725"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"alk"}],"conflict":true},name:'Shampoo Power',type:'高浓缩自去油洗车香波',sizes:'1 L',materials:'车漆 · 哑光 / 缎面车漆 · 改色膜 · 铝 · 喷漆轮毂',
+ sds:{"url":"https://sds.kokoda.fun/F-shampoo-power.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/93683/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"8d4157b315811e7b4a5ec240c810dbeffe6f3d511fe98c220beecaceaeabca46"},
+ id:'F-shampoo-power',brand:'F',category:'wash',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-shampoo-power.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0725，见韩国官方商城 maframall.com 的安全标示）：弱碱性。","registration":"EB20-01-0725"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0725）：原液弱碱性。","registration":"EB20-01-0725"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"alk"}],"conflict":true},name:'Shampoo Power',type:'高浓缩自去油洗车香波',sizes:'1 L',materials:'车漆 · 哑光 / 缎面车漆 · 改色膜 · 铝 · 喷漆轮毂',
  dilutions:[['手洗','1 瓶盖 / 1 L 水（5 瓶盖 / 5 L）','桶洗'],['手洗（韩国标签标准用量）','1:400（25 ml / 10 L）','桶洗']],
  steps:['每升水加一瓶盖原液，5 L 水桶加 5 瓶盖。','用海绵或洗车手套洗车。','冲洗后擦干。'],
  notes:["泡沫丰富、易冲洗，不留残留和水痕；一瓶约洗 30 次。","对铝条、喷漆轮毂、哑光 / 缎面漆和改色膜安全。"],url:MAFRA+'shampoo-auto-power-concentrato/'},
 
 {
- sds:{"url":"https://www.bricocenter.it/prodotti/media/magma_akeneo_connector/media_files/3/4/f/f/34ff67aad5f0198d003d7e695107dfc22d3e8bab_490000708.pdf","source":"bricocenter","language":"意大利文","version":"2024","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-shampoo-cera.pdf","source":"bricocenter","language":"意大利文","hosting":"r2","originalUrl":"https://www.bricocenter.it/prodotti/media/magma_akeneo_connector/media_files/3/4/f/f/34ff67aad5f0198d003d7e695107dfc22d3e8bab_490000708.pdf","checkedAt":"2026-11-27","version":"2024","sha256":"d1c17e8c2e79e3b871b9f9ff208f7e7ab68fdebfe009a3d1fdb4fbfe3a2605c0"},
  id:'F-shampoo-cera',brand:'F',category:'wash',ph:{"category":"alk","value":"8.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0930_1.pdf"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0951，见韩国官方商城 maframall.com 的安全标示）：弱碱性。","registration":"EB22-01-0951"}],"conflict":false},name:'Car Wash Shampoo e Cera',type:'含蜡洗车香波（洗护一体）',sizes:'1 L',materials:'车漆 · 玻璃',
  dilutions:[['手洗','1 瓶盖 / 1 L 水','桶洗'],['手洗（韩国标签标准用量）','1:100（100 ml / 10 L）','桶洗']],
  steps:['先预洗，去掉大部分污垢并让车身降温。','每升水加一瓶盖原液，用手套或超纤海绵洗车。','用大量清水冲洗后擦干。'],
  notes:["蜡成分让前挡上的水珠容易流走，擦干更快。"],url:MAFRA+'shampoo-e-cera-per-auto/'},
 
 {
- sds:{"url":"/sds/F-polish-express.pdf","source":"mafra-fr","language":"法文","version":"2025-03-28","hosting":"local","sha256":"b089d528332a114c371b78a3c9d0208106efc80b0d33f28e0446b75745ac91d0","originalUrl":"https://algeria.mafra.com/files/POLISH%20EXPRESS_433_FR_5.pdf","checkedAt":"2026-11-10"},
+ sds:{"url":"https://sds.kokoda.fun/F-polish-express.pdf","source":"mafra-fr","language":"法文","hosting":"r2","version":"2025-03-28","originalUrl":"https://algeria.mafra.com/files/POLISH%20EXPRESS_433_FR_5.pdf","checkedAt":"2026-11-10","sha256":"b089d528332a114c371b78a3c9d0208106efc80b0d33f28e0446b75745ac91d0"},
  id:'F-polish-express',brand:'F',category:'wash',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0420_1.pdf"},"evidence":[],"conflict":false},name:'Polish Express',type:'当香波用的纳米抛光剂（洗车同时上光）',sizes:'250 ml（套装附海绵）· 4.5 L',materials:'车漆 · 车身外部各表面',
  dilutions:[['手洗上光','按瓶身刻度稀释（250 ml 约洗 5 辆车）','桶洗']],
  steps:['按瓶身的稀释说明加水。','像香波一样手洗全车（套装附专用海绵）。','冲洗后擦干。'],
@@ -65,14 +69,14 @@ export const products: Product[] = [
  notes:["溶解刹车粉、污垢、结垢和油烟，同时让轮胎恢复原色。","轮毂很脏时，官方建议先用它清洁，再用 Fallout Iron Remover 除铁。"],url:MAFRA+'pulire-cerchi-e-gomme/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/66671/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-splendorlega.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/66671/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"2bcff5fb443a8b5b7c52b6b8ea63e0c1c0c63a5685137755508fa5342a96e767"},
  id:'F-splendorlega',brand:'F',category:'wheel',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0871_1.pdf"},"evidence":[],"conflict":false},name:'Splendorlega',type:'即用型合金轮毂清洁剂（无酸、无烧碱）',sizes:'500 ml',materials:'合金 / 镁合金轮毂',
  dilutions:[['合金轮毂','即用','喷雾壶']],
  steps:['距离约 20 cm 均匀喷在轮毂上。','停留后用软毛刷或细刷刷遍每处，辐条轮毂尤其要刷到。','彻底冲洗，擦干轮毂。'],
  notes:['专门溶解刹车片产生的含铁粉尘。','不含酸和烧碱，不会腐蚀或磨损轮毂。'],url:MAFRA+'pulire-cerchi-in-lega-splendorlega/'},
 
 {
- sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-fallout-iron-remover/sds.pdf","source":"chemcx","language":"英文","version":"2022","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-fallout.pdf","source":"chemcx","language":"英文","hosting":"r2","originalUrl":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-fallout-iron-remover/sds.pdf","checkedAt":"2026-11-27","version":"2022","sha256":"5ce17d6fe81cd170ba81bb165bfd4925ec641a15e5de62b1c4af93ca03f042b4"},
  id:'F-fallout',brand:'F',category:'wheel',ph:{"category":"acid","value":"5.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H1112_1.pdf"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0464，见韩国官方商城 maframall.com 的安全标示）：弱酸性。品牌官网（意大利）写「无酸、pH 平衡」，与韩国申报不一致。","registration":"EB20-01-0464"}],"conflict":true},name:'Fallout Iron Remover',type:'铁粉去除剂（变紫）',sizes:'500 ml · 1 L',materials:'钢 / 合金 / 镀铬 / 抛光轮毂 · 车漆',
  dilutions:[['轮毂','即用','喷雾壶'],['车身除铁','即用','喷雾壶']],
  steps:['轮毂：喷上后停留 3–4 分钟，不要让表面干掉；变紫后用刷子刷到辐条缝隙，再用大量清水冲洗，用超纤布擦干。','车身：先洗车擦干；在约 60 cm 外喷涂，逐块、每次半辆车，停留 2–3 分钟变紫后冲洗。'],
@@ -90,14 +94,14 @@ export const products: Product[] = [
  notes:['去除铁路运输或停在钢厂、火车站附近造成的油烟、锈斑和氧化斑，适合新车和二手车。','对车漆颜色呈惰性，不伤保险杠和塑料件（包括环保再生塑料）。'],url:MAFRA+'deceranti-copolimeri-pulismog/'},
 
 {
- sds:{"url":"https://www.bricocenter.it/prodotti/media/magma_akeneo_connector/media_files/5/a/4/c/5a4c400273f42e7ae5d968ca6bcf9318d826bcc4_H0065_IT_1.pdf","source":"bricocenter","language":"意大利文","version":"2018","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-decaflash.pdf","source":"bricocenter","language":"意大利文","hosting":"r2","originalUrl":"https://www.bricocenter.it/prodotti/media/magma_akeneo_connector/media_files/5/a/4/c/5a4c400273f42e7ae5d968ca6bcf9318d826bcc4_H0065_IT_1.pdf","checkedAt":"2026-11-27","version":"2018","sha256":"1533478156c9ac834e037065fad1e7c119a32bbf1055f1ea28103f3aabdfa73a"},
  id:'F-decaflash',brand:'F',category:'deco',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB22-02-0034，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"FB22-02-0034"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB22-02-0034）：原液中性。","registration":"FB22-02-0034"}],"conflict":false},name:'Deca Flash',type:'柏油 / 不干胶去除剂',sizes:'250 ml',materials:'车漆 · 玻璃',
  dilutions:[['柏油、不干胶残留','即用','喷雾壶']],
  steps:['喷在柏油或胶痕上，停留几秒。','用干净超纤布擦掉残留。','彻底冲洗，再用另一条干净超纤布擦干。'],
  notes:["也适合去除撕掉车贴后留下的黏胶。"],url:MAFRA+'togliere-adesivi-auto-e-catrame-deca-flash/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/79712/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-resinoff.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/79712/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"6cbc6267e05bf669076c1e9ca6525e6f3465a68cc9942fb9b7496405d46f50a3"},
  id:'F-resinoff',brand:'F',category:'deco',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 FB22-01-0293，见韩国官方商城 maframall.com 的安全标示）：弱碱性。","registration":"FB22-01-0293"}],"conflict":false},name:'Resin Off',type:'树脂 / 盐渍去除剂',sizes:'250 ml',materials:'车漆 · 车身外部各表面',
  dilutions:[['树脂、松脂、盐渍','即用','喷雾壶']],
  steps:['确认表面不热、不在阳光下，喷在树脂上。','停留 1 分钟后用软布擦掉，不要用力搓。','顽固树脂滴重复操作。'],
@@ -119,32 +123,44 @@ export const products: Product[] = [
  notes:['除染前后都要彻底洗车。','完成后表面光滑，可以接着上保护蜡。'],url:MAFRA+'kit-regenera-carrozzeria-trattamento-decontaminante/'},
 
 // ───────────────────────── 研磨抛光 ─────────────────────────
-{id:'F-corrector',brand:'F',category:'polish',name:'Corréctor 3.0',type:'Step 1 重切削研磨剂（水性、无硅无填充）',sizes:'1000 g',materials:'车漆 · PPF',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-corrector.pdf","source":"car-wash-gr","language":"希腊文","version":"2024-01-23","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/CORRECTOR_3_0_1734_GR_1.pdf","checkedAt":"2026-11-27","sha256":"f40a8aeabcfc19b692ed3d9542d04af617782ff5b85017873955a48bb079f914"},
+ id:'F-corrector',brand:'F',category:'polish',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-corrector.pdf","section":9},"evidence":[],"conflict":false},name:'Corréctor 3.0',type:'Step 1 重切削研磨剂（水性、无硅无填充）',sizes:'1000 g',materials:'车漆 · PPF',
  dilutions:[],
  steps:['每次在盘上加少量。','旋转机：先 600–900 rpm，逐步升到 1500–1800 rpm，最后轻压 600–900 rpm 收尾。','双动机：1–2 档把研磨剂在 40×40 cm 区域抹匀，升到最高档抛到研磨剂耗尽。'],
  notes:['去除 P1500 以内的砂纸痕和划痕（不是填充遮盖），适用于抗刮清漆、原厂漆和补漆。','可用于透明保护膜（PPF），去除老化痕迹。','可配羊毛盘、海绵盘或超纤盘；低粉尘，残留容易擦除。'],url:MAFRA+'polish-corrector-3-0-1000-gr/'},
 
-{id:'F-scratch-remover',brand:'F',category:'polish',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0189，已过期）：原液碱性。","registration":"EB20-01-0189"}],"conflict":false},name:'Scratch Remover（SR · Rimuovi Graffi）',type:'手工去划痕膏套装（附海绵施工头和抛光垫）',sizes:'100 ml',materials:'车漆',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-scratch-remover.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-12-29","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/RIMUOVI_GRAFFI_605_GR_3.pdf","checkedAt":"2026-11-27","sha256":"93f91acbf9cf506d91c91fa1a959701b7c60479a0137a44f2e2ff9a726250524"},
+ id:'F-scratch-remover',brand:'F',category:'polish',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB20-01-0189，已过期）：原液碱性。","registration":"EB20-01-0189"}],"conflict":false},name:'Scratch Remover（SR · Rimuovi Graffi）',type:'手工去划痕膏套装（附海绵施工头和抛光垫）',sizes:'100 ml',materials:'车漆',
  dilutions:[],
  steps:['表面须干净、不热、在阴凉处。','用管口的海绵施工头把去划痕膏涂在划痕上，来回擦拭。','用随附的抛光垫擦亮，去除残留。'],
  notes:["去除轻微、表层划痕（如门把手周围的指甲划痕、车门细划痕），较深的划痕只能减轻。","适用于各种车漆；膏体不会干在管内。","官网没有给出详细步骤，以上按套装内容（施工头 + 抛光垫）整理。需要机器去旋纹时用 Scratch & Swirls Remover（SSR）。"],url:MAFRA+'togliere-graffi-auto-special-kit/'},
 
-{id:'F-scratch',brand:'F',category:'polish',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-02-0186，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"EB23-02-0186"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-02-0186）：原液中性。","registration":"EB23-02-0186"}],"conflict":false},name:'Scratch & Swirls Remover（SSR）',type:'去划痕 / 旋纹研磨剂',sizes:'500 ml',materials:'车漆',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-scratch.pdf","source":"car-wash-gr","language":"希腊文","version":"2023-09-27","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/SCRATCH_SWIRL_REMOVER_2327_GR_1.pdf","checkedAt":"2026-11-27","sha256":"668b6f71684a71f9b897f38b192609e9987cc23fc8df2017b8005ed22497dad1"},
+ id:'F-scratch',brand:'F',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-scratch.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-02-0186，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"EB23-02-0186"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-02-0186）：原液中性。","registration":"EB23-02-0186"}],"conflict":false},name:'Scratch & Swirls Remover（SSR）',type:'去划痕 / 旋纹研磨剂',sizes:'500 ml',materials:'车漆',
  dilutions:[],
  steps:['施工前先用黏土除染；表面须干净、不热、在阴凉处，使用前摇匀。','手工：每次处理 30×30 cm，打圈并部分重叠，干掉前用干净超纤布擦掉。','双动机：装研磨盘，把研磨剂直接加在盘上，盘面平贴漆面，中等压力重叠走位，每次约 50×50 cm，直到研磨剂开始被吸收；干掉前擦掉残留。'],
  notes:["去除浅划痕、旋纹和氧化，适用于各种颜色的车漆。","官方建议最后用 Glazing Wax 收尾，获得湿润光泽。"],url:MAFRA+'scratch-swirls-remover-heavy-polish-compound/'},
 
-{id:'F-illumina',brand:'F',category:'polish',name:'Illúmina 2.0',type:'Step 2 收光抛光剂（防光环）',sizes:'250 g · 500 g',materials:'车漆 · PPF',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-illumina.pdf","source":"car-wash-gr","language":"希腊文","version":"2022-12-19","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/ILLUMINA_2_0_1735_GR_3.pdf","checkedAt":"2026-11-27","sha256":"1be20eec4a79bc2e5b0197ab998718c082e86cf25e319d177d79e0a75a2053a9"},
+ id:'F-illumina',brand:'F',category:'polish',ph:{"category":"neu","value":"7.8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-illumina.pdf","section":9},"evidence":[],"conflict":false},name:'Illúmina 2.0',type:'Step 2 收光抛光剂（防光环）',sizes:'250 g · 500 g',materials:'车漆 · PPF',
  dilutions:[],
  steps:['每次在盘上加少量。','旋转机：先 600–900 rpm，逐步升到 1500–1800 rpm，最后轻压 600–900 rpm 收尾。','双动机：1–2 档在 40×40 cm 区域抹匀，升到最高档抛到研磨剂耗尽，再用超纤布擦掉多余。'],
  notes:['去除研磨留下的光环，同时有一定切削力（去除 P2500 以内的砂纸痕），取代旧版 Step 3 和 Step 4。','可用于 PPF。','水性、无硅无填充。'],url:MAFRA+'polish-illumina-2-0-500-gr/'},
 
-{id:'F-cleanerwax',brand:'F',category:'polish',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-06-0204，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"EB23-06-0204"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-06-0204）：原液中性。","registration":"EB23-06-0204"}],"conflict":false},name:'Cleaner Wax',type:'含巴西棕榈蜡的轻研磨清洁蜡',sizes:'500 ml',materials:'车漆 · 塑料 · 橡胶',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-cleanerwax.pdf","source":"car-wash-gr","language":"希腊文","version":"2023-09-27","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/CLEANER_WAX_2324_GR_1.pdf","checkedAt":"2026-11-27","sha256":"1fe6bd89e7fa7b0432f8f5104919c2040bec9b6d659810e15d9fba5a1f3da0b9"},
+ id:'F-cleanerwax',brand:'F',category:'polish',ph:{"category":"neu","value":"8","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-cleanerwax.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-06-0204，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"EB23-06-0204"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-06-0204）：原液中性。","registration":"EB23-06-0204"}],"conflict":false},name:'Cleaner Wax',type:'含巴西棕榈蜡的轻研磨清洁蜡',sizes:'500 ml',materials:'车漆 · 塑料 · 橡胶',
  dilutions:[],
  steps:['施工前建议先用黏土除染；表面干净、不热、在阴凉处，使用前摇匀。','手工：取适量在干净的超纤布或手工海绵上，轻轻打圈擦拭，再用干净超纤布收尾。','双动机：装细抛盘，中等压力重叠走位，每次约 50×50 cm，直到开始被吸收；干掉前擦掉残留。'],
  notes:["去除发乌、氧化、褪色和轻微擦漆印，恢复普通漆和金属漆的颜色。","可接触塑料和橡胶，不会损伤。","官方建议之后用 Glazing Wax 收尾。"],url:MAFRA+'cleaner-wax-polish-lucidante/'},
 
-{id:'F-polish-clever',brand:'F',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/HN041_1.pdf"},"evidence":[],"conflict":false},name:'Polish Clever',type:'手工车漆翻新抛光剂',sizes:'—',materials:'车漆',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-polish-clever.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-05-05","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/POLISH_CLEVER_285_GR_4.pdf","checkedAt":"2026-11-27","sha256":"01c75d47ab90d4ac4f091e638ab3ab89a485c31f61fb85e56e3eb66429147c89"},
+ id:'F-polish-clever',brand:'F',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/HN041_1.pdf"},"evidence":[],"conflict":false},name:'Polish Clever',type:'手工车漆翻新抛光剂',sizes:'—',materials:'车漆',
  dilutions:[],
  steps:['在超纤施工块上滴 2–3 滴。','先打圈、再直线涂抹，轻压。','用 Double Face 超纤布擦掉多余。'],
  notes:['翻新、去氧化、上光，也可去除新车的运输蜡残留。'],url:MAFRA+'prodotti-per-carrozzeria-auto-rigenerante-polish/'},
@@ -154,7 +170,9 @@ export const products: Product[] = [
  steps:['倒在超纤布上，擦过车身。','等几秒让它完全作用，去掉油分后检查漆面。'],
  notes:['去除润滑油、抛光剂和硅油，露出被遮盖的瑕疵，不会让车漆发白。'],url:MAFRA+'scherlock-detergente-evidenziatore-swirl-auto/'},
 
-{id:'F-regenera-view',brand:'F',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0589_1.pdf"},"evidence":[],"conflict":false},name:'Regénera View',type:'大灯罩（PC / 亚克力）手工抛光剂',sizes:'—',materials:'大灯 · 塑料',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-regenera-view.pdf","source":"car-wash-gr","language":"希腊文","version":"2026-01-19","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/REGENERA_VIEW_1395_GR_4.pdf","checkedAt":"2026-11-27","sha256":"dd686f36d97a91d1da9c026062b872782788d48d08322b38c4a9c36971d0f093"},
+ id:'F-regenera-view',brand:'F',category:'polish',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0589_1.pdf"},"evidence":[],"conflict":false},name:'Regénera View',type:'大灯罩（PC / 亚克力）手工抛光剂',sizes:'—',materials:'大灯 · 塑料',
  dilutions:[],
  steps:['每次在海绵施工块上加少量。','手工施工，改变压力抛光。'],
  notes:['去除轻微氧化和化学污染，减轻斑点和划痕，并留下长效保护。','也可用于敞篷车塑料后窗和摩托车整流罩。','污染严重的灯罩需先用 Kit Regénera Headlight 打磨。'],url:MAFRA+'regenera-view-polish-policarbonato/'},
@@ -164,13 +182,17 @@ export const products: Product[] = [
  steps:['用 Glass Cleaner 和 1Shine Vetri 清洁大灯，去掉可能在打磨时造成划痕的颗粒。','用美纹纸沿大灯外缘贴好，保护引擎盖和翼子板车漆，注意内侧边缘和密封条。','先用最粗的 1500 目砂纸湿磨，用玻璃清洁剂保持润滑；尽量顺着大灯弧度纵向（不要画圈）打磨，磨掉最粗的瑕疵后擦干检查是否均匀。','换 2500 目继续湿磨，方向与上一遍相反，磨掉前一遍的痕迹；擦干后换最细的 4000 目。','用 1Shine Exterior 涂大灯抛光剂，适当用力画圈抛光，再用布擦去多余部分；重复到表面透明均匀。如果仍然发雾，回到打磨步骤。','用 Glass Cleaner 清洁大灯，再用 Heavy Work 超纤布纵向涂一层均匀的封体；完全干燥后可按需再涂几层。'],
  cautions:['sun','hot'],notes:['大灯罩多为聚碳酸酯，受 UV 照射会发黄发雾；本套装恢复原有透明度并提升照明效果。','不涂封体的话大灯很快会再次发黄。'],url:MAFRA+'kit-rinnova-fari-lucidante/'},
 
-{id:'F-flashbright',brand:'F',category:'polish',name:'Flash Bright',type:'不锈钢 / 铝 / 镀铬快速抛光剂',sizes:'—',materials:'镀铬 · 不锈钢 · 黄铜 · 合金',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-flashbright.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-12-04","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/FLASH_BRIGHT_878_GR_5.pdf","checkedAt":"2026-11-27","sha256":"9252cb76507ef7bd23b298a9fef719d7344233ebab8d80f063d41f43222c2608"},
+ id:'F-flashbright',brand:'F',category:'polish',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-flashbright.pdf","section":9},"evidence":[],"conflict":false},name:'Flash Bright',type:'不锈钢 / 铝 / 镀铬快速抛光剂',sizes:'—',materials:'镀铬 · 不锈钢 · 黄铜 · 合金',
  dilutions:[],
  steps:['取少量涂在金属表面。','抛光后擦掉，不留油腻痕迹。'],
  notes:['去除细小划痕和轻微氧化，提供防腐蚀、防紫外线保护。','官方页面未给出详细步骤。'],url:MAFRA+'flash-bright-polish-per-lucidare-e-rinnovare-acciaio-cromo-lega/'},
 
 // ───────────────────────── 封体 / 蜡 / 快速美容 ─────────────────────────
-{id:'F-splendida',brand:'F',category:'seal',name:'Spléndida 2.0',type:'Glaze 增亮收尾蜡（天然 + 合成蜡）',sizes:'500 g',materials:'车漆',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-splendida.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-05-27","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/SPL_NDIDA_2.0_2291_GR_2.pdf","checkedAt":"2026-11-27","sha256":"3e0bafde331ab9bc92faab532d722635df2d3ec71bbc10bd2c5bc918fac12f23"},
+ id:'F-splendida',brand:'F',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-splendida.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节写「混合物不溶于水」，不适用 pH。"}],"conflict":false},name:'Spléndida 2.0',type:'Glaze 增亮收尾蜡（天然 + 合成蜡）',sizes:'500 g',materials:'车漆',
  dilutions:[],
  steps:['把产品抹在盘上。','用 Easytech 抛光机以 1–2 档铺开，或手工交叉涂抹。','擦掉残留。'],
  notes:['一块钣金只需两小滴。','填平细小划痕，带来深层光泽和丝滑手感，并有防紫外线和疏水效果。','不在橡胶和塑料上留残留。'],url:MAFRA+'splendida-2-500g-cera-di-rifinitura-glaze-booster-gloss/'},
@@ -186,26 +208,28 @@ export const products: Product[] = [
  notes:["每次洗车后会「自我激活」，能耐多次洗车；深色车增色明显。"],url:MAFRA+'cera-protettiva-auto-carlux/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/76348/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-metalcrem.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/76348/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"68e8cd4b26444c0ce4773c82540b2cd000deeed624fa320801d365a03d36e990"},
  id:'F-metalcrem',brand:'F',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0181_1.pdf"},"evidence":[],"conflict":false},name:'Metal Crem',type:'金属漆增亮蜡乳（无研磨）',sizes:'250 ml',materials:'车漆',
  dilutions:[],
  steps:['取适量用布涂在车身上。','抹匀后擦亮。'],
  notes:['富含合成蜡，不含研磨剂，不会让塑料件发白。','官方页面未给出详细步骤。'],url:MAFRA+'cera-per-lucidare-carrozzeria-auto-metallizzate-metal-crem/'},
 
-{id:'F-metalcar',brand:'F',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB19-06-0159，已过期）：不适用。","registration":"EB19-06-0159"}],"conflict":false},name:'Metal Car',type:'金属漆喷蜡（水性）',sizes:'500 ml',materials:'车漆',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-metalcar.pdf","source":"car-wash-gr","language":"希腊文","version":"2026-01-19","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/METAL_CAR_118_GR_4.pdf","checkedAt":"2026-11-27","sha256":"87b78c6094a2a22f1673f89c9bc963121f888923e48e7961be02f3af34812e5b"},
+ id:'F-metalcar',brand:'F',category:'seal',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB19-06-0159，已过期）：不适用。","registration":"EB19-06-0159"}],"conflict":false},name:'Metal Car',type:'金属漆喷蜡（水性）',sizes:'500 ml',materials:'车漆',
  dilutions:[['擦拭上蜡','即用','喷雾壶']],
  steps:['喷在各部位上。','用布抹开擦亮，形成丝滑手感。'],
  notes:["水性配方，车身没完全擦干也能用；不含研磨剂，可用于任何车漆。","不会让塑料件发白。"],url:MAFRA+'cera-spray-lucidante-auto-nere_/'},
 
 {
- sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-last-touch-express/sds.pdf","source":"chemcx","language":"英文","version":"2022","hosting":"remote"},
- id:'F-lasttouch',brand:'F',category:'seal',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-last-touch-express/sds.pdf","section":9},"evidence":[],"conflict":false},name:'Last Touch Express 2.0',type:'含巴西棕榈蜡的快速喷蜡（干湿车都可用）',sizes:'500 ml',materials:'车漆 · 玻璃 · 塑料',
+ sds:{"url":"https://sds.kokoda.fun/F-lasttouch.pdf","source":"chemcx","language":"英文","hosting":"r2","originalUrl":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-last-touch-express/sds.pdf","checkedAt":"2026-11-27","version":"2022","sha256":"97f39faa40f36bf729d3aa55be26cd4f53fe98fc18e46c09d2e4f20c411c183f"},
+ id:'F-lasttouch',brand:'F',category:'seal',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-lasttouch.pdf","section":9},"evidence":[],"conflict":false},name:'Last Touch Express 2.0',type:'含巴西棕榈蜡的快速喷蜡（干湿车都可用）',sizes:'500 ml',materials:'车漆 · 玻璃 · 塑料',
  dilutions:[['干车或湿车','即用','喷雾壶']],
  steps:['在约 20 cm 外少量均匀喷在要处理的部位。','用超纤布抹开。','用另一条干布擦干。'],
  notes:['可用于玻璃和塑料，不留雾痕。','能防止污垢再次附着，留下丝滑手感。'],url:MAFRA+'cera-istantanea-per-lucidare-carrozzeria-last-touch-express/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/92465/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-fast-cleaner.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/92465/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"a66cb7514d9d30be21677307348817037eb1e419e28e567f1cd5007fb0693857"},
  id:'F-fast-cleaner',brand:'F',category:'seal',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/P0598_1.pdf"},"evidence":[],"conflict":false},name:'Fast Cleaner 3in1',type:'快速美容剂 / 擦干辅助 / 黏土润滑液',sizes:'500 ml',materials:'车漆',
  dilutions:[['快速清洁','即用','喷雾壶'],['擦干辅助（湿车）','即用','喷雾壶'],['黏土润滑液','即用','喷雾壶']],
  steps:['快速美容：约 20 cm 外喷在要处理的部位，用超纤布直线擦到完全干，再用第二条干净干布收尾。','擦干辅助：喷在湿车身上，再用 Super Dryer 擦干。','黏土润滑：喷在要除染的部位，过黏土时始终保持表面充分润滑。'],
@@ -217,50 +241,60 @@ export const products: Product[] = [
  steps:['湿润光泽：用海绵把原液涂在轮胎上。','中等光泽：原液加等量水稀释后用海绵涂抹。'],
  notes:['不油腻、不黏手，防止轮胎龟裂和老化。'],url:MAFRA+'nerissimo-gomme-auto/'},
 
-{id:'F-nouveaunoir-spray',brand:'F',category:'trim',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0889_1.pdf"},"evidence":[],"conflict":false},name:'Nouveau Noir（500 ml 喷雾）',type:'即用型轮胎上光喷雾（零售装）',sizes:'500 ml',materials:'轮胎 · 橡胶',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-nouveaunoir-spray.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-03-25","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/NOUVEAU_NOIR_196_GR_4.pdf","checkedAt":"2026-11-27","sha256":"d438d2754a14f8285d39da0ea046f93668fbecb938322a5fabb6a3b197c1dab5"},
+ id:'F-nouveaunoir-spray',brand:'F',category:'trim',ph:{"category":"neu","value":"6","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0889_1.pdf"},"evidence":[],"conflict":false},name:'Nouveau Noir（500 ml 喷雾）',type:'即用型轮胎上光喷雾（零售装）',sizes:'500 ml',materials:'轮胎 · 橡胶',
  dilutions:[['轮胎','即用','喷雾壶']],
  steps:['彻底清洁要处理的橡胶或轮胎。','均匀喷在表面上。','用超纤施工块或软毛刷抹匀。'],
  notes:['上光成分来自植物、易生物降解，不含磷酸盐。','防止轮胎龟裂并保持胎侧弹性。','需要稀释使用的专业桶装见 Nouveau Noir。'],url:MAFRA+'pulire-e-lucidare-gomme-nouveau-noir/'},
 
 {
- sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-extreme-black/sds.pdf","source":"chemcx","language":"英文","version":"2022","hosting":"remote"},
- id:'F-extremeblack',brand:'F',category:'trim',name:'Extreme Black',type:'湿润效果轮胎上光喷雾',sizes:'—',materials:'轮胎',
+ sds:{"url":"https://sds.kokoda.fun/F-extremeblack.pdf","source":"chemcx","language":"英文","hosting":"r2","originalUrl":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-extreme-black/sds.pdf","checkedAt":"2026-11-27","version":"2022","sha256":"59ad95556b2f591c8e3aaa556f5ac4fd834c2deae80b31291cd30c537f438274"},
+ id:'F-extremeblack',brand:'F',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-extremeblack.pdf","section":9},"evidence":[{"kind":"statement","source":"sds","text":"SDS 第 9 节写「混合物不溶于水」，不适用 pH。"}],"conflict":false},name:'Extreme Black',type:'湿润效果轮胎上光喷雾',sizes:'—',materials:'轮胎',
  dilutions:[['光亮','即用（喷一圈）','喷雾壶'],['超光亮','即用（喷两圈）','喷雾壶']],
  steps:['直接喷在轮胎上：喷一圈为光亮效果，喷两圈为超光亮效果。','10 分钟后用布擦掉多余。'],
  notes:['避免喷到轮毂上；喷到时在干掉前用干布擦掉。','形成抗静电保护层，抵抗潮湿和灰尘。'],url:MAFRA+'nero-gomme-auto-extreme-black/'},
 
 {
- sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-fast-black/sds.pdf","source":"chemcx","language":"英文","version":"2021","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-fastblack.pdf","source":"chemcx","language":"英文","hosting":"r2","originalUrl":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-fast-black/sds.pdf","checkedAt":"2026-11-27","version":"2021","sha256":"76334f74efaab26dbe64eaff5bee83c3aaa18da97ceaa506d85a4dd132b23ec9"},
  id:'F-fastblack',brand:'F',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-06-0259）：不适用。","registration":"EB22-06-0259"}],"conflict":false},name:'Fast & Black',type:'抗静电轮胎上光喷雾',sizes:'200 ml · 500 ml',materials:'轮胎 · 橡胶脚垫',
  dilutions:[['轮胎','即用','喷雾壶']],
  steps:['均匀喷在轮胎上。','让它自然干燥。'],
  notes:["可耐 3 次洗车；不油腻、不黏手，也可用于橡胶脚垫。"],url:MAFRA+'rinnova-nero-gomme-fast-black/'},
 
-{id:'F-black3',brand:'F',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0780_1.pdf"},"evidence":[],"conflict":false},name:'Black 3 Plus',type:'轮胎翻新软化喷雾',sizes:'500 ml',materials:'轮胎 · 橡胶',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-black3.pdf","source":"car-wash-gr","language":"希腊文","version":"2023-05-12","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/BLACK_3_PLUS_945_GR_3.pdf","checkedAt":"2026-11-27","sha256":"b13e38a286f2a57f403e8b6515fb34b84483dd0acd8ffb4ad6f4f40399a744f0"},
+ id:'F-black3',brand:'F',category:'trim',ph:{"category":"neu","value":"7.5","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0780_1.pdf"},"evidence":[],"conflict":false},name:'Black 3 Plus',type:'轮胎翻新软化喷雾',sizes:'500 ml',materials:'轮胎 · 橡胶',
  dilutions:[['轮胎胎侧和胎面','即用','喷雾壶']],
  steps:['喷在轮胎上。','用海绵把产品均匀抹遍整个橡胶面。','干透后再开车。'],
  notes:['换季收纳轮胎前使用，可防止龟裂；干爽不油腻。'],url:MAFRA+'nero-gomme-auto-black-3-plus/'},
 
 // pH source: https://determashgroup.com/SCHEDE_PRODOTTO/MAFRA/ST/DIAMANT%20PLAST%20DRESSING%20PRO.PDF
-{id:'F-diamant-dressing',brand:'F',category:'trim',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"technical-sheet","url":"https://determashgroup.com/SCHEDE_PRODOTTO/MAFRA/ST/DIAMANT%20PLAST%20DRESSING%20PRO.PDF"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"厂商技术资料表写 pH 9（20 °C），适用 250 ml / 750 ml 包装；资料表由经销商托管。"}],"conflict":false},name:'Diamant Plast Dressing Pro',type:'内外塑料翻新保护剂（巴西棕榈蜡 + 聚合物）',sizes:'250 ml · 750 ml',materials:'内外饰塑料 · 橡胶 · 乙烯基 · 中控 · 门板 · 外饰条 · 发动机舱塑料',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-diamant-dressing.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-09-29","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/DIAMANT_PLAST_DRESSING_PRO_2252_GR_3.pdf","checkedAt":"2026-11-27","sha256":"cd2b075d151f7257f0fabd17d3b81f61038cbfe13e24d6e5a80669e9c9b310b3"},
+ id:'F-diamant-dressing',brand:'F',category:'trim',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"technical-sheet","url":"https://determashgroup.com/SCHEDE_PRODOTTO/MAFRA/ST/DIAMANT%20PLAST%20DRESSING%20PRO.PDF"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"厂商技术资料表写 pH 9（20 °C），适用 250 ml / 750 ml 包装；资料表由经销商托管。"}],"conflict":false},name:'Diamant Plast Dressing Pro',type:'内外塑料翻新保护剂（巴西棕榈蜡 + 聚合物）',sizes:'250 ml · 750 ml',materials:'内外饰塑料 · 橡胶 · 乙烯基 · 中控 · 门板 · 外饰条 · 发动机舱塑料',
  dilutions:[['擦拭养护','即用','喷雾壶']],
  steps:['在约 20 cm 外少量均匀喷在表面上。','用干净干燥的超纤布擦匀，去除多余。'],
  notes:["产品浓缩，不要过量使用。","自流平，光泽均匀，可维持数周；不油腻、防尘，不会让塑料发白。"],url:MAFRA+'diamant-plast-dressing-pro-750ml-rinnova-lucida-protegge-plastiche-auto/'},
 
-{id:'F-faspoiler',brand:'F',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/FASPOILER.pdf"},"evidence":[],"conflict":false},name:'Faspoiler',type:'外饰塑料 / 橡胶聚合物翻新喷雾',sizes:'300 ml',materials:'保险杠 · 侧裙 · 扰流板 · 敞篷软顶 · FRP 树脂件 · 塑料 · 橡胶',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-faspoiler.pdf","source":"car-wash-gr","language":"希腊文","version":"2026-01-26","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/FASPOILER_376_GR_5.pdf","checkedAt":"2026-11-27","sha256":"2411f27ba19c827ab6450a210bb41b72a4b13beb765c8f8a29d3ada1b7a1a4dc"},
+ id:'F-faspoiler',brand:'F',category:'trim',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/FASPOILER.pdf"},"evidence":[],"conflict":false},name:'Faspoiler',type:'外饰塑料 / 橡胶聚合物翻新喷雾',sizes:'300 ml',materials:'保险杠 · 侧裙 · 扰流板 · 敞篷软顶 · FRP 树脂件 · 塑料 · 橡胶',
  dilutions:[['擦拭养护','即用','喷雾壶']],
  steps:['喷在保险杠、侧裙、扰流板等部位。','抹匀，形成透明光亮的保护层。'],
  notes:['定期使用可防止外露部件褪色、老化；不油腻、不开裂。','官方页面未给出详细步骤。'],url:MAFRA+'prodotti-per-plastiche-auto-faspoiler/'},
 
 // ───────────────────────── 玻璃 ─────────────────────────
-{id:'F-glass-plus',brand:'F',category:'glass',name:'Glass Cleaner Plus',type:'无氨玻璃去油清洁剂',sizes:'750 ml',materials:'车窗 · 前挡 · 后视镜 · 屏幕',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-glass-plus.pdf","source":"car-wash-gr","language":"希腊文","version":"2024-01-15","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/GLASS_CLEANER_PLUS_1796_GR_2.pdf","checkedAt":"2026-11-27","sha256":"e18aa887fb7b7c461a57044cebdd3ccf3865132bd4307323a40ba8db8889d52a"},
+ id:'F-glass-plus',brand:'F',category:'glass',ph:{"category":"acid","value":"5","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-glass-plus.pdf","section":9},"evidence":[],"conflict":false},name:'Glass Cleaner Plus',type:'无氨玻璃去油清洁剂',sizes:'750 ml',materials:'车窗 · 前挡 · 后视镜 · 屏幕',
  dilutions:[['玻璃清洁','即用','喷雾壶']],
  steps:['喷在表面上。','用干净干燥的超纤布擦净。'],
  notes:['无氨，快干不留雾痕；可用于导航 LCD 屏。'],url:MAFRA+'glass-cleaner-plus-cleaner-and-degreaser-car-750ml/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/93135/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
- id:'F-glass-clean',brand:'F',category:'glass',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://shop.gruppogesa.it/media/attachment/93135/scheda%20sicurezza.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB19-01-0688，已过期）：原液中性。","registration":"EB19-01-0688"},{"kind":"statement","source":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0791_1.pdf","text":"厂商技术资料表写 pH 11，与 SDS 第 9 节的 pH 7 不一致；本站按 SDS 第 9 节标注。"}],"conflict":true},name:'Glass Clean & Shine',type:'无氨泡沫玻璃清洁剂（罐装）',sizes:'—',materials:'玻璃 · 屏幕 · 贴膜车窗',
+ sds:{"url":"https://sds.kokoda.fun/F-glass-clean.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/93135/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"57f0aa14191ab20b7c18bd83ee518bd45932c427c9f5b38e81a37b7f8150a8c5"},
+ id:'F-glass-clean',brand:'F',category:'glass',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-glass-clean.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB19-01-0688，已过期）：原液中性。","registration":"EB19-01-0688"},{"kind":"statement","source":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0791_1.pdf","text":"厂商技术资料表写 pH 11，与 SDS 第 9 节的 pH 7 不一致；本站按 SDS 第 9 节标注。"}],"conflict":true},name:'Glass Clean & Shine',type:'无氨泡沫玻璃清洁剂（罐装）',sizes:'—',materials:'玻璃 · 屏幕 · 贴膜车窗',
  dilutions:[['玻璃清洁','即用','—']],
  steps:['摇匀罐体。','在 15–25 cm 外喷在表面上。','用干净干布擦净收尾。'],
  notes:["泡沫附着让布更顺滑；无氨，可用于贴了隔热膜的玻璃。"],url:MAFRA+'pulire-e-lucidare-vetri-auto-glass-clean/'},
@@ -287,21 +321,23 @@ export const products: Product[] = [
  cautions:['dry','test'],notes:['不要用于铝和合金。'],url:MAFRA+'super-apc-detergente-universale-per-sporchi-gravosi/'},
 
 {
- sds:{"url":"/sds/F-hp12.pdf","source":"mafra-fr","language":"法文","version":"2023-12-20","hosting":"local","sha256":"3e8e76efa29ba5b86370c6ff35eaed7bd176502e2df5b32877f618fe5ac58b7d","originalUrl":"https://algeria.mafra.com/files/HP12_1138_FR_4.pdf","checkedAt":"2026-11-10"},
- id:'F-hp12',brand:'F',category:'apc',ph:{"category":"alk","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-01-0530，见韩国官方商城 maframall.com 的安全标示）：碱性。","registration":"EB23-01-0530"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-01-0530）：原液碱性。","registration":"EB23-01-0530"}],"conflict":false},name:'HP 12',type:'即用型万能去油剂（发动机舱）',sizes:'125 ml · 750 ml',materials:'发动机 · 镀铬 · 车身外部各表面 · 轮毂',
+ sds:{"url":"https://sds.kokoda.fun/F-hp12.pdf","source":"mafra-fr","language":"法文","hosting":"r2","version":"2023-12-20","originalUrl":"https://algeria.mafra.com/files/HP12_1138_FR_4.pdf","checkedAt":"2026-11-10","sha256":"3e8e76efa29ba5b86370c6ff35eaed7bd176502e2df5b32877f618fe5ac58b7d"},
+ id:'F-hp12',brand:'F',category:'apc',ph:{"category":"alk","value":"11.3","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-hp12.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-01-0530，见韩国官方商城 maframall.com 的安全标示）：碱性。","registration":"EB23-01-0530"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB23-01-0530）：原液碱性。","registration":"EB23-01-0530"},{"kind":"statement","source":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0784_1.pdf","text":"厂商技术资料表写 pH 11.4（20 °C）。"}],"conflict":false},name:'HP 12',type:'即用型万能去油剂（发动机舱）',sizes:'125 ml · 750 ml',materials:'发动机 · 镀铬 · 车身外部各表面 · 轮毂',
  dilutions:[['去油清洁','即用','喷雾壶']],
  steps:['喷在要清洁的部位，等几秒。','需要时用布或刷子辅助。','用超纤布擦净，需要时用水冲洗。'],
  notes:["可清洁发动机各部位的油污，也能去交通膜、油烟；可用于房车内饰和沙发织物污渍。","官方建议用它手洗 Microfiber Pad。"],url:MAFRA+'hp-12/'},
 
 {
- sds:{"url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-split/sds.pdf","source":"chemcx","language":"英文","version":"2021","hosting":"remote"},
- id:'F-split',brand:'F',category:'apc',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"sds","url":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-split/sds.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0996，见韩国官方商城 maframall.com 的安全标示）：弱碱性。品牌官网（意大利）写中性，与韩国申报不一致。","registration":"EB22-01-0996"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0996）：原液弱碱性。","registration":"EB22-01-0996"}],"conflict":true},name:'Split',type:'多表面清洁剂（植物表面活性剂）',sizes:'750 ml',materials:'玻璃 · 内饰 · 塑料 · 皮革 · 碳纤维 · 金属 · 屏幕',
+ sds:{"url":"https://sds.kokoda.fun/F-split.pdf","source":"chemcx","language":"英文","hosting":"r2","originalUrl":"https://gaoazdxztmpb4haq.public.blob.vercel-storage.com/products/mafra-split/sds.pdf","checkedAt":"2026-11-27","version":"2021","sha256":"d8ea49ad7553345e0801ebdf7996e137f7069e0a71a1b107846681902edfd68a"},
+ id:'F-split',brand:'F',category:'apc',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-split.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0996，见韩国官方商城 maframall.com 的安全标示）：弱碱性。品牌官网（意大利）写中性，与韩国申报不一致。","registration":"EB22-01-0996"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0996）：原液弱碱性。","registration":"EB22-01-0996"}],"conflict":true},name:'Split',type:'多表面清洁剂（植物表面活性剂）',sizes:'750 ml',materials:'玻璃 · 内饰 · 塑料 · 皮革 · 碳纤维 · 金属 · 屏幕',
  dilutions:[['多表面清洁','即用','喷雾壶']],
  steps:['喷在表面上。','用干净干燥的优质超纤布擦到完全无残留。'],
  notes:["免冲洗，不含磷酸盐、氯和氨。"],url:MAFRA+'split-750ml-detergente-multisuperficie/'},
 
 // ───────────────────────── 内饰 ─────────────────────────
-{id:'F-pulimax-spray',brand:'F',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0841_1.pdf"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB24-01-0285，见韩国官方商城 maframall.com 的安全标示）：弱碱性；韩国标示的产品名为 Pulimax 2.0 500 ml。","registration":"EB24-01-0285"}],"conflict":false},name:'Pulimax（500 ml 喷雾）',type:'即用型内饰清洁喷雾（零售装）',sizes:'500 ml',materials:'织物座椅 · 人造革（skay）· 内饰塑料',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-pulimax-spray.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-03-21","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/PULIMAX_190_GR_5.pdf","checkedAt":"2026-11-27","sha256":"c701c092c412c9ef1804b425a9d05613692186bc2ea40841e0465b7e062e472f"},
+ id:'F-pulimax-spray',brand:'F',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0841_1.pdf"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB24-01-0285，见韩国官方商城 maframall.com 的安全标示）：弱碱性；韩国标示的产品名为 Pulimax 2.0 500 ml。","registration":"EB24-01-0285"}],"conflict":false},name:'Pulimax（500 ml 喷雾）',type:'即用型内饰清洁喷雾（零售装）',sizes:'500 ml',materials:'织物座椅 · 人造革（skay）· 内饰塑料',
  dilutions:[['内饰清洁','即用','喷雾壶']],
  steps:['直接喷在要清洁的部位。','停留几分钟，不要让它干在表面上。','用布有规律地擦拭。'],
  notes:["溶解织物纤维里的污垢和尼古丁，并去除异味。"],url:MAFRA+'puliziia-e-igienizzazione-auto-pulimax/'},
@@ -317,7 +353,7 @@ export const products: Product[] = [
  notes:["留下抗静电、防紫外线保护层，并消除异味。"],url:MAFRA+'pulizia-interni-e-plastiche-auto-3-in-1/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/86594/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-plast-shine.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/86594/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"1c3a4b3b386dd7074985aeac77e8f35280ab8fc35240a6b1b7cd03efe6a3cb7e"},
  id:'F-plast-shine',brand:'F',category:'int',name:'Diamant Plast Shine',type:'亮光中控上光喷雾（含 UV 滤剂）',sizes:'500 ml',materials:'中控 · 内饰塑料',
  dilutions:[['上光','即用','—']],
  steps:['喷在中控和内饰塑料上。','用超纤布抹匀擦亮。'],
@@ -329,14 +365,14 @@ export const products: Product[] = [
  notes:['不含硅，抗静电。'],url:MAFRA+'lucida-cruscotti-effetto-opaco-diamant-satin/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/86139/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
- id:'F-scic-blu',brand:'F',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://shop.gruppogesa.it/media/attachment/86139/scheda%20sicurezza.pdf","section":9},"evidence":[{"kind":"statement","source":"product-page","text":"品牌官网挂的技术资料表实为 SCIC Green；本站按 SCIC Blue 自己的 SDS 第 9 节标注。"}],"conflict":false},name:'Scic Blu',type:'中等光泽中控养护喷雾',sizes:'600 ml',materials:'中控 · 内饰塑料',
+ sds:{"url":"https://sds.kokoda.fun/F-scic-blu.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/86139/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"9abee92d03fcf19aa94a0ef27138372f33fa30608f01a239155c8a782817b5c4"},
+ id:'F-scic-blu',brand:'F',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-scic-blu.pdf","section":9},"evidence":[{"kind":"statement","source":"product-page","text":"品牌官网挂的技术资料表实为 SCIC Green；本站按 SCIC Blue 自己的 SDS 第 9 节标注。"}],"conflict":false},name:'Scic Blu',type:'中等光泽中控养护喷雾',sizes:'600 ml',materials:'中控 · 内饰塑料',
  dilutions:[['养护','即用','—']],
  steps:['在 20–25 cm 外少量均匀喷在要处理的部位。','用干净干燥的超纤布抹匀到整个表面。','再用第二条干净超纤布收尾。'],
  notes:['不油腻，不会在前挡上反光。'],url:MAFRA+'ravvivante-plastiche-e-cruscotti-auto-scic-blu/'},
 
 {
- sds:{"url":"https://shop.gruppogesa.it/media/attachment/86138/scheda%20sicurezza.pdf","source":"gesa","language":"意大利文","hosting":"remote"},
+ sds:{"url":"https://sds.kokoda.fun/F-scic-green.pdf","source":"gesa","language":"意大利文","hosting":"r2","originalUrl":"https://shop.gruppogesa.it/media/attachment/86138/scheda%20sicurezza.pdf","checkedAt":"2026-11-27","sha256":"78c858995209a198e05ed3f618a4b950f127804cbe32317a64f5437151fdc8bb"},
  id:'F-scic-green',brand:'F',category:'int',ph:{"category":"na","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0044_1.pdf"},"evidence":[],"conflict":false},name:'Scic Green',type:'中控清洁养护喷雾（除菌、去烟味，自然效果）',sizes:'600 ml',materials:'中控 · 内饰塑料 · 铝饰件',
  dilutions:[],steps:[],
  notes:['清洁中控并有除菌作用，可去除螨虫、灰尘和烟味，适合吸烟车；对铝饰件特别适用，留下自然效果；雪松香。','官网未给出施工步骤。'],url:MAFRA+'igienizzante-auto-e-cruscotti-scic-green/'},
@@ -350,12 +386,16 @@ export const products: Product[] = [
  notes:['深入表面微孔清洁，填充式配方减轻老化痕迹，让中控恢复原貌并上光；长效抗 UVA、抗静电，减缓积灰、防止过早褪色。','去除车内异味，留下 Ocean 清新香。也可清洁、翻新褪色的外部黑色塑料。','官网未给出施工步骤。'],url:MAFRA+'lucida-cruscotti-3in1/'},
 
 // pH source: https://determashgroup.com/SCHEDE_PRODOTTO/MAFRA/ST/TRATTAMENTO%203IN1%20TESSUTI.PDF
-{id:'F-3in1-tessuti',brand:'F',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0540_1.pdf"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"厂商技术资料表写 pH 11（20 °C）。"}],"conflict":false},name:'Trattamento Tessuti 3in1',type:'织物 / Alcantara® 活性泡沫清洁剂',sizes:'500 ml',materials:'织物座椅 · Alcantara · 地毯 · 脚垫',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-3in1-tessuti.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-11-20","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/FABRIC_TREATMENT_3_IN_1_618_GR_4.pdf","checkedAt":"2026-11-27","sha256":"040c45e47081721b93563090c84f250bacb428186ebc59d596bf34b95349fd99"},
+ id:'F-3in1-tessuti',brand:'F',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0540_1.pdf"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"厂商技术资料表写 pH 11（20 °C）。"}],"conflict":false},name:'Trattamento Tessuti 3in1',type:'织物 / Alcantara® 活性泡沫清洁剂',sizes:'500 ml',materials:'织物座椅 · Alcantara · 地毯 · 脚垫',
  dilutions:[['织物清洁','即用','喷雾壶']],
  steps:['在约 20 cm 外少量均匀喷在整个表面上。','用干净超纤布或软毛刷把泡沫抹匀。','去除多余，用第二条干净超纤布擦干。'],
  notes:["不会把织物弄得太湿。"],url:MAFRA+'pulire-sedili-auto-3-in-1-tessuti/'},
 
-{id:'F-flash',brand:'F',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0544_1.pdf"},"evidence":[],"conflict":false},name:'Flash',type:'织物干洗泡沫（附刷子）',sizes:'400 ml',materials:'织物座椅 · 丝绒 · Alcantara · 脚垫',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-flash.pdf","source":"car-wash-gr","language":"希腊文","version":"2022-06-20","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/FLASH_1288_GR_3.pdf","checkedAt":"2026-11-27","sha256":"94c51ce62b310cecf149fbd4c915e2fa7974bde9c9479c7341606c269481ef0b"},
+ id:'F-flash',brand:'F',category:'int',ph:{"category":"alk","value":"11","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0544_1.pdf"},"evidence":[],"conflict":false},name:'Flash',type:'织物干洗泡沫（附刷子）',sizes:'400 ml',materials:'织物座椅 · 丝绒 · Alcantara · 脚垫',
  dilutions:[['织物干洗','即用','—']],
  steps:['喷在污渍上。','用附带的刷子刷洗。','擦掉或吸走残留。'],
  notes:['不弄湿织物，同时中和动物、食物和烟味。'],url:MAFRA+'lavaggio-tappezzeria-auto-flash-pulitore-interni-tessuto/'},
@@ -365,17 +405,23 @@ export const products: Product[] = [
  steps:[],
  notes:['不会弄湿织物，可快速去除顽固污渍；带「Odor Stop」效果，持久去除异味。','带刷头，方便使用。官网未给出施工步骤。'],url:MAFRA+'flash-pet/'},
 
-{id:'F-3in1-pelle',brand:'F',category:'int',ph:{"category":"neu","basis":"raw","source":{"kind":"korean-registration"},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0892，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"EB22-01-0892"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0892）：原液中性。","registration":"EB22-01-0892"}],"conflict":false},name:'Trattamento 3in1 Pelle',type:'皮革清洁 + 滋养 + 保护（芦荟 + 天然蜡）',sizes:'500 ml',materials:'皮革座椅',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-3in1-pelle.pdf","source":"car-wash-gr","language":"希腊文","version":"2025-04-08","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/LEATHER_CARE_3_IN_1_1088_GR_5.pdf","checkedAt":"2026-11-27","sha256":"70080b9a195ddf74e1d0b30a1acfc44d5d9977f71195ae80891398b786601e3e"},
+ id:'F-3in1-pelle',brand:'F',category:'int',ph:{"category":"alk","value":"10","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-3in1-pelle.pdf","section":9},"evidence":[{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0892，见韩国官方商城 maframall.com 的安全标示）：中性。","registration":"EB22-01-0892"},{"kind":"statement","source":"korean-registration","text":"韩国生活化学品申报（申报号 EB22-01-0892）：原液中性。","registration":"EB22-01-0892"},{"kind":"statement","source":"technical-sheet","url":"https://mafra.it/wp-content/uploads/2022/05/H0541_1.pdf","text":"厂商技术资料表亦写 pH 10（20 °C）。"},{"kind":"resolution","rule":"sds-overrides-category","previousCategory":"neu"}],"conflict":true},name:'Trattamento 3in1 Pelle',type:'皮革清洁 + 滋养 + 保护（芦荟 + 天然蜡）',sizes:'500 ml',materials:'皮革座椅',
  dilutions:[['皮革日常养护','即用','—']],
  steps:['用在皮革座椅和内饰皮件上，清洁后擦匀。'],
  notes:["适合定期使用，防止皱褶和开裂。","官方页面未给出详细步骤。"],url:MAFRA+'pulire-sedili-auto-3-in-1-pelle/'},
 
-{id:'F-charming',brand:'F',category:'int',ph:{"category":"alk","value":"8.7","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0051_1.pdf"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"品牌官网写「中性配方」，厂商技术资料表写 pH 8.7（弱碱性）；本站按厂商技术资料表标注。MAFRA 未公开这款的 SDS。"}],"conflict":true},name:'Charme Detergent',type:'皮革清洁泡沫',sizes:'150 ml',materials:'皮革',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-charming.pdf","source":"car-wash-gr","language":"希腊文","version":"2022-03-31","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/CHARME_DETERGENT_AUTO_90_GR_3.pdf","checkedAt":"2026-11-27","sha256":"5bc2c4860dc7ef32eed59a7297fadd00ffba986b0632256ffb2b66977d347c15"},
+ id:'F-charming',brand:'F',category:'int',ph:{"category":"alk","value":"8.7","basis":"raw","source":{"kind":"technical-sheet","url":"https://mafra.it/mafra/download/schede-tecniche/H0051_1.pdf"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"品牌官网写「中性配方」，厂商技术资料表写 pH 8.7（弱碱性）；本站按厂商技术资料表标注。MAFRA 未公开这款的 SDS。"}],"conflict":true},name:'Charme Detergent',type:'皮革清洁泡沫',sizes:'150 ml',materials:'皮革',
  dilutions:[['皮革清洁','即用','—']],
  steps:['直接涂在要处理的部位，抹匀覆盖整个表面。','在泡沫变成液体前打圈按摩，把污垢带出表面。','用柔软的湿布轻压擦掉多余泡沫和污垢。'],
  notes:["新皮的日常保养和深度清洁都适用。"],url:MAFRA+'puulire-sedili-in-pelle-detergent/'},
 
-{id:'F-nutrient',brand:'F',category:'int',name:'Charme Nutrient',type:'皮革滋养霜',sizes:'—',materials:'皮革',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-nutrient.pdf","source":"car-wash-gr","language":"希腊文","version":"2026-06-03","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/CHARME_NUTRIENT_AUTO_293_GR_4.pdf","checkedAt":"2026-11-27","sha256":"1f84476551112dc07871dfb4ba0453921e8883e1eebab229aa74b4c2f62e28c4"},
+ id:'F-nutrient',brand:'F',category:'int',ph:{"category":"neu","value":"7","basis":"raw","source":{"kind":"sds","url":"https://sds.kokoda.fun/F-nutrient.pdf","section":9},"evidence":[],"conflict":false},name:'Charme Nutrient',type:'皮革滋养霜',sizes:'—',materials:'皮革',
  dilutions:[],
  steps:['先用 Charme 清洁泡沫清洁、去油。','小幅度打圈、朝同一方向轻轻涂抹滋养霜。','让它吸收 20 分钟，再用柔软干布擦掉多余；需要时重复。'],
  notes:['敞篷车夏季应加强护理。','被晒老化的皮革，可以涂后放置过夜，缝线处多涂一些。'],url:MAFRA+'pulire-sedili-in-pelle-nutrient/'},
@@ -469,7 +515,9 @@ export const products: Product[] = [
  notes:['三个喷嘴：绿色干泡沫、灰色中等（标配）、橙色湿泡沫覆盖面更大。','没有高压清洗机和 PA壶时也能做泡沫预洗。'],url:MAFRA+'nebula-foam-2-0-nebulizzatore-schiumogeno-bi-uso-accessori-lavaggio-auto/'},
 
 // pH source: https://www.mafra.it/wp-content/uploads/2022/05/H0746_1.pdf
-{id:'F-mfwash',brand:'F',category:'towel',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.mafra.it/wp-content/uploads/2022/05/H0746_1.pdf"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"厂商技术资料表写 pH 9（20 °C，pH 计测量）。"}],"conflict":false},name:'Microfiber Wash',type:'超纤布专用洗涤剂',sizes:'—',materials:'—',
+{
+ sds:{"url":"https://sds.kokoda.fun/F-mfwash.pdf","source":"car-wash-gr","language":"希腊文","version":"2023-05-12","hosting":"r2","originalUrl":"https://www.car-wash.gr/image/data/MSDS/Hobby/MICROFIBER_WASH_1498_GR_3.pdf","checkedAt":"2026-11-27","sha256":"e52e030ca650371f71d62ba5c53a5f41d64c074dfcde0703f24c50846e0bdeee"},
+ id:'F-mfwash',brand:'F',category:'towel',ph:{"category":"alk","value":"9","basis":"raw","source":{"kind":"technical-sheet","url":"https://www.mafra.it/wp-content/uploads/2022/05/H0746_1.pdf"},"evidence":[{"kind":"statement","source":"technical-sheet","text":"厂商技术资料表写 pH 9（20 °C，pH 计测量）。"}],"conflict":false},name:'Microfiber Wash',type:'超纤布专用洗涤剂',sizes:'—',materials:'—',
  dilutions:[['洗衣机 / 手洗','每 kg 布约 15 ml','—']],
  steps:['每 kg 超纤布加约 15 ml。','30 °C 洗涤，不要加柔顺剂。'],
  notes:["去除抛光剂、研磨剂和蜡残留；不含柔顺剂和阳离子表面活性剂。"],url:MAFRA+'microfibra-wash/'},

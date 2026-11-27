@@ -179,6 +179,8 @@ test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({
   await page.goto('/p/C-clearcut');
   // pH 依据用统一说法，资料原文放在页面最下面的备注里
   await expect(page.locator('.ph-source')).toContainText('SDS 第 9 节 · 原液数据 · 官方资料之间不一致，见备注');
+  await expect(page.locator('.ph-source a')).toHaveAttribute('href', 'https://sds.kokoda.fun/C-clearcut.pdf');
+  await expect(page.locator('.src.sds')).toHaveAttribute('href', 'https://sds.kokoda.fun/C-clearcut.pdf');
   await expect(page.locator('.remarks')).toContainText('本站按 SDS 第 9 节标注');
   expect(await page.locator('.sh-body > *').evaluateAll((els) => els.at(-2)?.classList.contains('remarks'))).toBe(true);
   // 资料表只给 1% 稀释液 pH 时，标签和依据都写明口径
@@ -192,8 +194,6 @@ test('产品详情弹窗关闭、浏览器前进后退及直接链接', async ({
     await expect(page.locator('.sh-body .notes')).toContainText('不要在发热的表面上施工。');
     await expect(page.locator('.sh-body .notes:empty, .remarks ul:empty')).toHaveCount(0);
   }
-  const response = await page.request.get('/sds/C-clearcut.pdf');
-  expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-');
 });
 
 test('流程搜索目录与主列表一致，空结果没有失效目录链接', async ({ page }) => {

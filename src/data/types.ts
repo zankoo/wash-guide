@@ -106,7 +106,7 @@ export interface SafetyDataSheet {
   source: SdsSourceId;
   language: string;
   version?: string;
-  hosting: 'remote' | 'local';
+  hosting: 'r2' | 'remote';
   originalUrl?: string;
   sha256?: string;
   checkedAt?: string;

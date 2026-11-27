@@ -18,7 +18,7 @@ export default defineConfig({
     assets: {
       htmlHandling: "none",
       notFoundHandling: "none",
-      runWorkerFirst: ["/*", "!/_next/static/*", "!/*/_next/static/*", "!/img/*", "!/sds/*"],
+      runWorkerFirst: ["/*", "!/_next/static/*", "!/*/_next/static/*", "!/img/*"],
     },
     env: {
       ASSETS: bindings.assets(),
