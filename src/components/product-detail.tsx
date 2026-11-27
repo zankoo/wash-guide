@@ -1,11 +1,5 @@
 import { Suspense, type ReactNode } from 'react';
-import { BRAND, CAT_NAME } from '@/data/taxonomy';
-import { SDS_SOURCES } from '@/data/sds-sources';
-import { cautionTexts } from '@/data/cautions';
-import { phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL } from '@/data/ph';
-import { imageSrc, subcategoryOf, phDisplay, type FlowEntry } from '@/data/presentation';
-import type { Product } from '@/data/types';
-import { ProductCorrection } from './product-correction';
+import { BRAND, CAT_NAME, SDS_SOURCES, SUB_OF, cautionTexts, flowsUsing, imageSrc, phEvidenceNotes, PH_BASIS_LABEL, PH_SOURCE_LABEL, phDisplay, type Product } from '@/data';
 import { DilutionTable } from './dilution-table';
 import { FavButton } from './fav-button';
 import { Notes } from './notes';
@@ -14,7 +8,8 @@ import { ExternalIcon, ToxicIcon } from './icons';
 import { ProductImage } from './product-image';
 
 /** 产品详情：弹出面板和独立页面共用 */
-export function ProductDetail({ p, used }: { p: Product; used: FlowEntry[] }) {
+export function ProductDetail({ p }: { p: Product }) {
+  const used = flowsUsing(p.id);
   return (
     <>
       <div className="sh-head">
@@ -32,7 +27,7 @@ export function ProductDetail({ p, used }: { p: Product; used: FlowEntry[] }) {
           <div className="sh-tag">
             <span className={`br ${p.brand}`}>{BRAND[p.brand]}</span>
             <span>
-              {CAT_NAME[p.category]} / {subcategoryOf(p).name}
+              {CAT_NAME[p.category]} / {SUB_OF.get(p.id)?.name}
             </span>
           </div>
           <h2 className="sh-name" id={`d-name-${p.id}`}>
@@ -97,7 +92,6 @@ export function ProductDetail({ p, used }: { p: Product; used: FlowEntry[] }) {
             <ExternalIcon />
           </a>
           <SdsLink p={p} />
-          <ProductCorrection product={p.id} />
         </div>
       </div>
     </>

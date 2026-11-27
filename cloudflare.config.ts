@@ -22,8 +22,6 @@ export default defineConfig({
     },
     env: {
       ASSETS: bindings.assets(),
-      DB: bindings.d1({ name: "wash-guide", id: "fe14705e-4532-4b31-afb5-455132ec1e7e" }),
-      PLATFORM: bindings.worker({ worker: "wash-guide-api" }),
     },
   }),
 });
