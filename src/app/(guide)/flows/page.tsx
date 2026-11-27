@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import { FlowBrowser } from '@/components/flow-browser';
 import { PageSlide } from '@/components/page-slide';
-import { publishedFlows } from '@/data/published-catalog';
+import { FLOWS, PRODUCTS, imageSrc, productsOfStep, stepsOf } from '@/data';
+import { flowItems } from '@/data/catalog';
 import { CatalogProvider } from '@/components/catalog-state';
 import { GuideShell } from '@/components/guide-shell';
 
-export const dynamic = 'force-dynamic';
+const usedIds = new Set(FLOWS.flatMap((f) => stepsOf(f).flatMap(productsOfStep)));
+const chips = PRODUCTS.filter((p) => usedIds.has(p.id)).map((p) => ({ id: p.id, name: p.name, brand: p.brand, image: imageSrc(p) }));
 
 export const metadata: Metadata = {
   title: '洗车流程与组合',
@@ -32,11 +34,10 @@ const intro = (
   </div>
 );
 
-export default async function FlowsPage() {
-  const { flows, items: flowItems, chips } = await publishedFlows();
+export default function FlowsPage() {
   return (
     <CatalogProvider products={[]} flows={flowItems} chips={chips}><GuideShell><PageSlide>
-      <FlowBrowser cards={flows} intro={intro} />
+      <FlowBrowser cards={FLOWS} intro={intro} />
     </PageSlide></GuideShell></CatalogProvider>
   );
 }

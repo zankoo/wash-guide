@@ -12,7 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "dist/**",
-    "**/.cloudflare/**",
+    ".cloudflare/**",
     ".wrangler/**",
     "next-env.d.ts",
     // Playwright 运行时产生的报告和追踪文件

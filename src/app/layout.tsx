@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Saira_Condensed } from 'next/font/google';
 import { FilterProvider } from '@/components/filter-state';
 import { GuideProvider } from '@/components/guide-state';
-import { LibrarySync } from '@/components/library-sync';
 import { OfflineSupport } from '@/components/offline-support';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
@@ -36,7 +35,6 @@ export default function RootLayout({ children, modal }: LayoutProps<'/'>) {
           {children}
           {modal}
           <OfflineSupport />
-          <LibrarySync />
         </GuideProvider></FilterProvider>
       </body>
     </html>

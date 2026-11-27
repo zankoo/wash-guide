@@ -1,9 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { MATERIALS, type MaterialId } from '@/data/materials';
-import { subcategoriesFor } from '@/data/subcategories';
+import { SUBCATS } from '@/data/subcategories';
 import { BRAND, BRANDS, CATS, SCENES } from '@/data/taxonomy';
 import type { SceneId } from '@/data/types';
 import { usePickers } from './filter-bar';
@@ -12,7 +11,7 @@ import { useGuide } from './guide-state';
 import { useFilters } from './filter-state';
 import { useCatalogResults } from './catalog-state';
 import { isDead } from '@/lib/catalog-results';
-import { DocSearchIcon, LibraryIcon, StarIcon } from './icons';
+import { StarIcon } from './icons';
 import { Indicator } from './indicator';
 import { Logo } from './hero';
 import { ViewTabs } from './view-tabs';
@@ -120,16 +119,6 @@ export function Sidebar() {
         <span>洗车施工速查</span>
       </div>
       <ViewTabs className="tabs side-tabs" />
-      <nav className="side-tools" aria-label="手册工具">
-        <Link href="/research-search" className="side-tool">
-          <DocSearchIcon />
-          <span>资料检索</span>
-        </Link>
-        <Link href="/library" className="side-tool">
-          <LibraryIcon />
-          <span>资料库</span>
-        </Link>
-      </nav>
 
       {!isFlows && (
         <ul className="side-list" role="list">
@@ -147,11 +136,6 @@ export function Sidebar() {
               我的常用
               <small>{favoriteCount}</small>
             </button>
-            {favMode && (
-              <div className="side-fav-sync">
-                <Link href="/library">同步收藏与私人清单 →</Link>
-              </div>
-            )}
           </li>
         </ul>
       )}
@@ -259,7 +243,7 @@ export function Sidebar() {
             <ul className="side-index" role="list">
               {CATS.filter(([k]) => indexCounts[k]).map(([k, n]) => {
                 const here = activeCat === `cat-${k}`;
-                const subs = subcategoriesFor(k).filter((s) => subCounts[s.id]);
+                const subs = SUBCATS.filter((s) => s.category === k && subCounts[s.id]);
                 return (
                   <li key={k}>
                     <a

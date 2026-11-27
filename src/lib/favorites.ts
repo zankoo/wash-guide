@@ -1,15 +1,14 @@
 'use client';
 
-import { CHANGED, enqueue, linkedDevice } from './library-journal';
 import { useSyncExternalStore } from 'react';
 
-// 本机收藏及可选同步资料库的离线副本。
+// 常用产品：只存在当前设备的 localStorage 里（无痕模式或存储被禁用时退化为空列表）
 const KEY = 'wash-favorites';
 const EMPTY: readonly string[] = [];
 const listeners = new Set<() => void>();
 let cache: { raw: string | null; ids: readonly string[] } = { raw: null, ids: EMPTY };
 
-export function readFavorites(): readonly string[] {
+function read(): readonly string[] {
   let raw: string | null = null;
   try {
     raw = localStorage.getItem(KEY);
@@ -38,22 +37,14 @@ function subscribe(l: () => void) {
 }
 
 export function useFavorites(): readonly string[] {
-  return useSyncExternalStore(subscribe, readFavorites, () => EMPTY);
-}
-
-export function storeFavorites(next: readonly string[]) {
-  try { localStorage.setItem(KEY, JSON.stringify(next)); } catch {}
-  listeners.forEach(l => l());
+  return useSyncExternalStore(subscribe, read, () => EMPTY);
 }
 
 export function toggleFavorite(id: string) {
-  const ids = readFavorites();
-  const on = !ids.includes(id);
-  const scope = linkedDevice();
-  storeFavorites(on ? [...ids, id] : ids.filter(x => x !== id));
-  if (scope) {
-    enqueue(scope,[{ id,on }]).then(() => window.dispatchEvent(new Event(CHANGED))).catch(() => {
-      window.dispatchEvent(new CustomEvent('wash-library-error', { detail:'本机存储不可用，此次收藏尚未同步。' }));
-    });
-  }
+  const ids = read();
+  const next = ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id];
+  try {
+    localStorage.setItem(KEY, JSON.stringify(next));
+  } catch {}
+  listeners.forEach((l) => l());
 }

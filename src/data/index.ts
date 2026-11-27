@@ -7,10 +7,13 @@ import * as mafra from './mafra';
 import * as laboManiac from './labo-maniac';
 import * as laboManiacFlows from './labo-maniac-flows';
 import * as ps from './ps';
-import type { Product } from './types';
-import { productsOfStep, stepsOf, type FlowEntry } from './presentation';
+import { SUBCATS, type Subcategory } from './subcategories';
+import { BRAND, CAT_EN, CAT_NAME, PH_SHORT, SCENE_NAME } from './taxonomy';
+import type { Combo, Flow, FlowStep, PH, Product } from './types';
+import { PH_BASIS_LABEL, phEvidenceNotes } from './ph';
+import { cautionTexts } from './cautions';
+import { fold, initials, type RankFields } from '../lib/search';
 
-export * from './presentation';
 export * from './materials';
 export * from './subcategories';
 export * from './taxonomy';
@@ -20,6 +23,8 @@ export * from './cautions';
 export type * from './types';
 
 export const PRODUCTS: Product[] = [...laboManiac.products, ...mafra.products, ...koch.products, ...carpro.products, ...gyeon.products, ...bola.products, ...feynlab.products, ...ps.products];
+
+export type FlowEntry = (Flow & { kind: 'off' }) | (Combo & { kind: 'combo' });
 
 export const FLOWS: FlowEntry[] = [
   ...[laboManiacFlows.flows, mafra.flows, koch.flows, carpro.flows, gyeon.flows, bola.flows, feynlab.flows, ps.flows].flat().map((f) => ({ ...f, kind: 'off' as const })),
@@ -35,7 +40,114 @@ export function getProduct(id: string): Product {
   return p;
 }
 
+/** 产品图全部是 public/img 下的本地 webp（720×720 白底） */
+export function imageSrc(p: Product): string | undefined {
+  return p.image === null ? undefined : p.image ?? `/img/${p.id}.webp`;
+}
+
+export const SUB_OF = new Map<string, Subcategory>(SUBCATS.flatMap((s) => s.ids.map((id) => [id, s] as const)));
+
+/** 产品在页面上的排序位置：子分类顺序 → 子分类内顺序 */
+export const PRODUCT_RANK = new Map(SUBCATS.flatMap((s) => s.ids).map((id, i) => [id, i]));
+
+export const stepsOf = (f: Flow): FlowStep[] => [...f.steps, ...(f.branch?.steps ?? [])];
+export const productsOfStep = (x: FlowStep): string[] => [...(x.products ?? []), ...(x.variants ?? []).flatMap((v) => v.products ?? [])];
+
 export const flowsUsing = (id: string): FlowEntry[] =>
   FLOWS.filter((f) => stepsOf(f).some((x) => productsOfStep(x).includes(id)));
+
+const stripNotes = (text: string) => text.replace(/[（(][^）)]*[）)]/g, '').replace(/\s+/g, ' ').trim();
+const isReadyRatio = (ratio: string) => ratio === '即用' || /^\d+(?:[–-]\d+)?\s*[滴喷]$/.test(ratio);
+
+function cardScene(tool: string, rawScene: string): string {
+  const cleaned = stripNotes(rawScene).replace(/\s*·\s*/g, ' / ');
+  if (!cleaned || cleaned === tool) return '';
+  if (/^(视脏污程度|视脏污|按污垢和表面|视用途|常规|最高稀释)$/.test(cleaned)) return '';
+  if (tool === '桶洗') {
+    const bucket = cleaned.replace(/^手洗(?:\s*\/\s*|\s*或\s*)?/, '').trim();
+    if (!bucket || /^(水桶|洗车桶|水桶手洗|洗车设备|泡沫)$/.test(bucket)) return '';
+    return bucket.includes(' / ') || bucket.includes('、') ? bucket.split(/\s*\/\s*|、/)[0].trim() : bucket;
+  }
+  if (tool === '喷雾壶' && /^(泡沫喷壶|压力喷壶|泡沫喷壶\s*\/\s*压力喷壶|手工)$/.test(cleaned)) return '';
+  if (cleaned === '洗衣机洗超纤布') return '洗衣机';
+  const concise = cleaned.includes(' / ') || cleaned.includes('、') ? cleaned.split(/\s*\/\s*|、/)[0].trim() : cleaned;
+  return concise === tool ? '' : concise;
+}
+
+/** 只展示最常用的一项，保留工具 / 简短场景并去除括号注释，完整用法在详情表。 */
+export function keyRatios(p: Product): string[] | 'accessory' | 'see-label' | 'ready' {
+  if (!p.dilutions.length) return p.category === 'acc' ? 'accessory' : 'see-label';
+  const valid = p.dilutions.filter(([scene, ratio]) => !/VDA|最高使用浓度/.test(scene) && /\d|原液|即用/.test(ratio));
+  if (!valid.length) return 'see-label';
+  if (valid.every(([, ratio]) => isReadyRatio(stripNotes(ratio)))) return 'ready';
+  const [rawScene, rawRatio, tool] = valid[0];
+  let ratio = stripNotes(rawRatio);
+  if (ratio === '按瓶身刻度稀释') return 'see-label';
+  if (stripNotes(rawScene) === '最高稀释' && !ratio.startsWith('最稀')) ratio = `最稀 ${ratio}`;
+  const hasTool = Boolean(tool && tool !== '—');
+  const scene = cardScene(hasTool ? tool : '', rawScene);
+  const label = hasTool ? (scene && !scene.includes(tool) ? `${tool} · ${scene}` : scene || tool) : scene;
+  return [label ? `${label} ${ratio}` : ratio];
+}
+
+/** 搜索排序用的字段（见 relevance） */
+export function productRankFields(p: Product): RankFields {
+  return { name: fold(p.name), type: fold(p.type), tags: fold([SUB_OF.get(p.id)?.name ?? '', CAT_NAME[p.category], p.materials].join(' ')), abbr: initials(p.name) };
+}
+
+export function productSearchText(p: Product): string {
+  const sub = SUB_OF.get(p.id)?.name ?? '';
+  return fold([p.name, p.type, p.materials, CAT_NAME[p.category], CAT_EN[p.category], sub, BRAND[p.brand], phText(p) ?? '', ...p.dilutions.flat(), ...cautionTexts(p.cautions), ...p.notes, ...phEvidenceNotes(p.ph)].join(' '));
+}
+
+/** pH 标签主体：「碱性 12.5」，不含测量口径；官方未公布或不适用时返回 undefined */
+export function phValueText(p: Product): string | undefined {
+  if (!p.ph || p.ph.category === 'na') return undefined;
+  const { category: k, value: v } = p.ph;
+  const label = k === 'acid' && v && /^\d+(?:\.\d+)?$/.test(v) && Number(v) >= 5 && Number(v) <= 6 ? '弱酸' : PH_SHORT[k];
+  return v ? `${label} ${v}` : label;
+}
+
+/** 非原液口径的说明：「1% 稀释液」；原液返回 undefined */
+export function phBasisText(p: Product): string | undefined {
+  return p.ph && p.ph.basis !== 'raw' ? PH_BASIS_LABEL[p.ph.basis] : undefined;
+}
+
+/** 完整 pH 标签文字：「碱性 12.5」「中性 7 · 1% 稀释液」 */
+export function phText(p: Product): string | undefined {
+  const text = phValueText(p);
+  const basis = phBasisText(p);
+  return text && basis ? `${text} · ${basis}` : text;
+}
+
+/**
+ * 卡片和详情页共用的 pH 显示：每个产品都有一条，写法固定。
+ * label 是主体（「碱性 · pH 12.5」），basis 是非原液时的测量口径（「1% 稀释液」）。
+ */
+export function phDisplay(p: Product): { category: PH | 'none'; label: string; basis?: string } {
+  if (p.category === 'acc') return { category: 'none', label: '配件，无 pH' };
+  if (!p.ph) return { category: 'none', label: 'pH 官方未公布' };
+  if (p.ph.category === 'na') return { category: 'none', label: 'pH 不适用（官方标注）' };
+  const short = phValueText(p)!.split(' ')[0];
+  return { category: p.ph.category, label: p.ph.value ? `${short} · pH ${p.ph.value}` : `${short} · 无具体数值`, basis: phBasisText(p) };
+}
+
+/** 流程按首字母搜索用的缩写：流程英文名和用到的产品名（搜 vb 找到用了 Vorreiniger B 的流程） */
+export function flowInitials(f: FlowEntry): string[] {
+  const names = [f.en ?? '', ...stepsOf(f).flatMap((x) => productsOfStep(x).map((id) => getProduct(id).name))];
+  return [...new Set(names.flatMap(initials))];
+}
+
+export function flowSearchText(f: FlowEntry): string {
+  return fold([
+    f.name, f.en ?? '', f.summary, SCENE_NAME[f.scene], ...f.tags, ...f.notes,
+    f.kind === 'combo' ? f.at : '', f.branch?.name ?? '',
+    ...stepsOf(f).flatMap((x) => [
+      x.phase, x.ratio ?? '', x.how ?? '', ...(x.extras ?? []),
+      ...(x.variants ?? []).flatMap((v) => [v.name, v.ratio ?? '', v.how ?? '']),
+      ...productsOfStep(x).map((id) => `${getProduct(id).name} ${getProduct(id).type}`),
+    ]),
+  ].join(' '));
+}
 
 export const OFFICIAL_RATIO_ROWS = PRODUCTS.reduce((n, p) => n + p.dilutions.filter((d) => /1:\d|原液/.test(d[1])).length, 0);
